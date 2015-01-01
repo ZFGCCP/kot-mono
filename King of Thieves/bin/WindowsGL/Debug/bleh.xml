@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+  <version>1.1</version>
+  <layerCount>1</layerCount>
+  <layers>
+    <layer width="0" height="0">
+      <tiles>
+        <tile coordinates="189:244" tileSet="tileset:test" selection="112:96" />
+        <tile coordinates="196:246" tileSet="tileset:test" selection="112:96" />
+      </tiles>
+    </layer>
+  </layers>
+</Map>

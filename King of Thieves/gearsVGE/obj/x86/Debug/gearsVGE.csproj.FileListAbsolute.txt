@@ -1,0 +1,10 @@
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\gearsVGE\bin\WindowsGL\Debug\SDL.dll
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\gearsVGE\bin\WindowsGL\Debug\GearsVGE.exe
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\gearsVGE\bin\WindowsGL\Debug\GearsVGE.pdb
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\gearsVGE\bin\WindowsGL\Debug\Lidgren.Network.dll
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\gearsVGE\bin\WindowsGL\Debug\MonoGame.Framework.dll
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\gearsVGE\bin\WindowsGL\Debug\OpenTK.dll
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\gearsVGE\bin\WindowsGL\Debug\Tao.Sdl.dll
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\gearsVGE\obj\x86\Debug\gearsVGE.csprojResolveAssemblyReference.cache
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\gearsVGE\obj\x86\Debug\GearsVGE.exe
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\gearsVGE\obj\x86\Debug\GearsVGE.pdb

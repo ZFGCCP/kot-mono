@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Map>
+  <version>1.0</version>
+  <name>test</name>
+  <layerCount>1</layerCount>
+  <tileset>Swords</tileset>
+  <layers>
+	<layer width = "30" height = "30" name = "bleh">
+		<layerNum>0</layerNum>
+		<tiles>
+			<tile coordinates = "0:0" selection = "0:0"></tile>
+		</tiles>
+		<components>
+			<component>
+				<actors>
+					<actor name = "player" type = "King_of_Thieves.Actors.Player.CPlayer" coordinates = "0:0"></actor>
+					<actor name = "gerudoSword" type = "King_of_Thieves.Actors.Items.Swords.CSword" coordinates = "0:0"></actor>
+				</actors>
+			</component>
+		</components>
+	</layer>
+	<layer width = "30" height = "30" name = "blah">
+		<layerNum>1</layerNum>
+		<tiles>
+			<tile coordinates = "0:0" selection = "0:0"></tile>
+		</tiles>
+	</layer>
+  </layers>
+</Map>

@@ -1,0 +1,26 @@
+﻿//devs can ignore this.
+
+//notes to self: xna 3.1 framework redistributable is required
+
+/*          CREDITS [temporarily in this space until credits are ready to be in data form]
+ * 
+ * 
+ * Font Name: "Roses are FF0000"
+ * License: "All fonts are FREE for personal or commercial usage. Enjoy."
+ * Author: "AJPaglia"
+ * Website: "http://ajpaglia.com/"
+ * 
+ * Bitmap Guidelines as Follows:
+ 
+# Move the anti-alias off
+	That is no smoothing.
+# Use at the specified size or a multiple
+  	
+
+The base size is specified above the "Download" button.
+To increase the size, you must use a multiple in order to keep the proportions, for example for 8 px : 16, 24, 32... In that case you will obtain a pixelised appearance.
+  	Exception : For the fonts with .fon extension, no need to care of the size, just increase it and that jumps automatically on the right multiple.
+But they are not supported by all softwares (Photoshop yes, Flash no).
+# Don't modify attributes
+  	Left align and scale 100%.
+*/

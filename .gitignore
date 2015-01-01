@@ -1,0 +1,8 @@
+*.suo
+*.exe
+*.pdb
+*.exe.manifest
+*.resources
+*.mgcontent
+*.cache
+King of Thieves/bin/WindowsGL/Debug/Content

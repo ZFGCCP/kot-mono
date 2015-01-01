@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+  <version>1</version>
+  <layerCount>1</layerCount>
+  <tileset name = "test">tileset:test</tileset>
+  <layers>
+    <layer width="0" height="0">
+      <tiles>
+        <tile coordinates="5:73" selection="80:0" />
+        <tile coordinates="24:75" selection="96:0" />
+        <tile coordinates="42:78" selection="96:0" />
+        <tile coordinates="64:78" selection="96:0" />
+        <tile coordinates="54:73" selection="96:0" />
+        <tile coordinates="88:76" selection="96:0" />
+        <tile coordinates="114:76" selection="96:0" />
+        <tile coordinates="105:74" selection="96:0" />
+        <tile coordinates="142:76" selection="96:0" />
+        <tile coordinates="160:74" selection="96:0" />
+        <tile coordinates="152:72" selection="96:0" />
+        <tile coordinates="182:77" selection="112:0" />
+        <tile coordinates="11:95" selection="0:112" />
+        <tile coordinates="11:111" selection="0:128" />
+        <tile coordinates="27:95" selection="16:112" />
+        <tile coordinates="27:111" selection="16:128" />
+        <tile coordinates="38:94" selection="0:112" />
+        <tile coordinates="38:110" selection="0:128" />
+        <tile coordinates="54:94" selection="16:112" />
+        <tile coordinates="54:110" selection="16:128" />
+        <tile coordinates="77:94" selection="0:112" />
+        <tile coordinates="77:110" selection="0:128" />
+        <tile coordinates="93:94" selection="16:112" />
+        <tile coordinates="93:110" selection="16:128" />
+        <tile coordinates="111:94" selection="0:112" />
+        <tile coordinates="111:110" selection="0:128" />
+        <tile coordinates="127:94" selection="16:112" />
+        <tile coordinates="127:110" selection="16:128" />
+        <tile coordinates="139:95" selection="0:112" />
+        <tile coordinates="139:111" selection="0:128" />
+        <tile coordinates="153:92" selection="16:112" />
+        <tile coordinates="154:108" selection="16:128" />
+        <tile coordinates="149:121" selection="64:0" />
+        <tile coordinates="136:117" selection="64:0" />
+        <tile coordinates="122:119" selection="64:0" />
+        <tile coordinates="105:119" selection="64:0" />
+        <tile coordinates="88:120" selection="64:0" />
+        <tile coordinates="70:122" selection="64:0" />
+        <tile coordinates="53:123" selection="64:0" />
+        <tile coordinates="34:123" selection="64:0" />
+        <tile coordinates="18:123" selection="64:0" />
+        <tile coordinates="0:121" selection="128:0" />
+        <tile coordinates="183:82" selection="144:0" />
+        <tile coordinates="182:115" selection="144:0" />
+        <tile coordinates="182:107" selection="144:0" />
+        <tile coordinates="160:90" selection="64:0" />
+        <tile coordinates="166:107" selection="64:0" />
+        <tile coordinates="166:118" selection="64:0" />
+      </tiles>
+    </layer>
+  </layers>
+</Map>
