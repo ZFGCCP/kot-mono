@@ -101,6 +101,12 @@ namespace King_of_Thieves.Sound
             _effects.Add(sfx);
         }
 
+        public void addSfx(CSound sfx, int playCount)
+        {
+            sfx.repeat = playCount;
+            _effects.Add(sfx);
+        }
+
         //this function name is an abomination to my programming abilities. Luckily only the thread is going to use this.
         private void _checkForThingsToPlay()
         {

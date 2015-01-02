@@ -78,6 +78,10 @@ namespace King_of_Thieves.Sound
             {
                 return _repeat;
             }
+            set
+            {
+                _repeat = value;
+            }
         }
 
         public bool track

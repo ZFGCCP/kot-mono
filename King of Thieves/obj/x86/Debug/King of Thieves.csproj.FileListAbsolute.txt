@@ -75,3 +75,80 @@ G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\King of Thieves.e
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\King of Thieves.pdb
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\Fonts\controlFont.xnb
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\bomb_explode.xnb
+C:\kot-mono\King of Thieves\obj\x86\Debug\King of Thieves.exe
+C:\kot-mono\King of Thieves\obj\x86\Debug\King of Thieves.pdb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\04_-_Phantom_Ganon.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\AGES_TILESET_1F.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\chuchuGreen.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\cursor.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\cursorIcon.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\effects.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\effects\bomb-explosion.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\Fonts\benchmarker.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\Fonts\MenuFont.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\Fonts\sherwood.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\hud\buttons.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\hud\hearts.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\hud\textbox2.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\icons.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\keese.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\lttp_heart.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\maple.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\mcDungeon2.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\menu.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\PlayerIdleDown.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\pointer.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\potSmall.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\environment\shock.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\health\Low_Health_Beep.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\health\lttp_heart.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\linkAttack1.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\linkAttack2.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\linkAttack3.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\linkAttack4.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\linkSwordSlash.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\link\hurt1.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\link\hurt2.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\link\hurt3.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\link\hurt4.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\link\hurt5.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\link\shocked.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\MC_Shatter.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\npc\wizzrobevanish.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\rooster.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\text\TextBoxContinue.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\text\TextBoxDone.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\wolf.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\drops\drops01.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\wizzrobe.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\Swords-skeleton.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\Swords.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\test.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\textbox.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\textbox2.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\tilesets\indoors\house.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\tilesets\items\chests-small.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\tiletest.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\title\title-background.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\title\title-logo.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\whiteBox.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\effects\various-effects.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\Player.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\Untitled-1.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\Fonts\controlFont.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\bomb_explode.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\SDL.dll
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\King of Thieves.exe
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\King of Thieves.pdb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\GearsVGE.exe
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\MonoGame.Framework.dll
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\OpenTK.dll
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Tao.Sdl.dll
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\GearsVGE.pdb
+C:\kot-mono\King of Thieves\obj\x86\Debug\King of Thieves.csprojResolveAssemblyReference.cache
+C:\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.Map_Editor.EditorComponents.resources
+C:\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.Map_Editor.EditorTiles.resources
+C:\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.Map_Editor.frmMapEditor.resources
+C:\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.TextureAtlas.frmTextureAtlas.resources
+C:\kot-mono\King of Thieves\obj\x86\Debug\OpenTK.GLControl.resources
+C:\kot-mono\King of Thieves\obj\x86\Debug\King of Thieves.csproj.GenerateResource.Cache
