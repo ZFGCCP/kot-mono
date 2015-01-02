@@ -73,3 +73,4 @@ G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\obj\x86\Debug\King of Thieves.exe
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\obj\x86\Debug\King of Thieves.pdb
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\King of Thieves.exe
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\King of Thieves.pdb
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\Fonts\controlFont.xnb

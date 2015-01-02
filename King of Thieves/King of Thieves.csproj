@@ -120,6 +120,9 @@
     <Compile Include="Forms\Map Editor\frmMapEditor.Designer.cs">
       <DependentUpon>frmMapEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Map\CControl.cs" />
+    <Compile Include="Forms\Map\controls\MenuStrip\CMenuItem.cs" />
+    <Compile Include="Forms\Map\controls\MenuStrip\CMenuStrip.cs" />
     <Compile Include="Forms\TextureAtlas\frmTextureAtlas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +176,7 @@
     </Compile>
     <Compile Include="usr\local\DevMenu.cs" />
     <Compile Include="usr\local\EditorMode.cs" />
+    <Compile Include="usr\local\MapEditor.cs" />
     <Compile Include="usr\local\PlayableState.cs" />
     <Compile Include="usr\local\splash\CTitleState.cs" />
     <Compile Include="usr\local\Testbed.cs" />
@@ -403,6 +407,12 @@
   <ItemGroup>
     <Folder Include="Content\bin\WindowsGL\" />
     <Folder Include="Content\obj\WindowsGL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\editor\arrow-small.xnb" />
+    <Content Include="Content\Fonts\controlFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <!-- Specify the search path explicitly so the ResolveAssemblyReferences task picks the right ones -->
   <Target Name="BeforeResolveReferences">

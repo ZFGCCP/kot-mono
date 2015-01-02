@@ -48,6 +48,8 @@ namespace King_of_Thieves.Graphics
         public static string PLAYER_CHARGE_ARROW_DOWN = PLAYER + "chargeArrowDown";
         public static string PLAYER_HOLD_ARROW_DOWN = PLAYER + "holdArrowDown";
         public static string PLAYER_SHOOT_ARROW_DOWN = PLAYER + "shootArrowDown";
+        public static string PLAYER_HOLD_CANNON_DOWN = PLAYER + "holdCannonDown";
+        public static string PLAYER_SHOOT_CANNON_DOWN = PLAYER + "shootCannonDown";
 
         public static string HUD_ARROWS = HUD + "arrows";
         public static string HUD_BOMB_CANNON = HUD + "bombCannon";
@@ -118,6 +120,8 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_SHOOT_ARROW_LEFT, new CTextureAtlas("Player", 32, 32, 1, "26:7", "28:7", 8));
             textures.Add(PLAYER_SHOOT_ARROW_DOWN, new CTextureAtlas("Player", 32, 32, 1, "26:6", "28:6", 8));
             textures.Add(PLAYER_SHOOT_ARROW_UP, new CTextureAtlas("Player", 32, 32, 1, "26:8", "28:8", 8));
+            textures.Add(PLAYER_HOLD_CANNON_DOWN, new CTextureAtlas("Player", 32, 32, 1, "14:42", "20:42", 8));
+            textures.Add(PLAYER_SHOOT_CANNON_DOWN, new CTextureAtlas("Player", 32, 32, 1, "11:42", "13:42", 8));
 
             textures.Add("GerudoSword:SwingDown", new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 55));
             textures.Add("GerudoSword:SwingUp", new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 55));

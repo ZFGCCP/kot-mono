@@ -22,6 +22,7 @@ namespace King_of_Thieves.Actors.Projectiles
             _imageIndex.Add(_TICK, new Graphics.CSprite(Graphics.CTextures.EFFECT_BOMB));
             _imageIndex.Add(_FAST_TICK, new Graphics.CSprite(Graphics.CTextures.EFFECT_BOMB_FAST_TICK));
             _imageIndex.Add(_EXPLOSION, new Graphics.CSprite(Graphics.CTextures.EFFECT_EXPLOSION));
+            _name = "bomb" + _bombCount;
 
             _hitBox = new Collision.CHitBox(this, 0, 0, 10, 10);
             swapImage(_TICK);
@@ -72,6 +73,8 @@ namespace King_of_Thieves.Actors.Projectiles
             _state = ACTOR_STATES.EXPLODE;
             swapImage(_EXPLOSION);
         }
+
+
 
 
 

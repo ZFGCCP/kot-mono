@@ -160,21 +160,24 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Wizzrobe
                     swapImage(_IDLE_RIGHT);
                     break;
             }
-            //CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:wizzrobe:vanish"]);
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:wizzrobe:vanish"]);
             Graphics.CEffects.createEffect(Graphics.CEffects.SMOKE_POOF, new Vector2(_position.X - 13, _position.Y - 5));
         }
 
         private void _vanish(bool showEffect = true)
         {
             if (showEffect)
+            {
                 Graphics.CEffects.createEffect(Graphics.CEffects.SMOKE_POOF, new Vector2(_position.X - 13, _position.Y - 5));
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:wizzrobe:vanish"]);
+            }
 
             _state = ACTOR_STATES.INVISIBLE;
 
             Random rand = new Random();
             startTimer1(_VANISH_TIME[rand.Next(2)]);
             rand = null;
-            //CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:wizzrobe:vanish"]);
+            
         }
 
         private void _startAttack()

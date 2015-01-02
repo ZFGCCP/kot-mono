@@ -521,3 +521,20 @@
 /processorParam:TextureFormat=Color
 /build:sprites/drops/drops01.png
 
+#begin editor/arrow-small.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:editor/arrow-small.png
+
+#begin Fonts/controlFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/controlFont.spritefont
+

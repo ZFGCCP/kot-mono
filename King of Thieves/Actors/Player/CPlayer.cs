@@ -23,6 +23,7 @@ namespace King_of_Thieves.Actors.Player
         private int _collisionDirectionY = 0;
         private Keys _lastHudKeyPressed = Keys.None;
         private string _lastArrowShotName = "";
+        private string _lastBombShotName = "";
         private const int _MAX_BOMB_VELO = 5;
         private int _bombVelo = 0;
 
@@ -109,6 +110,10 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add("PlayerShootArrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHOOT_ARROW_UP]));
             _imageIndex.Add("PlayerShootArrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT]));
             _imageIndex.Add("PlayerShootArrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT], null, true));
+
+            _imageIndex.Add("PlayerHoldCannonDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN]));
+
+            _imageIndex.Add("PlayerShootCannonDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN]));
         }
 
         public override void collide(object sender, CActor collider)
@@ -281,6 +286,8 @@ namespace King_of_Thieves.Actors.Player
 
                     if (input.keysPressed.Contains(Keys.Left) && _lastHudKeyPressed != Keys.Left)
                         _useItem(0);
+                    else if (input.keysPressed.Contains(Keys.Right) && _lastHudKeyPressed != Keys.Right)
+                        _useItem(-1);
 
                     if (input.keysPressed.Contains(Keys.A))
                     {
@@ -777,14 +784,34 @@ namespace King_of_Thieves.Actors.Player
             }
         }
 
-        private void _holdBomb()
+        private void _holdCannon()
         {
-            
+            state = ACTOR_STATES.HOLD_CANNON;
+
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    swapImage("PlayerHoldCannonDown");
+                    break;
+            }
         }
 
-        private void _shootBomb()
+        private void _shootCannon()
         {
+            if (_lastHudKeyPressed == Keys.Left)
+                state = ACTOR_STATES.SHOOTING_CANNON;
 
+            Vector2 bombVelo = Vector2.Zero;
+
+            Projectiles.CBomb bomb = new Projectiles.CBomb(direction, bombVelo, _position, 4);
+            Map.CMapManager.addActorToComponent(bomb, this.componentAddress);
+
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    swapImage("PlayerShootCannonDown");
+                    break;
+            }
         }
 
         //non negative == left
@@ -807,6 +834,10 @@ namespace King_of_Thieves.Actors.Player
             {
                 case HUD.buttons.HUDOPTIONS.ARROWS:
                     _beginArrowCharge();
+                    break;
+
+                case HUD.buttons.HUDOPTIONS.BOMB_CANNON:
+                    _holdCannon();
                     break;
             }
 
