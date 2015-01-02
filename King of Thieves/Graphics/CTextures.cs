@@ -177,8 +177,8 @@ namespace King_of_Thieves.Graphics
             textures.Add(EFFECT_FIRE_BALL_SMALL_LEFT, new CTextureAtlas("effects:various", 32, 32, 0, "0:1", "2:1", 5));
             textures.Add(EFFECT_ARROW, new CTextureAtlas("effects:various", 32, 32, 0, "1:2", "1:2", 0));
             textures.Add(EFFECT_ARROW_RIGHT, new CTextureAtlas("effects:various", 32, 32, 0, "0:2", "0:2", 0));
-            textures.Add(EFFECT_BOMB, new CTextureAtlas("effects:various", 32, 32, 0, "3:0", "3:0", 3));
-            textures.Add(EFFECT_BOMB_FAST_TICK, new CTextureAtlas("effects:various", 32, 32, 0, "3:0", "3:0", 10));
+            textures.Add(EFFECT_BOMB, new CTextureAtlas("effects:various", 32, 32, 0, "0:3", "1:3", 1));
+            textures.Add(EFFECT_BOMB_FAST_TICK, new CTextureAtlas("effects:various", 32, 32, 0, "0:3", "1:3", 10));
 
             //HUD
             textures.Add("HUD:text:textBox", new CTextureAtlas("hud", 303, 74, 0, "0:0", "0:0", 0));

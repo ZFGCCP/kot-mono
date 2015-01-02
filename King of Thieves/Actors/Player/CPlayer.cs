@@ -264,6 +264,10 @@ namespace King_of_Thieves.Actors.Player
                 case ACTOR_STATES.SHOOTING_ARROW:
                     _state = ACTOR_STATES.IDLE;
                     break;
+
+                case ACTOR_STATES.SHOOTING_CANNON:
+                    _state = ACTOR_STATES.IDLE;
+                    break;
             }
 
             
@@ -369,7 +373,7 @@ namespace King_of_Thieves.Actors.Player
                         _state = ACTOR_STATES.IDLE;
                 }
 
-                if (input.keysReleased.Contains(Keys.Left))
+                if (input.keysReleased.Contains(Keys.Left) || input.keysReleased.Contains(Keys.Right))
                 {
                     switch (state)
                     {
@@ -380,6 +384,10 @@ namespace King_of_Thieves.Actors.Player
 
                         case ACTOR_STATES.HOLD_ARROW:
                             _shootArrow();
+                            break;
+
+                        case ACTOR_STATES.HOLD_CANNON:
+                            _shootCannon();
                             break;
                     }
 
@@ -583,6 +591,11 @@ namespace King_of_Thieves.Actors.Player
                             break;
                     }
 
+                    break;
+
+                case ACTOR_STATES.HOLD_CANNON:
+                    if (_bombVelo < 120)
+                        _bombVelo++;
                     break;
             }
             _readableCoords = _position;
@@ -788,6 +801,7 @@ namespace King_of_Thieves.Actors.Player
         {
             state = ACTOR_STATES.HOLD_CANNON;
 
+
             switch (_direction)
             {
                 case DIRECTION.DOWN:
@@ -798,20 +812,27 @@ namespace King_of_Thieves.Actors.Player
 
         private void _shootCannon()
         {
-            if (_lastHudKeyPressed == Keys.Left)
+            //if (_lastHudKeyPressed == Keys.Left)
                 state = ACTOR_STATES.SHOOTING_CANNON;
 
             Vector2 bombVelo = Vector2.Zero;
-
-            Projectiles.CBomb bomb = new Projectiles.CBomb(direction, bombVelo, _position, 4);
-            Map.CMapManager.addActorToComponent(bomb, this.componentAddress);
-
+            Vector2 bombPos = _position;
+            double veloScale = Math.Floor((double)(_bombVelo / 10.0));
             switch (_direction)
             {
                 case DIRECTION.DOWN:
                     swapImage("PlayerShootCannonDown");
+                    bombVelo.Y = (float)veloScale;
+                    bombPos.Y += 30;
+                    bombPos.X -= 3;
                     break;
             }
+
+            Projectiles.CBomb bomb = new Projectiles.CBomb(direction, bombVelo, bombPos, 4);
+            Map.CMapManager.addActorToComponent(bomb, this.componentAddress);
+            _bombVelo = 0;
+
+            
         }
 
         //non negative == left

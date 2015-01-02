@@ -23,6 +23,7 @@ namespace King_of_Thieves.Actors.Projectiles
             _imageIndex.Add(_FAST_TICK, new Graphics.CSprite(Graphics.CTextures.EFFECT_BOMB_FAST_TICK));
             _imageIndex.Add(_EXPLOSION, new Graphics.CSprite(Graphics.CTextures.EFFECT_EXPLOSION));
             _name = "bomb" + _bombCount;
+            _followRoot = false;
 
             _hitBox = new Collision.CHitBox(this, 0, 0, 10, 10);
             swapImage(_TICK);
@@ -32,7 +33,6 @@ namespace King_of_Thieves.Actors.Projectiles
 
         public override void timer0(object sender)
         {
-            base.timer0(sender);
             swapImage(_FAST_TICK);
             startTimer1(60);
         }
@@ -72,6 +72,14 @@ namespace King_of_Thieves.Actors.Projectiles
         {
             _state = ACTOR_STATES.EXPLODE;
             swapImage(_EXPLOSION);
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Items:explosionSmall"]);
+            _position.X -= 13;
+            _position.Y -= 13;
+        }
+
+        protected override void shoot()
+        {
+            swapImage(_TICK);
         }
 
 

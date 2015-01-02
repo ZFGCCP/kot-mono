@@ -48,6 +48,8 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Player:Electrocute", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/shocked")));
             soundBank.Add("Player:Hurt1", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/hurt1")));
             soundBank.Add("Items:Decor:ItemSmash", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/MC_Shatter")));
+
+            soundBank.Add("Items:explosionSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/bomb_explode")));
             
             
             //text
