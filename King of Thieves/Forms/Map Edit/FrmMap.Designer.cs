@@ -224,7 +224,6 @@
             this.txvTextures.Size = new System.Drawing.Size(240, 256);
             this.txvTextures.TabIndex = 2;
             this.txvTextures.VSync = false;
-            this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
             // 
             // spinningTriangleControl1
             // 
