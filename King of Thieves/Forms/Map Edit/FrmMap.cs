@@ -42,12 +42,38 @@ namespace King_of_Thieves.Forms.Map_Edit
                 hsbTexture.Maximum = txvTextures.atlasWidth - txvTextures.Width;
             }
 
+            if (txvTextures.checkHeight())
+            {
+                vsbTexture.Minimum = 0;
+                vsbTexture.Maximum = txvTextures.atlasHeight - txvTextures.Height;
+            }
+
             hsbTexture.Value = 0;
         }
 
         private void hsbTexture_Scroll(object sender, ScrollEventArgs e)
         {
             txvTextures.scrollHorizontal(-hsbTexture.Value);
+        }
+
+        private void vsbTexture_Scroll(object sender, ScrollEventArgs e)
+        {
+            txvTextures.scrollVertical(-vsbTexture.Value);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txvTextures_Click(object sender, EventArgs e)
+        {
+            txvTextures.selectTile(hsbTexture.Value, vsbTexture.Value);
+        }
+
+        private void txvTextures_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

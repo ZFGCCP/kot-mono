@@ -52,7 +52,7 @@ namespace WinFormsGraphicsDevice
         GraphicsDeviceService(IntPtr windowHandle, int width, int height)
         {
             GraphicsAdapter adapter = GraphicsAdapter.DefaultAdapter;
-            GraphicsProfile profile = GraphicsProfile.Reach;
+            GraphicsProfile profile = GraphicsProfile.HiDef;
             PresentationParameters pp = new PresentationParameters()
             {
                 DeviceWindowHandle = windowHandle,

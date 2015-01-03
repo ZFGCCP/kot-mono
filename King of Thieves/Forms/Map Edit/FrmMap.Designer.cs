@@ -40,6 +40,10 @@
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.hsbTexture = new System.Windows.Forms.HScrollBar();
+            this.vsbTexture = new System.Windows.Forms.VScrollBar();
+            this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.cmbTilesets = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -48,9 +52,6 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vsbTexture = new System.Windows.Forms.VScrollBar();
-            this.hsbTexture = new System.Windows.Forms.HScrollBar();
-            this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.spinningTriangleControl1 = new WinFormsGraphicsDevice.SpinningTriangleControl();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -137,6 +138,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.hsbTexture);
             this.tabPage1.Controls.Add(this.vsbTexture);
             this.tabPage1.Controls.Add(this.txvTextures);
@@ -148,6 +150,44 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tiles";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(150, 363);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // hsbTexture
+            // 
+            this.hsbTexture.LargeChange = 1;
+            this.hsbTexture.Location = new System.Drawing.Point(5, 262);
+            this.hsbTexture.Name = "hsbTexture";
+            this.hsbTexture.Size = new System.Drawing.Size(238, 17);
+            this.hsbTexture.TabIndex = 5;
+            this.hsbTexture.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hsbTexture_Scroll);
+            // 
+            // vsbTexture
+            // 
+            this.vsbTexture.Location = new System.Drawing.Point(246, 3);
+            this.vsbTexture.Name = "vsbTexture";
+            this.vsbTexture.Size = new System.Drawing.Size(17, 256);
+            this.vsbTexture.TabIndex = 5;
+            this.vsbTexture.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vsbTexture_Scroll);
+            // 
+            // txvTextures
+            // 
+            this.txvTextures.BackColor = System.Drawing.Color.Black;
+            this.txvTextures.Location = new System.Drawing.Point(3, 3);
+            this.txvTextures.Name = "txvTextures";
+            this.txvTextures.Size = new System.Drawing.Size(240, 256);
+            this.txvTextures.TabIndex = 2;
+            this.txvTextures.VSync = false;
+            this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
+            this.txvTextures.Click += new System.EventHandler(this.txvTextures_Click);
             // 
             // cmbTilesets
             // 
@@ -199,31 +239,6 @@
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
             this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.propertiesToolStripMenuItem.Text = "Properties";
-            // 
-            // vsbTexture
-            // 
-            this.vsbTexture.Location = new System.Drawing.Point(246, 3);
-            this.vsbTexture.Name = "vsbTexture";
-            this.vsbTexture.Size = new System.Drawing.Size(17, 256);
-            this.vsbTexture.TabIndex = 5;
-            // 
-            // hsbTexture
-            // 
-            this.hsbTexture.LargeChange = 1;
-            this.hsbTexture.Location = new System.Drawing.Point(5, 262);
-            this.hsbTexture.Name = "hsbTexture";
-            this.hsbTexture.Size = new System.Drawing.Size(238, 17);
-            this.hsbTexture.TabIndex = 5;
-            this.hsbTexture.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hsbTexture_Scroll);
-            // 
-            // txvTextures
-            // 
-            this.txvTextures.BackColor = System.Drawing.Color.Black;
-            this.txvTextures.Location = new System.Drawing.Point(3, 3);
-            this.txvTextures.Name = "txvTextures";
-            this.txvTextures.Size = new System.Drawing.Size(240, 256);
-            this.txvTextures.TabIndex = 2;
-            this.txvTextures.VSync = false;
             // 
             // spinningTriangleControl1
             // 
@@ -283,5 +298,6 @@
         private WinFormsGraphicsDevice.TextureViewer txvTextures;
         private System.Windows.Forms.HScrollBar hsbTexture;
         private System.Windows.Forms.VScrollBar vsbTexture;
+        private System.Windows.Forms.Button button1;
     }
 }
