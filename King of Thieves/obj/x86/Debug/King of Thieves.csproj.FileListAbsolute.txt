@@ -152,3 +152,5 @@ C:\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.Map_Editor.frmMa
 C:\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.TextureAtlas.frmTextureAtlas.resources
 C:\kot-mono\King of Thieves\obj\x86\Debug\OpenTK.GLControl.resources
 C:\kot-mono\King of Thieves\obj\x86\Debug\King of Thieves.csproj.GenerateResource.Cache
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\items\shields.xnb
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.Map_Edit.FrmMap.resources

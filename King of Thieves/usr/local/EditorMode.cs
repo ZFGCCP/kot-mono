@@ -16,7 +16,7 @@ namespace King_of_Thieves.usr.local
         private Graphics.CSprite _currentTileSet = null;
 
         Map.CLayer[] layers = new Map.CLayer[1];*/
-        private Forms.Map_Editor.frmMapEditor editorForm = new Forms.Map_Editor.frmMapEditor();
+        private Forms.Map_Edit.FrmMap editorForm = new Forms.Map_Edit.FrmMap();
 
         public EditorMode()
         {

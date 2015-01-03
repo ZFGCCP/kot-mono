@@ -52,6 +52,11 @@ namespace King_of_Thieves.Graphics
             _isEffect = isEffect;
         }
 
+        public void drawAsTileset(int x, int y, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], Vector2.Zero, Color.White);
+        }
+
         public override bool draw(int x, int y, bool useOverlay = false)
         {
             if (_imageAtlas == null)

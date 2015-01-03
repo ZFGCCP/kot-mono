@@ -142,6 +142,22 @@ namespace King_of_Thieves.Graphics
             }
         }
 
+        public int frameWidth
+        {
+            get
+            {
+                return _fixedWidth;
+            }
+        }
+
+        public int frameHeight
+        {
+            get
+            {
+                return _fixedHeight;
+            }
+        }
+
         public Rectangle getTile(int frameX, int frameY)
         {
             return this._textureAtlas[frameX, frameY];

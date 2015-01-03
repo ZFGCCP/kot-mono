@@ -120,9 +120,12 @@
     <Compile Include="Forms\Map Editor\frmMapEditor.Designer.cs">
       <DependentUpon>frmMapEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Map\CControl.cs" />
-    <Compile Include="Forms\Map\controls\MenuStrip\CMenuItem.cs" />
-    <Compile Include="Forms\Map\controls\MenuStrip\CMenuStrip.cs" />
+    <Compile Include="Forms\Map Edit\FrmMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Map Edit\FrmMap.Designer.cs">
+      <DependentUpon>FrmMap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TextureAtlas\frmTextureAtlas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +177,12 @@
     <Compile Include="SpinningTriangleControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="TextureViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TextureViewer.Designer.cs">
+      <DependentUpon>TextureViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="usr\local\DevMenu.cs" />
     <Compile Include="usr\local\EditorMode.cs" />
     <Compile Include="usr\local\MapEditor.cs" />
@@ -214,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Map Editor\frmMapEditor.resx">
       <DependentUpon>frmMapEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Map Edit\FrmMap.resx">
+      <DependentUpon>FrmMap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TextureAtlas\frmTextureAtlas.resx">
       <DependentUpon>frmTextureAtlas.cs</DependentUpon>
@@ -414,6 +426,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sounds\items\bomb_explode.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\items\shields.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

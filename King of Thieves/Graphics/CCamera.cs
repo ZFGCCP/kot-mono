@@ -22,7 +22,7 @@ namespace King_of_Thieves.Graphics
             reset();
         }
 
-        public void update(GameTime gameTime)
+        public void update(GameTime gameTime = null)
         {
             _transformation = Matrix.CreateRotationZ(0) * Matrix.CreateScale(scale) * Matrix.CreateTranslation(position);
 
@@ -38,6 +38,16 @@ namespace King_of_Thieves.Graphics
 
 
             _boundary = new Actors.HUD.CCameraBoundary(new Rectangle(80, 30, 100, 100));
+        }
+
+        public void jump(Vector3 position)
+        {
+            this.position = position;
+        }
+
+        public void translate(Vector3 translation)
+        {
+            position += translation;
         }
 
         private void _followObject()
