@@ -12,7 +12,7 @@ namespace King_of_Thieves.Map
 {
     class CMap
     {
-        public CLayer[] _layers = null;
+        public List<CLayer> _layers = null;
         private static Regex _coordFormat = new Regex("^[0-9]+:[0-9]+$");
         private static Regex _valSplitter = new Regex(":");
         private List<CActor> _actorRegistry = new List<CActor>();
@@ -23,13 +23,13 @@ namespace King_of_Thieves.Map
         public CMap()
         {
             _internalMap = null;
-            _layers = new CLayer[1];
-            _layers[0] = new CLayer();
+            _layers = new List<CLayer>(1);
+            _layers.Add(new CLayer());
         }
 
         public CMap(params CLayer[] layers)
         {
-            _layers = layers;
+            _layers = layers.ToList();
         }
 
         private Actors.CComponent[] _createManagers()
@@ -47,7 +47,7 @@ namespace King_of_Thieves.Map
         public CMap(string fileName)
         {
             _internalMap = Gears.Cartography.Map.deserialize(fileName);
-            _layers = new CLayer[_internalMap.NUM_LAYERS];
+            _layers = new List<CLayer>(_internalMap.NUM_LAYERS);
             int layerCount = 0;
 
             /*if (_internalMap.TILESET != null)
@@ -124,7 +124,8 @@ namespace King_of_Thieves.Map
 
                     }
                 }
-                _layers[layerCount] = new CLayer(layer.NAME, compList, tiles, ref _tileIndex, Convert.ToDouble(_internalMap.VERSION));
+                _layers.Add(new CLayer(layer.NAME, compList, tiles, ref _tileIndex, Convert.ToDouble(_internalMap.VERSION)));
+                //_layers[layerCount] = new CLayer(layer.NAME, compList, tiles, ref _tileIndex, Convert.ToDouble(_internalMap.VERSION));
                 _layers[layerCount++].otherImages = tileSets;
 
             }

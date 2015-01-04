@@ -22,8 +22,11 @@ namespace WinFormsGraphicsDevice
         {
             System.Drawing.Point mousePos = PointToClient(MousePosition);
 
-            selectorRect.X = (int)System.Math.Floor((mousePos.X + offSetX) / 16.0) *16;
-            selectorRect.Y = (int)System.Math.Floor((mousePos.Y + offSetY) / 16.0) * 16;
+            int snapX = (int)System.Math.Floor((mousePos.X + offSetX) / 16.0);
+            int snapY = (int)System.Math.Floor((mousePos.Y + offSetY) / 16.0);
+
+            selectorRect.X = snapX * 16;
+            selectorRect.Y = snapY * 16;
 
         }
 
