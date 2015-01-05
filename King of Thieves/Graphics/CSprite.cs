@@ -40,6 +40,12 @@ namespace King_of_Thieves.Graphics
             init(atlasName, atlas, shader, flipH, flipV, isEffect, vertices);
         }
 
+        public CSprite(CSprite sprite)
+            : base(null, null)
+        {
+            init(sprite.atlasName, sprite._imageAtlas, null, sprite._flipH, sprite._flipV, sprite._isEffect, null);
+        }
+
         private void init(string atlasName, CTextureAtlas atlas, Effect shader = null, bool flipH = false, bool flipV = false, bool isEffect = false, params VertexPositionColor[] vertices)
         {
             _imageAtlas = atlas;
@@ -103,7 +109,7 @@ namespace King_of_Thieves.Graphics
             
         }
 
-        public bool draw(int x, int y, int frameX, int frameY, int width, int height, bool useOverlay = false)
+        public bool draw(int x, int y, int frameX, int frameY, int width, int height, bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             if (_imageAtlas == null)
                 throw new FormatException("Unable to draw sprite " + _name);
@@ -111,14 +117,16 @@ namespace King_of_Thieves.Graphics
             _size = _imageAtlas.getTile(frameX, frameY);
             _position.X = x * width; _position.Y = y * height;
 
+            SpriteBatch batch = spriteBatch == null ? CGraphics.spriteBatch : spriteBatch;
+
             Color overlay = useOverlay ? Actors.Controllers.GameControllers.CDayClock.overlay : Color.White; 
 
             if (!(_flipV || _flipH))
-                CGraphics.spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay);
+                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay);
             else if (_flipV)
-                CGraphics.spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, 0f, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
+                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, 0f, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
             else if (_flipH)
-                CGraphics.spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, 0f, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
+                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, 0f, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
             base.draw(x, y);
 
             return false;

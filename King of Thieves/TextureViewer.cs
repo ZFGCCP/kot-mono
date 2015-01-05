@@ -18,7 +18,7 @@ namespace WinFormsGraphicsDevice
         private Texture2D _selector = null;
         private Rectangle selectorRect = new Rectangle();
 
-        public void selectTile(int offSetX = 0, int offSetY = 0)
+        public King_of_Thieves.Map.CTile selectTile(int offSetX = 0, int offSetY = 0)
         {
             System.Drawing.Point mousePos = PointToClient(MousePosition);
 
@@ -28,6 +28,9 @@ namespace WinFormsGraphicsDevice
             selectorRect.X = snapX * 16;
             selectorRect.Y = snapY * 16;
 
+            King_of_Thieves.Map.CTile tile = new King_of_Thieves.Map.CTile(new Vector2(snapX, snapY), Vector2.Zero, _currentSprite.atlasName);
+
+            return tile;
         }
 
         public void scrollVertical(int amount)
@@ -62,13 +65,15 @@ namespace WinFormsGraphicsDevice
             }
         }
 
-        public void changeSprite(string atlasName, King_of_Thieves.Graphics.CTextureAtlas newTexture)
+        public King_of_Thieves.Graphics.CSprite changeSprite(string atlasName, King_of_Thieves.Graphics.CTextureAtlas newTexture)
         {
             _textureAtlas = newTexture;
             _currentSprite = new King_of_Thieves.Graphics.CSprite(atlasName, newTexture);
 
             _selector = new Texture2D(GraphicsDevice, 1,1);
             _selector.SetData<Color>(new Color[] { Color.Red });
+
+            return _currentSprite;
         }
 
         public bool checkHeight()
@@ -127,6 +132,14 @@ namespace WinFormsGraphicsDevice
         {
             base.OnPaint(e);
             _camera.update();
+        }
+
+        public King_of_Thieves.Graphics.CSprite currentSprite
+        {
+            get
+            {
+                return new King_of_Thieves.Graphics.CSprite(_currentSprite);
+            }
         }
     }
 }

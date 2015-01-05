@@ -44,6 +44,8 @@
             this.vsbTexture = new System.Windows.Forms.VScrollBar();
             this.cmbTilesets = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbActorList = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.componentContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -55,9 +57,7 @@
             this.btnAddLayer = new System.Windows.Forms.Button();
             this.btnDeleteLayer = new System.Windows.Forms.Button();
             this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
-            this.spinningTriangleControl1 = new WinFormsGraphicsDevice.SpinningTriangleControl();
-            this.cmbActorList = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -194,6 +194,23 @@
             this.tabPage2.Text = "Components";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Actors";
+            // 
+            // cmbActorList
+            // 
+            this.cmbActorList.FormattingEnabled = true;
+            this.cmbActorList.Location = new System.Drawing.Point(51, 20);
+            this.cmbActorList.Name = "cmbActorList";
+            this.cmbActorList.Size = new System.Drawing.Size(209, 21);
+            this.cmbActorList.TabIndex = 0;
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -276,31 +293,14 @@
             this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
             this.txvTextures.Click += new System.EventHandler(this.txvTextures_Click);
             // 
-            // spinningTriangleControl1
+            // mpvMapView
             // 
-            this.spinningTriangleControl1.BackColor = System.Drawing.Color.Black;
-            this.spinningTriangleControl1.Location = new System.Drawing.Point(280, 43);
-            this.spinningTriangleControl1.Name = "spinningTriangleControl1";
-            this.spinningTriangleControl1.Size = new System.Drawing.Size(512, 480);
-            this.spinningTriangleControl1.TabIndex = 1;
-            this.spinningTriangleControl1.VSync = false;
-            // 
-            // cmbActorList
-            // 
-            this.cmbActorList.FormattingEnabled = true;
-            this.cmbActorList.Location = new System.Drawing.Point(51, 20);
-            this.cmbActorList.Name = "cmbActorList";
-            this.cmbActorList.Size = new System.Drawing.Size(209, 21);
-            this.cmbActorList.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Actors";
+            this.mpvMapView.BackColor = System.Drawing.Color.Black;
+            this.mpvMapView.Location = new System.Drawing.Point(280, 43);
+            this.mpvMapView.Name = "mpvMapView";
+            this.mpvMapView.Size = new System.Drawing.Size(512, 480);
+            this.mpvMapView.TabIndex = 1;
+            this.mpvMapView.VSync = false;
             // 
             // FrmMap
             // 
@@ -314,7 +314,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.hScrollBar1);
-            this.Controls.Add(this.spinningTriangleControl1);
+            this.Controls.Add(this.mpvMapView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMap";
@@ -341,7 +341,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private WinFormsGraphicsDevice.SpinningTriangleControl spinningTriangleControl1;
+        private WinFormsGraphicsDevice.SpinningTriangleControl mpvMapView;
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.TabControl tabControl1;

@@ -12,6 +12,8 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using King_of_Thieves.Graphics;
+using King_of_Thieves.Map;
 #endregion
 
 namespace WinFormsGraphicsDevice
@@ -27,16 +29,19 @@ namespace WinFormsGraphicsDevice
     {
         BasicEffect effect;
         Stopwatch timer;
+        SpriteBatch spriteBatch;
+        private CTile _selectedTile;
+        private CSprite _selectedSprite;
 
-
-        // Vertex positions and colors used to display a spinning triangle.
-        public readonly VertexPositionColor[] Vertices =
+        public void changeSelectedTile(CTile tile)
         {
-            new VertexPositionColor(new Vector3(-1, -1, 0), Color.Azure),
-            new VertexPositionColor(new Vector3( 1, -1, 0), Color.BlanchedAlmond),
-            new VertexPositionColor(new Vector3( 0,  1, 0), Color.Red),
-        };
+            _selectedTile = tile;
+        }
 
+        public void changeCurrentTileSet(CSprite tileSet)
+        {
+            _selectedSprite = tileSet;
+        }
 
         /// <summary>
         /// Initializes the control.
@@ -51,6 +56,8 @@ namespace WinFormsGraphicsDevice
             // Start the animation timer.
             timer = Stopwatch.StartNew();
 
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
             // Hook the idle event to constantly redraw our animation.
             Application.Idle += delegate { Invalidate(); };
         }
@@ -63,31 +70,28 @@ namespace WinFormsGraphicsDevice
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // Spin the triangle according to how much time has passed.
-            float time = (float)timer.Elapsed.TotalSeconds;
+            spriteBatch.Begin();
+            if (_selectedTile != null && _selectedSprite != null)
+            {
+                _selectedTile.draw(_selectedSprite, spriteBatch);
+            }
+            spriteBatch.End();
 
-            float yaw = time * 0.7f;
-            float pitch = time * 0.8f;
-            float roll = time * 0.9f;
+        }
 
-            // Set transform matrices.
-            float aspect = GraphicsDevice.Viewport.AspectRatio;
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
 
-            effect.World = Matrix.CreateFromYawPitchRoll(yaw, pitch, roll);
+            System.Drawing.Point mousePos = PointToClient(MousePosition);
 
-            effect.View = Matrix.CreateLookAt(new Vector3(0, 0, -5),
-                                              Vector3.Zero, Vector3.Up);
+            if (_selectedTile != null)
+            {
+                int snapX = (int)System.Math.Floor((mousePos.X) / 16.0);
+                int snapY = (int)System.Math.Floor((mousePos.Y) / 16.0);
 
-            effect.Projection = Matrix.CreatePerspectiveFieldOfView(1, aspect, 1, 10);
-
-            // Set renderstates.
-            GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-
-            // Draw the triangle.
-            effect.CurrentTechnique.Passes[0].Apply();
-
-            GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList,
-                                              Vertices, 0, 1);
+                _selectedTile.tileCoords = new Vector2(snapX, snapY);
+            }
         }
     }
 }

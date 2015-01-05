@@ -7,12 +7,13 @@ using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.Map
 {
-    class CTile
+    public class CTile
     {
         private Vector2 _tileBounds;
-        public readonly Vector2 tileCoords;
+        public Vector2 tileCoords;
         public string tileSet;
         private Actors.Collision.CHitBox _boundary = null;
+
 
 
         public CTile(Vector2 atlasCoords, Vector2 mapCoords, string tileSet)
@@ -46,6 +47,14 @@ namespace King_of_Thieves.Map
         public bool checkForClick(Vector2 mouseCoords)
         {
             return (_boundary.checkCollision(mouseCoords));
+        }
+
+        public void draw(King_of_Thieves.Graphics.CSprite image, SpriteBatch spriteBatch)
+        {
+            Vector2 dimensions = Vector2.Zero;
+            dimensions = new Vector2(Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+
+            image.draw((int)(tileCoords.X), (int)(tileCoords.Y), (int)(atlasCoords.X), (int)(atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y, true, spriteBatch);
         }
     }
 }

@@ -36,11 +36,13 @@ namespace King_of_Thieves.Forms.Map_Edit
                 if (tileset.Value.isTileSet)
                     cmbTilesets.Items.Add(tileset.Key);
 
-            cmbTilesets.SelectedIndex = 0;
-            cmbLayers.SelectedIndex = 0;
 
             populateNameSpaceList();
             populateActorList("all");
+
+            cmbTilesets.SelectedIndex = 0;
+            cmbLayers.SelectedIndex = 0;
+            cmbActorList.SelectedIndex = 0;
 
             _newMap();
 
@@ -98,8 +100,8 @@ namespace King_of_Thieves.Forms.Map_Edit
 
         private void cmbTilesets_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txvTextures.changeSprite(cmbTilesets.Text, Graphics.CTextures.textures[cmbTilesets.Text]);
-
+            King_of_Thieves.Graphics.CSprite sprite = txvTextures.changeSprite(cmbTilesets.Text, Graphics.CTextures.textures[cmbTilesets.Text]);
+            mpvMapView.changeCurrentTileSet(sprite);
             //check the texture width and height
             if (txvTextures.checkWidth())
             {
@@ -133,7 +135,9 @@ namespace King_of_Thieves.Forms.Map_Edit
 
         private void txvTextures_Click(object sender, EventArgs e)
         {
-            txvTextures.selectTile(hsbTexture.Value, vsbTexture.Value);
+            King_of_Thieves.Map.CTile tile = txvTextures.selectTile(hsbTexture.Value, vsbTexture.Value);
+
+            mpvMapView.changeSelectedTile(tile);
         }
 
         private void txvTextures_Load(object sender, EventArgs e)
