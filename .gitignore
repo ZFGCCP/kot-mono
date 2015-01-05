@@ -5,4 +5,6 @@
 *.resources
 *.mgcontent
 *.cache
+*.stackdump
 King of Thieves/bin/WindowsGL/Debug/Content
+King of Thieves/obj
