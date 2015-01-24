@@ -53,6 +53,7 @@ namespace King_of_Thieves.Actors.Projectiles
         {
             startTimer0(60);
             _followRoot = false;
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Items:arrowShoot"]);
             switch (_direction)
             {
                 case DIRECTION.DOWN:

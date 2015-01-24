@@ -25,7 +25,11 @@ namespace King_of_Thieves.Actors
         UP = 0,
         DOWN,
         LEFT,
-        RIGHT
+        RIGHT,
+        DLEFT,
+        DRIGHT,
+        ULEFT,
+        URIGHT
     }
 
     public enum ACTOR_STATES

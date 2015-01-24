@@ -159,3 +159,4 @@ C:\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.Map_Edit.FrmMap.
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.Map_Edit.FrmNewComponent.resources
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\boomerang.xnb
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\moldormandtail.xnb
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\arrow_shoot.xnb

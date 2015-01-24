@@ -572,3 +572,9 @@
 /processorParam:Quality=Best
 /build:sounds/items/boomerang.wav
 
+#begin sounds/items/arrow_shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/items/arrow_shoot.wav
+
