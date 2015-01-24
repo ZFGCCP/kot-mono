@@ -14,7 +14,15 @@ namespace King_of_Thieves.Map
         public string tileSet;
         private Actors.Collision.CHitBox _boundary = null;
 
+        public CTile(CTile copy)
+        {
+            this.tileCoords = copy.tileCoords;
+            this.tileSet = copy.tileSet;
+            this._tileBounds = copy._tileBounds;
 
+            if (_boundary != null)
+                _boundary = new Actors.Collision.CHitBox(null, tileCoords.X * Graphics.CTextures.textures[tileSet].FrameWidth, tileCoords.Y * Graphics.CTextures.textures[tileSet].FrameHeight, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+        }
 
         public CTile(Vector2 atlasCoords, Vector2 mapCoords, string tileSet)
         {

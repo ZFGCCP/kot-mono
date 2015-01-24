@@ -23,6 +23,11 @@ namespace King_of_Thieves.Map
             _image = image;
         }
 
+        public CLayer(Dictionary<string, Graphics.CSprite> atlasCache)
+        {
+            otherImages = atlasCache;
+        }
+
         public CLayer()
         {
         }
@@ -76,6 +81,17 @@ namespace King_of_Thieves.Map
             //_components.
         }
 
+        public void initComponents(Actors.CComponent component)
+        {
+            if (_components == null)
+            {
+                Actors.CComponent[] temp = new Actors.CComponent[] { component };
+                _components = new ComponentManager(new ComponentFactory[] { new ComponentFactory(temp) });
+            }
+            else
+                throw new InvalidOperationException("Cannot reinitialize a layer's components once they have been initialized.");
+        }
+
         public int indexOfTile(Vector2 coords)
         {
             int outPut = -1;
@@ -122,7 +138,7 @@ namespace King_of_Thieves.Map
             
         }
 
-        public void drawLayer(bool editor = false)
+        public void drawLayer(SpriteBatch spriteBatch = null)
         {
             foreach (CTile tile in _tiles)
             {
@@ -135,12 +151,14 @@ namespace King_of_Thieves.Map
                     dimensions = new Vector2(Graphics.CTextures.textures[tile.tileSet].FrameWidth, Graphics.CTextures.textures[tile.tileSet].FrameHeight);
 
 
-               otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y,true);
+               otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y,true,spriteBatch);
 
             }
 
+            SpriteBatch batch = spriteBatch == null ? Graphics.CGraphics.spriteBatch : spriteBatch;
+
             if (_components != null)
-                _components.Draw(Graphics.CGraphics.spriteBatch);
+                _components.Draw(batch);
 
 
         }

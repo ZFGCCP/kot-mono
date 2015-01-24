@@ -9,7 +9,9 @@ namespace King_of_Thieves.Actors.HUD.buttons
     public enum HUDOPTIONS
     {
         ARROWS = 1,
+        BOOMERANG,
         BOMB_CANNON
+
     }
 
     class CButton : CHUDElement
@@ -43,7 +45,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
                     _imageIndex.Add(_BUTTON_RIGHT, new Graphics.CSprite("HUD:buttonRight"));
                     swapImage(_BUTTON_RIGHT);
                     _fixedPosition = new Vector2(283, 10);
-                    changeItemOverlay(HUDOPTIONS.BOMB_CANNON);
+                    changeItemOverlay(HUDOPTIONS.BOOMERANG);
                     break;
             }
         }
@@ -72,6 +74,11 @@ namespace King_of_Thieves.Actors.HUD.buttons
                     break;
 
                 case HUDOPTIONS.BOMB_CANNON:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
+                    break;
+
+                //place holder for now
+                case HUDOPTIONS.BOOMERANG:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
                     break;
             }

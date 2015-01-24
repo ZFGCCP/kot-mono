@@ -27,6 +27,11 @@ namespace King_of_Thieves.Actors.Player
         private const int _MAX_BOMB_VELO = 5;
         private int _bombVelo = 0;
 
+        private static string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
+        private static string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
+        private static string _THROW_BOOMERANG_LEFT = "PlayerThrowBoomerangLeft";
+        private static string _THROW_BOOMERANG_RIGHT = "PlayerThrowBoomerangRight";
+
         public CPlayer() :
             base()
         {
@@ -46,6 +51,8 @@ namespace King_of_Thieves.Actors.Player
 
             //We're creating A LOT of strings here -- This needs to be handled with a constants class or something
             base._initializeResources();
+            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite("Player:WalkDown"));
+
             _imageIndex.Add("PlayerWalkDown", new Graphics.CSprite("Player:WalkDown"));
             _imageIndex.Add("PlayerWalkLeft", new Graphics.CSprite("Player:WalkLeft"));
             _imageIndex.Add("PlayerWalkRight", new Graphics.CSprite("Player:WalkLeft", true));
@@ -114,6 +121,11 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add("PlayerHoldCannonDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN]));
 
             _imageIndex.Add("PlayerShootCannonDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN]));
+
+            _imageIndex.Add(_THROW_BOOMERANG_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_DOWN]));
+            _imageIndex.Add(_THROW_BOOMERANG_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT]));
+            _imageIndex.Add(_THROW_BOOMERANG_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT], null, true));
+            _imageIndex.Add(_THROW_BOOMERANG_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP]));
         }
 
         public override void collide(object sender, CActor collider)
@@ -267,6 +279,12 @@ namespace King_of_Thieves.Actors.Player
 
                 case ACTOR_STATES.SHOOTING_CANNON:
                     _state = ACTOR_STATES.IDLE;
+                    break;
+
+                case ACTOR_STATES.THROW_BOOMERANG:
+                    _state = ACTOR_STATES.IDLE;
+                    Projectiles.CBoomerang boomerang = new Projectiles.CBoomerang(new Vector2(1,1), position, 2);
+                    Map.CMapManager.addActorToComponent(boomerang, this.componentAddress);
                     break;
             }
 
@@ -797,6 +815,30 @@ namespace King_of_Thieves.Actors.Player
             }
         }
 
+        private void _throwBoomerang()
+        {
+            state = ACTOR_STATES.THROW_BOOMERANG;
+
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    swapImage(_THROW_BOOMERANG_DOWN);
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(_THROW_BOOMERANG_UP);
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(_THROW_BOOMERANG_LEFT);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(_THROW_BOOMERANG_RIGHT);
+                    break;
+            }
+        }
+
         private void _holdCannon()
         {
             state = ACTOR_STATES.HOLD_CANNON;
@@ -859,6 +901,10 @@ namespace King_of_Thieves.Actors.Player
 
                 case HUD.buttons.HUDOPTIONS.BOMB_CANNON:
                     _holdCannon();
+                    break;
+
+                case HUD.buttons.HUDOPTIONS.BOOMERANG:
+                    _throwBoomerang();
                     break;
             }
 

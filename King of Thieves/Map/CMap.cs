@@ -7,6 +7,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using King_of_Thieves.Actors;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.Map
 {
@@ -20,11 +21,11 @@ namespace King_of_Thieves.Map
         private Gears.Cartography.Map _internalMap;
         private Graphics.CSprite _tileIndex = null;
 
-        public CMap()
+        public CMap(Dictionary<string, Graphics.CSprite> atlasCache = null)
         {
             _internalMap = null;
             _layers = new List<CLayer>(1);
-            _layers.Add(new CLayer());
+            _layers.Add(new CLayer(atlasCache));
         }
 
         public CMap(params CLayer[] layers)
@@ -243,11 +244,11 @@ namespace King_of_Thieves.Map
             CMasterControl.commNet.Remove(component.address);
         }
 
-        public void draw()
+        public void draw(SpriteBatch spriteBatch = null)
         {
             foreach (CLayer layer in _layers)
             {
-                layer.drawLayer();
+                layer.drawLayer(spriteBatch);
             }
         }
 
