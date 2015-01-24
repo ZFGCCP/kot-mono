@@ -58,6 +58,7 @@
             this.btnDeleteLayer = new System.Windows.Forms.Button();
             this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
+            this.btnNewComponent = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -141,6 +142,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(274, 450);
             this.tabControl1.TabIndex = 4;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage1
             // 
@@ -184,6 +186,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnNewComponent);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.cmbActorList);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -301,6 +304,17 @@
             this.mpvMapView.Size = new System.Drawing.Size(512, 480);
             this.mpvMapView.TabIndex = 1;
             this.mpvMapView.VSync = false;
+            this.mpvMapView.Click += new System.EventHandler(this.mpvMapView_Click);
+            // 
+            // btnNewComponent
+            // 
+            this.btnNewComponent.Location = new System.Drawing.Point(11, 54);
+            this.btnNewComponent.Name = "btnNewComponent";
+            this.btnNewComponent.Size = new System.Drawing.Size(249, 23);
+            this.btnNewComponent.TabIndex = 2;
+            this.btnNewComponent.Text = "Create New Component";
+            this.btnNewComponent.UseVisualStyleBackColor = true;
+            this.btnNewComponent.Click += new System.EventHandler(this.btnNewComponent_Click);
             // 
             // FrmMap
             // 
@@ -363,5 +377,6 @@
         private System.Windows.Forms.Button btnDeleteLayer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbActorList;
+        private System.Windows.Forms.Button btnNewComponent;
     }
 }

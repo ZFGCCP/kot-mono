@@ -17,6 +17,7 @@ namespace WinFormsGraphicsDevice
         private King_of_Thieves.Graphics.CCamera _camera = new King_of_Thieves.Graphics.CCamera();
         private Texture2D _selector = null;
         private Rectangle selectorRect = new Rectangle();
+        private King_of_Thieves.Map.CTile _currentTile = null;
 
         public King_of_Thieves.Map.CTile selectTile(int offSetX = 0, int offSetY = 0)
         {
@@ -29,7 +30,7 @@ namespace WinFormsGraphicsDevice
             selectorRect.Y = snapY * 16;
 
             King_of_Thieves.Map.CTile tile = new King_of_Thieves.Map.CTile(new Vector2(snapX, snapY), Vector2.Zero, _currentSprite.atlasName);
-
+            _currentTile = tile;
             return tile;
         }
 
@@ -62,6 +63,14 @@ namespace WinFormsGraphicsDevice
             get
             {
                 return _textureAtlas.frameHeight * _textureAtlas.tileYCount;
+            }
+        }
+
+        public King_of_Thieves.Map.CTile currentTile
+        {
+            get
+            {
+                return _currentTile;
             }
         }
 

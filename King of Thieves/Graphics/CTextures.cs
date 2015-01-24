@@ -36,6 +36,7 @@ namespace King_of_Thieves.Graphics
         public static string EFFECT_BOMB = EFFECTS + "bomb";
         public static string EFFECT_BOMB_FAST_TICK = EFFECTS + "bombFastTick";
         public static string EFFECT_EXPLOSION = EFFECTS + "explosion";
+        public static string EFFECT_BOOMERANG = EFFECTS + "boomerang";
 
         public static string DROPS_HEART = DROPS + "heart";
 
@@ -50,6 +51,9 @@ namespace King_of_Thieves.Graphics
         public static string PLAYER_SHOOT_ARROW_DOWN = PLAYER + "shootArrowDown";
         public static string PLAYER_HOLD_CANNON_DOWN = PLAYER + "holdCannonDown";
         public static string PLAYER_SHOOT_CANNON_DOWN = PLAYER + "shootCannonDown";
+        public static string PLAYER_THROW_BOOMERANG_UP = PLAYER + "throwBoomerangUp";
+        public static string PLAYER_THROW_BOOMERANG_DOWN = PLAYER + "throwBoomerangDown";
+        public static string PLAYER_THROW_BOOMERANG_LEFT = PLAYER + "throwBoomerangLeft";
 
         public static string HUD_ARROWS = HUD + "arrows";
         public static string HUD_BOMB_CANNON = HUD + "bombCannon";
@@ -122,6 +126,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_SHOOT_ARROW_UP, new CTextureAtlas("Player", 32, 32, 1, "26:8", "28:8", 8));
             textures.Add(PLAYER_HOLD_CANNON_DOWN, new CTextureAtlas("Player", 32, 32, 1, "14:42", "20:42", 8));
             textures.Add(PLAYER_SHOOT_CANNON_DOWN, new CTextureAtlas("Player", 32, 32, 1, "11:42", "13:42", 8));
+            textures.Add(PLAYER_THROW_BOOMERANG_DOWN, new CTextureAtlas("Player", 32, 32, 1, "17:21", "22:21", 8));
+            textures.Add(PLAYER_THROW_BOOMERANG_UP, new CTextureAtlas("Player", 32, 32, 1, "17:23", "22:23", 8));
+            textures.Add(PLAYER_THROW_BOOMERANG_LEFT, new CTextureAtlas("Player", 32, 32, 1, "17:22", "22:22", 8));
 
             textures.Add("GerudoSword:SwingDown", new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 55));
             textures.Add("GerudoSword:SwingUp", new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 55));
@@ -179,6 +186,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(EFFECT_ARROW_RIGHT, new CTextureAtlas("effects:various", 32, 32, 0, "0:2", "0:2", 0));
             textures.Add(EFFECT_BOMB, new CTextureAtlas("effects:various", 32, 32, 0, "0:3", "1:3", 1));
             textures.Add(EFFECT_BOMB_FAST_TICK, new CTextureAtlas("effects:various", 32, 32, 0, "0:3", "1:3", 10));
+            textures.Add(EFFECT_BOOMERANG, new CTextureAtlas("effects:various", 32, 32, 0, "2:2", "5:3", 15));
 
             //HUD
             textures.Add("HUD:text:textBox", new CTextureAtlas("hud", 303, 74, 0, "0:0", "0:0", 0));

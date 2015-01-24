@@ -89,6 +89,7 @@
     <Compile Include="Actors\Player\CPlayer.cs" />
     <Compile Include="Actors\Projectiles\CArrow.cs" />
     <Compile Include="Actors\Projectiles\CBomb.cs" />
+    <Compile Include="Actors\Projectiles\CBoomerang.cs" />
     <Compile Include="Actors\Projectiles\CEnergyWave.cs" />
     <Compile Include="Actors\Projectiles\CFireBall.cs" />
     <Compile Include="Actors\Projectiles\CIceBall.cs" />
@@ -125,6 +126,12 @@
     </Compile>
     <Compile Include="Forms\Map Edit\FrmMap.Designer.cs">
       <DependentUpon>FrmMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Map Edit\FrmNewComponent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Map Edit\FrmNewComponent.Designer.cs">
+      <DependentUpon>FrmNewComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TextureAtlas\frmTextureAtlas.cs">
       <SubType>Form</SubType>
@@ -228,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Map Edit\FrmMap.resx">
       <DependentUpon>FrmMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Map Edit\FrmNewComponent.resx">
+      <DependentUpon>FrmNewComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TextureAtlas\frmTextureAtlas.resx">
       <DependentUpon>frmTextureAtlas.cs</DependentUpon>

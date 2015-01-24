@@ -39,6 +39,7 @@ namespace King_of_Thieves.Actors
         DUSK,
         EXPLODE,
         FLYING,
+        FOLLOW_PLAYER,
         FROZEN,
         HOLD_ARROW,
         HOLD_CANNON,
@@ -58,6 +59,7 @@ namespace King_of_Thieves.Actors
         SMASH,
         SWINGING,
         SHOCKED,
+        THROW_BOOMERANG,
         THROWING,
         TOSSING,
         WOBBLE
@@ -93,6 +95,7 @@ namespace King_of_Thieves.Actors
         protected int _hp;
         protected bool _enabled = true;
         private string _dataType;
+        public static string _MAP_ICON = "MAP_ICON";
 
         protected Collision.CHitBox _hitBox;
         protected List<Type> _collidables;

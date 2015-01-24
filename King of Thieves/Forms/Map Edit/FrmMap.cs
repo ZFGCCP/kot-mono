@@ -14,27 +14,43 @@ namespace King_of_Thieves.Forms.Map_Edit
 {
     public partial class FrmMap : Form
     {
+        private enum EDITOR_MODE
+        {
+            TILE = 0,
+            COMPONENT,
+            HITBOX
+        }
+
         private Map.CMap _loadedMap;
         private List<string> nameSpaceList = new List<string>();
         private const string TOP_LEVEL = "King_of_Thieves.Actors.";
+        private Dictionary<string, Graphics.CSprite> _atlasCache = new Dictionary<string,Graphics.CSprite>();
+        private EDITOR_MODE _editorMode = EDITOR_MODE.TILE;
+        private FrmNewComponent _newComponent = null;
 
         public FrmMap()
         {
+            _newComponent = new FrmNewComponent(this);
             InitializeComponent();
-            
         }
 
         private void _newMap()
         {
             _loadedMap = null;
-            _loadedMap = new Map.CMap();
+            _loadedMap = new Map.CMap(_atlasCache);
+            mpvMapView.map = _loadedMap;
         }
 
         private void FrmMap_Load(object sender, EventArgs e)
         {
             foreach (KeyValuePair<string,Graphics.CTextureAtlas> tileset in Graphics.CTextures.textures)
                 if (tileset.Value.isTileSet)
+                {
                     cmbTilesets.Items.Add(tileset.Key);
+                    King_of_Thieves.Graphics.CSprite sprite = txvTextures.changeSprite(tileset.Key, tileset.Value);
+                    _atlasCache.Add(tileset.Key, sprite);
+                }
+
 
 
             populateNameSpaceList();
@@ -140,6 +156,25 @@ namespace King_of_Thieves.Forms.Map_Edit
             mpvMapView.changeSelectedTile(tile);
         }
 
+        private void mpvMapView_Click(object sender, EventArgs e)
+        {
+            switch (_editorMode)
+            {
+                case EDITOR_MODE.TILE:
+                    mpvMapView.dropTile(txvTextures.currentTile, _loadedMap.getLayer(cmbLayers.SelectedIndex));
+                    break;
+
+                case EDITOR_MODE.COMPONENT:
+                    mpvMapView.dropActor("King_of_Thieves.Actors.Player.CPlayer", "Player", 0);
+                    break;
+
+                case EDITOR_MODE.HITBOX:
+                    break;
+            }
+        }
+
+
+
         private void txvTextures_Load(object sender, EventArgs e)
         {
             
@@ -157,21 +192,38 @@ namespace King_of_Thieves.Forms.Map_Edit
 
             cmbLayers.Items.Add(layerName);
 
-            _loadedMap._layers.Add(new Map.CLayer());
+            _loadedMap._layers.Add(new Map.CLayer(_atlasCache));
 
         }
 
         private void btnDeleteLayer_Click(object sender, EventArgs e)
         {
-            if (cmbLayers.Text == "root")
+            if (MessageBox.Show("Are you sure you want to delete this layer?  All tiles, components and hitboxes will be removed.", "Remove Layer", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-                MessageBox.Show("Cannot delete the root layer.");
-                return;
-            }
+                if (cmbLayers.Text == "root")
+                {
+                    MessageBox.Show("Cannot delete the root layer.");
+                    return;
+                }
 
-            int index = cmbLayers.SelectedIndex;
-            cmbLayers.Items.RemoveAt(index);
-            _loadedMap._layers.RemoveAt(index);
+                int index = cmbLayers.SelectedIndex;
+                cmbLayers.Items.RemoveAt(index);
+                _loadedMap._layers.RemoveAt(index);
+                cmbLayers.SelectedIndex = index - 1;
+            }
+        }
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (tabControl1.SelectedTab.Text == "Tiles")
+                _editorMode = EDITOR_MODE.TILE;
+            else if (tabControl1.SelectedTab.Text == "Components")
+                _editorMode = EDITOR_MODE.COMPONENT;
+        }
+
+        private void btnNewComponent_Click(object sender, EventArgs e)
+        {
+            _newComponent.ShowDialog();
         }
     }
 }
