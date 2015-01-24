@@ -19,6 +19,7 @@ namespace King_of_Thieves.Actors.Player
         private bool _carrying = false;
         private double _carryWeight = 0;
         private bool _acceptInput = true;
+        private bool _usingItem = false;
         private int _collisionDirectionX = 0;
         private int _collisionDirectionY = 0;
         private Keys _lastHudKeyPressed = Keys.None;
@@ -283,8 +284,9 @@ namespace King_of_Thieves.Actors.Player
 
                 case ACTOR_STATES.THROW_BOOMERANG:
                     _state = ACTOR_STATES.IDLE;
-                    Projectiles.CBoomerang boomerang = new Projectiles.CBoomerang(new Vector2(1,1), position, 2);
+                    Projectiles.CBoomerang boomerang = new Projectiles.CBoomerang(_oldVelocity, position, direction, 2);
                     Map.CMapManager.addActorToComponent(boomerang, this.componentAddress);
+                    _usingItem = false;
                     break;
             }
 
@@ -311,63 +313,66 @@ namespace King_of_Thieves.Actors.Player
                     else if (input.keysPressed.Contains(Keys.Right) && _lastHudKeyPressed != Keys.Right)
                         _useItem(-1);
 
-                    if (input.keysPressed.Contains(Keys.A))
+                    if (!_usingItem)
                     {
-                        _velocity.X = -1;
-                        _position.X += _velocity.X;
+                        if (input.keysPressed.Contains(Keys.A))
+                        {
+                            _velocity.X = -1;
+                            _position.X += _velocity.X;
 
-                        if (_carrying)
-                            swapImage("PlayerCarryLeft");
-                        else
-                            image = _imageIndex["PlayerWalkLeft"];
+                            if (_carrying)
+                                swapImage("PlayerCarryLeft");
+                            else
+                                image = _imageIndex["PlayerWalkLeft"];
 
-                        _direction = DIRECTION.LEFT;
-                        _state = ACTOR_STATES.MOVING;
+                            _direction = DIRECTION.LEFT;
+                            _state = ACTOR_STATES.MOVING;
+                        }
+
+                        if (input.keysPressed.Contains(Keys.D))
+                        {
+                            _velocity.X = 1;
+                            _position.X += _velocity.X;
+
+                            if (_carrying)
+                                swapImage("PlayerCarryRight");
+                            else
+                                image = _imageIndex["PlayerWalkRight"];
+
+                            _direction = DIRECTION.RIGHT;
+                            _state = ACTOR_STATES.MOVING;
+                        }
+
+                        if (input.keysPressed.Contains(Keys.W))
+                        {
+                            _velocity.Y = -1;
+                            _position.Y += _velocity.Y;
+
+                            if (_carrying)
+                                swapImage("PlayerCarryUp");
+                            else
+                                image = _imageIndex["PlayerWalkUp"];
+
+                            _direction = DIRECTION.UP;
+                            _state = ACTOR_STATES.MOVING;
+                        }
+
+                        if (input.keysPressed.Contains(Keys.S))
+                        {
+                            _velocity.Y = 1;
+                            _position.Y += _velocity.Y;
+
+                            if (_carrying)
+                                swapImage("PlayerCarryDown");
+                            else
+                                image = _imageIndex["PlayerWalkDown"];
+
+                            _direction = DIRECTION.DOWN;
+                            _state = ACTOR_STATES.MOVING;
+                        }
+
+                        _oldVelocity = _velocity;
                     }
-
-                    if (input.keysPressed.Contains(Keys.D))
-                    {
-                        _velocity.X = 1;
-                        _position.X += _velocity.X;
-
-                        if (_carrying)
-                            swapImage("PlayerCarryRight");
-                        else
-                            image = _imageIndex["PlayerWalkRight"];
-
-                        _direction = DIRECTION.RIGHT;
-                        _state = ACTOR_STATES.MOVING;
-                    }
-
-                    if (input.keysPressed.Contains(Keys.W))
-                    {
-                        _velocity.Y = -1;
-                        _position.Y += _velocity.Y;
-
-                        if (_carrying)
-                            swapImage("PlayerCarryUp");
-                        else
-                            image = _imageIndex["PlayerWalkUp"];
-
-                        _direction = DIRECTION.UP;
-                        _state = ACTOR_STATES.MOVING;
-                    }
-
-                    if (input.keysPressed.Contains(Keys.S))
-                    {
-                        _velocity.Y = 1;
-                        _position.Y += _velocity.Y;
-
-                        if (_carrying)
-                            swapImage("PlayerCarryDown");
-                        else
-                            image = _imageIndex["PlayerWalkDown"];
-
-                        _direction = DIRECTION.DOWN;
-                        _state = ACTOR_STATES.MOVING;
-                    }
-
-
 
                     if (input.keysPressed.Contains(Keys.Space))
                     {
@@ -813,6 +818,8 @@ namespace King_of_Thieves.Actors.Player
                     swapImage("PlayerShootArrowUp");
                     break;
             }
+
+            _usingItem = false;
         }
 
         private void _throwBoomerang()
@@ -873,7 +880,7 @@ namespace King_of_Thieves.Actors.Player
             Projectiles.CBomb bomb = new Projectiles.CBomb(direction, bombVelo, bombPos, 4);
             Map.CMapManager.addActorToComponent(bomb, this.componentAddress);
             _bombVelo = 0;
-
+            _usingItem = false;
             
         }
 
@@ -881,6 +888,7 @@ namespace King_of_Thieves.Actors.Player
         //negative == right
         private void _useItem(sbyte leftOrRight)
         {
+            _usingItem = true;
             HUD.buttons.HUDOPTIONS option = 0;
             if (leftOrRight >= 0)
             {

@@ -11,7 +11,9 @@ namespace King_of_Thieves.Sound
     public class CSound
     {
         //:D
+        //deprecated
         private SoundEffect _sfx;
+
         private SoundEffectInstance _sfxInstance;
         private Song _song;
         private bool _loop;
@@ -20,7 +22,8 @@ namespace King_of_Thieves.Sound
 
         public CSound(SoundEffect fx)
         {
-            _sfx = fx;
+            _sfxInstance = fx.CreateInstance();
+            _sfx = null;
             _song = null;
         }
 

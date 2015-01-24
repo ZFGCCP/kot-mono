@@ -88,6 +88,7 @@ namespace King_of_Thieves.Actors
         public int layer;
         public CComponent component;
         protected Vector2 _velocity;
+        protected Vector2 _oldVelocity;
         public bool noCollide = false;
         protected string _oldName = ""; //for when moving to different components
         protected CComponent _oldComponent = null;

@@ -50,7 +50,7 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Items:Decor:ItemSmash", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/MC_Shatter")));
 
             soundBank.Add("Items:explosionSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/bomb_explode")));
-            
+            soundBank.Add("Items:boomerang", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/boomerang"),true));
             
             //text
             soundBank.Add("Text:textBoxContinue", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/text/TextBoxContinue")));
@@ -101,6 +101,12 @@ namespace King_of_Thieves.Sound
             _effects.Add(sfx);
         }
 
+        public void stopSfx(CSound sfx)
+        {
+            if (sfx.sfxInstance != null)
+                sfx.sfxInstance.Stop(true);
+        }
+
         public void addSfx(CSound sfx, int playCount)
         {
             sfx.repeat = playCount;
@@ -121,16 +127,21 @@ namespace King_of_Thieves.Sound
             if (file != null)
             {
                 if (file.sfx != null)
+                {
                     file.sfx.Play();
+                    file.sfx.Dispose();
+                }
                 else if (file.sfxInstance != null)
+                {
                     file.sfxInstance.Play();
+                }
                 else if (file.song != null)
                 {
                     _song = file;
                     MediaPlayer.IsRepeating = file.loop;
                     MediaPlayer.Play(_song.song);
                 }
-                file.sfx.Dispose();
+                
                 file = null;
             }
             else
