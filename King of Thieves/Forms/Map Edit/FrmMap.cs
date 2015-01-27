@@ -225,5 +225,28 @@ namespace King_of_Thieves.Forms.Map_Edit
         {
             _newComponent.ShowDialog();
         }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
+            {
+                if (saveFileDialog1.FileName.Trim() != string.Empty)
+                {
+                    string fileName = saveFileDialog1.FileName;
+                    _loadedMap.writeMap(fileName);
+                }
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
+            {
+                if (openFileDialog1.FileName.Trim() != string.Empty)
+                {
+                    string fileName = openFileDialog1.FileName;
+                }
+            }
+        }
     }
 }

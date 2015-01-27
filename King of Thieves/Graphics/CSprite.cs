@@ -16,37 +16,38 @@ namespace King_of_Thieves.Graphics
         private string _atlasName;
         private int _frameTracker = 0;
         private int frameX = 0, frameY = 0;
+        private int _rotation = 0;
         private bool _flipH = false;
         private bool _flipV = false;
         private int _totalFrames = 0;
         private int _framesPassed = 0;
         private bool _isEffect = false;
 
-        public CSprite(string atlasName, bool flipH = false, bool flipV = false, Effect shader = null, bool isEffect = false, params VertexPositionColor[] vertices)
+        public CSprite(string atlasName, bool flipH = false, bool flipV = false, Effect shader = null, bool isEffect = false, int rotation = 0, params VertexPositionColor[] vertices)
             : base(shader, vertices)
         {
-            init(atlasName, Graphics.CTextures.textures[atlasName], shader, flipH, flipV, isEffect, vertices);
+            init(atlasName, Graphics.CTextures.textures[atlasName], shader, flipH, flipV, isEffect, rotation, vertices);
         }
 
         public CSprite(string atlasName, Dictionary<string, CTextureAtlas> texture, Effect shader = null, bool flipH = false, bool flipV = false, bool isEffect = false, params VertexPositionColor[] vertices)
             : base(shader, vertices)
         {
-            init(atlasName, texture[atlasName], shader, flipH, flipV, isEffect, vertices);
+            init(atlasName, texture[atlasName], shader, flipH, flipV, isEffect, 0, vertices);
         }
 
         public CSprite(string atlasName, CTextureAtlas atlas, Effect shader = null, bool flipH = false, bool flipV = false, bool isEffect = false, params VertexPositionColor[] vertices)
             : base(shader, vertices)
         {
-            init(atlasName, atlas, shader, flipH, flipV, isEffect, vertices);
+            init(atlasName, atlas, shader, flipH, flipV, isEffect, 0, vertices);
         }
 
         public CSprite(CSprite sprite)
             : base(null, null)
         {
-            init(sprite.atlasName, sprite._imageAtlas, null, sprite._flipH, sprite._flipV, sprite._isEffect, null);
+            init(sprite.atlasName, sprite._imageAtlas, null, sprite._flipH, sprite._flipV, sprite._isEffect, 0, null);
         }
 
-        private void init(string atlasName, CTextureAtlas atlas, Effect shader = null, bool flipH = false, bool flipV = false, bool isEffect = false, params VertexPositionColor[] vertices)
+        private void init(string atlasName, CTextureAtlas atlas, Effect shader = null, bool flipH = false, bool flipV = false, bool isEffect = false, int rotation = 0, params VertexPositionColor[] vertices)
         {
             _imageAtlas = atlas;
             _atlasName = atlasName;
@@ -56,6 +57,7 @@ namespace King_of_Thieves.Graphics
             _flipV = flipV;
             _totalFrames = atlas.tileXCount * atlas.tileYCount;
             _isEffect = isEffect;
+            _rotation = rotation;
         }
 
         public void drawAsTileset(int x, int y, SpriteBatch spriteBatch)
@@ -124,9 +126,9 @@ namespace King_of_Thieves.Graphics
             if (!(_flipV || _flipH))
                 batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay);
             else if (_flipV)
-                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, 0f, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
+                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
             else if (_flipH)
-                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, 0f, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
+                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
             base.draw(x, y);
 
             return false;

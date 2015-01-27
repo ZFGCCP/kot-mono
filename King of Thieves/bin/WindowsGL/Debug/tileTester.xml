@@ -99,6 +99,11 @@
 					<actor name = "wizzRobeTest3" type="King_of_Thieves.Actors.NPC.Enemies.Wizzrobe.CWizzrobe" coordinates = "50:100"></actor>
 				</actors>
 			</component>
+			<component>
+				<actors>
+					<actor name="moldorm1" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailHead" coordinates = "10:10"></actor>
+				</actors>
+			</component>
 		</components>
 	</layer>
   </layers>

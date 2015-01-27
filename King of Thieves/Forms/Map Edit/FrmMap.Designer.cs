@@ -44,6 +44,7 @@
             this.vsbTexture = new System.Windows.Forms.VScrollBar();
             this.cmbTilesets = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnNewComponent = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbActorList = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -58,7 +59,6 @@
             this.btnDeleteLayer = new System.Windows.Forms.Button();
             this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
-            this.btnNewComponent = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -91,31 +91,33 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "New";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -196,6 +198,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Components";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnNewComponent
+            // 
+            this.btnNewComponent.Location = new System.Drawing.Point(11, 54);
+            this.btnNewComponent.Name = "btnNewComponent";
+            this.btnNewComponent.Size = new System.Drawing.Size(249, 23);
+            this.btnNewComponent.TabIndex = 2;
+            this.btnNewComponent.Text = "Create New Component";
+            this.btnNewComponent.UseVisualStyleBackColor = true;
+            this.btnNewComponent.Click += new System.EventHandler(this.btnNewComponent_Click);
             // 
             // label2
             // 
@@ -305,16 +317,6 @@
             this.mpvMapView.TabIndex = 1;
             this.mpvMapView.VSync = false;
             this.mpvMapView.Click += new System.EventHandler(this.mpvMapView_Click);
-            // 
-            // btnNewComponent
-            // 
-            this.btnNewComponent.Location = new System.Drawing.Point(11, 54);
-            this.btnNewComponent.Name = "btnNewComponent";
-            this.btnNewComponent.Size = new System.Drawing.Size(249, 23);
-            this.btnNewComponent.TabIndex = 2;
-            this.btnNewComponent.Text = "Create New Component";
-            this.btnNewComponent.UseVisualStyleBackColor = true;
-            this.btnNewComponent.Click += new System.EventHandler(this.btnNewComponent_Click);
             // 
             // FrmMap
             // 

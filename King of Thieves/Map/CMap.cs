@@ -17,7 +17,7 @@ namespace King_of_Thieves.Map
         private static Regex _coordFormat = new Regex("^[0-9]+:[0-9]+$");
         private static Regex _valSplitter = new Regex(":");
         private List<CActor> _actorRegistry = new List<CActor>();
-        private List<CComponent> _componentRegistry = new List<CComponent>();
+        private List<CComponent> _componentRegistry = new List<CComponent>(); //todo: make this a hashmap
         private Gears.Cartography.Map _internalMap;
         private Graphics.CSprite _tileIndex = null;
 
@@ -144,6 +144,22 @@ namespace King_of_Thieves.Map
         public CLayer getLayer(int index)
         {
             return _layers[index];
+        }
+
+        public object getProperty(int componentAddress, string actorName, Map.EActorProperties property)
+        {
+            object propertyVal = null;
+
+            foreach (CComponent component in _componentRegistry)
+            {
+                if (component.getAddress() == componentAddress)
+                    if ((propertyVal = component.getProperty(actorName, property)) != null)
+                        return propertyVal;
+                    else
+                        return null;
+            }
+
+            return propertyVal;
         }
 
         public object getProperty(string actorName, Map.EActorProperties property)

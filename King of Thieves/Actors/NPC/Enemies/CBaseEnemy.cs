@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using King_of_Thieves.Graphics;
 using Gears.Cloud;
 using King_of_Thieves.Input;
+using King_of_Thieves.MathExt;
 namespace King_of_Thieves.Actors.NPC.Enemies
 {
     //has all the things that an enemy NPC will have
@@ -143,6 +144,22 @@ namespace King_of_Thieves.Actors.NPC.Enemies
 
 
             return false;
+        }
+
+        protected Vector2 getRandomPointInSightRange()
+        {
+            Vector2 point = Vector2.Zero;
+            double halfAngle = _visionRange/2.0;
+            double thetaMin = _angle - halfAngle;
+            double thetaMax = _angle + halfAngle;
+            double theta = _randNum.Next((int)thetaMin, (int)thetaMax);
+            double pointInSight = _randNum.Next(0, _lineOfSight);
+
+            point.X = (float)(pointInSight * Math.Cos(theta * (Math.PI / 180.0)));
+            point.Y = (float)(pointInSight * Math.Sin(theta * (Math.PI / 180.0)));
+            _angle = MathExt.MathExt.angle(_position, point);
+
+            return point;
         }
     }
 }

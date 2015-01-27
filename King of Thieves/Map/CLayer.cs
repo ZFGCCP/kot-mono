@@ -34,6 +34,9 @@ namespace King_of_Thieves.Map
 
         public Dictionary<int, List<string>> getActorHeaderInfo()
         {
+            if (_components == null)
+                return null;
+
             return _components.actorHeaderMap();
         }
 

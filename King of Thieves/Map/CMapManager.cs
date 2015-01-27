@@ -20,6 +20,11 @@ namespace King_of_Thieves.Map
             return _currentMap.getProperty(actorName, property);
         }
 
+        public static object propertyGetterFromComponent(int componentAddress, string actorName, Map.EActorProperties property)
+        {
+            return _currentMap.getProperty(componentAddress, actorName, property);
+        }
+
         public CMapManager()
         {
             _currentMap = null;

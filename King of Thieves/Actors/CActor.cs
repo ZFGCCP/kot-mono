@@ -78,6 +78,7 @@ namespace King_of_Thieves.Actors
         protected string _name;
         protected CAnimation _sprite;
         protected DIRECTION _direction = DIRECTION.UP;
+        protected double _angle;
         protected Boolean _moving = false; //used for prioritized movement
         private int _componentAddress = 0;
         protected Dictionary<uint, actorEventHandler> _userEvents;
@@ -231,6 +232,31 @@ namespace King_of_Thieves.Actors
         }
 
         public void lookAt(Vector2 position)
+        {
+            double angle = MathExt.MathExt.angle(_position, position);
+            if (angle < 0)
+                angle += 360;
+
+            if (angle >= 225 && angle <= 315)
+            {
+                _direction = DIRECTION.DOWN;
+            }
+            else if (angle >= 135 && angle < 225)
+            {
+                _direction = DIRECTION.LEFT;
+            }
+            else if (angle >= 45 && angle < 135)
+            {
+                _direction = DIRECTION.UP;
+            }
+            else if (angle >= 0 || angle >= 315)
+            {
+                _direction = DIRECTION.RIGHT;
+            }
+
+        }
+
+        public void lookAtExt(Vector2 position)
         {
             double angle = MathExt.MathExt.angle(_position, position);
             if (angle < 0)

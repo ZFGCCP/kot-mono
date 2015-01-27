@@ -8,6 +8,7 @@ namespace King_of_Thieves.Map
     public enum EActorProperties
     {
         POSITION = 0,
-        COMPONENT_ADDRESS
+        COMPONENT_ADDRESS,
+        OLD_POSITION
     }
 }

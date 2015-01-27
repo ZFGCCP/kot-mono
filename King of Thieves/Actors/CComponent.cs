@@ -55,6 +55,12 @@ namespace King_of_Thieves.Actors
             {
                 case Map.EActorProperties.POSITION:
                     return actor.position;
+                
+                case Map.EActorProperties.COMPONENT_ADDRESS:
+                    return actor.componentAddress;
+
+                case Map.EActorProperties.OLD_POSITION:
+                    return actor.oldPosition;
 
                 default:
                     return null;
