@@ -101,7 +101,9 @@
 			</component>
 			<component>
 				<actors>
-					<actor name="moldorm1" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailHead" coordinates = "10:10"></actor>
+					<actor name="moldormHead" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailHead" coordinates = "10:10" params="NA,moldormPiece1"></actor>
+					<actor name="moldormPiece1" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailBody" coordinates = "10:10" params="moldormHead,moldormPiece2"></actor>
+					<actor name="moldormPiece2" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailBody" coordinates = "10:10" params="moldormPiece1,moldormPiece3"></actor>
 				</actors>
 			</component>
 		</components>

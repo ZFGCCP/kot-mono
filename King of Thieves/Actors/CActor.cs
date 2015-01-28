@@ -262,19 +262,35 @@ namespace King_of_Thieves.Actors
             if (angle < 0)
                 angle += 360;
 
-            if (angle >= 225 && angle <= 315)
+            if (angle >= 247.5 && angle <= 292.5)
             {
                 _direction = DIRECTION.DOWN;
             }
-            else if (angle >= 135 && angle < 225)
+            else if (angle <= 247.5 && angle >= 202.5)
+            {
+                _direction = DIRECTION.DLEFT;
+            }
+            else if(angle >= 292.5 && angle <= 337.5)
+            {
+                _direction = DIRECTION.DRIGHT;
+            }
+            else if (angle >= 157.5 && angle < 202.5)
             {
                 _direction = DIRECTION.LEFT;
             }
-            else if (angle >= 45 && angle < 135)
+            else if (angle <= 157.5 && angle >= 112.5)
+            {
+                _direction = DIRECTION.ULEFT;
+            }
+            else if (angle >= 67.5 && angle < 112.5)
             {
                 _direction = DIRECTION.UP;
             }
-            else if (angle >= 0 || angle >= 315)
+            else if (angle <= 67.5 && angle >= 22.5)
+            {
+                _direction = DIRECTION.URIGHT;
+            }
+            else if (angle <= 22.5 || angle >= 337.5)
             {
                 _direction = DIRECTION.RIGHT;
             }

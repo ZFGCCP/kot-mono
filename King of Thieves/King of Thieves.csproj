@@ -81,8 +81,10 @@
     <Compile Include="Actors\NPC\Enemies\Keese\CKeeseIce.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CKeeseShadow.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CKeeseThunder.cs" />
+    <Compile Include="Actors\NPC\Enemies\MoldormTail\CMoldormTailBody.cs" />
     <Compile Include="Actors\NPC\Enemies\MoldormTail\CMoldormTailHead.cs" />
     <Compile Include="Actors\NPC\Enemies\MoldormTail\CMoldormTailPiece.cs" />
+    <Compile Include="Actors\NPC\Enemies\MoldormTail\CMoldormTailTail.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CBaseWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CFireWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CIceWizzrobe.cs" />

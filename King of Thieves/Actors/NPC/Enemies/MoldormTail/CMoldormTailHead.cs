@@ -9,48 +9,41 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
 {
     class CMoldormTailHead : CMoldormTailPiece
     {
-        protected readonly static string _HEAD_UP = "headUp";
-        protected readonly static string _HEAD_DOWN = "headDown";
-        protected readonly static string _HEAD_LEFT = "headLeft";
-        protected readonly static string _HEAD_RIGHT = "headRight";
-
-        protected readonly static string _HEAD_DLEFT = "headDLeft";
-        protected readonly static string _HEAD_DRIGHT = "headDRight";
-        protected readonly static string _HEAD_ULEFT = "headULeft";
-        protected readonly static string _HEAD_URIGHT = "headURight";
-
         public CMoldormTailHead()
             : base(true)
         {
             if (_moldormAndTailCount <= 0)
             {
-                Graphics.CTextures.addTexture(_HEAD_UP, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 0, "0:0", "0:0"));
-                Graphics.CTextures.addTexture(_HEAD_URIGHT, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 0, "1:0", "1:0"));
+                Graphics.CTextures.addTexture(_HEAD_UP, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "0:0", "0:0"));
+                Graphics.CTextures.addTexture(_HEAD_RIGHT, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "0:1", "0:1"));
+
+                Graphics.CTextures.addTexture(_HEAD_URIGHT, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "1:0", "1:0"));
+                Graphics.CTextures.addTexture(_HEAD_DRIGHT, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "1:1", "1:1"));
+
+                Graphics.CTextures.addTexture(_BODY, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "0:2", "0:2"));
             }
 
             _imageIndex.Add(_HEAD_UP, new Graphics.CSprite(_HEAD_UP));
-            _imageIndex.Add(_HEAD_DOWN, new Graphics.CSprite(_HEAD_UP,false,false,null,false,180));
-            _imageIndex.Add(_HEAD_LEFT, new Graphics.CSprite(_HEAD_UP, false, false, null, false, 90));
-            _imageIndex.Add(_HEAD_RIGHT, new Graphics.CSprite(_HEAD_UP, false, false, null, false, 270));
+            _imageIndex.Add(_HEAD_DOWN, new Graphics.CSprite(_HEAD_UP,false,true));
+            _imageIndex.Add(_HEAD_LEFT, new Graphics.CSprite(_HEAD_RIGHT, true,false));
+            _imageIndex.Add(_HEAD_RIGHT, new Graphics.CSprite(_HEAD_RIGHT));
 
-            _imageIndex.Add(_HEAD_DLEFT, new Graphics.CSprite(_HEAD_URIGHT));
-            _imageIndex.Add(_HEAD_DRIGHT, new Graphics.CSprite(_HEAD_URIGHT, false, false, null, false, 180));
-            _imageIndex.Add(_HEAD_ULEFT, new Graphics.CSprite(_HEAD_URIGHT, false, false, null, false, 90));
-            _imageIndex.Add(_HEAD_URIGHT, new Graphics.CSprite(_HEAD_URIGHT, false, false, null, false, 270));
+            _imageIndex.Add(_HEAD_DLEFT, new Graphics.CSprite(_HEAD_DRIGHT,true,false));
+            _imageIndex.Add(_HEAD_DRIGHT, new Graphics.CSprite(_HEAD_DRIGHT));
+            _imageIndex.Add(_HEAD_ULEFT, new Graphics.CSprite(_HEAD_URIGHT,true,false));
+            _imageIndex.Add(_HEAD_URIGHT, new Graphics.CSprite(_HEAD_URIGHT));
 
             _moldormAndTailCount++;
-            _name = "head";
             _changeDirection();
         }
 
 
-        protected virtual void _changeDirection()
+        protected void _changeDirection()
         {
-            int nextChangeTime = _getChangeTime(_randNum.Next(0, 6));
             _moveTowardsPoint = getRandomPointInSightRange();
-            lookAt(_moveTowardsPoint);
+            lookAtExt(_moveTowardsPoint);
             _changeSpriteDirection();
-            startTimer0(30);
+            startTimer0(60);
         }
 
         private void _changeSpriteDirection()
@@ -72,12 +65,28 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
                 case DIRECTION.UP:
                     swapImage(_HEAD_UP);
                     break;
+
+                case DIRECTION.DLEFT:
+                    swapImage(_HEAD_DLEFT);
+                    break;
+
+                case DIRECTION.DRIGHT:
+                    swapImage(_HEAD_DRIGHT);
+                    break;
+
+                case DIRECTION.URIGHT:
+                    swapImage(_HEAD_URIGHT);
+                    break;
+
+                case DIRECTION.ULEFT:
+                    swapImage(_HEAD_ULEFT);
+                    break;
             }
         }
 
         public override void update(GameTime gameTime)
         {
-            moveToPoint(_moveTowardsPoint.X, _moveTowardsPoint.Y, 3.0f);
+            moveToPoint(_moveTowardsPoint.X, _moveTowardsPoint.Y, 1);
             base.update(gameTime);
 
         }

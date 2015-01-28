@@ -155,9 +155,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies
             double theta = _randNum.Next((int)thetaMin, (int)thetaMax);
             double pointInSight = _randNum.Next(0, _lineOfSight);
 
-            point.X = (float)(pointInSight * Math.Cos(theta * (Math.PI / 180.0)));
-            point.Y = (float)(pointInSight * Math.Sin(theta * (Math.PI / 180.0)));
-            _angle = MathExt.MathExt.angle(_position, point);
+            point.X = (float)(_lineOfSight * Math.Cos(theta * (Math.PI / 180.0)));
+            point.Y = (float)(_lineOfSight * Math.Sin(theta * (Math.PI / 180.0)));
 
             return point;
         }

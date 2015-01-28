@@ -95,11 +95,11 @@ namespace King_of_Thieves.Graphics
             Color overlay = useOverlay ? Actors.Controllers.GameControllers.CDayClock.overlay : Color.White;
 
             if (!(_flipV || _flipH))
-                CGraphics.spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay);
+                CGraphics.spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.None,0);
             else if (_flipV)
-                CGraphics.spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, 0f, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
+                CGraphics.spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
             else if(_flipH)
-                CGraphics.spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, 0f, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
+                CGraphics.spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
             base.draw(x,y);
             if (_framesPassed == _totalFrames - 1)
             {
@@ -124,7 +124,7 @@ namespace King_of_Thieves.Graphics
             Color overlay = useOverlay ? Actors.Controllers.GameControllers.CDayClock.overlay : Color.White; 
 
             if (!(_flipV || _flipH))
-                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay);
+                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
             else if (_flipV)
                 batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
             else if (_flipH)
