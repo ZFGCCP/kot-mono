@@ -226,6 +226,15 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        protected double _calculateAngle(Vector2 toPoint)
+        {
+            double angle = MathExt.MathExt.angle(_position, toPoint);
+            if (angle < 0)
+                angle += 360;
+
+            return angle;
+        }
+
         private void _registerSystemEvents()
         {
             _userEvents.Add(1000, (object sender) => _killMe = true);
@@ -233,10 +242,13 @@ namespace King_of_Thieves.Actors
 
         public void lookAt(Vector2 position)
         {
-            double angle = MathExt.MathExt.angle(_position, position);
-            if (angle < 0)
-                angle += 360;
+            double angle = _calculateAngle(position);
 
+            _directionChange(angle);
+        }
+
+        protected void _directionChange(double angle)
+        {
             if (angle >= 225 && angle <= 315)
             {
                 _direction = DIRECTION.DOWN;
@@ -253,15 +265,18 @@ namespace King_of_Thieves.Actors
             {
                 _direction = DIRECTION.RIGHT;
             }
-
         }
 
         public void lookAtExt(Vector2 position)
         {
-            double angle = MathExt.MathExt.angle(_position, position);
-            if (angle < 0)
-                angle += 360;
+            double angle = _calculateAngle(position);
 
+            _directionChangeExt(angle);
+
+        }
+
+        protected void _directionChangeExt(double angle)
+        {
             if (angle >= 247.5 && angle <= 292.5)
             {
                 _direction = DIRECTION.DOWN;
@@ -270,7 +285,7 @@ namespace King_of_Thieves.Actors
             {
                 _direction = DIRECTION.DLEFT;
             }
-            else if(angle >= 292.5 && angle <= 337.5)
+            else if (angle >= 292.5 && angle <= 337.5)
             {
                 _direction = DIRECTION.DRIGHT;
             }
@@ -294,7 +309,6 @@ namespace King_of_Thieves.Actors
             {
                 _direction = DIRECTION.RIGHT;
             }
-
         }
 
         public string getMapHeaderInfo()
@@ -417,6 +431,9 @@ namespace King_of_Thieves.Actors
 
             _position.X += (speed * distX);
             _position.Y += (speed * distY);
+
+            Vector2 newPosition = new Vector2(x, y);
+            _angle = _calculateAngle(newPosition);
 
             if (distY < 0)
                 return DIRECTION.UP;

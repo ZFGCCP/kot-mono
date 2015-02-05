@@ -9,6 +9,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
 {
     class CMoldormTailHead : CMoldormTailPiece
     {
+        private Vector2 _moveTowardsPoint = Vector2.Zero;
+
         public CMoldormTailHead()
             : base(true)
         {
@@ -19,6 +21,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
 
                 Graphics.CTextures.addTexture(_HEAD_URIGHT, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "1:0", "1:0"));
                 Graphics.CTextures.addTexture(_HEAD_DRIGHT, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "1:1", "1:1"));
+
+                Graphics.CTextures.addTexture(_TAIL_UP, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "2:0", "2:0"));
+                Graphics.CTextures.addTexture(_TAIL_RIGHT, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "2:1", "2:1"));
+
+                Graphics.CTextures.addTexture(_TAIL_URIGHT, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "2:2", "2:2"));
+                Graphics.CTextures.addTexture(_TAIL_DRIGHT, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "0:3", "0:3"));
 
                 Graphics.CTextures.addTexture(_BODY, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "0:2", "0:2"));
             }

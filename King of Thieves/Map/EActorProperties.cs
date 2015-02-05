@@ -9,6 +9,7 @@ namespace King_of_Thieves.Map
     {
         POSITION = 0,
         COMPONENT_ADDRESS,
-        OLD_POSITION
+        OLD_POSITION,
+        DIRECTION
     }
 }

@@ -62,6 +62,9 @@ namespace King_of_Thieves.Actors
                 case Map.EActorProperties.OLD_POSITION:
                     return actor.oldPosition;
 
+                case Map.EActorProperties.DIRECTION:
+                    return actor.direction;
+
                 default:
                     return null;
             }

@@ -103,7 +103,8 @@
 				<actors>
 					<actor name="moldormHead" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailHead" coordinates = "10:10" params="NA,moldormPiece1"></actor>
 					<actor name="moldormPiece1" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailBody" coordinates = "10:10" params="moldormHead,moldormPiece2"></actor>
-					<actor name="moldormPiece2" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailBody" coordinates = "10:10" params="moldormPiece1,moldormPiece3"></actor>
+					<actor name="moldormPiece2" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailBody" coordinates = "10:10" params="moldormPiece1,moldormTail"></actor>
+					<actor name="moldormTail" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailTail" coordinates = "10:10" params="moldormPiece2,NA"></actor>
 				</actors>
 			</component>
 		</components>

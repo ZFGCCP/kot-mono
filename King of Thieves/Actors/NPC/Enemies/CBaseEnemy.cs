@@ -89,11 +89,15 @@ namespace King_of_Thieves.Actors.NPC.Enemies
             //}
             
             //check hearing field
-            if (MathExt.MathExt.distance(_position, new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY)) <= _hearingRadius)
+            return isPointInHearingRange(new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY));
+        }
+
+        protected bool isPointInHearingRange(Vector2 point)
+        {
+            if (MathExt.MathExt.distance(_position, point) <= _hearingRadius)
                 return true;
 
             return false;
-
         }
 
         //chase the player
@@ -133,14 +137,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies
 
         protected bool _checkLineofSight(float x, float y)
         {
-            //return _visionSlope * (x - _position.X) + (y - _position.Y);
+            
 
-            switch (_direction)
-            {
-                case DIRECTION.UP:
-                    //return 
-                    break;
-            }
+
 
 
             return false;

@@ -9,7 +9,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
 {
     class CMoldormTailBody : CMoldormTailPiece
     {
-        private Vector2 _follow = Vector2.Zero;
+        
 
         public CMoldormTailBody() :
             base(true)
