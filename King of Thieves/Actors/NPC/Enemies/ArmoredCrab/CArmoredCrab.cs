@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
 {
     class CArmoredCrab : CBaseEnemy
     {
         Vector2 _moveToThis = Vector2.Zero;
+        private static int _armoredCrabCount = 0;
+        private readonly static string _NPC_ARMORED_CRAB = "npc:armoredCrab"; 
 
         public CArmoredCrab() :
             base()
         {
+            if (_armoredCrabCount <= 0)
+                Graphics.CTextures.rawTextures.Add(_NPC_ARMORED_CRAB, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/armoredCrab"));
+
+            _armoredCrabCount++;
+
             _hearingRadius = 3;
             _lineOfSight = 10;
             _visionRange = 90;
@@ -20,6 +28,24 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
             //always looks down
             _direction = DIRECTION.DOWN;
             _angle = 270;
+        }
+
+        public override void destroy(object sender)
+        {
+            _armoredCrabCount--;
+
+            if (_armoredCrabCount <= 0)
+            {
+                cleanUp();
+                _armoredCrabCount = 0;
+            }
+
+            base.destroy(sender);
+        }
+
+        protected override void cleanUp()
+        {
+            Graphics.CTextures.rawTextures.Remove(_NPC_ARMORED_CRAB);
         }
 
         private void _chooseNewPoint()

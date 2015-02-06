@@ -7,4 +7,6 @@
 *.cache
 *.stackdump
 King of Thieves/bin/WindowsGL/Debug/Content
+King of Thieves/bin/WindowsGL/Release/Content
 King of Thieves/obj
+
