@@ -11,13 +11,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
     {
         Vector2 _moveToThis = Vector2.Zero;
         private static int _armoredCrabCount = 0;
-        private readonly static string _NPC_ARMORED_CRAB = "npc:armoredCrab"; 
+        private readonly static string _SPRITE_NAMESPACE = "npc:armoredCrab";
 
         public CArmoredCrab() :
             base()
         {
             if (_armoredCrabCount <= 0)
-                Graphics.CTextures.rawTextures.Add(_NPC_ARMORED_CRAB, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/armoredCrab"));
+                Graphics.CTextures.rawTextures.Add(_SPRITE_NAMESPACE, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/armoredCrab"));
 
             _armoredCrabCount++;
 
@@ -45,7 +45,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
 
         protected override void cleanUp()
         {
-            Graphics.CTextures.rawTextures.Remove(_NPC_ARMORED_CRAB);
+            Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
+            _armoredCrabCount = 0;
+            base.cleanUp();
         }
 
         private void _chooseNewPoint()
