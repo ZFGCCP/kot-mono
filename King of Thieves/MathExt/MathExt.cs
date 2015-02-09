@@ -37,5 +37,25 @@ namespace King_of_Thieves.MathExt
 
             return result;
         }
+
+        public static bool checkPointInTriangle(Vector2 P, Vector2 A, Vector2 B, Vector2 C)
+        {
+            Vector2 v0 = C - A;
+            Vector2 v1 = B - A;
+            Vector2 v2 = P - A;
+
+            double dot00 = dotProduct2(v0, v0);
+            double dot01 = dotProduct2(v0, v1);
+            double dot02 = dotProduct2(v0, v2);
+            double dot11 = dotProduct2(v1, v1);
+            double dot12 = dotProduct2(v1, v2);
+
+            double invDenom = 1.0 / (dot00 * dot11 - dot01 * dot01);
+
+            double u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+            double v = (dot00 * dot12 - dot01 * dot02) * invDenom;
+
+            return (u >= 0) && (v >= 0) && (u + v < 1);
+        }
     }
 }
