@@ -85,6 +85,8 @@
     <Compile Include="Actors\NPC\Enemies\MoldormTail\CMoldormTailHead.cs" />
     <Compile Include="Actors\NPC\Enemies\MoldormTail\CMoldormTailPiece.cs" />
     <Compile Include="Actors\NPC\Enemies\MoldormTail\CMoldormTailTail.cs" />
+    <Compile Include="Actors\NPC\Enemies\Rope\CBaseRope.cs" />
+    <Compile Include="Actors\NPC\Enemies\Rope\CRope.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CBaseWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CFireWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CIceWizzrobe.cs" />
