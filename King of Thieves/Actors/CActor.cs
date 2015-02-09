@@ -229,8 +229,7 @@ namespace King_of_Thieves.Actors
         protected double _calculateAngle(Vector2 toPoint)
         {
             double angle = MathExt.MathExt.angle(_position, toPoint);
-            if (angle < 0)
-                angle += 360;
+            
 
             return angle;
         }
