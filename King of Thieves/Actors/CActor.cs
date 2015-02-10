@@ -418,14 +418,6 @@ namespace King_of_Thieves.Actors
             }
         }
 
-        protected bool _checkIfPointInView(Vector2 point)
-        {
-            //build triangle points first
-            Vector2 A = _position;
-
-            return false;
-        }
-
         public DIRECTION moveToPoint(float x, float y, float speed)
         {
             float distX = 0, distY = 0;

@@ -58,6 +58,22 @@ namespace King_of_Thieves.Actors.NPC.Enemies
             _visionSlope = (int)Math.Tan(_visionRange * (Math.PI/180.0));
         }
 
+        protected bool _checkIfPointInView(Vector2 point)
+        {
+            //build triangle points first
+            Vector2 A = _position;
+            Vector2 B = Vector2.Zero;
+            Vector2 C = Vector2.Zero;
+
+            B.X = (float)(Math.Cos(_angle - _visionRange/2.0f) * _lineOfSight);
+            B.Y = (float)(Math.Sin(_angle - _visionRange / 2.0f) * _lineOfSight);
+
+            C.X = (float)(Math.Cos(_angle + _visionRange / 2.0f) * _lineOfSight);
+            C.Y = (float)(Math.Sin(_angle + _visionRange / 2.0f) * _lineOfSight);
+
+            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
+        }
+
         protected override void _initializeResources()
         {
             base._initializeResources();
