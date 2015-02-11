@@ -65,11 +65,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies
             Vector2 B = Vector2.Zero;
             Vector2 C = Vector2.Zero;
 
-            B.X = (float)(Math.Cos(_angle - _visionRange/2.0f) * _lineOfSight);
-            B.Y = (float)(Math.Sin(_angle - _visionRange / 2.0f) * _lineOfSight);
+            B.X = (float)(Math.Cos(_angle - _visionRange/2.0f) * _lineOfSight) + _position.X;
+            B.Y = (float)(Math.Sin(_angle - _visionRange / 2.0f) * _lineOfSight) + _position.Y;
 
-            C.X = (float)(Math.Cos(_angle + _visionRange / 2.0f) * _lineOfSight);
-            C.Y = (float)(Math.Sin(_angle + _visionRange / 2.0f) * _lineOfSight);
+            C.X = (float)(Math.Cos(_angle + _visionRange / 2.0f) * _lineOfSight) + _position.X;
+            C.Y = (float)(Math.Sin(_angle + _visionRange / 2.0f) * _lineOfSight) + _position.Y;
 
             return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
         }
