@@ -418,7 +418,7 @@ namespace King_of_Thieves.Actors
             }
         }
 
-        public DIRECTION moveToPoint(float x, float y, float speed)
+        public DIRECTION moveToPoint(float x, float y, float speed, bool calcAngle = true)
         {
             float distX = 0, distY = 0;
 
@@ -432,7 +432,9 @@ namespace King_of_Thieves.Actors
             _position.Y += (speed * distY);
 
             Vector2 newPosition = new Vector2(x, y);
-            _angle = _calculateAngle(newPosition);
+
+            if (calcAngle)
+                _angle = _calculateAngle(newPosition);
 
             if (distY < 0)
                 return DIRECTION.UP;
@@ -533,7 +535,6 @@ namespace King_of_Thieves.Actors
                         onAnimationEnd(this);
                     }
                     catch (NotImplementedException) { ;}
-
 
                 _oldPosition = _position;
 
@@ -710,6 +711,10 @@ namespace King_of_Thieves.Actors
             get
             {
                 return _oldPosition;
+            }
+            set
+            {
+                _oldPosition = value;
             }
             
         }

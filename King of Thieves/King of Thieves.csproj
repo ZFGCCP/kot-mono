@@ -73,6 +73,7 @@
     <Compile Include="Actors\Menu\CMenuCursor.cs" />
     <Compile Include="Actors\Menu\CMenuItem.cs" />
     <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CArmoredCrab.cs" />
+    <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CCrabShell.cs" />
     <Compile Include="Actors\NPC\Enemies\CBaseEnemy.cs" />
     <Compile Include="Actors\NPC\Enemies\Chuchus\CBaseChuChu.cs" />
     <Compile Include="Actors\NPC\Enemies\Chuchus\CGreenChuChu.cs" />

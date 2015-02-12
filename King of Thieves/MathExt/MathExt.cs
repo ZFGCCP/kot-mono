@@ -33,7 +33,7 @@ namespace King_of_Thieves.MathExt
         public static double dotProduct2(Vector2 u, Vector2 v)
         {
             double result = 0;
-            result = (u.X * v.X) + (u.X * v.Y) + (u.Y * v.X) + (u.Y * v.Y);
+            result = (u.X * v.X) + (u.Y * v.Y);
 
             return result;
         }

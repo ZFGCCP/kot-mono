@@ -11,9 +11,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
     {
         Vector2 _moveToThis = Vector2.Zero;
         private static int _armoredCrabCount = 0;
-        private const string _SPRITE_NAMESPACE = "npc:armoredCrab";
-        private const string _IDLE = _SPRITE_NAMESPACE + ":idle";
-        private const string _WALK = _SPRITE_NAMESPACE + ":walk";
+        public const string SPRITE_NAMESPACE = "npc:armoredCrab";
+        private const string _IDLE = SPRITE_NAMESPACE + ":idle";
+        private const string _WALK = SPRITE_NAMESPACE + ":walk";
         private const int _UPPER_RANGE = 70;
         private const int _LOWER_RANGE = 30;
 
@@ -22,10 +22,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
         {
             if (_armoredCrabCount <= 0)
             {
-                Graphics.CTextures.rawTextures.Add(_SPRITE_NAMESPACE, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/armoredCrab"));
+                Graphics.CTextures.rawTextures.Add(SPRITE_NAMESPACE, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/armoredCrab"));
 
-                Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "4:0", 3));
-                Graphics.CTextures.addTexture(_WALK, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 3));
+                Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 1, "0:0", "4:0", 5));
+                Graphics.CTextures.addTexture(_WALK, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 3));
             }
 
             _imageIndex.Add(_IDLE, new Graphics.CSprite(_IDLE));
@@ -33,9 +33,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
 
             _armoredCrabCount++;
 
-            _hearingRadius = 120;
-            _lineOfSight = 30;
-            _visionRange = 90;
+            _hearingRadius = 50;
+            _lineOfSight = 120;
+            _visionRange = 60;
 
             //always looks down
             _direction = DIRECTION.DOWN;
@@ -59,7 +59,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
 
         protected override void cleanUp()
         {
-            Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
+            Graphics.CTextures.cleanUp(SPRITE_NAMESPACE);
             _armoredCrabCount = 0;
             base.cleanUp();
         }
@@ -87,11 +87,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
 
         public override void update(GameTime gameTime)
         {
+            base.update(gameTime);
             //check if the player is in hearing range
-            if (isPointInHearingRange(new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY)))
+            Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+            if (isPointInHearingRange(playerPos) || _checkIfPointInView(playerPos))
             {
                 state = ACTOR_STATES.CHASE;
-                moveToPoint((float)Player.CPlayer.glblX, (float)Player.CPlayer.glblY, 1.0f);
+                moveToPoint((float)Player.CPlayer.glblX, (float)Player.CPlayer.glblY, 1.0f, false);
             }
             else
             {
@@ -104,7 +106,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
 
             if (state == ACTOR_STATES.MOVING)
             {
-                moveToPoint(_moveToThis.X, _moveToThis.Y, .5f);
+                moveToPoint(_moveToThis.X, _moveToThis.Y, .5f, false);
 
                 if ((_position.X >= _moveToThis.X - 2 && _position.X <= _moveToThis.X + 2) &&
                     (_position.Y >= _moveToThis.Y - 2 && _position.Y <= _moveToThis.Y + 2))
@@ -115,7 +117,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
                 }
             }
 
-            base.update(gameTime);
+            
         }
 
         public override void timer0(object sender)

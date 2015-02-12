@@ -110,6 +110,7 @@
 			<component>
 				<actors>
 					<actor name="armoredCrab" type="King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab.CArmoredCrab" coordinates = "70:50"></actor>
+					<actor name="armoredCrabShell" type="King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab.CCrabShell" coordinates = "70:50"></actor>
 				</actors>
 			</component>
 		</components>
