@@ -93,7 +93,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
             if (isPointInHearingRange(playerPos) || _checkIfPointInView(playerPos))
             {
                 state = ACTOR_STATES.CHASE;
-                moveToPoint((float)Player.CPlayer.glblX, (float)Player.CPlayer.glblY, 1.0f, false);
+                moveToPoint((float)Math.Floor(Player.CPlayer.glblX), (float)Math.Floor(Player.CPlayer.glblY), 1.0f, false);
             }
             else
             {
