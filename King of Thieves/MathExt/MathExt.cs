@@ -57,5 +57,27 @@ namespace King_of_Thieves.MathExt
 
             return (u >= 0) && (v >= 0) && (u + v < 1);
         }
+
+        public static bool checkPointInCircle(Vector2 P, Vector2 A, int radius)
+        {
+            if (distance(A, P) <= radius)
+                return true;
+            
+            return false;
+        }
+
+        public static bool checkPointWithinRange(Vector2 P, Vector2 topLeft, Vector2 bottomRight)
+        {
+            return (P.X >= topLeft.X && P.X <= bottomRight.X) && (P.Y >= topLeft.Y && P.Y <= bottomRight.Y);
+        }
+
+        public static Vector2 choosePointOnAngle(double angle, int distance)
+        {
+            Vector2 vec = new Vector2();
+            double theta = angle * Math.PI / 180.0;
+            vec.X = (float)Math.Cos(theta) * distance;
+            vec.Y = (float)Math.Sin(theta) * distance;
+            return vec;
+        }
     }
 }

@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
 {
     class COvergrownKeese : CBaseEnemy
     {
+        private const int _ATTACK_RADIUS = 120;
+        private const int _SWOOP_RADIUS = 90;
+        private Vector2 _homePosition = Vector2.Zero;
+        private Vector2 _swoopTarget = Vector2.Zero;
+        private int _moveSpeed = 1;
+
         private static int _overgrownKeeseCount = 0;
         private static string _SPRITE_NAMESPACE = "npc:overgrownKeese";
         private static string _IDLE = _SPRITE_NAMESPACE + ":idle";
@@ -20,11 +27,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
         {
             if (_overgrownKeeseCount <= 0)
             {
-                Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/overgrownKeese");
+                Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/overgownKeese");
 
                 Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 52, 47, 1, "1:2", "1:2", 0));
                 Graphics.CTextures.addTexture(_IDLE_STARE, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 52, 47, 1, "0:2", "0:2", 0));
-                Graphics.CTextures.addTexture(_FLY, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 52, 47, 1, "0:0", "3:1", 4));
+                Graphics.CTextures.addTexture(_FLY, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 52, 47, 1, "0:0", "3:1", 20));
                 Graphics.CTextures.addTexture(_KNOCKED_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 52, 47, 1, "2:2", "2:2", 0));
                 Graphics.CTextures.addTexture(_SWOOP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 52, 47, 1, "0:1", "0:1", 0));
             }
@@ -36,6 +43,72 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
             _imageIndex.Add(_SWOOP, new Graphics.CSprite(_SWOOP));
 
             _overgrownKeeseCount++;
+
+            _hearingRadius = 150;
+            _state = ACTOR_STATES.IDLE;
+            _direction = DIRECTION.DOWN;
+            _angle = 270;
+            swapImage(_IDLE);
+        }
+
+        public override void update(Microsoft.Xna.Framework.GameTime gameTime)
+        {
+            base.update(gameTime);
+
+            Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+            if (_state != ACTOR_STATES.FROZEN)
+            {
+                if (_state == ACTOR_STATES.GO_HOME)
+                {
+                    moveToPoint(_homePosition.X, _homePosition.Y, 1, false);
+
+                    if (MathExt.MathExt.checkPointWithinRange(_position,_homePosition- new Vector2(1,1),_homePosition+ new Vector2(1,1)))
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        swapImage(_IDLE);
+                    }
+                }
+
+
+                if (isPointInHearingRange(playerPos))
+                {
+                    if (_state != ACTOR_STATES.CHASE && state != ACTOR_STATES.ATTACK)
+                    {
+                        if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _ATTACK_RADIUS))
+                        {
+                            _state = ACTOR_STATES.CHASE;
+                            swapImage(_FLY);
+                        }
+                        else
+                        {
+                            _state = ACTOR_STATES.IDLE_STARE;
+                            swapImage(_IDLE_STARE);
+                        }
+                    }
+                    else
+                    {
+                        moveToPoint(Player.CPlayer.glblX, Player.CPlayer.glblY, _moveSpeed, false);
+                    }
+                }
+                else
+                {
+                    if (_state == ACTOR_STATES.CHASE)
+                    {
+                        _state = ACTOR_STATES.GO_HOME;
+                    }
+                    else if(_state != ACTOR_STATES.GO_HOME)
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        swapImage(_IDLE);
+                    }
+                }
+            }
+        }
+
+        public override void timer0(object sender)
+        {
+            base.timer0(sender);
+
         }
 
         protected override void cleanUp()
@@ -56,6 +129,14 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
             }
 
             base.destroy(sender);
+        }
+
+        private void _chooseSwoopTarget()
+        {
+            Vector2 target = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+            target.X = target.X + (float)(Math.Sign(target.X) * 30.0);
+            target.Y = target.Y + (float)(Math.Sign(target.Y) * 30.0);
+            _swoopTarget = target;
         }
     }
 }

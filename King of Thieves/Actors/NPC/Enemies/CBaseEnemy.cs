@@ -110,10 +110,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies
 
         protected bool isPointInHearingRange(Vector2 point)
         {
-            if (MathExt.MathExt.distance(_position, point) <= _hearingRadius)
-                return true;
-
-            return false;
+            return MathExt.MathExt.checkPointInCircle(_position, point, _hearingRadius);
         }
 
         //chase the player

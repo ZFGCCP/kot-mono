@@ -54,7 +54,7 @@
 					<actor name = "solidtile8" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "192:48"></actor>
 				</actors>
 			</component>
-			<component>
+			<!--<component>
 				<actors>
 					<actor name = "keeseTest" type = "King_of_Thieves.Actors.NPC.Enemies.Keese.CKeeseFire" coordinates = "50:50"></actor>
 				</actors>
@@ -111,6 +111,11 @@
 				<actors>
 					<actor name="armoredCrab" type="King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab.CArmoredCrab" coordinates = "70:50"></actor>
 					<actor name="armoredCrabShell" type="King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab.CCrabShell" coordinates = "70:50"></actor>
+				</actors>
+			</component>-->
+			<component>
+				<actors>
+					<actor name="armoredCrab" type="King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese.COvergrownKeese" coordinates = "70:50"></actor>
 				</actors>
 			</component>
 		</components>
