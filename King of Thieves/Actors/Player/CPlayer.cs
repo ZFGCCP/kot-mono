@@ -420,7 +420,7 @@ namespace King_of_Thieves.Actors.Player
                     _lastHudKeyPressed = Keys.None;
                 }
 
-                if (input.keysReleased.Contains(Keys.LeftShift) && _state == ACTOR_STATES.MOVING)
+                if (input.keysReleased.Contains(Keys.C) && _state == ACTOR_STATES.MOVING)
                 {
                     if (_carrying)
                     {

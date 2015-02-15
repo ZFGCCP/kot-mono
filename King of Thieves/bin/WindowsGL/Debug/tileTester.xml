@@ -115,7 +115,7 @@
 			</component>-->
 			<component>
 				<actors>
-					<actor name="armoredCrab" type="King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese.COvergrownKeese" coordinates = "70:50"></actor>
+					<actor name="armoredCrab" type="King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese.COvergrownKeese" coordinates = "100:100"></actor>
 				</actors>
 			</component>
 		</components>

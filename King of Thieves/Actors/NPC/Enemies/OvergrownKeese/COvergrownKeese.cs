@@ -68,7 +68,17 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
                         swapImage(_IDLE);
                     }
                 }
+                else if(_state == ACTOR_STATES.ATTACK)
+                {
+                    moveToPoint(_swoopTarget.X,_swoopTarget.Y,2,false);
 
+                    if ((_position.X >= _swoopTarget.X - 2 && _position.X <= _swoopTarget.X + 2) &&
+                        (_position.Y >= _swoopTarget.Y - 2 && _position.Y <= _swoopTarget.Y + 2))
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        swapImage(_IDLE);
+                    }
+                }
 
                 if (isPointInHearingRange(playerPos))
                 {
@@ -85,9 +95,16 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
                             swapImage(_IDLE_STARE);
                         }
                     }
-                    else
+                    else if(_state != ACTOR_STATES.ATTACK)
                     {
                         moveToPoint(Player.CPlayer.glblX, Player.CPlayer.glblY, _moveSpeed, false);
+
+                        if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _SWOOP_RADIUS))
+                        {
+                            _state = ACTOR_STATES.ATTACK;
+                            swapImage(_SWOOP);
+                            _chooseSwoopTarget();
+                        }
                     }
                 }
                 else
@@ -134,8 +151,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
         private void _chooseSwoopTarget()
         {
             Vector2 target = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
-            target.X = target.X + (float)(Math.Sign(target.X) * 30.0);
-            target.Y = target.Y + (float)(Math.Sign(target.Y) * 30.0);
+            target.X = target.X - (float)(Math.Sign(target.X) * 60.0);
+            target.Y = target.Y - (float)(Math.Sign(target.Y) * 60.0);
             _swoopTarget = target;
         }
     }
