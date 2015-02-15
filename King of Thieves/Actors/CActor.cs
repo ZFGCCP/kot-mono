@@ -108,7 +108,7 @@ namespace King_of_Thieves.Actors
         protected Collision.CHitBox _hitBox;
         protected List<Type> _collidables;
         public static bool showHitBox = false; //Draw hitboxes over actor if this is true
-
+        protected Vector2 _motionCounter = Vector2.Zero;
 
         //event handlers will be added here
         public event actorEventHandler onCreate;
@@ -430,8 +430,19 @@ namespace King_of_Thieves.Actors
             distX = Math.Sign(distX);
             distY = Math.Sign(distY);
 
-            _position.X += (speed * distX);
-            _position.Y += (speed * distY);
+            _motionCounter.X += (speed);
+            _motionCounter.Y += (speed);
+
+            if (_motionCounter.X == 1.0f)
+            {
+                _position.X += (1.0f * distX);
+                _motionCounter.X = 0;
+            }
+            if (_motionCounter.Y == 1.0f)
+            {
+                _position.Y += (1.0f * distY);
+                _motionCounter.Y = 0;
+            }
 
             Vector2 newPosition = new Vector2(x, y);
 
