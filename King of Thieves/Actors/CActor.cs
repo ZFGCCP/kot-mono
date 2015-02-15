@@ -433,12 +433,12 @@ namespace King_of_Thieves.Actors
             _motionCounter.X += (speed);
             _motionCounter.Y += (speed);
 
-            if (_motionCounter.X == 1.0f)
+            if (_motionCounter.X >= 1.0f)
             {
                 _position.X += (1.0f * distX);
                 _motionCounter.X = 0;
             }
-            if (_motionCounter.Y == 1.0f)
+            if (_motionCounter.Y >= 1.0f)
             {
                 _position.Y += (1.0f * distY);
                 _motionCounter.Y = 0;

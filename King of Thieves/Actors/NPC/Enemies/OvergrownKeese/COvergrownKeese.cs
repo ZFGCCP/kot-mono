@@ -56,52 +56,90 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
             base.update(gameTime);
 
             Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
-            if (_state != ACTOR_STATES.FROZEN)
+
+            switch (_state)
             {
-                if (_state == ACTOR_STATES.GO_HOME)
-                {
-                    moveToPoint(_homePosition.X, _homePosition.Y, _moveSpeed, false);
+                case ACTOR_STATES.IDLE:
+                    if (MathExt.MathExt.checkPointInCircle(playerPos,_position,_hearingRadius))
+                    {
+                        swapImage(_IDLE_STARE);
+                        _state = ACTOR_STATES.IDLE_STARE;
+                    }
+                    break;
 
-                    if (MathExt.MathExt.checkPointWithinRange(_position,_homePosition- new Vector2(1,1),_homePosition+ new Vector2(1,1)))
+                case ACTOR_STATES.IDLE_STARE:
+                    if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _ATTACK_RADIUS))
                     {
-                        _state = ACTOR_STATES.IDLE;
-                        swapImage(_IDLE);
+                        _state = ACTOR_STATES.CHASE;
+                        swapImage(_FLY);
                     }
-                }
+                    else if (!MathExt.MathExt.checkPointInCircle(playerPos, _position, _hearingRadius))
+                    {
+                        swapImage(_IDLE);
+                        _state = ACTOR_STATES.IDLE;
+                    }
+                    break;
 
-                if (isPointInHearingRange(playerPos))
-                {
-                    if (_state != ACTOR_STATES.CHASE && state != ACTOR_STATES.ATTACK)
+                case ACTOR_STATES.CHASE:
+                    moveToPoint(playerPos.X, playerPos.Y, .5f, false);
+
+                    if (!MathExt.MathExt.checkPointInCircle(playerPos, _position, _hearingRadius))
                     {
-                        if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _ATTACK_RADIUS))
-                        {
-                            _state = ACTOR_STATES.CHASE;
-                            swapImage(_FLY);
-                        }
-                        else
-                        {
-                            _state = ACTOR_STATES.IDLE_STARE;
-                            swapImage(_IDLE_STARE);
-                        }
-                    }
-                    else
-                    {
-                        moveToPoint(Player.CPlayer.glblX, Player.CPlayer.glblY, _moveSpeed, false);
-                    }
-                }
-                else
-                {
-                    if (_state == ACTOR_STATES.CHASE)
-                    {
-                        _state = ACTOR_STATES.GO_HOME;
-                    }
-                    else if(_state != ACTOR_STATES.GO_HOME)
-                    {
-                        _state = ACTOR_STATES.IDLE;
                         swapImage(_IDLE);
+                        _state = ACTOR_STATES.IDLE;
                     }
-                }
+                    break;
+
+                default:
+                    break;
+
             }
+            //if (_state != ACTOR_STATES.FROZEN)
+            //{
+            //    if (_state == ACTOR_STATES.GO_HOME)
+            //    {
+            //        moveToPoint(_homePosition.X, _homePosition.Y, _moveSpeed, false);
+
+            //        if (MathExt.MathExt.checkPointWithinRange(_position,_homePosition- new Vector2(1,1),_homePosition+ new Vector2(1,1)))
+            //        {
+            //            _state = ACTOR_STATES.IDLE;
+            //            swapImage(_IDLE);
+            //        }
+            //    }
+
+            //    if (isPointInHearingRange(playerPos))
+            //    {
+            //        if (_state != ACTOR_STATES.CHASE && state != ACTOR_STATES.ATTACK)
+            //        {
+            //            if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _ATTACK_RADIUS))
+            //            {
+            //                _state = ACTOR_STATES.CHASE;
+            //                swapImage(_FLY);
+            //            }
+            //            else
+            //            {
+            //                _state = ACTOR_STATES.IDLE_STARE;
+            //                swapImage(_IDLE_STARE);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            moveToPoint(Player.CPlayer.glblX, Player.CPlayer.glblY, _moveSpeed, false);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (_state == ACTOR_STATES.CHASE)
+            //        {
+            //            _state = ACTOR_STATES.GO_HOME;
+            //        }
+            //        else if(_state != ACTOR_STATES.GO_HOME)
+            //        {
+            //            _state = ACTOR_STATES.IDLE;
+            //            swapImage(_IDLE);
+            //        }
+            //    }
+            //}
         }
 
         public override void timer0(object sender)
@@ -133,9 +171,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
         private void _chooseSwoopTarget()
         {
             Vector2 target = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
-            target.X = target.X - (float)(Math.Sign(target.X) * 60.0);
-            target.Y = target.Y - (float)(Math.Sign(target.Y) * 60.0);
-            _swoopTarget = target;
+            double angle = MathExt.MathExt.angle(_position, target);
+            target = MathExt.MathExt.choosePointOnAngle(angle, 60);
         }
     }
 }
