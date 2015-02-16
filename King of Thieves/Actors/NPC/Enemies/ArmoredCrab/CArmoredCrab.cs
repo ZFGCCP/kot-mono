@@ -14,22 +14,29 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
         public const string SPRITE_NAMESPACE = "npc:armoredCrab";
         private const string _IDLE = SPRITE_NAMESPACE + ":idle";
         private const string _WALK = SPRITE_NAMESPACE + ":walk";
+        private const string _IDLE_NOSHELL = SPRITE_NAMESPACE + ":idleNoShell";
+        private const string _WALK_NOSHELL = SPRITE_NAMESPACE + ":walkNoShell";
         private const int _UPPER_RANGE = 70;
         private const int _LOWER_RANGE = 30;
+        private bool _hasShell = true;
 
         public CArmoredCrab() :
             base()
         {
             if (_armoredCrabCount <= 0)
             {
-                Graphics.CTextures.rawTextures.Add(SPRITE_NAMESPACE, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/armoredCrab"));
+                Graphics.CTextures.rawTextures.Add(SPRITE_NAMESPACE, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/armoredCrabNew"));
 
-                Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 1, "0:0", "4:0", 5));
-                Graphics.CTextures.addTexture(_WALK, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 3));
+                Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:0", "0:0", 0));
+                Graphics.CTextures.addTexture(_WALK, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:0", "3:0", 4));
+                Graphics.CTextures.addTexture(_IDLE_NOSHELL, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:3", "0:3", 0));
+                Graphics.CTextures.addTexture(_WALK_NOSHELL, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:3", "3:3", 4));
             }
 
             _imageIndex.Add(_IDLE, new Graphics.CSprite(_IDLE));
             _imageIndex.Add(_WALK, new Graphics.CSprite(_WALK));
+            _imageIndex.Add(_IDLE_NOSHELL, new Graphics.CSprite(_IDLE_NOSHELL));
+            _imageIndex.Add(_WALK_NOSHELL, new Graphics.CSprite(_WALK_NOSHELL));
 
             _armoredCrabCount++;
 
@@ -42,6 +49,27 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
             _angle = 270;
             _chooseNewPoint();
             swapImage(_WALK);
+            _hitBox = new Collision.CHitBox(this, 7, 5, 20, 20);
+        }
+
+        public override void collide(object sender, CActor collider)
+        {
+            if (collider is Projectiles.CBomb)
+            {
+                if (collider.state == ACTOR_STATES.EXPLODE)
+                {
+                    if (_hasShell)
+                    {
+                        _hasShell = false;
+                        swapImage(_WALK_NOSHELL);
+                    }
+                }
+            }
+        }
+
+        protected override void _addCollidables()
+        {
+            _collidables.Add(typeof(Projectiles.CBomb));
         }
 
         public override void destroy(object sender)
@@ -112,7 +140,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
                     (_position.Y >= _moveToThis.Y - 2 && _position.Y <= _moveToThis.Y + 2))
                 {
                     state = ACTOR_STATES.IDLE;
-                    swapImage(_IDLE);
+                    swapImage(_hasShell ? _IDLE : _IDLE_NOSHELL);
                     startTimer0(120);
                 }
             }
@@ -123,7 +151,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
         public override void timer0(object sender)
         {
             _chooseNewPoint();
-            swapImage(_WALK);
+            swapImage(_hasShell? _WALK : _WALK_NOSHELL);
             base.timer0(sender);
         }
 

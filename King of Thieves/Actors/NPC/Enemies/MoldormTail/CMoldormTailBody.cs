@@ -29,7 +29,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            moveToPoint(_follow.X, _follow.Y, 1);
+            moveToPoint(_follow.X, _follow.Y, 1.0f);
             base.update(gameTime);
         }
 

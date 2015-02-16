@@ -94,7 +94,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
 
         public override void update(GameTime gameTime)
         {
-            moveToPoint(_moveTowardsPoint.X, _moveTowardsPoint.Y, 1);
+            moveToPoint(_moveTowardsPoint.X, _moveTowardsPoint.Y, 1.0f);
             base.update(gameTime);
 
         }

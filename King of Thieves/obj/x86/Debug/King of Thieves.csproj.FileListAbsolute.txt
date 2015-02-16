@@ -168,3 +168,4 @@ C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\moldormandta
 C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\armoredCrab.xnb
 C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\overgownKeese.xnb
 C:\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.Map_Edit.FrmNewComponent.resources
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\armoredCrabNew.xnb

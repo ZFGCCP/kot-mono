@@ -108,7 +108,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Chuchus
         //override this in the child classes if other functionality is needed
         protected virtual void attack()
         {
-            moveToPoint((int)_jumpTo.X, (int)_jumpTo.Y, 1);
+            moveToPoint((int)_jumpTo.X, (int)_jumpTo.Y, 1.0f);
         }
 
         public override void update(GameTime gameTime)

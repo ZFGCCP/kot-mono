@@ -9,10 +9,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
     class COvergrownKeese : CBaseEnemy
     {
         private const int _ATTACK_RADIUS = 120;
-        private const int _SWOOP_RADIUS = 90;
+        private const int _SWOOP_RADIUS = 50;
         private Vector2 _homePosition = Vector2.Zero;
         private Vector2 _swoopTarget = Vector2.Zero;
-        private float _moveSpeed = .5f;
 
         private static int _overgrownKeeseCount = 0;
         private static string _SPRITE_NAMESPACE = "npc:overgrownKeese";
@@ -49,6 +48,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
             _direction = DIRECTION.DOWN;
             _angle = 270;
             swapImage(_IDLE);
+            _hitBox = new Collision.CHitBox(this, 19, 15, 15, 23);
+        }
+
+        protected override void _addCollidables()
+        {
+            _collidables.Add(typeof(Player.CPlayer));
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -85,8 +90,36 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
 
                     if (!MathExt.MathExt.checkPointInCircle(playerPos, _position, _hearingRadius))
                     {
-                        swapImage(_IDLE);
+                        _state = ACTOR_STATES.GO_HOME;
+                    }
+                    else if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _SWOOP_RADIUS))
+                    {
+                        _state = ACTOR_STATES.ATTACK;
+                        swapImage(_SWOOP);
+                        _chooseSwoopTarget();
+                    }
+                    break;
+
+                case ACTOR_STATES.GO_HOME:
+                    moveToPoint(_homePosition.X, _homePosition.Y, .5f, false);
+
+                    if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _hearingRadius))
+                        _state = ACTOR_STATES.CHASE;
+                    else if (_homePosition == _position)
+                    {
                         _state = ACTOR_STATES.IDLE;
+                        swapImage(_IDLE);
+                    }
+                    break;
+
+                case ACTOR_STATES.ATTACK:
+                    moveToPoint(_swoopTarget.X, _swoopTarget.Y, 2.0f, false);
+
+                    if ((_position.X >= _swoopTarget.X - 2 && _position.X <= _swoopTarget.X + 2) &&
+                        (_position.Y >= _swoopTarget.Y - 2 && _position.Y <= _swoopTarget.Y + 2))
+                    {
+                        _state = ACTOR_STATES.CHASE;
+                        swapImage(_FLY);
                     }
                     break;
 
@@ -94,52 +127,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
                     break;
 
             }
-            //if (_state != ACTOR_STATES.FROZEN)
-            //{
-            //    if (_state == ACTOR_STATES.GO_HOME)
-            //    {
-            //        moveToPoint(_homePosition.X, _homePosition.Y, _moveSpeed, false);
-
-            //        if (MathExt.MathExt.checkPointWithinRange(_position,_homePosition- new Vector2(1,1),_homePosition+ new Vector2(1,1)))
-            //        {
-            //            _state = ACTOR_STATES.IDLE;
-            //            swapImage(_IDLE);
-            //        }
-            //    }
-
-            //    if (isPointInHearingRange(playerPos))
-            //    {
-            //        if (_state != ACTOR_STATES.CHASE && state != ACTOR_STATES.ATTACK)
-            //        {
-            //            if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _ATTACK_RADIUS))
-            //            {
-            //                _state = ACTOR_STATES.CHASE;
-            //                swapImage(_FLY);
-            //            }
-            //            else
-            //            {
-            //                _state = ACTOR_STATES.IDLE_STARE;
-            //                swapImage(_IDLE_STARE);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            moveToPoint(Player.CPlayer.glblX, Player.CPlayer.glblY, _moveSpeed, false);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        if (_state == ACTOR_STATES.CHASE)
-            //        {
-            //            _state = ACTOR_STATES.GO_HOME;
-            //        }
-            //        else if(_state != ACTOR_STATES.GO_HOME)
-            //        {
-            //            _state = ACTOR_STATES.IDLE;
-            //            swapImage(_IDLE);
-            //        }
-            //    }
-            //}
         }
 
         public override void timer0(object sender)
@@ -172,7 +159,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
         {
             Vector2 target = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
             double angle = MathExt.MathExt.angle(_position, target);
-            target = MathExt.MathExt.choosePointOnAngle(angle, 60);
+            _swoopTarget = MathExt.MathExt.choosePointOnAngle(angle, 120) + _position;
         }
     }
 }

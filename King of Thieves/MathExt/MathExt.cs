@@ -75,8 +75,8 @@ namespace King_of_Thieves.MathExt
         {
             Vector2 vec = new Vector2();
             double theta = angle * Math.PI / 180.0;
-            vec.X = (float)Math.Cos(theta) * distance;
-            vec.Y = (float)Math.Sin(theta) * distance;
+            vec.X = (float)Math.Round(Math.Cos(theta) * distance);
+            vec.Y = (float)-Math.Round(Math.Sin(theta) * distance);
             return vec;
         }
     }

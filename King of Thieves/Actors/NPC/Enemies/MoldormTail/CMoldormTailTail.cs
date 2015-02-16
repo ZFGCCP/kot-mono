@@ -29,14 +29,14 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
         {
             base.timer0(sender);
             _follow = (Vector2)Map.CMapManager.propertyGetterFromComponent(this.componentAddress, _prev, EActorProperties.OLD_POSITION);
-            moveToPoint(_follow.X, _follow.Y, 1);
+            moveToPoint(_follow.X, _follow.Y, 1.0f);
             _directionChangeExt(_angle);
             startTimer0(15);
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            moveToPoint(_follow.X, _follow.Y, 1);
+            moveToPoint(_follow.X, _follow.Y, 1.0f);
             _changeSpriteDirection();
             base.update(gameTime);
         }

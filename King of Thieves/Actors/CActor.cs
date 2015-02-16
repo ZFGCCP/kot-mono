@@ -109,6 +109,8 @@ namespace King_of_Thieves.Actors
         protected List<Type> _collidables;
         public static bool showHitBox = false; //Draw hitboxes over actor if this is true
         protected Vector2 _motionCounter = Vector2.Zero;
+        private int _motionLimit = 0;
+        
 
         //event handlers will be added here
         public event actorEventHandler onCreate;
@@ -420,6 +422,53 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        public DIRECTION moveToPoint(float x, float y, int speed, bool calcAngle = true)
+        {
+            float distX = 0, distY = 0;
+
+            distX = (x - _position.X);
+            distY = (y - _position.Y);
+
+            distX = Math.Sign(distX);
+            distY = Math.Sign(distY);
+
+            float pps = speed / 60.0f;
+            _motionLimit = (int)Math.Ceiling(pps);
+
+            _motionCounter.X += pps;
+            _motionCounter.Y += pps;
+
+            if (_motionCounter.X >= _motionLimit)
+            {
+                _position.X += (1.0f * distX);
+                _motionCounter.X = 0;
+            }
+            if (_motionCounter.Y >= _motionLimit)
+            {
+                _position.Y += (1.0f * distY);
+                _motionCounter.Y = 0;
+            }
+
+            Vector2 newPosition = new Vector2(x, y);
+
+            if (calcAngle)
+                _angle = _calculateAngle(newPosition);
+
+            if (distY < 0)
+                return DIRECTION.UP;
+            else if (distY > 0)
+                return DIRECTION.DOWN;
+
+            if (distX < 0)
+                return DIRECTION.LEFT;
+            else if (distX > 0)
+                return DIRECTION.RIGHT;
+
+            return DIRECTION.DOWN;
+
+
+        }
+
         public DIRECTION moveToPoint(float x, float y, float speed, bool calcAngle = true)
         {
             float distX = 0, distY = 0;
@@ -430,19 +479,10 @@ namespace King_of_Thieves.Actors
             distX = Math.Sign(distX);
             distY = Math.Sign(distY);
 
-            _motionCounter.X += (speed);
-            _motionCounter.Y += (speed);
+            _position.X += (speed * distX);
+             _position.Y += (speed* distY);
+ 
 
-            if (_motionCounter.X >= 1.0f)
-            {
-                _position.X += (1.0f * distX);
-                _motionCounter.X = 0;
-            }
-            if (_motionCounter.Y >= 1.0f)
-            {
-                _position.Y += (1.0f * distY);
-                _motionCounter.Y = 0;
-            }
 
             Vector2 newPosition = new Vector2(x, y);
 
