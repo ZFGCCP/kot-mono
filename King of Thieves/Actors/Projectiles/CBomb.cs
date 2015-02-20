@@ -25,7 +25,7 @@ namespace King_of_Thieves.Actors.Projectiles
             _name = "bomb" + _bombCount;
             _followRoot = false;
 
-            _hitBox = new Collision.CHitBox(this, 0, 0, 10, 10);
+            _hitBox = new Collision.CHitBox(this, 13, 11, 10, 10);
             swapImage(_TICK);
             shoot();
             startTimer0(120);
@@ -41,16 +41,17 @@ namespace King_of_Thieves.Actors.Projectiles
         {
             base.timer1(sender);
             _blowUp();
-            _hitBox.destroy();
-            _hitBox = null;
-            _hitBox = new Collision.CHitBox(this, 0, 0, 30, 30);
-            _velocity = Vector2.Zero;
         }
 
         public override void animationEnd(object sender)
         {
             if (_state == ACTOR_STATES.EXPLODE)
                 _killMe = true;
+        }
+
+        public override void update(GameTime gameTime)
+        {
+            base.update(gameTime);
         }
 
         public override void collide(object sender, CActor collider)
@@ -68,13 +69,23 @@ namespace King_of_Thieves.Actors.Projectiles
             }
         }
 
+        protected override void _addCollidables()
+        {
+            _collidables.Add(typeof(Collision.CSolidTile));
+            _collidables.Add(typeof(NPC.Enemies.CBaseEnemy));
+        }
+
         private void _blowUp()
         {
             _state = ACTOR_STATES.EXPLODE;
-            swapImage(_EXPLOSION);
+            swapImage(_EXPLOSION,false);
             CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Items:explosionSmall"]);
             _position.X -= 13;
             _position.Y -= 13;
+            _hitBox.destroy();
+            _hitBox = null;
+            _hitBox = new Collision.CHitBox(this, 16, 20, 30, 30);
+            _velocity = Vector2.Zero;
         }
 
         protected override void shoot()

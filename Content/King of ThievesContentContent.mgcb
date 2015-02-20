@@ -578,17 +578,6 @@
 /processorParam:Quality=Best
 /build:sounds/items/arrow_shoot.wav
 
-#begin sprites/npc/armoredCrab.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:TextureFormat=Color
-/build:sprites/npc/armoredCrab.png
-
 #begin sprites/npc/overgownKeese.png
 /importer:TextureImporter
 /processor:TextureProcessor

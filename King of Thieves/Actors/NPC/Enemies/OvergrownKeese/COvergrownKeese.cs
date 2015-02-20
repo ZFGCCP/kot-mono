@@ -86,7 +86,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
                     break;
 
                 case ACTOR_STATES.CHASE:
-                    moveToPoint(playerPos.X, playerPos.Y, .5f, false);
+                    moveToPoint2(playerPos.X, playerPos.Y, .5f, false);
 
                     if (!MathExt.MathExt.checkPointInCircle(playerPos, _position, _hearingRadius))
                     {
@@ -101,7 +101,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
                     break;
 
                 case ACTOR_STATES.GO_HOME:
-                    moveToPoint(_homePosition.X, _homePosition.Y, .5f, false);
+                    moveToPoint2(_homePosition.X, _homePosition.Y, .5f, false);
 
                     if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _hearingRadius))
                         _state = ACTOR_STATES.CHASE;

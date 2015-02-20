@@ -46,7 +46,7 @@ namespace King_of_Thieves
 
         public Game1()
         {
-            this.IsFixedTimeStep = false;
+            this.IsFixedTimeStep = true;
             
             graphics = new GraphicsDeviceManager(this);
             graphics.SynchronizeWithVerticalRetrace = false;

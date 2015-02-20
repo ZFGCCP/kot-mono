@@ -60,6 +60,7 @@ namespace King_of_Thieves.Actors
         POPDOWN,
         POPUP,
         ROLLING,
+        SHIELDING,
         SHOOTING_ARROW,
         SHOOTING_CANNON,
         SMASH,
@@ -104,6 +105,7 @@ namespace King_of_Thieves.Actors
         protected bool _enabled = true;
         private string _dataType;
         public static string _MAP_ICON = "MAP_ICON";
+        protected bool _invulernable = false;
 
         protected Collision.CHitBox _hitBox;
         protected List<Type> _collidables;
@@ -422,7 +424,7 @@ namespace King_of_Thieves.Actors
             }
         }
 
-        public DIRECTION moveToPoint(float x, float y, int speed, bool calcAngle = true)
+        public DIRECTION moveToPoint2(float x, float y, float speed, bool calcAngle = true)
         {
             float distX = 0, distY = 0;
 
@@ -432,18 +434,17 @@ namespace King_of_Thieves.Actors
             distX = Math.Sign(distX);
             distY = Math.Sign(distY);
 
-            float pps = speed / 60.0f;
-            _motionLimit = (int)Math.Ceiling(pps);
+            double ppf = Math.Pow((double)speed,-1);
 
-            _motionCounter.X += pps;
-            _motionCounter.Y += pps;
+            _motionCounter.X += 1;
+            _motionCounter.Y += 1;
 
-            if (_motionCounter.X >= _motionLimit)
+            if (_motionCounter.X >= ppf)
             {
                 _position.X += (1.0f * distX);
                 _motionCounter.X = 0;
             }
-            if (_motionCounter.Y >= _motionLimit)
+            if (_motionCounter.Y >= ppf)
             {
                 _position.Y += (1.0f * distY);
                 _motionCounter.Y = 0;
@@ -566,7 +567,7 @@ namespace King_of_Thieves.Actors
 
                     foreach (CActor x in collideCheck)
                     {
-                        if (!x._noCollide && _hitBox.checkCollision(x))
+                        if (x != this && !x._noCollide && _hitBox.checkCollision(x))
                         {
                             //trigger collision event
                             onCollide(this, x);

@@ -315,61 +315,96 @@ namespace King_of_Thieves.Actors.Player
                         _useItem(0);
                     else if (input.keysPressed.Contains(Keys.Right) && _lastHudKeyPressed != Keys.Right)
                         _useItem(-1);
+                    else if (input.keysPressed.Contains(Keys.LeftShift))
+                        _state = ACTOR_STATES.SHIELDING;
 
                     if (!_usingItem)
                     {
                         if (input.keysPressed.Contains(Keys.A))
                         {
-                            _velocity.X = -1;
-                            _position.X += _velocity.X;
-
                             if (_carrying)
+                            {
                                 swapImage("PlayerCarryLeft");
+                                _velocity.X = -1;
+                            }
+                            else if (_state == ACTOR_STATES.SHIELDING)
+                            {
+                                _velocity.X = -2.5f;
+                            }
                             else
+                            {
                                 image = _imageIndex["PlayerWalkLeft"];
+                                _velocity.X = -1;
+                            }
 
+                            _position.X += _velocity.X;
                             _direction = DIRECTION.LEFT;
                             _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.D))
                         {
-                            _velocity.X = 1;
-                            _position.X += _velocity.X;
-
                             if (_carrying)
+                            {
                                 swapImage("PlayerCarryRight");
+                                _velocity.X = 1;
+                            }
+                            else if (_state == ACTOR_STATES.SHIELDING)
+                            {
+                                _velocity.X = 2.5f;
+                            }
                             else
+                            {
                                 image = _imageIndex["PlayerWalkRight"];
+                                _velocity.X = 1;
+                            }
 
+                            _position.X += _velocity.X;
                             _direction = DIRECTION.RIGHT;
                             _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.W))
                         {
-                            _velocity.Y = -1;
-                            _position.Y += _velocity.Y;
-
                             if (_carrying)
+                            {
+                                _velocity.Y = -1;
                                 swapImage("PlayerCarryUp");
+                            }
+                            else if (_state == ACTOR_STATES.SHIELDING)
+                            {
+                                _velocity.Y = -2.5f;
+                            }
                             else
+                            {
+                                _velocity.Y = -1;
                                 image = _imageIndex["PlayerWalkUp"];
+                            }
 
+                            _position.Y += _velocity.Y;
                             _direction = DIRECTION.UP;
                             _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.S))
                         {
-                            _velocity.Y = 1;
-                            _position.Y += _velocity.Y;
-
+                            
                             if (_carrying)
+                            {
                                 swapImage("PlayerCarryDown");
+                                _velocity.Y = 1;
+                            }
+                            else if (_state == ACTOR_STATES.SHIELDING)
+                            {
+                                _velocity.Y = 2.5f;
+                            }
                             else
+                            {
                                 image = _imageIndex["PlayerWalkDown"];
+                                _velocity.Y = 1;
+                            }
 
+                            _position.Y += _velocity.Y;
                             _direction = DIRECTION.DOWN;
                             _state = ACTOR_STATES.MOVING;
                         }
@@ -419,6 +454,9 @@ namespace King_of_Thieves.Actors.Player
 
                     _lastHudKeyPressed = Keys.None;
                 }
+
+                if (input.keysReleased.Contains(Keys.LeftShift))
+                    _state = ACTOR_STATES.IDLE;
 
                 if (input.keysReleased.Contains(Keys.C) && _state == ACTOR_STATES.MOVING)
                 {

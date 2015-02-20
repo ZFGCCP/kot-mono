@@ -294,11 +294,25 @@ namespace King_of_Thieves.Map
             return query.ToArray()[0];
         }
 
+        private bool _isTypePartOfFamily(Type family, Type checkMe)
+        {
+            Type iterator = checkMe;
+            while (iterator != typeof(Actors.CActor))
+            {
+                if (family == iterator)
+                    return true;
+                else
+                    iterator = iterator.BaseType;
+            }
+            return false;
+        }
+
         public Actors.CActor[] queryActorRegistry(Type type, int layer)
         {
             var query = from actor in _actorRegistry
-                        where actor.GetType() == type && actor.layer == layer
+                        where _isTypePartOfFamily(type,actor.GetType()) && actor.layer == layer
                         select actor;
+
 
             return query.ToArray();
         }

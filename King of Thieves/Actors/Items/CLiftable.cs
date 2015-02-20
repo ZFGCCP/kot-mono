@@ -186,7 +186,7 @@ namespace King_of_Thieves.Actors.Items
         {
             if (_state != ACTOR_STATES.LIFT || _state != ACTOR_STATES.CARRY)
             {
-                if (collider is CSolidTile)
+                if (collider is CSolidTile && collider != this)
                 {
                     solidCollide(collider);
                 }

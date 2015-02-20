@@ -263,8 +263,11 @@ namespace King_of_Thieves.Graphics
             foreach (string key in resourcesToRemove)
                 textures.Remove(key);
 
-            _tileBatch.Dispose();
-            _tileBatch = null;
+            if (_tileBatch != null)
+            {
+                _tileBatch.Dispose();
+                _tileBatch = null;
+            }
         }
 
         public static Texture2D generateLayerImage(Map.CLayer layerToRender, Map.CTile[] tileStrip)

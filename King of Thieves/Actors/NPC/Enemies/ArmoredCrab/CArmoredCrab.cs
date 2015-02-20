@@ -62,6 +62,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
                     {
                         _hasShell = false;
                         swapImage(_WALK_NOSHELL);
+                        _invulernable = true;
+                        startTimer1(200);
+                    }
+                    else if (!_invulernable)
+                    {
+                        _killMe = true;
                     }
                 }
             }
@@ -134,7 +140,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
 
             if (state == ACTOR_STATES.MOVING)
             {
-                moveToPoint(_moveToThis.X, _moveToThis.Y, .5f, false);
+                moveToPoint2(_moveToThis.X, _moveToThis.Y, .5f, false);
 
                 if ((_position.X >= _moveToThis.X - 2 && _position.X <= _moveToThis.X + 2) &&
                     (_position.Y >= _moveToThis.Y - 2 && _position.Y <= _moveToThis.Y + 2))
@@ -153,6 +159,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
             _chooseNewPoint();
             swapImage(_hasShell? _WALK : _WALK_NOSHELL);
             base.timer0(sender);
+        }
+
+        public override void timer1(object sender)
+        {
+            _invulernable = false;
+            base.timer1(sender);
         }
 
 
