@@ -9,7 +9,7 @@ namespace King_of_Thieves.Actors.HUD.Text
 {
     public class CTextBox : CHUDElement
     {
-        private SpriteFont _sherwood = CMasterControl.glblContent.Load<SpriteFont>(@"Fonts/sherwood");
+        private static SpriteFont _sherwood = CMasterControl.glblContent.Load<SpriteFont>(@"Fonts/sherwood");
         private readonly Vector2 _CENTER_SCREEN = new Vector2(100, 100);
         private readonly Vector2 _BOX_SCREEN = new Vector2(40, 175);
         private const int _LINE_MAX_CHARS = 43;

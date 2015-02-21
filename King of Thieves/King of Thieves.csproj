@@ -59,6 +59,7 @@
     <Compile Include="Actors\HUD\buttons\CButtonController.cs" />
     <Compile Include="Actors\HUD\CCameraBoundary.cs" />
     <Compile Include="Actors\HUD\CHUDElement.cs" />
+    <Compile Include="Actors\HUD\counters\CBaseCounter.cs" />
     <Compile Include="Actors\HUD\health\CHealth.cs" />
     <Compile Include="Actors\HUD\health\CHealthController.cs" />
     <Compile Include="Actors\HUD\Text\CTextBox.cs" />
@@ -67,7 +68,6 @@
     <Compile Include="Actors\Items\decoration\CPot.cs" />
     <Compile Include="Actors\Items\Drops\CDroppable.cs" />
     <Compile Include="Actors\Items\Drops\CHeartDrop.cs" />
-    <Compile Include="Actors\Items\Drops\playerStats\CDropHeart.cs" />
     <Compile Include="Actors\Items\Swords\CGerudoSword.cs" />
     <Compile Include="Actors\Menu\CMenu.cs" />
     <Compile Include="Actors\Menu\CMenuCursor.cs" />
@@ -436,6 +436,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Actors\Items\Drops\playerStats\" />
     <Folder Include="Content\bin\WindowsGL\" />
     <Folder Include="Content\obj\WindowsGL\" />
   </ItemGroup>

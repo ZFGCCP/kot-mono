@@ -40,6 +40,7 @@ namespace King_of_Thieves.Actors
         CHASE,
         DAWN,
         DAY,
+        DECREMENT,
         DUSK,
         EXPLODE,
         FLYING,
@@ -50,6 +51,7 @@ namespace King_of_Thieves.Actors
         HOLD_CANNON,
         IDLE,
         IDLE_STARE,
+        INCREMENT,
         INVISIBLE,
         KNOCKBACK,
         LIFT,
@@ -434,20 +436,32 @@ namespace King_of_Thieves.Actors
             distX = Math.Sign(distX);
             distY = Math.Sign(distY);
 
-            double ppf = Math.Pow((double)speed,-1);
+            double ppf = 0;
+            if (speed > 1.0f)
+                ppf = Math.Round(speed);
+            else
+                ppf = Math.Pow((double)speed, -1);
 
             _motionCounter.X += 1;
             _motionCounter.Y += 1;
 
-            if (_motionCounter.X >= ppf)
+            if (speed > 1.0f)
             {
-                _position.X += (1.0f * distX);
-                _motionCounter.X = 0;
+                _position.X += ((float)ppf * distX);
+                _position.Y += ((float)ppf * distX);
             }
-            if (_motionCounter.Y >= ppf)
+            else
             {
-                _position.Y += (1.0f * distY);
-                _motionCounter.Y = 0;
+                if (_motionCounter.X >= ppf)
+                {
+                    _position.X += (1.0f * distX);
+                    _motionCounter.X = 0;
+                }
+                if (_motionCounter.Y >= ppf)
+                {
+                    _position.Y += (1.0f * distY);
+                    _motionCounter.Y = 0;
+                }
             }
 
             Vector2 newPosition = new Vector2(x, y);
