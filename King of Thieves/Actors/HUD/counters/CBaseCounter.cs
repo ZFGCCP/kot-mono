@@ -14,8 +14,10 @@ namespace King_of_Thieves.Actors.HUD.counters
         private int _amount;
         private int _incrementAmount = 0;
         private bool _instantaneousUpdate = false;
-        private Vector2 _textOffset = Vector2.Zero;
+        protected Vector2 _textOffset = Vector2.Zero;
         private Color _textColor = Color.White;
+
+        protected const string _ICON = "HUD:rupee";
 
         public CBaseCounter(int capacity, int amount)
             : base()
@@ -23,6 +25,9 @@ namespace King_of_Thieves.Actors.HUD.counters
             _capacity = capacity;
             _amount = amount;
             _state = ACTOR_STATES.IDLE;
+
+            if (_amount == _capacity)
+                _textColor = Color.LightGreen;
         }
 
         public void increment(int amount, bool instant = false)

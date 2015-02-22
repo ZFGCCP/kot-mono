@@ -25,13 +25,18 @@ namespace King_of_Thieves.Actors.HUD.Text
             _showBox = true;
             _active = true;
             _messageQueue = message;
+            _fixedPosition.X = 40;
+            _fixedPosition.Y = 165;
             _processedMessage = _processMessage(true);
+            
         }
 
         public void displayMessage(string message)
         {
              _active = true;
              _messageQueue = message;
+             _fixedPosition.X = 40;
+             _fixedPosition.Y = 165;
              _processedMessage = _processMessage(true);
         }
 
@@ -47,9 +52,9 @@ namespace King_of_Thieves.Actors.HUD.Text
             SpriteBatch spriteBatch = Graphics.CGraphics.spriteBatch;
             
             if (isMessageBox)
-                _textBox.draw((int)_BOX_SCREEN.X - 30, (int)_BOX_SCREEN.Y - 7,false);
+                _textBox.draw((int)_position.X - 30, (int)_position.Y - 7,false);
 
-            spriteBatch.DrawString(_sherwood, _processedMessage, _BOX_SCREEN, Color.White);
+            spriteBatch.DrawString(_sherwood, _processedMessage, _position, Color.White);
         }
 
         public override void update(GameTime gameTime)

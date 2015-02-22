@@ -60,6 +60,7 @@
     <Compile Include="Actors\HUD\CCameraBoundary.cs" />
     <Compile Include="Actors\HUD\CHUDElement.cs" />
     <Compile Include="Actors\HUD\counters\CBaseCounter.cs" />
+    <Compile Include="Actors\HUD\counters\CRupeeCounter.cs" />
     <Compile Include="Actors\HUD\health\CHealth.cs" />
     <Compile Include="Actors\HUD\health\CHealthController.cs" />
     <Compile Include="Actors\HUD\Text\CTextBox.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CFireWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CIceWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CWizzrobe.cs" />
+    <Compile Include="Actors\NPC\Enemies\Zombie\CBaseZombie.cs" />
     <Compile Include="Actors\NPC\Other\Maple\CMaple.cs" />
     <Compile Include="Actors\Player\CPlayer.cs" />
     <Compile Include="Actors\Projectiles\CArrow.cs" />
@@ -105,7 +107,6 @@
     <Compile Include="Actors\World\Water\CDeepWater.cs" />
     <Compile Include="Actors\World\Water\CShallowWater.cs" />
     <Compile Include="CMasterControl.cs" />
-    <Compile Include="Counters\CBaseCounter.cs" />
     <Compile Include="CTimer.cs" />
     <Compile Include="Data Struct\Graph\NodeGraph.cs" />
     <Compile Include="Data Struct\Node.cs" />
