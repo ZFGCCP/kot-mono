@@ -68,6 +68,7 @@ namespace King_of_Thieves.Actors
         SMASH,
         SWINGING,
         SHOCKED,
+        STUNNED,
         THROW_BOOMERANG,
         THROWING,
         TOSSING,
@@ -844,6 +845,11 @@ namespace King_of_Thieves.Actors
         public virtual void freeze()
         {
             throw new NotImplementedException("You may not call this method from the CActor class. Method: freeze()");
+        }
+
+        public virtual void stun(int time)
+        {
+            throw new NotImplementedException("You may not call this method from the CACtor class. Method: stun()");
         }
 
         //this will go up to the component and trigger the specified user event in the specified actor

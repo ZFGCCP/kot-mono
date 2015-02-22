@@ -740,6 +740,13 @@ namespace King_of_Thieves.Actors.Player
             }
         }
 
+        public override void stun(int time)
+        {
+            _state = ACTOR_STATES.STUNNED;
+            _acceptInput = false;
+            startTimer3(time);
+        }
+
         public override void freeze()
         {
             _state = ACTOR_STATES.FROZEN;
