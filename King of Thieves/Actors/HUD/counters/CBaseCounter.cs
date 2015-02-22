@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.Actors.HUD.counters
 {
@@ -13,6 +14,8 @@ namespace King_of_Thieves.Actors.HUD.counters
         private int _amount;
         private int _incrementAmount = 0;
         private bool _instantaneousUpdate = false;
+        private Vector2 _textOffset = Vector2.Zero;
+        private Color _textColor = Color.White;
 
         public CBaseCounter(int capacity, int amount)
             : base()
@@ -30,6 +33,13 @@ namespace King_of_Thieves.Actors.HUD.counters
         
         }
 
+        public void decrement(int amount, bool instant = false)
+        {
+            _state = ACTOR_STATES.DECREMENT;
+            _incrementAmount = -amount;
+            _instantaneousUpdate = instant;
+        }
+
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             base.update(gameTime);
@@ -43,13 +53,24 @@ namespace King_of_Thieves.Actors.HUD.counters
 
                     _amount += _incrementAmount;
                 }
-                else
+                else if(_amount < _capacity && _incrementAmount > 0)
                 {
-                    if (_amount < _capacity && _incrementAmount > 0)
-                    {
-                        _amount += 1;
-                        _incrementAmount -= 1;
-                    }
+                    _amount += 1;
+                    _incrementAmount -= 1;
+                }
+            }
+            else if (_state == ACTOR_STATES.DECREMENT)
+            {
+                if (_instantaneousUpdate)
+                {
+                    int allowedIncrement = _incrementAmount > _amount ? _incrementAmount : _amount;
+
+                    _amount -= allowedIncrement;
+                }
+                else if(_amount > 0 && _incrementAmount >= _amount)
+                {
+                    _amount -= 1;
+                    _incrementAmount -= 1;
                 }
             }
         }
@@ -57,7 +78,7 @@ namespace King_of_Thieves.Actors.HUD.counters
         public override void draw(object sender)
         {
             base.draw(sender);
-
+            Graphics.CGraphics.spriteBatch.DrawString(_sherwood, _amount.ToString(), _position + _textOffset, _textColor);
         }
     }
 }

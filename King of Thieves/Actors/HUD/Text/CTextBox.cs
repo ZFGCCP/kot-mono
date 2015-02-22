@@ -37,6 +37,7 @@ namespace King_of_Thieves.Actors.HUD.Text
 
         public override void drawMe(bool useOverlay = false)
         {
+            base.drawMe();
             if (_active)
                 _drawText(_showBox);
         }
