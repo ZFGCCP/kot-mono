@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Gears.Cloud;
+using King_of_Thieves.Input;
 
 namespace King_of_Thieves.Actors.Items.decoration
 {
@@ -76,11 +79,19 @@ namespace King_of_Thieves.Actors.Items.decoration
         private ITEMS_INSIDE _itemInside;
 
        private const string _CHESTS_SMALL = "chests-small";
+       private const int _OPEN_RADIUS = 10;
 
-        //PARAMETERS
-        //0: ChestType
-        //1: ChestState
-        //2: Item Inside
+
+       public CChest() :
+           base()
+       {
+           
+       }
+
+       //PARAMETERS
+       //0: ChestType
+       //1: ChestState
+       //2: Item Inside
         public override void init(string name, Microsoft.Xna.Framework.Vector2 position, string dataType, int compAddress, params string[] additional)
         {
             short chestState, chestType, item;
@@ -94,6 +105,7 @@ namespace King_of_Thieves.Actors.Items.decoration
             _itemInside = (ITEMS_INSIDE)item;
 
             _imageIndex.Add(_CHESTS_SMALL, new Graphics.CSprite("tileset:items:chests-small"));
+            _loadChest();
 
             switch (_chestType)
             {
@@ -123,10 +135,34 @@ namespace King_of_Thieves.Actors.Items.decoration
                     break;
 
                 case ITEMS_INSIDE.RUPEE_1:
+                    Items.Drops.CRupeeDrop rupee = new Drops.CRupeeDrop();
+                    rupee.init(this.name + "rupeeGreen", _position, "", this.componentAddress, "G");
+                    Map.CMapManager.addActorToComponent(rupee, this.componentAddress);
                     break;
 
                 default:
                     break;
+            }
+        }
+
+        public override void update(Microsoft.Xna.Framework.GameTime gameTime)
+        {
+            base.update(gameTime);
+            
+        }
+
+        public override void keyRelease(object sender)
+        {
+            base.keyRelease(sender);
+
+            Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+            CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+            
+            if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C) && 
+                MathExt.MathExt.checkPointInCircle(playerPos, _position, _OPEN_RADIUS) && 
+                (DIRECTION)Map.CMapManager.propertyGetter("player", Map.EActorProperties.DIRECTION) == DIRECTION.UP)
+            {
+
             }
         }
     }
