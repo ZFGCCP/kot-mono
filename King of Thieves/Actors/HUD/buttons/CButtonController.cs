@@ -20,6 +20,11 @@ namespace King_of_Thieves.Actors.HUD.buttons
             _rupeeCounter.update(gameTime);
         }
 
+        public void incrementRupees(int amount, bool instant = false)
+        {
+            _rupeeCounter.increment(amount, instant);
+        }
+
         public void drawMe(SpriteBatch spriteBatch)
         {
             _buttonLeft.drawMe();

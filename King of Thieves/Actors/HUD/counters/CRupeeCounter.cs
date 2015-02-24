@@ -12,7 +12,7 @@ namespace King_of_Thieves.Actors.HUD.counters
         private const int _RUPEE_GIANT_CAPACITY = 1000;
 
         public CRupeeCounter()
-            : base(_RUPEE_WALLET_CAPACITY, 99)
+            : base(_RUPEE_WALLET_CAPACITY, 0)
         {
             _fixedPosition.X = 10;
             _fixedPosition.Y = 210;

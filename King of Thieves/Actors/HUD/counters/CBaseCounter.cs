@@ -48,6 +48,14 @@ namespace King_of_Thieves.Actors.HUD.counters
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             base.update(gameTime);
+
+            if (_amount == _capacity)
+                _textColor = Color.LightGreen;
+            else if (_amount == 0)
+                _textColor = Color.DarkGray;
+            else
+                _textColor = Color.WhiteSmoke;
+
             if (_state == ACTOR_STATES.INCREMENT)
             {
                 if (_instantaneousUpdate)

@@ -600,3 +600,9 @@
 /processorParam:TextureFormat=Color
 /build:sprites/npc/armoredCrabNew.png
 
+#begin sounds/items/rupee_pickup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/items/rupee_pickup.wav
+

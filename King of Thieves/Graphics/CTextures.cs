@@ -40,6 +40,9 @@ namespace King_of_Thieves.Graphics
 
         public const string DROPS_HEART = DROPS + "heart";
         public const string DROPS_RUPEE_GREEN = DROPS + "rupeeGreen";
+        public const string DROPS_RUPEE_BLUE = DROPS + "rupeeBlue";
+        public const string DROPS_RUPEE_ORANGE = DROPS + "rupeeOrange";
+        public const string DROPS_RUPEE_PURPLE = DROPS + "rupeePurple";
 
         public const string PLAYER_CHARGE_ARROW_LEFT = PLAYER + "chargeArrowLeft";
         public const string PLAYER_HOLD_ARROW_LEFT = PLAYER + "holdArrowLeft";
@@ -209,6 +212,9 @@ namespace King_of_Thieves.Graphics
             //drops
             textures.Add(DROPS_HEART, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:0", "0:0"));
             textures.Add(DROPS_RUPEE_GREEN, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:1", "0:1"));
+            textures.Add(DROPS_RUPEE_BLUE, new CTextureAtlas("drops:drops01", 16, 16, 1, "1:1", "1:1"));
+            textures.Add(DROPS_RUPEE_ORANGE, new CTextureAtlas("drops:drops01", 16, 16, 1, "2:1", "2:1"));
+            textures.Add(DROPS_RUPEE_PURPLE, new CTextureAtlas("drops:drops01", 16, 16, 1, "3:1", "3:1"));
         }
 
         public static void addRawTexture(string textureName, string fileNameNoExt)

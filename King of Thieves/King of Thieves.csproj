@@ -69,6 +69,7 @@
     <Compile Include="Actors\Items\decoration\CPot.cs" />
     <Compile Include="Actors\Items\Drops\CDroppable.cs" />
     <Compile Include="Actors\Items\Drops\CHeartDrop.cs" />
+    <Compile Include="Actors\Items\Drops\CRupeeDrop.cs" />
     <Compile Include="Actors\Items\Swords\CGerudoSword.cs" />
     <Compile Include="Actors\Menu\CMenu.cs" />
     <Compile Include="Actors\Menu\CMenuCursor.cs" />
@@ -465,6 +466,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sprites\npc\armoredCrabNew.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\items\rupee_pickup.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -428,6 +428,13 @@ namespace King_of_Thieves.Actors.Player
             if (_acceptInput)
             {
                 CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+                if (input.keysReleased.Contains(Keys.T))
+                {
+                    Items.Drops.CRupeeDrop rupee = new Items.Drops.CRupeeDrop();
+                    rupee.init("rupeeTest", _position - new Vector2(20, 20), "", this.componentAddress, "P");
+                    Map.CMapManager.addActorToComponent(rupee, this.componentAddress);
+                }
+
                 if (!(Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysPressed)
                 {
                     if (_state == ACTOR_STATES.MOVING)
