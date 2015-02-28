@@ -47,6 +47,7 @@ namespace King_of_Thieves.Actors
         FOLLOW_PLAYER,
         FROZEN,
         GO_HOME,
+        GOT_ITEM,
         HOLD_ARROW,
         HOLD_CANNON,
         IDLE,
@@ -55,6 +56,7 @@ namespace King_of_Thieves.Actors
         INVISIBLE,
         KNOCKBACK,
         LIFT,
+        LOCKED,
         MIDNIGHT,
         MORNING,
         MOVING,
@@ -72,6 +74,7 @@ namespace King_of_Thieves.Actors
         THROW_BOOMERANG,
         THROWING,
         TOSSING,
+        UNLOCKED,
         WOBBLE
     }
 
@@ -109,6 +112,12 @@ namespace King_of_Thieves.Actors
         private string _dataType;
         public static string _MAP_ICON = "MAP_ICON";
         protected bool _invulernable = false;
+
+        protected int _lineOfSight;
+        protected int _fovMagnitude;
+        protected float _visionRange; //this is an angle
+        protected float _visionSlope;
+        protected int _hearingRadius; //how far away they can hear you from
 
         protected Collision.CHitBox _hitBox;
         protected List<Type> _collidables;
@@ -857,6 +866,22 @@ namespace King_of_Thieves.Actors
         protected void _triggerUserEvent(int eventNum, string actorName, params object[] param)
         {
             CMasterControl.commNet[_componentAddress].Add(new CActorPacket(eventNum, actorName, this, param));
+        }
+
+        protected bool _checkIfPointInView(Vector2 point)
+        {
+            //build triangle points first
+            Vector2 A = _position;
+            Vector2 B = Vector2.Zero;
+            Vector2 C = Vector2.Zero;
+
+            B.X = (float)(Math.Cos((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
+            B.Y = (float)((Math.Sin((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
+
+            C.X = (float)(Math.Cos((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
+            C.Y = (float)((Math.Sin((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
+
+            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
         }
     }
 }

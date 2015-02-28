@@ -28,10 +28,11 @@ namespace King_of_Thieves.Actors.Player
         private const int _MAX_BOMB_VELO = 5;
         private int _bombVelo = 0;
 
-        private static string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
-        private static string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
-        private static string _THROW_BOOMERANG_LEFT = "PlayerThrowBoomerangLeft";
-        private static string _THROW_BOOMERANG_RIGHT = "PlayerThrowBoomerangRight";
+        private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
+        private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
+        private const string _THROW_BOOMERANG_LEFT = "PlayerThrowBoomerangLeft";
+        private const string _THROW_BOOMERANG_RIGHT = "PlayerThrowBoomerangRight";
+        private const string _GOT_ITEM = "PlayerGotItem";
 
         public CPlayer() :
             base()
@@ -127,6 +128,8 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(_THROW_BOOMERANG_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT]));
             _imageIndex.Add(_THROW_BOOMERANG_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT], null, true));
             _imageIndex.Add(_THROW_BOOMERANG_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP]));
+
+            _imageIndex.Add(_GOT_ITEM, new Graphics.CSprite(Graphics.CTextures.PLAYER, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_GOT_ITEM]));
         }
 
         public override void collide(object sender, CActor collider)
@@ -465,39 +468,42 @@ namespace King_of_Thieves.Actors.Player
                 if (input.keysReleased.Contains(Keys.LeftShift))
                     _state = ACTOR_STATES.IDLE;
 
-                if (input.keysReleased.Contains(Keys.C) && _state == ACTOR_STATES.MOVING)
+                if (input.keysReleased.Contains(Keys.C))
                 {
-                    if (_carrying)
+                    if (_state == ACTOR_STATES.MOVING)
                     {
-                        _triggerUserEvent(0, "carryMe", _direction);
-                        _state = ACTOR_STATES.THROWING;
-
-                        switch (_direction)
+                        if (_carrying)
                         {
-                            case DIRECTION.DOWN:
-                                swapImage("PlayerThrowDown");
-                                break;
+                            _triggerUserEvent(0, "carryMe", _direction);
+                            _state = ACTOR_STATES.THROWING;
 
-                            case DIRECTION.UP:
-                                swapImage("PlayerThrowUp");
-                                break;
+                            switch (_direction)
+                            {
+                                case DIRECTION.DOWN:
+                                    swapImage("PlayerThrowDown");
+                                    break;
 
-                            case DIRECTION.LEFT:
-                                swapImage("PlayerThrowLeft");
-                                break;
+                                case DIRECTION.UP:
+                                    swapImage("PlayerThrowUp");
+                                    break;
 
-                            case DIRECTION.RIGHT:
-                                swapImage("PlayerThrowRight");
-                                break;
+                                case DIRECTION.LEFT:
+                                    swapImage("PlayerThrowLeft");
+                                    break;
+
+                                case DIRECTION.RIGHT:
+                                    swapImage("PlayerThrowRight");
+                                    break;
+                            }
+
+                            _carrying = false;
+                            return;
                         }
-
-                        _carrying = false;
+                        _state = ACTOR_STATES.ROLLING;
+                        _rollReleased = false;
+                        //get the FUCK out of this
                         return;
                     }
-                    _state = ACTOR_STATES.ROLLING;
-                    _rollReleased = false;
-                    //get the FUCK out of this
-                    return;
                 }
             }
 
@@ -511,6 +517,16 @@ namespace King_of_Thieves.Actors.Player
             base.update(gameTime);
             switch (_state)
             {
+                case ACTOR_STATES.GOT_ITEM:
+                    if (Actors.HUD.Text.CTextBox.messageFinished)
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        _direction = DIRECTION.DOWN;
+                        _angle = 270;
+                        swapImage("PlayerIdleDown");
+                    }
+                    break;
+
                 case ACTOR_STATES.LIFT:
                     switch (_direction)
                     {

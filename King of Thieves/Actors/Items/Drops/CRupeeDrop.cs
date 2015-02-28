@@ -61,6 +61,7 @@ namespace King_of_Thieves.Actors.Items.Drops
         {
             CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["HUD:rupees:rupeeGet"]);
             CMasterControl.buttonController.incrementRupees(_value);
+            base._yieldToPlayer();
         }
 
         protected override void _addCollidables()

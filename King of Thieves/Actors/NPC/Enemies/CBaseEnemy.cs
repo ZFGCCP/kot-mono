@@ -34,11 +34,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies
     public abstract class CBaseEnemy : CActor
     {
         protected Dictionary<Items.Drops.CDroppable, float> _itemDrop = new Dictionary<Items.Drops.CDroppable,float>();
-        protected int _lineOfSight;
-        protected int _fovMagnitude;
-        protected float _visionRange; //this is an angle
-        protected float _visionSlope;
-        protected int _hearingRadius; //how far away they can hear you from
         protected bool _huntPlayer = false;
         protected List<ENEMY_PROPERTIES> _properties = new List<ENEMY_PROPERTIES>();
 
@@ -56,22 +51,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies
             //calculate field of view
             _fovMagnitude = (int)Math.Cos(_visionRange * (Math.PI / 180.0));
             _visionSlope = (int)Math.Tan(_visionRange * (Math.PI/180.0));
-        }
-
-        protected bool _checkIfPointInView(Vector2 point)
-        {
-            //build triangle points first
-            Vector2 A = _position;
-            Vector2 B = Vector2.Zero;
-            Vector2 C = Vector2.Zero;
-
-            B.X = (float)(Math.Cos((_angle - _visionRange/2.0f) * (Math.PI/180)) * _lineOfSight) + _position.X;
-            B.Y = (float)((Math.Sin((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight)*-1.0) + _position.Y;
-
-            C.X = (float)(Math.Cos((_angle + _visionRange / 2.0f) * (Math.PI/180)) * _lineOfSight) + _position.X;
-            C.Y = (float)((Math.Sin((_angle + _visionRange / 2.0f) * (Math.PI/180)) * _lineOfSight)*-1.0) + _position.Y;
-
-            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
         }
 
         protected override void _initializeResources()

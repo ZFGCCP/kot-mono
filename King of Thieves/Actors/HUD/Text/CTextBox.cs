@@ -18,7 +18,16 @@ namespace King_of_Thieves.Actors.HUD.Text
         private string _processedMessage = "";
         private Graphics.CSprite _textBox = new Graphics.CSprite("HUD:text:textBox");
         private bool _active = false;
-        private bool _showBox = false; 
+        private bool _showBox = false;
+        private static bool _messageFinished = false;
+
+        public static bool messageFinished
+        {
+            get
+            {
+                return _messageFinished;
+            }
+        }
 
         public void displayMessageBox(string message)
         {
@@ -60,6 +69,7 @@ namespace King_of_Thieves.Actors.HUD.Text
         public override void update(GameTime gameTime)
         {
             base.update(gameTime);
+            _messageFinished = false;
             if (CMasterControl.glblInput.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.Z))
                 _processedMessage = _processMessage();
         }
@@ -79,6 +89,7 @@ namespace King_of_Thieves.Actors.HUD.Text
             if (string.IsNullOrEmpty(output.Trim()))
             {
                 _active = false;
+                _messageFinished = true;
                 CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Text:textBoxClose"]);
             }
             else if (!isFirst)

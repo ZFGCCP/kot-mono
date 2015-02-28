@@ -21,6 +21,21 @@ namespace King_of_Thieves.Actors.Items.Drops
             _killMe = true;
         }
 
-        protected abstract void _yieldToPlayer();
+        protected virtual void _yieldToPlayer()
+        {
+            _killMe = true;
+        }
+
+        protected override void _registerUserEvents()
+        {
+            base._registerUserEvents();
+
+            _userEvents.Add(0, userEventYield);
+        }
+
+        protected void userEventYield(object sender)
+        {
+            _yieldToPlayer();
+        }
     }
 }

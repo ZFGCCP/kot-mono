@@ -79,13 +79,16 @@ namespace King_of_Thieves.Actors.Items.decoration
         private ITEMS_INSIDE _itemInside;
 
        private const string _CHESTS_SMALL = "chests-small";
-       private const int _OPEN_RADIUS = 10;
 
 
        public CChest() :
            base()
        {
-           
+           _hearingRadius = 10;
+           _lineOfSight = 10;
+           _visionRange = 20;
+           _direction = DIRECTION.DOWN;
+           _angle = 270;
        }
 
        //PARAMETERS
@@ -136,19 +139,30 @@ namespace King_of_Thieves.Actors.Items.decoration
 
                 case ITEMS_INSIDE.RUPEE_1:
                     Items.Drops.CRupeeDrop rupee = new Drops.CRupeeDrop();
-                    rupee.init(this.name + "rupeeGreen", _position, "", this.componentAddress, "G");
+                    rupee.init(this.name + "loadedItem", _position, "", this.componentAddress, "G");
                     Map.CMapManager.addActorToComponent(rupee, this.componentAddress);
                     break;
 
                 default:
                     break;
             }
+            _state = ACTOR_STATES.LOCKED;
+        }
+
+        private void _unloadChest()
+        {
+            _triggerUserEvent(0, this.name + "loadedItem");
+            _state = ACTOR_STATES.UNLOCKED;
+
+            CMasterControl.buttonController.createTextBox("You got a thing!");
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             base.update(gameTime);
-            
+            Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+            if (_checkIfPointInView(playerPos))
+                CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.OPEN);
         }
 
         public override void keyRelease(object sender)
@@ -159,10 +173,10 @@ namespace King_of_Thieves.Actors.Items.decoration
             CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
             
             if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C) && 
-                MathExt.MathExt.checkPointInCircle(playerPos, _position, _OPEN_RADIUS) && 
+                _checkIfPointInView(playerPos) && 
                 (DIRECTION)Map.CMapManager.propertyGetter("player", Map.EActorProperties.DIRECTION) == DIRECTION.UP)
             {
-
+                _unloadChest();
             }
         }
     }

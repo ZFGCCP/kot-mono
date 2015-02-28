@@ -58,10 +58,12 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_THROW_BOOMERANG_UP = PLAYER + "throwBoomerangUp";
         public const string PLAYER_THROW_BOOMERANG_DOWN = PLAYER + "throwBoomerangDown";
         public const string PLAYER_THROW_BOOMERANG_LEFT = PLAYER + "throwBoomerangLeft";
+        public const string PLAYER_GOT_ITEM = PLAYER + "gotItem";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_BOMB_CANNON = HUD + "bombCannon";
         public const string HUD_RUPEES = HUD + "rupees";
+        public const string HUD_ACTION = HUD + "action";
 
        
         //source images
@@ -135,6 +137,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_THROW_BOOMERANG_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:21", "22:21", 8));
             textures.Add(PLAYER_THROW_BOOMERANG_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:23", "22:23", 8));
             textures.Add(PLAYER_THROW_BOOMERANG_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:22", "22:22", 8));
+            textures.Add(PLAYER_GOT_ITEM, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "21:2", "21:2", 0));
 
             textures.Add("GerudoSword:SwingDown", new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 55));
             textures.Add("GerudoSword:SwingUp", new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 55));
@@ -206,6 +209,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("HUD:buttonRight", new CTextureAtlas("hudButtons", 32, 32, 0, "1:0", "1:0", 0));
             textures.Add("HUD:buttonUp", new CTextureAtlas("hudButtons", 32, 32, 0, "2:0", "2:0", 0));
             textures.Add(HUD_ARROWS, new CTextureAtlas("hudButtons", 32, 32, 0, "0:1", "0:1", 0));
+            textures.Add(HUD_ACTION, new CTextureAtlas("hudButtons", 32, 32, 0, "3:0", "3:0", 0));
             textures.Add(HUD_BOMB_CANNON, new CTextureAtlas("hudButtons", 32, 32, 0, "1:1", "1:1", 0));
             textures.Add(HUD_RUPEES, new CTextureAtlas("health", 16, 16, 1, "0:1", "0:1", 0));
 
