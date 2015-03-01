@@ -182,17 +182,17 @@ namespace King_of_Thieves.Forms.Map_Edit
 
         private void btnAddLayer_Click(object sender, EventArgs e)
         {
-            string layerName = Microsoft.VisualBasic.Interaction.InputBox("Please Enter a layer name.", "Add New Layer", "New Layer" + cmbLayers.Items.Count);
+            //string layerName = Microsoft.VisualBasic.Interaction.InputBox("Please Enter a layer name.", "Add New Layer", "New Layer" + cmbLayers.Items.Count);
 
-            if (cmbLayers.Items.Contains(layerName))
-            {
-                MessageBox.Show("There is already a layer with that name.", "Add New Layer", MessageBoxButtons.OK);
-                return;
-            }
-
-            cmbLayers.Items.Add(layerName);
-
-            _loadedMap._layers.Add(new Map.CLayer(_atlasCache));
+//            if (cmbLayers.Items.Contains(layerName))
+//            {
+//                MessageBox.Show("There is already a layer with that name.", "Add New Layer", MessageBoxButtons.OK);
+//                return;
+//            }
+//
+//            cmbLayers.Items.Add(layerName);
+//
+//            _loadedMap._layers.Add(new Map.CLayer(_atlasCache));
 
         }
 
