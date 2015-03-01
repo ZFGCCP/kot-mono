@@ -79,14 +79,15 @@ namespace King_of_Thieves.Actors.Items.decoration
         private ITEMS_INSIDE _itemInside;
 
        private const string _CHESTS_SMALL = "chests-small";
+       private bool _isLoaded = false;
 
 
        public CChest() :
            base()
        {
            _hearingRadius = 10;
-           _lineOfSight = 10;
-           _visionRange = 20;
+           _lineOfSight = 300;
+           _visionRange = 90;
            _direction = DIRECTION.DOWN;
            _angle = 270;
        }
@@ -108,7 +109,7 @@ namespace King_of_Thieves.Actors.Items.decoration
             _itemInside = (ITEMS_INSIDE)item;
 
             _imageIndex.Add(_CHESTS_SMALL, new Graphics.CSprite("tileset:items:chests-small"));
-            _loadChest();
+            _hitBox = new Collision.CHitBox(this, 0, 0, 16, 16);
 
             switch (_chestType)
             {
@@ -116,7 +117,7 @@ namespace King_of_Thieves.Actors.Items.decoration
                     break;
 
                 case CHEST_TYPES.SMALL_CHEST:
-                    image = _imageIndex[_CHESTS_SMALL];
+                    swapImage(_CHESTS_SMALL);
 
                     if (_chestState == CHEST_STATES.LOCKED)
                         image.setFrame(0, 0);
@@ -147,22 +148,41 @@ namespace King_of_Thieves.Actors.Items.decoration
                     break;
             }
             _state = ACTOR_STATES.LOCKED;
+            _isLoaded = true;
         }
 
         private void _unloadChest()
         {
             _triggerUserEvent(0, this.name + "loadedItem");
             _state = ACTOR_STATES.UNLOCKED;
+            image.setFrame(1, 0);
 
+            startTimer0(10);
+        }
+
+        public override void timer0(object sender)
+        {
+            base.timer0(sender);
             CMasterControl.buttonController.createTextBox("You got a thing!");
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Background:itemFanfare"]);
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             base.update(gameTime);
             Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
-            if (_checkIfPointInView(playerPos))
-                CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.OPEN);
+            DIRECTION playerDirection = (DIRECTION)Map.CMapManager.propertyGetter("player", Map.EActorProperties.DIRECTION);
+
+            if (!_isLoaded)
+                _loadChest();
+
+            if (_state == ACTOR_STATES.LOCKED)
+            {
+                if (_checkIfPointInView(playerPos) && playerDirection == DIRECTION.UP)
+                {
+                    CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.OPEN);
+                }
+            }
         }
 
         public override void keyRelease(object sender)
@@ -173,8 +193,8 @@ namespace King_of_Thieves.Actors.Items.decoration
             CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
             
             if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C) && 
-                _checkIfPointInView(playerPos) && 
-                (DIRECTION)Map.CMapManager.propertyGetter("player", Map.EActorProperties.DIRECTION) == DIRECTION.UP)
+                CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.OPEN &&
+                _state == ACTOR_STATES.LOCKED)
             {
                 _unloadChest();
             }

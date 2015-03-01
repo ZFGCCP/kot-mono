@@ -34,12 +34,7 @@
 					<actor name = "pot" type = "King_of_Thieves.Actors.Items.decoration.CPot" coordinates = "20:96"></actor>
 				</actors>
 			</component>
-			<component>
-				<actors>
-					<actor name = "player" type = "King_of_Thieves.Actors.Player.CPlayer" coordinates = "0:0"></actor>
-					<actor name = "sword" type = "King_of_Thieves.Actors.Items.Swords.CSword" coordinates = "0:0"></actor>
-				</actors>
-			</component>
+			
 			
 			<component>
 				<actors>
@@ -115,6 +110,17 @@
 			<component>
 				<actors>
 					<actor name="overgrownKeese" type="King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese.COvergrownKeese" coordinates = "100:100"></actor>
+				</actors>
+			</component>
+			<component>
+				<actors>
+					<actor name="chestTest" type="King_of_Thieves.Actors.Items.decoration.CChest" coordinates = "20:100" params="0,1,4"></actor>
+				</actors>
+			</component>
+			<component>
+				<actors>
+					<actor name = "player" type = "King_of_Thieves.Actors.Player.CPlayer" coordinates = "0:0"></actor>
+					<actor name = "sword" type = "King_of_Thieves.Actors.Items.Swords.CSword" coordinates = "0:0"></actor>
 				</actors>
 			</component>
 		</components>

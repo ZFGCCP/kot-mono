@@ -169,3 +169,4 @@ C:\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.Map_Edit.FrmNewC
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\armoredCrabNew.xnb
 C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\armoredCrabNew.xnb
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\rupee_pickup.xnb
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\environment\itemFanfare.xnb

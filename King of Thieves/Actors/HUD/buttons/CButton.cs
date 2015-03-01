@@ -33,7 +33,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
 
         private readonly HUD_BUTTON_TYPE _BUTTON_TYPE = 0;
         public HUDOPTIONS hudItem = HUDOPTIONS.ARROWS;
-        public HUD_ACTION_OPTIONS actionOption = HUD_ACTION_OPTIONS.OPEN;
+        public HUD_ACTION_OPTIONS actionOption = HUD_ACTION_OPTIONS.NONE;
 
         private const string _BUTTON_LEFT = "buttonLeft";
         private const string _BUTTON_RIGHT = "buttonRight";

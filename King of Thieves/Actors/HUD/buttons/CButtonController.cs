@@ -26,11 +26,20 @@ namespace King_of_Thieves.Actors.HUD.buttons
             _buttonLeft.update(gameTime);
             _buttonAction.update(gameTime);
             _rupeeCounter.update(gameTime);
+            _textBoxController.update(gameTime);
         }
 
         public void changeActionIconState(HUD_ACTION_OPTIONS option)
         {
             _buttonAction.changeAction(option);
+        }
+
+        public HUD_ACTION_OPTIONS actionIconState
+        {
+            get
+            {
+                return _buttonAction.actionOption;
+            }
         }
 
         public void incrementRupees(int amount, bool instant = false)
@@ -44,6 +53,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
             _buttonRight.drawMe();
             _buttonAction.drawMe();
             _rupeeCounter.drawMe();
+            _textBoxController.drawMe();
         }
 
         public HUDOPTIONS buttonLeftItem

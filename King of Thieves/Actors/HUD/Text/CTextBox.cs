@@ -70,7 +70,7 @@ namespace King_of_Thieves.Actors.HUD.Text
         {
             base.update(gameTime);
             _messageFinished = false;
-            if (CMasterControl.glblInput.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.Z))
+            if (CMasterControl.glblInput.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C))
                 _processedMessage = _processMessage();
         }
 

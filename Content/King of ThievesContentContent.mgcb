@@ -606,3 +606,9 @@
 /processorParam:TextureFormat=Color
 /build:tiletest.png
 
+#begin sounds/environment/itemFanfare.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/environment/itemFanfare.wav
+

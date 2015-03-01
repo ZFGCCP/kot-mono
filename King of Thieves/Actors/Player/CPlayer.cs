@@ -129,12 +129,12 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(_THROW_BOOMERANG_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT], null, true));
             _imageIndex.Add(_THROW_BOOMERANG_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP]));
 
-            _imageIndex.Add(_GOT_ITEM, new Graphics.CSprite(Graphics.CTextures.PLAYER, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_GOT_ITEM]));
+            _imageIndex.Add(_GOT_ITEM, new Graphics.CSprite(Graphics.CTextures.PLAYER_GOT_ITEM, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_GOT_ITEM]));
         }
 
         public override void collide(object sender, CActor collider)
         {
-            if (!collider.noCollide && collider is CSolidTile)
+            if (!collider.noCollide && (collider is CSolidTile || collider is Items.decoration.CChest))
             {
                 solidCollide(collider);
             }
@@ -470,6 +470,14 @@ namespace King_of_Thieves.Actors.Player
 
                 if (input.keysReleased.Contains(Keys.C))
                 {
+                    //check HUD state
+                    if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.OPEN)
+                    {
+                        _state = ACTOR_STATES.GOT_ITEM;
+                        swapImage(_GOT_ITEM);
+                        _acceptInput = false;
+                    }
+
                     if (_state == ACTOR_STATES.MOVING)
                     {
                         if (_carrying)
@@ -522,7 +530,9 @@ namespace King_of_Thieves.Actors.Player
                     {
                         _state = ACTOR_STATES.IDLE;
                         _direction = DIRECTION.DOWN;
+                        CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
                         _angle = 270;
+                        _acceptInput = true;
                         swapImage("PlayerIdleDown");
                     }
                     break;
@@ -727,14 +737,18 @@ namespace King_of_Thieves.Actors.Player
         protected override void _addCollidables()
         {
             //_collidables.Add(typeof(Actors.NPC.Enemies.Keese.CKeese));
-            _collidables.Add(typeof(Actors.Collision.CSolidTile));
-            _collidables.Add(typeof(Actors.Items.decoration.CPot));
+
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseFire));
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseIce));
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeese));
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseShadow));
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseThunder));
             _collidables.Add(typeof(Projectiles.CEnergyWave));
+
+            //world things
+            _collidables.Add(typeof(Actors.Collision.CSolidTile));
+            _collidables.Add(typeof(Actors.Items.decoration.CPot));
+            _collidables.Add(typeof(Actors.Items.decoration.CChest));
         }
 
         public override void shock()

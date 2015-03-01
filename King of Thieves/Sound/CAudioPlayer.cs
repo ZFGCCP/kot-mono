@@ -69,6 +69,7 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Background:Nature:Rooster", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/rooster")));
             soundBank.Add("Background:Nature:Wolf", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/wolf")));
             soundBank.Add("Background:Shock", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/shock")));
+            soundBank.Add("Background:itemFanfare", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfare")));
         }
 
         public void stop()
