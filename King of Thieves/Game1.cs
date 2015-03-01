@@ -117,7 +117,7 @@ namespace King_of_Thieves
             CMasterControl.audioPlayer.soundBank.Add("lttp_heart", new Sound.CSound(Content.Load<SoundEffect>("lttp_heart")));
 
             menuComo.root = testMenu;
-            CMasterControl.mapManager.cacheMaps(false, "tiletester.xml");
+            CMasterControl.mapManager.cacheMaps(false, "tileTester.xml");
             CMasterControl.mapManager.cacheMaps(false, "thieves-house-f1.xml");
 
             textTest = new Actors.HUD.Text.CTextBox();
