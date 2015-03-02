@@ -19,15 +19,24 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
         protected readonly static string _HEAD_ULEFT = "headULeft";
         protected readonly static string _HEAD_URIGHT = "headURight";
 
+        protected readonly static string _TAIL_UP = "tailUp";
+        protected readonly static string _TAIL_DOWN = "tailDown";
+        protected readonly static string _TAIL_LEFT = "tailLeft";
+        protected readonly static string _TAIL_RIGHT = "tailRight";
+
+        protected readonly static string _TAIL_DLEFT = "tailDLeft";
+        protected readonly static string _TAIL_DRIGHT = "tailDRight";
+        protected readonly static string _TAIL_ULEFT = "tailULeft";
+        protected readonly static string _TAIL_URIGHT = "tailURight";
+
         protected readonly static string _BODY = "body";
-        protected readonly static string _TAIL = "tail";
 
         protected readonly static string _NPC_MOLDORM = "npc:MoldormTail";
         protected static int _moldormAndTailCount = 0;
         protected readonly bool _isMoldorm;
         protected string _prev = "";
         protected string _next = "";
-        protected Vector2 _moveTowardsPoint = Vector2.Zero;
+        protected Vector2 _follow = Vector2.Zero;
 
         public CMoldormTailPiece(bool isMoldorm, params dropRate[] drops)
             : base(drops)

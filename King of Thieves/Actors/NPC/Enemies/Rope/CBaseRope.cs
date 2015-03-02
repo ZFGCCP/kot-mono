@@ -13,9 +13,30 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 
     class CBaseRope : CBaseEnemy
     {
+        protected const string _NPC_ROPE = "npc:rope";
+        private static int _ropeCount = 0;
+
+         //image index constants
+        protected const string _SLITHER_DOWN = "slitherDown";
+        protected const string _SLITHER_UP = "slitherUp";
+        protected const string _SLITHER_LEFT = "slitherLeft";
+        protected const string _SLITHER_RIGHT = "slitherRight";
+
+        //slither fast
+        protected const string _FAST_SLITHER_DOWN = "fastslitherDown";
+        protected const string _FAST_SLITHER_UP = "fastslitherUp";
+        protected const string _FAST_SLITHER_LEFT = "fastslitherLeft";
+        protected const string _FAST_SLITHER_RIGHT = "fastslitherRight";
+
+
         public CBaseRope(int foh, params dropRate[] drops)
             : base(drops)
         {
+            if (!Graphics.CTextures.rawTextures.ContainsKey(_NPC_ROPE))
+                Graphics.CTextures.rawTextures.Add(_NPC_ROPE, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/rope"));
+
+
+            _ropeCount += 1;
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -36,7 +57,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
         }
 
         protected override void cleanUp()
-        { }
 
         public override void timer0(object sender)
         {

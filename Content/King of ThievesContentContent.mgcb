@@ -1,4 +1,3 @@
-
 #----------------------------- Global Properties ----------------------------#
 
 /outputDir:..\King of Thieves\Content
@@ -589,3 +588,30 @@
 /processorParam:TextureFormat=Color
 /build:sprites/npc/rope.png
 
+#begin sprites/npc/overgownKeese.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:sprites/npc/overgownKeese.png
+
+#begin sprites/npc/armoredCrabNew.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:sprites/npc/armoredCrabNew.png
+
+#begin sounds/items/rupee_pickup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/items/rupee_pickup.wav

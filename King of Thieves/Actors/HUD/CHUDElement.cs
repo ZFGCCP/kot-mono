@@ -18,6 +18,8 @@ namespace King_of_Thieves.Actors.HUD
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             base.update(gameTime);
+            _position.X = _fixedPosition.X - CMasterControl.camera.position.X;
+            _position.Y = _fixedPosition.Y - CMasterControl.camera.position.Y;
         }
 
         

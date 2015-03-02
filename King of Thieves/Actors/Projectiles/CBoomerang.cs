@@ -10,7 +10,7 @@ namespace King_of_Thieves.Actors.Projectiles
     class CBoomerang : CProjectile
     {
         private static string _SPIN = "spin";
-        private static int _VELO = 2;
+        private static float _VELO = 2.0f;
 
         public CBoomerang(Vector2 velocity, Vector2 position, DIRECTION direction, int damage)
             : base(DIRECTION.DOWN, velocity, position)

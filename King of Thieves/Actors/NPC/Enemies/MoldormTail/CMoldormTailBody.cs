@@ -9,7 +9,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
 {
     class CMoldormTailBody : CMoldormTailPiece
     {
-        private Vector2 _follow = Vector2.Zero;
+        
 
         public CMoldormTailBody() :
             base(true)
@@ -29,7 +29,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            moveToPoint(_follow.X, _follow.Y, 1);
+            moveToPoint(_follow.X, _follow.Y, 1.0f);
             base.update(gameTime);
         }
 

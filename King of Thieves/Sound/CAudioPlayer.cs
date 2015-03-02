@@ -60,6 +60,7 @@ namespace King_of_Thieves.Sound
             //hud
             soundBank.Add("HUD:health:heartGet", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/health/lttp_heart")));
             soundBank.Add("HUD:health:healthBeep", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/health/Low_Health_Beep")));
+            soundBank.Add("HUD:rupees:rupeeGet", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/rupee_pickup")));
 
             //npcs
             soundBank.Add("Npc:wizzrobe:vanish", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/wizzrobevanish")));

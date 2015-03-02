@@ -74,11 +74,5 @@ namespace King_of_Thieves.Actors.HUD.health
         {
             base.drawMe(useOverlay);
         }
-
-        public override void update(GameTime gameTime)
-        {
-            _position.X = _fixedPosition.X - CMasterControl.camera.position.X;
-            _position.Y = _fixedPosition.Y - CMasterControl.camera.position.Y;
-        }
     }
 }

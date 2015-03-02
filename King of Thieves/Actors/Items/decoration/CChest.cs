@@ -113,5 +113,21 @@ namespace King_of_Thieves.Actors.Items.decoration
 
             base.init(name, position, dataType, compAddress, additional);
         }
+
+        private void _loadChest()
+        {
+            switch (_itemInside)
+            {
+                case ITEMS_INSIDE.HEART:
+                    Map.CMapManager.addActorToComponent(new Actors.Items.Drops.CHeartDrop(), this.componentAddress);
+                    break;
+
+                case ITEMS_INSIDE.RUPEE_1:
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 }

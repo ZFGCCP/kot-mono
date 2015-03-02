@@ -46,7 +46,7 @@ namespace King_of_Thieves
 
         public Game1()
         {
-            this.IsFixedTimeStep = false;
+            this.IsFixedTimeStep = true;
             
             graphics = new GraphicsDeviceManager(this);
             graphics.SynchronizeWithVerticalRetrace = false;
@@ -94,7 +94,7 @@ namespace King_of_Thieves
             Master.GetInputManager().AddInputHandler(new CInput());
             CMasterControl.glblInput = Master.GetInputManager().GetCurrentInputHandler() as Input.CInput;
             CMasterControl.healthController = new Actors.HUD.health.CHealthController(20,78);
-            CMasterControl.buttonController = new Actors.HUD.buttons.CButtonController();
+            
 
             base.Initialize();
         }
@@ -121,6 +121,7 @@ namespace King_of_Thieves
             CMasterControl.mapManager.cacheMaps(false, "thieves-house-f1.xml");
 
             textTest = new Actors.HUD.Text.CTextBox();
+            CMasterControl.buttonController = new Actors.HUD.buttons.CButtonController();
         }
 
         /// <summary>

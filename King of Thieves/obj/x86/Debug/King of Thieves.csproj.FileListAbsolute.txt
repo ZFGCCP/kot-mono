@@ -243,3 +243,16 @@ C:\Users\Fubar\kot-mono\King of Thieves\obj\x86\Debug\OpenTK.GLControl.resources
 C:\Users\Fubar\kot-mono\King of Thieves\obj\x86\Debug\King of Thieves.csproj.GenerateResource.Cache
 C:\Users\Fubar\kot-mono\King of Thieves\obj\x86\Debug\King of Thieves.exe
 C:\Users\Fubar\kot-mono\King of Thieves\obj\x86\Debug\King of Thieves.pdb
+On Mon, Mar 2, 2015 at 3:04 PM, Daniel Caruso <dcaruso19@gmail.com> wrote:
+<<<<<<< HEAD
+=======
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\overgownKeese.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\boomerang.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\arrow_shoot.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\moldormandtail.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\overgownKeese.xnb
+C:\kot-mono\King of Thieves\obj\x86\Debug\King_of_Thieves.Forms.Map_Edit.FrmNewComponent.resources
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\armoredCrabNew.xnb
+C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\armoredCrabNew.xnb
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\rupee_pickup.xnb
+>>>>>>> origin/development

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace King_of_Thieves.Actors.Items.Drops
 {
-    public class CDroppable : CActor
+    public abstract class CDroppable : CActor
     {
         protected int _capacity; //how much this item provides ex: 1 heart, 10 bombs, 5 arrows
 
@@ -20,5 +20,7 @@ namespace King_of_Thieves.Actors.Items.Drops
             base.collide(sender, collider);
             _killMe = true;
         }
+
+        protected abstract void _yieldToPlayer();
     }
 }

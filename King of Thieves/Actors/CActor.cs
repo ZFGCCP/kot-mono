@@ -40,14 +40,18 @@ namespace King_of_Thieves.Actors
         CHASE,
         DAWN,
         DAY,
+        DECREMENT,
         DUSK,
         EXPLODE,
         FLYING,
         FOLLOW_PLAYER,
         FROZEN,
+        GO_HOME,
         HOLD_ARROW,
         HOLD_CANNON,
         IDLE,
+        IDLE_STARE,
+        INCREMENT,
         INVISIBLE,
         KNOCKBACK,
         LIFT,
@@ -58,11 +62,13 @@ namespace King_of_Thieves.Actors
         POPDOWN,
         POPUP,
         ROLLING,
+        SHIELDING,
         SHOOTING_ARROW,
         SHOOTING_CANNON,
         SMASH,
         SWINGING,
         SHOCKED,
+        STUNNED,
         THROW_BOOMERANG,
         THROWING,
         TOSSING,
@@ -102,11 +108,14 @@ namespace King_of_Thieves.Actors
         protected bool _enabled = true;
         private string _dataType;
         public static string _MAP_ICON = "MAP_ICON";
+        protected bool _invulernable = false;
 
         protected Collision.CHitBox _hitBox;
         protected List<Type> _collidables;
         public static bool showHitBox = false; //Draw hitboxes over actor if this is true
-
+        protected Vector2 _motionCounter = Vector2.Zero;
+        private int _motionLimit = 0;
+        
 
         //event handlers will be added here
         public event actorEventHandler onCreate;
@@ -226,6 +235,14 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        protected double _calculateAngle(Vector2 toPoint)
+        {
+            double angle = MathExt.MathExt.angle(_position, toPoint);
+            
+
+            return angle;
+        }
+
         private void _registerSystemEvents()
         {
             _userEvents.Add(1000, (object sender) => _killMe = true);
@@ -233,10 +250,13 @@ namespace King_of_Thieves.Actors
 
         public void lookAt(Vector2 position)
         {
-            double angle = MathExt.MathExt.angle(_position, position);
-            if (angle < 0)
-                angle += 360;
+            double angle = _calculateAngle(position);
 
+            _directionChange(angle);
+        }
+
+        protected void _directionChange(double angle)
+        {
             if (angle >= 225 && angle <= 315)
             {
                 _direction = DIRECTION.DOWN;
@@ -253,15 +273,18 @@ namespace King_of_Thieves.Actors
             {
                 _direction = DIRECTION.RIGHT;
             }
-
         }
 
         public void lookAtExt(Vector2 position)
         {
-            double angle = MathExt.MathExt.angle(_position, position);
-            if (angle < 0)
-                angle += 360;
+            double angle = _calculateAngle(position);
 
+            _directionChangeExt(angle);
+
+        }
+
+        protected void _directionChangeExt(double angle)
+        {
             if (angle >= 247.5 && angle <= 292.5)
             {
                 _direction = DIRECTION.DOWN;
@@ -270,7 +293,7 @@ namespace King_of_Thieves.Actors
             {
                 _direction = DIRECTION.DLEFT;
             }
-            else if(angle >= 292.5 && angle <= 337.5)
+            else if (angle >= 292.5 && angle <= 337.5)
             {
                 _direction = DIRECTION.DRIGHT;
             }
@@ -294,7 +317,6 @@ namespace King_of_Thieves.Actors
             {
                 _direction = DIRECTION.RIGHT;
             }
-
         }
 
         public string getMapHeaderInfo()
@@ -405,7 +427,65 @@ namespace King_of_Thieves.Actors
             }
         }
 
-        public DIRECTION moveToPoint(float x, float y, float speed)
+        public DIRECTION moveToPoint2(float x, float y, float speed, bool calcAngle = true)
+        {
+            float distX = 0, distY = 0;
+
+            distX = (x - _position.X);
+            distY = (y - _position.Y);
+
+            distX = Math.Sign(distX);
+            distY = Math.Sign(distY);
+
+            double ppf = 0;
+            if (speed > 1.0f)
+                ppf = Math.Round(speed);
+            else
+                ppf = Math.Pow((double)speed, -1);
+
+            _motionCounter.X += 1;
+            _motionCounter.Y += 1;
+
+            if (speed > 1.0f)
+            {
+                _position.X += ((float)ppf * distX);
+                _position.Y += ((float)ppf * distX);
+            }
+            else
+            {
+                if (_motionCounter.X >= ppf)
+                {
+                    _position.X += (1.0f * distX);
+                    _motionCounter.X = 0;
+                }
+                if (_motionCounter.Y >= ppf)
+                {
+                    _position.Y += (1.0f * distY);
+                    _motionCounter.Y = 0;
+                }
+            }
+
+            Vector2 newPosition = new Vector2(x, y);
+
+            if (calcAngle)
+                _angle = _calculateAngle(newPosition);
+
+            if (distY < 0)
+                return DIRECTION.UP;
+            else if (distY > 0)
+                return DIRECTION.DOWN;
+
+            if (distX < 0)
+                return DIRECTION.LEFT;
+            else if (distX > 0)
+                return DIRECTION.RIGHT;
+
+            return DIRECTION.DOWN;
+
+
+        }
+
+        public DIRECTION moveToPoint(float x, float y, float speed, bool calcAngle = true)
         {
             float distX = 0, distY = 0;
 
@@ -416,7 +496,14 @@ namespace King_of_Thieves.Actors
             distY = Math.Sign(distY);
 
             _position.X += (speed * distX);
-            _position.Y += (speed * distY);
+             _position.Y += (speed* distY);
+ 
+
+
+            Vector2 newPosition = new Vector2(x, y);
+
+            if (calcAngle)
+                _angle = _calculateAngle(newPosition);
 
             if (distY < 0)
                 return DIRECTION.UP;
@@ -495,7 +582,7 @@ namespace King_of_Thieves.Actors
 
                     foreach (CActor x in collideCheck)
                     {
-                        if (!x._noCollide && _hitBox.checkCollision(x))
+                        if (x != this && !x._noCollide && _hitBox.checkCollision(x))
                         {
                             //trigger collision event
                             onCollide(this, x);
@@ -517,7 +604,6 @@ namespace King_of_Thieves.Actors
                         onAnimationEnd(this);
                     }
                     catch (NotImplementedException) { ;}
-
 
                 _oldPosition = _position;
 
@@ -695,6 +781,10 @@ namespace King_of_Thieves.Actors
             {
                 return _oldPosition;
             }
+            set
+            {
+                _oldPosition = value;
+            }
             
         }
 
@@ -755,6 +845,11 @@ namespace King_of_Thieves.Actors
         public virtual void freeze()
         {
             throw new NotImplementedException("You may not call this method from the CActor class. Method: freeze()");
+        }
+
+        public virtual void stun(int time)
+        {
+            throw new NotImplementedException("You may not call this method from the CACtor class. Method: stun()");
         }
 
         //this will go up to the component and trigger the specified user event in the specified actor

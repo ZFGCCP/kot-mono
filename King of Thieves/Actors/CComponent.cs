@@ -62,6 +62,9 @@ namespace King_of_Thieves.Actors
                 case Map.EActorProperties.OLD_POSITION:
                     return actor.oldPosition;
 
+                case Map.EActorProperties.DIRECTION:
+                    return actor.direction;
+
                 default:
                     return null;
             }
@@ -132,6 +135,7 @@ namespace King_of_Thieves.Actors
 
             if (enabled)
             {
+                //update the root's old position and then update the actor
                 root.update(gameTime);
 
                 foreach (KeyValuePair<string, CActor> kvp in actors)
@@ -141,7 +145,6 @@ namespace King_of_Thieves.Actors
                         removeActor(kvp.Value, true);
                         continue;
                     }
-
                     //first get messages from the commNet
                     _checkCommNet(kvp.Key, kvp.Value);
 

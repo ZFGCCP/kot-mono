@@ -58,6 +58,22 @@ namespace King_of_Thieves.Actors.NPC.Enemies
             _visionSlope = (int)Math.Tan(_visionRange * (Math.PI/180.0));
         }
 
+        protected bool _checkIfPointInView(Vector2 point)
+        {
+            //build triangle points first
+            Vector2 A = _position;
+            Vector2 B = Vector2.Zero;
+            Vector2 C = Vector2.Zero;
+
+            B.X = (float)(Math.Cos((_angle - _visionRange/2.0f) * (Math.PI/180)) * _lineOfSight) + _position.X;
+            B.Y = (float)((Math.Sin((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight)*-1.0) + _position.Y;
+
+            C.X = (float)(Math.Cos((_angle + _visionRange / 2.0f) * (Math.PI/180)) * _lineOfSight) + _position.X;
+            C.Y = (float)((Math.Sin((_angle + _visionRange / 2.0f) * (Math.PI/180)) * _lineOfSight)*-1.0) + _position.Y;
+
+            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
+        }
+
         protected override void _initializeResources()
         {
             base._initializeResources();
@@ -89,11 +105,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies
             //}
             
             //check hearing field
-            if (MathExt.MathExt.distance(_position, new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY)) <= _hearingRadius)
-                return true;
+            return isPointInHearingRange(new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY));
+        }
 
-            return false;
-
+        protected bool isPointInHearingRange(Vector2 point)
+        {
+            return MathExt.MathExt.checkPointInCircle(_position, point, _hearingRadius);
         }
 
         //chase the player
@@ -105,7 +122,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies
         public override void destroy(object sender)
         {
             Items.Drops.CDroppable itemToDrop = _dropItem();
-            Map.CMapManager.addActorToComponent(itemToDrop, CReservedAddresses.DROP_CONTROLLER);
+
+            if (itemToDrop != null)
+                Map.CMapManager.addActorToComponent(itemToDrop, CReservedAddresses.DROP_CONTROLLER);
 
             if (_hitBox != null)
                 base.destroy(sender);
@@ -133,14 +152,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies
 
         protected bool _checkLineofSight(float x, float y)
         {
-            //return _visionSlope * (x - _position.X) + (y - _position.Y);
+            
 
-            switch (_direction)
-            {
-                case DIRECTION.UP:
-                    //return 
-                    break;
-            }
+
 
 
             return false;

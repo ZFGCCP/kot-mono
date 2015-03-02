@@ -232,7 +232,10 @@ namespace King_of_Thieves.Actors.Player
             else if (diffx > diffy)
                 _position.Y += peny; //Same here 
             else
-                position = new Vector2(position.X + penx, position.Y + peny); //Corner cases 
+            {
+                _position.X += penx; 
+                _position.Y += peny; //Corner cases 
+            }
         }
 
         public override void create(object sender)
@@ -312,61 +315,96 @@ namespace King_of_Thieves.Actors.Player
                         _useItem(0);
                     else if (input.keysPressed.Contains(Keys.Right) && _lastHudKeyPressed != Keys.Right)
                         _useItem(-1);
+                    else if (input.keysPressed.Contains(Keys.LeftShift))
+                        _state = ACTOR_STATES.SHIELDING;
 
                     if (!_usingItem)
                     {
                         if (input.keysPressed.Contains(Keys.A))
                         {
-                            _velocity.X = -1;
-                            _position.X += _velocity.X;
-
                             if (_carrying)
+                            {
                                 swapImage("PlayerCarryLeft");
+                                _velocity.X = -1;
+                            }
+                            else if (_state == ACTOR_STATES.SHIELDING)
+                            {
+                                _velocity.X = -2.5f;
+                            }
                             else
+                            {
                                 image = _imageIndex["PlayerWalkLeft"];
+                                _velocity.X = -1;
+                            }
 
+                            _position.X += _velocity.X;
                             _direction = DIRECTION.LEFT;
                             _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.D))
                         {
-                            _velocity.X = 1;
-                            _position.X += _velocity.X;
-
                             if (_carrying)
+                            {
                                 swapImage("PlayerCarryRight");
+                                _velocity.X = 1;
+                            }
+                            else if (_state == ACTOR_STATES.SHIELDING)
+                            {
+                                _velocity.X = 2.5f;
+                            }
                             else
+                            {
                                 image = _imageIndex["PlayerWalkRight"];
+                                _velocity.X = 1;
+                            }
 
+                            _position.X += _velocity.X;
                             _direction = DIRECTION.RIGHT;
                             _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.W))
                         {
-                            _velocity.Y = -1;
-                            _position.Y += _velocity.Y;
-
                             if (_carrying)
+                            {
+                                _velocity.Y = -1;
                                 swapImage("PlayerCarryUp");
+                            }
+                            else if (_state == ACTOR_STATES.SHIELDING)
+                            {
+                                _velocity.Y = -2.5f;
+                            }
                             else
+                            {
+                                _velocity.Y = -1;
                                 image = _imageIndex["PlayerWalkUp"];
+                            }
 
+                            _position.Y += _velocity.Y;
                             _direction = DIRECTION.UP;
                             _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.S))
                         {
-                            _velocity.Y = 1;
-                            _position.Y += _velocity.Y;
-
+                            
                             if (_carrying)
+                            {
                                 swapImage("PlayerCarryDown");
+                                _velocity.Y = 1;
+                            }
+                            else if (_state == ACTOR_STATES.SHIELDING)
+                            {
+                                _velocity.Y = 2.5f;
+                            }
                             else
+                            {
                                 image = _imageIndex["PlayerWalkDown"];
+                                _velocity.Y = 1;
+                            }
 
+                            _position.Y += _velocity.Y;
                             _direction = DIRECTION.DOWN;
                             _state = ACTOR_STATES.MOVING;
                         }
@@ -390,6 +428,13 @@ namespace King_of_Thieves.Actors.Player
             if (_acceptInput)
             {
                 CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+                if (input.keysReleased.Contains(Keys.T))
+                {
+                    Items.Drops.CRupeeDrop rupee = new Items.Drops.CRupeeDrop();
+                    rupee.init("rupeeTest", _position - new Vector2(20, 20), "", this.componentAddress, "P");
+                    Map.CMapManager.addActorToComponent(rupee, this.componentAddress);
+                }
+
                 if (!(Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysPressed)
                 {
                     if (_state == ACTOR_STATES.MOVING)
@@ -417,7 +462,10 @@ namespace King_of_Thieves.Actors.Player
                     _lastHudKeyPressed = Keys.None;
                 }
 
-                if (input.keysReleased.Contains(Keys.LeftShift) && _state == ACTOR_STATES.MOVING)
+                if (input.keysReleased.Contains(Keys.LeftShift))
+                    _state = ACTOR_STATES.IDLE;
+
+                if (input.keysReleased.Contains(Keys.C) && _state == ACTOR_STATES.MOVING)
                 {
                     if (_carrying)
                     {
@@ -697,6 +745,13 @@ namespace King_of_Thieves.Actors.Player
                     swapImage("PlayerShockRight");
                     break;
             }
+        }
+
+        public override void stun(int time)
+        {
+            _state = ACTOR_STATES.STUNNED;
+            _acceptInput = false;
+            startTimer3(time);
         }
 
         public override void freeze()
