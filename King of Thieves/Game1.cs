@@ -13,6 +13,7 @@ using King_of_Thieves.Input;
 using System.Linq;
 using Gears.Cloud.Utility;
 using System.Timers;
+using System.Diagnostics;
 
 namespace King_of_Thieves
 {
@@ -31,8 +32,9 @@ namespace King_of_Thieves
         CComponent menuComo = new CComponent();
         Actors.HUD.Text.CTextBox textTest = null;
 
-//        HighPerfTimer _updateTimer = new HighPerfTimer();
-//        HighPerfTimer _drawTimer = new HighPerfTimer();
+		Stopwatch _updateTimer = new Stopwatch();
+		Stopwatch _drawTimer = new Stopwatch();
+
         System.Timers.Timer _fpsTimer = new System.Timers.Timer(1000);
         public void _fpsHandler(object sender, ElapsedEventArgs e) { updateFPS = updateFrames; updateFrames = 0; drawFPS = drawFrames; drawFrames = 0; }
         int updateFrames;
@@ -156,11 +158,11 @@ namespace King_of_Thieves
             CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
             if (input.getInputRelease(Microsoft.Xna.Framework.Input.Keys.B))
                 CActor.showHitBox = !CActor.showHitBox;
-//            _updateTimer.Start();
+            _updateTimer.Start();
             
             Master.Update(gameTime);
             //CMasterControl.mapManager.updateMap(gameTime);
-//            _updateTimer.Stop();
+            _updateTimer.Stop();
 
             if (CMasterControl.glblInput.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.X))
                 textTest.displayMessageBox("The quick brown fox jumped over the fence. I am a potato. blah blah Ash rocks etc testing some mad wacky shit hello am i your god please eat me for i am delicious blah blah abcdefgh i jklmno pqrs t u vwxyz hoo hahahahaha look at me i'm a text box i go to school i wear glasses ganondorf can suck a my linky ding dong while i shoot fire arrows wearing some kinda cloak. I have over 9000 master swords and they're all up Ganondorf's butthole. ");
@@ -181,10 +183,10 @@ namespace King_of_Thieves
             drawFrames++;
 
             //Store drawtime from previous frame
-//            float updateTime = (float)System.Math.Ceiling(_updateTimer.Duration * 1000.0);
-//            float drawTime = (float)System.Math.Ceiling(_drawTimer.Duration * 1000.0);
-//
-//            _drawTimer.Start();
+			float updateTime = (float)System.Math.Ceiling(_updateTimer.Elapsed.Seconds * 1000.0);
+			float drawTime = (float)System.Math.Ceiling(_drawTimer.Elapsed.Seconds * 1000.0);
+
+            _drawTimer.Start();
             GraphicsDevice.Clear(Master.GetClearColor());
 
             CMasterControl.camera.update(gameTime);
@@ -199,10 +201,10 @@ namespace King_of_Thieves
 
             if (CActor.showHitBox)
             {
-//                string debugString = "UpdateTime: " + updateTime + " ms\n" +
-//                                    "DrawTime: " + drawTime + " ms\n" +
-//                                    "FPS(Draw: " + drawFPS + " | Update: " + updateFPS + ") \n";
-//                spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts/benchmarker"), debugString, Vector2.Zero, Color.White);
+                string debugString = "UpdateTime: " + updateTime + " ms\n" +
+                                    "DrawTime: " + drawTime + " ms\n" +
+                                    "FPS(Draw: " + drawFPS + " | Update: " + updateFPS + ") \n";
+                spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts/benchmarker"), debugString, Vector2.Zero, Color.White);
             }
 
             spriteBatch.End();
@@ -211,8 +213,7 @@ namespace King_of_Thieves
 
             base.Draw(gameTime);
 
-//            System.GC.Collect();
-//            _drawTimer.Stop();
+            _drawTimer.Stop();
 
         }
     }

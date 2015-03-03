@@ -51,7 +51,6 @@
     <Compile Include="Cloud\Media\sound.cs" />
     <Compile Include="Cloud\Utility\Drawing\DrawingHelper.cs" />
     <Compile Include="Cloud\Utility\Drawing\LineSegment.cs" />
-    <Compile Include="Cloud\Utility\HighPerfTimer.cs" />
     <Compile Include="Cloud\Utility\XMLEngine.cs" />
     <Compile Include="Cloud\VersionManager.cs" />
     <Compile Include="Cloud\ViewportHandler.cs" />
