@@ -183,9 +183,6 @@ namespace King_of_Thieves
             drawFrames++;
 
             //Store drawtime from previous frame
-			float updateTime = (float)System.Math.Ceiling(_updateTimer.Elapsed.Seconds * 1000.0);
-			float drawTime = (float)System.Math.Ceiling(_drawTimer.Elapsed.Seconds * 1000.0);
-
             _drawTimer.Start();
             GraphicsDevice.Clear(Master.GetClearColor());
 
@@ -199,6 +196,11 @@ namespace King_of_Thieves
 
             textTest.drawMe();
 
+            _drawTimer.Stop();
+
+            double updateTime = System.Math.Ceiling((double)_updateTimer.Elapsed.Milliseconds);
+            double drawTime = System.Math.Ceiling((double)_drawTimer.Elapsed.Milliseconds);
+
             if (CActor.showHitBox)
             {
                 string debugString = "UpdateTime: " + updateTime + " ms\n" +
@@ -209,11 +211,12 @@ namespace King_of_Thieves
 
             spriteBatch.End();
 
-            
+            _updateTimer.Restart();
+            _drawTimer.Restart();
 
             base.Draw(gameTime);
 
-            _drawTimer.Stop();
+            
 
         }
     }
