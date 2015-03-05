@@ -230,10 +230,13 @@ namespace King_of_Thieves.Forms.Map_Edit
 
             string layerName = showInputDialog(); //TODO: this
 
-            if (layerName != string.Empty && cmbLayers.Items.Contains(layerName))
+            if (layerName != string.Empty)
             {
-                MessageBox.Show("There is already a layer with that name.", "Add New Layer", MessageBoxButtons.OK);
-                return;
+                if (cmbLayers.Items.Contains(layerName))
+                {
+                    MessageBox.Show("There is already a layer with that name.", "Add New Layer", MessageBoxButtons.OK);
+                    return;
+                }
             }
 
             cmbLayers.Items.Add(layerName);
