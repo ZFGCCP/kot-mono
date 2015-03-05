@@ -8,11 +8,12 @@ namespace King_of_Thieves.Actors.Items.Drops
     class CRupeeDrop : CDroppable
     {
         private const string _RUPEE = "rupee";
+        private string _color = "";
 
         private int _value = 0;
 
         public CRupeeDrop() :
-            base()
+            base(true)
         {
             _followRoot = false;
             _hitBox = new Collision.CHitBox(this, 4, 3, 6, 10);
@@ -27,26 +28,35 @@ namespace King_of_Thieves.Actors.Items.Drops
                 case "G":
                     _value = 1;
                     _imageIndex.Add(_RUPEE, new Graphics.CSprite(Graphics.CTextures.DROPS_RUPEE_GREEN));
+                    _color = "Green";
                     break;
 
                 case "B":
                     _value = 5;
                     _imageIndex.Add(_RUPEE, new Graphics.CSprite(Graphics.CTextures.DROPS_RUPEE_BLUE));
+                    _color = "Blue";
                     break;
 
                 case "O":
                     _value = 20;
                     _imageIndex.Add(_RUPEE, new Graphics.CSprite(Graphics.CTextures.DROPS_RUPEE_ORANGE));
+                    _color = "Orange";
                     break;
 
                 case "P":
                     _value = 50;
                     _imageIndex.Add(_RUPEE, new Graphics.CSprite(Graphics.CTextures.DROPS_RUPEE_PURPLE));
+                    _color = "Purple";
                     break;
 
                 default:
                     break;
             }
+
+            _yieldMessage = "You got a " + _color + " rupee!  That's worth " + _value + " rupees!";
+
+            if (additional.Length == 2 && additional[1] == "true")
+                _state = ACTOR_STATES.INVISIBLE;
 
             swapImage(_RUPEE);
         }

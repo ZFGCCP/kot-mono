@@ -612,3 +612,9 @@
 /processorParam:Quality=Best
 /build:sounds/environment/itemFanfare.wav
 
+#begin sounds/environment/itemFanfareSmall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/environment/itemFanfareSmall.wav
+

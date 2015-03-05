@@ -86,7 +86,7 @@ namespace King_of_Thieves.Actors.Items.decoration
            base()
        {
            _hearingRadius = 10;
-           _lineOfSight = 300;
+           _lineOfSight = 17;
            _visionRange = 90;
            _direction = DIRECTION.DOWN;
            _angle = 270;
@@ -140,7 +140,7 @@ namespace King_of_Thieves.Actors.Items.decoration
 
                 case ITEMS_INSIDE.RUPEE_1:
                     Items.Drops.CRupeeDrop rupee = new Drops.CRupeeDrop();
-                    rupee.init(this.name + "loadedItem", _position, "", this.componentAddress, "G");
+                    rupee.init(this.name + "loadedItem", _position, "", this.componentAddress, "G", "true");
                     Map.CMapManager.addActorToComponent(rupee, this.componentAddress);
                     break;
 
@@ -156,15 +156,6 @@ namespace King_of_Thieves.Actors.Items.decoration
             _triggerUserEvent(0, this.name + "loadedItem");
             _state = ACTOR_STATES.UNLOCKED;
             image.setFrame(1, 0);
-
-            startTimer0(10);
-        }
-
-        public override void timer0(object sender)
-        {
-            base.timer0(sender);
-            CMasterControl.buttonController.createTextBox("You got a thing!");
-            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Background:itemFanfare"]);
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -178,10 +169,11 @@ namespace King_of_Thieves.Actors.Items.decoration
 
             if (_state == ACTOR_STATES.LOCKED)
             {
-                if (_checkIfPointInView(playerPos) && playerDirection == DIRECTION.UP)
-                {
+                Vector2 origin = _position;
+                origin.Y -= 16;
+
+                if (_checkIfPointInView(playerPos,origin) && playerDirection == DIRECTION.UP)
                     CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.OPEN);
-                }
             }
         }
 

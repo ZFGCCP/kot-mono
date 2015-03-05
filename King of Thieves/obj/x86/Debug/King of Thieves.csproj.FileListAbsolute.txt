@@ -170,3 +170,4 @@ G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\n
 C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\armoredCrabNew.xnb
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\rupee_pickup.xnb
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\environment\itemFanfare.xnb
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\environment\itemFanfareSmall.xnb
