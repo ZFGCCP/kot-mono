@@ -13,6 +13,7 @@ using King_of_Thieves.Input;
 using System.Linq;
 using Gears.Cloud.Utility;
 using System.Timers;
+using System.Diagnostics;
 
 namespace King_of_Thieves
 {
@@ -31,8 +32,9 @@ namespace King_of_Thieves
         CComponent menuComo = new CComponent();
         Actors.HUD.Text.CTextBox textTest = null;
 
-        HighPerfTimer _updateTimer = new HighPerfTimer();
-        HighPerfTimer _drawTimer = new HighPerfTimer();
+		Stopwatch _updateTimer = new Stopwatch();
+		Stopwatch _drawTimer = new Stopwatch();
+
         System.Timers.Timer _fpsTimer = new System.Timers.Timer(1000);
         public void _fpsHandler(object sender, ElapsedEventArgs e) { updateFPS = updateFrames; updateFrames = 0; drawFPS = drawFrames; drawFrames = 0; }
         int updateFrames;
@@ -181,9 +183,6 @@ namespace King_of_Thieves
             drawFrames++;
 
             //Store drawtime from previous frame
-            float updateTime = (float)System.Math.Ceiling(_updateTimer.Duration * 1000.0);
-            float drawTime = (float)System.Math.Ceiling(_drawTimer.Duration * 1000.0);
-
             _drawTimer.Start();
             GraphicsDevice.Clear(Master.GetClearColor());
 
@@ -197,6 +196,11 @@ namespace King_of_Thieves
 
             textTest.drawMe();
 
+            _drawTimer.Stop();
+
+            double updateTime = System.Math.Ceiling((double)_updateTimer.Elapsed.Milliseconds);
+            double drawTime = System.Math.Ceiling((double)_drawTimer.Elapsed.Milliseconds);
+
             if (CActor.showHitBox)
             {
                 string debugString = "UpdateTime: " + updateTime + " ms\n" +
@@ -207,12 +211,12 @@ namespace King_of_Thieves
 
             spriteBatch.End();
 
-            
+            _updateTimer.Restart();
+            _drawTimer.Restart();
 
             base.Draw(gameTime);
 
-            System.GC.Collect();
-            _drawTimer.Stop();
+            
 
         }
     }
