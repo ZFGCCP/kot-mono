@@ -1,12 +1,17 @@
 *.suo
+*.log
 *.exe
 *.pdb
+*.mdb
 *.exe.manifest
 *.resources
 *.mgcontent
 *.cache
 *.stackdump
+King of Thieves/bin/WindowsGL/Debug/*.dll
 King of Thieves/bin/WindowsGL/Debug/Content
+King of Thieves/bin/WindowsGL/Release/*.dll
 King of Thieves/bin/WindowsGL/Release/Content
 King of Thieves/obj
-
+King of Thieves/kot-nunit/obj
+King of Thieves/kot-nunit/bin

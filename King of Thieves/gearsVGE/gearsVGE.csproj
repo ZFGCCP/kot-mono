@@ -92,14 +92,14 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>lib\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Lidgren.Network">
-      <HintPath>lib\Lidgren.Network.dll</HintPath>
-    </Reference>
     <Reference Include="Tao.Sdl">
       <HintPath>lib\Tao.Sdl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="Lidgren.Network">
+      <HintPath>lib\Lidgren.Network.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\SDL.dll">
