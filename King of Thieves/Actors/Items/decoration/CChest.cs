@@ -79,6 +79,7 @@ namespace King_of_Thieves.Actors.Items.decoration
         private ITEMS_INSIDE _itemInside;
 
        private const string _CHESTS_SMALL = "chests-small";
+       private const string _CHESTS_LARGE = "chests-large";
        private bool _isLoaded = false;
 
 

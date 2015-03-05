@@ -618,3 +618,14 @@
 /processorParam:Quality=Best
 /build:sounds/environment/itemFanfareSmall.wav
 
+#begin sprites/npc/zombie.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:sprites/npc/zombie.png
+
