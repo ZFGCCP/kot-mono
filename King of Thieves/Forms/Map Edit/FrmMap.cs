@@ -35,7 +35,7 @@ namespace King_of_Thieves.Forms.Map_Edit
             InitializeComponent();
         }
 
-		private static DialogResult showInputDialog(ref string input)
+		private static string showInputDialog()
 		{
 			System.Drawing.Size size = new System.Drawing.Size(200, 70);
 			Form inputBox = new Form();
@@ -47,7 +47,7 @@ namespace King_of_Thieves.Forms.Map_Edit
 			System.Windows.Forms.TextBox textBox = new TextBox();
 			textBox.Size = new System.Drawing.Size(size.Width - 10, 23);
 			textBox.Location = new System.Drawing.Point(5, 5);
-			textBox.Text = input;
+			textBox.Text = "";
 			inputBox.Controls.Add(textBox);
 
 			Button okButton = new Button();
@@ -70,8 +70,10 @@ namespace King_of_Thieves.Forms.Map_Edit
 			inputBox.CancelButton = cancelButton; 
 
 			DialogResult result = inputBox.ShowDialog();
-			input = textBox.Text;
-			return result;
+            if (result == DialogResult.OK)
+                return textBox.Text;
+            else
+                return string.Empty;
 		}
 
         private void _newMap()
@@ -225,11 +227,10 @@ namespace King_of_Thieves.Forms.Map_Edit
 			string input="Please Enter a layer name.";
 			//
             //string layerName = Microsoft.VisualBasic.Interaction.InputBox("Add New Layer", "New Layer" + cmbLayers.Items.Count);
-			DialogResult dr = showInputDialog(ref input);
 
-			string layerName = ""; //TODO: this
+            string layerName = showInputDialog(); //TODO: this
 
-            if (cmbLayers.Items.Contains(layerName))
+            if (layerName != string.Empty && cmbLayers.Items.Contains(layerName))
             {
                 MessageBox.Show("There is already a layer with that name.", "Add New Layer", MessageBoxButtons.OK);
                 return;
