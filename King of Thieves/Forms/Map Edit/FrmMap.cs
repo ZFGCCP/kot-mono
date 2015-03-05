@@ -35,27 +35,34 @@ namespace King_of_Thieves.Forms.Map_Edit
             InitializeComponent();
         }
 
-		private static string showInputDialog()
+		private static string showInputDialog(String title, String prompt, String defaultMessage)
 		{
-			System.Drawing.Size size = new System.Drawing.Size(200, 70);
+			System.Drawing.Size size = new System.Drawing.Size(200, 100);
 			Form inputBox = new Form();
 
+            inputBox.Text = title;
 			inputBox.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			inputBox.ClientSize = size;
-			inputBox.Text = "Name";
+			inputBox.Text = title;
 
 			System.Windows.Forms.TextBox textBox = new TextBox();
 			textBox.Size = new System.Drawing.Size(size.Width - 10, 23);
-			textBox.Location = new System.Drawing.Point(5, 5);
-			textBox.Text = "";
+			textBox.Location = new System.Drawing.Point(5, 20);
+            textBox.Text = defaultMessage;
 			inputBox.Controls.Add(textBox);
+
+            Label label = new Label();
+            label.Text = prompt;
+            label.Size = new System.Drawing.Size(size.Width - 10, 15);
+            label.Location = new System.Drawing.Point(5, 5);
+            inputBox.Controls.Add(label);
 
 			Button okButton = new Button();
 			okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
 			okButton.Name = "okButton";
 			okButton.Size = new System.Drawing.Size(75, 23);
 			okButton.Text = "&OK";
-			okButton.Location = new System.Drawing.Point(size.Width - 80 - 80, 39);
+			okButton.Location = new System.Drawing.Point(size.Width - 80 - 80, 60);
 			inputBox.Controls.Add(okButton);
 
 			Button cancelButton = new Button();
@@ -63,7 +70,7 @@ namespace King_of_Thieves.Forms.Map_Edit
 			cancelButton.Name = "cancelButton";
 			cancelButton.Size = new System.Drawing.Size(75, 23);
 			cancelButton.Text = "&Cancel";
-			cancelButton.Location = new System.Drawing.Point(size.Width - 80, 39);
+			cancelButton.Location = new System.Drawing.Point(size.Width - 80, 60);
 			inputBox.Controls.Add(cancelButton);
 
 			inputBox.AcceptButton = okButton;
@@ -224,20 +231,17 @@ namespace King_of_Thieves.Forms.Map_Edit
 
         private void btnAddLayer_Click(object sender, EventArgs e)
         {
-			string input="Please Enter a layer name.";
-			//
-            //string layerName = Microsoft.VisualBasic.Interaction.InputBox("Add New Layer", "New Layer" + cmbLayers.Items.Count);
+            string layerName = string.Empty;
 
-            string layerName = showInputDialog(); //TODO: this
-
-            if (layerName != string.Empty)
+            if ((layerName = showInputDialog("Add New Layer", "Please Enter a layer name.","New Layer" + cmbLayers.Items.Count)) == string.Empty)
+                return;
+            
+            if (cmbLayers.Items.Contains(layerName))
             {
-                if (cmbLayers.Items.Contains(layerName))
-                {
-                    MessageBox.Show("There is already a layer with that name.", "Add New Layer", MessageBoxButtons.OK);
-                    return;
-                }
+                MessageBox.Show("There is already a layer with that name.", "Add New Layer", MessageBoxButtons.OK);
+                return;
             }
+
 
             cmbLayers.Items.Add(layerName);
 
