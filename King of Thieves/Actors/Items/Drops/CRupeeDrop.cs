@@ -67,11 +67,11 @@ namespace King_of_Thieves.Actors.Items.Drops
             _yieldToPlayer();
         }
 
-        protected override void _yieldToPlayer()
+        protected override void _yieldToPlayer(bool fromChest = false)
         {
             CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["HUD:rupees:rupeeGet"]);
             CMasterControl.buttonController.incrementRupees(_value);
-            base._yieldToPlayer();
+            base._yieldToPlayer(fromChest);
         }
 
         protected override void _addCollidables()

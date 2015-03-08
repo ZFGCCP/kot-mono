@@ -32,7 +32,7 @@ namespace King_of_Thieves.Actors.Items.Drops
             _yieldToPlayer();
         }
 
-        protected override void _yieldToPlayer()
+        protected override void _yieldToPlayer(bool fromChest = false)
         {
             CMasterControl.healthController.modifyHp(_capacity);
             _heartCount--;

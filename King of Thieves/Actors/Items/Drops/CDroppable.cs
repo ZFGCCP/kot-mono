@@ -35,14 +35,17 @@ namespace King_of_Thieves.Actors.Items.Drops
             _killMe = true;
         }
 
-        protected virtual void _yieldToPlayer()
+        protected virtual void _yieldToPlayer(bool fromChest = false)
         {
-            CMasterControl.buttonController.createTextBox(_yieldMessage);
+            if (fromChest)
+            {
+                CMasterControl.buttonController.createTextBox(_yieldMessage);
 
-            if (isImportant)
-                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Background:itemFanfare"]);
-            else
-                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Background:itemFanfareSmall"]);
+                if (isImportant)
+                    CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Background:itemFanfare"]);
+                else
+                    CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Background:itemFanfareSmall"]);
+            }
 
             _killMe = true;
         }
@@ -66,7 +69,7 @@ namespace King_of_Thieves.Actors.Items.Drops
         {
             base.timer0(sender);
             _state = ACTOR_STATES.IDLE;
-            _yieldToPlayer();
+            _yieldToPlayer(true);
         }
 
         protected void userEventYield(object sender)

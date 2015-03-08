@@ -15,6 +15,7 @@ namespace King_of_Thieves.Map
         private static Actors.CComponent _droppableComponent = new Actors.CComponent(1);
         private static Dictionary<string, Graphics.CSprite> _droppableActorSpriteCache = new Dictionary<string, Graphics.CSprite>();
 
+
         public static object propertyGetter(string actorName, Map.EActorProperties property)
         {
             return _currentMap.getProperty(actorName, property);

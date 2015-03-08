@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
 {
@@ -24,6 +25,28 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         protected virtual void _grab()
         {
 
+        }
+
+        public override void update(Microsoft.Xna.Framework.GameTime gameTime)
+        {
+            base.update(gameTime);
+            Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+
+            switch (_state)
+            {
+                case ACTOR_STATES.IDLE:
+                    if (_checkLineofSight(playerPos.X, playerPos.Y))
+                    {
+
+                    }
+                    else if (isPointInHearingRange(playerPos))
+                        moveToPoint2(playerPos.X, playerPos.Y, .25f);
+
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

@@ -166,9 +166,11 @@ namespace King_of_Thieves.Actors
         protected virtual void cleanUp() { }
         public virtual void destroy(object sender)
         {
-            _hitBox.destroy();
-            _hitBox = null;
-            _closeResources();
+            if (_hitBox != null)
+            {
+                _hitBox.destroy();
+                _hitBox = null;
+            }
         }
 
         protected virtual void applyEffects(){}
@@ -592,7 +594,7 @@ namespace King_of_Thieves.Actors
 
                     foreach (CActor x in collideCheck)
                     {
-                        if (x != this && !x._noCollide && _hitBox.checkCollision(x))
+                        if (_hitBox != null && x._hitBox != null && x != this && !x._noCollide && _hitBox.checkCollision(x))
                         {
                             //trigger collision event
                             onCollide(this, x);
@@ -765,12 +767,6 @@ namespace King_of_Thieves.Actors
             //also add resources to the texture cache here.
             _imageIndex = new Dictionary<string, CSprite>();
             _soundIndex = new Dictionary<string, Sound.CSound>();
-        }
-
-        private void _closeResources()
-        {
-            _imageIndex.Clear();
-            _imageIndex = null;
         }
 
         public Vector2 position

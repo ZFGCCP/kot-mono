@@ -79,6 +79,8 @@
     <Compile Include="Actors\NPC\Enemies\CBaseEnemy.cs" />
     <Compile Include="Actors\NPC\Enemies\Chuchus\CBaseChuChu.cs" />
     <Compile Include="Actors\NPC\Enemies\Chuchus\CGreenChuChu.cs" />
+    <Compile Include="Actors\NPC\Enemies\FloorTile\CFloorTile.cs" />
+    <Compile Include="Actors\NPC\Enemies\FloorTile\CFloorTileMaster.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CBaseKeese.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CKeese.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CKeeseFire.cs" />
@@ -475,6 +477,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sounds\environment\itemFanfareSmall.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\npc\floorTile.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
