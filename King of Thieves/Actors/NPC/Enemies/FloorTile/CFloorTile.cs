@@ -92,7 +92,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
             switch (_state)
             {
                 case ACTOR_STATES.ATTACK:
-                    moveToPoint2(_attackPoint.X, _attackPoint.Y, 2.0f);
+                    moveToPoint(_attackPoint.X, _attackPoint.Y, 2.0f);
                     break;
 
                 default:
@@ -132,6 +132,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
             base._addCollidables();
             _collidables.Add(typeof(Player.CPlayer));
             _collidables.Add(typeof(Collision.CSolidTile));
+            _collidables.Add(typeof(Items.Swords.CSword));
         }
     }
 }
