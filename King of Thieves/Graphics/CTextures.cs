@@ -169,6 +169,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:test", new CTextureAtlas("test", 16, 16, 0, "0:0", "15:15",0,false,false,true));
             textures.Add("tileset:ages", new CTextureAtlas("ages", 16, 16, 0, "0:0", "15:15", 0, false, false, true));
             textures.Add("tileset:indoors:house", new CTextureAtlas("tileset:indoors:house", 16, 16, 0, "0:0", "24:16", 0, false, false, true));
+            textures.Add("tileset:smallLantern", new CTextureAtlas("tileset:items:smallItems", 16, 16, 1, "0:0", "0:0", 0, false, false, false));
             textures.Add("tileset:items:chests-small", new CTextureAtlas("tileset:items:chests-small", 16, 16, 1, "0:0", "1:2", 0, false, false, false));
 
             //editor icons
@@ -251,6 +252,7 @@ namespace King_of_Thieves.Graphics
             //tilesets
             rawTextures.Add("tileset:indoors:house",_content.Load<Texture2D>(@"tilesets/indoors/house"));
             rawTextures.Add("tileset:items:chests-small", _content.Load<Texture2D>(@"tilesets/items/chests-small"));
+            rawTextures.Add("tileset:items:smallItems", _content.Load<Texture2D>(@"tilesets/items/smallItems"));
 
             //effects
             rawTextures.Add("effects:explosion", _content.Load<Texture2D>(@"effects/bomb-explosion"));

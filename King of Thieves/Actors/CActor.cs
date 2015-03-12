@@ -439,6 +439,49 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        public void moveInDirection(Vector2 velocity)
+        {
+            double ppfX = 0;
+            double ppfY = 0;
+
+            if (Math.Abs(velocity.X) > 1.0f)
+            {
+                ppfX = Math.Round(velocity.X);
+
+                _position.X += (float)ppfX;
+            }
+            else
+            {
+                ppfX = Math.Pow((double)velocity.X, -1);
+
+                if (_motionCounter.X >= Math.Abs(ppfX))
+                {
+                    _position.X += (1.0f * Math.Sign(velocity.X));
+                    _motionCounter.X = 0;
+                }
+            }
+
+            if (Math.Abs(velocity.Y) > 1.0f)
+            {
+                ppfY = Math.Round(velocity.Y);
+
+                _position.Y += (float)ppfY;
+            }
+            else
+            {
+                ppfY = Math.Pow((double)velocity.Y, -1);
+
+                if (_motionCounter.Y >= Math.Abs(ppfY))
+                {
+                    _position.Y += (1.0f * Math.Sign(velocity.Y));
+                    _motionCounter.Y = 0;
+                }
+            }
+
+            _motionCounter.X += 1;
+            _motionCounter.Y += 1;
+        }
+
         public DIRECTION moveToPoint2(float x, float y, float speed, bool calcAngle = true)
         {
             float distX = 0, distY = 0;

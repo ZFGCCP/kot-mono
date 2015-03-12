@@ -172,3 +172,6 @@ G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\it
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\environment\itemFanfare.xnb
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\environment\itemFanfareSmall.xnb
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\floorTile.xnb
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\zombie.xnb
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\poe.xnb
+G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\tilesets\items\smallItems.xnb

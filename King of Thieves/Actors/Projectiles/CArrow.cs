@@ -28,13 +28,17 @@ namespace King_of_Thieves.Actors.Projectiles
 
         protected override void _addCollidables()
         {
-            
+            _collidables.Add(typeof(Actors.NPC.Enemies.CBaseEnemy));
+            _collidables.Add(typeof(Actors.NPC.Enemies.Poe.CLantern));
         }
 
         public override void collide(object sender, CActor collider)
         {
-            base.collide(sender, collider);
-            _killMe = true;
+            if (!(collider is Actors.NPC.Enemies.Poe.CPoe))
+            {
+                base.collide(sender, collider);
+                _killMe = true;
+            }
         }
 
         public override void destroy(object sender)
