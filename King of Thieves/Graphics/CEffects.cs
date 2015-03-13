@@ -25,6 +25,7 @@ namespace King_of_Thieves.Graphics
 
         public static string SMOKE_POOF = "effects:smokePoof";
         public static string EXPLOSION = "effects:explosion";
+        public static string FIREBALL = "effects:fireBall";
 
         private static List<CEffectWrapper> _drawList = new List<CEffectWrapper>();
 

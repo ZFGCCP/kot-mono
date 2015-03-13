@@ -37,6 +37,7 @@ namespace King_of_Thieves.Graphics
         public const string EFFECT_BOMB_FAST_TICK = EFFECTS + "bombFastTick";
         public const string EFFECT_EXPLOSION = EFFECTS + "explosion";
         public const string EFFECT_BOOMERANG = EFFECTS + "boomerang";
+        public const string EFFECT_FIRE_SMALL = EFFECTS + "fireSmall";
 
         public const string DROPS_HEART = DROPS + "heart";
         public const string DROPS_RUPEE_GREEN = DROPS + "rupeeGreen";
@@ -169,7 +170,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:test", new CTextureAtlas("test", 16, 16, 0, "0:0", "15:15",0,false,false,true));
             textures.Add("tileset:ages", new CTextureAtlas("ages", 16, 16, 0, "0:0", "15:15", 0, false, false, true));
             textures.Add("tileset:indoors:house", new CTextureAtlas("tileset:indoors:house", 16, 16, 0, "0:0", "24:16", 0, false, false, true));
-            textures.Add("tileset:smallLantern", new CTextureAtlas("tileset:items:smallItems", 16, 16, 1, "0:0", "0:0", 0, false, false, false));
+            textures.Add("tileset:smallLantern", new CTextureAtlas("tileset:items:smallItems", 16, 16, 1, "0:0", "8:0", 5, false, false, false));
             textures.Add("tileset:items:chests-small", new CTextureAtlas("tileset:items:chests-small", 16, 16, 1, "0:0", "1:2", 0, false, false, false));
 
             //editor icons
@@ -185,6 +186,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("effects:explosion", new CTextureAtlas("effects:explosion", 64, 64, 0, "0:0", "10:0", 10));
             textures.Add("effects:smokePoof", new CTextureAtlas("effects:explosion", 64, 64, 0, "2:0", "10:0", 10));
             textures.Add(EFFECT_ENERGY_BALL_SMALL, new CTextureAtlas("effects:various", 32, 32, 0, "0:0", "1:0", 5));
+            textures.Add(EFFECT_FIRE_SMALL, new CTextureAtlas("effects:various", 32, 32, 0, "0:4", "3:4", 5));
 
             //projectiles
             textures.Add(EFFECT_ENERGY_WAVE_SMALL, new CTextureAtlas("effects:various", 32, 32, 0, "2:0", "2:0", 0));

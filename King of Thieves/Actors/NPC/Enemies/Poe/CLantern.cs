@@ -65,6 +65,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
         public override void timer0(object sender)
         {
             base.timer0(sender);
+            Graphics.CEffects.createEffect(Graphics.CTextures.EFFECT_FIRE_BALL_SMALL, _position, 9);
             _killMe = true;
         }
 
