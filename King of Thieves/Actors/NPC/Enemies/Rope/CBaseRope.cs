@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 {
@@ -57,6 +58,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
         }
 
         protected override void cleanUp()
+        {
+
+        }
 
         public override void timer0(object sender)
         {
