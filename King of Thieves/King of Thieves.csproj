@@ -90,7 +90,6 @@
     <Compile Include="Actors\NPC\Enemies\MoldormTail\CMoldormTailPiece.cs" />
     <Compile Include="Actors\NPC\Enemies\MoldormTail\CMoldormTailTail.cs" />
     <Compile Include="Actors\NPC\Enemies\Rope\CBaseRope.cs" />
-    <Compile Include="Actors\NPC\Enemies\Rope\CRope.cs" />
     <Compile Include="Actors\NPC\Enemies\OvergrownKeese\COvergrownKeese.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CBaseWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CFireWizzrobe.cs" />
@@ -464,7 +463,7 @@
     <Content Include="Content\sounds\items\arrow_shoot.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-	<Content Include="Content\sprites\npc\rope.xnb">
+    <Content Include="Content\sprites\npc\rope.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sprites\npc\overgownKeese.xnb">
