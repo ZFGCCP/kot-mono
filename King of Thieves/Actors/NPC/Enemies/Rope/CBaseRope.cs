@@ -15,6 +15,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
     {
         protected const string _NPC_ROPE = "npc:rope";
         private static int _ropeCount = 0;
+        private static int _greenRopeCount = 0;
 
          //image index constants
         protected const string _SLITHER_DOWN = "slitherDown";
@@ -38,6 +39,29 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 
             _ropeCount += 1;
         }
+
+
+              public override void init(string name, Microsoft.Xna.Framework.Vector2 position, string dataType, int compAddress, params string[] additional)
+        {
+            base.init(name, position, dataType, compAddress, additional);
+
+            switch (additional[0])
+            {
+                case "G":
+                    _value = 1;
+                    _imageIndex.Add( _SLITHER_DOWN, new Graphics.CSprite(Graphics.CTextures.DROPS_RUPEE_GREEN));
+                    break;
+
+
+           default:
+                    break;
+            }
+                  {};
+            swapImage( _SLITHER_DOWN);
+        }
+
+
+
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
