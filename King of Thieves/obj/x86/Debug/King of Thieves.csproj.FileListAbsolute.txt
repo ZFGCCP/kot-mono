@@ -254,3 +254,7 @@ C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\armoredCrabN
 G:\ZFGC3\KoT\mono\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\rupee_pickup.xnb
 C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\rupee_pickup.xnb
 C:\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\rope.xnb
+C:\Users\Fubar\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\rope.xnb
+C:\Users\Fubar\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\overgownKeese.xnb
+C:\Users\Fubar\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sprites\npc\armoredCrabNew.xnb
+C:\Users\Fubar\kot-mono\King of Thieves\bin\WindowsGL\Debug\Content\sounds\items\rupee_pickup.xnb
