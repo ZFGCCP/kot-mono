@@ -39,24 +39,14 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 
                 Graphics.CTextures.rawTextures.Add(SPRITE_NAMESPACE, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/rope"));
 
-
-                _ropeCount += 1;
-
-
                 Graphics.CTextures.addTexture(_SLITHER_DOWN, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 2));
                 Graphics.CTextures.addTexture(_SLITHER_UP, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 1, "0:2", "3:2", 2));
                 Graphics.CTextures.addTexture(_SLITHER_LEFT, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 1, "0:0", "0:3", 2));
-               
-
 
                 Graphics.CTextures.addTexture(_FAST_SLITHER_DOWN, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 4));
                 Graphics.CTextures.addTexture(_FAST_SLITHER_UP, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 1, "0:2", "3:2", 4));
                 Graphics.CTextures.addTexture(_FAST_SLITHER_LEFT, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 1, "0:0", "0:3", 4));
-                
-
             }
-
-
             _imageIndex.Add(_SLITHER_DOWN, new Graphics.CSprite(_SLITHER_DOWN));
             _imageIndex.Add(_SLITHER_UP, new Graphics.CSprite(_SLITHER_UP));
             _imageIndex.Add(_SLITHER_LEFT, new Graphics.CSprite(_SLITHER_LEFT));
@@ -68,32 +58,24 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             _imageIndex.Add(_FAST_SLITHER_LEFT, new Graphics.CSprite(_FAST_SLITHER_LEFT));
             _imageIndex.Add(_FAST_SLITHER_RIGHT, new Graphics.CSprite(_FAST_SLITHER_LEFT,true));
 
+            _ropeCount += 1;
+
         }
 
-
-
-
-              public override void init(string name, Microsoft.Xna.Framework.Vector2 position, string dataType, int compAddress, params string[] additional)
+        public override void init(string name, Microsoft.Xna.Framework.Vector2 position, string dataType, int compAddress, params string[] additional)
         {
             base.init(name, position, dataType, compAddress, additional);
 
             switch (additional[0])
             {
                 case "G":
-                    
-                   
                     break;
 
-
-           default:
+                default:
                     break;
             }
-                  {};
             swapImage( _SLITHER_DOWN);
         }
-
-
-
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
