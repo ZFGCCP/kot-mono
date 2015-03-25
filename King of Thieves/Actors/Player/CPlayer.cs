@@ -332,7 +332,7 @@ namespace King_of_Thieves.Actors.Player
                             }
                             else if (_state == ACTOR_STATES.SHIELDING)
                             {
-                                _velocity.X = -2.5f;
+                                _velocity.X = -.5f;
                             }
                             else
                             {
@@ -340,7 +340,6 @@ namespace King_of_Thieves.Actors.Player
                                 _velocity.X = -1;
                             }
 
-                            _position.X += _velocity.X;
                             _direction = DIRECTION.LEFT;
                             _state = ACTOR_STATES.MOVING;
                         }
@@ -354,7 +353,7 @@ namespace King_of_Thieves.Actors.Player
                             }
                             else if (_state == ACTOR_STATES.SHIELDING)
                             {
-                                _velocity.X = 2.5f;
+                                _velocity.X = .5f;
                             }
                             else
                             {
@@ -362,7 +361,6 @@ namespace King_of_Thieves.Actors.Player
                                 _velocity.X = 1;
                             }
 
-                            _position.X += _velocity.X;
                             _direction = DIRECTION.RIGHT;
                             _state = ACTOR_STATES.MOVING;
                         }
@@ -376,7 +374,7 @@ namespace King_of_Thieves.Actors.Player
                             }
                             else if (_state == ACTOR_STATES.SHIELDING)
                             {
-                                _velocity.Y = -2.5f;
+                                _velocity.Y = -.5f;
                             }
                             else
                             {
@@ -384,7 +382,6 @@ namespace King_of_Thieves.Actors.Player
                                 image = _imageIndex["PlayerWalkUp"];
                             }
 
-                            _position.Y += _velocity.Y;
                             _direction = DIRECTION.UP;
                             _state = ACTOR_STATES.MOVING;
                         }
@@ -399,7 +396,7 @@ namespace King_of_Thieves.Actors.Player
                             }
                             else if (_state == ACTOR_STATES.SHIELDING)
                             {
-                                _velocity.Y = 2.5f;
+                                _velocity.Y = .5f;
                             }
                             else
                             {
@@ -407,11 +404,11 @@ namespace King_of_Thieves.Actors.Player
                                 _velocity.Y = 1;
                             }
 
-                            _position.Y += _velocity.Y;
                             _direction = DIRECTION.DOWN;
                             _state = ACTOR_STATES.MOVING;
                         }
 
+                        moveInDirection(_velocity);
                         _oldVelocity = _velocity;
                     }
 
@@ -523,6 +520,8 @@ namespace King_of_Thieves.Actors.Player
         public override void update(GameTime gameTime)
         {
             base.update(gameTime);
+            _velocity.X = 0;
+            _velocity.Y = 0;
             switch (_state)
             {
                 case ACTOR_STATES.GOT_ITEM:

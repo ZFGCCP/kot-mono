@@ -8,23 +8,34 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
 {
     class CBaseZombie : CBaseEnemy
     {
-        private const int _STUN_TIME = 120;
         private const int _SCREECH_RADIUS = 120;
+        private bool _shotScreecher = false;
+        private static int _zombieCount = 0;
+
+        protected const string _SPRITE_NAMESPACE = "npc:zombie";
+
 
         public CBaseZombie()
             : base()
         {
+            if (_zombieCount <= 0)
+                Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/zombie");
 
+            _zombieCount += 1;
         }
 
-        protected virtual void _screech(CActor actorToFreeze)
+        protected override void cleanUp()
         {
-            actorToFreeze.stun(_STUN_TIME);
+            if (_zombieCount <= 0)
+                Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
         }
 
-        protected virtual void _grab()
+        public override void destroy(object sender)
         {
+            base.destroy(sender);
+            _zombieCount -= 1;
 
+            cleanUp();
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -37,16 +48,49 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
                 case ACTOR_STATES.IDLE:
                     if (_checkLineofSight(playerPos.X, playerPos.Y))
                     {
-
+                        if (!_shotScreecher)
+                        {
+                            _shotScreecher = true;
+                            CZombieScreecher screecher = new CZombieScreecher(_direction, _prepareScreechVelocity(), _position);
+                            screecher.init(_name + "screecher", _position, "", this.componentAddress);
+                            Map.CMapManager.addActorToComponent(screecher, componentAddress);
+                        }
                     }
                     else if (isPointInHearingRange(playerPos))
                         moveToPoint2(playerPos.X, playerPos.Y, .25f);
 
-                    break;
+                break;
 
                 default:
                     break;
             }
+        }
+
+        private Vector2 _prepareScreechVelocity()
+        {
+            Vector2 output = Vector2.Zero;
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    output.Y = 2;
+                    break;
+
+                case DIRECTION.UP:
+                    output.Y = -2;
+                    break;
+
+                case DIRECTION.LEFT:
+                    output.X = -2;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    output.X = 2;
+                    break;
+
+                default:    
+                    break;
+            }
+            return output;
         }
     }
 }
