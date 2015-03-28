@@ -28,9 +28,16 @@ namespace King_of_Thieves.Actors.Projectiles
             _position += _velocity;
         }
 
+        public override void collide(object sender, CActor collider)
+        {
+            if (collider is Items.shields.CBaseShield)
+                _killMe = true;
+        }
+
         protected override void _addCollidables()
         {
             _collidables.Add(typeof(Player.CPlayer));
+            _collidables.Add(typeof(Items.shields.CBaseShield));
         }
 
         protected virtual void shoot()

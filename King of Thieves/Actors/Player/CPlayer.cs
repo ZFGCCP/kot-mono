@@ -303,7 +303,7 @@ namespace King_of_Thieves.Actors.Player
         {
             if (_acceptInput)
             {
-                if (_state == ACTOR_STATES.IDLE || _state == ACTOR_STATES.MOVING)
+                if (_state == ACTOR_STATES.IDLE || _state == ACTOR_STATES.MOVING || _state == ACTOR_STATES.SHIELDING)
                 {
                     //Store this so we can type less
                     CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
@@ -319,7 +319,12 @@ namespace King_of_Thieves.Actors.Player
                     else if (input.keysPressed.Contains(Keys.Right) && _lastHudKeyPressed != Keys.Right)
                         _useItem(-1);
                     else if (input.keysPressed.Contains(Keys.LeftShift))
+                    {
+                        if (_state != ACTOR_STATES.SHIELDING)
+                            _triggerUserEvent(0, "shield", _direction, _position.X, _position.Y);
+
                         _state = ACTOR_STATES.SHIELDING;
+                    }
 
                     if (!_usingItem)
                     {
@@ -329,6 +334,7 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 swapImage("PlayerCarryLeft");
                                 _velocity.X = -1;
+                                _state = ACTOR_STATES.MOVING;
                             }
                             else if (_state == ACTOR_STATES.SHIELDING)
                             {
@@ -338,10 +344,10 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 image = _imageIndex["PlayerWalkLeft"];
                                 _velocity.X = -1;
+                                _state = ACTOR_STATES.MOVING;
                             }
 
                             _direction = DIRECTION.LEFT;
-                            _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.D))
@@ -350,6 +356,7 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 swapImage("PlayerCarryRight");
                                 _velocity.X = 1;
+                                _state = ACTOR_STATES.MOVING;
                             }
                             else if (_state == ACTOR_STATES.SHIELDING)
                             {
@@ -359,10 +366,10 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 image = _imageIndex["PlayerWalkRight"];
                                 _velocity.X = 1;
+                                _state = ACTOR_STATES.MOVING;
                             }
 
                             _direction = DIRECTION.RIGHT;
-                            _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.W))
@@ -371,6 +378,7 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 _velocity.Y = -1;
                                 swapImage("PlayerCarryUp");
+                                _state = ACTOR_STATES.MOVING;
                             }
                             else if (_state == ACTOR_STATES.SHIELDING)
                             {
@@ -380,10 +388,10 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 _velocity.Y = -1;
                                 image = _imageIndex["PlayerWalkUp"];
+                                _state = ACTOR_STATES.MOVING;
                             }
 
                             _direction = DIRECTION.UP;
-                            _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.S))
@@ -393,6 +401,7 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 swapImage("PlayerCarryDown");
                                 _velocity.Y = 1;
+                                _state = ACTOR_STATES.MOVING;
                             }
                             else if (_state == ACTOR_STATES.SHIELDING)
                             {
@@ -402,10 +411,10 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 image = _imageIndex["PlayerWalkDown"];
                                 _velocity.Y = 1;
+                                _state = ACTOR_STATES.MOVING;
                             }
 
                             _direction = DIRECTION.DOWN;
-                            _state = ACTOR_STATES.MOVING;
                         }
 
                         moveInDirection(_velocity);

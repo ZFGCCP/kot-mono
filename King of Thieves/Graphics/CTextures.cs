@@ -23,6 +23,8 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER = "Player:";
         public const string DROPS = "Drops:";
         public const string HUD = "HUD:";
+        public const string ITEMS = "items:";
+        public const string SHIELDS = ITEMS + "shields:";
 
         //actual constants
         public const string EFFECT_ENERGY_BALL_SMALL = EFFECTS + "energyBallSmall";
@@ -66,9 +68,14 @@ namespace King_of_Thieves.Graphics
         public const string HUD_RUPEES = HUD + "rupees";
         public const string HUD_ACTION = HUD + "action";
 
+        public const string WOOD_SHIELD_ENGAGE_DOWN = SHIELDS + "woodEngageDown";
+
+        public const string WOOD_SHIELD_DOWN = SHIELDS + "woodDown";
+
        
         //source images
         public const string SOURCE_PLAYER = "Player";
+        public const string SOURCE_SHIELDS = "shields";
 
         public static void init(ContentManager content)
         {
@@ -143,6 +150,9 @@ namespace King_of_Thieves.Graphics
             textures.Add("GerudoSword:SwingDown", new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 55));
             textures.Add("GerudoSword:SwingUp", new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 55));
             textures.Add("GerudoSword:SwingRight", new CTextureAtlas("Swords", 64, 64, 1, "0:2", "7:2", 55));
+
+            textures.Add(WOOD_SHIELD_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "2:0", "2:0", 0));
+            textures.Add(WOOD_SHIELD_ENGAGE_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:0", "2:0", 15));
 
             textures.Add("chuChu:Wobble", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:0", "15:0", 12));
             textures.Add("chuChu:Idle", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:1", "7:1", 5));
@@ -247,6 +257,8 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("effects", _content.Load<Texture2D>("effects"));
             rawTextures.Add("potSmall", _content.Load<Texture2D>("potSmall"));
             rawTextures.Add("maple", _content.Load<Texture2D>("maple"));
+
+            rawTextures.Add(SOURCE_SHIELDS, _content.Load<Texture2D>("sprites/items/shields"));
 
             //drops
             rawTextures.Add("drops:drops01", _content.Load<Texture2D>("sprites/drops/drops01"));

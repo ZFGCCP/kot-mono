@@ -34,9 +34,9 @@ namespace King_of_Thieves.Actors.Projectiles
 
         public override void collide(object sender, CActor collider)
         {
+            base.collide(sender, collider);
             if (!(collider is Actors.NPC.Enemies.Poe.CPoe))
             {
-                base.collide(sender, collider);
                 _killMe = true;
             }
         }

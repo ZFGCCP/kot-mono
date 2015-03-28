@@ -34,7 +34,6 @@ namespace King_of_Thieves.Actors.Projectiles
 
         public override void collide(object sender, CActor collider)
         {
-            base.collide(sender, collider);
             _killMe = true;
 
             if (collider is Player.CPlayer)

@@ -64,6 +64,8 @@ namespace King_of_Thieves.Actors
         POPDOWN,
         POPUP,
         ROLLING,
+        SHIELD_ENGAGE,
+        SHIELD_DISENGAGE,
         SHIELDING,
         SHOOTING_ARROW,
         SHOOTING_CANNON,
