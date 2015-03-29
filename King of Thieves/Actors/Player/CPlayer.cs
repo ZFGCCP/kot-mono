@@ -472,7 +472,13 @@ namespace King_of_Thieves.Actors.Player
                 }
 
                 if (input.keysReleased.Contains(Keys.LeftShift))
+                {
+                    if (_state == ACTOR_STATES.SHIELDING)
+                    {
+                        _triggerUserEvent(1, "shield", _direction, _position.X, _position.Y);
+                    }
                     _state = ACTOR_STATES.IDLE;
+                }
 
                 if (input.keysReleased.Contains(Keys.C))
                 {

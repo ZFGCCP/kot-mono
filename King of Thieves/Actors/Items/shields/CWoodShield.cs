@@ -12,6 +12,10 @@ namespace King_of_Thieves.Actors.Items.shields
         {
             _imageIndex.Add(Graphics.CTextures.WOOD_SHIELD_DOWN, new Graphics.CSprite(Graphics.CTextures.WOOD_SHIELD_DOWN));
             _imageIndex.Add(Graphics.CTextures.WOOD_SHIELD_ENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.WOOD_SHIELD_ENGAGE_DOWN));
+            _imageIndex.Add(Graphics.CTextures.WOOD_SHIELD_DISENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.WOOD_SHIELD_DISENGAGE_DOWN));
+
+            _downBox = new Collision.CHitBox(this, 0, 0, 16, 7);
+            _sideBox = new Collision.CHitBox(this, 0, 0, 4, 16);
         }
 
         public override void collide(object sender, CActor collider)

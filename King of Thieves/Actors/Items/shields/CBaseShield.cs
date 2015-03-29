@@ -11,6 +11,8 @@ namespace King_of_Thieves.Actors.Items.shields
         protected Collision.CHitBox _downBox;
         protected Collision.CHitBox _sideBox;
 
+        private Vector2 _downOffset = new Vector2(8, 27);
+
         public CBaseShield() :
             base()
         {
@@ -20,6 +22,7 @@ namespace King_of_Thieves.Actors.Items.shields
         protected override void _addCollidables()
         {
             base._addCollidables();
+            _collidables.Add(typeof(Projectiles.CProjectile));
         }
 
         protected override void _registerUserEvents()
@@ -61,6 +64,17 @@ namespace King_of_Thieves.Actors.Items.shields
         public void _disengage(object sender)
         {
             _state = ACTOR_STATES.SHIELD_DISENGAGE;
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    swapImage(Graphics.CTextures.WOOD_SHIELD_DISENGAGE_DOWN);
+                    break;
+
+                default:
+                    break;
+            }
+
+            _hitBox = null;
         }
 
         private void _shieldHold()
@@ -70,6 +84,7 @@ namespace King_of_Thieves.Actors.Items.shields
                 case DIRECTION.DOWN:
                     swapImage(Graphics.CTextures.WOOD_SHIELD_DOWN);
                     _hitBox = _downBox;
+                    _hitBox.offset = _downOffset;
                     break;
             }
         }

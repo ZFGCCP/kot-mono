@@ -70,6 +70,8 @@ namespace King_of_Thieves.Graphics
 
         public const string WOOD_SHIELD_ENGAGE_DOWN = SHIELDS + "woodEngageDown";
 
+        public const string WOOD_SHIELD_DISENGAGE_DOWN = SHIELDS + "woodDisengageDown";
+
         public const string WOOD_SHIELD_DOWN = SHIELDS + "woodDown";
 
        
@@ -153,6 +155,7 @@ namespace King_of_Thieves.Graphics
 
             textures.Add(WOOD_SHIELD_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "2:0", "2:0", 0));
             textures.Add(WOOD_SHIELD_ENGAGE_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:0", "2:0", 15));
+            textures.Add(WOOD_SHIELD_DISENGAGE_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:1", "2:1", 15));
 
             textures.Add("chuChu:Wobble", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:0", "15:0", 12));
             textures.Add("chuChu:Idle", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:1", "7:1", 5));

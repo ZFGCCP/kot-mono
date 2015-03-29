@@ -83,13 +83,13 @@
 				<actors>
 					<actor name = "wizzRobeTest" type="King_of_Thieves.Actors.NPC.Enemies.Wizzrobe.CIceWizzrobe" coordinates = "50:100"></actor>
 				</actors>
-			</component>
+			</component>-->
 			<component>
 				<actors>
 					<actor name = "wizzRobeTest2" type="King_of_Thieves.Actors.NPC.Enemies.Wizzrobe.CFireWizzrobe" coordinates = "50:100"></actor>
 				</actors>
 			</component>
-			<component>
+			<!--<component>
 				<actors>
 					<actor name = "wizzRobeTest3" type="King_of_Thieves.Actors.NPC.Enemies.Wizzrobe.CWizzrobe" coordinates = "50:100"></actor>
 				</actors>
