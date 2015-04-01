@@ -55,6 +55,9 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_SHOOT_ARROW_UP = PLAYER + "shootArrowUp";
         public const string PLAYER_CHARGE_ARROW_DOWN = PLAYER + "chargeArrowDown";
         public const string PLAYER_HOLD_ARROW_DOWN = PLAYER + "holdArrowDown";
+        public const string PLAYER_SHIELD_ENGAGE_DOWN = PLAYER + "shieldEngageDown";
+        public const string PLAYER_SHIELD_DISENGAGE_DOWN = PLAYER + "shieldDisengageDown";
+        public const string PLAYER_SHIELD_IDLE_DOWN = PLAYER + "shieldIdleDown";
         public const string PLAYER_SHOOT_ARROW_DOWN = PLAYER + "shootArrowDown";
         public const string PLAYER_HOLD_CANNON_DOWN = PLAYER + "holdCannonDown";
         public const string PLAYER_SHOOT_CANNON_DOWN = PLAYER + "shootCannonDown";
@@ -139,6 +142,8 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_HOLD_ARROW_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:7", "25:7", 0));
             textures.Add(PLAYER_HOLD_ARROW_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:6", "25:6", 0));
             textures.Add(PLAYER_HOLD_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:8", "25:8", 0));
+            textures.Add(PLAYER_SHIELD_ENGAGE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:34", "21:34", 15));
+            textures.Add(PLAYER_SHIELD_DISENGAGE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:34", "21:34", 15, false, false, false, true));
             textures.Add(PLAYER_SHOOT_ARROW_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:7", "28:7", 8));
             textures.Add(PLAYER_SHOOT_ARROW_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:6", "28:6", 8));
             textures.Add(PLAYER_SHOOT_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:8", "28:8", 8));

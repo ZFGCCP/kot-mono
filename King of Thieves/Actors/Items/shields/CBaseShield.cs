@@ -10,6 +10,7 @@ namespace King_of_Thieves.Actors.Items.shields
     {
         protected Collision.CHitBox _downBox;
         protected Collision.CHitBox _sideBox;
+        protected Vector2 _offset = Vector2.Zero;
 
         private Vector2 _downOffset = new Vector2(8, 27);
 
@@ -36,6 +37,8 @@ namespace King_of_Thieves.Actors.Items.shields
         {
             _state = ACTOR_STATES.SHIELD_ENGAGE;
             _direction = (DIRECTION)userParams[0];
+            _position.X = (float)userParams[1];
+            _position.Y = (float)userParams[2];
             switch (_direction)
             {
                 case DIRECTION.DOWN:

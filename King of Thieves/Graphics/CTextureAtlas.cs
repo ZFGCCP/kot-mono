@@ -40,7 +40,7 @@ namespace King_of_Thieves.Graphics
             _setup(ref sourceImage, _frameWidth, _frameHeight, _cellSpacing, frameRate);
         }
 
-        public CTextureAtlas(string sourceImage, int _frameWidth, int _frameHeight, int _cellSpacing, string startCell, string endCell, int frameRate = 0, bool flipH = false, bool flipV = false, bool isTileSet = false)
+        public CTextureAtlas(string sourceImage, int _frameWidth, int _frameHeight, int _cellSpacing, string startCell, string endCell, int frameRate = 0, bool flipH = false, bool flipV = false, bool isTileSet = false, bool reverse = false)
         {
             //parse out the cell ranges
             if (!_cellFormat.IsMatch(startCell) || !_cellFormat.IsMatch(endCell))
@@ -69,10 +69,10 @@ namespace King_of_Thieves.Graphics
             if (_startCell.Y == 0)
                 fullRange.Y = 0;
 
-            _setup(sourceImage, fullRange, _frameWidth, _frameHeight, _cellSpacing, frameRate);
+            _setup(sourceImage, fullRange, _frameWidth, _frameHeight, _cellSpacing, frameRate, reverse);
         }
 
-        private void _setup(string sourceImage, Rectangle sourceRect, int _frameWidth, int _frameHeight, int _cellSpacing, int frameRate)
+        private void _setup(string sourceImage, Rectangle sourceRect, int _frameWidth, int _frameHeight, int _cellSpacing, int frameRate, bool reverse = false)
         {
             FrameWidth = _frameWidth;
             FrameHeight = _frameHeight;
@@ -83,7 +83,7 @@ namespace King_of_Thieves.Graphics
             _fixedWidth = (sourceRect.Width / (_frameWidth + _cellSpacing));
             _fixedHeight = (sourceRect.Height / (_frameHeight + _cellSpacing));
             _textureAtlas = new Rectangle[_fixedWidth, _fixedHeight];
-            _assembleTextureAtlas(this, sourceRect.X / (_frameWidth + CellSpacing), sourceRect.Y / (_frameHeight + CellSpacing));
+            _assembleTextureAtlas(this, sourceRect.X / (_frameWidth + CellSpacing), sourceRect.Y / (_frameHeight + CellSpacing), reverse);
 
         }
 
@@ -185,10 +185,11 @@ namespace King_of_Thieves.Graphics
             * x == row
             * y == column
         */
-        private void _assembleTextureAtlas(CTextureAtlas textureAtlas, int xStart = 0, int yStart = 0)
+        private void _assembleTextureAtlas(CTextureAtlas textureAtlas, int xStart = 0, int yStart = 0, bool reverse = false)
         {
             int xStartHold = xStart;
             int yStartHold = yStart;
+
             for (int y = 0; y <= _fixedHeight - 1; y++, yStart++)
             {
                 xStart = xStartHold;
@@ -197,7 +198,21 @@ namespace King_of_Thieves.Graphics
                     //NOW the math is completely fine! :)
                     //The math is completely fine. 
                     //this math seems a bit iffy due to the cellspacing, but we'll see how it goes! -Steve
-                    textureAtlas._textureAtlas[x,y] = new Rectangle
+                    int x0 = 0;
+                    int y0 = 0;
+
+                    if (reverse)
+                    {
+                        x0 = _fixedWidth - 1 - x;
+                        y0 = _fixedHeight - 1 - y;
+                    }
+                    else
+                    {
+                        x0 = x;
+                        y0 = y;
+                    }
+
+                    textureAtlas._textureAtlas[x0,y0] = new Rectangle
                         ((textureAtlas.FrameWidth + CellSpacing) * xStart, (textureAtlas.FrameHeight + CellSpacing) * yStart,
                         textureAtlas.FrameWidth, 
                         textureAtlas.FrameHeight);

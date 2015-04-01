@@ -130,6 +130,9 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(_THROW_BOOMERANG_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP]));
 
             _imageIndex.Add(_GOT_ITEM, new Graphics.CSprite(Graphics.CTextures.PLAYER_GOT_ITEM, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_GOT_ITEM]));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN,Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN]));
         }
 
         public override void collide(object sender, CActor collider)
@@ -294,6 +297,15 @@ namespace King_of_Thieves.Actors.Player
                     Map.CMapManager.addActorToComponent(boomerang, this.componentAddress);
                     _usingItem = false;
                     break;
+
+                case ACTOR_STATES.SHIELD_ENGAGE:
+                    _state = ACTOR_STATES.SHIELDING;
+                    swapImage("PlayerIdleDown");
+                    break;
+
+                case ACTOR_STATES.SHIELD_DISENGAGE:
+                    _state = ACTOR_STATES.IDLE;
+                    break;
             }
 
             
@@ -320,10 +332,12 @@ namespace King_of_Thieves.Actors.Player
                         _useItem(-1);
                     else if (input.keysPressed.Contains(Keys.LeftShift))
                     {
-                        if (_state != ACTOR_STATES.SHIELDING)
-                            _triggerUserEvent(0, "shield", _direction, _position.X, _position.Y);
-
-                        _state = ACTOR_STATES.SHIELDING;
+                        if (_state != ACTOR_STATES.SHIELDING && _state != ACTOR_STATES.SHIELD_ENGAGE)
+                        {
+                            _triggerUserEvent(0, "shield", _direction, _position.X, _position.Y + 5);
+                            _state = ACTOR_STATES.SHIELD_ENGAGE;
+                            swapImage(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN);
+                        }
                     }
 
                     if (!_usingItem)
@@ -473,11 +487,12 @@ namespace King_of_Thieves.Actors.Player
 
                 if (input.keysReleased.Contains(Keys.LeftShift))
                 {
-                    if (_state == ACTOR_STATES.SHIELDING)
+                    if (_state == ACTOR_STATES.SHIELDING || _state == ACTOR_STATES.SHIELD_ENGAGE)
                     {
                         _triggerUserEvent(1, "shield", _direction, _position.X, _position.Y);
+                        swapImage(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN);
+                        _state = ACTOR_STATES.SHIELD_DISENGAGE;
                     }
-                    _state = ACTOR_STATES.IDLE;
                 }
 
                 if (input.keysReleased.Contains(Keys.C))
