@@ -14,6 +14,12 @@ namespace King_of_Thieves.Actors.Items.shields
             _imageIndex.Add(Graphics.CTextures.WOOD_SHIELD_ENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.WOOD_SHIELD_ENGAGE_DOWN));
             _imageIndex.Add(Graphics.CTextures.WOOD_SHIELD_DISENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.WOOD_SHIELD_DISENGAGE_DOWN));
 
+            _imageIndex.Add(Graphics.CTextures.WOOD_SHIELD_LEFT, new Graphics.CSprite(Graphics.CTextures.WOOD_SHIELD_LEFT));
+
+            _imageIndex.Add(Graphics.CTextures.WOOD_SHIELD_RIGHT, new Graphics.CSprite(Graphics.CTextures.WOOD_SHIELD_LEFT,true));
+
+            _imageIndex.Add(Graphics.CTextures.WOOD_SHIELD_UP, new Graphics.CSprite(Graphics.CTextures.WOOD_SHIELD_UP));
+
             _downBox = new Collision.CHitBox(this, 0, 0, 16, 7);
             _sideBox = new Collision.CHitBox(this, 0, 0, 4, 16);
         }

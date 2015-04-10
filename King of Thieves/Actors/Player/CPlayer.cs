@@ -27,6 +27,8 @@ namespace King_of_Thieves.Actors.Player
         private string _lastBombShotName = "";
         private const int _MAX_BOMB_VELO = 5;
         private int _bombVelo = 0;
+        private string _currentShieldSprite = "";
+        private string _currentShieldIdleSprite = "";
 
         private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
         private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
@@ -46,6 +48,11 @@ namespace King_of_Thieves.Actors.Player
             
             image = _imageIndex["PlayerWalkDown"];
             _velocity = new Vector2(0, 0);
+        }
+
+        public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
+        {
+            base.init(name, position, dataType, compAddress, additional);
         }
 
         protected override void _initializeResources()
@@ -133,6 +140,25 @@ namespace King_of_Thieves.Actors.Player
 
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN,Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN]));
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN]));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT]));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT], null,true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT], null, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT], null, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT], null, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_UP]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_UP]));
+
+
         }
 
         public override void collide(object sender, CActor collider)
@@ -300,7 +326,33 @@ namespace King_of_Thieves.Actors.Player
 
                 case ACTOR_STATES.SHIELD_ENGAGE:
                     _state = ACTOR_STATES.SHIELDING;
-                    swapImage("PlayerIdleDown");
+                    _acceptInput = true;
+
+                    switch (_direction)
+                    {
+                        case DIRECTION.DOWN:
+                            _currentShieldSprite = Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN;
+                            _currentShieldIdleSprite = Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN;
+                            break;
+
+                        case DIRECTION.LEFT:
+                            _currentShieldSprite = Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT;
+                            _currentShieldIdleSprite = Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT;
+                            break;
+
+                        case DIRECTION.RIGHT:
+                            _currentShieldSprite = Graphics.CTextures.PLAYER_SHIELD_WALK_RIGHT;
+                            _currentShieldIdleSprite = Graphics.CTextures.PLAYER_SHIELD_IDLE_RIGHT;
+                            break;
+
+                        case DIRECTION.UP:
+                            _currentShieldSprite = Graphics.CTextures.PLAYER_SHIELD_WALK_UP;
+                            _currentShieldIdleSprite = Graphics.CTextures.PLAYER_SHIELD_IDLE_UP;
+                            break;
+
+                        default:
+                            break;
+                    }
                     break;
 
                 case ACTOR_STATES.SHIELD_DISENGAGE:
@@ -315,11 +367,10 @@ namespace King_of_Thieves.Actors.Player
         {
             if (_acceptInput)
             {
-                if (_state == ACTOR_STATES.IDLE || _state == ACTOR_STATES.MOVING || _state == ACTOR_STATES.SHIELDING)
+                //Store this so we can type less
+                CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+                if (_state == ACTOR_STATES.IDLE || _state == ACTOR_STATES.MOVING)
                 {
-                    //Store this so we can type less
-                    CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
-
                     if (input.keysPressed.Contains(Keys.End))
                     {
                         Graphics.CGraphics.changeResolution(320, 240);
@@ -334,9 +385,30 @@ namespace King_of_Thieves.Actors.Player
                     {
                         if (_state != ACTOR_STATES.SHIELDING && _state != ACTOR_STATES.SHIELD_ENGAGE)
                         {
-                            _triggerUserEvent(0, "shield", _direction, _position.X, _position.Y + 5);
+                            _triggerUserEvent(0, "shield", _direction, _position.X, _position.Y);
                             _state = ACTOR_STATES.SHIELD_ENGAGE;
-                            swapImage(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN);
+
+                            switch (_direction)
+                            {
+                                case DIRECTION.DOWN:
+                                    swapImage(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN);
+                                    break;
+
+                                case DIRECTION.LEFT:
+                                    swapImage(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT);
+                                    break;
+
+                                case DIRECTION.RIGHT:
+                                    swapImage(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_RIGHT);
+                                    break;
+
+                                case DIRECTION.UP:
+                                    swapImage(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP);
+                                    break;
+                            }
+                            
+                            _acceptInput = false;
+                            return;
                         }
                     }
 
@@ -349,10 +421,6 @@ namespace King_of_Thieves.Actors.Player
                                 swapImage("PlayerCarryLeft");
                                 _velocity.X = -1;
                                 _state = ACTOR_STATES.MOVING;
-                            }
-                            else if (_state == ACTOR_STATES.SHIELDING)
-                            {
-                                _velocity.X = -.5f;
                             }
                             else
                             {
@@ -372,10 +440,6 @@ namespace King_of_Thieves.Actors.Player
                                 _velocity.X = 1;
                                 _state = ACTOR_STATES.MOVING;
                             }
-                            else if (_state == ACTOR_STATES.SHIELDING)
-                            {
-                                _velocity.X = .5f;
-                            }
                             else
                             {
                                 image = _imageIndex["PlayerWalkRight"];
@@ -393,10 +457,6 @@ namespace King_of_Thieves.Actors.Player
                                 _velocity.Y = -1;
                                 swapImage("PlayerCarryUp");
                                 _state = ACTOR_STATES.MOVING;
-                            }
-                            else if (_state == ACTOR_STATES.SHIELDING)
-                            {
-                                _velocity.Y = -.5f;
                             }
                             else
                             {
@@ -417,10 +477,6 @@ namespace King_of_Thieves.Actors.Player
                                 _velocity.Y = 1;
                                 _state = ACTOR_STATES.MOVING;
                             }
-                            else if (_state == ACTOR_STATES.SHIELDING)
-                            {
-                                _velocity.Y = .5f;
-                            }
                             else
                             {
                                 image = _imageIndex["PlayerWalkDown"];
@@ -434,12 +490,30 @@ namespace King_of_Thieves.Actors.Player
                         moveInDirection(_velocity);
                         _oldVelocity = _velocity;
                     }
-
                     if (input.keysPressed.Contains(Keys.Space))
                     {
                         _state = ACTOR_STATES.SWINGING;
                         _swordReleased = false;
                     }
+                }
+                else if (_state == ACTOR_STATES.SHIELDING)
+                {
+                    if (input.keysPressed.Contains(Keys.A))
+                        _velocity.X = -.5f;
+                    if (input.keysPressed.Contains(Keys.D))
+                        _velocity.X = .5f;
+                    if (input.keysPressed.Contains(Keys.S))
+                        _velocity.Y = .5f;
+                    if (input.keysPressed.Contains(Keys.W))
+                        _velocity.Y = -.5f;
+
+                    if (_velocity.X == 0 && _velocity.Y == 0)
+                        swapImage(_currentShieldIdleSprite);
+                    else
+                        swapImage(_currentShieldSprite);
+
+                    moveInDirection(_velocity);
+                    _oldVelocity = _velocity;
                 }
             }
             _velocity.X = 0;
@@ -490,7 +564,24 @@ namespace King_of_Thieves.Actors.Player
                     if (_state == ACTOR_STATES.SHIELDING || _state == ACTOR_STATES.SHIELD_ENGAGE)
                     {
                         _triggerUserEvent(1, "shield", _direction, _position.X, _position.Y);
-                        swapImage(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN);
+                        switch (_direction)
+                        {
+                            case DIRECTION.DOWN:
+                                swapImage(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN);
+                                break;
+
+                            case DIRECTION.LEFT:
+                                swapImage(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT);
+                                break;
+
+                            case DIRECTION.RIGHT:
+                                swapImage(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_RIGHT);
+                                break;
+
+                            case DIRECTION.UP:
+                                swapImage(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP);
+                                break;
+                        }
                         _state = ACTOR_STATES.SHIELD_DISENGAGE;
                     }
                 }

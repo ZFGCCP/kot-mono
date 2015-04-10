@@ -11,6 +11,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         private const int _SCREECH_RADIUS = 120;
         private bool _shotScreecher = false;
         private static int _zombieCount = 0;
+        protected const string _SCREECHER = "schreecher";
+        protected bool _screecherExists = false;
 
         protected const string _SPRITE_NAMESPACE = "npc:zombie";
 
@@ -22,6 +24,19 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
                 Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/zombie");
 
             _zombieCount += 1;
+        }
+
+        protected void _killScreecher()
+        {
+            _screecherExists = false;
+        }
+
+        protected void _screech()
+        {
+            Vector2 screechVelocity = _prepareScreechVelocity();
+            CZombieScreecher screecher = new CZombieScreecher(_direction, screechVelocity, _position);
+            screecher.init(_name + _SCREECHER, _position, "", this.componentAddress);
+            Map.CMapManager.addActorToComponent(screecher, this.componentAddress);
         }
 
         protected override void cleanUp()

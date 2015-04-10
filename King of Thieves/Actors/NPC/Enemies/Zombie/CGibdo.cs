@@ -16,6 +16,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         private const string _GRAB_UP = _SPRITE_NAMESPACE + ":gibdoGrabUp";
         private const string _GRAB_RIGHT = _SPRITE_NAMESPACE + ":gibdoGrabRight";
         private const string _GRAB_LEFT = _SPRITE_NAMESPACE + ":gibdoGrabLeft";
+        private const int _TURN_TIME = 120;
 
         private static int _gibdoCount = 0;
 
@@ -44,6 +45,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             _imageIndex.Add(_GRAB_UP, new Graphics.CSprite(_GRAB_UP));
             _imageIndex.Add(_GRAB_LEFT, new Graphics.CSprite(_GRAB_LEFT));
             _imageIndex.Add(_GRAB_RIGHT, new Graphics.CSprite(_GRAB_LEFT,true));
+
+            startTimer0(_TURN_TIME);
+            _direction = DIRECTION.DOWN;
+            _state = ACTOR_STATES.MOVING;
+            swapImage(_WALK_DOWN);
+            _angle = 270;
         }
 
         public override void destroy(object sender)
@@ -55,6 +62,70 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         protected override void cleanUp()
         {
             base.cleanUp();
+        }
+
+        public override void timer0(object sender)
+        {
+            _changeDirection();
+            startTimer0(_TURN_TIME);
+        }
+
+        private void _changeDirection()
+        {
+            DIRECTION oldDirection = _direction;
+            _direction = (DIRECTION)_randNum.Next(0, 3);
+
+            if (oldDirection != _direction && _screecherExists)
+                _killScreecher();
+
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, 1);
+                    _angle = 270;
+                    break;
+
+                case DIRECTION.LEFT:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(-1, 0);
+                    _angle = 180;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(1, 0);
+                    _angle = 0;
+                    break;
+
+                case DIRECTION.UP:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, -1);
+                    _angle = 90;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public override void update(Microsoft.Xna.Framework.GameTime gameTime)
+        {
+            base.update(gameTime);
+            moveInDirection(_velocity);
+
+            if (_checkIfPointInView(new Microsoft.Xna.Framework.Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY)))
+            {
+
+            }
+        }
+
+        public override void collide(object sender, CActor collider)
+        {
+            if (collider is Actors.Collision.CSolidTile)
+                _changeDirection();
+        }
+
+        protected override void _addCollidables()
+        {
+            base._addCollidables();
+            _collidables.Add(typeof(Actors.Collision.CSolidTile));
         }
     }
 }

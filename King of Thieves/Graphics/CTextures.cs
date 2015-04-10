@@ -58,6 +58,19 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_SHIELD_ENGAGE_DOWN = PLAYER + "shieldEngageDown";
         public const string PLAYER_SHIELD_DISENGAGE_DOWN = PLAYER + "shieldDisengageDown";
         public const string PLAYER_SHIELD_IDLE_DOWN = PLAYER + "shieldIdleDown";
+        public const string PLAYER_SHIELD_WALK_DOWN = PLAYER + "shieldWalkDown";
+        public const string PLAYER_SHIELD_ENGAGE_LEFT = PLAYER + "shieldEngageLeft";
+        public const string PLAYER_SHIELD_DISENGAGE_LEFT = PLAYER + "shieldDisengageLeft";
+        public const string PLAYER_SHIELD_IDLE_LEFT = PLAYER + "shieldIdleLeft";
+        public const string PLAYER_SHIELD_WALK_LEFT = PLAYER + "shieldWalkLeft";
+        public const string PLAYER_SHIELD_ENGAGE_RIGHT = PLAYER + "shieldEngageRight";
+        public const string PLAYER_SHIELD_DISENGAGE_RIGHT = PLAYER + "shieldDisengageRight";
+        public const string PLAYER_SHIELD_IDLE_RIGHT = PLAYER + "shieldIdleRight";
+        public const string PLAYER_SHIELD_WALK_RIGHT = PLAYER + "shieldWalkRight";
+        public const string PLAYER_SHIELD_ENGAGE_UP = PLAYER + "shieldEngageUp";
+        public const string PLAYER_SHIELD_DISENGAGE_UP = PLAYER + "shieldDisengageUp";
+        public const string PLAYER_SHIELD_IDLE_UP = PLAYER + "shieldIdleUp";
+        public const string PLAYER_SHIELD_WALK_UP = PLAYER + "shieldWalkUp";
         public const string PLAYER_SHOOT_ARROW_DOWN = PLAYER + "shootArrowDown";
         public const string PLAYER_HOLD_CANNON_DOWN = PLAYER + "holdCannonDown";
         public const string PLAYER_SHOOT_CANNON_DOWN = PLAYER + "shootCannonDown";
@@ -76,6 +89,9 @@ namespace King_of_Thieves.Graphics
         public const string WOOD_SHIELD_DISENGAGE_DOWN = SHIELDS + "woodDisengageDown";
 
         public const string WOOD_SHIELD_DOWN = SHIELDS + "woodDown";
+        public const string WOOD_SHIELD_LEFT = SHIELDS + "woodLeft";
+        public const string WOOD_SHIELD_RIGHT = SHIELDS + "woodRight";
+        public const string WOOD_SHIELD_UP = SHIELDS + "woodUp";
 
        
         //source images
@@ -144,6 +160,16 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_HOLD_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:8", "25:8", 0));
             textures.Add(PLAYER_SHIELD_ENGAGE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:34", "21:34", 15));
             textures.Add(PLAYER_SHIELD_DISENGAGE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:34", "21:34", 15, false, false, false, true));
+            textures.Add(PLAYER_SHIELD_WALK_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:34", "30:34", 10));
+            textures.Add(PLAYER_SHIELD_IDLE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:34", "22:34", 0));
+            textures.Add(PLAYER_SHIELD_ENGAGE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:35", "20:35", 15));
+            textures.Add(PLAYER_SHIELD_DISENGAGE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:35", "20:35", 15, false, false, false, true));
+            textures.Add(PLAYER_SHIELD_WALK_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:35", "28:35", 10));
+            textures.Add(PLAYER_SHIELD_IDLE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:35", "22:35", 0));
+            textures.Add(PLAYER_SHIELD_ENGAGE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:34", "31:34", 15));
+            textures.Add(PLAYER_SHIELD_DISENGAGE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:34", "31:34", 15, false, false, false, true));
+            textures.Add(PLAYER_SHIELD_WALK_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "32:34", "39:34", 10));
+            textures.Add(PLAYER_SHIELD_IDLE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "32:34", "32:34", 0));
             textures.Add(PLAYER_SHOOT_ARROW_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:7", "28:7", 8));
             textures.Add(PLAYER_SHOOT_ARROW_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:6", "28:6", 8));
             textures.Add(PLAYER_SHOOT_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:8", "28:8", 8));
@@ -161,6 +187,8 @@ namespace King_of_Thieves.Graphics
             textures.Add(WOOD_SHIELD_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "2:0", "2:0", 0));
             textures.Add(WOOD_SHIELD_ENGAGE_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:0", "2:0", 15));
             textures.Add(WOOD_SHIELD_DISENGAGE_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:1", "2:1", 15));
+            textures.Add(WOOD_SHIELD_LEFT, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:2", "0:2", 0));
+            textures.Add(WOOD_SHIELD_UP, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "1:2", "1:2", 0));
 
             textures.Add("chuChu:Wobble", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:0", "15:0", 12));
             textures.Add("chuChu:Idle", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:1", "7:1", 5));

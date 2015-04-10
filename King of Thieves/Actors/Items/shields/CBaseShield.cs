@@ -13,6 +13,9 @@ namespace King_of_Thieves.Actors.Items.shields
         protected Vector2 _offset = Vector2.Zero;
 
         private Vector2 _downOffset = new Vector2(8, 27);
+        private Vector2 _leftOffset = new Vector2(10, 10);
+        private Vector2 _rightOffset = new Vector2(20, 10);
+        private Vector2 _upOffset = new Vector2(6, 9);
 
         public CBaseShield() :
             base()
@@ -43,6 +46,25 @@ namespace King_of_Thieves.Actors.Items.shields
             {
                 case DIRECTION.DOWN:
                     swapImage(Graphics.CTextures.WOOD_SHIELD_ENGAGE_DOWN);
+                    _position.Y += 5;
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.WOOD_SHIELD_LEFT);
+                    _position.X -= 4;
+                    _position.Y += 3;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.WOOD_SHIELD_RIGHT);
+                    _position.X += 5;
+                    _position.Y += 3;
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.WOOD_SHIELD_UP);
+                    _position.X += 3;
+                    _position.Y += 3;
                     break;
 
                 default:
@@ -73,6 +95,18 @@ namespace King_of_Thieves.Actors.Items.shields
                     swapImage(Graphics.CTextures.WOOD_SHIELD_DISENGAGE_DOWN);
                     break;
 
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.WOOD_SHIELD_LEFT);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.WOOD_SHIELD_RIGHT);
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.WOOD_SHIELD_UP);
+                    break;
+
                 default:
                     break;
             }
@@ -88,6 +122,24 @@ namespace King_of_Thieves.Actors.Items.shields
                     swapImage(Graphics.CTextures.WOOD_SHIELD_DOWN);
                     _hitBox = _downBox;
                     _hitBox.offset = _downOffset;
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.WOOD_SHIELD_LEFT);
+                    _hitBox = _sideBox;
+                    _hitBox.offset = _leftOffset;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.WOOD_SHIELD_RIGHT);
+                    _hitBox = _sideBox;
+                    _hitBox.offset = _rightOffset;
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.WOOD_SHIELD_UP);
+                    _hitBox = _downBox;
+                    _hitBox.offset = _upOffset;
                     break;
             }
         }
