@@ -115,6 +115,8 @@ namespace King_of_Thieves.Actors
         private string _dataType;
         public static string _MAP_ICON = "MAP_ICON";
         protected bool _invulernable = false;
+        protected int _collisionDirectionX = 0;
+        protected int _collisionDirectionY = 0;
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -940,6 +942,69 @@ namespace King_of_Thieves.Actors
             C.Y = (float)((Math.Sin((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
 
             return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
+        }
+
+        protected void solidCollide(CActor collider, bool knockBack = false)
+        {
+            //Calculate How much to move to get out of collision moving towards last collisionless point
+            Collision.CHitBox otherbox = collider.hitBox;
+
+            //Calculate how far in we went
+            float distx = (collider.position.X + otherbox.center.X) - (position.X + hitBox.center.X);
+            distx = (float)Math.Sqrt(distx * distx);
+            float disty = (position.Y + hitBox.center.Y) - (collider.position.Y + otherbox.center.Y);
+            disty = (float)Math.Sqrt(disty * disty);
+
+            float lenx = hitBox.halfWidth + otherbox.halfWidth;
+            float leny = hitBox.halfHeight + otherbox.halfHeight;
+
+            int px = 1;
+            int py = 1;
+
+            if (collider.position.X + otherbox.center.X < position.X + hitBox.center.X)
+                px = -1;
+            if (collider.position.Y + otherbox.center.Y < position.Y + hitBox.center.Y)
+                py = -1;
+
+            float penx = px * (distx - lenx);
+            float peny = py * (disty - leny);
+            //Resolve closest to previous position
+            float diffx = (position.X + penx) - _oldPosition.X;
+            diffx *= diffx;
+            float diffy = (position.Y + peny) - _oldPosition.Y;
+            diffy *= diffy;
+
+            if (!knockBack)
+                _escapeCollide(diffx, diffy, penx, peny);
+            else
+                _knockBack(diffx, diffy, px, py);
+        }
+
+        private void _knockBack(float diffx, float diffy, float penx, float peny)
+        {
+
+            if (diffx < diffy)
+                _collisionDirectionX = (int)-penx;
+            else if (diffx > diffy)
+                _collisionDirectionY = (int)-peny;
+            else
+            {
+                _collisionDirectionX = (int)-penx;
+                _collisionDirectionY = (int)-peny;
+            }
+        }
+
+        private void _escapeCollide(float diffx, float diffy, float penx, float peny)
+        {
+            if (diffx < diffy)
+                _position.X += penx; //TODO: dont make a new vector every time
+            else if (diffx > diffy)
+                _position.Y += peny; //Same here 
+            else
+            {
+                _position.X += penx;
+                _position.Y += peny; //Corner cases 
+            }
         }
     }
 }

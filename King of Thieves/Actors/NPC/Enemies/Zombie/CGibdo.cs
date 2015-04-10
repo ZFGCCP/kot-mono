@@ -16,6 +16,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         private const string _GRAB_UP = _SPRITE_NAMESPACE + ":gibdoGrabUp";
         private const string _GRAB_RIGHT = _SPRITE_NAMESPACE + ":gibdoGrabRight";
         private const string _GRAB_LEFT = _SPRITE_NAMESPACE + ":gibdoGrabLeft";
+
+        private const string _HOLD_DOWN = _SPRITE_NAMESPACE + ":gibdoHoldDown";
+        private const string _HOLD_UP = _SPRITE_NAMESPACE + ":gibdoHoldUp";
+        private const string _HOLD_RIGHT = _SPRITE_NAMESPACE + ":gibdoHoldRight";
+        private const string _HOLD_LEFT = _SPRITE_NAMESPACE + ":gibdoHoldLeft";
         private const int _TURN_TIME = 120;
 
         private static int _gibdoCount = 0;
@@ -34,6 +39,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
                 Graphics.CTextures.addTexture(_GRAB_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:4", "5:4", 5));
                 Graphics.CTextures.addTexture(_GRAB_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:3", "5:3", 5));
                 Graphics.CTextures.addTexture(_GRAB_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:5", "5:5", 5));
+
+                Graphics.CTextures.addTexture(_HOLD_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "5:4", "5:4", 0));
+                Graphics.CTextures.addTexture(_HOLD_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "5:3", "5:3", 0));
+                Graphics.CTextures.addTexture(_HOLD_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "5:5", "5:5", 0));
             }
 
             _imageIndex.Add(_WALK_DOWN, new Graphics.CSprite(_WALK_DOWN));
@@ -46,6 +55,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             _imageIndex.Add(_GRAB_LEFT, new Graphics.CSprite(_GRAB_LEFT));
             _imageIndex.Add(_GRAB_RIGHT, new Graphics.CSprite(_GRAB_LEFT,true));
 
+            _imageIndex.Add(_HOLD_DOWN, new Graphics.CSprite(_HOLD_DOWN));
+            _imageIndex.Add(_HOLD_UP, new Graphics.CSprite(_HOLD_UP));
+            _imageIndex.Add(_HOLD_LEFT, new Graphics.CSprite(_HOLD_LEFT));
+            _imageIndex.Add(_HOLD_RIGHT, new Graphics.CSprite(_HOLD_LEFT, true));
+
             startTimer0(_TURN_TIME);
             _direction = DIRECTION.DOWN;
             _state = ACTOR_STATES.MOVING;
@@ -53,6 +67,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             _angle = 270;
             _lineOfSight = 90;
             _visionRange = 30;
+            _hitBox = new Collision.CHitBox(this, 20, 25, 25, 25);
             
         }
 
@@ -121,13 +136,61 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         public override void collide(object sender, CActor collider)
         {
             if (collider is Actors.Collision.CSolidTile)
+            {
                 _changeDirection();
+                solidCollide(collider);
+            }
+            else if (collider is Actors.Player.CPlayer)
+            {
+                if (_state == ACTOR_STATES.MOVING)
+                {
+                    _state = ACTOR_STATES.ATTACK;
+
+                    switch (_direction)
+                    {
+                        case DIRECTION.DOWN:
+                            swapImage(_GRAB_DOWN);
+                            break;
+
+                        case DIRECTION.UP:
+                            swapImage(_GRAB_UP);
+                            break;
+
+                        case DIRECTION.LEFT:
+                            swapImage(_GRAB_LEFT);
+                            break;
+
+                        case DIRECTION.RIGHT:
+                            swapImage(_GRAB_RIGHT);
+                            break;
+                    }
+                }
+            }
         }
 
-        protected override void _addCollidables()
+        public override void animationEnd(object sender)
         {
-            base._addCollidables();
-            _collidables.Add(typeof(Actors.Collision.CSolidTile));
+            if (_state == ACTOR_STATES.ATTACK)
+            {
+                switch (_direction)
+                {
+                    case DIRECTION.DOWN:
+                        swapImage(_HOLD_DOWN);
+                        break;
+
+                    case DIRECTION.UP:
+                        swapImage(_HOLD_UP);
+                        break;
+
+                    case DIRECTION.LEFT:
+                        swapImage(_HOLD_LEFT);
+                        break;
+
+                    case DIRECTION.RIGHT:
+                        swapImage(_HOLD_RIGHT);
+                        break;
+                }
+            }
         }
     }
 }
