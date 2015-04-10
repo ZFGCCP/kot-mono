@@ -904,6 +904,12 @@ namespace King_of_Thieves.Actors.Player
             startTimer3(time);
         }
 
+        public override void timer3(object sender)
+        {
+            _state = ACTOR_STATES.IDLE;
+            _acceptInput = true;
+        }
+
         public override void freeze()
         {
             _state = ACTOR_STATES.FROZEN;

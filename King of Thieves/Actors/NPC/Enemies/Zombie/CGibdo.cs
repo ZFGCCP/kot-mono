@@ -51,6 +51,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             _state = ACTOR_STATES.MOVING;
             swapImage(_WALK_DOWN);
             _angle = 270;
+            _lineOfSight = 90;
+            _visionRange = 30;
+            
         }
 
         public override void destroy(object sender)
@@ -81,25 +84,25 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             switch (_direction)
             {
                 case DIRECTION.DOWN:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(0, .5f);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, .25f);
                     _angle = 270;
                     swapImage(_WALK_DOWN);
                     break;
 
                 case DIRECTION.LEFT:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(-.5f, 0);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(-.25f, 0);
                     _angle = 180;
                     swapImage(_WALK_LEFT);
                     break;
 
                 case DIRECTION.RIGHT:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(.5f, 0);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(.25f, 0);
                     _angle = 0;
                     swapImage(_WALK_RIGHT);
                     break;
 
                 case DIRECTION.UP:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(0, -.5f);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, -.25f);
                     _angle = 90;
                     swapImage(_WALK_UP);
                     break;

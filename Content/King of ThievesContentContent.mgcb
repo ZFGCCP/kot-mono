@@ -662,3 +662,9 @@
 /processorParam:TextureFormat=Color
 /build:tilesets/items/smallItems.png
 
+#begin sounds/npc/redeadScreech.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/npc/redeadScreech.wav
+

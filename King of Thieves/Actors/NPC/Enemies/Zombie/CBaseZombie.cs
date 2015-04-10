@@ -61,7 +61,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             switch (_state)
             {
                 case ACTOR_STATES.MOVING:
-                    if (_checkLineofSight(playerPos.X, playerPos.Y))
+                    if (_checkIfPointInView(new Vector2(playerPos.X, playerPos.Y)))
                     {
                         if (!_screecherExists)
                             _shootScreech();

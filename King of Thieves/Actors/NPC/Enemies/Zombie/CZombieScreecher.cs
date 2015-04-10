@@ -36,6 +36,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             {
                 _killMe = true;
                 collider.stun(_STUN_TIME);
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:redead:screech"]);
             }
         }
     }
