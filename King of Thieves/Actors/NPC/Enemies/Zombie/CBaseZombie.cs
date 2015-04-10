@@ -9,7 +9,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
     class CBaseZombie : CBaseEnemy
     {
         private const int _SCREECH_RADIUS = 120;
-        private bool _shotScreecher = false;
         private static int _zombieCount = 0;
         protected const string _SCREECHER = "schreecher";
         protected bool _screecherExists = false;
@@ -31,8 +30,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             _screecherExists = false;
         }
 
-        protected void _screech()
+        protected void _shootScreech()
         {
+            _screecherExists = true;
             Vector2 screechVelocity = _prepareScreechVelocity();
             CZombieScreecher screecher = new CZombieScreecher(_direction, screechVelocity, _position);
             screecher.init(_name + _SCREECHER, _position, "", this.componentAddress);
@@ -60,16 +60,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
 
             switch (_state)
             {
-                case ACTOR_STATES.IDLE:
+                case ACTOR_STATES.MOVING:
                     if (_checkLineofSight(playerPos.X, playerPos.Y))
                     {
-                        if (!_shotScreecher)
-                        {
-                            _shotScreecher = true;
-                            CZombieScreecher screecher = new CZombieScreecher(_direction, _prepareScreechVelocity(), _position);
-                            screecher.init(_name + "screecher", _position, "", this.componentAddress);
-                            Map.CMapManager.addActorToComponent(screecher, componentAddress);
-                        }
+                        if (!_screecherExists)
+                            _shootScreech();
                     }
                     else if (isPointInHearingRange(playerPos))
                         moveToPoint2(playerPos.X, playerPos.Y, .25f);

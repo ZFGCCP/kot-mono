@@ -27,13 +27,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
 
             if (_gibdoCount <= 0)
             {
-                Graphics.CTextures.addTexture(_WALK_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 40, 31, 1, "0:1", "6:1", 3));
-                Graphics.CTextures.addTexture(_WALK_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 40, 31, 1, "0:0", "6:0", 3));
-                Graphics.CTextures.addTexture(_WALK_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 40, 31, 1, "0:2", "6:2", 3));
+                Graphics.CTextures.addTexture(_WALK_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:1", "6:1", 5));
+                Graphics.CTextures.addTexture(_WALK_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:0", "6:0", 5));
+                Graphics.CTextures.addTexture(_WALK_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:2", "6:2", 5));
 
-                Graphics.CTextures.addTexture(_GRAB_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 40, 31, 1, "0:4", "5:4", 3));
-                Graphics.CTextures.addTexture(_GRAB_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 40, 31, 1, "0:3", "5:3", 3));
-                Graphics.CTextures.addTexture(_GRAB_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 40, 31, 1, "0:5", "5:5", 3));
+                Graphics.CTextures.addTexture(_GRAB_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:4", "5:4", 5));
+                Graphics.CTextures.addTexture(_GRAB_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:3", "5:3", 5));
+                Graphics.CTextures.addTexture(_GRAB_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:5", "5:5", 5));
             }
 
             _imageIndex.Add(_WALK_DOWN, new Graphics.CSprite(_WALK_DOWN));
@@ -73,7 +73,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         private void _changeDirection()
         {
             DIRECTION oldDirection = _direction;
-            _direction = (DIRECTION)_randNum.Next(0, 3);
+            _direction = (DIRECTION)_randNum.Next(0, 4);
 
             if (oldDirection != _direction && _screecherExists)
                 _killScreecher();
@@ -81,23 +81,27 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             switch (_direction)
             {
                 case DIRECTION.DOWN:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(0, 1);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, .5f);
                     _angle = 270;
+                    swapImage(_WALK_DOWN);
                     break;
 
                 case DIRECTION.LEFT:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(-1, 0);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(-.5f, 0);
                     _angle = 180;
+                    swapImage(_WALK_LEFT);
                     break;
 
                 case DIRECTION.RIGHT:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(1, 0);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(.5f, 0);
                     _angle = 0;
+                    swapImage(_WALK_RIGHT);
                     break;
 
                 case DIRECTION.UP:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(0, -1);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, -.5f);
                     _angle = 90;
+                    swapImage(_WALK_UP);
                     break;
 
                 default:
@@ -109,11 +113,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         {
             base.update(gameTime);
             moveInDirection(_velocity);
-
-            if (_checkIfPointInView(new Microsoft.Xna.Framework.Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY)))
-            {
-
-            }
         }
 
         public override void collide(object sender, CActor collider)
