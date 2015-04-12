@@ -48,6 +48,7 @@ namespace King_of_Thieves.Actors
         FROZEN,
         GO_HOME,
         GOT_ITEM,
+        HOLD,
         HOLD_ARROW,
         HOLD_CANNON,
         IDLE,

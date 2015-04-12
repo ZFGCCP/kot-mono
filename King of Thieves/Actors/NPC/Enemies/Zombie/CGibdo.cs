@@ -71,6 +71,16 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             
         }
 
+        public override void keyRelease(object sender)
+        {
+            base.keyRelease(sender);
+
+            if (shakeOffMeter >= _shakeOffThreshold)
+            {
+                resetShakeOffMeter();
+            }
+        }
+
         public override void destroy(object sender)
         {
             _gibdoCount -= 1;
@@ -172,6 +182,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         {
             if (_state == ACTOR_STATES.ATTACK)
             {
+                _state = ACTOR_STATES.HOLD;
                 switch (_direction)
                 {
                     case DIRECTION.DOWN:

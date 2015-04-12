@@ -36,10 +36,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
 
         public override void keyRelease(object sender)
         {
-            CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+            if (_state == ACTOR_STATES.HOLD)
+            {
+                CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
 
-            if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C))
-                _shakeOffMeter++;
+                if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C))
+                    _shakeOffMeter++;
+            }
         }
 
         protected void _shootScreech()
@@ -121,6 +124,19 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
                     break;
             }
             return output;
+        }
+
+        protected int shakeOffMeter
+        {
+            get
+            {
+                return _shakeOffMeter;
+            }
+        }
+
+        protected void resetShakeOffMeter()
+        {
+            _shakeOffMeter = 0;
         }
     }
 }
