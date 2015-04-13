@@ -19,6 +19,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         private int _shakeOffMeter = 0;
         protected int _shakeOffThreshold = 0;
         private Vector2 _shakeOffVelocity = Vector2.Zero;
+        protected int _damagePerSec = 0;
+        protected Actors.CActor _actorToHug = null;
 
         public CBaseZombie()
             : base()
@@ -32,6 +34,17 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         public void killScreecher()
         {
             _screecherExists = false;
+        }
+
+        public override void timer2(object sender)
+        {
+            if (_actorToHug == null)
+                return;
+
+            _actorToHug.dealDamange(_damagePerSec, _actorToHug);
+
+            if (_state == ACTOR_STATES.HOLD)
+                startTimer2(60);
         }
 
         public override void keyRelease(object sender)

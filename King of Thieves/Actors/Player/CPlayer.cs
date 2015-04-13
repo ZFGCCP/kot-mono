@@ -178,7 +178,8 @@ namespace King_of_Thieves.Actors.Player
                         collider is Projectiles.CEnergyWave||
                         collider is Projectiles.CFireBall)
                     {
-                        _collideWithNpcResponse(collider);
+                        if (!(collider is NPC.Enemies.Zombie.CBaseZombie))
+                            _collideWithNpcResponse(collider);
                     }
                     else if (collider is Projectiles.CIceBall)
                         _collideWithNpcResponse(collider, false);
@@ -208,7 +209,6 @@ namespace King_of_Thieves.Actors.Player
         protected override void _registerUserEvents()
         {
             base._registerUserEvents();
-            _userEvents.Add(0, _releaseFromZombieGrip);
         }
 
         public override void create(object sender)
@@ -804,6 +804,7 @@ namespace King_of_Thieves.Actors.Player
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeese));
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseShadow));
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseThunder));
+            _collidables.Add(typeof(NPC.Enemies.Zombie.CBaseZombie));
             _collidables.Add(typeof(Projectiles.CEnergyWave));
 
             //world things
@@ -842,13 +843,16 @@ namespace King_of_Thieves.Actors.Player
         {
             _state = ACTOR_STATES.STUNNED;
             _acceptInput = false;
-            startTimer3(time);
+
+            if (time > -1)
+                startTimer3(time);
         }
 
         public override void timer3(object sender)
         {
             _state = ACTOR_STATES.IDLE;
             _acceptInput = true;
+            
         }
 
         public override void freeze()
@@ -1067,12 +1071,6 @@ namespace King_of_Thieves.Actors.Player
                     _throwBoomerang();
                     break;
             }
-        }
-
-        private void _releaseFromZombieGrip(object sender)
-        {
-            _state = ACTOR_STATES.IDLE;
-            _acceptInput = true;
         }
     }
 }

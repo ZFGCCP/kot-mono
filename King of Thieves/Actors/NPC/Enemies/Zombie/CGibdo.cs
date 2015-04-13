@@ -24,12 +24,14 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         private const int _TURN_TIME = 120;
 
         private static int _gibdoCount = 0;
+        
 
         public CGibdo()
             : base()
         {
             _state = ACTOR_STATES.MOVING;
-
+            _damagePerSec = 2;
+            _health = 16;
             if (_gibdoCount <= 0)
             {
                 Graphics.CTextures.addTexture(_WALK_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:1", "6:1", 5));
@@ -72,6 +74,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             
         }
 
+        protected override void _addCollidables()
+        {
+            base._addCollidables();
+            _collidables.Add(typeof(Projectiles.CBomb));
+            _collidables.Add(typeof(Items.Swords.CSword));
+        }
+
         public override void keyRelease(object sender)
         {
             base.keyRelease(sender);
@@ -82,6 +91,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
                 _state = ACTOR_STATES.SHOOK_OFF;
                 _setShakeOffVelo();
                 startTimer1(15);
+                _actorToHug.startTimer3(30);
+                _actorToHug = null;
             }
         }
 
@@ -164,11 +175,23 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
                 _changeDirection();
                 solidCollide(collider);
             }
+            else if (collider is Actors.Projectiles.CBomb && collider.state == ACTOR_STATES.EXPLODE)
+            {
+                _killMe = true;
+            }
+            else if (collider is Items.Swords.CSword)
+            {
+                _health -= 2;
+            }
             else if (collider is Actors.Player.CPlayer)
             {
                 if (_state == ACTOR_STATES.MOVING)
                 {
                     _state = ACTOR_STATES.ATTACK;
+                    collider.stun(-1);
+                    _actorToHug = collider;
+                    _actorToHug.state = ACTOR_STATES.INVISIBLE;
+                    startTimer2(60);
                     switch (_direction)
                     {
                         case DIRECTION.DOWN:

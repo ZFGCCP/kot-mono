@@ -36,6 +36,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies
         protected Dictionary<Items.Drops.CDroppable, float> _itemDrop = new Dictionary<Items.Drops.CDroppable,float>();
         protected bool _huntPlayer = false;
         protected List<ENEMY_PROPERTIES> _properties = new List<ENEMY_PROPERTIES>();
+        protected int _health = int.MaxValue;
 
         public CBaseEnemy(params dropRate[] drops) 
             :  base()
@@ -85,6 +86,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies
             
             //check hearing field
             return isPointInHearingRange(new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY));
+        }
+
+        public override void update(GameTime gameTime)
+        {
+            base.update(gameTime);
+            if (_health <= 0)
+                _killMe = true;
         }
 
         protected bool isPointInHearingRange(Vector2 point)
