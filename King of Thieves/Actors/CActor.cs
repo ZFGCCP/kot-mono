@@ -68,6 +68,7 @@ namespace King_of_Thieves.Actors
         SHIELD_ENGAGE,
         SHIELD_DISENGAGE,
         SHIELDING,
+        SHOOK_OFF,
         SHOOTING_ARROW,
         SHOOTING_CANNON,
         SMASH,
@@ -981,7 +982,7 @@ namespace King_of_Thieves.Actors
                 _knockBack(diffx, diffy, px, py);
         }
 
-        private void _knockBack(float diffx, float diffy, float penx, float peny)
+        protected void _knockBack(float diffx, float diffy, float penx, float peny)
         {
 
             if (diffx < diffy)

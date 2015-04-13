@@ -14,7 +14,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             base(direction, velocity, position)
         {
             _hitBox = new Collision.CHitBox(this, 0, 0, 20, 20);
-            startTimer0(90);
+            startTimer0(45);
         }
 
         protected override void _addCollidables()
@@ -27,6 +27,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         {
             base.timer0(sender);
             _killMe = true;
+            ((CBaseZombie)component.root).killScreecher();
         }
 
         public override void collide(object sender, CActor collider)

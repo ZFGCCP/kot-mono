@@ -18,7 +18,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         protected const string _SPRITE_NAMESPACE = "npc:zombie";
         private int _shakeOffMeter = 0;
         protected int _shakeOffThreshold = 0;
-
+        private Vector2 _shakeOffVelocity = Vector2.Zero;
 
         public CBaseZombie()
             : base()
@@ -29,7 +29,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             _zombieCount += 1;
         }
 
-        protected void _killScreecher()
+        public void killScreecher()
         {
             _screecherExists = false;
         }
@@ -94,9 +94,18 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
 
                 break;
 
+                case ACTOR_STATES.SHOOK_OFF:
+                    _shakeOff();
+                break;
+
                 default:
                     break;
             }
+        }
+
+        private void _shakeOff()
+        {
+            moveInDirection(_shakeOffVelocity);
         }
 
         private Vector2 _prepareScreechVelocity()
@@ -137,6 +146,32 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         protected void resetShakeOffMeter()
         {
             _shakeOffMeter = 0;
+        }
+
+        protected void _setShakeOffVelo()
+        {
+            _shakeOffVelocity = Vector2.Zero;
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    _shakeOffVelocity.Y = -4;
+                    break;
+
+                case DIRECTION.UP:
+                    _shakeOffVelocity.Y = 4;
+                    break;
+
+                case DIRECTION.LEFT:
+                    _shakeOffVelocity.X = 4;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _shakeOffVelocity.X = -4;
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

@@ -36,9 +36,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
                 Graphics.CTextures.addTexture(_WALK_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:0", "6:0", 5));
                 Graphics.CTextures.addTexture(_WALK_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:2", "6:2", 5));
 
-                Graphics.CTextures.addTexture(_GRAB_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:4", "5:4", 5));
-                Graphics.CTextures.addTexture(_GRAB_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:3", "5:3", 5));
-                Graphics.CTextures.addTexture(_GRAB_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:5", "5:5", 5));
+                Graphics.CTextures.addTexture(_GRAB_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:4", "5:4", 2));
+                Graphics.CTextures.addTexture(_GRAB_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:3", "5:3", 2));
+                Graphics.CTextures.addTexture(_GRAB_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "0:5", "5:5", 2));
 
                 Graphics.CTextures.addTexture(_HOLD_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "5:4", "5:4", 0));
                 Graphics.CTextures.addTexture(_HOLD_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 64, 48, 1, "5:3", "5:3", 0));
@@ -68,6 +68,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             _lineOfSight = 90;
             _visionRange = 30;
             _hitBox = new Collision.CHitBox(this, 20, 25, 25, 25);
+            _shakeOffThreshold = 10;
             
         }
 
@@ -78,6 +79,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             if (shakeOffMeter >= _shakeOffThreshold)
             {
                 resetShakeOffMeter();
+                _state = ACTOR_STATES.SHOOK_OFF;
+                _setShakeOffVelo();
+                startTimer1(15);
             }
         }
 
@@ -94,8 +98,16 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
 
         public override void timer0(object sender)
         {
-            _changeDirection();
+            if(_state == ACTOR_STATES.MOVING)
+                _changeDirection();
+
             startTimer0(_TURN_TIME);
+        }
+
+        public override void timer1(object sender)
+        {
+            _state = ACTOR_STATES.MOVING;
+            _changeDirection();
         }
 
         private void _changeDirection()
@@ -104,7 +116,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             _direction = (DIRECTION)_randNum.Next(0, 4);
 
             if (oldDirection != _direction && _screecherExists)
-                _killScreecher();
+                killScreecher();
 
             switch (_direction)
             {
@@ -140,7 +152,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             base.update(gameTime);
-            moveInDirection(_velocity);
+
+            if (_state == ACTOR_STATES.MOVING)
+                moveInDirection(_velocity);
         }
 
         public override void collide(object sender, CActor collider)
@@ -155,7 +169,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
                 if (_state == ACTOR_STATES.MOVING)
                 {
                     _state = ACTOR_STATES.ATTACK;
-
                     switch (_direction)
                     {
                         case DIRECTION.DOWN:
@@ -183,6 +196,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             if (_state == ACTOR_STATES.ATTACK)
             {
                 _state = ACTOR_STATES.HOLD;
+                resetShakeOffMeter();
                 switch (_direction)
                 {
                     case DIRECTION.DOWN:
