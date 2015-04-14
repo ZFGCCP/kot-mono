@@ -19,47 +19,84 @@ namespace King_of_Thieves.Graphics
         //==================sprite constants======================
         //flesh these out over time.  It's better than constantly creating string instances everytime we want to swap a sprite state.
         //namespaces
-        public static string EFFECTS = "effects:";
-        public static string PLAYER = "Player:";
-        public static string DROPS = "Drops:";
-        public static string HUD = "HUD:";
+        public const string EFFECTS = "effects:";
+        public const string PLAYER = "Player:";
+        public const string DROPS = "Drops:";
+        public const string HUD = "HUD:";
+        public const string ITEMS = "items:";
+        public const string SHIELDS = ITEMS + "shields:";
 
         //actual constants
-        public static string EFFECT_ENERGY_BALL_SMALL = EFFECTS + "energyBallSmall";
-        public static string EFFECT_ENERGY_WAVE_SMALL = EFFECTS + "energyWaveSmall";
-        public static string EFFECT_ENERGY_WAVE_SMALL_LEFT = EFFECT_ENERGY_WAVE_SMALL + "Left";
-        public static string EFFECT_ICE_BALL_SMALL = EFFECTS + "iceBallSmall";
-        public static string EFFECT_FIRE_BALL_SMALL = EFFECTS + "fireBallSmall";
-        public static string EFFECT_FIRE_BALL_SMALL_LEFT = EFFECT_FIRE_BALL_SMALL + "Left";
-        public static string EFFECT_ARROW = EFFECTS + "arrow";
-        public static string EFFECT_ARROW_RIGHT = EFFECTS + "arrowRight";
-        public static string EFFECT_BOMB = EFFECTS + "bomb";
-        public static string EFFECT_BOMB_FAST_TICK = EFFECTS + "bombFastTick";
-        public static string EFFECT_EXPLOSION = EFFECTS + "explosion";
-        public static string EFFECT_BOOMERANG = EFFECTS + "boomerang";
+        public const string EFFECT_ENERGY_BALL_SMALL = EFFECTS + "energyBallSmall";
+        public const string EFFECT_ENERGY_WAVE_SMALL = EFFECTS + "energyWaveSmall";
+        public const string EFFECT_ENERGY_WAVE_SMALL_LEFT = EFFECT_ENERGY_WAVE_SMALL + "Left";
+        public const string EFFECT_ICE_BALL_SMALL = EFFECTS + "iceBallSmall";
+        public const string EFFECT_FIRE_BALL_SMALL = EFFECTS + "fireBallSmall";
+        public const string EFFECT_FIRE_BALL_SMALL_LEFT = EFFECT_FIRE_BALL_SMALL + "Left";
+        public const string EFFECT_ARROW = EFFECTS + "arrow";
+        public const string EFFECT_ARROW_RIGHT = EFFECTS + "arrowRight";
+        public const string EFFECT_BOMB = EFFECTS + "bomb";
+        public const string EFFECT_BOMB_FAST_TICK = EFFECTS + "bombFastTick";
+        public const string EFFECT_EXPLOSION = EFFECTS + "explosion";
+        public const string EFFECT_BOOMERANG = EFFECTS + "boomerang";
+        public const string EFFECT_FIRE_SMALL = EFFECTS + "fireSmall";
 
-        public static string DROPS_HEART = DROPS + "heart";
+        public const string DROPS_HEART = DROPS + "heart";
+        public const string DROPS_RUPEE_GREEN = DROPS + "rupeeGreen";
+        public const string DROPS_RUPEE_BLUE = DROPS + "rupeeBlue";
+        public const string DROPS_RUPEE_ORANGE = DROPS + "rupeeOrange";
+        public const string DROPS_RUPEE_PURPLE = DROPS + "rupeePurple";
 
-        public static string PLAYER_CHARGE_ARROW_LEFT = PLAYER + "chargeArrowLeft";
-        public static string PLAYER_HOLD_ARROW_LEFT = PLAYER + "holdArrowLeft";
-        public static string PLAYER_SHOOT_ARROW_LEFT = PLAYER + "shootArrowLeft";
-        public static string PLAYER_CHARGE_ARROW_UP = PLAYER + "chargeArrowUp";
-        public static string PLAYER_HOLD_ARROW_UP = PLAYER + "holdArrowUp";
-        public static string PLAYER_SHOOT_ARROW_UP = PLAYER + "shootArrowUp";
-        public static string PLAYER_CHARGE_ARROW_DOWN = PLAYER + "chargeArrowDown";
-        public static string PLAYER_HOLD_ARROW_DOWN = PLAYER + "holdArrowDown";
-        public static string PLAYER_SHOOT_ARROW_DOWN = PLAYER + "shootArrowDown";
-        public static string PLAYER_HOLD_CANNON_DOWN = PLAYER + "holdCannonDown";
-        public static string PLAYER_SHOOT_CANNON_DOWN = PLAYER + "shootCannonDown";
-        public static string PLAYER_THROW_BOOMERANG_UP = PLAYER + "throwBoomerangUp";
-        public static string PLAYER_THROW_BOOMERANG_DOWN = PLAYER + "throwBoomerangDown";
-        public static string PLAYER_THROW_BOOMERANG_LEFT = PLAYER + "throwBoomerangLeft";
+        public const string PLAYER_CHARGE_ARROW_LEFT = PLAYER + "chargeArrowLeft";
+        public const string PLAYER_HOLD_ARROW_LEFT = PLAYER + "holdArrowLeft";
+        public const string PLAYER_SHOOT_ARROW_LEFT = PLAYER + "shootArrowLeft";
+        public const string PLAYER_CHARGE_ARROW_UP = PLAYER + "chargeArrowUp";
+        public const string PLAYER_HOLD_ARROW_UP = PLAYER + "holdArrowUp";
+        public const string PLAYER_SHOOT_ARROW_UP = PLAYER + "shootArrowUp";
+        public const string PLAYER_CHARGE_ARROW_DOWN = PLAYER + "chargeArrowDown";
+        public const string PLAYER_HOLD_ARROW_DOWN = PLAYER + "holdArrowDown";
+        public const string PLAYER_SHIELD_ENGAGE_DOWN = PLAYER + "shieldEngageDown";
+        public const string PLAYER_SHIELD_DISENGAGE_DOWN = PLAYER + "shieldDisengageDown";
+        public const string PLAYER_SHIELD_IDLE_DOWN = PLAYER + "shieldIdleDown";
+        public const string PLAYER_SHIELD_WALK_DOWN = PLAYER + "shieldWalkDown";
+        public const string PLAYER_SHIELD_ENGAGE_LEFT = PLAYER + "shieldEngageLeft";
+        public const string PLAYER_SHIELD_DISENGAGE_LEFT = PLAYER + "shieldDisengageLeft";
+        public const string PLAYER_SHIELD_IDLE_LEFT = PLAYER + "shieldIdleLeft";
+        public const string PLAYER_SHIELD_WALK_LEFT = PLAYER + "shieldWalkLeft";
+        public const string PLAYER_SHIELD_ENGAGE_RIGHT = PLAYER + "shieldEngageRight";
+        public const string PLAYER_SHIELD_DISENGAGE_RIGHT = PLAYER + "shieldDisengageRight";
+        public const string PLAYER_SHIELD_IDLE_RIGHT = PLAYER + "shieldIdleRight";
+        public const string PLAYER_SHIELD_WALK_RIGHT = PLAYER + "shieldWalkRight";
+        public const string PLAYER_SHIELD_ENGAGE_UP = PLAYER + "shieldEngageUp";
+        public const string PLAYER_SHIELD_DISENGAGE_UP = PLAYER + "shieldDisengageUp";
+        public const string PLAYER_SHIELD_IDLE_UP = PLAYER + "shieldIdleUp";
+        public const string PLAYER_SHIELD_WALK_UP = PLAYER + "shieldWalkUp";
+        public const string PLAYER_SHOOT_ARROW_DOWN = PLAYER + "shootArrowDown";
+        public const string PLAYER_HOLD_CANNON_DOWN = PLAYER + "holdCannonDown";
+        public const string PLAYER_SHOOT_CANNON_DOWN = PLAYER + "shootCannonDown";
+        public const string PLAYER_THROW_BOOMERANG_UP = PLAYER + "throwBoomerangUp";
+        public const string PLAYER_THROW_BOOMERANG_DOWN = PLAYER + "throwBoomerangDown";
+        public const string PLAYER_THROW_BOOMERANG_LEFT = PLAYER + "throwBoomerangLeft";
+        public const string PLAYER_GOT_ITEM = PLAYER + "gotItem";
 
-        public static string HUD_ARROWS = HUD + "arrows";
-        public static string HUD_BOMB_CANNON = HUD + "bombCannon";
+        public const string HUD_ARROWS = HUD + "arrows";
+        public const string HUD_BOMB_CANNON = HUD + "bombCannon";
+        public const string HUD_RUPEES = HUD + "rupees";
+        public const string HUD_ACTION = HUD + "action";
+
+        public const string WOOD_SHIELD_ENGAGE_DOWN = SHIELDS + "woodEngageDown";
+
+        public const string WOOD_SHIELD_DISENGAGE_DOWN = SHIELDS + "woodDisengageDown";
+
+        public const string WOOD_SHIELD_DOWN = SHIELDS + "woodDown";
+        public const string WOOD_SHIELD_LEFT = SHIELDS + "woodLeft";
+        public const string WOOD_SHIELD_RIGHT = SHIELDS + "woodRight";
+        public const string WOOD_SHIELD_UP = SHIELDS + "woodUp";
 
        
-
+        //source images
+        public const string SOURCE_PLAYER = "Player";
+        public const string SOURCE_SHIELDS = "shields";
 
         public static void init(ContentManager content)
         {
@@ -85,54 +122,73 @@ namespace King_of_Thieves.Graphics
             textures.Add("test", new CTextureAtlas(_content.Load<Texture2D>("test"), "test", 19, 23, 0));
             textures.Add("mcDungeon2", new CTextureAtlas(_content.Load<Texture2D>("mcDungeon2"), 16, 16, 0, 1));
             textures.Add("menu", new CTextureAtlas(_content.Load<Texture2D>("menu"), 288, 192, 0,0));
-            textures.Add("Player:WalkDown", new CTextureAtlas("Player", 32, 32, 1, "0:1", "9:1", 15));
-            textures.Add("Player:WalkLeft", new CTextureAtlas("Player", 32, 32, 1, "11:0", "15:1", 15));
-            textures.Add("Player:WalkUp", new CTextureAtlas("Player", 32, 32, 1, "17:0", "21:1", 15));
-            textures.Add("Player:IdleDown", new CTextureAtlas("Player", 32, 32, 1, "0:0", "0:0", 0));
-            textures.Add("Player:IdleUp", new CTextureAtlas("Player", 32, 32, 1, "2:0", "2:0", 0));
-            textures.Add("Player:IdleLeft", new CTextureAtlas("Player", 32, 32, 1, "1:0", "1:0", 0));
-            textures.Add("Player:SwingUp", new CTextureAtlas("Player", 32, 32, 1, "23:2", "33:2", 55));
-            textures.Add("Player:SwingDown", new CTextureAtlas("Player", 32, 32, 1, "23:0", "33:0", 55));
-            textures.Add("Player:SwingLeft", new CTextureAtlas("Player", 32, 32, 1, "23:1", "32:1", 55));
-            textures.Add("Player:RollDown", new CTextureAtlas("Player", 32, 32, 1, "40:12", "47:12", 15));
-            textures.Add("Player:RollUp", new CTextureAtlas("Player", 32, 32, 1, "40:13", "47:13", 15));
-            textures.Add("Player:RollLeft", new CTextureAtlas("Player", 32, 32, 1, "40:14", "46:14", 15));
-            textures.Add("Player:LiftDown", new CTextureAtlas("Player", 32, 32, 1, "0:29", "4:29", 10));
-            textures.Add("Player:LiftUp", new CTextureAtlas("Player", 32, 32, 1, "0:31", "4:31", 10));
-            textures.Add("Player:LiftLeft", new CTextureAtlas("Player", 32, 32, 1, "0:30", "4:30", 10));
-            textures.Add("Player:CarryDown", new CTextureAtlas("Player", 32, 32, 1, "0:32", "9:32", 15));
-            textures.Add("Player:CarryUp", new CTextureAtlas("Player", 32, 32, 1, "0:34", "9:34", 15));
-            textures.Add("Player:CarryLeft", new CTextureAtlas("Player", 32, 32, 1, "0:33", "9:33", 15));
-            textures.Add("Player:LiftIdleDown", new CTextureAtlas("Player", 32, 32, 1, "4:29", "4:29", 0));
-            textures.Add("Player:LiftIdleUp", new CTextureAtlas("Player", 32, 32, 1, "4:31", "4:31", 0));
-            textures.Add("Player:LiftIdleLeft", new CTextureAtlas("Player", 32, 32, 1, "4:30", "4:30", 0));
-            textures.Add("Player:ThrowDown", new CTextureAtlas("Player", 32, 32, 1, "5:29", "8:29", 10));
-            textures.Add("Player:ThrowUp", new CTextureAtlas("Player", 32, 32, 1, "5:31", "8:31", 10));
-            textures.Add("Player:ThrowLeft", new CTextureAtlas("Player", 32, 32, 1, "5:30", "8:30", 10));
-            textures.Add("Player:ShockDown", new CTextureAtlas("Player", 32, 32, 1, "37:30", "38:30", 10));
-            textures.Add("Player:ShockLeft", new CTextureAtlas("Player", 32, 32, 1, "40:30", "41:30", 10));
-            textures.Add("Player:ShockUp", new CTextureAtlas("Player", 32, 32, 1, "37:31", "38:31", 10));
-            textures.Add("Player:FreezeDown", new CTextureAtlas("Player", 32, 32, 1, "11:4", "11:4", 0));
-            textures.Add("Player:FreezeUp", new CTextureAtlas("Player", 32, 32, 1, "13:4", "13:4", 0));
-            textures.Add("Player:FreezeLeft", new CTextureAtlas("Player", 32, 32, 1, "12:4", "12:4", 0));
-            textures.Add(PLAYER_CHARGE_ARROW_LEFT, new CTextureAtlas("Player", 32, 32, 1, "23:7", "25:7", 8));
-            textures.Add(PLAYER_CHARGE_ARROW_DOWN, new CTextureAtlas("Player", 32, 32, 1, "23:6", "25:6", 8));
-            textures.Add(PLAYER_CHARGE_ARROW_UP, new CTextureAtlas("Player", 32, 32, 1, "23:8", "25:8", 8));
-            textures.Add(PLAYER_HOLD_ARROW_LEFT, new CTextureAtlas("Player", 32, 32, 1, "25:7", "25:7", 0));
-            textures.Add(PLAYER_HOLD_ARROW_DOWN, new CTextureAtlas("Player", 32, 32, 1, "25:6", "25:6", 0));
-            textures.Add(PLAYER_HOLD_ARROW_UP, new CTextureAtlas("Player", 32, 32, 1, "25:8", "25:8", 0));
-            textures.Add(PLAYER_SHOOT_ARROW_LEFT, new CTextureAtlas("Player", 32, 32, 1, "26:7", "28:7", 8));
-            textures.Add(PLAYER_SHOOT_ARROW_DOWN, new CTextureAtlas("Player", 32, 32, 1, "26:6", "28:6", 8));
-            textures.Add(PLAYER_SHOOT_ARROW_UP, new CTextureAtlas("Player", 32, 32, 1, "26:8", "28:8", 8));
-            textures.Add(PLAYER_HOLD_CANNON_DOWN, new CTextureAtlas("Player", 32, 32, 1, "14:42", "20:42", 8));
-            textures.Add(PLAYER_SHOOT_CANNON_DOWN, new CTextureAtlas("Player", 32, 32, 1, "11:42", "13:42", 8));
-            textures.Add(PLAYER_THROW_BOOMERANG_DOWN, new CTextureAtlas("Player", 32, 32, 1, "17:21", "22:21", 8));
-            textures.Add(PLAYER_THROW_BOOMERANG_UP, new CTextureAtlas("Player", 32, 32, 1, "17:23", "22:23", 8));
-            textures.Add(PLAYER_THROW_BOOMERANG_LEFT, new CTextureAtlas("Player", 32, 32, 1, "17:22", "22:22", 8));
+            textures.Add("Player:WalkDown", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "0:1", "9:1", 15));
+            textures.Add("Player:WalkLeft", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:0", "15:1", 15));
+            textures.Add("Player:WalkUp", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:0", "21:1", 15));
+            textures.Add("Player:IdleDown", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "0:0", "0:0", 0));
+            textures.Add("Player:IdleUp", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "2:0", "2:0", 0));
+            textures.Add("Player:IdleLeft", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "1:0", "1:0", 0));
+            textures.Add("Player:SwingUp", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:2", "33:2", 55));
+            textures.Add("Player:SwingDown", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:0", "33:0", 55));
+            textures.Add("Player:SwingLeft", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:1", "32:1", 55));
+            textures.Add("Player:RollDown", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:12", "47:12", 15));
+            textures.Add("Player:RollUp", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:13", "47:13", 15));
+            textures.Add("Player:RollLeft", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:14", "46:14", 15));
+            textures.Add("Player:LiftDown", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "0:29", "4:29", 10));
+            textures.Add("Player:LiftUp", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "0:31", "4:31", 10));
+            textures.Add("Player:LiftLeft", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "0:30", "4:30", 10));
+            textures.Add("Player:CarryDown", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "0:32", "9:32", 15));
+            textures.Add("Player:CarryUp", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "0:34", "9:34", 15));
+            textures.Add("Player:CarryLeft", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "0:33", "9:33", 15));
+            textures.Add("Player:LiftIdleDown", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:29", "4:29", 0));
+            textures.Add("Player:LiftIdleUp", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:31", "4:31", 0));
+            textures.Add("Player:LiftIdleLeft", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:30", "4:30", 0));
+            textures.Add("Player:ThrowDown", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "5:29", "8:29", 10));
+            textures.Add("Player:ThrowUp", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "5:31", "8:31", 10));
+            textures.Add("Player:ThrowLeft", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "5:30", "8:30", 10));
+            textures.Add("Player:ShockDown", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "37:30", "38:30", 10));
+            textures.Add("Player:ShockLeft", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:30", "41:30", 10));
+            textures.Add("Player:ShockUp", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "37:31", "38:31", 10));
+            textures.Add("Player:FreezeDown", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:4", "11:4", 0));
+            textures.Add("Player:FreezeUp", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "13:4", "13:4", 0));
+            textures.Add("Player:FreezeLeft", new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "12:4", "12:4", 0));
+            textures.Add(PLAYER_CHARGE_ARROW_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:7", "25:7", 8));
+            textures.Add(PLAYER_CHARGE_ARROW_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:6", "25:6", 8));
+            textures.Add(PLAYER_CHARGE_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:8", "25:8", 8));
+            textures.Add(PLAYER_HOLD_ARROW_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:7", "25:7", 0));
+            textures.Add(PLAYER_HOLD_ARROW_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:6", "25:6", 0));
+            textures.Add(PLAYER_HOLD_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:8", "25:8", 0));
+            textures.Add(PLAYER_SHIELD_ENGAGE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:34", "21:34", 15));
+            textures.Add(PLAYER_SHIELD_DISENGAGE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:34", "21:34", 15, false, false, false, true));
+            textures.Add(PLAYER_SHIELD_WALK_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:34", "30:34", 10));
+            textures.Add(PLAYER_SHIELD_IDLE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:34", "22:34", 0));
+            textures.Add(PLAYER_SHIELD_ENGAGE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:35", "20:35", 15));
+            textures.Add(PLAYER_SHIELD_DISENGAGE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:35", "20:35", 15, false, false, false, true));
+            textures.Add(PLAYER_SHIELD_WALK_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:35", "28:35", 10));
+            textures.Add(PLAYER_SHIELD_IDLE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:35", "22:35", 0));
+            textures.Add(PLAYER_SHIELD_ENGAGE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:34", "31:34", 15));
+            textures.Add(PLAYER_SHIELD_DISENGAGE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:34", "31:34", 15, false, false, false, true));
+            textures.Add(PLAYER_SHIELD_WALK_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "32:34", "39:34", 10));
+            textures.Add(PLAYER_SHIELD_IDLE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "32:34", "32:34", 0));
+            textures.Add(PLAYER_SHOOT_ARROW_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:7", "28:7", 8));
+            textures.Add(PLAYER_SHOOT_ARROW_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:6", "28:6", 8));
+            textures.Add(PLAYER_SHOOT_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:8", "28:8", 8));
+            textures.Add(PLAYER_HOLD_CANNON_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "14:42", "20:42", 8));
+            textures.Add(PLAYER_SHOOT_CANNON_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:42", "13:42", 8));
+            textures.Add(PLAYER_THROW_BOOMERANG_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:21", "22:21", 8));
+            textures.Add(PLAYER_THROW_BOOMERANG_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:23", "22:23", 8));
+            textures.Add(PLAYER_THROW_BOOMERANG_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:22", "22:22", 8));
+            textures.Add(PLAYER_GOT_ITEM, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "21:2", "21:2", 0));
 
             textures.Add("GerudoSword:SwingDown", new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 55));
             textures.Add("GerudoSword:SwingUp", new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 55));
             textures.Add("GerudoSword:SwingRight", new CTextureAtlas("Swords", 64, 64, 1, "0:2", "7:2", 55));
+
+            textures.Add(WOOD_SHIELD_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "2:0", "2:0", 0));
+            textures.Add(WOOD_SHIELD_ENGAGE_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:0", "2:0", 15));
+            textures.Add(WOOD_SHIELD_DISENGAGE_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:1", "2:1", 15));
+            textures.Add(WOOD_SHIELD_LEFT, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:2", "0:2", 0));
+            textures.Add(WOOD_SHIELD_UP, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "1:2", "1:2", 0));
 
             textures.Add("chuChu:Wobble", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:0", "15:0", 12));
             textures.Add("chuChu:Idle", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:1", "7:1", 5));
@@ -160,6 +216,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:test", new CTextureAtlas("test", 16, 16, 0, "0:0", "15:15",0,false,false,true));
             textures.Add("tileset:ages", new CTextureAtlas("ages", 16, 16, 0, "0:0", "15:15", 0, false, false, true));
             textures.Add("tileset:indoors:house", new CTextureAtlas("tileset:indoors:house", 16, 16, 0, "0:0", "24:16", 0, false, false, true));
+            textures.Add("tileset:smallLantern", new CTextureAtlas("tileset:items:smallItems", 16, 16, 1, "0:0", "8:0", 5, false, false, false));
             textures.Add("tileset:items:chests-small", new CTextureAtlas("tileset:items:chests-small", 16, 16, 1, "0:0", "1:2", 0, false, false, false));
 
             //editor icons
@@ -175,6 +232,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("effects:explosion", new CTextureAtlas("effects:explosion", 64, 64, 0, "0:0", "10:0", 10));
             textures.Add("effects:smokePoof", new CTextureAtlas("effects:explosion", 64, 64, 0, "2:0", "10:0", 10));
             textures.Add(EFFECT_ENERGY_BALL_SMALL, new CTextureAtlas("effects:various", 32, 32, 0, "0:0", "1:0", 5));
+            textures.Add(EFFECT_FIRE_SMALL, new CTextureAtlas("effects:various", 32, 32, 0, "0:4", "3:4", 5));
 
             //projectiles
             textures.Add(EFFECT_ENERGY_WAVE_SMALL, new CTextureAtlas("effects:various", 32, 32, 0, "2:0", "2:0", 0));
@@ -200,10 +258,16 @@ namespace King_of_Thieves.Graphics
             textures.Add("HUD:buttonRight", new CTextureAtlas("hudButtons", 32, 32, 0, "1:0", "1:0", 0));
             textures.Add("HUD:buttonUp", new CTextureAtlas("hudButtons", 32, 32, 0, "2:0", "2:0", 0));
             textures.Add(HUD_ARROWS, new CTextureAtlas("hudButtons", 32, 32, 0, "0:1", "0:1", 0));
+            textures.Add(HUD_ACTION, new CTextureAtlas("hudButtons", 32, 32, 0, "3:0", "3:0", 0));
             textures.Add(HUD_BOMB_CANNON, new CTextureAtlas("hudButtons", 32, 32, 0, "1:1", "1:1", 0));
+            textures.Add(HUD_RUPEES, new CTextureAtlas("health", 16, 16, 1, "0:1", "0:1", 0));
 
             //drops
             textures.Add(DROPS_HEART, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:0", "0:0"));
+            textures.Add(DROPS_RUPEE_GREEN, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:1", "0:1"));
+            textures.Add(DROPS_RUPEE_BLUE, new CTextureAtlas("drops:drops01", 16, 16, 1, "1:1", "1:1"));
+            textures.Add(DROPS_RUPEE_ORANGE, new CTextureAtlas("drops:drops01", 16, 16, 1, "2:1", "2:1"));
+            textures.Add(DROPS_RUPEE_PURPLE, new CTextureAtlas("drops:drops01", 16, 16, 1, "3:1", "3:1"));
         }
 
         public static void addRawTexture(string textureName, string fileNameNoExt)
@@ -230,12 +294,15 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("potSmall", _content.Load<Texture2D>("potSmall"));
             rawTextures.Add("maple", _content.Load<Texture2D>("maple"));
 
+            rawTextures.Add(SOURCE_SHIELDS, _content.Load<Texture2D>("sprites/items/shields"));
+
             //drops
             rawTextures.Add("drops:drops01", _content.Load<Texture2D>("sprites/drops/drops01"));
             
             //tilesets
             rawTextures.Add("tileset:indoors:house",_content.Load<Texture2D>(@"tilesets/indoors/house"));
             rawTextures.Add("tileset:items:chests-small", _content.Load<Texture2D>(@"tilesets/items/chests-small"));
+            rawTextures.Add("tileset:items:smallItems", _content.Load<Texture2D>(@"tilesets/items/smallItems"));
 
             //effects
             rawTextures.Add("effects:explosion", _content.Load<Texture2D>(@"effects/bomb-explosion"));

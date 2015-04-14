@@ -96,7 +96,7 @@ namespace King_of_Thieves
             Master.GetInputManager().AddInputHandler(new CInput());
             CMasterControl.glblInput = Master.GetInputManager().GetCurrentInputHandler() as Input.CInput;
             CMasterControl.healthController = new Actors.HUD.health.CHealthController(20,78);
-            CMasterControl.buttonController = new Actors.HUD.buttons.CButtonController();
+            
 
             base.Initialize();
         }
@@ -122,7 +122,8 @@ namespace King_of_Thieves
             CMasterControl.mapManager.cacheMaps(false, "tileTester.xml");
             CMasterControl.mapManager.cacheMaps(false, "thieves-house-f1.xml");
 
-            textTest = new Actors.HUD.Text.CTextBox();
+            //textTest = new Actors.HUD.Text.CTextBox();
+            CMasterControl.buttonController = new Actors.HUD.buttons.CButtonController();
         }
 
         /// <summary>
@@ -164,11 +165,11 @@ namespace King_of_Thieves
             //CMasterControl.mapManager.updateMap(gameTime);
             _updateTimer.Stop();
 
-            if (CMasterControl.glblInput.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.X))
-                textTest.displayMessageBox("The quick brown fox jumped over the fence. I am a potato. blah blah Ash rocks etc testing some mad wacky shit hello am i your god please eat me for i am delicious blah blah abcdefgh i jklmno pqrs t u vwxyz hoo hahahahaha look at me i'm a text box i go to school i wear glasses ganondorf can suck a my linky ding dong while i shoot fire arrows wearing some kinda cloak. I have over 9000 master swords and they're all up Ganondorf's butthole. ");
+            //if (CMasterControl.glblInput.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.Z))
+                //textTest.displayMessageBox("The quick brown fox jumped over the fence. I am a potato. blah blah Ash rocks etc testing some mad wacky shit hello am i your god please eat me for i am delicious blah blah abcdefgh i jklmno pqrs t u vwxyz hoo hahahahaha look at me i'm a text box i go to school i wear glasses ganondorf can suck a my linky ding dong while i shoot fire arrows wearing some kinda cloak. I have over 9000 master swords and they're all up Ganondorf's butthole. ");
 
 
-            textTest.update(gameTime);
+            //textTest.update(gameTime);
             //CMasterControl.audioPlayer.Update();
             base.Update(gameTime);
             
@@ -194,7 +195,7 @@ namespace King_of_Thieves
 
             CEffects.drawThisShit();
 
-            textTest.drawMe();
+            //textTest.drawMe();
 
             _drawTimer.Stop();
 
@@ -211,12 +212,8 @@ namespace King_of_Thieves
 
             spriteBatch.End();
 
-            _updateTimer.Restart();
-            _drawTimer.Restart();
-
             base.Draw(gameTime);
-
-            
+            _drawTimer.Stop();
 
         }
     }

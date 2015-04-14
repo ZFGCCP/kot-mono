@@ -20,18 +20,19 @@ namespace King_of_Thieves.Actors.Player
         private double _carryWeight = 0;
         private bool _acceptInput = true;
         private bool _usingItem = false;
-        private int _collisionDirectionX = 0;
-        private int _collisionDirectionY = 0;
         private Keys _lastHudKeyPressed = Keys.None;
         private string _lastArrowShotName = "";
         private string _lastBombShotName = "";
         private const int _MAX_BOMB_VELO = 5;
         private int _bombVelo = 0;
+        private string _currentShieldSprite = "";
+        private string _currentShieldIdleSprite = "";
 
-        private static string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
-        private static string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
-        private static string _THROW_BOOMERANG_LEFT = "PlayerThrowBoomerangLeft";
-        private static string _THROW_BOOMERANG_RIGHT = "PlayerThrowBoomerangRight";
+        private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
+        private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
+        private const string _THROW_BOOMERANG_LEFT = "PlayerThrowBoomerangLeft";
+        private const string _THROW_BOOMERANG_RIGHT = "PlayerThrowBoomerangRight";
+        private const string _GOT_ITEM = "PlayerGotItem";
 
         public CPlayer() :
             base()
@@ -45,6 +46,11 @@ namespace King_of_Thieves.Actors.Player
             
             image = _imageIndex["PlayerWalkDown"];
             _velocity = new Vector2(0, 0);
+        }
+
+        public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
+        {
+            base.init(name, position, dataType, compAddress, additional);
         }
 
         protected override void _initializeResources()
@@ -127,11 +133,35 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(_THROW_BOOMERANG_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT]));
             _imageIndex.Add(_THROW_BOOMERANG_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT], null, true));
             _imageIndex.Add(_THROW_BOOMERANG_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP]));
+
+            _imageIndex.Add(_GOT_ITEM, new Graphics.CSprite(Graphics.CTextures.PLAYER_GOT_ITEM, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_GOT_ITEM]));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN,Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN]));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT]));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT], null,true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT], null, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT], null, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT], null, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_UP]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_UP]));
+
+
         }
 
         public override void collide(object sender, CActor collider)
         {
-            if (!collider.noCollide && collider is CSolidTile)
+            if (!collider.noCollide && (collider is CSolidTile || collider is Items.decoration.CChest))
             {
                 solidCollide(collider);
             }
@@ -148,7 +178,8 @@ namespace King_of_Thieves.Actors.Player
                         collider is Projectiles.CEnergyWave||
                         collider is Projectiles.CFireBall)
                     {
-                        _collideWithNpcResponse(collider);
+                        if (!(collider is NPC.Enemies.Zombie.CBaseZombie))
+                            _collideWithNpcResponse(collider);
                     }
                     else if (collider is Projectiles.CIceBall)
                         _collideWithNpcResponse(collider, false);
@@ -175,67 +206,9 @@ namespace King_of_Thieves.Actors.Player
             _destroyHeldItems();
         }
 
-        private void solidCollide(CActor collider, bool knockBack = false)
+        protected override void _registerUserEvents()
         {
-            //Calculate How much to move to get out of collision moving towards last collisionless point
-			CHitBox otherbox = collider.hitBox;
-			
-			//Calculate how far in we went
-			float distx = (collider.position.X + otherbox.center.X) - (position.X + hitBox.center.X);
-			distx = (float)Math.Sqrt(distx * distx);
-			float disty = (position.Y + hitBox.center.Y) - (collider.position.Y + otherbox.center.Y);
-			disty = (float)Math.Sqrt(disty * disty);
-			
-			float lenx = hitBox.halfWidth + otherbox.halfWidth;
-			float leny = hitBox.halfHeight + otherbox.halfHeight;
-			
-			int px = 1;
-			int py = 1;
-			
-			if (collider.position.X+otherbox.center.X < position.X+hitBox.center.X)
-				px = -1;
-			if (collider.position.Y+otherbox.center.Y < position.Y+hitBox.center.Y)
-				py = -1;
-			
-			float penx = px*(distx - lenx);
-			float peny = py*(disty - leny);
-			//Resolve closest to previous position
-			float diffx = (position.X + penx) - _oldPosition.X;
-			diffx *= diffx;
-			float diffy = (position.Y + peny) - _oldPosition.Y;
-			diffy *= diffy;
-
-            if (!knockBack)
-                _escapeCollide(diffx, diffy, penx, peny);
-            else
-                _knockBack(diffx, diffy, px, py);
-        }
-
-        private void _knockBack(float diffx, float diffy, float penx, float peny)
-        {
-
-            if (diffx < diffy)
-                _collisionDirectionX = (int)-penx;
-            else if (diffx > diffy)
-                _collisionDirectionY = (int)-peny;
-            else
-            {
-                _collisionDirectionX = (int)-penx;
-                _collisionDirectionY = (int)-peny;
-            }
-        }
-
-        private void _escapeCollide(float diffx, float diffy, float penx, float peny)
-        {
-            if (diffx < diffy)
-                _position.X += penx; //TODO: dont make a new vector every time
-            else if (diffx > diffy)
-                _position.Y += peny; //Same here 
-            else
-            {
-                _position.X += penx; 
-                _position.Y += peny; //Corner cases 
-            }
+            base._registerUserEvents();
         }
 
         public override void create(object sender)
@@ -291,6 +264,41 @@ namespace King_of_Thieves.Actors.Player
                     Map.CMapManager.addActorToComponent(boomerang, this.componentAddress);
                     _usingItem = false;
                     break;
+
+                case ACTOR_STATES.SHIELD_ENGAGE:
+                    _state = ACTOR_STATES.SHIELDING;
+                    _acceptInput = true;
+
+                    switch (_direction)
+                    {
+                        case DIRECTION.DOWN:
+                            _currentShieldSprite = Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN;
+                            _currentShieldIdleSprite = Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN;
+                            break;
+
+                        case DIRECTION.LEFT:
+                            _currentShieldSprite = Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT;
+                            _currentShieldIdleSprite = Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT;
+                            break;
+
+                        case DIRECTION.RIGHT:
+                            _currentShieldSprite = Graphics.CTextures.PLAYER_SHIELD_WALK_RIGHT;
+                            _currentShieldIdleSprite = Graphics.CTextures.PLAYER_SHIELD_IDLE_RIGHT;
+                            break;
+
+                        case DIRECTION.UP:
+                            _currentShieldSprite = Graphics.CTextures.PLAYER_SHIELD_WALK_UP;
+                            _currentShieldIdleSprite = Graphics.CTextures.PLAYER_SHIELD_IDLE_UP;
+                            break;
+
+                        default:
+                            break;
+                    }
+                    break;
+
+                case ACTOR_STATES.SHIELD_DISENGAGE:
+                    _state = ACTOR_STATES.IDLE;
+                    break;
             }
 
             
@@ -300,11 +308,10 @@ namespace King_of_Thieves.Actors.Player
         {
             if (_acceptInput)
             {
+                //Store this so we can type less
+                CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
                 if (_state == ACTOR_STATES.IDLE || _state == ACTOR_STATES.MOVING)
                 {
-                    //Store this so we can type less
-                    CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
-
                     if (input.keysPressed.Contains(Keys.End))
                     {
                         Graphics.CGraphics.changeResolution(320, 240);
@@ -316,7 +323,35 @@ namespace King_of_Thieves.Actors.Player
                     else if (input.keysPressed.Contains(Keys.Right) && _lastHudKeyPressed != Keys.Right)
                         _useItem(-1);
                     else if (input.keysPressed.Contains(Keys.LeftShift))
-                        _state = ACTOR_STATES.SHIELDING;
+                    {
+                        if (_state != ACTOR_STATES.SHIELDING && _state != ACTOR_STATES.SHIELD_ENGAGE)
+                        {
+                            _triggerUserEvent(0, "shield", _direction, _position.X, _position.Y);
+                            _state = ACTOR_STATES.SHIELD_ENGAGE;
+
+                            switch (_direction)
+                            {
+                                case DIRECTION.DOWN:
+                                    swapImage(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN);
+                                    break;
+
+                                case DIRECTION.LEFT:
+                                    swapImage(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT);
+                                    break;
+
+                                case DIRECTION.RIGHT:
+                                    swapImage(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_RIGHT);
+                                    break;
+
+                                case DIRECTION.UP:
+                                    swapImage(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP);
+                                    break;
+                            }
+                            
+                            _acceptInput = false;
+                            return;
+                        }
+                    }
 
                     if (!_usingItem)
                     {
@@ -326,20 +361,16 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 swapImage("PlayerCarryLeft");
                                 _velocity.X = -1;
-                            }
-                            else if (_state == ACTOR_STATES.SHIELDING)
-                            {
-                                _velocity.X = -2.5f;
+                                _state = ACTOR_STATES.MOVING;
                             }
                             else
                             {
                                 image = _imageIndex["PlayerWalkLeft"];
                                 _velocity.X = -1;
+                                _state = ACTOR_STATES.MOVING;
                             }
 
-                            _position.X += _velocity.X;
                             _direction = DIRECTION.LEFT;
-                            _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.D))
@@ -348,20 +379,16 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 swapImage("PlayerCarryRight");
                                 _velocity.X = 1;
-                            }
-                            else if (_state == ACTOR_STATES.SHIELDING)
-                            {
-                                _velocity.X = 2.5f;
+                                _state = ACTOR_STATES.MOVING;
                             }
                             else
                             {
                                 image = _imageIndex["PlayerWalkRight"];
                                 _velocity.X = 1;
+                                _state = ACTOR_STATES.MOVING;
                             }
 
-                            _position.X += _velocity.X;
                             _direction = DIRECTION.RIGHT;
-                            _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.W))
@@ -370,20 +397,16 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 _velocity.Y = -1;
                                 swapImage("PlayerCarryUp");
-                            }
-                            else if (_state == ACTOR_STATES.SHIELDING)
-                            {
-                                _velocity.Y = -2.5f;
+                                _state = ACTOR_STATES.MOVING;
                             }
                             else
                             {
                                 _velocity.Y = -1;
                                 image = _imageIndex["PlayerWalkUp"];
+                                _state = ACTOR_STATES.MOVING;
                             }
 
-                            _position.Y += _velocity.Y;
                             _direction = DIRECTION.UP;
-                            _state = ACTOR_STATES.MOVING;
                         }
 
                         if (input.keysPressed.Contains(Keys.S))
@@ -393,30 +416,45 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 swapImage("PlayerCarryDown");
                                 _velocity.Y = 1;
-                            }
-                            else if (_state == ACTOR_STATES.SHIELDING)
-                            {
-                                _velocity.Y = 2.5f;
+                                _state = ACTOR_STATES.MOVING;
                             }
                             else
                             {
                                 image = _imageIndex["PlayerWalkDown"];
                                 _velocity.Y = 1;
+                                _state = ACTOR_STATES.MOVING;
                             }
 
-                            _position.Y += _velocity.Y;
                             _direction = DIRECTION.DOWN;
-                            _state = ACTOR_STATES.MOVING;
                         }
 
+                        moveInDirection(_velocity);
                         _oldVelocity = _velocity;
                     }
-
                     if (input.keysPressed.Contains(Keys.Space))
                     {
                         _state = ACTOR_STATES.SWINGING;
                         _swordReleased = false;
                     }
+                }
+                else if (_state == ACTOR_STATES.SHIELDING)
+                {
+                    if (input.keysPressed.Contains(Keys.A))
+                        _velocity.X = -.5f;
+                    if (input.keysPressed.Contains(Keys.D))
+                        _velocity.X = .5f;
+                    if (input.keysPressed.Contains(Keys.S))
+                        _velocity.Y = .5f;
+                    if (input.keysPressed.Contains(Keys.W))
+                        _velocity.Y = -.5f;
+
+                    if (_velocity.X == 0 && _velocity.Y == 0)
+                        swapImage(_currentShieldIdleSprite);
+                    else
+                        swapImage(_currentShieldSprite);
+
+                    moveInDirection(_velocity);
+                    _oldVelocity = _velocity;
                 }
             }
             _velocity.X = 0;
@@ -428,6 +466,13 @@ namespace King_of_Thieves.Actors.Player
             if (_acceptInput)
             {
                 CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+                if (input.keysReleased.Contains(Keys.T))
+                {
+                    Items.Drops.CRupeeDrop rupee = new Items.Drops.CRupeeDrop();
+                    rupee.init("rupeeTest", _position - new Vector2(20, 20), "", this.componentAddress, "P");
+                    Map.CMapManager.addActorToComponent(rupee, this.componentAddress);
+                }
+
                 if (!(Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysPressed)
                 {
                     if (_state == ACTOR_STATES.MOVING)
@@ -456,41 +501,76 @@ namespace King_of_Thieves.Actors.Player
                 }
 
                 if (input.keysReleased.Contains(Keys.LeftShift))
-                    _state = ACTOR_STATES.IDLE;
-
-                if (input.keysReleased.Contains(Keys.C) && _state == ACTOR_STATES.MOVING)
                 {
-                    if (_carrying)
+                    if (_state == ACTOR_STATES.SHIELDING || _state == ACTOR_STATES.SHIELD_ENGAGE)
                     {
-                        _triggerUserEvent(0, "carryMe", _direction);
-                        _state = ACTOR_STATES.THROWING;
-
+                        _triggerUserEvent(1, "shield", _direction, _position.X, _position.Y);
                         switch (_direction)
                         {
                             case DIRECTION.DOWN:
-                                swapImage("PlayerThrowDown");
-                                break;
-
-                            case DIRECTION.UP:
-                                swapImage("PlayerThrowUp");
+                                swapImage(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN);
                                 break;
 
                             case DIRECTION.LEFT:
-                                swapImage("PlayerThrowLeft");
+                                swapImage(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT);
                                 break;
 
                             case DIRECTION.RIGHT:
-                                swapImage("PlayerThrowRight");
+                                swapImage(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_RIGHT);
+                                break;
+
+                            case DIRECTION.UP:
+                                swapImage(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP);
                                 break;
                         }
+                        _state = ACTOR_STATES.SHIELD_DISENGAGE;
+                    }
+                }
 
-                        _carrying = false;
+                if (input.keysReleased.Contains(Keys.C))
+                {
+                    //check HUD state
+                    if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.OPEN)
+                    {
+                        _state = ACTOR_STATES.GOT_ITEM;
+                        swapImage(_GOT_ITEM);
+                        _acceptInput = false;
+                    }
+
+                    if (_state == ACTOR_STATES.MOVING)
+                    {
+                        if (_carrying)
+                        {
+                            _triggerUserEvent(0, "carryMe", _direction);
+                            _state = ACTOR_STATES.THROWING;
+
+                            switch (_direction)
+                            {
+                                case DIRECTION.DOWN:
+                                    swapImage("PlayerThrowDown");
+                                    break;
+
+                                case DIRECTION.UP:
+                                    swapImage("PlayerThrowUp");
+                                    break;
+
+                                case DIRECTION.LEFT:
+                                    swapImage("PlayerThrowLeft");
+                                    break;
+
+                                case DIRECTION.RIGHT:
+                                    swapImage("PlayerThrowRight");
+                                    break;
+                            }
+
+                            _carrying = false;
+                            return;
+                        }
+                        _state = ACTOR_STATES.ROLLING;
+                        _rollReleased = false;
+                        //get the FUCK out of this
                         return;
                     }
-                    _state = ACTOR_STATES.ROLLING;
-                    _rollReleased = false;
-                    //get the FUCK out of this
-                    return;
                 }
             }
 
@@ -502,8 +582,22 @@ namespace King_of_Thieves.Actors.Player
         public override void update(GameTime gameTime)
         {
             base.update(gameTime);
+            _velocity.X = 0;
+            _velocity.Y = 0;
             switch (_state)
             {
+                case ACTOR_STATES.GOT_ITEM:
+                    if (Actors.HUD.Text.CTextBox.messageFinished)
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        _direction = DIRECTION.DOWN;
+                        CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
+                        _angle = 270;
+                        _acceptInput = true;
+                        swapImage("PlayerIdleDown");
+                    }
+                    break;
+
                 case ACTOR_STATES.LIFT:
                     switch (_direction)
                     {
@@ -704,14 +798,19 @@ namespace King_of_Thieves.Actors.Player
         protected override void _addCollidables()
         {
             //_collidables.Add(typeof(Actors.NPC.Enemies.Keese.CKeese));
-            _collidables.Add(typeof(Actors.Collision.CSolidTile));
-            _collidables.Add(typeof(Actors.Items.decoration.CPot));
+
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseFire));
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseIce));
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeese));
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseShadow));
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseThunder));
+            _collidables.Add(typeof(NPC.Enemies.Zombie.CBaseZombie));
             _collidables.Add(typeof(Projectiles.CEnergyWave));
+
+            //world things
+            _collidables.Add(typeof(Actors.Collision.CSolidTile));
+            _collidables.Add(typeof(Actors.Items.decoration.CPot));
+            _collidables.Add(typeof(Actors.Items.decoration.CChest));
         }
 
         public override void shock()
@@ -738,6 +837,22 @@ namespace King_of_Thieves.Actors.Player
                     swapImage("PlayerShockRight");
                     break;
             }
+        }
+
+        public override void stun(int time)
+        {
+            _state = ACTOR_STATES.STUNNED;
+            _acceptInput = false;
+
+            if (time > -1)
+                startTimer3(time);
+        }
+
+        public override void timer3(object sender)
+        {
+            _state = ACTOR_STATES.IDLE;
+            _acceptInput = true;
+            
         }
 
         public override void freeze()
@@ -956,8 +1071,6 @@ namespace King_of_Thieves.Actors.Player
                     _throwBoomerang();
                     break;
             }
-
-            
         }
     }
 }

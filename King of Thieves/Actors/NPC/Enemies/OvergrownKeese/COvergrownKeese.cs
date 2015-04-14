@@ -138,7 +138,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
         protected override void cleanUp()
         {
             Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
-            _overgrownKeeseCount = 0;
             base.cleanUp();
         }
 

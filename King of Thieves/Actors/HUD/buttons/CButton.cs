@@ -14,19 +14,30 @@ namespace King_of_Thieves.Actors.HUD.buttons
 
     }
 
+    public enum HUD_ACTION_OPTIONS
+    {
+        OPEN = 1,
+        NONE
+    }
+
     class CButton : CHUDElement
     {
         public enum HUD_BUTTON_TYPE
         {
             LEFT = 0,
-            RIGHT
+            RIGHT,
+            ACTION
         }
+
+        
 
         private readonly HUD_BUTTON_TYPE _BUTTON_TYPE = 0;
         public HUDOPTIONS hudItem = HUDOPTIONS.ARROWS;
+        public HUD_ACTION_OPTIONS actionOption = HUD_ACTION_OPTIONS.NONE;
 
-        private static string _BUTTON_LEFT = "buttonLeft";
-        private static string _BUTTON_RIGHT = "buttonRight";
+        private const string _BUTTON_LEFT = "buttonLeft";
+        private const string _BUTTON_RIGHT = "buttonRight";
+        private const string _BUTTON_ACTION = "buttonAction";
         private Graphics.CSprite _itemOverlay = null;
         public CButton(HUD_BUTTON_TYPE type)
         {
@@ -47,6 +58,12 @@ namespace King_of_Thieves.Actors.HUD.buttons
                     _fixedPosition = new Vector2(283, 10);
                     changeItemOverlay(HUDOPTIONS.BOOMERANG);
                     break;
+
+                case HUD_BUTTON_TYPE.ACTION:
+                    _imageIndex.Add(_BUTTON_ACTION, new Graphics.CSprite(Graphics.CTextures.HUD_ACTION));
+                    swapImage(_BUTTON_ACTION);
+                    _fixedPosition = new Vector2(217, 11);
+                    break;
             }
         }
 
@@ -56,12 +73,6 @@ namespace King_of_Thieves.Actors.HUD.buttons
 
             if (_itemOverlay != null)
                 _itemOverlay.draw((int)_position.X, (int)_position.Y);
-        }
-
-        public override void update(GameTime gameTime)
-        {
-            _position.X = _fixedPosition.X - CMasterControl.camera.position.X;
-            _position.Y = _fixedPosition.Y - CMasterControl.camera.position.Y;
         }
 
         public void changeItemOverlay(HUDOPTIONS option)
@@ -80,6 +91,19 @@ namespace King_of_Thieves.Actors.HUD.buttons
                 //place holder for now
                 case HUDOPTIONS.BOOMERANG:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
+                    break;
+            }
+        }
+
+        public void changeAction(HUD_ACTION_OPTIONS option)
+        {
+            actionOption = option;
+            switch (actionOption)
+            {
+                case HUD_ACTION_OPTIONS.OPEN:
+                    break;
+
+                case HUD_ACTION_OPTIONS.NONE:
                     break;
             }
         }

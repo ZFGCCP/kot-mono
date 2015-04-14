@@ -60,14 +60,18 @@ namespace King_of_Thieves.Sound
             //hud
             soundBank.Add("HUD:health:heartGet", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/health/lttp_heart")));
             soundBank.Add("HUD:health:healthBeep", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/health/Low_Health_Beep")));
+            soundBank.Add("HUD:rupees:rupeeGet", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/rupee_pickup")));
 
             //npcs
             soundBank.Add("Npc:wizzrobe:vanish", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/wizzrobevanish")));
+            soundBank.Add("Npc:redead:screech", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/redeadScreech")));
 
             //background sfx
             soundBank.Add("Background:Nature:Rooster", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/rooster")));
             soundBank.Add("Background:Nature:Wolf", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/wolf")));
             soundBank.Add("Background:Shock", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/shock")));
+            soundBank.Add("Background:itemFanfare", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfare")));
+            soundBank.Add("Background:itemFanfareSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfareSmall")));
         }
 
         public void stop()

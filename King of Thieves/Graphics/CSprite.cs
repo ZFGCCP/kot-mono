@@ -22,6 +22,7 @@ namespace King_of_Thieves.Graphics
         private int _totalFrames = 0;
         private int _framesPassed = 0;
         private bool _isEffect = false;
+        private bool _paused = false;
 
         public CSprite(string atlasName, bool flipH = false, bool flipV = false, Effect shader = null, bool isEffect = false, int rotation = 0, params VertexPositionColor[] vertices)
             : base(shader, vertices)
@@ -65,6 +66,11 @@ namespace King_of_Thieves.Graphics
             spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], Vector2.Zero, Color.White);
         }
 
+        public void pause()
+        {
+            _paused = !_paused;
+        }
+
         public override bool draw(int x, int y, bool useOverlay = false)
         {
             if (_imageAtlas == null)
@@ -72,7 +78,7 @@ namespace King_of_Thieves.Graphics
 
             _frameTracker += _imageAtlas.FrameRate;
 
-            if (_frameTracker >= 60)
+            if (!_paused && _frameTracker >= 60)
             {
                 _frameTracker = 0;
                 frameX++;
