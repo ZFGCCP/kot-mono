@@ -83,6 +83,7 @@
     <Compile Include="Actors\NPC\Enemies\Chuchus\CGreenChuChu.cs" />
     <Compile Include="Actors\NPC\Enemies\FloorTile\CFloorTile.cs" />
     <Compile Include="Actors\NPC\Enemies\FloorTile\CFloorTileMaster.cs" />
+    <Compile Include="Actors\NPC\Enemies\Guards\CCastleGuard.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CBaseKeese.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CKeese.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CKeeseFire.cs" />
