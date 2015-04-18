@@ -76,6 +76,7 @@
     <Compile Include="Actors\Menu\CMenu.cs" />
     <Compile Include="Actors\Menu\CMenuCursor.cs" />
     <Compile Include="Actors\Menu\CMenuItem.cs" />
+    <Compile Include="Actors\Menu\CPauseBackdrop.cs" />
     <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CArmoredCrab.cs" />
     <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CCrabShell.cs" />
     <Compile Include="Actors\NPC\Enemies\CBaseEnemy.cs" />
@@ -210,6 +211,7 @@
     </Compile>
     <Compile Include="usr\local\DevMenu.cs" />
     <Compile Include="usr\local\EditorMode.cs" />
+    <Compile Include="usr\local\GameMenu\CPauseMenu.cs" />
     <Compile Include="usr\local\MapEditor.cs" />
     <Compile Include="usr\local\PlayableState.cs" />
     <Compile Include="usr\local\splash\CTitleState.cs" />
@@ -497,6 +499,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sounds\npc\redeadScreech.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\hud\menu.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\menu\menuOpen.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\menu\menuClose.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

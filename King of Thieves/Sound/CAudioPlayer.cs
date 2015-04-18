@@ -66,6 +66,10 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Npc:wizzrobe:vanish", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/wizzrobevanish")));
             soundBank.Add("Npc:redead:screech", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/redeadScreech")));
 
+            //menus
+            soundBank.Add("menu:openMenu", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/menu/menuOpen")));
+            soundBank.Add("menu:closeMenu", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/menu/menuClose")));
+
             //background sfx
             soundBank.Add("Background:Nature:Rooster", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/rooster")));
             soundBank.Add("Background:Nature:Wolf", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/wolf")));

@@ -463,9 +463,9 @@ namespace King_of_Thieves.Actors.Player
 
         public override void keyRelease(object sender)
         {
+            CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
             if (_acceptInput)
             {
-                CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
                 if (input.keysReleased.Contains(Keys.T))
                 {
                     Items.Drops.CRupeeDrop rupee = new Items.Drops.CRupeeDrop();
@@ -573,6 +573,9 @@ namespace King_of_Thieves.Actors.Player
                     }
                 }
             }
+
+            if (input.keysReleased.Contains(Keys.RightShift))
+                Master.Push(new usr.local.GameMenu.CPauseMenu());
 
 
         }

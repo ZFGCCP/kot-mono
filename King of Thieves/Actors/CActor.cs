@@ -68,6 +68,8 @@ namespace King_of_Thieves.Actors
         SHIELD_ENGAGE,
         SHIELD_DISENGAGE,
         SHIELDING,
+        SHIFT_LEFT,
+        SHIFT_RIGHT,
         SHOOK_OFF,
         SHOOTING_ARROW,
         SHOOTING_CANNON,
