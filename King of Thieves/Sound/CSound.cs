@@ -19,6 +19,7 @@ namespace King_of_Thieves.Sound
         private bool _loop;
         private bool _track;
         private int _repeat;
+        
 
         public CSound(SoundEffect fx)
         {
@@ -41,6 +42,14 @@ namespace King_of_Thieves.Sound
             _sfx = null;
             _loop = loop;
             _repeat = repeat;
+        }
+
+        public bool isPlaying
+        {
+            get
+            {
+                return _sfxInstance.State == SoundState.Playing;
+            }
         }
 
         public SoundEffect sfx

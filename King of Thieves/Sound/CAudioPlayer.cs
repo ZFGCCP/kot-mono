@@ -93,6 +93,17 @@ namespace King_of_Thieves.Sound
             MediaPlayer.Resume();
         }
 
+        public void stopAllSfx()
+        {
+            foreach (KeyValuePair<string, CSound> sounds in soundBank)
+            {
+                if (sounds.Value.isPlaying)
+                {
+                    sounds.Value.sfxInstance.Stop(true);
+                }
+            }
+        }
+
         public CSound song
         {
             get

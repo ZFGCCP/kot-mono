@@ -2,6 +2,7 @@
 using King_of_Thieves.Actors;
 using Gears.Cloud;
 using King_of_Thieves.Input;
+using King_of_Thieves.Graphics;
 
 namespace King_of_Thieves.usr.local
 {
@@ -19,6 +20,7 @@ namespace King_of_Thieves.usr.local
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
             CMasterControl.mapManager.drawMap();
+            CEffects.drawThisShit();
             CMasterControl.healthController.drawMe(spriteBatch);
             CMasterControl.buttonController.drawMe(spriteBatch);
         }

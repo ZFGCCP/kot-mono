@@ -193,8 +193,6 @@ namespace King_of_Thieves
             
             Master.Draw(spriteBatch);
 
-            CEffects.drawThisShit();
-
             //textTest.drawMe();
 
             _drawTimer.Stop();

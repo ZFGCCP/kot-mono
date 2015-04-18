@@ -33,6 +33,7 @@ namespace King_of_Thieves.Actors.Player
         private const string _THROW_BOOMERANG_LEFT = "PlayerThrowBoomerangLeft";
         private const string _THROW_BOOMERANG_RIGHT = "PlayerThrowBoomerangRight";
         private const string _GOT_ITEM = "PlayerGotItem";
+        private bool _canOpenManu = false;
 
         public CPlayer() :
             base()
@@ -46,6 +47,7 @@ namespace King_of_Thieves.Actors.Player
             
             image = _imageIndex["PlayerWalkDown"];
             _velocity = new Vector2(0, 0);
+            startTimer5(30);
         }
 
         public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
@@ -157,6 +159,12 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_UP]));
 
 
+        }
+
+        public override void timer5(object sender)
+        {
+            base.timer5(sender);
+            _canOpenManu = true;
         }
 
         public override void collide(object sender, CActor collider)
@@ -574,7 +582,7 @@ namespace King_of_Thieves.Actors.Player
                 }
             }
 
-            if (input.keysReleased.Contains(Keys.RightShift))
+            if (_canOpenManu && input.keysReleased.Contains(Keys.Enter))
                 Master.Push(new usr.local.GameMenu.CPauseMenu());
 
 
