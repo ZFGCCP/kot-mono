@@ -261,7 +261,7 @@ namespace Gears.Navigation
         /// </summary>
         /// <param name="currentKeyboardState">Passed from Input class.</param>
         /// <param name="oldKeyboardState">Passed from Input class.</param>
-        internal void KeyDown(ref KeyboardState currentKeyboardState, ref KeyboardState oldKeyboardState)
+        protected internal virtual void KeyDown(ref KeyboardState currentKeyboardState, ref KeyboardState oldKeyboardState)
         {
             if (currentKeyboardState.IsKeyDown(Keys.Enter) &&
                 currentKeyboardState.IsKeyDown(Keys.Enter) != oldKeyboardState.IsKeyDown(Keys.Enter))
