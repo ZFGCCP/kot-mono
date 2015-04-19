@@ -9,17 +9,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.usr.local.GameMenu
 {
-    class CPauseMenu : MenuReadyGameState
+    class CPauseMenu : MenuState
     {
         private Actors.Menu.CPauseBackdrop[] _pauseBackdrops = new Actors.Menu.CPauseBackdrop[2];
-        private Texture2D _backDrop = null;
         private bool _justOpened = true;
 
-        public CPauseMenu() :
-            base()
+        public CPauseMenu(Menu itemMenu, Menu questMenu) :
+            base(itemMenu)
         {
-            _pauseBackdrops[0] = new Actors.Menu.CPauseBackdrop(Graphics.CTextures.HUD_ITEM_SCREEN, 0);
-            _pauseBackdrops[1] = new Actors.Menu.CPauseBackdrop(Graphics.CTextures.HUD_QUEST_SCREEN, -1);
+            _pauseBackdrops[0] = new Actors.Menu.CPauseBackdrop(Graphics.CTextures.HUD_ITEM_SCREEN, 0, itemMenu);
+            _pauseBackdrops[1] = new Actors.Menu.CPauseBackdrop(Graphics.CTextures.HUD_QUEST_SCREEN, -1, questMenu);
             CMasterControl.audioPlayer.stopAllSfx();
             CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["menu:openMenu"]);
             

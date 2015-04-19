@@ -83,6 +83,7 @@ namespace King_of_Thieves.Graphics
         public const string HUD_BOMB_CANNON = HUD + "bombCannon";
         public const string HUD_RUPEES = HUD + "rupees";
         public const string HUD_ACTION = HUD + "action";
+        public const string HUD_PAUSE_CURSOR = HUD + "pauseCursor";
 
         public const string HUD_ITEM_SCREEN = HUD + "itemScreen";
         public const string HUD_QUEST_SCREEN = HUD + "questScreen";
@@ -102,6 +103,7 @@ namespace King_of_Thieves.Graphics
         public const string SOURCE_SHIELDS = "shields";
         public const string SOURCE_HUD = "hud";
         public const string SOURCE_MENU = "menu";
+        
 
         public static void init(ContentManager content)
         {
@@ -268,6 +270,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_RUPEES, new CTextureAtlas("health", 16, 16, 1, "0:1", "0:1", 0));
             textures.Add(HUD_ITEM_SCREEN, new CTextureAtlas(SOURCE_MENU, 320, 240, 0, "0:0", "0:0", 0));
             textures.Add(HUD_QUEST_SCREEN, new CTextureAtlas(SOURCE_MENU, 320, 240, 0, "1:0", "1:0", 0));
+            textures.Add(HUD_PAUSE_CURSOR, new CTextureAtlas("hudButtons", 32, 32, 0, "3:1", "3:1", 0));
 
             //drops
             textures.Add(DROPS_HEART, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:0", "0:0"));

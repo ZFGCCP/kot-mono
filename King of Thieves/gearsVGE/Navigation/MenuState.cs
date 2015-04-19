@@ -211,14 +211,18 @@ namespace Gears.Navigation
             blank = new Texture2D(Master.GetGame().GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             blank.SetData(new[] { Color.White });
 
-            foreach (MenuElement element in this._menu.MenuElements) {
-                if (element.GetFont() == null && element.SpriteFont != null)
+            if (_menu != null)
+            {
+                foreach (MenuElement element in this._menu.MenuElements)
                 {
-                    element.SetFont(Master.GetGame().Content.Load<SpriteFont>(element.SpriteFont));
-                }
-                if (element.GetTexture() == null && element.Texture2D != null)
-                {
-                    element.SetTexture(Master.GetGame().Content.Load<Texture2D>(element.Texture2D));
+                    if (element.GetFont() == null && element.SpriteFont != null)
+                    {
+                        element.SetFont(Master.GetGame().Content.Load<SpriteFont>(element.SpriteFont));
+                    }
+                    if (element.GetTexture() == null && element.Texture2D != null)
+                    {
+                        element.SetTexture(Master.GetGame().Content.Load<Texture2D>(element.Texture2D));
+                    }
                 }
             }
         }
@@ -254,6 +258,14 @@ namespace Gears.Navigation
         {
             InactivateState();
             _menu.GetSelectableMenuElements()[_menu.GetActiveMenuIndex()].ThrowPushEvent();
+        }
+
+        public int activeMenuIndex
+        {
+            get
+            {
+                return _menu.GetActiveMenuIndex();
+            }
         }
 
         /// <summary>
@@ -389,6 +401,12 @@ namespace Gears.Navigation
             {
                 ActivateState();
             }
+        }
+
+        public void swapMenu(Menu menu)
+        {
+            this._menu = menu;
+            this.InitializeLocal();
         }
     }
 }

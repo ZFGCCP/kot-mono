@@ -13,8 +13,10 @@ namespace King_of_Thieves.Actors.Menu
         // 1: right
         private int _shiftIndex = 0;
         private const float _SHIFT_VELOCITY = 11.05f;
+        private Gears.Navigation.Menu _menu;
+        private Menu.CMenuCursor _cursor = new CMenuCursor();
 
-        public CPauseBackdrop(string background,int menuPosition) :
+        public CPauseBackdrop(string background,int menuPosition,Gears.Navigation.Menu menu) :
             base()
         {
             _shiftIndex = menuPosition;
@@ -30,6 +32,13 @@ namespace King_of_Thieves.Actors.Menu
 
             swapImage(background);
             _state = ACTOR_STATES.IDLE;
+            _menu = menu;
+        }
+
+        public override void drawMe(bool useOverlay = false)
+        {
+            base.drawMe(useOverlay);
+            _cursor.drawMe();
         }
 
         public override void keyRelease(object sender)
@@ -82,6 +91,7 @@ namespace King_of_Thieves.Actors.Menu
         {
             base.update(gameTime);
             _fixedPosition.X += _velocity.X;
+            _cursor.update(gameTime);
         }
 
         public int shiftIndex

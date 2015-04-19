@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Gears.Navigation;
 
 namespace King_of_Thieves
 {
@@ -18,6 +19,18 @@ namespace King_of_Thieves
         public static ContentManager glblContent;
         public static Input.CInput glblInput;
         public static Graphics.CCamera camera = new Graphics.CCamera();
+
+        //menu creation functions
+        public static Menu itemPauseMenu()
+        {
+            return new Menu();
+        }
+
+        //menu creation functions
+        public static Menu questPauseMenu()
+        {
+            return new Menu();
+        }
         
     }
 }

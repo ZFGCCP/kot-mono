@@ -47,7 +47,7 @@ namespace King_of_Thieves.Actors.Player
             
             image = _imageIndex["PlayerWalkDown"];
             _velocity = new Vector2(0, 0);
-            startTimer5(30);
+            startTimer5(15);
         }
 
         public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
@@ -583,9 +583,7 @@ namespace King_of_Thieves.Actors.Player
             }
 
             if (_canOpenManu && input.keysReleased.Contains(Keys.Enter))
-                Master.Push(new usr.local.GameMenu.CPauseMenu());
-
-
+                Master.Push(new usr.local.GameMenu.CPauseMenu(CMasterControl.itemPauseMenu(), CMasterControl.questPauseMenu()));
         }
 
 
