@@ -18,5 +18,13 @@ namespace King_of_Thieves.Actors.Menu
             _fixedPosition = new Vector2(35, 35);
         }
 
+        public Vector2 fixedPosition
+        {
+            set
+            {
+                _fixedPosition = value;
+            }
+        }
+
     }
 }

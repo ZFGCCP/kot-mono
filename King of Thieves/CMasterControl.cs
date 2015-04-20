@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Gears.Navigation;
+using King_of_Thieves.usr.local.GameMenu;
 
 namespace King_of_Thieves
 {
@@ -23,7 +24,22 @@ namespace King_of_Thieves
         //menu creation functions
         public static Menu itemPauseMenu()
         {
-            return new Menu();
+            Menu menu = new Menu();
+
+            CPauseMenuElement bow = new CPauseMenuElement(new Vector2(35, 35), 1, -1, -1, 5);
+            bow.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS);
+            bow.MenuText = "Hero's Bow";
+            bow.Selectable = true;
+            menu.AddMenuElement(bow);
+
+            CPauseMenuElement bomb = new CPauseMenuElement(new Vector2(84, 35), 2, 0, -1, 6);
+            bomb.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
+            bomb.MenuText = "Bomb Cannon";
+            bomb.Selectable = true;
+            menu.AddMenuElement(bomb);
+
+            menu.Recache();
+            return menu;
         }
 
         //menu creation functions

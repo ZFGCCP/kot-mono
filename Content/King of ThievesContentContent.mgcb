@@ -691,3 +691,9 @@
 /processorParam:Quality=Best
 /build:sounds/menu/menuClose.wav
 
+#begin sounds/menu/menuCursor.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/menu/menuCursor.wav
+
