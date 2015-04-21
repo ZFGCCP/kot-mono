@@ -19,7 +19,7 @@ namespace King_of_Thieves.usr.local.GameMenu
         private Vector2 _cursorPosition = Vector2.Zero;
         public CSprite sprite = null;
 
-        public CPauseMenuElement(Vector2 cursorPosition, int rightNeighbor = -1, int leftNeighbor = -1, int upNeighbor = -1, int downNeighbor = -1) :
+        public CPauseMenuElement(Vector2 cursorPosition, int rightNeighbor, int leftNeighbor, int upNeighbor, int downNeighbor) :
             base()
         {
             _rightNeighbor = rightNeighbor;
@@ -28,6 +28,14 @@ namespace King_of_Thieves.usr.local.GameMenu
             _downNeighbor = downNeighbor;
             _cursorPosition = cursorPosition;
 
+        }
+
+        public bool hasItem
+        {
+            get
+            {
+                return sprite != null;
+            }
         }
 
         public Vector2 cursorPosition

@@ -18,11 +18,12 @@ namespace King_of_Thieves.Actors.Menu
         private const float _SHIFT_VELOCITY = 11.05f;
         private Gears.Navigation.Menu _menu;
         private Menu.CMenuCursor _cursor = new CMenuCursor();
-        private static SpriteFont _sherwood = CMasterControl.glblContent.Load<SpriteFont>(@"Fonts/sherwood");
-        private static Vector2 _menuDrawText = new Vector2(40, 15);
+        private static SpriteFont _sherwood = CMasterControl.glblContent.Load<SpriteFont>(@"Fonts/pauseMenuHeadings");
+        private static Vector2 _menuDrawText = new Vector2(40, 10);
         private bool _focused = false;
+        private bool _drawHud = false;
 
-        public CPauseBackdrop(string background,int menuPosition,Gears.Navigation.Menu menu) :
+        public CPauseBackdrop(string background,int menuPosition,Gears.Navigation.Menu menu, bool drawHud = false) :
             base()
         {
             _shiftIndex = menuPosition;
@@ -42,6 +43,7 @@ namespace King_of_Thieves.Actors.Menu
             swapImage(background);
             _state = ACTOR_STATES.IDLE;
             _menu = menu;
+            _drawHud = drawHud;
         }
 
         public override void drawMe(bool useOverlay = false)
@@ -53,9 +55,17 @@ namespace King_of_Thieves.Actors.Menu
                 foreach (CPauseMenuElement menuElement in _menu.MenuElements)
                 {
                     Vector2 coords = menuElement.cursorPosition;
-                    menuElement.sprite.draw((int)coords.X, (int)coords.Y);
+
+                    if (menuElement.hasItem)
+                        menuElement.sprite.draw((int)(_position.X + coords.X), (int)(_position.Y + coords.Y));
                 }
                 _cursor.drawMe();
+
+                if (_menu.GetActiveMenuIndex() != -1 && ((CPauseMenuElement)_menu.MenuElements[_menu.GetActiveMenuIndex()]).hasItem)
+                    Graphics.CGraphics.spriteBatch.DrawString(_sherwood, _menu.MenuElements[_menu.GetActiveMenuIndex()].MenuText, this._position + _menuDrawText, Color.White);
+
+                if (_drawHud)
+                    CMasterControl.buttonController.drawMe(Graphics.CGraphics.spriteBatch);
             }
 
 
@@ -98,6 +108,24 @@ namespace King_of_Thieves.Actors.Menu
                     {
                         CPauseMenuElement currentElement = (CPauseMenuElement)_menu.MenuElements[activeMenuIndex];
                         _moveCursor(currentElement.leftNeighbor);
+                    }
+                }
+                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.S))
+                {
+                    int activeMenuIndex = _menu.GetActiveMenuIndex();
+                    if (activeMenuIndex >= 0)
+                    {
+                        CPauseMenuElement currentElement = (CPauseMenuElement)_menu.MenuElements[activeMenuIndex];
+                        _moveCursor(currentElement.downNeighbor);
+                    }
+                }
+                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.W))
+                {
+                    int activeMenuIndex = _menu.GetActiveMenuIndex();
+                    if (activeMenuIndex >= 0)
+                    {
+                        CPauseMenuElement currentElement = (CPauseMenuElement)_menu.MenuElements[activeMenuIndex];
+                        _moveCursor(currentElement.upNeighbor);
                     }
                 }
             }

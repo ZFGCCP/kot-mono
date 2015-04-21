@@ -697,3 +697,9 @@
 /processorParam:Quality=Best
 /build:sounds/menu/menuCursor.wav
 
+#begin Fonts/pauseMenuHeadings.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/pauseMenuHeadings.spritefont
+
