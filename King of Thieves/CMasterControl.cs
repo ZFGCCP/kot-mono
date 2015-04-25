@@ -30,17 +30,20 @@ namespace King_of_Thieves
             bow.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS);
             bow.MenuText = "Hero's Bow";
             bow.Selectable = true;
+            bow.hudOptions = Actors.HUD.buttons.HUDOPTIONS.ARROWS;
             menu.AddMenuElement(bow);
 
             CPauseMenuElement bomb = new CPauseMenuElement(new Vector2(84, 35), 2, 0, 9, 5);
             bomb.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
             bomb.MenuText = "Bomb Cannon";
             bomb.Selectable = true;
+            bow.hudOptions = Actors.HUD.buttons.HUDOPTIONS.BOMB_CANNON;
             menu.AddMenuElement(bomb);
 
             CPauseMenuElement boomerang = new CPauseMenuElement(new Vector2(137, 35), 3, 1, 10, 6);
             boomerang.Selectable = true;
             boomerang.MenuText = "Boomerang";
+            bow.hudOptions = Actors.HUD.buttons.HUDOPTIONS.BOOMERANG;
             menu.AddMenuElement(boomerang);
 
             CPauseMenuElement dekuNut = new CPauseMenuElement(new Vector2(188, 35), 0, 2, 11, 7);

@@ -82,15 +82,18 @@ namespace King_of_Thieves.Actors.HUD.buttons
             {
                 case HUDOPTIONS.ARROWS:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS);
+                    hudItem = HUDOPTIONS.ARROWS;
                     break;
 
                 case HUDOPTIONS.BOMB_CANNON:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
+                    hudItem = HUDOPTIONS.BOMB_CANNON;
                     break;
 
                 //place holder for now
                 case HUDOPTIONS.BOOMERANG:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
+                    hudItem = HUDOPTIONS.BOOMERANG;
                     break;
             }
         }

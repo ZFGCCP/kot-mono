@@ -85,6 +85,31 @@ namespace King_of_Thieves.Actors.Menu
             }
         }
 
+        private void _setLeftItem()
+        {
+            HUD.buttons.HUDOPTIONS item;
+            int cursorLocation = _menu.GetActiveMenuIndex();
+
+            if (((CPauseMenuElement)_menu.MenuElements[cursorLocation]).hasItem)
+            {
+                CPauseMenuElement element = ((CPauseMenuElement)_menu.MenuElements[cursorLocation]);
+                item = element.hudOptions;
+                CMasterControl.buttonController.switchLeftItem(item);
+            }
+        }
+
+        private void _setRightItem()
+        {
+            HUD.buttons.HUDOPTIONS item;
+            int cursorLocation = _menu.GetActiveMenuIndex();
+
+            if (((CPauseMenuElement)_menu.MenuElements[cursorLocation]).hasItem)
+            {
+                item = ((CPauseMenuElement)_menu.MenuElements[cursorLocation]).hudOptions;
+                CMasterControl.buttonController.switchRightItem(item);
+            }
+        }
+
         public override void keyRelease(object sender)
         {
             Input.CInput input = Master.GetInputManager().GetCurrentInputHandler() as Input.CInput;
@@ -95,6 +120,10 @@ namespace King_of_Thieves.Actors.Menu
                     _shiftLeft();
                 else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.E))
                     _shiftRight();
+                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.Left))
+                {
+                    _setLeftItem();
+                }
                 else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.D) && _focused)
                 {
                     int activeMenuIndex = _menu.GetActiveMenuIndex();

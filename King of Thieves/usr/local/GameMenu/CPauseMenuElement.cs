@@ -5,6 +5,7 @@ using System.Text;
 using Gears.Navigation;
 using Microsoft.Xna.Framework;
 using King_of_Thieves.Graphics;
+using King_of_Thieves.Actors.HUD.buttons;
 
 namespace King_of_Thieves.usr.local.GameMenu
 {
@@ -18,6 +19,7 @@ namespace King_of_Thieves.usr.local.GameMenu
         private const int _NO_NEIGHBOR = -1;
         private Vector2 _cursorPosition = Vector2.Zero;
         public CSprite sprite = null;
+        public HUDOPTIONS hudOptions;
 
         public CPauseMenuElement(Vector2 cursorPosition, int rightNeighbor, int leftNeighbor, int upNeighbor, int downNeighbor) :
             base()
