@@ -23,6 +23,7 @@ namespace King_of_Thieves.usr.local
             CEffects.drawThisShit();
             CMasterControl.healthController.drawMe(spriteBatch);
             CMasterControl.buttonController.drawMe(spriteBatch);
+            CMasterControl.magicMeter.drawMe();
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -30,6 +31,7 @@ namespace King_of_Thieves.usr.local
             CMasterControl.mapManager.updateMap(gameTime);
             CMasterControl.healthController.update(gameTime);
             CMasterControl.buttonController.update(gameTime);
+            CMasterControl.magicMeter.update(gameTime);
             clockTest.update(gameTime);
         }
     }

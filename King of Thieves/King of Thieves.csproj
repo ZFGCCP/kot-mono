@@ -63,6 +63,7 @@
     <Compile Include="Actors\HUD\counters\CRupeeCounter.cs" />
     <Compile Include="Actors\HUD\health\CHealth.cs" />
     <Compile Include="Actors\HUD\health\CHealthController.cs" />
+    <Compile Include="Actors\HUD\magic\CMagicMeter.cs" />
     <Compile Include="Actors\HUD\Text\CTextBox.cs" />
     <Compile Include="Actors\Items\CLiftable.cs" />
     <Compile Include="Actors\Items\decoration\CChest.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Graphics\CCamera.cs" />
     <Compile Include="Graphics\CEffects.cs" />
     <Compile Include="Graphics\CGraphics.cs" />
+    <Compile Include="Graphics\CRect.cs" />
     <Compile Include="Graphics\CRenderable.cs" />
     <Compile Include="Graphics\CSprite.cs" />
     <Compile Include="Graphics\CTexAtlasControl.cs" />
@@ -518,6 +520,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sounds\menu\menuSelect.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\hud\magicMeter.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

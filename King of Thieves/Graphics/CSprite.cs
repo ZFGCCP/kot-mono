@@ -9,9 +9,8 @@ namespace King_of_Thieves.Graphics
 { 
     public class CSprite : CRenderable
     {
-        private Rectangle _size;
+        
         protected string _name = "";
-        protected Vector2 _position = Vector2.Zero;
         private CTextureAtlas _imageAtlas;
         private string _atlasName;
         private int _frameTracker = 0;
@@ -138,47 +137,6 @@ namespace King_of_Thieves.Graphics
             base.draw(x, y);
 
             return false;
-        }
-
-        public int X
-        {
-            get
-            {
-                return (int)_position.X;
-            }
-            set
-            {
-                _position.X = value;
-            }
-        }
-
-        public int Y
-        {
-            get
-            {
-                return (int)_position.Y;
-            }
-            set
-            {
-                _position.Y = value;
-            }
-        }
-
-
-        public int width
-        {
-            get
-            {
-                return _size.Width;
-            }
-        }
-
-        public int height
-        {
-            get
-            {
-                return _size.Height;
-            }
         }
 
         public string atlasName
