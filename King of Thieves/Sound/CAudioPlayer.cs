@@ -70,6 +70,7 @@ namespace King_of_Thieves.Sound
             soundBank.Add("menu:openMenu", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/menu/menuOpen")));
             soundBank.Add("menu:closeMenu", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/menu/menuClose")));
             soundBank.Add("menu:moveCursor", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/menu/menuCursor")));
+            soundBank.Add("menu:selectItem", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/menu/menuSelect")));
 
             //background sfx
             soundBank.Add("Background:Nature:Rooster", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/rooster")));

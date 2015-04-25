@@ -92,9 +92,9 @@ namespace King_of_Thieves.Actors.Menu
 
             if (((CPauseMenuElement)_menu.MenuElements[cursorLocation]).hasItem)
             {
-                CPauseMenuElement element = ((CPauseMenuElement)_menu.MenuElements[cursorLocation]);
-                item = element.hudOptions;
+                item = ((CPauseMenuElement)_menu.MenuElements[cursorLocation]).hudOptions;
                 CMasterControl.buttonController.switchLeftItem(item);
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["menu:selectItem"]);
             }
         }
 
@@ -107,6 +107,7 @@ namespace King_of_Thieves.Actors.Menu
             {
                 item = ((CPauseMenuElement)_menu.MenuElements[cursorLocation]).hudOptions;
                 CMasterControl.buttonController.switchRightItem(item);
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["menu:selectItem"]);
             }
         }
 
@@ -121,9 +122,9 @@ namespace King_of_Thieves.Actors.Menu
                 else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.E))
                     _shiftRight();
                 else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.Left))
-                {
                     _setLeftItem();
-                }
+                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.Right))
+                    _setRightItem();
                 else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.D) && _focused)
                 {
                     int activeMenuIndex = _menu.GetActiveMenuIndex();

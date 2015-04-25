@@ -958,7 +958,7 @@ namespace King_of_Thieves.Actors.Player
 
         private void _shootArrow()
         {
-            if (_lastHudKeyPressed == Keys.Left)
+            //if (_lastHudKeyPressed == Keys.Left)
                 state = ACTOR_STATES.SHOOTING_ARROW;
 
             _triggerUserEvent(0, _lastArrowShotName);

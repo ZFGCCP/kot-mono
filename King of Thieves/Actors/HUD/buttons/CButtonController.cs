@@ -63,7 +63,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
 
         public void switchLeftItem(HUDOPTIONS item)
         {
-            _buttonRight.changeItemOverlay(item);
+            _buttonLeft.changeItemOverlay(item);
         }
 
         public HUDOPTIONS buttonLeftItem

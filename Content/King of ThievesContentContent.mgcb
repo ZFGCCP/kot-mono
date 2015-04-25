@@ -703,3 +703,9 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/pauseMenuHeadings.spritefont
 
+#begin sounds/menu/menuSelect.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/menu/menuSelect.wav
+
