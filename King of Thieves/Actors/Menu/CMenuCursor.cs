@@ -10,12 +10,12 @@ namespace King_of_Thieves.Actors.Menu
 {
     class CMenuCursor : CHUDElement
     {
-        public CMenuCursor() :
+        public CMenuCursor(Vector2 cursorPos) :
             base()
         {
             _imageIndex.Add(Graphics.CTextures.HUD_PAUSE_CURSOR, new Graphics.CSprite(Graphics.CTextures.HUD_PAUSE_CURSOR));
             swapImage(Graphics.CTextures.HUD_PAUSE_CURSOR);
-            _fixedPosition = new Vector2(35, 35);
+            _fixedPosition = cursorPos;
         }
 
         public Vector2 fixedPosition

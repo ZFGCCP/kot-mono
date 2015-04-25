@@ -17,7 +17,7 @@ namespace King_of_Thieves.Actors.Menu
         private int _shiftIndex = 0;
         private const float _SHIFT_VELOCITY = 11.05f;
         private Gears.Navigation.Menu _menu;
-        private Menu.CMenuCursor _cursor = new CMenuCursor();
+        private Menu.CMenuCursor _cursor = null;
         private static SpriteFont _sherwood = CMasterControl.glblContent.Load<SpriteFont>(@"Fonts/pauseMenuHeadings");
         private static Vector2 _menuDrawText = new Vector2(40, 10);
         private bool _focused = false;
@@ -44,6 +44,9 @@ namespace King_of_Thieves.Actors.Menu
             _state = ACTOR_STATES.IDLE;
             _menu = menu;
             _drawHud = drawHud;
+            _cursor = new CMenuCursor(((CPauseMenuElement)_menu.GetSelectableMenuElements()[0]).cursorPosition);
+
+           
         }
 
         public override void drawMe(bool useOverlay = false)
@@ -92,7 +95,7 @@ namespace King_of_Thieves.Actors.Menu
                     _shiftLeft();
                 else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.E))
                     _shiftRight();
-                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.D))
+                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.D) && _focused)
                 {
                     int activeMenuIndex = _menu.GetActiveMenuIndex();
                     if (activeMenuIndex >= 0)
@@ -101,7 +104,7 @@ namespace King_of_Thieves.Actors.Menu
                         _moveCursor(currentElement.rightNeighbor);
                     }
                 }
-                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.A))
+                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.A) && _focused)
                 {
                     int activeMenuIndex = _menu.GetActiveMenuIndex();
                     if (activeMenuIndex >= 0)
@@ -110,7 +113,7 @@ namespace King_of_Thieves.Actors.Menu
                         _moveCursor(currentElement.leftNeighbor);
                     }
                 }
-                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.S))
+                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.S) && _focused)
                 {
                     int activeMenuIndex = _menu.GetActiveMenuIndex();
                     if (activeMenuIndex >= 0)
@@ -119,7 +122,7 @@ namespace King_of_Thieves.Actors.Menu
                         _moveCursor(currentElement.downNeighbor);
                     }
                 }
-                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.W))
+                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.W) && _focused)
                 {
                     int activeMenuIndex = _menu.GetActiveMenuIndex();
                     if (activeMenuIndex >= 0)

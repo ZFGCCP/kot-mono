@@ -99,7 +99,55 @@ namespace King_of_Thieves
         //menu creation functions
         public static Menu questPauseMenu()
         {
-            return new Menu();
+            Menu menu = new Menu();
+            
+            CPauseMenuElement sword = new CPauseMenuElement(new Vector2(25, 125), 1, 3, 4, 4);
+            sword.Selectable = true;
+            sword.MenuText = "Master Sword";
+            menu.AddMenuElement(sword);
+
+            CPauseMenuElement shield = new CPauseMenuElement(new Vector2(105, 125), 2, 0, 6, 6);
+            shield.Selectable = true;
+            shield.MenuText = "Mirror Shield";
+            menu.AddMenuElement(shield);
+
+            CPauseMenuElement bracers = new CPauseMenuElement(new Vector2(189, 125), 3, 1, 7, 7);
+            bracers.Selectable = true;
+            bracers.MenuText = "Thief Bracers";
+            menu.AddMenuElement(bracers);
+
+            CPauseMenuElement flippers = new CPauseMenuElement(new Vector2(244, 125), 0, 2, 8, 8);
+            flippers.Selectable = true;
+            flippers.MenuText = "Zora's Flippers";
+            menu.AddMenuElement(flippers);
+
+            CPauseMenuElement seedSatchel = new CPauseMenuElement(new Vector2(25, 165), 5, 8, 0, 0);
+            seedSatchel.Selectable = true;
+            seedSatchel.MenuText = "Seed Satchel";
+            menu.AddMenuElement(seedSatchel);
+
+            CPauseMenuElement quiver = new CPauseMenuElement(new Vector2(65, 165), 6, 4, 0, 0);
+            quiver.Selectable = true;
+            quiver.MenuText = "Quiver";
+            menu.AddMenuElement(quiver);
+
+            CPauseMenuElement bombBag = new CPauseMenuElement(new Vector2(105, 165), 7, 5, 1, 1);
+            bombBag.Selectable = true;
+            bombBag.MenuText = "Bomb Bag";
+            menu.AddMenuElement(bombBag);
+
+            CPauseMenuElement seashells = new CPauseMenuElement(new Vector2(189, 165), 8, 6, 2, 2);
+            seashells.Selectable = true;
+            seashells.MenuText = "Secret Seashells";
+            menu.AddMenuElement(seashells);
+
+            CPauseMenuElement wallet = new CPauseMenuElement(new Vector2(244, 165), 4, 7, 3, 3);
+            wallet.Selectable = true;
+            wallet.MenuText = "Wallet";
+            menu.AddMenuElement(wallet);
+
+            menu.Recache();
+            return menu;
         }
         
     }
