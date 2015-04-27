@@ -80,6 +80,8 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_GOT_ITEM = PLAYER + "gotItem";
 
         public const string HUD_ARROWS = HUD + "arrows";
+        public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
+        public const string HUD_ARROWS_ICE = HUD + "arrowsIce";
         public const string HUD_BOMB_CANNON = HUD + "bombCannon";
         public const string HUD_RUPEES = HUD + "rupees";
         public const string HUD_ACTION = HUD + "action";
@@ -267,6 +269,8 @@ namespace King_of_Thieves.Graphics
             textures.Add("HUD:buttonRight", new CTextureAtlas("hudButtons", 32, 32, 0, "1:0", "1:0", 0));
             textures.Add("HUD:buttonUp", new CTextureAtlas("hudButtons", 32, 32, 0, "2:0", "2:0", 0));
             textures.Add(HUD_ARROWS, new CTextureAtlas("hudButtons", 32, 32, 0, "0:1", "0:1", 0));
+            textures.Add(HUD_ARROWS_FIRE, new CTextureAtlas("hudButtons", 32, 32, 0, "0:2", "0:2", 0));
+            textures.Add(HUD_ARROWS_ICE, new CTextureAtlas("hudButtons", 32, 32, 0, "1:2", "1:2", 0));
             textures.Add(HUD_ACTION, new CTextureAtlas("hudButtons", 32, 32, 0, "3:0", "3:0", 0));
             textures.Add(HUD_BOMB_CANNON, new CTextureAtlas("hudButtons", 32, 32, 0, "1:1", "1:1", 0));
             textures.Add(HUD_RUPEES, new CTextureAtlas("health", 16, 16, 1, "0:1", "0:1", 0));

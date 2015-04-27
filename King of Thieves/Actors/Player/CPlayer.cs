@@ -580,6 +580,12 @@ namespace King_of_Thieves.Actors.Player
                         return;
                     }
                 }
+
+
+                if (_state == ACTOR_STATES.HOLD_ARROW && input.keysReleased.Contains(Keys.R))
+                {
+                    CMasterControl.buttonController.switchLeftItem(HUD.buttons.HUDOPTIONS.FIRE_ARROWS);
+                }
             }
 
             if (_canOpenManu && input.keysReleased.Contains(Keys.Enter))

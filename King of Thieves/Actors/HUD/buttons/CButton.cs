@@ -10,7 +10,9 @@ namespace King_of_Thieves.Actors.HUD.buttons
     {
         ARROWS = 1,
         BOOMERANG,
-        BOMB_CANNON
+        BOMB_CANNON,
+        FIRE_ARROWS,
+        ICE_ARROWS
 
     }
 
@@ -94,6 +96,16 @@ namespace King_of_Thieves.Actors.HUD.buttons
                 case HUDOPTIONS.BOOMERANG:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
                     hudItem = HUDOPTIONS.BOOMERANG;
+                    break;
+
+                case HUDOPTIONS.FIRE_ARROWS:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS_FIRE);
+                    hudItem = HUDOPTIONS.FIRE_ARROWS;
+                    break;
+
+                case HUDOPTIONS.ICE_ARROWS:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS_ICE);
+                    hudItem = HUDOPTIONS.ICE_ARROWS;
                     break;
             }
         }

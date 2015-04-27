@@ -112,6 +112,7 @@
     <Compile Include="Actors\Projectiles\CBomb.cs" />
     <Compile Include="Actors\Projectiles\CBoomerang.cs" />
     <Compile Include="Actors\Projectiles\CEnergyWave.cs" />
+    <Compile Include="Actors\Projectiles\CFireArrow.cs" />
     <Compile Include="Actors\Projectiles\CFireBall.cs" />
     <Compile Include="Actors\Projectiles\CIceBall.cs" />
     <Compile Include="Actors\Projectiles\CProjectile.cs" />
