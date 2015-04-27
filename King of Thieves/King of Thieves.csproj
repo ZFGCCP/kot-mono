@@ -70,6 +70,8 @@
     <Compile Include="Actors\Items\Drops\CDroppable.cs" />
     <Compile Include="Actors\Items\Drops\CHeartDrop.cs" />
     <Compile Include="Actors\Items\Drops\CRupeeDrop.cs" />
+    <Compile Include="Actors\Items\shields\CBaseShield.cs" />
+    <Compile Include="Actors\Items\shields\CWoodShield.cs" />
     <Compile Include="Actors\Items\Swords\CGerudoSword.cs" />
     <Compile Include="Actors\Menu\CMenu.cs" />
     <Compile Include="Actors\Menu\CMenuCursor.cs" />
@@ -79,6 +81,8 @@
     <Compile Include="Actors\NPC\Enemies\CBaseEnemy.cs" />
     <Compile Include="Actors\NPC\Enemies\Chuchus\CBaseChuChu.cs" />
     <Compile Include="Actors\NPC\Enemies\Chuchus\CGreenChuChu.cs" />
+    <Compile Include="Actors\NPC\Enemies\FloorTile\CFloorTile.cs" />
+    <Compile Include="Actors\NPC\Enemies\FloorTile\CFloorTileMaster.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CBaseKeese.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CKeese.cs" />
     <Compile Include="Actors\NPC\Enemies\Keese\CKeeseFire.cs" />
@@ -91,11 +95,15 @@
     <Compile Include="Actors\NPC\Enemies\MoldormTail\CMoldormTailTail.cs" />
     <Compile Include="Actors\NPC\Enemies\Rope\CBaseRope.cs" />
     <Compile Include="Actors\NPC\Enemies\OvergrownKeese\COvergrownKeese.cs" />
+    <Compile Include="Actors\NPC\Enemies\Poe\CLantern.cs" />
+    <Compile Include="Actors\NPC\Enemies\Poe\CPoe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CBaseWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CFireWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CIceWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Wizzrobe\CWizzrobe.cs" />
     <Compile Include="Actors\NPC\Enemies\Zombie\CBaseZombie.cs" />
+    <Compile Include="Actors\NPC\Enemies\Zombie\CGibdo.cs" />
+    <Compile Include="Actors\NPC\Enemies\Zombie\CZombieScreecher.cs" />
     <Compile Include="Actors\NPC\Other\Maple\CMaple.cs" />
     <Compile Include="Actors\Player\CPlayer.cs" />
     <Compile Include="Actors\Projectiles\CArrow.cs" />
@@ -208,22 +216,20 @@
     <Compile Include="usr\local\Testbed.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.Compatibility" />
     <Reference Include="OpenTK">
-      <HintPath>C:\Program Files (x86)\MonoGame\v3.0\Assemblies\WindowsGL\OpenTK.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>C:\Program Files (x86)\MonoGame\v3.0\Assemblies\WindowsGL\MonoGame.Framework.dll</HintPath>
+      <HintPath>gearsVGE\lib\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="Tao.Sdl">
-      <HintPath>C:\Program Files (x86)\MonoGame\v3.0\Assemblies\WindowsGL\Tao.Sdl.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="Lidgren.Network">
+      <HintPath>gearsVGE\lib\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>gearsVGE\lib\MonoGame.Framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="GameThumbnail.png" />
@@ -475,6 +481,27 @@
     <Content Include="Content\sounds\items\rupee_pickup.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\sounds\environment\itemFanfare.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\environment\itemFanfareSmall.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\npc\floorTile.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\npc\zombie.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\npc\poe.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\tilesets\items\smallItems.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\npc\redeadScreech.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <!-- Specify the search path explicitly so the ResolveAssemblyReferences task picks the right ones -->
   <Target Name="BeforeResolveReferences">
@@ -483,7 +510,7 @@
     </CreateProperty>
   </Target>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!--  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" /> -->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

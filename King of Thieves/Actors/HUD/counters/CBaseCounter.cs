@@ -15,6 +15,7 @@ namespace King_of_Thieves.Actors.HUD.counters
         private int _incrementAmount = 0;
         private bool _instantaneousUpdate = false;
         protected Vector2 _textOffset = Vector2.Zero;
+        private static readonly Vector2 _SHADOW = new Vector2(1, 1);
         private Color _textColor = Color.White;
 
         protected const string _ICON = "HUD:rupee";
@@ -91,6 +92,7 @@ namespace King_of_Thieves.Actors.HUD.counters
         public override void draw(object sender)
         {
             base.draw(sender);
+            Graphics.CGraphics.spriteBatch.DrawString(_sherwood, _amount.ToString(), _position + _textOffset + _SHADOW, Color.Black);
             Graphics.CGraphics.spriteBatch.DrawString(_sherwood, _amount.ToString(), _position + _textOffset, _textColor);
         }
     }

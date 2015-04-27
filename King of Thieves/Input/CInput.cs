@@ -47,9 +47,6 @@ namespace King_of_Thieves.Input
 
         public bool getInputRelease(Keys key)
         {
-            if (_padStateCurrent.IsConnected)
-                return false;
-
             return (_keyStatePrevious.IsKeyDown(key) && _keyStateCurrent.IsKeyUp(key));
         }
 

@@ -23,6 +23,8 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER = "Player:";
         public const string DROPS = "Drops:";
         public const string HUD = "HUD:";
+        public const string ITEMS = "items:";
+        public const string SHIELDS = ITEMS + "shields:";
 
         //actual constants
         public const string EFFECT_ENERGY_BALL_SMALL = EFFECTS + "energyBallSmall";
@@ -37,6 +39,7 @@ namespace King_of_Thieves.Graphics
         public const string EFFECT_BOMB_FAST_TICK = EFFECTS + "bombFastTick";
         public const string EFFECT_EXPLOSION = EFFECTS + "explosion";
         public const string EFFECT_BOOMERANG = EFFECTS + "boomerang";
+        public const string EFFECT_FIRE_SMALL = EFFECTS + "fireSmall";
 
         public const string DROPS_HEART = DROPS + "heart";
         public const string DROPS_RUPEE_GREEN = DROPS + "rupeeGreen";
@@ -52,20 +55,48 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_SHOOT_ARROW_UP = PLAYER + "shootArrowUp";
         public const string PLAYER_CHARGE_ARROW_DOWN = PLAYER + "chargeArrowDown";
         public const string PLAYER_HOLD_ARROW_DOWN = PLAYER + "holdArrowDown";
+        public const string PLAYER_SHIELD_ENGAGE_DOWN = PLAYER + "shieldEngageDown";
+        public const string PLAYER_SHIELD_DISENGAGE_DOWN = PLAYER + "shieldDisengageDown";
+        public const string PLAYER_SHIELD_IDLE_DOWN = PLAYER + "shieldIdleDown";
+        public const string PLAYER_SHIELD_WALK_DOWN = PLAYER + "shieldWalkDown";
+        public const string PLAYER_SHIELD_ENGAGE_LEFT = PLAYER + "shieldEngageLeft";
+        public const string PLAYER_SHIELD_DISENGAGE_LEFT = PLAYER + "shieldDisengageLeft";
+        public const string PLAYER_SHIELD_IDLE_LEFT = PLAYER + "shieldIdleLeft";
+        public const string PLAYER_SHIELD_WALK_LEFT = PLAYER + "shieldWalkLeft";
+        public const string PLAYER_SHIELD_ENGAGE_RIGHT = PLAYER + "shieldEngageRight";
+        public const string PLAYER_SHIELD_DISENGAGE_RIGHT = PLAYER + "shieldDisengageRight";
+        public const string PLAYER_SHIELD_IDLE_RIGHT = PLAYER + "shieldIdleRight";
+        public const string PLAYER_SHIELD_WALK_RIGHT = PLAYER + "shieldWalkRight";
+        public const string PLAYER_SHIELD_ENGAGE_UP = PLAYER + "shieldEngageUp";
+        public const string PLAYER_SHIELD_DISENGAGE_UP = PLAYER + "shieldDisengageUp";
+        public const string PLAYER_SHIELD_IDLE_UP = PLAYER + "shieldIdleUp";
+        public const string PLAYER_SHIELD_WALK_UP = PLAYER + "shieldWalkUp";
         public const string PLAYER_SHOOT_ARROW_DOWN = PLAYER + "shootArrowDown";
         public const string PLAYER_HOLD_CANNON_DOWN = PLAYER + "holdCannonDown";
         public const string PLAYER_SHOOT_CANNON_DOWN = PLAYER + "shootCannonDown";
         public const string PLAYER_THROW_BOOMERANG_UP = PLAYER + "throwBoomerangUp";
         public const string PLAYER_THROW_BOOMERANG_DOWN = PLAYER + "throwBoomerangDown";
         public const string PLAYER_THROW_BOOMERANG_LEFT = PLAYER + "throwBoomerangLeft";
+        public const string PLAYER_GOT_ITEM = PLAYER + "gotItem";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_BOMB_CANNON = HUD + "bombCannon";
         public const string HUD_RUPEES = HUD + "rupees";
+        public const string HUD_ACTION = HUD + "action";
+
+        public const string WOOD_SHIELD_ENGAGE_DOWN = SHIELDS + "woodEngageDown";
+
+        public const string WOOD_SHIELD_DISENGAGE_DOWN = SHIELDS + "woodDisengageDown";
+
+        public const string WOOD_SHIELD_DOWN = SHIELDS + "woodDown";
+        public const string WOOD_SHIELD_LEFT = SHIELDS + "woodLeft";
+        public const string WOOD_SHIELD_RIGHT = SHIELDS + "woodRight";
+        public const string WOOD_SHIELD_UP = SHIELDS + "woodUp";
 
        
         //source images
         public const string SOURCE_PLAYER = "Player";
+        public const string SOURCE_SHIELDS = "shields";
 
         public static void init(ContentManager content)
         {
@@ -127,6 +158,18 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_HOLD_ARROW_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:7", "25:7", 0));
             textures.Add(PLAYER_HOLD_ARROW_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:6", "25:6", 0));
             textures.Add(PLAYER_HOLD_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:8", "25:8", 0));
+            textures.Add(PLAYER_SHIELD_ENGAGE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:34", "21:34", 15));
+            textures.Add(PLAYER_SHIELD_DISENGAGE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:34", "21:34", 15, false, false, false, true));
+            textures.Add(PLAYER_SHIELD_WALK_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:34", "30:34", 10));
+            textures.Add(PLAYER_SHIELD_IDLE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:34", "22:34", 0));
+            textures.Add(PLAYER_SHIELD_ENGAGE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:35", "20:35", 15));
+            textures.Add(PLAYER_SHIELD_DISENGAGE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "18:35", "20:35", 15, false, false, false, true));
+            textures.Add(PLAYER_SHIELD_WALK_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:35", "28:35", 10));
+            textures.Add(PLAYER_SHIELD_IDLE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "22:35", "22:35", 0));
+            textures.Add(PLAYER_SHIELD_ENGAGE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:34", "31:34", 15));
+            textures.Add(PLAYER_SHIELD_DISENGAGE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:34", "31:34", 15, false, false, false, true));
+            textures.Add(PLAYER_SHIELD_WALK_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "32:34", "39:34", 10));
+            textures.Add(PLAYER_SHIELD_IDLE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "32:34", "32:34", 0));
             textures.Add(PLAYER_SHOOT_ARROW_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:7", "28:7", 8));
             textures.Add(PLAYER_SHOOT_ARROW_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:6", "28:6", 8));
             textures.Add(PLAYER_SHOOT_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:8", "28:8", 8));
@@ -135,10 +178,17 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_THROW_BOOMERANG_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:21", "22:21", 8));
             textures.Add(PLAYER_THROW_BOOMERANG_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:23", "22:23", 8));
             textures.Add(PLAYER_THROW_BOOMERANG_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:22", "22:22", 8));
+            textures.Add(PLAYER_GOT_ITEM, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "21:2", "21:2", 0));
 
             textures.Add("GerudoSword:SwingDown", new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 55));
             textures.Add("GerudoSword:SwingUp", new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 55));
             textures.Add("GerudoSword:SwingRight", new CTextureAtlas("Swords", 64, 64, 1, "0:2", "7:2", 55));
+
+            textures.Add(WOOD_SHIELD_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "2:0", "2:0", 0));
+            textures.Add(WOOD_SHIELD_ENGAGE_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:0", "2:0", 15));
+            textures.Add(WOOD_SHIELD_DISENGAGE_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:1", "2:1", 15));
+            textures.Add(WOOD_SHIELD_LEFT, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:2", "0:2", 0));
+            textures.Add(WOOD_SHIELD_UP, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "1:2", "1:2", 0));
 
             textures.Add("chuChu:Wobble", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:0", "15:0", 12));
             textures.Add("chuChu:Idle", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:1", "7:1", 5));
@@ -166,6 +216,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:test", new CTextureAtlas("test", 16, 16, 0, "0:0", "15:15",0,false,false,true));
             textures.Add("tileset:ages", new CTextureAtlas("ages", 16, 16, 0, "0:0", "15:15", 0, false, false, true));
             textures.Add("tileset:indoors:house", new CTextureAtlas("tileset:indoors:house", 16, 16, 0, "0:0", "24:16", 0, false, false, true));
+            textures.Add("tileset:smallLantern", new CTextureAtlas("tileset:items:smallItems", 16, 16, 1, "0:0", "8:0", 5, false, false, false));
             textures.Add("tileset:items:chests-small", new CTextureAtlas("tileset:items:chests-small", 16, 16, 1, "0:0", "1:2", 0, false, false, false));
 
             //editor icons
@@ -181,6 +232,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("effects:explosion", new CTextureAtlas("effects:explosion", 64, 64, 0, "0:0", "10:0", 10));
             textures.Add("effects:smokePoof", new CTextureAtlas("effects:explosion", 64, 64, 0, "2:0", "10:0", 10));
             textures.Add(EFFECT_ENERGY_BALL_SMALL, new CTextureAtlas("effects:various", 32, 32, 0, "0:0", "1:0", 5));
+            textures.Add(EFFECT_FIRE_SMALL, new CTextureAtlas("effects:various", 32, 32, 0, "0:4", "3:4", 5));
 
             //projectiles
             textures.Add(EFFECT_ENERGY_WAVE_SMALL, new CTextureAtlas("effects:various", 32, 32, 0, "2:0", "2:0", 0));
@@ -206,6 +258,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("HUD:buttonRight", new CTextureAtlas("hudButtons", 32, 32, 0, "1:0", "1:0", 0));
             textures.Add("HUD:buttonUp", new CTextureAtlas("hudButtons", 32, 32, 0, "2:0", "2:0", 0));
             textures.Add(HUD_ARROWS, new CTextureAtlas("hudButtons", 32, 32, 0, "0:1", "0:1", 0));
+            textures.Add(HUD_ACTION, new CTextureAtlas("hudButtons", 32, 32, 0, "3:0", "3:0", 0));
             textures.Add(HUD_BOMB_CANNON, new CTextureAtlas("hudButtons", 32, 32, 0, "1:1", "1:1", 0));
             textures.Add(HUD_RUPEES, new CTextureAtlas("health", 16, 16, 1, "0:1", "0:1", 0));
 
@@ -241,12 +294,15 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("potSmall", _content.Load<Texture2D>("potSmall"));
             rawTextures.Add("maple", _content.Load<Texture2D>("maple"));
 
+            rawTextures.Add(SOURCE_SHIELDS, _content.Load<Texture2D>("sprites/items/shields"));
+
             //drops
             rawTextures.Add("drops:drops01", _content.Load<Texture2D>("sprites/drops/drops01"));
             
             //tilesets
             rawTextures.Add("tileset:indoors:house",_content.Load<Texture2D>(@"tilesets/indoors/house"));
             rawTextures.Add("tileset:items:chests-small", _content.Load<Texture2D>(@"tilesets/items/chests-small"));
+            rawTextures.Add("tileset:items:smallItems", _content.Load<Texture2D>(@"tilesets/items/smallItems"));
 
             //effects
             rawTextures.Add("effects:explosion", _content.Load<Texture2D>(@"effects/bomb-explosion"));

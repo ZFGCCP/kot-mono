@@ -56,15 +56,13 @@ namespace King_of_Thieves.Actors.Projectiles
 
         public override void collide(object sender, CActor collider)
         {
-            base.collide(sender, collider);
-
             if (_state == ACTOR_STATES.EXPLODE)
             {
 
             }
             else
             {
-                if (collider is Actors.Collision.CSolidTile || collider is Actors.NPC.Enemies.CBaseEnemy)
+                if (collider is Actors.Collision.CSolidTile || collider is Actors.NPC.Enemies.CBaseEnemy || collider is Items.shields.CBaseShield)
                     _blowUp();
             }
         }

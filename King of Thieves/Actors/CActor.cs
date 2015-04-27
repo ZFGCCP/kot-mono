@@ -47,6 +47,8 @@ namespace King_of_Thieves.Actors
         FOLLOW_PLAYER,
         FROZEN,
         GO_HOME,
+        GOT_ITEM,
+        HOLD,
         HOLD_ARROW,
         HOLD_CANNON,
         IDLE,
@@ -55,6 +57,7 @@ namespace King_of_Thieves.Actors
         INVISIBLE,
         KNOCKBACK,
         LIFT,
+        LOCKED,
         MIDNIGHT,
         MORNING,
         MOVING,
@@ -62,7 +65,10 @@ namespace King_of_Thieves.Actors
         POPDOWN,
         POPUP,
         ROLLING,
+        SHIELD_ENGAGE,
+        SHIELD_DISENGAGE,
         SHIELDING,
+        SHOOK_OFF,
         SHOOTING_ARROW,
         SHOOTING_CANNON,
         SMASH,
@@ -72,7 +78,9 @@ namespace King_of_Thieves.Actors
         THROW_BOOMERANG,
         THROWING,
         TOSSING,
-        WOBBLE
+        UNLOCKED,
+        WOBBLE,
+        YIELD
     }
 
     public abstract class CActor
@@ -109,6 +117,14 @@ namespace King_of_Thieves.Actors
         private string _dataType;
         public static string _MAP_ICON = "MAP_ICON";
         protected bool _invulernable = false;
+        protected int _collisionDirectionX = 0;
+        protected int _collisionDirectionY = 0;
+
+        protected int _lineOfSight;
+        protected int _fovMagnitude;
+        protected float _visionRange; //this is an angle
+        protected float _visionSlope;
+        protected int _hearingRadius; //how far away they can hear you from
 
         protected Collision.CHitBox _hitBox;
         protected List<Type> _collidables;
@@ -156,9 +172,11 @@ namespace King_of_Thieves.Actors
         protected virtual void cleanUp() { }
         public virtual void destroy(object sender)
         {
-            _hitBox.destroy();
-            _hitBox = null;
-            _closeResources();
+            if (_hitBox != null)
+            {
+                _hitBox.destroy();
+                _hitBox = null;
+            }
         }
 
         protected virtual void applyEffects(){}
@@ -427,6 +445,49 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        public void moveInDirection(Vector2 velocity)
+        {
+            double ppfX = 0;
+            double ppfY = 0;
+
+            if (Math.Abs(velocity.X) > 1.0f)
+            {
+                ppfX = Math.Round(velocity.X);
+
+                _position.X += (float)ppfX;
+            }
+            else
+            {
+                ppfX = Math.Pow((double)velocity.X, -1);
+
+                if (_motionCounter.X >= Math.Abs(ppfX))
+                {
+                    _position.X += (1.0f * Math.Sign(velocity.X));
+                    _motionCounter.X = 0;
+                }
+            }
+
+            if (Math.Abs(velocity.Y) > 1.0f)
+            {
+                ppfY = Math.Round(velocity.Y);
+
+                _position.Y += (float)ppfY;
+            }
+            else
+            {
+                ppfY = Math.Pow((double)velocity.Y, -1);
+
+                if (_motionCounter.Y >= Math.Abs(ppfY))
+                {
+                    _position.Y += (1.0f * Math.Sign(velocity.Y));
+                    _motionCounter.Y = 0;
+                }
+            }
+
+            _motionCounter.X += 1;
+            _motionCounter.Y += 1;
+        }
+
         public DIRECTION moveToPoint2(float x, float y, float speed, bool calcAngle = true)
         {
             float distX = 0, distY = 0;
@@ -582,7 +643,7 @@ namespace King_of_Thieves.Actors
 
                     foreach (CActor x in collideCheck)
                     {
-                        if (x != this && !x._noCollide && _hitBox.checkCollision(x))
+                        if (_hitBox != null && x._hitBox != null && x != this && !x._noCollide && _hitBox.checkCollision(x))
                         {
                             //trigger collision event
                             onCollide(this, x);
@@ -757,12 +818,6 @@ namespace King_of_Thieves.Actors
             _soundIndex = new Dictionary<string, Sound.CSound>();
         }
 
-        private void _closeResources()
-        {
-            _imageIndex.Clear();
-            _imageIndex = null;
-        }
-
         public Vector2 position
         {
             get
@@ -857,6 +912,101 @@ namespace King_of_Thieves.Actors
         protected void _triggerUserEvent(int eventNum, string actorName, params object[] param)
         {
             CMasterControl.commNet[_componentAddress].Add(new CActorPacket(eventNum, actorName, this, param));
+        }
+
+        protected bool _checkIfPointInView(Vector2 point)
+        {
+            //build triangle points first
+            Vector2 A = _position;
+            Vector2 B = Vector2.Zero;
+            Vector2 C = Vector2.Zero;
+
+            B.X = (float)(Math.Cos((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
+            B.Y = (float)((Math.Sin((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
+
+            C.X = (float)(Math.Cos((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
+            C.Y = (float)((Math.Sin((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
+
+            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
+        }
+
+        protected bool _checkIfPointInView(Vector2 point, Vector2 origin)
+        {
+            //build triangle points first
+            Vector2 A = origin;
+            Vector2 B = Vector2.Zero;
+            Vector2 C = Vector2.Zero;
+
+            B.X = (float)(Math.Cos((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
+            B.Y = (float)((Math.Sin((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
+
+            C.X = (float)(Math.Cos((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
+            C.Y = (float)((Math.Sin((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
+
+            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
+        }
+
+        protected void solidCollide(CActor collider, bool knockBack = false)
+        {
+            //Calculate How much to move to get out of collision moving towards last collisionless point
+            Collision.CHitBox otherbox = collider.hitBox;
+
+            //Calculate how far in we went
+            float distx = (collider.position.X + otherbox.center.X) - (position.X + hitBox.center.X);
+            distx = (float)Math.Sqrt(distx * distx);
+            float disty = (position.Y + hitBox.center.Y) - (collider.position.Y + otherbox.center.Y);
+            disty = (float)Math.Sqrt(disty * disty);
+
+            float lenx = hitBox.halfWidth + otherbox.halfWidth;
+            float leny = hitBox.halfHeight + otherbox.halfHeight;
+
+            int px = 1;
+            int py = 1;
+
+            if (collider.position.X + otherbox.center.X < position.X + hitBox.center.X)
+                px = -1;
+            if (collider.position.Y + otherbox.center.Y < position.Y + hitBox.center.Y)
+                py = -1;
+
+            float penx = px * (distx - lenx);
+            float peny = py * (disty - leny);
+            //Resolve closest to previous position
+            float diffx = (position.X + penx) - _oldPosition.X;
+            diffx *= diffx;
+            float diffy = (position.Y + peny) - _oldPosition.Y;
+            diffy *= diffy;
+
+            if (!knockBack)
+                _escapeCollide(diffx, diffy, penx, peny);
+            else
+                _knockBack(diffx, diffy, px, py);
+        }
+
+        protected void _knockBack(float diffx, float diffy, float penx, float peny)
+        {
+
+            if (diffx < diffy)
+                _collisionDirectionX = (int)-penx;
+            else if (diffx > diffy)
+                _collisionDirectionY = (int)-peny;
+            else
+            {
+                _collisionDirectionX = (int)-penx;
+                _collisionDirectionY = (int)-peny;
+            }
+        }
+
+        private void _escapeCollide(float diffx, float diffy, float penx, float peny)
+        {
+            if (diffx < diffy)
+                _position.X += penx; //TODO: dont make a new vector every time
+            else if (diffx > diffy)
+                _position.Y += peny; //Same here 
+            else
+            {
+                _position.X += penx;
+                _position.Y += peny; //Corner cases 
+            }
         }
     }
 }
