@@ -55,6 +55,12 @@ namespace WinFormsGraphicsDevice
             layer.addTile(newTile);
         }
 
+        public void removeTile(CLayer layer)
+        {
+            Vector2 position = _getMouseSnap();
+            
+        }
+
         public void dropActor(string actor, string name, int layer)
         {
             Type actorType = Type.GetType(actor);

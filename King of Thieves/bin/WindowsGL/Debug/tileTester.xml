@@ -128,7 +128,7 @@
 			<component>
 				<actors>
 					<actor name = "poe" type = "King_of_Thieves.Actors.NPC.Enemies.Poe.CPoe" coordinates = "0:0"></actor>
-					<actor name = "lantern" type = "King_of_Thieves.Actors.NPC.Enemies.Poe.CLantern" coordinates = "2:25"></actor>
+					<actor name = "poelantern" type = "King_of_Thieves.Actors.NPC.Enemies.Poe.CLantern" coordinates = "2:25"></actor>
 				</actors>
 			</component>
 			<component>

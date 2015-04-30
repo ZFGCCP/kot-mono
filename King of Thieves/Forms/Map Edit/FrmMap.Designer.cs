@@ -42,6 +42,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.hsbTexture = new System.Windows.Forms.HScrollBar();
             this.vsbTexture = new System.Windows.Forms.VScrollBar();
+            this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.cmbTilesets = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnNewComponent = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddLayer = new System.Windows.Forms.Button();
             this.btnDeleteLayer = new System.Windows.Forms.Button();
-            this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -91,33 +91,33 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.newToolStripMenuItem.Text = "New";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -176,6 +176,17 @@
             this.vsbTexture.Size = new System.Drawing.Size(17, 256);
             this.vsbTexture.TabIndex = 5;
             this.vsbTexture.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vsbTexture_Scroll);
+            // 
+            // txvTextures
+            // 
+            this.txvTextures.BackColor = System.Drawing.Color.Black;
+            this.txvTextures.Location = new System.Drawing.Point(3, 3);
+            this.txvTextures.Name = "txvTextures";
+            this.txvTextures.Size = new System.Drawing.Size(240, 256);
+            this.txvTextures.TabIndex = 2;
+            this.txvTextures.VSync = false;
+            this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
+            this.txvTextures.Click += new System.EventHandler(this.txvTextures_Click);
             // 
             // cmbTilesets
             // 
@@ -297,17 +308,6 @@
             this.btnDeleteLayer.UseVisualStyleBackColor = true;
             this.btnDeleteLayer.Click += new System.EventHandler(this.btnDeleteLayer_Click);
             // 
-            // txvTextures
-            // 
-            this.txvTextures.BackColor = System.Drawing.Color.Black;
-            this.txvTextures.Location = new System.Drawing.Point(3, 3);
-            this.txvTextures.Name = "txvTextures";
-            this.txvTextures.Size = new System.Drawing.Size(240, 256);
-            this.txvTextures.TabIndex = 2;
-            this.txvTextures.VSync = false;
-            this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
-            this.txvTextures.Click += new System.EventHandler(this.txvTextures_Click);
-            // 
             // mpvMapView
             // 
             this.mpvMapView.BackColor = System.Drawing.Color.Black;
@@ -316,6 +316,7 @@
             this.mpvMapView.Size = new System.Drawing.Size(512, 480);
             this.mpvMapView.TabIndex = 1;
             this.mpvMapView.VSync = false;
+            this.mpvMapView.Load += new System.EventHandler(this.mpvMapView_Load);
             this.mpvMapView.Click += new System.EventHandler(this.mpvMapView_Click);
             // 
             // FrmMap

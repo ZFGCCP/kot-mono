@@ -27,6 +27,7 @@ namespace King_of_Thieves.Actors.Player
         private int _bombVelo = 0;
         private string _currentShieldSprite = "";
         private string _currentShieldIdleSprite = "";
+        private Projectiles.ARROW_TYPES _arrowType = Projectiles.ARROW_TYPES.STANDARD;
 
         private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
         private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
@@ -492,7 +493,7 @@ namespace King_of_Thieves.Actors.Player
                     switch (state)
                     {
                         case ACTOR_STATES.CHARGING_ARROW:
-                            _queueUpArrow();
+                            _queueUpArrow(ref _arrowType);
                             _shootArrow();
                             break;
 
@@ -584,7 +585,25 @@ namespace King_of_Thieves.Actors.Player
 
                 if (_state == ACTOR_STATES.HOLD_ARROW && input.keysReleased.Contains(Keys.R))
                 {
-                    CMasterControl.buttonController.switchLeftItem(HUD.buttons.HUDOPTIONS.FIRE_ARROWS);
+                    switch (CMasterControl.buttonController.buttonLeftItem)
+                    {
+                        case HUD.buttons.HUDOPTIONS.ARROWS:
+                            CMasterControl.buttonController.switchLeftItem(HUD.buttons.HUDOPTIONS.FIRE_ARROWS);
+                            _changeArrowType(Projectiles.ARROW_TYPES.FIRE);
+                            break;
+
+                        case HUD.buttons.HUDOPTIONS.FIRE_ARROWS:
+                            CMasterControl.buttonController.switchLeftItem(HUD.buttons.HUDOPTIONS.ICE_ARROWS);
+                            _changeArrowType(Projectiles.ARROW_TYPES.ICE);
+                            break;
+
+                        case HUD.buttons.HUDOPTIONS.ICE_ARROWS:
+                            CMasterControl.buttonController.switchLeftItem(HUD.buttons.HUDOPTIONS.ARROWS);
+                            _changeArrowType(Projectiles.ARROW_TYPES.STANDARD);
+                            break;
+                    }
+
+                    
                 }
             }
 
@@ -905,9 +924,10 @@ namespace King_of_Thieves.Actors.Player
             CMasterControl.healthController.modifyHp(-damage);
         }
 
-        private void _beginArrowCharge()
+        private void _beginArrowCharge(Projectiles.ARROW_TYPES arrowType)
         {
             _state = ACTOR_STATES.CHARGING_ARROW;
+            _arrowType = arrowType;
 
             switch (_direction)
             {
@@ -929,17 +949,25 @@ namespace King_of_Thieves.Actors.Player
             }
         }
 
-        private void _queueUpArrow()
+        private void _queueUpArrow(ref Projectiles.ARROW_TYPES arrowType)
         {
+            if (arrowType != Projectiles.ARROW_TYPES.STANDARD && !CMasterControl.magicMeter.checkMagicAmount(2))
+                arrowType = Projectiles.ARROW_TYPES.STANDARD;
+
             Vector2 arrowVelocity = Vector2.Zero;
-            Projectiles.CArrow arrow = new Actors.Projectiles.CArrow(_direction,arrowVelocity,_position);
+            Projectiles.CArrow arrow = new Actors.Projectiles.CArrow(_direction,arrowVelocity,_position, arrowType);
             Map.CMapManager.addActorToComponent(arrow, this.componentAddress);
             _lastArrowShotName = arrow.name;
         }
 
+        private void _changeArrowType(Projectiles.ARROW_TYPES arrowType)
+        {
+            CMasterControl.commNet[this.componentAddress].Add(new CActorPacket(1, _lastArrowShotName, this, arrowType));
+        }
+
         private void _holdArrow()
         {
-            _queueUpArrow();
+            _queueUpArrow(ref _arrowType);
             state = ACTOR_STATES.HOLD_ARROW;
 
             switch (_direction)
@@ -970,6 +998,9 @@ namespace King_of_Thieves.Actors.Player
             _triggerUserEvent(0, _lastArrowShotName);
 
             _lastArrowShotName = string.Empty;
+
+            if (_arrowType != Projectiles.ARROW_TYPES.STANDARD)
+                CMasterControl.magicMeter.subtractMagic(2);
 
             switch (_direction)
             {
@@ -1075,7 +1106,15 @@ namespace King_of_Thieves.Actors.Player
             switch (option)
             {
                 case HUD.buttons.HUDOPTIONS.ARROWS:
-                    _beginArrowCharge();
+                    _beginArrowCharge(Projectiles.ARROW_TYPES.STANDARD);
+                    break;
+
+                case HUD.buttons.HUDOPTIONS.FIRE_ARROWS:
+                    _beginArrowCharge(Projectiles.ARROW_TYPES.FIRE);
+                    break;
+
+                case HUD.buttons.HUDOPTIONS.ICE_ARROWS:
+                    _beginArrowCharge(Projectiles.ARROW_TYPES.ICE);
                     break;
 
                 case HUD.buttons.HUDOPTIONS.BOMB_CANNON:
