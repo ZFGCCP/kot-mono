@@ -546,6 +546,7 @@ namespace King_of_Thieves.Actors.Player
                         _acceptInput = false;
                     }
 
+
                     if (_state == ACTOR_STATES.MOVING)
                     {
                         if (_carrying)

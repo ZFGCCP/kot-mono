@@ -19,6 +19,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
     public enum HUD_ACTION_OPTIONS
     {
         OPEN = 1,
+        TALK,
         NONE
     }
 

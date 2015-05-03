@@ -83,13 +83,13 @@
 				<actors>
 					<actor name = "wizzRobeTest" type="King_of_Thieves.Actors.NPC.Enemies.Wizzrobe.CIceWizzrobe" coordinates = "50:100"></actor>
 				</actors>
-			</component>-->
+			</component>
 			<component>
 				<actors>
 					<actor name = "wizzRobeTest2" type="King_of_Thieves.Actors.NPC.Enemies.Wizzrobe.CFireWizzrobe" coordinates = "50:100"></actor>
 				</actors>
 			</component>
-			<!--<component>
+			<component>
 				<actors>
 					<actor name = "wizzRobeTest3" type="King_of_Thieves.Actors.NPC.Enemies.Wizzrobe.CWizzrobe" coordinates = "50:100"></actor>
 				</actors>
@@ -101,7 +101,7 @@
 					<actor name="moldormPiece2" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailBody" coordinates = "10:10" params="moldormPiece1,moldormTail"></actor>
 					<actor name="moldormTail" type="King_of_Thieves.Actors.NPC.Enemies.MoldormTail.CMoldormTailTail" coordinates = "10:10" params="moldormPiece2,NA"></actor>
 				</actors>
-			</component>-->
+			</component>
 			<component>
 				<actors>
 					<actor name="armoredCrab" type="King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab.CArmoredCrab" coordinates = "70:50"></actor>
@@ -134,6 +134,11 @@
 			<component>
 				<actors>
 					<actor name = "gibdo" type = "King_of_Thieves.Actors.NPC.Enemies.Zombie.CGibdo" coordinates = "30:0"></actor>
+				</actors>
+			</component>-->
+			<component>
+				<actors>
+					<actor name="townsfolk" type="King_of_Thieves.Actors.NPC.Other.CTownsFolk" coordinates="30:30"></actor>
 				</actors>
 			</component>
 			<component>

@@ -55,9 +55,8 @@ namespace WinFormsGraphicsDevice
             layer.addTile(newTile);
         }
 
-        public void removeTile(CLayer layer)
+        public void removeTile(CLayer layer, Vector2 position)
         {
-            Vector2 position = _getMouseSnapCoords();
             int index = layer.indexOfTileReverse(position);
 
             layer.removeTile(index);
@@ -154,7 +153,7 @@ namespace WinFormsGraphicsDevice
             return new Vector2(snapX, snapY);
         }
 
-        private Vector2 _getMouseSnapCoords()
+        public Vector2 getMouseSnapCoords()
         {
             System.Drawing.Point mousePos = PointToClient(MousePosition);
 

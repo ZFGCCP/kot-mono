@@ -34,7 +34,8 @@ namespace King_of_Thieves.Actors
 
     public enum ACTOR_STATES
     {
-        ATTACK = 0,
+        ALERT = 0,
+        ATTACK,
         CARRY,
         CHARGING_ARROW,
         CHASE,
@@ -77,6 +78,7 @@ namespace King_of_Thieves.Actors
         SWINGING,
         SHOCKED,
         STUNNED,
+        TALK_READY,
         THROW_BOOMERANG,
         THROWING,
         TOSSING,

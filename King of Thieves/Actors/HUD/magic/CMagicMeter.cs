@@ -11,9 +11,9 @@ namespace King_of_Thieves.Actors.HUD.magic
 {
     class CMagicMeter : CHUDElement
     {
-        private int _capacity;
-        private int _amount;
-        private CRect _meter;
+        protected int _capacity;
+        protected int _amount;
+        protected CRect _meter;
 
         public CMagicMeter() :
             base()

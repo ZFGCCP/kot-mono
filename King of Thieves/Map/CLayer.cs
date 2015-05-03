@@ -145,6 +145,9 @@ namespace King_of_Thieves.Map
 
         public void removeTile(int index)
         {
+            if (index == -1)
+                return;
+
             _tiles.RemoveAt(index);
         }
 
