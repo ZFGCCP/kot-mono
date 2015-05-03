@@ -78,6 +78,7 @@
     <Compile Include="Actors\Menu\CMenuCursor.cs" />
     <Compile Include="Actors\Menu\CMenuItem.cs" />
     <Compile Include="Actors\Menu\CPauseBackdrop.cs" />
+    <Compile Include="Actors\NPC\CTownsFolk.cs" />
     <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CArmoredCrab.cs" />
     <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CCrabShell.cs" />
     <Compile Include="Actors\NPC\Enemies\CBaseEnemy.cs" />

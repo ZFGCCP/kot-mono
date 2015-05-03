@@ -720,3 +720,14 @@
 /processorParam:TextureFormat=Color
 /build:hud/magicMeter.png
 
+#begin sprites/npc/friendly/townsfolk01.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:sprites/npc/friendly/townsfolk01.png
+

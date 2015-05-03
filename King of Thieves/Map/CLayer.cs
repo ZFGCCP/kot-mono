@@ -48,7 +48,6 @@ namespace King_of_Thieves.Map
             _image = image;
             _components = new ComponentManager(new ComponentFactory[]{ new ComponentFactory(components) } );
             _mapVersion = version;
-            //_image = Graphics.CTextures.generateLayerImage(this, tiles);
         }
 
         ~CLayer()
@@ -95,11 +94,26 @@ namespace King_of_Thieves.Map
                 throw new InvalidOperationException("Cannot reinitialize a layer's components once they have been initialized.");
         }
 
+        //returns the first occurance
         public int indexOfTile(Vector2 coords)
         {
             int outPut = -1;
 
             for (int i = 0; i < _tiles.Count; i++)
+            {
+                if (_tiles[i].checkForClick(coords))
+                    return i;
+            }
+
+            return outPut;
+        }
+
+        //returns the last occurance
+        public int indexOfTileReverse(Vector2 coords)
+        {
+            int outPut = -1;
+
+            for (int i = _tiles.Count - 1; i >=0; i--)
             {
                 if (_tiles[i].checkForClick(coords))
                     return i;

@@ -57,8 +57,10 @@ namespace WinFormsGraphicsDevice
 
         public void removeTile(CLayer layer)
         {
-            Vector2 position = _getMouseSnap();
-            
+            Vector2 position = _getMouseSnapCoords();
+            int index = layer.indexOfTileReverse(position);
+
+            layer.removeTile(index);
         }
 
         public void dropActor(string actor, string name, int layer)
@@ -148,6 +150,16 @@ namespace WinFormsGraphicsDevice
 
             int snapX = (int)System.Math.Floor((mousePos.X) / 16.0);
             int snapY = (int)System.Math.Floor((mousePos.Y) / 16.0);
+
+            return new Vector2(snapX, snapY);
+        }
+
+        private Vector2 _getMouseSnapCoords()
+        {
+            System.Drawing.Point mousePos = PointToClient(MousePosition);
+
+            int snapX = mousePos.X;
+            int snapY = mousePos.Y;
 
             return new Vector2(snapX, snapY);
         }
