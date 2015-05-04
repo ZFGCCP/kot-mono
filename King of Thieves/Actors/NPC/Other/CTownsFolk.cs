@@ -27,6 +27,8 @@ namespace King_of_Thieves.Actors.NPC.Other
         private bool _hasPettyItem = false;
         private bool _itemGiven = false;
 
+        protected double _backAngle = 0;
+
         public CTownsFolk() :
             base()
         {
@@ -67,6 +69,7 @@ namespace King_of_Thieves.Actors.NPC.Other
 
             _direction = DIRECTION.DOWN;
             _angle = 270;
+            _backAngle = 90;
             _state = ACTOR_STATES.IDLE;
             swapImage(_IDLE_DOWN);
             _lineOfSight = 20;
@@ -96,22 +99,61 @@ namespace King_of_Thieves.Actors.NPC.Other
             if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _hearingRadius))
             {
                 if (_checkIfPointInView(playerPos))
+                {
                     _state = ACTOR_STATES.TALK_READY;
+                    CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.TALK);
+                }
                 else
+                {
                     _state = ACTOR_STATES.IDLE;
+                    CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
+                }
             }
         }
 
         public override void keyRelease(object sender)
         {
             CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
-            if (_state == ACTOR_STATES.TALK_READY && input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C))
+            if (_state == ACTOR_STATES.TALK_READY && input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C) && !CMasterControl.buttonController.textBoxWait)
                 startTimer0(2);
+
+            if (!CMasterControl.buttonController.textBoxActive && input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.R))
+            {
+                CMasterControl.pickPocketMeter = new HUD.other.CPickPocketMeter(3);
+            }
         }
 
         public override void timer0(object sender)
         {
             CMasterControl.buttonController.createTextBox("Bah! Out of my way, filth!!");
+        }
+
+        private void _changeDirection()
+        {
+            _direction = (DIRECTION)_randNum.Next(0, 5);
+
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    _angle = 270;
+                    _backAngle = 90;
+                    break;
+
+                case DIRECTION.LEFT:
+                    _angle = 180;
+                    _backAngle = 0;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _angle = 0;
+                    _backAngle = 180;
+                    break;
+
+                case DIRECTION.UP:
+                    _angle = 90;
+                    _backAngle = 270;
+                    break;
+            }
         }
 
 

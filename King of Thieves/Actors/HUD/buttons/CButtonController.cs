@@ -56,6 +56,22 @@ namespace King_of_Thieves.Actors.HUD.buttons
             _textBoxController.drawMe();
         }
 
+        public bool textBoxActive
+        {
+            get
+            {
+                return _textBoxController.active;
+            }
+        }
+
+        public bool textBoxWait
+        {
+            get
+            {
+                return _textBoxController.wait;
+            }
+        }
+
         public void switchRightItem(HUDOPTIONS item)
         {
             _buttonRight.changeItemOverlay(item);

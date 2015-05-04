@@ -134,8 +134,6 @@ namespace King_of_Thieves.Actors
         protected List<Type> _collidables;
         public static bool showHitBox = false; //Draw hitboxes over actor if this is true
         protected Vector2 _motionCounter = Vector2.Zero;
-        private int _motionLimit = 0;
-        
 
         //event handlers will be added here
         public event actorEventHandler onCreate;

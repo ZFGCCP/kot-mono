@@ -40,19 +40,19 @@ namespace King_of_Thieves.Actors.HUD.magic
             if (input.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.PageDown))
             {
                 if (_amount > 0)
-                {
                     _amount--;
-                    _meter.width = _amount;
-                }
             }
             else if (input.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.PageUp))
             {
                 if (_amount < _capacity)
-                {
                     _amount++;
-                    _meter.width = _amount;
-                }
             }
+        }
+
+        public override void update(GameTime gameTime)
+        {
+            base.update(gameTime);
+            _meter.width = _amount;
         }
 
         public int amount

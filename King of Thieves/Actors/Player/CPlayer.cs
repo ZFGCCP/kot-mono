@@ -193,6 +193,11 @@ namespace King_of_Thieves.Actors.Player
                     else if (collider is Projectiles.CIceBall)
                         _collideWithNpcResponse(collider, false);
                 }
+
+                if (collider is NPC.Other.CTownsFolk)
+                {
+                    solidCollide(collider);
+                }
             }
         }
 
@@ -545,6 +550,11 @@ namespace King_of_Thieves.Actors.Player
                         swapImage(_GOT_ITEM);
                         _acceptInput = false;
                     }
+                    else if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.TALK && !CMasterControl.buttonController.textBoxWait)
+                    {
+                        _state = ACTOR_STATES.TALK_READY;
+                        _acceptInput = false;
+                    }
 
 
                     if (_state == ACTOR_STATES.MOVING)
@@ -632,6 +642,16 @@ namespace King_of_Thieves.Actors.Player
                         swapImage("PlayerIdleDown");
                     }
                     break;
+
+                case ACTOR_STATES.TALK_READY:
+                    if (Actors.HUD.Text.CTextBox.messageFinished)
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
+                        _acceptInput = true;
+                    }
+                    break;
+
 
                 case ACTOR_STATES.LIFT:
                     switch (_direction)
@@ -846,6 +866,9 @@ namespace King_of_Thieves.Actors.Player
             _collidables.Add(typeof(Actors.Collision.CSolidTile));
             _collidables.Add(typeof(Actors.Items.decoration.CPot));
             _collidables.Add(typeof(Actors.Items.decoration.CChest));
+
+            //other NPCs
+            _collidables.Add(typeof(Actors.NPC.Other.CTownsFolk));
         }
 
         public override void shock()
