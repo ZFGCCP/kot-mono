@@ -135,6 +135,8 @@ namespace King_of_Thieves.Actors
         public static bool showHitBox = false; //Draw hitboxes over actor if this is true
         protected Vector2 _motionCounter = Vector2.Zero;
         protected int _drawDepth = 8;
+        protected bool _firstTick = true;
+        private string _currentImageIndex = "";
 
         //event handlers will be added here
         public event actorEventHandler onCreate;
@@ -593,6 +595,7 @@ namespace King_of_Thieves.Actors
         public void swapImage(string imageIndex, bool triggerAnimEnd = true)
         {
             image = _imageIndex[imageIndex];
+            _currentImageIndex = imageIndex;
 
             if (triggerAnimEnd)
             {
@@ -1017,6 +1020,14 @@ namespace King_of_Thieves.Actors
             get
             {
                 return _drawDepth;
+            }
+        }
+
+        public string currentImageIndex
+        {
+            get
+            {
+                return _currentImageIndex;
             }
         }
     }

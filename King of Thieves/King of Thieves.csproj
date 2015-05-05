@@ -109,6 +109,7 @@
     <Compile Include="Actors\NPC\Enemies\Zombie\CBaseZombie.cs" />
     <Compile Include="Actors\NPC\Enemies\Zombie\CGibdo.cs" />
     <Compile Include="Actors\NPC\Enemies\Zombie\CZombieScreecher.cs" />
+    <Compile Include="Actors\NPC\Other\CTownsFolkHead.cs" />
     <Compile Include="Actors\NPC\Other\Maple\CMaple.cs" />
     <Compile Include="Actors\Player\CPlayer.cs" />
     <Compile Include="Actors\Projectiles\CArrow.cs" />

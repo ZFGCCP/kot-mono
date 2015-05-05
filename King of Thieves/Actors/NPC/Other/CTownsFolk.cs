@@ -24,6 +24,8 @@ namespace King_of_Thieves.Actors.NPC.Other
         private string _IDLE_LEFT = "idleLeft";
         private string _IDLE_RIGHT = "idleRight";
 
+        
+
         private bool _hasPettyItem = false;
         private bool _itemGiven = false;
 
@@ -49,7 +51,7 @@ namespace King_of_Thieves.Actors.NPC.Other
                 Graphics.CTextures.rawTextures.Add(_SPRITE_NAMESPACE, CMasterControl.glblContent.Load<Texture2D>(_SHEET01));
 
                 Graphics.CTextures.addTexture(_WALK_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 30, 36, 1, "0:2", "2:2", 4));
-                Graphics.CTextures.addTexture(_WALK_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 30, 36, 1, "0:0", "0:3", 4));
+                Graphics.CTextures.addTexture(_WALK_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 30, 36, 1, "0:0", "3:0", 4));
                 Graphics.CTextures.addTexture(_WALK_RIGHT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 30, 36, 1, "0:1", "2:1", 4));
 
                 Graphics.CTextures.addTexture(_IDLE_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 30, 36, 1, "0:2", "0:2", 0));
@@ -71,17 +73,24 @@ namespace King_of_Thieves.Actors.NPC.Other
             _angle = 270;
             _backAngle = 90;
             _state = ACTOR_STATES.IDLE;
-            swapImage(_IDLE_DOWN);
-            _lineOfSight = 20;
+            swapImage(_WALK_DOWN);
+            _lineOfSight = 50;
             _visionRange = 60;
             _hearingRadius = 30;
 
-            _hitBox = new Collision.CHitBox(this, 10, 15, 16, 16);
+            _hitBox = new Collision.CHitBox(this, 10, 20, 16, 16);
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             base.update(gameTime);
+
+            if (_firstTick)
+            {
+                CTownsFolkHead head = new CTownsFolkHead();
+                head.init(_name + "head", _position, "", this.componentAddress, _SPRITE_NAMESPACE);
+                Map.CMapManager.addActorToComponent(head, this.componentAddress);
+            }
 
             if (!_itemGiven)
             {
@@ -109,6 +118,8 @@ namespace King_of_Thieves.Actors.NPC.Other
                     CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
                 }
             }
+
+            _firstTick = false;
         }
 
         public override void keyRelease(object sender)

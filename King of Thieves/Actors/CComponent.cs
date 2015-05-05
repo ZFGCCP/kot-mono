@@ -163,8 +163,6 @@ namespace King_of_Thieves.Actors
             }
         }
 
-       
-
         private void _destroyActors()
         {
             root.remove();
