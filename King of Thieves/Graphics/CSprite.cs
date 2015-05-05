@@ -22,6 +22,7 @@ namespace King_of_Thieves.Graphics
         private int _framesPassed = 0;
         private bool _isEffect = false;
         private bool _paused = false;
+        public bool removeFromDrawList = false;
 
         public CSprite(string atlasName, bool flipH = false, bool flipV = false, Effect shader = null, bool isEffect = false, int rotation = 0, params VertexPositionColor[] vertices)
             : base(shader, vertices)

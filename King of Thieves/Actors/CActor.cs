@@ -134,6 +134,7 @@ namespace King_of_Thieves.Actors
         protected List<Type> _collidables;
         public static bool showHitBox = false; //Draw hitboxes over actor if this is true
         protected Vector2 _motionCounter = Vector2.Zero;
+        protected int _drawDepth = 8;
 
         //event handlers will be added here
         public event actorEventHandler onCreate;
@@ -1008,6 +1009,14 @@ namespace King_of_Thieves.Actors
             {
                 _position.X += penx;
                 _position.Y += peny; //Corner cases 
+            }
+        }
+
+        public int drawDepth
+        {
+            get
+            {
+                return _drawDepth;
             }
         }
     }

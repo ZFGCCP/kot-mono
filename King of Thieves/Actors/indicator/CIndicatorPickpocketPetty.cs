@@ -13,6 +13,7 @@ namespace King_of_Thieves.Actors.indicator
             _imageIndex.Add(Graphics.CTextures.HUD_PICKPOCKET_ICON_PETTY, new Graphics.CSprite(Graphics.CTextures.HUD_PICKPOCKET_ICON_PETTY));
 
             swapImage(Graphics.CTextures.HUD_PICKPOCKET_ICON_PETTY);
+            _drawDepth = 10;
         }
     }
 }

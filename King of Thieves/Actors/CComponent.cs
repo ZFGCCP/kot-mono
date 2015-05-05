@@ -163,25 +163,7 @@ namespace King_of_Thieves.Actors
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch) //spritebatch not used
-        {
-            currentDrawHeight = 0;
-            if (!this.killMe)
-            {
-                foreach (KeyValuePair<string, CActor> kvp in actors)
-                {
-                    if (!kvp.Value.killMe)
-                    {
-                        if (!root.killMe && rootDrawHeight == currentDrawHeight++)
-                            root.drawMe(useDrawOverlay);
-                        kvp.Value.drawMe(useDrawOverlay);
-                    }
-                }
-                //If root is last
-                if (root != null && !root.killMe && rootDrawHeight == currentDrawHeight)
-                    root.drawMe(useDrawOverlay);
-            }
-        }
+       
 
         private void _destroyActors()
         {

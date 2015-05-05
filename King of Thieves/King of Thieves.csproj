@@ -181,6 +181,7 @@
     <Compile Include="GraphicsDeviceService.cs" />
     <Compile Include="Graphics\CAnimation.cs" />
     <Compile Include="Graphics\CCamera.cs" />
+    <Compile Include="Graphics\CDrawList.cs" />
     <Compile Include="Graphics\CEffects.cs" />
     <Compile Include="Graphics\CGraphics.cs" />
     <Compile Include="Graphics\CRect.cs" />

@@ -49,6 +49,7 @@ namespace King_of_Thieves.Actors.Player
             image = _imageIndex["PlayerWalkDown"];
             _velocity = new Vector2(0, 0);
             startTimer5(15);
+            _drawDepth = 9;
         }
 
         public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
