@@ -20,6 +20,8 @@ namespace King_of_Thieves.Actors.NPC.Other
         private string _IDLE_LEFT = "idleHeadLeft";
         private string _IDLE_RIGHT = "idleHeadRight";
 
+        private Dictionary<string, string> _spriteMap = new Dictionary<string, string>();
+
         public CTownsFolkHead() :
             base()
         {
@@ -63,6 +65,16 @@ namespace King_of_Thieves.Actors.NPC.Other
             _imageIndex.Add(_WALK_LEFT, new Graphics.CSprite(_WALK_RIGHT, true));
             _imageIndex.Add(_WALK_RIGHT, new Graphics.CSprite(_WALK_RIGHT));
             swapImage(_WALK_DOWN);
+
+            _spriteMap.Add(_IDLE_DOWN.Replace("Head", ""), _IDLE_DOWN);
+            _spriteMap.Add(_IDLE_UP.Replace("Head", ""), _IDLE_UP);
+            _spriteMap.Add(_IDLE_LEFT.Replace("Head", ""), _IDLE_LEFT);
+            _spriteMap.Add(_IDLE_RIGHT.Replace("Head", ""), _IDLE_RIGHT);
+
+            _spriteMap.Add(_WALK_DOWN.Replace("Head", ""), _WALK_DOWN);
+            _spriteMap.Add(_WALK_UP.Replace("Head", ""), _WALK_UP);
+            _spriteMap.Add(_WALK_LEFT.Replace("Head", ""), _WALK_LEFT);
+            _spriteMap.Add(_WALK_RIGHT.Replace("Head", ""), _WALK_RIGHT);
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -72,6 +84,7 @@ namespace King_of_Thieves.Actors.NPC.Other
             //check the root's direction, state and image and mimic them
             _direction = this.component.root.direction;
             _state = this.component.root.state;
+            swapImage(_spriteMap[this.component.root.currentImageIndex]);
         }
     }
 }

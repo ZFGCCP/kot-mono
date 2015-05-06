@@ -285,6 +285,10 @@ namespace King_of_Thieves.Map
 
             foreach (CLayer layer in _layers)
                 layer.updateLayer(gameTime);
+
+            //handle collisions
+            for (int i = 0; i < _componentRegistry.Count(); i++)
+                _componentRegistry[i].doCollision();
         }
 
         public CComponent queryComponentRegistry(int id)

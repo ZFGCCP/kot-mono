@@ -124,6 +124,24 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        public void doCollision()
+        {
+            if (enabled && !root.killMe)
+            {
+                root.doCollision();
+
+                foreach (KeyValuePair<string, CActor> kvp in actors)
+                {
+                    if (!kvp.Value.killMe)
+                    {
+                        kvp.Value.doCollision();
+                        if (kvp.Value._followRoot)
+                            kvp.Value.position += root.distanceFromLastFrame;
+                    }
+                }
+            }
+        }
+
         public override void Update(GameTime gameTime)
         {
 
@@ -149,8 +167,8 @@ namespace King_of_Thieves.Actors
                     _checkCommNet(kvp.Key, kvp.Value);
 
                     //update position relative to the root
-                    if (kvp.Value._followRoot)
-                        kvp.Value.position += root.distanceFromLastFrame;
+                    /*if (kvp.Value._followRoot)
+                        kvp.Value.position += root.distanceFromLastFrame;*/
 
                     //update
                     kvp.Value.update(gameTime);
