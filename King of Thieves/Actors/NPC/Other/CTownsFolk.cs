@@ -24,7 +24,8 @@ namespace King_of_Thieves.Actors.NPC.Other
         private string _IDLE_LEFT = "idleLeft";
         private string _IDLE_RIGHT = "idleRight";
 
-        
+        private int _backLineOfSight = 0;
+        private int _backVisionRange = 0;
 
         private bool _hasPettyItem = false;
         private bool _itemGiven = false;
@@ -77,6 +78,8 @@ namespace King_of_Thieves.Actors.NPC.Other
             _lineOfSight = 50;
             _visionRange = 60;
             _hearingRadius = 30;
+            _backLineOfSight = 20;
+            _backVisionRange = 50;
 
             _hitBox = new Collision.CHitBox(this, 10, 20, 16, 16);
 
@@ -112,10 +115,14 @@ namespace King_of_Thieves.Actors.NPC.Other
             
             if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _hearingRadius))
             {
-                if (_checkIfPointInView(playerPos))
+                if (_checkIfPointInView(playerPos) && checkIfFacing(playerPos, Player.CPlayer.glblDirection))
                 {
                     _state = ACTOR_STATES.TALK_READY;
                     CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.TALK);
+                }
+                else if (_checkIfPointBehind(playerPos) && checkIfBackFacing(playerPos, Player.CPlayer.glblDirection))
+                {
+                    CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.PICK);
                 }
                 else
                 {
@@ -130,12 +137,13 @@ namespace King_of_Thieves.Actors.NPC.Other
         public override void keyRelease(object sender)
         {
             CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
-            if (_state == ACTOR_STATES.TALK_READY && input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C) && !CMasterControl.buttonController.textBoxWait)
-                startTimer0(2);
-
-            if (!CMasterControl.buttonController.textBoxActive && input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.R))
+            if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C) && !CMasterControl.buttonController.textBoxWait)
             {
-                CMasterControl.pickPocketMeter = new HUD.other.CPickPocketMeter(3);
+                if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.TALK)
+                    startTimer0(2);
+                else if(CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.PICK)
+                    startTimer2(2);
+               
             }
         }
 
@@ -148,6 +156,11 @@ namespace King_of_Thieves.Actors.NPC.Other
         {
             _changeDirection();
             startTimer1(120);
+        }
+
+        public override void timer2(object sender)
+        {
+            CMasterControl.pickPocketMeter = new HUD.other.CPickPocketMeter(3);
         }
 
         public override void collide(object sender, CActor collider)
@@ -220,6 +233,50 @@ namespace King_of_Thieves.Actors.NPC.Other
             }
         }
 
+        private bool _checkIfPointBehind(Vector2 point)
+        {
 
+            //build triangle points first
+            Vector2 A = _position;
+            Vector2 B = Vector2.Zero;
+            Vector2 C = Vector2.Zero;
+
+            B.X = (float)(Math.Cos((_backAngle - _backVisionRange / 2.0f) * (Math.PI / 180)) * _backLineOfSight) + _position.X;
+            B.Y = (float)((Math.Sin((_backAngle - _backVisionRange / 2.0f) * (Math.PI / 180)) * _backLineOfSight) * -1.0) + _position.Y;
+
+            C.X = (float)(Math.Cos((_backAngle + _backVisionRange / 2.0f) * (Math.PI / 180)) * _backLineOfSight) + _position.X;
+            C.Y = (float)((Math.Sin((_backAngle + _backVisionRange / 2.0f) * (Math.PI / 180)) * _backLineOfSight) * -1.0) + _position.Y;
+
+            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
+        }
+
+
+        public bool checkIfBackFacing(Vector2 position, DIRECTION direction)
+        {
+            if (_position.X >= position.X)
+            {
+                if (_direction == DIRECTION.RIGHT && direction == DIRECTION.RIGHT)
+                    return true;
+            }
+
+            if (_position.X <= position.X)
+            {
+                if (_direction == DIRECTION.LEFT && direction == DIRECTION.LEFT)
+                    return true;
+            }
+
+            if (_position.Y <= position.Y)
+            {
+                if (_direction == DIRECTION.UP && direction == DIRECTION.UP)
+                    return true;
+            }
+
+            if (_position.Y >= position.Y)
+            {
+                if (_direction == DIRECTION.DOWN && direction == DIRECTION.DOWN)
+                    return true;
+            }
+            return false;
+        }
     }
 }

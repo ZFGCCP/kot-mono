@@ -166,10 +166,6 @@ namespace King_of_Thieves.Actors
                     //first get messages from the commNet
                     _checkCommNet(kvp.Key, kvp.Value);
 
-                    //update position relative to the root
-                    /*if (kvp.Value._followRoot)
-                        kvp.Value.position += root.distanceFromLastFrame;*/
-
                     //update
                     kvp.Value.update(gameTime);
                 }

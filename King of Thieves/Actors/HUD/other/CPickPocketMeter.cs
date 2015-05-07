@@ -12,6 +12,7 @@ namespace King_of_Thieves.Actors.HUD.other
     {
         private int _speed = 1;
         private bool _pickSuccess = false;
+        private bool _justFinished = false;
 
         public CPickPocketMeter(int speed = 1) :
             base()
@@ -26,8 +27,8 @@ namespace King_of_Thieves.Actors.HUD.other
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            _justFinished = false;
             base.update(gameTime);
-
             if (_amount <= 0)
             {
                 _state = ACTOR_STATES.INCREMENT;
@@ -55,6 +56,7 @@ namespace King_of_Thieves.Actors.HUD.other
                 {
                     _pickSuccess = true;
                 }
+                _justFinished = true;
             }
         }
 
@@ -63,6 +65,14 @@ namespace King_of_Thieves.Actors.HUD.other
             get
             {
                 return _pickSuccess;
+            }
+        }
+
+        public bool justFinished
+        {
+            get
+            {
+                return _justFinished;
             }
         }
     }

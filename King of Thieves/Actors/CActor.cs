@@ -1035,5 +1035,33 @@ namespace King_of_Thieves.Actors
                 return _currentImageIndex;
             }
         }
+
+        public bool checkIfFacing(Vector2 position, DIRECTION direction)
+        {
+            if (_position.X >= position.X)
+            {
+                if (_direction == DIRECTION.LEFT && direction == DIRECTION.RIGHT)
+                    return true;
+            }
+
+            if (_position.X <= position.X)
+            {
+                if (_direction == DIRECTION.RIGHT && direction == DIRECTION.LEFT)
+                    return true;
+            }
+
+            if (_position.Y <= position.Y)
+            {
+                if (_direction == DIRECTION.DOWN && direction == DIRECTION.UP)
+                    return true;
+            }
+
+            if (_position.Y >= position.Y)
+            {
+                if (_direction == DIRECTION.UP && direction == DIRECTION.DOWN)
+                    return true;
+            }
+            return false;
+        }
     }
 }

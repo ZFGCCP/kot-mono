@@ -14,7 +14,9 @@ namespace King_of_Thieves.Actors.Player
     {
         private bool _swordReleased = true;
         private bool _rollReleased = true;
+        private static double _readableAngle = 0;
         private static Vector2 _readableCoords = new Vector2();
+        private static DIRECTION _readableDirection = DIRECTION.DOWN;
         public static readonly Vector2 carrySpot = new Vector2(-6, -10); //will need to be played with
         private bool _carrying = false;
         private double _carryWeight = 0;
@@ -812,7 +814,29 @@ namespace King_of_Thieves.Actors.Player
                         _bombVelo++;
                     break;
             }
+
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    _angle = 270;
+                    break;
+
+                case DIRECTION.LEFT:
+                    _angle = 180;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _angle = 0;
+                    break;
+
+                case DIRECTION.UP:
+                    _angle = 90;
+                    break;
+            }
+
             _readableCoords = _position;
+            _readableAngle = _angle;
+            _readableDirection = _direction;
         }
 
         public override void timer0(object sender)
@@ -1149,6 +1173,22 @@ namespace King_of_Thieves.Actors.Player
                 case HUD.buttons.HUDOPTIONS.BOOMERANG:
                     _throwBoomerang();
                     break;
+            }
+        }
+
+        public static double glblAngle
+        {
+            get
+            {
+                return _readableAngle;
+            }
+        }
+
+        public static DIRECTION glblDirection
+        {
+            get
+            {
+                return _readableDirection;
             }
         }
     }

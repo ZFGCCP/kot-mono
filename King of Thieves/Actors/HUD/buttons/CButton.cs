@@ -20,6 +20,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
     {
         OPEN = 1,
         TALK,
+        PICK,
         NONE
     }
 
