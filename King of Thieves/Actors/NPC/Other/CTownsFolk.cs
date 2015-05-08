@@ -29,6 +29,7 @@ namespace King_of_Thieves.Actors.NPC.Other
 
         private bool _hasPettyItem = false;
         private bool _itemGiven = false;
+        private bool _playerInSight = false;
 
         protected double _backAngle = 0;
 
@@ -106,6 +107,10 @@ namespace King_of_Thieves.Actors.NPC.Other
                     indicator.CIndicatorPickpocketPetty petty = new indicator.CIndicatorPickpocketPetty();
                     petty.init(_name + "pickpocketPettyIndicator", new Microsoft.Xna.Framework.Vector2(_position.X + 5, _position.Y - 20), "", this.componentAddress);
                     Map.CMapManager.addActorToComponent(petty, this.componentAddress);
+
+                    Actors.Items.Drops.CRupeeDrop rupeeDrop = new Items.Drops.CRupeeDrop();
+                    rupeeDrop.init(this.name + "loadedItem", _position, "", this.componentAddress, "G", "false", "false");
+                    Map.CMapManager.addActorToComponent(rupeeDrop, this.componentAddress);
                 }
             }
             if (_state == ACTOR_STATES.MOVING)
@@ -119,29 +124,57 @@ namespace King_of_Thieves.Actors.NPC.Other
                 {
                     _state = ACTOR_STATES.TALK_READY;
                     CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.TALK);
+                    _playerInSight = true;
                 }
-                else if (_checkIfPointBehind(playerPos) && checkIfBackFacing(playerPos, Player.CPlayer.glblDirection))
+                else if (_checkIfPointBehind(playerPos) && checkIfBackFacing(playerPos, Player.CPlayer.glblDirection) && _hasItemToPick)
                 {
                     CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.PICK);
                 }
                 else
                 {
-                    _state = ACTOR_STATES.IDLE;
-                    CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
+                    if (_playerInSight)
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
+                        _playerInSight = false;
+                    }
                 }
             }
-
             _firstTick = false;
         }
 
         public override void keyRelease(object sender)
         {
             CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
-            if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C) && !CMasterControl.buttonController.textBoxWait)
+            if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C))
             {
-                if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.TALK)
-                    startTimer0(2);
-                else if(CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.PICK)
+
+                if (_state == ACTOR_STATES.BEING_PICKED)
+                {
+                    if (CMasterControl.pickPocketMeter.amount >= 50)
+                    {
+                        //pick success
+                        _triggerUserEvent(0, this.name + "loadedItem");
+                        _triggerUserEvent(0, this.name + "pickpocketPettyIndicator");
+                        _hasPettyItem = false;
+                        _backLineOfSight = 0;
+                        _backVisionRange = 0;
+                        CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
+                    }
+                    else
+                    {
+                        startTimer3(2);
+                    }
+                    _state = ACTOR_STATES.IDLE;
+                }
+
+                if (!CMasterControl.buttonController.textBoxWait)
+                {
+                    if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.TALK)
+                        startTimer0(2);
+                }
+
+                if(CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.PICK && CMasterControl.pickPocketMeter == null)
                     startTimer2(2);
                
             }
@@ -154,13 +187,21 @@ namespace King_of_Thieves.Actors.NPC.Other
 
         public override void timer1(object sender)
         {
-            _changeDirection();
+            if (_state != ACTOR_STATES.BEING_PICKED)
+                _changeDirection();
+
             startTimer1(120);
         }
 
         public override void timer2(object sender)
         {
             CMasterControl.pickPocketMeter = new HUD.other.CPickPocketMeter(3);
+            _state = ACTOR_STATES.BEING_PICKED;
+        }
+
+        public override void timer3(object sender)
+        {
+            CMasterControl.buttonController.createTextBox("?! Y-YOU LITTLE!! GUARDS!! SEIZE HIM!!!");
         }
 
         public override void collide(object sender, CActor collider)
@@ -277,6 +318,14 @@ namespace King_of_Thieves.Actors.NPC.Other
                     return true;
             }
             return false;
+        }
+
+        private bool _hasItemToPick
+        {
+            get
+            {
+                return (_hasPettyItem);
+            }
         }
     }
 }

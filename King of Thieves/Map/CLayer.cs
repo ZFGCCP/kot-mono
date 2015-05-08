@@ -16,6 +16,7 @@ namespace King_of_Thieves.Map
         public Dictionary<string, Graphics.CSprite> otherImages = new Dictionary<string, Graphics.CSprite>();
         private double _mapVersion;
         private Graphics.CDrawList _drawlist = new Graphics.CDrawList();
+        private int _layerIndex;
 
         private List<CTile> _tiles = new List<CTile>(); //raw tile data
 
@@ -51,7 +52,7 @@ namespace King_of_Thieves.Map
             return _components.actorHeaderMap();
         }
 
-        public CLayer(string name, Actors.CComponent[] components, CTile[] tiles, ref Graphics.CSprite image, double version = 1)
+        public CLayer(string name, Actors.CComponent[] components, CTile[] tiles, ref Graphics.CSprite image,  int index, double version = 1)
         {
             _width = 0; _height = 0;
             NAME = name;
@@ -59,6 +60,7 @@ namespace King_of_Thieves.Map
             _image = image;
             _components = new ComponentManager(new ComponentFactory[]{ new ComponentFactory(components) } );
             _mapVersion = version;
+            _layerIndex = index;
         }
 
         ~CLayer()
@@ -189,7 +191,7 @@ namespace King_of_Thieves.Map
             SpriteBatch batch = spriteBatch == null ? Graphics.CGraphics.spriteBatch : spriteBatch;
 
             if (_components != null)
-                _drawlist.drawAll();
+                _drawlist.drawAll(_layerIndex);
         }
 
         public int width

@@ -31,19 +31,22 @@ namespace King_of_Thieves.Graphics
             
         }
 
-        public void drawAll()
+        public void drawAll(int layer)
         {
             foreach (KeyValuePair<int, List<CActor>> kvp in _drawList)
             {
                 for (int i = 0; i < kvp.Value.Count; i++)
                 {
                     CActor sprite = kvp.Value[i];
-                    if (sprite.killMe)
+                    if (sprite.layer == layer)
                     {
-                        kvp.Value.Remove(sprite);
-                        continue;
+                        if (sprite.killMe)
+                        {
+                            kvp.Value.Remove(sprite);
+                            continue;
+                        }
+                        sprite.drawMe();
                     }
-                    sprite.drawMe();
                 }
             }
         }

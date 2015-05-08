@@ -13,6 +13,7 @@ namespace King_of_Thieves.Actors.HUD.other
         private int _speed = 1;
         private bool _pickSuccess = false;
         private bool _justFinished = false;
+        private bool _justStarted = true;
 
         public CPickPocketMeter(int speed = 1) :
             base()
@@ -23,10 +24,17 @@ namespace King_of_Thieves.Actors.HUD.other
             int remainder = 100 % speed;
 
             _speed = speed;
+
+            startTimer0(2);
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            if (_justFinished)
+            {
+                CMasterControl.pickPocketMeter = null;
+                return;
+            }
             _justFinished = false;
             base.update(gameTime);
             if (_amount <= 0)
@@ -46,17 +54,25 @@ namespace King_of_Thieves.Actors.HUD.other
                 addMagic(_speed);
         }
 
+        public override void timer0(object sender)
+        {
+            _justStarted = false;
+        }
+
         public override void keyRelease(object sender)
         {
-            CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
-
-            if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C))
+            if (!_justStarted)
             {
-                if (_amount >= 80 && _amount <= 100)
+                CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+
+                if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C))
                 {
-                    _pickSuccess = true;
+                    if (_amount >= 80 && _amount <= 100)
+                    {
+                        _pickSuccess = true;
+                    }
+                    _justFinished = true;
                 }
-                _justFinished = true;
             }
         }
 

@@ -558,6 +558,11 @@ namespace King_of_Thieves.Actors.Player
                         _state = ACTOR_STATES.TALK_READY;
                         _acceptInput = false;
                     }
+                    else if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.PICK)
+                    {
+                        _state = ACTOR_STATES.PICKING;
+                        _acceptInput = false;
+                    }
 
 
                     if (_state == ACTOR_STATES.MOVING)
@@ -632,6 +637,7 @@ namespace King_of_Thieves.Actors.Player
             base.update(gameTime);
             _velocity.X = 0;
             _velocity.Y = 0;
+
             switch (_state)
             {
                 case ACTOR_STATES.GOT_ITEM:
@@ -655,6 +661,14 @@ namespace King_of_Thieves.Actors.Player
                     }
                     break;
 
+                case ACTOR_STATES.PICKING:
+                    if (CMasterControl.pickPocketMeter != null && CMasterControl.pickPocketMeter.justFinished)
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
+                        _acceptInput = true;
+                    }
+                    break;
 
                 case ACTOR_STATES.LIFT:
                     switch (_direction)

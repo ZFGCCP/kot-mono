@@ -36,6 +36,7 @@ namespace King_of_Thieves.Actors
     {
         ALERT = 0,
         ATTACK,
+        BEING_PICKED,
         CARRY,
         CHARGING_ARROW,
         CHASE,
@@ -63,6 +64,7 @@ namespace King_of_Thieves.Actors
         MORNING,
         MOVING,
         NIGHT,
+        PICKING,
         POPDOWN,
         POPUP,
         ROLLING,

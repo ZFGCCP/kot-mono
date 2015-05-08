@@ -13,6 +13,7 @@ namespace King_of_Thieves.Actors.Items.Drops
         protected Vector2 _floatPosition = Vector2.Zero;
         protected string _yieldMessage = "";
         private bool _isImportant = false;
+        protected bool _forPicking = false;
 
 
         public CDroppable(bool isImportant = false)
@@ -37,7 +38,7 @@ namespace King_of_Thieves.Actors.Items.Drops
 
         protected virtual void _yieldToPlayer(bool fromChest = false)
         {
-            if (fromChest)
+            if (fromChest && !_forPicking)
             {
                 CMasterControl.buttonController.createTextBox(_yieldMessage);
 
@@ -62,7 +63,15 @@ namespace King_of_Thieves.Actors.Items.Drops
             base.update(gameTime);
 
             if (_state == ACTOR_STATES.YIELD)
-                moveToPoint2(_floatPosition.X, _floatPosition.Y, _YIELD_VELOCITY);
+            {
+                if (_forPicking)
+                {
+                    _state = ACTOR_STATES.IDLE;
+                    _yieldToPlayer();
+                }
+                else
+                    moveToPoint2(_floatPosition.X, _floatPosition.Y, _YIELD_VELOCITY);
+            }
         }
 
         public override void timer0(object sender)
@@ -77,7 +86,9 @@ namespace King_of_Thieves.Actors.Items.Drops
             _state = ACTOR_STATES.YIELD;
             _floatPosition.X = _position.X;
             _floatPosition.Y = _position.Y - 20;
-            startTimer0(60);
+
+            if (!_forPicking)
+                startTimer0(60);
         }
     }
 }

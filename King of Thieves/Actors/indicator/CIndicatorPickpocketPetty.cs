@@ -15,5 +15,16 @@ namespace King_of_Thieves.Actors.indicator
             swapImage(Graphics.CTextures.HUD_PICKPOCKET_ICON_PETTY);
             _drawDepth = 10;
         }
+
+        private void _userEventRemoveIndicator(object sender)
+        {
+            _killMe = true;
+        }
+
+        protected override void _registerUserEvents()
+        {
+            base._registerUserEvents();
+            _userEvents.Add(0, _userEventRemoveIndicator);
+        }
     }
 }

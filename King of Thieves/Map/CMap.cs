@@ -128,7 +128,7 @@ namespace King_of_Thieves.Map
 
                     }
                 }
-                CLayer tempLayer = new CLayer(layer.NAME, compList, tiles, ref _tileIndex, Convert.ToDouble(_internalMap.VERSION));
+                CLayer tempLayer = new CLayer(layer.NAME, compList, tiles, ref _tileIndex, layerCount, Convert.ToDouble(_internalMap.VERSION));
                 tempLayer.addToDrawList(actorsForDrawList);
                 actorsForDrawList.Clear();
                 _layers.Add(tempLayer);
