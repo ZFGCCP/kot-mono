@@ -164,6 +164,10 @@ namespace King_of_Thieves.Actors.NPC.Other
                     else
                     {
                         startTimer3(2);
+                        _triggerUserEvent(0, this.name + "pickpocketPettyIndicator");
+                        _hasPettyItem = false;
+                        _backLineOfSight = 0;
+                        _backVisionRange = 0;
                     }
                     _state = ACTOR_STATES.IDLE;
                 }
