@@ -63,6 +63,7 @@
     <Compile Include="Actors\HUD\counters\CRupeeCounter.cs" />
     <Compile Include="Actors\HUD\health\CHealth.cs" />
     <Compile Include="Actors\HUD\health\CHealthController.cs" />
+    <Compile Include="Actors\HUD\notoriety\CNotorietyIcon.cs" />
     <Compile Include="Actors\HUD\other\CPickPocketMeter.cs" />
     <Compile Include="Actors\indicator\CIndicatorPickpocketPetty.cs" />
     <Compile Include="Actors\HUD\magic\CMagicMeter.cs" />
