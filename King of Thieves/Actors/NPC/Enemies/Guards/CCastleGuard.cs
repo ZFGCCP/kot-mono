@@ -64,11 +64,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Guards
             _imageIndex.Add(_IDLE_RIGHT, new Graphics.CSprite(_IDLE_LEFT, true));
             _imageIndex.Add(_IDLE_UP, new Graphics.CSprite(_IDLE_UP));
 
-            _imageIndex.Add(_RUN_DOWN, new Graphics.CSprite(_RUN_DOWN));
-            _imageIndex.Add(_RUN_LEFT, new Graphics.CSprite(_RUN_LEFT));
-            _imageIndex.Add(_RUN_RIGHT, new Graphics.CSprite(_RUN_LEFT, true));
-            _imageIndex.Add(_RUN_UP, new Graphics.CSprite(_RUN_UP));
-
             _castleGuardCount += 1;
             swapImage(_IDLE_DOWN);
             _state = ACTOR_STATES.IDLE;
