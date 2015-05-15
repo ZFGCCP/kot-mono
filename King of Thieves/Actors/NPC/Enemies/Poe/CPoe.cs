@@ -34,6 +34,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
 
             _velocity = new Vector2(.25f, .25f);
             startTimer0(120);
+            _drawDepth = 18;
         }
 
         public override void collide(object sender, CActor collider)

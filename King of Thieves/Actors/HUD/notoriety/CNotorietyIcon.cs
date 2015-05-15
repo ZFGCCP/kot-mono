@@ -7,38 +7,31 @@ namespace King_of_Thieves.Actors.HUD.notoriety
 {
     enum NOTORIETY_LEVEL
     {
-        NONE,
         MEDIUM,
         HIGH
     }
 
     class CNotorietyIcon : CHUDElement
     {
-        private NOTORIETY_LEVEL _notorietyLevel = NOTORIETY_LEVEL.NONE;
+        private NOTORIETY_LEVEL _notorietyLevel = NOTORIETY_LEVEL.MEDIUM;
 
         public CNotorietyIcon()
         {
             _fixedPosition.X = 10;
             _fixedPosition.Y = 200;
+
+            _imageIndex.Add(Graphics.CTextures.HUD_NOTORIETY_MEDIUM, new Graphics.CSprite(Graphics.CTextures.HUD_NOTORIETY_MEDIUM));
+            swapImage(Graphics.CTextures.HUD_NOTORIETY_MEDIUM);
         }
 
         public void resetNotoriety()
         {
-            _notorietyLevel = NOTORIETY_LEVEL.NONE;
+            _notorietyLevel = NOTORIETY_LEVEL.MEDIUM;
         }
 
         public void raiseNotoriety()
         {
-            int level = (int)_notorietyLevel;
-            level += 1;
-            _notorietyLevel = (NOTORIETY_LEVEL)level;
-        }
-
-        public void lowerNotoriety()
-        {
-            int level = (int)_notorietyLevel;
-            level -= 1;
-            _notorietyLevel = (NOTORIETY_LEVEL)level;
+            _notorietyLevel = NOTORIETY_LEVEL.HIGH;
         }
 
         public NOTORIETY_LEVEL notorietyLevel

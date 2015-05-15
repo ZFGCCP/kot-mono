@@ -87,6 +87,7 @@ namespace King_of_Thieves.Graphics
         public const string HUD_ACTION = HUD + "action";
         public const string HUD_PAUSE_CURSOR = HUD + "pauseCursor";
         public const string HUD_MAGIC_METER = HUD + "magicMeter";
+        public const string HUD_NOTORIETY_MEDIUM = HUD + "notorietyMedium";
         public const string HUD_PICKPOCKET_ICON_PETTY = HUD + "pickpocketIconPetty";
 
         public const string HUD_ITEM_SCREEN = HUD + "itemScreen";
@@ -280,6 +281,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_QUEST_SCREEN, new CTextureAtlas(SOURCE_MENU, 320, 240, 0, "1:0", "1:0", 0));
             textures.Add(HUD_PAUSE_CURSOR, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:1", "3:1", 0));
             textures.Add(HUD_MAGIC_METER, new CTextureAtlas(SOURCE_MAGIC_METER, 104, 6, 0, "0:0", "0:0", 0));
+            textures.Add(HUD_NOTORIETY_MEDIUM, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "2:1", "2:1", 0)); 
             textures.Add(HUD_PICKPOCKET_ICON_PETTY, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:2", "3:2", 0));
 
             //drops

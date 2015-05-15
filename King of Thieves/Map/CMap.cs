@@ -102,6 +102,7 @@ namespace King_of_Thieves.Map
                         foreach (Gears.Cartography.actors actor in component.ACTORS)
                         {
                             Type actorType = Type.GetType(actor.TYPE);
+                            
                             CActor tempActor = (CActor)Activator.CreateInstance(actorType);
 
                             Vector2 coordinates = Vector2.Zero;
