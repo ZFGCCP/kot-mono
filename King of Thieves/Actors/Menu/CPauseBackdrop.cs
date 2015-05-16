@@ -117,9 +117,9 @@ namespace King_of_Thieves.Actors.Menu
 
             if (_state == ACTOR_STATES.IDLE)
             {
-                if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.Q))
+                if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.E))
                     _shiftLeft();
-                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.E))
+                else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.Q))
                     _shiftRight();
                 else if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.Left))
                     _setLeftItem();
@@ -166,23 +166,32 @@ namespace King_of_Thieves.Actors.Menu
 
         private void _shiftLeft()
         {
-            if (_shiftIndex == -1)
-                _position.X = 639;
+            
 
             _velocity.X = -_SHIFT_VELOCITY;
             _beginShift(ACTOR_STATES.SHIFT_LEFT);
             _shiftIndex--;
+
+            if (_shiftIndex == -2)
+                _fixedPosition.X = 321;
+
             _checkIfFocused();
         }
 
         private void _shiftRight()
         {
-            if (_shiftIndex == 1)
-                _position.X = -640;
+            
 
             _velocity.X = _SHIFT_VELOCITY;
             _beginShift(ACTOR_STATES.SHIFT_RIGHT);
             _shiftIndex++;
+
+            if (_shiftIndex == 2)
+            {
+                _fixedPosition.X = -320;
+                _shiftIndex = -1;
+            }
+
             _checkIfFocused();
         }
 
