@@ -13,7 +13,7 @@ namespace King_of_Thieves.Actors.HUD.notoriety
 
     class CNotorietyIcon : CHUDElement
     {
-        private NOTORIETY_LEVEL _notorietyLevel = NOTORIETY_LEVEL.MEDIUM;
+        private static NOTORIETY_LEVEL _notorietyLevel = NOTORIETY_LEVEL.MEDIUM;
 
         public CNotorietyIcon()
         {
@@ -24,17 +24,17 @@ namespace King_of_Thieves.Actors.HUD.notoriety
             swapImage(Graphics.CTextures.HUD_NOTORIETY_MEDIUM);
         }
 
-        public void resetNotoriety()
+        public static void resetNotoriety()
         {
             _notorietyLevel = NOTORIETY_LEVEL.MEDIUM;
         }
 
-        public void raiseNotoriety()
+        public static void raiseNotoriety()
         {
             _notorietyLevel = NOTORIETY_LEVEL.HIGH;
         }
 
-        public NOTORIETY_LEVEL notorietyLevel
+        public static NOTORIETY_LEVEL notorietyLevel
         {
             get
             {

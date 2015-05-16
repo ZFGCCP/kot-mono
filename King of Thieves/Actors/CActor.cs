@@ -517,7 +517,7 @@ namespace King_of_Thieves.Actors
             if (speed > 1.0f)
             {
                 _position.X += ((float)ppf * distX);
-                _position.Y += ((float)ppf * distX);
+                _position.Y += ((float)ppf * distY);
             }
             else
             {

@@ -49,15 +49,17 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Guards
 
                 Graphics.CTextures.addTexture(_IDLE_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 24, 38, 1, "1:0", "1:0"));
                 Graphics.CTextures.addTexture(_IDLE_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 24, 38, 1, "4:0", "4:0"));
-                Graphics.CTextures.addTexture(_IDLE_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 24, 38, 1, "4:0", "4:0"));
+                Graphics.CTextures.addTexture(_IDLE_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 24, 38, 1, "7:0", "7:0"));
 
                 Graphics.CTextures.addTexture(_WALK_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 24, 38, 1, "0:0", "2:0",4));
                 Graphics.CTextures.addTexture(_WALK_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 24, 38, 1, "3:0", "5:0",4));
+                Graphics.CTextures.addTexture(_WALK_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 24, 38, 1, "6:0", "8:0", 4));
             }
 
             _imageIndex.Add(_WALK_DOWN, new Graphics.CSprite(_WALK_DOWN));
             _imageIndex.Add(_WALK_LEFT, new Graphics.CSprite(_WALK_LEFT));
             _imageIndex.Add(_WALK_RIGHT, new Graphics.CSprite(_WALK_LEFT,true));
+            _imageIndex.Add(_WALK_UP, new Graphics.CSprite(_WALK_UP));
 
             _imageIndex.Add(_IDLE_DOWN, new Graphics.CSprite(_IDLE_DOWN));
             _imageIndex.Add(_IDLE_LEFT, new Graphics.CSprite(_IDLE_LEFT));
@@ -99,7 +101,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Guards
                     break;
 
                 case ACTOR_STATES.CHASE:
-                    _direction = moveToPoint2(playerPos.X, playerPos.Y, .5f, false);
+
+                    if (HUD.notoriety.CNotorietyIcon.notorietyLevel == HUD.notoriety.NOTORIETY_LEVEL.MEDIUM)
+                        _direction = moveToPoint2(playerPos.X, playerPos.Y, .5f, false);
+                    else
+                        _direction = moveToPoint2(playerPos.X, playerPos.Y, 1, false);
+
                     if (!isPointInHearingRange(playerPos))
                     {
                         _state = ACTOR_STATES.IDLE_STARE;
@@ -125,6 +132,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Guards
 
                         case DIRECTION.UP:
                             _angle = 90;
+                            swapImage(_WALK_UP);
                             break;
                     }
                     break;
@@ -159,9 +167,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Guards
                     _direction = moveToPoint2(_homePos.X, _homePos.Y, .5f, false);
                     _searchForPlayer(playerPos);
 
-                    if (_position == _homePos)
-                        _state = ACTOR_STATES.IDLE;
-
                     switch (_direction)
                     {
                         case DIRECTION.DOWN:
@@ -180,8 +185,16 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Guards
                             break;
 
                         case DIRECTION.UP:
+                            swapImage(_WALK_UP);
                             _angle = 90;
                             break;
+                    }
+
+                    if (_position == _homePos)
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        _angle = 270;
+                        swapImage(_IDLE_DOWN);
                     }
 
                     break;

@@ -206,6 +206,7 @@ namespace King_of_Thieves.Actors.NPC.Other
         public override void timer3(object sender)
         {
             CMasterControl.buttonController.createTextBox("?! Y-YOU LITTLE!! GUARDS!! SEIZE HIM!!!");
+            HUD.notoriety.CNotorietyIcon.raiseNotoriety();
         }
 
         public override void collide(object sender, CActor collider)
