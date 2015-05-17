@@ -166,31 +166,30 @@ namespace King_of_Thieves.Actors.Menu
 
         private void _shiftLeft()
         {
-            
+            if (_shiftIndex == -1)
+            {
+                _fixedPosition.X = 321;
+                _shiftIndex = 1;
+            }
 
             _velocity.X = -_SHIFT_VELOCITY;
             _beginShift(ACTOR_STATES.SHIFT_LEFT);
             _shiftIndex--;
-
-            if (_shiftIndex == -2)
-                _fixedPosition.X = 321;
 
             _checkIfFocused();
         }
 
         private void _shiftRight()
         {
-            
-
-            _velocity.X = _SHIFT_VELOCITY;
-            _beginShift(ACTOR_STATES.SHIFT_RIGHT);
-            _shiftIndex++;
-
-            if (_shiftIndex == 2)
+            if (_shiftIndex == 1)
             {
                 _fixedPosition.X = -320;
                 _shiftIndex = -1;
             }
+
+            _velocity.X = _SHIFT_VELOCITY;
+            _beginShift(ACTOR_STATES.SHIFT_RIGHT);
+            _shiftIndex++;
 
             _checkIfFocused();
         }
