@@ -84,8 +84,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Guards
 
         public override void destroy(object sender)
         {
-            base.destroy(sender);
             _castleGuardCount -= 1;
+            _doNpcCountCheck(ref _castleGuardCount);
+            base.destroy(sender);
         }
 
         public override void update(GameTime gameTime)

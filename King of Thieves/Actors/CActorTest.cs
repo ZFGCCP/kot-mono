@@ -14,7 +14,7 @@ namespace King_of_Thieves.Actors
         public CActorTest(string name) :
             base()
         {
-            image = new Graphics.CSprite("mcDungeon2",Graphics.CTextures.textures["mcDungeon2"]);
+            image = new Graphics.CSprite("mcDungeon2");
         }
 
         protected override void applyEffects()

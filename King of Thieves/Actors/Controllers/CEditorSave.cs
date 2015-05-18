@@ -15,7 +15,7 @@ namespace King_of_Thieves.Actors.Controllers
 
         public CEditorSave()
         {
-            _imageIndex.Add("iconSave", new Graphics.CSprite("editor:icons:save", Graphics.CTextures.textures["editor:icons:save"]));
+            _imageIndex.Add("iconSave", new Graphics.CSprite("editor:icons:save"));
             _position = new Vector2(45, 4);
 
             swapImage("iconSave", false);

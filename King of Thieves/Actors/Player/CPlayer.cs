@@ -66,101 +66,101 @@ namespace King_of_Thieves.Actors.Player
             base._initializeResources();
             _imageIndex.Add(_MAP_ICON, new Graphics.CSprite("Player:WalkDown"));
 
-            _imageIndex.Add("PlayerWalkDown", new Graphics.CSprite("Player:WalkDown"));
-            _imageIndex.Add("PlayerWalkLeft", new Graphics.CSprite("Player:WalkLeft"));
-            _imageIndex.Add("PlayerWalkRight", new Graphics.CSprite("Player:WalkLeft", true));
-            _imageIndex.Add("PlayerWalkUp", new Graphics.CSprite("Player:WalkUp"));
+            _imageIndex.Add("PlayerWalkDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKDOWN));
+            _imageIndex.Add("PlayerWalkLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKLEFT));
+            _imageIndex.Add("PlayerWalkRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKLEFT, true));
+            _imageIndex.Add("PlayerWalkUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKUP));
 
-            _imageIndex.Add("PlayerIdleDown", new Graphics.CSprite("Player:IdleDown"));
-            _imageIndex.Add("PlayerIdleUp", new Graphics.CSprite("Player:IdleUp"));
-            _imageIndex.Add("PlayerIdleLeft", new Graphics.CSprite("Player:IdleLeft"));
-            _imageIndex.Add("PlayerIdleRight", new Graphics.CSprite("Player:IdleLeft", true));
+            _imageIndex.Add("PlayerIdleDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLEDOWN));
+            _imageIndex.Add("PlayerIdleUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLEUP));
+            _imageIndex.Add("PlayerIdleLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLELEFT));
+            _imageIndex.Add("PlayerIdleRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLELEFT, true));
 
-            _imageIndex.Add("PlayerSwingUp", new Graphics.CSprite("Player:SwingUp"));
-            _imageIndex.Add("PlayerSwingDown", new Graphics.CSprite("Player:SwingDown"));
-            _imageIndex.Add("PlayerSwingRight", new Graphics.CSprite("Player:SwingLeft", true));
-            _imageIndex.Add("PlayerSwingLeft", new Graphics.CSprite("Player:SwingLeft"));
+            _imageIndex.Add("PlayerSwingUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGUP));
+            _imageIndex.Add("PlayerSwingDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGDOWN));
+            _imageIndex.Add("PlayerSwingRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGLEFT, true));
+            _imageIndex.Add("PlayerSwingLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGLEFT));
 
-            _imageIndex.Add("PlayerRollDown", new Graphics.CSprite("Player:RollDown"));
-            _imageIndex.Add("PlayerRollUp", new Graphics.CSprite("Player:RollUp"));
-            _imageIndex.Add("PlayerRollLeft", new Graphics.CSprite("Player:RollLeft"));
-            _imageIndex.Add("PlayerRollRight", new Graphics.CSprite("Player:RollLeft", true));
+            _imageIndex.Add("PlayerRollDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_ROLLDOWN));
+            _imageIndex.Add("PlayerRollUp", new Graphics.CSprite(Graphics.CTextures.PLAYERR_ROLLUP));
+            _imageIndex.Add("PlayerRollLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_ROLLLEFT));
+            _imageIndex.Add("PlayerRollRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_ROLLLEFT, true));
 
-            _imageIndex.Add("PlayerLiftDown", new Graphics.CSprite("Player:LiftDown", Graphics.CTextures.textures["Player:LiftDown"]));
-            _imageIndex.Add("PlayerLiftUp", new Graphics.CSprite("Player:LiftUp", Graphics.CTextures.textures["Player:LiftUp"]));
-            _imageIndex.Add("PlayerLiftLeft", new Graphics.CSprite("Player:LiftLeft", Graphics.CTextures.textures["Player:LiftLeft"]));
-            _imageIndex.Add("PlayerLiftRight", new Graphics.CSprite("Player:LiftLeft", Graphics.CTextures.textures["Player:LiftLeft"], null, true));
+            _imageIndex.Add("PlayerLiftDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTDOWN));
+            _imageIndex.Add("PlayerLiftUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTUP));
+            _imageIndex.Add("PlayerLiftLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTLEFT));
+            _imageIndex.Add("PlayerLiftRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTLEFT, true));
 
-            _imageIndex.Add("PlayerCarryDown", new Graphics.CSprite("Player:CarryDown", Graphics.CTextures.textures["Player:CarryDown"]));
-            _imageIndex.Add("PlayerCarryUp", new Graphics.CSprite("Player:CarryUp", Graphics.CTextures.textures["Player:CarryUp"]));
-            _imageIndex.Add("PlayerCarryLeft", new Graphics.CSprite("Player:CarryLeft", Graphics.CTextures.textures["Player:CarryLeft"]));
-            _imageIndex.Add("PlayerCarryRight", new Graphics.CSprite("Player:CarryLeft", Graphics.CTextures.textures["Player:CarryLeft"], null, true));
+            _imageIndex.Add("PlayerCarryDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYDOWN));
+            _imageIndex.Add("PlayerCarryUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYUP));
+            _imageIndex.Add("PlayerCarryLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYLEFT));
+            _imageIndex.Add("PlayerCarryRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYLEFT, true));
 
-            _imageIndex.Add("PlayerLiftIdleDown", new Graphics.CSprite("Player:LiftIdleDown", Graphics.CTextures.textures["Player:LiftIdleDown"]));
-            _imageIndex.Add("PlayerLiftIdleUp", new Graphics.CSprite("Player:LiftIdleUp", Graphics.CTextures.textures["Player:LiftIdleUp"]));
-            _imageIndex.Add("PlayerLiftIdleLeft", new Graphics.CSprite("Player:LiftIdleLeft", Graphics.CTextures.textures["Player:LiftIdleLeft"]));
-            _imageIndex.Add("PlayerLiftIdleRight", new Graphics.CSprite("Player:LiftIdleLeft", Graphics.CTextures.textures["Player:LiftIdleLeft"], null, true));
+            _imageIndex.Add("PlayerLiftIdleDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLEDOWN));
+            _imageIndex.Add("PlayerLiftIdleUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLEUP));
+            _imageIndex.Add("PlayerLiftIdleLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLELEFT));
+            _imageIndex.Add("PlayerLiftIdleRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLELEFT, true));
 
-            _imageIndex.Add("PlayerThrowDown", new Graphics.CSprite("Player:ThrowDown", Graphics.CTextures.textures["Player:ThrowDown"]));
-            _imageIndex.Add("PlayerThrowUp", new Graphics.CSprite("Player:ThrowUp", Graphics.CTextures.textures["Player:ThrowUp"]));
-            _imageIndex.Add("PlayerThrowLeft", new Graphics.CSprite("Player:ThrowLeft", Graphics.CTextures.textures["Player:ThrowLeft"]));
-            _imageIndex.Add("PlayerThrowRight", new Graphics.CSprite("Player:ThrowLeft", Graphics.CTextures.textures["Player:ThrowLeft"], null, true));
+            _imageIndex.Add("PlayerThrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWDOWN));
+            _imageIndex.Add("PlayerThrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWUP));
+            _imageIndex.Add("PlayerThrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWLEFT));
+            _imageIndex.Add("PlayerThrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWLEFT, true));
 
-            _imageIndex.Add("PlayerShockDown", new Graphics.CSprite("Player:ShockDown", Graphics.CTextures.textures["Player:ShockDown"]));
-            _imageIndex.Add("PlayerShockUp", new Graphics.CSprite("Player:ShockUp", Graphics.CTextures.textures["Player:ShockUp"]));
-            _imageIndex.Add("PlayerShockLeft", new Graphics.CSprite("Player:ShockLeft", Graphics.CTextures.textures["Player:ShockLeft"]));
-            _imageIndex.Add("PlayerShockRight", new Graphics.CSprite("Player:ShockLeft", Graphics.CTextures.textures["Player:ShockLeft"], null, true));
+            _imageIndex.Add("PlayerShockDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKDOWN));
+            _imageIndex.Add("PlayerShockUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKUP));
+            _imageIndex.Add("PlayerShockLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKLEFT));
+            _imageIndex.Add("PlayerShockRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKLEFT, true));
 
-            _imageIndex.Add("PlayerFreezeDown", new Graphics.CSprite("Player:FreezeDown", Graphics.CTextures.textures["Player:FreezeDown"]));
-            _imageIndex.Add("PlayerFreezeUp", new Graphics.CSprite("Player:FreezeUp", Graphics.CTextures.textures["Player:FreezeUp"]));
-            _imageIndex.Add("PlayerFreezeLeft", new Graphics.CSprite("Player:FreezeLeft", Graphics.CTextures.textures["Player:FreezeLeft"]));
-            _imageIndex.Add("PlayerFreezeRight", new Graphics.CSprite("Player:FreezeLeft", Graphics.CTextures.textures["Player:FreezeLeft"], null, true));
+            _imageIndex.Add("PlayerFreezeDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZEDOWN));
+            _imageIndex.Add("PlayerFreezeUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZEUP));
+            _imageIndex.Add("PlayerFreezeLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZELEFT));
+            _imageIndex.Add("PlayerFreezeRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZELEFT, true));
 
-            _imageIndex.Add("PlayerChargeArrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_CHARGE_ARROW_DOWN]));
-            _imageIndex.Add("PlayerChargeArrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_CHARGE_ARROW_UP]));
-            _imageIndex.Add("PlayerChargeArrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT]));
-            _imageIndex.Add("PlayerChargeArrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT], null, true));
+            _imageIndex.Add("PlayerChargeArrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_DOWN));
+            _imageIndex.Add("PlayerChargeArrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_UP));
+            _imageIndex.Add("PlayerChargeArrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT));
+            _imageIndex.Add("PlayerChargeArrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT, true));
 
-            _imageIndex.Add("PlayerHoldArrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_HOLD_ARROW_DOWN]));
-            _imageIndex.Add("PlayerHoldArrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_HOLD_ARROW_UP]));
-            _imageIndex.Add("PlayerHoldArrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT]));
-            _imageIndex.Add("PlayerHoldArrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT], null, true));
+            _imageIndex.Add("PlayerHoldArrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_DOWN));
+            _imageIndex.Add("PlayerHoldArrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_UP));
+            _imageIndex.Add("PlayerHoldArrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT));
+            _imageIndex.Add("PlayerHoldArrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT, true));
 
-            _imageIndex.Add("PlayerShootArrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHOOT_ARROW_DOWN]));
-            _imageIndex.Add("PlayerShootArrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHOOT_ARROW_UP]));
-            _imageIndex.Add("PlayerShootArrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT]));
-            _imageIndex.Add("PlayerShootArrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT], null, true));
+            _imageIndex.Add("PlayerShootArrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_DOWN));
+            _imageIndex.Add("PlayerShootArrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_UP));
+            _imageIndex.Add("PlayerShootArrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT));
+            _imageIndex.Add("PlayerShootArrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT, true));
 
-            _imageIndex.Add("PlayerHoldCannonDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN]));
+            _imageIndex.Add("PlayerHoldCannonDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN));
 
-            _imageIndex.Add("PlayerShootCannonDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN]));
+            _imageIndex.Add("PlayerShootCannonDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN));
 
-            _imageIndex.Add(_THROW_BOOMERANG_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_DOWN]));
-            _imageIndex.Add(_THROW_BOOMERANG_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT]));
-            _imageIndex.Add(_THROW_BOOMERANG_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT], null, true));
-            _imageIndex.Add(_THROW_BOOMERANG_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP]));
+            _imageIndex.Add(_THROW_BOOMERANG_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_DOWN));
+            _imageIndex.Add(_THROW_BOOMERANG_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT));
+            _imageIndex.Add(_THROW_BOOMERANG_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT,true));
+            _imageIndex.Add(_THROW_BOOMERANG_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_UP));
 
-            _imageIndex.Add(_GOT_ITEM, new Graphics.CSprite(Graphics.CTextures.PLAYER_GOT_ITEM, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_GOT_ITEM]));
+            _imageIndex.Add(_GOT_ITEM, new Graphics.CSprite(Graphics.CTextures.PLAYER_GOT_ITEM));
 
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN,Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN]));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN]));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN]));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_DOWN));
 
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT]));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT]));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT]));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT));
 
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT], null,true));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT], null, true));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT], null, true));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT], null, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT,true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_LEFT,true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_LEFT,true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_LEFT,true));
 
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP]));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP]));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_WALK_UP]));
-            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, Graphics.CTextures.textures[Graphics.CTextures.PLAYER_SHIELD_IDLE_UP]));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_ENGAGE_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP));
 
 
         }

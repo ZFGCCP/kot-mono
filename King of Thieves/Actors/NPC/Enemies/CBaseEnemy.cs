@@ -106,6 +106,15 @@ namespace King_of_Thieves.Actors.NPC.Enemies
 
         }
 
+        protected void _doNpcCountCheck(ref int counter)
+        {
+            if (counter <= 0)
+            {
+                counter = 0;
+                _flagResourceCleanup();
+            }
+        }
+
         public override void destroy(object sender)
         {
             Items.Drops.CDroppable itemToDrop = _dropItem();
@@ -115,6 +124,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies
 
             if (_hitBox != null)
                 base.destroy(sender);
+
+            if (_getFlagForResourceCleanup)
+                cleanUp();
         }
 
         private Items.Drops.CDroppable _dropItem()

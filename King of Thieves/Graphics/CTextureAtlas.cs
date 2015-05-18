@@ -10,7 +10,7 @@ using System.IO;
 
 namespace King_of_Thieves.Graphics
 {
-    public class CTextureAtlas
+    public class CTextureAtlas : IDisposable
     {
         public int FrameWidth = 0, FrameHeight = 0, FrameRate = 0, CellSpacing = 0, Column = 0, Row = 0, CurrentCell = 0;
         private Rectangle[,] _textureAtlas;
@@ -218,6 +218,13 @@ namespace King_of_Thieves.Graphics
                         textureAtlas.FrameHeight);
                 }
             }
+        }
+
+        public new void Dispose()
+        {
+            _textureAtlas = null;
+            _sourceImage.Dispose();
+            _sourceImage = null;
         }
     }
 }

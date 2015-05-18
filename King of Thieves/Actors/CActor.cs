@@ -125,6 +125,7 @@ namespace King_of_Thieves.Actors
         protected bool _invulernable = false;
         protected int _collisionDirectionX = 0;
         protected int _collisionDirectionY = 0;
+        private bool _flagForResourceCleanup = false;
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -278,6 +279,11 @@ namespace King_of_Thieves.Actors
             double angle = _calculateAngle(position);
 
             _directionChange(angle);
+        }
+
+        protected void _flagResourceCleanup()
+        {
+            _flagForResourceCleanup = true;
         }
 
         protected void _directionChange(double angle)
@@ -1064,6 +1070,14 @@ namespace King_of_Thieves.Actors
                     return true;
             }
             return false;
+        }
+
+        protected bool _getFlagForResourceCleanup
+        {
+            get
+            {
+                return _flagForResourceCleanup;
+            }
         }
     }
 }

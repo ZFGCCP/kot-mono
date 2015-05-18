@@ -82,7 +82,7 @@ namespace King_of_Thieves.Map
                                                       (float)Convert.ToDouble(_valSplitter.Split(tile.COORDS)[1]));
 
                     if (!tileSets.ContainsKey(tile.TILESET))
-                        tileSets.Add(tile.TILESET, new Graphics.CSprite(tile.TILESET, Graphics.CTextures.textures[tile.TILESET]));
+                        tileSets.Add(tile.TILESET, new Graphics.CSprite(tile.TILESET));
 
                     tiles[tileCounter++] = new CTile(atlasCoords, mapCoords, tile.TILESET);
 
