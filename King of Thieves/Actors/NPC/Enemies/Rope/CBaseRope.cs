@@ -33,6 +33,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 
         private const int _TURN_TIME = 140;
 
+        private float _currentSpeed = 3.0f;
+
 
         public CBaseRope()
             : base()
@@ -140,9 +142,19 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
         public override void update(GameTime gameTime)
         {
             base.update(gameTime);
+            moveInDirection(_velocity);
+              if (_state == ACTOR_STATES.MOVING)
+                {
+                    Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+                  {
 
-            if (_state == ACTOR_STATES.MOVING)
-                moveInDirection(_velocity);
+                    if (_checkIfPointInView(playerPos)) {
+
+                        _state = ACTOR_STATES.CHASE;
+                        _currentSpeed = 1.0f;
+                    }
+                }
+             }
         }
 
         private void _changeDirection()
