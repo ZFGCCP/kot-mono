@@ -58,13 +58,23 @@ namespace King_of_Thieves.Actors.Items.Drops
             if (additional.Length == 2 && additional[1] == "true")
                 _state = ACTOR_STATES.INVISIBLE;
 
+            if (additional.Length == 3 && additional[2] == "false")
+            {
+                _state = ACTOR_STATES.INVISIBLE;
+                _forPicking = true;
+
+            }
+
             swapImage(_RUPEE);
         }
 
         public override void collide(object sender, CActor collider)
         {
-            base.collide(sender, collider);
-            _yieldToPlayer();
+            if (_state != ACTOR_STATES.INVISIBLE)
+            {
+                base.collide(sender, collider);
+                _yieldToPlayer();
+            }
         }
 
         protected override void _yieldToPlayer(bool fromChest = false)

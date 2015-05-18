@@ -34,7 +34,9 @@ namespace King_of_Thieves.Actors
 
     public enum ACTOR_STATES
     {
-        ATTACK = 0,
+        ALERT = 0,
+        ATTACK,
+        BEING_PICKED,
         CARRY,
         CHARGING_ARROW,
         CHASE,
@@ -62,12 +64,15 @@ namespace King_of_Thieves.Actors
         MORNING,
         MOVING,
         NIGHT,
+        PICKING,
         POPDOWN,
         POPUP,
         ROLLING,
         SHIELD_ENGAGE,
         SHIELD_DISENGAGE,
         SHIELDING,
+        SHIFT_LEFT,
+        SHIFT_RIGHT,
         SHOOK_OFF,
         SHOOTING_ARROW,
         SHOOTING_CANNON,
@@ -75,6 +80,7 @@ namespace King_of_Thieves.Actors
         SWINGING,
         SHOCKED,
         STUNNED,
+        TALK_READY,
         THROW_BOOMERANG,
         THROWING,
         TOSSING,
@@ -130,8 +136,9 @@ namespace King_of_Thieves.Actors
         protected List<Type> _collidables;
         public static bool showHitBox = false; //Draw hitboxes over actor if this is true
         protected Vector2 _motionCounter = Vector2.Zero;
-        private int _motionLimit = 0;
-        
+        protected int _drawDepth = 8;
+        protected bool _firstTick = true;
+        private string _currentImageIndex = "";
 
         //event handlers will be added here
         public event actorEventHandler onCreate;
@@ -510,7 +517,7 @@ namespace King_of_Thieves.Actors
             if (speed > 1.0f)
             {
                 _position.X += ((float)ppf * distX);
-                _position.Y += ((float)ppf * distX);
+                _position.Y += ((float)ppf * distY);
             }
             else
             {
@@ -590,6 +597,7 @@ namespace King_of_Thieves.Actors
         public void swapImage(string imageIndex, bool triggerAnimEnd = true)
         {
             image = _imageIndex[imageIndex];
+            _currentImageIndex = imageIndex;
 
             if (triggerAnimEnd)
             {
@@ -628,9 +636,8 @@ namespace King_of_Thieves.Actors
             }
         }
 
-        public virtual void update(GameTime gameTime)
+        public void doCollision()
         {
-            //check collisions(This should realy be done after all objects have updated. As it is now two objects can be colliding, be drawn and THEN acted on for their collision)
             if (!_noCollide)
             {
                 foreach (Type actor in _collidables)
@@ -651,6 +658,12 @@ namespace King_of_Thieves.Actors
                     }
                 }
             }
+        }
+
+        public virtual void update(GameTime gameTime)
+        {
+            //check collisions(This should realy be done after all objects have updated. As it is now two objects can be colliding, be drawn and THEN acted on for their collision)
+            //doCollision();
 
             if (_killMe)
             {
@@ -1007,6 +1020,50 @@ namespace King_of_Thieves.Actors
                 _position.X += penx;
                 _position.Y += peny; //Corner cases 
             }
+        }
+
+        public int drawDepth
+        {
+            get
+            {
+                return _drawDepth;
+            }
+        }
+
+        public string currentImageIndex
+        {
+            get
+            {
+                return _currentImageIndex;
+            }
+        }
+
+        public bool checkIfFacing(Vector2 position, DIRECTION direction)
+        {
+            if (_position.X >= position.X)
+            {
+                if (_direction == DIRECTION.LEFT && direction == DIRECTION.RIGHT)
+                    return true;
+            }
+
+            if (_position.X <= position.X)
+            {
+                if (_direction == DIRECTION.RIGHT && direction == DIRECTION.LEFT)
+                    return true;
+            }
+
+            if (_position.Y <= position.Y)
+            {
+                if (_direction == DIRECTION.DOWN && direction == DIRECTION.UP)
+                    return true;
+            }
+
+            if (_position.Y >= position.Y)
+            {
+                if (_direction == DIRECTION.UP && direction == DIRECTION.DOWN)
+                    return true;
+            }
+            return false;
         }
     }
 }

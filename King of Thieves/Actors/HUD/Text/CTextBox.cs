@@ -20,6 +20,7 @@ namespace King_of_Thieves.Actors.HUD.Text
         private bool _active = false;
         private bool _showBox = false;
         private static bool _messageFinished = false;
+        private bool _wait = false;
 
         public static bool messageFinished
         {
@@ -31,22 +32,28 @@ namespace King_of_Thieves.Actors.HUD.Text
 
         public void displayMessageBox(string message)
         {
-            _showBox = true;
-            _active = true;
-            _messageQueue = message;
-            _fixedPosition.X = 40;
-            _fixedPosition.Y = 165;
-            _processedMessage = _processMessage(true);
+            if (!_wait)
+            {
+                _showBox = true;
+                _active = true;
+                _messageQueue = message;
+                _fixedPosition.X = 40;
+                _fixedPosition.Y = 165;
+                _processedMessage = _processMessage(true);
+            }
             
         }
 
         public void displayMessage(string message)
         {
-             _active = true;
-             _messageQueue = message;
-             _fixedPosition.X = 40;
-             _fixedPosition.Y = 165;
-             _processedMessage = _processMessage(true);
+            if (!_wait)
+            {
+                _active = true;
+                _messageQueue = message;
+                _fixedPosition.X = 40;
+                _fixedPosition.Y = 165;
+                _processedMessage = _processMessage(true);
+            }
         }
 
         public override void drawMe(bool useOverlay = false)
@@ -90,7 +97,9 @@ namespace King_of_Thieves.Actors.HUD.Text
             {
                 _active = false;
                 _messageFinished = true;
+                _wait = true;
                 CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Text:textBoxClose"]);
+                startTimer0(15);
             }
             else if (!isFirst)
                 CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Text:textBoxContinue"]);
@@ -147,5 +156,28 @@ namespace King_of_Thieves.Actors.HUD.Text
             }
             return output;
         }
+
+        public bool active
+        {
+            get
+            {
+                return _active;
+            }
+        }
+
+        public override void timer0(object sender)
+        {
+            _wait = false;
+        }
+
+        public bool wait
+        {
+            get
+            {
+                return _wait;
+            }
+        }
+
+
     }
 }

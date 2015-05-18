@@ -96,6 +96,7 @@ namespace King_of_Thieves
             Master.GetInputManager().AddInputHandler(new CInput());
             CMasterControl.glblInput = Master.GetInputManager().GetCurrentInputHandler() as Input.CInput;
             CMasterControl.healthController = new Actors.HUD.health.CHealthController(20,78);
+            CMasterControl.magicMeter = new Actors.HUD.magic.CMagicMeter();
             
 
             base.Initialize();
@@ -192,8 +193,6 @@ namespace King_of_Thieves
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, CMasterControl.camera.transformation);
             
             Master.Draw(spriteBatch);
-
-            CEffects.drawThisShit();
 
             //textTest.drawMe();
 

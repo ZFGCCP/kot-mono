@@ -15,6 +15,8 @@ namespace King_of_Thieves.Map
         private Graphics.CSprite _image;
         public Dictionary<string, Graphics.CSprite> otherImages = new Dictionary<string, Graphics.CSprite>();
         private double _mapVersion;
+        private Graphics.CDrawList _drawlist = new Graphics.CDrawList();
+        private int _layerIndex;
 
         private List<CTile> _tiles = new List<CTile>(); //raw tile data
 
@@ -32,6 +34,16 @@ namespace King_of_Thieves.Map
         {
         }
 
+        public void addToDrawList(Actors.CActor actor)
+        {
+            _drawlist.addSpriteToList(actor.drawDepth, actor);
+        }
+
+        public void addToDrawList(List<Actors.CActor> actors)
+        {
+            _drawlist.addSpriteToList(actors.ToArray());
+        }
+
         public Dictionary<int, List<string>> getActorHeaderInfo()
         {
             if (_components == null)
@@ -40,7 +52,7 @@ namespace King_of_Thieves.Map
             return _components.actorHeaderMap();
         }
 
-        public CLayer(string name, Actors.CComponent[] components, CTile[] tiles, ref Graphics.CSprite image, double version = 1)
+        public CLayer(string name, Actors.CComponent[] components, CTile[] tiles, ref Graphics.CSprite image,  int index, double version = 1)
         {
             _width = 0; _height = 0;
             NAME = name;
@@ -48,7 +60,7 @@ namespace King_of_Thieves.Map
             _image = image;
             _components = new ComponentManager(new ComponentFactory[]{ new ComponentFactory(components) } );
             _mapVersion = version;
-            //_image = Graphics.CTextures.generateLayerImage(this, tiles);
+            _layerIndex = index;
         }
 
         ~CLayer()
@@ -95,11 +107,26 @@ namespace King_of_Thieves.Map
                 throw new InvalidOperationException("Cannot reinitialize a layer's components once they have been initialized.");
         }
 
+        //returns the first occurance
         public int indexOfTile(Vector2 coords)
         {
             int outPut = -1;
 
             for (int i = 0; i < _tiles.Count; i++)
+            {
+                if (_tiles[i].checkForClick(coords))
+                    return i;
+            }
+
+            return outPut;
+        }
+
+        //returns the last occurance
+        public int indexOfTileReverse(Vector2 coords)
+        {
+            int outPut = -1;
+
+            for (int i = _tiles.Count - 1; i >=0; i--)
             {
                 if (_tiles[i].checkForClick(coords))
                     return i;
@@ -131,6 +158,9 @@ namespace King_of_Thieves.Map
 
         public void removeTile(int index)
         {
+            if (index == -1)
+                return;
+
             _tiles.RemoveAt(index);
         }
 
@@ -161,9 +191,7 @@ namespace King_of_Thieves.Map
             SpriteBatch batch = spriteBatch == null ? Graphics.CGraphics.spriteBatch : spriteBatch;
 
             if (_components != null)
-                _components.Draw(batch);
-
-
+                _drawlist.drawAll(_layerIndex);
         }
 
         public int width

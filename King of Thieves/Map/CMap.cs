@@ -89,17 +89,20 @@ namespace King_of_Thieves.Map
 
                 }
 
+                List<CActor> actorsForDrawList = new List<CActor>();
                 if (layer.COMPONENTS != null)
                 {
                     //=======================================================================
                     //Components
                     //=======================================================================
+                    
                     foreach (Gears.Cartography.component component in layer.COMPONENTS)
                     {
                         CComponent tempComp = new CComponent(componentAddresses);
                         foreach (Gears.Cartography.actors actor in component.ACTORS)
                         {
                             Type actorType = Type.GetType(actor.TYPE);
+                            
                             CActor tempActor = (CActor)Activator.CreateInstance(actorType);
 
                             Vector2 coordinates = Vector2.Zero;
@@ -116,6 +119,7 @@ namespace King_of_Thieves.Map
                             tempActor.layer = layerCount;
 
                             _actorRegistry.Add(tempActor);
+                            actorsForDrawList.Add(tempActor);
 
                         }
                         //register component
@@ -125,7 +129,10 @@ namespace King_of_Thieves.Map
 
                     }
                 }
-                _layers.Add(new CLayer(layer.NAME, compList, tiles, ref _tileIndex, Convert.ToDouble(_internalMap.VERSION)));
+                CLayer tempLayer = new CLayer(layer.NAME, compList, tiles, ref _tileIndex, layerCount, Convert.ToDouble(_internalMap.VERSION));
+                tempLayer.addToDrawList(actorsForDrawList);
+                actorsForDrawList.Clear();
+                _layers.Add(tempLayer);
                 //_layers[layerCount] = new CLayer(layer.NAME, compList, tiles, ref _tileIndex, Convert.ToDouble(_internalMap.VERSION));
                 _layers[layerCount++].otherImages = tileSets;
 
@@ -279,6 +286,10 @@ namespace King_of_Thieves.Map
 
             foreach (CLayer layer in _layers)
                 layer.updateLayer(gameTime);
+
+            //handle collisions
+            for (int i = 0; i < _componentRegistry.Count(); i++)
+                _componentRegistry[i].doCollision();
         }
 
         public CComponent queryComponentRegistry(int id)
@@ -355,6 +366,8 @@ namespace King_of_Thieves.Map
         {
             queryComponentRegistry(componentId).addActor(actor, actor.name);
             addToActorRegistry(actor);
+
+            _layers[actor.layer].addToDrawList(actor);
         }
     }
 }

@@ -124,6 +124,24 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        public void doCollision()
+        {
+            if (enabled && !root.killMe)
+            {
+                root.doCollision();
+
+                foreach (KeyValuePair<string, CActor> kvp in actors)
+                {
+                    if (!kvp.Value.killMe)
+                    {
+                        kvp.Value.doCollision();
+                        if (kvp.Value._followRoot)
+                            kvp.Value.position += root.distanceFromLastFrame;
+                    }
+                }
+            }
+        }
+
         public override void Update(GameTime gameTime)
         {
 
@@ -148,10 +166,6 @@ namespace King_of_Thieves.Actors
                     //first get messages from the commNet
                     _checkCommNet(kvp.Key, kvp.Value);
 
-                    //update position relative to the root
-                    if (kvp.Value._followRoot)
-                        kvp.Value.position += root.distanceFromLastFrame;
-
                     //update
                     kvp.Value.update(gameTime);
                 }
@@ -160,26 +174,6 @@ namespace King_of_Thieves.Actors
                     removeActor(_removeThese[i]);
 
                 _removeThese.Clear();
-            }
-        }
-
-        public override void Draw(SpriteBatch spriteBatch) //spritebatch not used
-        {
-            currentDrawHeight = 0;
-            if (!this.killMe)
-            {
-                foreach (KeyValuePair<string, CActor> kvp in actors)
-                {
-                    if (!kvp.Value.killMe)
-                    {
-                        if (!root.killMe && rootDrawHeight == currentDrawHeight++)
-                            root.drawMe(useDrawOverlay);
-                        kvp.Value.drawMe(useDrawOverlay);
-                    }
-                }
-                //If root is last
-                if (root != null && !root.killMe && rootDrawHeight == currentDrawHeight)
-                    root.drawMe(useDrawOverlay);
             }
         }
 

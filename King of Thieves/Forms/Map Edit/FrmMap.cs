@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Gears.Cloud;
 using Microsoft.VisualBasic;
 using System.Reflection;
+using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.Forms.Map_Edit
 {
@@ -207,10 +208,15 @@ namespace King_of_Thieves.Forms.Map_Edit
 
         private void mpvMapView_Click(object sender, EventArgs e)
         {
+            MouseEventArgs args = (MouseEventArgs)e;
+            Vector2 position = mpvMapView.getMouseSnapCoords();
             switch (_editorMode)
             {
                 case EDITOR_MODE.TILE:
-                    mpvMapView.dropTile(txvTextures.currentTile, _loadedMap.getLayer(cmbLayers.SelectedIndex));
+                    if (args.Button == System.Windows.Forms.MouseButtons.Left)
+                        mpvMapView.dropTile(txvTextures.currentTile, _loadedMap.getLayer(cmbLayers.SelectedIndex));
+                    else if (args.Button == System.Windows.Forms.MouseButtons.Right)
+                        mpvMapView.removeTile(_loadedMap.getLayer(cmbLayers.SelectedIndex),position);
                     break;
 
                 case EDITOR_MODE.COMPONENT:
@@ -300,6 +306,11 @@ namespace King_of_Thieves.Forms.Map_Edit
                     string fileName = openFileDialog1.FileName;
                 }
             }
+        }
+
+        private void mpvMapView_Load(object sender, EventArgs e)
+        {
+
         }
 		#endif
     }

@@ -14,7 +14,9 @@ namespace King_of_Thieves.Actors.Player
     {
         private bool _swordReleased = true;
         private bool _rollReleased = true;
+        private static double _readableAngle = 0;
         private static Vector2 _readableCoords = new Vector2();
+        private static DIRECTION _readableDirection = DIRECTION.DOWN;
         public static readonly Vector2 carrySpot = new Vector2(-6, -10); //will need to be played with
         private bool _carrying = false;
         private double _carryWeight = 0;
@@ -27,12 +29,14 @@ namespace King_of_Thieves.Actors.Player
         private int _bombVelo = 0;
         private string _currentShieldSprite = "";
         private string _currentShieldIdleSprite = "";
+        private Projectiles.ARROW_TYPES _arrowType = Projectiles.ARROW_TYPES.STANDARD;
 
         private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
         private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
         private const string _THROW_BOOMERANG_LEFT = "PlayerThrowBoomerangLeft";
         private const string _THROW_BOOMERANG_RIGHT = "PlayerThrowBoomerangRight";
         private const string _GOT_ITEM = "PlayerGotItem";
+        private bool _canOpenManu = false;
 
         public CPlayer() :
             base()
@@ -46,6 +50,8 @@ namespace King_of_Thieves.Actors.Player
             
             image = _imageIndex["PlayerWalkDown"];
             _velocity = new Vector2(0, 0);
+            startTimer5(15);
+            _drawDepth = 9;
         }
 
         public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
@@ -159,6 +165,12 @@ namespace King_of_Thieves.Actors.Player
 
         }
 
+        public override void timer5(object sender)
+        {
+            base.timer5(sender);
+            _canOpenManu = true;
+        }
+
         public override void collide(object sender, CActor collider)
         {
             if (!collider.noCollide && (collider is CSolidTile || collider is Items.decoration.CChest))
@@ -183,6 +195,11 @@ namespace King_of_Thieves.Actors.Player
                     }
                     else if (collider is Projectiles.CIceBall)
                         _collideWithNpcResponse(collider, false);
+                }
+
+                if (collider is NPC.Other.CTownsFolk)
+                {
+                    solidCollide(collider);
                 }
             }
         }
@@ -463,9 +480,9 @@ namespace King_of_Thieves.Actors.Player
 
         public override void keyRelease(object sender)
         {
+            CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
             if (_acceptInput)
             {
-                CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
                 if (input.keysReleased.Contains(Keys.T))
                 {
                     Items.Drops.CRupeeDrop rupee = new Items.Drops.CRupeeDrop();
@@ -484,7 +501,7 @@ namespace King_of_Thieves.Actors.Player
                     switch (state)
                     {
                         case ACTOR_STATES.CHARGING_ARROW:
-                            _queueUpArrow();
+                            _queueUpArrow(ref _arrowType);
                             _shootArrow();
                             break;
 
@@ -536,6 +553,17 @@ namespace King_of_Thieves.Actors.Player
                         swapImage(_GOT_ITEM);
                         _acceptInput = false;
                     }
+                    else if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.TALK && !CMasterControl.buttonController.textBoxWait)
+                    {
+                        _state = ACTOR_STATES.TALK_READY;
+                        _acceptInput = false;
+                    }
+                    else if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.PICK)
+                    {
+                        _state = ACTOR_STATES.PICKING;
+                        _acceptInput = false;
+                    }
+
 
                     if (_state == ACTOR_STATES.MOVING)
                     {
@@ -572,9 +600,34 @@ namespace King_of_Thieves.Actors.Player
                         return;
                     }
                 }
+
+
+                if (_state == ACTOR_STATES.HOLD_ARROW && input.keysReleased.Contains(Keys.R))
+                {
+                    switch (CMasterControl.buttonController.buttonLeftItem)
+                    {
+                        case HUD.buttons.HUDOPTIONS.ARROWS:
+                            CMasterControl.buttonController.switchLeftItem(HUD.buttons.HUDOPTIONS.FIRE_ARROWS);
+                            _changeArrowType(Projectiles.ARROW_TYPES.FIRE);
+                            break;
+
+                        case HUD.buttons.HUDOPTIONS.FIRE_ARROWS:
+                            CMasterControl.buttonController.switchLeftItem(HUD.buttons.HUDOPTIONS.ICE_ARROWS);
+                            _changeArrowType(Projectiles.ARROW_TYPES.ICE);
+                            break;
+
+                        case HUD.buttons.HUDOPTIONS.ICE_ARROWS:
+                            CMasterControl.buttonController.switchLeftItem(HUD.buttons.HUDOPTIONS.ARROWS);
+                            _changeArrowType(Projectiles.ARROW_TYPES.STANDARD);
+                            break;
+                    }
+
+                    
+                }
             }
 
-
+            if (_canOpenManu && input.keysReleased.Contains(Keys.Enter))
+                Master.Push(new usr.local.GameMenu.CPauseMenu(CMasterControl.itemPauseMenu(), CMasterControl.questPauseMenu()));
         }
 
 
@@ -584,6 +637,7 @@ namespace King_of_Thieves.Actors.Player
             base.update(gameTime);
             _velocity.X = 0;
             _velocity.Y = 0;
+
             switch (_state)
             {
                 case ACTOR_STATES.GOT_ITEM:
@@ -595,6 +649,24 @@ namespace King_of_Thieves.Actors.Player
                         _angle = 270;
                         _acceptInput = true;
                         swapImage("PlayerIdleDown");
+                    }
+                    break;
+
+                case ACTOR_STATES.TALK_READY:
+                    if (Actors.HUD.Text.CTextBox.messageFinished)
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
+                        _acceptInput = true;
+                    }
+                    break;
+
+                case ACTOR_STATES.PICKING:
+                    if (CMasterControl.pickPocketMeter != null && CMasterControl.pickPocketMeter.justFinished)
+                    {
+                        _state = ACTOR_STATES.IDLE;
+                        CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
+                        _acceptInput = true;
                     }
                     break;
 
@@ -756,7 +828,29 @@ namespace King_of_Thieves.Actors.Player
                         _bombVelo++;
                     break;
             }
+
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    _angle = 270;
+                    break;
+
+                case DIRECTION.LEFT:
+                    _angle = 180;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _angle = 0;
+                    break;
+
+                case DIRECTION.UP:
+                    _angle = 90;
+                    break;
+            }
+
             _readableCoords = _position;
+            _readableAngle = _angle;
+            _readableDirection = _direction;
         }
 
         public override void timer0(object sender)
@@ -811,6 +905,9 @@ namespace King_of_Thieves.Actors.Player
             _collidables.Add(typeof(Actors.Collision.CSolidTile));
             _collidables.Add(typeof(Actors.Items.decoration.CPot));
             _collidables.Add(typeof(Actors.Items.decoration.CChest));
+
+            //other NPCs
+            _collidables.Add(typeof(Actors.NPC.Other.CTownsFolk));
         }
 
         public override void shock()
@@ -890,9 +987,10 @@ namespace King_of_Thieves.Actors.Player
             CMasterControl.healthController.modifyHp(-damage);
         }
 
-        private void _beginArrowCharge()
+        private void _beginArrowCharge(Projectiles.ARROW_TYPES arrowType)
         {
             _state = ACTOR_STATES.CHARGING_ARROW;
+            _arrowType = arrowType;
 
             switch (_direction)
             {
@@ -914,17 +1012,25 @@ namespace King_of_Thieves.Actors.Player
             }
         }
 
-        private void _queueUpArrow()
+        private void _queueUpArrow(ref Projectiles.ARROW_TYPES arrowType)
         {
+            if (arrowType != Projectiles.ARROW_TYPES.STANDARD && !CMasterControl.magicMeter.checkMagicAmount(2))
+                arrowType = Projectiles.ARROW_TYPES.STANDARD;
+
             Vector2 arrowVelocity = Vector2.Zero;
-            Projectiles.CArrow arrow = new Actors.Projectiles.CArrow(_direction,arrowVelocity,_position);
+            Projectiles.CArrow arrow = new Actors.Projectiles.CArrow(_direction,arrowVelocity,_position, arrowType);
             Map.CMapManager.addActorToComponent(arrow, this.componentAddress);
             _lastArrowShotName = arrow.name;
         }
 
+        private void _changeArrowType(Projectiles.ARROW_TYPES arrowType)
+        {
+            CMasterControl.commNet[this.componentAddress].Add(new CActorPacket(1, _lastArrowShotName, this, arrowType));
+        }
+
         private void _holdArrow()
         {
-            _queueUpArrow();
+            _queueUpArrow(ref _arrowType);
             state = ACTOR_STATES.HOLD_ARROW;
 
             switch (_direction)
@@ -949,12 +1055,15 @@ namespace King_of_Thieves.Actors.Player
 
         private void _shootArrow()
         {
-            if (_lastHudKeyPressed == Keys.Left)
+            //if (_lastHudKeyPressed == Keys.Left)
                 state = ACTOR_STATES.SHOOTING_ARROW;
 
             _triggerUserEvent(0, _lastArrowShotName);
 
             _lastArrowShotName = string.Empty;
+
+            if (_arrowType != Projectiles.ARROW_TYPES.STANDARD)
+                CMasterControl.magicMeter.subtractMagic(2);
 
             switch (_direction)
             {
@@ -1060,7 +1169,15 @@ namespace King_of_Thieves.Actors.Player
             switch (option)
             {
                 case HUD.buttons.HUDOPTIONS.ARROWS:
-                    _beginArrowCharge();
+                    _beginArrowCharge(Projectiles.ARROW_TYPES.STANDARD);
+                    break;
+
+                case HUD.buttons.HUDOPTIONS.FIRE_ARROWS:
+                    _beginArrowCharge(Projectiles.ARROW_TYPES.FIRE);
+                    break;
+
+                case HUD.buttons.HUDOPTIONS.ICE_ARROWS:
+                    _beginArrowCharge(Projectiles.ARROW_TYPES.ICE);
                     break;
 
                 case HUD.buttons.HUDOPTIONS.BOMB_CANNON:
@@ -1070,6 +1187,22 @@ namespace King_of_Thieves.Actors.Player
                 case HUD.buttons.HUDOPTIONS.BOOMERANG:
                     _throwBoomerang();
                     break;
+            }
+        }
+
+        public static double glblAngle
+        {
+            get
+            {
+                return _readableAngle;
+            }
+        }
+
+        public static DIRECTION glblDirection
+        {
+            get
+            {
+                return _readableDirection;
             }
         }
     }

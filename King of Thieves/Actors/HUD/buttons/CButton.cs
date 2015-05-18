@@ -10,13 +10,17 @@ namespace King_of_Thieves.Actors.HUD.buttons
     {
         ARROWS = 1,
         BOOMERANG,
-        BOMB_CANNON
+        BOMB_CANNON,
+        FIRE_ARROWS,
+        ICE_ARROWS
 
     }
 
     public enum HUD_ACTION_OPTIONS
     {
         OPEN = 1,
+        TALK,
+        PICK,
         NONE
     }
 
@@ -82,15 +86,28 @@ namespace King_of_Thieves.Actors.HUD.buttons
             {
                 case HUDOPTIONS.ARROWS:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS);
+                    hudItem = HUDOPTIONS.ARROWS;
                     break;
 
                 case HUDOPTIONS.BOMB_CANNON:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
+                    hudItem = HUDOPTIONS.BOMB_CANNON;
                     break;
 
                 //place holder for now
                 case HUDOPTIONS.BOOMERANG:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
+                    hudItem = HUDOPTIONS.BOOMERANG;
+                    break;
+
+                case HUDOPTIONS.FIRE_ARROWS:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS_FIRE);
+                    hudItem = HUDOPTIONS.FIRE_ARROWS;
+                    break;
+
+                case HUDOPTIONS.ICE_ARROWS:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS_ICE);
+                    hudItem = HUDOPTIONS.ICE_ARROWS;
                     break;
             }
         }

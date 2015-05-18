@@ -10,6 +10,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
     {
         private const string _SPRITE_NAMESPACE = "npc:poe";
         private const string _MOVING = _SPRITE_NAMESPACE + ":moving";
+        private const string _IDLE = _SPRITE_NAMESPACE + ":idle";
         private static int _poeCount = 0;
 
         public CPoe() :
@@ -20,9 +21,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
                 Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/poe");
 
                 Graphics.CTextures.addTexture(_MOVING, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 40, 50, 1, "0:0", "8:0", 5));
+                Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 40, 50, 1, "8:1", "8:1", 0));
             }
 
             _imageIndex.Add(_MOVING, new Graphics.CSprite(_MOVING));
+            _imageIndex.Add(_IDLE, new Graphics.CSprite(_IDLE));
+
             _state = ACTOR_STATES.MOVING;
             swapImage(_MOVING);
             _poeCount += 1;
@@ -30,6 +34,23 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
 
             _velocity = new Vector2(.25f, .25f);
             startTimer0(120);
+            _drawDepth = 18;
+        }
+
+        public override void collide(object sender, CActor collider)
+        {
+            base.collide(sender, collider);
+            if (collider is Projectiles.CArrow)
+            {
+                Projectiles.CArrow arrow = (Projectiles.CArrow)collider;
+                if (arrow.isIce)
+                {
+                    _state = ACTOR_STATES.FROZEN;
+                    swapImage(_IDLE);
+                    CMasterControl.commNet[this.componentAddress].Add(new CActorPacket(0, _name + "lantern", this));
+                    startTimer1(1800);
+                }
+            }
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -53,6 +74,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
             startTimer0(120);
         }
 
+        public override void timer1(object sender)
+        {
+            base.timer1(sender);
+            _state = ACTOR_STATES.MOVING;
+            swapImage(_MOVING);
+        }
+
         public override void destroy(object sender)
         {
             base.destroy(sender);
@@ -74,6 +102,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
 
             _velocity.X *= xSign;
             _velocity.Y *= ySign;
+        }
+
+        protected override void _addCollidables()
+        {
+            base._addCollidables();
+            _collidables.Add(typeof(Projectiles.CArrow));
         }
     }
 }

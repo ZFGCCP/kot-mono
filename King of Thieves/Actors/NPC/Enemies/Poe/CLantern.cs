@@ -21,6 +21,17 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
             _hitBox = new Collision.CHitBox(this, 3, 3, 10, 10);
         }
 
+        protected override void _registerUserEvents()
+        {
+            base._registerUserEvents();
+            _userEvents.Add(0, _userEventBeginFall);
+        }
+
+        private void _userEventBeginFall(object sender)
+        {
+            _beginFall();
+        }
+
         private void _fall()
         {
             moveInDirection(_velocity);
@@ -48,12 +59,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
             }
 
             if (_health <= 0)
-            {
-                _state = ACTOR_STATES.EXPLODE;
-                startTimer0(30);
-                noCollide = true;
-                _followRoot = false;
-            }
+                _beginFall();
         }
 
         public override void timer1(object sender)
@@ -73,6 +79,14 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
         {
             _collidables.Add(typeof(Actors.Items.Swords.CSword));
             _collidables.Add(typeof(Actors.Projectiles.CProjectile));
+        }
+
+        private void _beginFall()
+        {
+            _state = ACTOR_STATES.EXPLODE;
+            startTimer0(30);
+            noCollide = true;
+            _followRoot = false;
         }
     }
 }

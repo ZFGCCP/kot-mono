@@ -15,6 +15,8 @@ namespace King_of_Thieves.Graphics
         public float aspectRatio = (float)CGraphics.GPU.Viewport.Width / (float)CGraphics.GPU.Viewport.Height;
         public VertexPositionColor[] vertices;
         public bool isOffscreen = false;
+        protected Vector2 _position = Vector2.Zero;
+        protected Rectangle _size;
         public CRenderable(Effect shader = null, params VertexPositionColor[] vertices)
         {
             if (vertices.Count() > 0)
@@ -58,6 +60,55 @@ namespace King_of_Thieves.Graphics
                 throw new NullReferenceException("Off-sreen render target is null!");
 
             CGraphics.GPU.Clear(Color.Transparent);
+        }
+
+        public int X
+        {
+            get
+            {
+                return (int)_position.X;
+            }
+            set
+            {
+                _position.X = value;
+            }
+        }
+
+        public int Y
+        {
+            get
+            {
+                return (int)_position.Y;
+            }
+            set
+            {
+                _position.Y = value;
+            }
+        }
+
+
+        public int width
+        {
+            get
+            {
+                return _size.Width;
+            }
+            set
+            {
+                _size.Width = value;
+            }
+        }
+
+        public int height
+        {
+            get
+            {
+                return _size.Height;
+            }
+            set
+            {
+                _size.Height = value;
+            }
         }
         
     }

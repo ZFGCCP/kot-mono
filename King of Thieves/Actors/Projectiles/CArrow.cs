@@ -6,11 +6,20 @@ using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.Actors.Projectiles
 {
+    enum ARROW_TYPES
+    {
+        STANDARD = 0,
+        FIRE,
+        ICE
+    }
+
     class CArrow : CProjectile
     {
         private static int _arrowCount = 0;
+        private bool _isFire = false;
+        private bool _isIce = false;
 
-        public CArrow(DIRECTION direction, Vector2 velocity, Vector2 position) 
+        public CArrow(DIRECTION direction, Vector2 velocity, Vector2 position, ARROW_TYPES arrowType = ARROW_TYPES.STANDARD) 
             : base(direction, velocity, position)
         {
             _imageIndex.Add(PROJ_DOWN, new Graphics.CSprite(Graphics.CTextures.EFFECT_ARROW));
@@ -22,8 +31,32 @@ namespace King_of_Thieves.Actors.Projectiles
             _name = "arrow" + _arrowCount;
             
             _damage = 1;
+            _transformArrowType(arrowType);
 
             startTimer1(60);
+        }
+
+        private void _userEventchangeType(object sender)
+        {
+            _transformArrowType((ARROW_TYPES)userParams[0]);
+        }
+
+        private void _transformArrowType(ARROW_TYPES arrowType)
+        {
+            switch (arrowType)
+            {
+                case ARROW_TYPES.STANDARD:
+                    _transformToStandard();
+                    break;
+
+                case ARROW_TYPES.ICE:
+                    _transformToIce();
+                    break;
+
+                case ARROW_TYPES.FIRE:
+                    _transformToFire();
+                    break;
+            }
         }
 
         protected override void _addCollidables()
@@ -39,6 +72,27 @@ namespace King_of_Thieves.Actors.Projectiles
             {
                 _killMe = true;
             }
+        }
+
+        private void _transformToFire()
+        {
+            _isFire = true;
+            _isIce = false;
+            _damage = 2;
+        }
+
+        private void _transformToIce()
+        {
+            _isFire = false;
+            _isIce = true;
+            _damage = 2;
+        }
+
+        private void _transformToStandard()
+        {
+            _isIce = false;
+            _isFire = false;
+            _damage = 1;
         }
 
         public override void destroy(object sender)
@@ -96,6 +150,23 @@ namespace King_of_Thieves.Actors.Projectiles
             base._registerUserEvents();
 
             _userEvents.Add(0, userEventShoot);
+            _userEvents.Add(1, _userEventchangeType);
+        }
+
+        public bool isIce
+        {
+            get
+            {
+                return _isIce;
+            }
+        }
+
+        public bool isFire
+        {
+            get
+            {
+                return _isFire;
+            }
         }
         
     }
