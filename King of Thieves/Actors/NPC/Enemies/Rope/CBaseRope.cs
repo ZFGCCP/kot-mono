@@ -46,11 +46,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 
                 Graphics.CTextures.addTexture(_SLITHER_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 2));
                 Graphics.CTextures.addTexture(_SLITHER_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:2", "3:2", 2));
-                Graphics.CTextures.addTexture(_SLITHER_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "0:3", 2));
+                Graphics.CTextures.addTexture(_SLITHER_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "3:0", 2));
 
                 Graphics.CTextures.addTexture(_FAST_SLITHER_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 4));
                 Graphics.CTextures.addTexture(_FAST_SLITHER_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:2", "3:2", 4));
-                Graphics.CTextures.addTexture(_FAST_SLITHER_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "0:3", 4));
+                Graphics.CTextures.addTexture(_FAST_SLITHER_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "3:0", 4));
             }
             _imageIndex.Add(_SLITHER_DOWN, new Graphics.CSprite(_SLITHER_DOWN));
             _imageIndex.Add(_SLITHER_UP, new Graphics.CSprite(_SLITHER_UP));
@@ -152,9 +152,39 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 
                         _state = ACTOR_STATES.CHASE;
                         _currentSpeed = 1.0f;
+                        _charge();
                     }
                 }
              }
+        }
+
+        private void _charge()
+        {
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, 1.0f / _currentSpeed);
+                    swapImage(_FAST_SLITHER_DOWN);
+                    break;
+
+                case DIRECTION.LEFT:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(-1.0f / _currentSpeed, 0);
+                    swapImage(_FAST_SLITHER_LEFT);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(1.0f / _currentSpeed, 0);
+                    swapImage(_FAST_SLITHER_RIGHT);
+                    break;
+
+                case DIRECTION.UP:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, -1.0f / _currentSpeed);
+                    swapImage(_FAST_SLITHER_UP);
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         private void _changeDirection()
@@ -165,25 +195,25 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             switch (_direction)
             {
                 case DIRECTION.DOWN:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(0, 1.0f / 3.0f);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, 1.0f / _currentSpeed);
                     _angle = 270;
                     swapImage(_SLITHER_DOWN);
                     break;
 
                 case DIRECTION.LEFT:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(-1.0f / 3.0f, 0);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(-1.0f / _currentSpeed, 0);
                     _angle = 180;
                     swapImage(_SLITHER_LEFT);
                     break;
 
                 case DIRECTION.RIGHT:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(1.0f / 3.0f, 0);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(1.0f / _currentSpeed, 0);
                     _angle = 0;
                     swapImage(_SLITHER_RIGHT);
                     break;
 
                 case DIRECTION.UP:
-                    _velocity = new Microsoft.Xna.Framework.Vector2(0, -1.0f / 3.0f);
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, -1.0f / _currentSpeed);
                     _angle = 90;
                     swapImage(_SLITHER_UP);
                     break;
