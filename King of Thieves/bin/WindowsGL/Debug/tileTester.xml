@@ -153,7 +153,12 @@
 					<actor name = "shield" type = "King_of_Thieves.Actors.Items.shields.CWoodShield" coordinates = "0:0"></actor>
 				</actors>
 			</component>
-		</components>
+			<component>
+			    <actors>
+					<actor name = "ropeTest" type = "King_of_Thieves.Actors.NPC.Enemies.Rope.CBaseRope" coordinates="70:70" params="G"></actor>
+				</actors>
+			</component>
+			</components>
 	</layer>
   </layers>
 </Map>
