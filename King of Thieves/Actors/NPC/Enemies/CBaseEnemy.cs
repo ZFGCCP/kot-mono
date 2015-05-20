@@ -125,8 +125,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies
             if (_hitBox != null)
                 base.destroy(sender);
 
-            if (_getFlagForResourceCleanup)
-                cleanUp();
+            cleanUp();
         }
 
         private Items.Drops.CDroppable _dropItem()
@@ -147,16 +146,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies
 
             return null;
             
-        }
-
-        protected bool _checkLineofSight(float x, float y)
-        {
-            
-
-
-
-
-            return false;
         }
 
         protected Vector2 getRandomPointInSightRange()

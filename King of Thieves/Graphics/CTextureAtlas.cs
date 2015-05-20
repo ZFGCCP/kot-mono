@@ -223,7 +223,6 @@ namespace King_of_Thieves.Graphics
         public new void Dispose()
         {
             _textureAtlas = null;
-            _sourceImage.Dispose();
             _sourceImage = null;
         }
     }

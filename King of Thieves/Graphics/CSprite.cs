@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.Graphics
 { 
-    public class CSprite : CRenderable, IDisposable
+    public class CSprite : CRenderable
     {
         
         protected string _name = "";
@@ -46,6 +46,11 @@ namespace King_of_Thieves.Graphics
             : base(null, null)
         {
             init(sprite.atlasName, sprite._imageAtlas, null, sprite._flipH, sprite._flipV, sprite._isEffect, 0, null);
+        }
+
+        ~CSprite()
+        {
+            _imageAtlas = null;
         }
 
         private void init(string atlasName, CTextureAtlas atlas, Effect shader = null, bool flipH = false, bool flipV = false, bool isEffect = false, int rotation = 0, params VertexPositionColor[] vertices)
@@ -154,9 +159,9 @@ namespace King_of_Thieves.Graphics
             this.frameY = frameY;
         }
 
-        public new void Dispose()
+        public void clean()
         {
-            _imageAtlas.Dispose();
+            _imageAtlas = null;
         }
     }
 }

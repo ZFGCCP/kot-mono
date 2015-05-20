@@ -57,8 +57,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
 
         public override void destroy(object sender)
         {
+            _floorTileCount -= 1;
+            _doNpcCountCheck(ref _floorTileCount);
             base.destroy(sender);
-            swapImage(_BREAKING);
         }
 
         public override void animationEnd(object sender)
@@ -66,17 +67,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
             base.animationEnd(sender);
             if (_state == ACTOR_STATES.EXPLODE)
                 _killMe = true;
-        }
-
-        protected override void cleanUp()
-        {
-            _floorTileCount--;
-
-            if (_floorTileCount == 0)
-            {
-                Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
-                Graphics.CTextures.rawTextures.Remove(_SPRITE_NAMESPACE);
-            }
         }
 
         public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)

@@ -177,7 +177,20 @@ namespace King_of_Thieves.Actors
         public virtual void click(object sender) { }
         public virtual void tap(object sender) { }
 
-        protected virtual void cleanUp() { }
+        protected virtual void cleanUp() 
+        {
+            if (_flagForResourceCleanup)
+            {
+                foreach (KeyValuePair<string, CSprite> kvp in _imageIndex)
+                {
+                    Graphics.CTextures.textures[kvp.Value.atlasName].Dispose();
+                    Graphics.CTextures.textures.Remove(kvp.Value.atlasName);
+                    kvp.Value.clean();
+                }
+            }
+
+            _imageIndex.Clear();
+        }
         public virtual void destroy(object sender)
         {
             if (_hitBox != null)
