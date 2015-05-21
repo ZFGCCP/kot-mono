@@ -23,6 +23,9 @@ namespace King_of_Thieves.Graphics
         private bool _isEffect = false;
         private bool _paused = false;
         public bool removeFromDrawList = false;
+        private int _timeForCurrentFrame = 0;
+
+        private static Dictionary<int, double> _frameRateLookup = new Dictionary<int, double>();
 
         public CSprite(string atlasName, bool flipH = false, bool flipV = false, Effect shader = null, bool isEffect = false, int rotation = 0, params VertexPositionColor[] vertices)
             : base(shader, vertices)
@@ -81,11 +84,12 @@ namespace King_of_Thieves.Graphics
             if (_imageAtlas == null)
                 throw new FormatException("Unable to draw sprite " + _name);
 
-            _frameTracker += _imageAtlas.FrameRate;
+            _timeForCurrentFrame += CMasterControl.gameTime.ElapsedGameTime.Milliseconds;
 
-            if (!_paused && _frameTracker >= 60)
+
+            if (_imageAtlas.FrameRate != 0 && !_paused && _timeForCurrentFrame >= _frameRateLookup[_imageAtlas.FrameRate])
             {
-                _frameTracker = 0;
+                _timeForCurrentFrame = 0;
                 frameX++;
                 _framesPassed++;
 
@@ -162,6 +166,18 @@ namespace King_of_Thieves.Graphics
         public void clean()
         {
             _imageAtlas = null;
+        }
+
+        public static void initFrameRateMapping()
+        {
+            _frameRateLookup.Clear();
+            double timePerFrame = CMasterControl.gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            _frameRateLookup.Add(0, 0);
+            for (int i = 1; i <= 60; i++)
+            {
+                _frameRateLookup.Add(i, 1000.0/(double)i);
+            }
         }
     }
 }

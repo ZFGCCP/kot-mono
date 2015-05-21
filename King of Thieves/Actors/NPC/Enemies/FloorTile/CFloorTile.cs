@@ -27,7 +27,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
 
                 Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE,16,16,0,"0:0","0:0"));
                 Graphics.CTextures.addTexture(_SPINNING, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 16, 16, 0, "0:0", "0:1",10));
-                Graphics.CTextures.addTexture(_BREAKING, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 16, 16, 0, "1:0", "1:1", 1));
+                Graphics.CTextures.addTexture(_BREAKING, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 16, 16, 0, "1:0", "1:1", 30));
             }
 
             _imageIndex.Add(_IDLE, new Graphics.CSprite(_IDLE));

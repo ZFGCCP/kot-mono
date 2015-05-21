@@ -28,9 +28,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
                 Graphics.CTextures.rawTextures.Add(SPRITE_NAMESPACE, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/armoredCrabNew"));
 
                 Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:0", "0:0", 0));
-                Graphics.CTextures.addTexture(_WALK, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:0", "3:0", 4));
+                Graphics.CTextures.addTexture(_WALK, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:0", "3:0", 10));
                 Graphics.CTextures.addTexture(_IDLE_NOSHELL, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:3", "0:3", 0));
-                Graphics.CTextures.addTexture(_WALK_NOSHELL, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:3", "3:3", 4));
+                Graphics.CTextures.addTexture(_WALK_NOSHELL, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:3", "3:3", 10));
             }
 
             _imageIndex.Add(_IDLE, new Graphics.CSprite(_IDLE));

@@ -97,7 +97,7 @@ namespace King_of_Thieves
             CMasterControl.glblInput = Master.GetInputManager().GetCurrentInputHandler() as Input.CInput;
             CMasterControl.healthController = new Actors.HUD.health.CHealthController(20,78);
             CMasterControl.magicMeter = new Actors.HUD.magic.CMagicMeter();
-            
+
 
             base.Initialize();
         }
@@ -146,6 +146,7 @@ namespace King_of_Thieves
         protected override void Update(GameTime gameTime)
         {
             CMasterControl.gameTime = gameTime;
+
             updateFrames++;
 
             // Allows the game to exit
