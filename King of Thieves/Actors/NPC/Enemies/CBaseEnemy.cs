@@ -118,6 +118,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies
         public override void destroy(object sender)
         {
             Items.Drops.CDroppable itemToDrop = _dropItem();
+            Graphics.CEffects.createEffect(Graphics.CEffects.EXPLOSION,_position);
 
             if (itemToDrop != null)
                 Map.CMapManager.addActorToComponent(itemToDrop, CReservedAddresses.DROP_CONTROLLER);
