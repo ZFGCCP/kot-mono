@@ -78,23 +78,31 @@ namespace King_of_Thieves
             //***************************************
 
             CPauseMenuElement bottle1 = new CPauseMenuElement(new Vector2(35, 155), 9, 11, 4, 0);
-            bottle1.Selectable = true;
             bottle1.MenuText = "Empty Bottle";
+            bottle1.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_EMPTY_BOTTLE);
+            bottle1.Selectable = true;
+            bottle1.hudOptions = Actors.HUD.buttons.HUDOPTIONS.EMPTY_BOTTLE;
             menu.AddMenuElement(bottle1);
 
             CPauseMenuElement bottle2 = new CPauseMenuElement(new Vector2(84, 155), 10, 8, 5, 1);
-            bottle2.Selectable = true;
             bottle2.MenuText = "Empty Bottle";
+            bottle2.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_EMPTY_BOTTLE);
+            bottle2.Selectable = true;
+            bottle2.hudOptions = Actors.HUD.buttons.HUDOPTIONS.EMPTY_BOTTLE;
             menu.AddMenuElement(bottle2);
 
             CPauseMenuElement bottle3 = new CPauseMenuElement(new Vector2(137, 155), 11, 9, 6, 2);
-            bottle3.Selectable = true;
             bottle3.MenuText = "Empty Bottle";
+            bottle3.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_EMPTY_BOTTLE);
+            bottle3.Selectable = true;
+            bottle3.hudOptions = Actors.HUD.buttons.HUDOPTIONS.EMPTY_BOTTLE;
             menu.AddMenuElement(bottle3);
 
             CPauseMenuElement bottle4 = new CPauseMenuElement(new Vector2(188, 155), 8, 10, 7, 3);
-            bottle4.Selectable = true;
             bottle4.MenuText = "Empty Bottle";
+            bottle4.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_EMPTY_BOTTLE);
+            bottle4.Selectable = true;
+            bottle4.hudOptions = Actors.HUD.buttons.HUDOPTIONS.EMPTY_BOTTLE;
             menu.AddMenuElement(bottle4);
 
             menu.Recache();

@@ -9,10 +9,14 @@ namespace King_of_Thieves.Actors.HUD.buttons
     public enum HUDOPTIONS
     {
         ARROWS = 1,
+        BLUE_POTION,
         BOOMERANG,
         BOMB_CANNON,
+        EMPTY_BOTTLE,
         FIRE_ARROWS,
-        ICE_ARROWS
+        GREEN_POTION,
+        ICE_ARROWS,
+        RED_POTION
 
     }
 
@@ -98,6 +102,11 @@ namespace King_of_Thieves.Actors.HUD.buttons
                 case HUDOPTIONS.BOOMERANG:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
                     hudItem = HUDOPTIONS.BOOMERANG;
+                    break;
+
+                case HUDOPTIONS.EMPTY_BOTTLE:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_EMPTY_BOTTLE);
+                    hudItem = HUDOPTIONS.EMPTY_BOTTLE;
                     break;
 
                 case HUDOPTIONS.FIRE_ARROWS:

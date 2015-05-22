@@ -89,6 +89,10 @@ namespace King_of_Thieves.Graphics
         public const string HUD_MAGIC_METER = HUD + "magicMeter";
         public const string HUD_NOTORIETY_MEDIUM = HUD + "notorietyMedium";
         public const string HUD_PICKPOCKET_ICON_PETTY = HUD + "pickpocketIconPetty";
+        public const string HUD_EMPTY_BOTTLE = HUD + "emptyBottle";
+        public const string HUD_RED_POTION = HUD + "redPotion";
+        public const string HUD_GREEN_POTION = HUD + "greenPotion";
+        public const string HUD_BLUE_POTION = HUD + "bluePotion";
 
         public const string HUD_ITEM_SCREEN = HUD + "itemScreen";
         public const string HUD_QUEST_SCREEN = HUD + "questScreen";
@@ -283,6 +287,10 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_MAGIC_METER, new CTextureAtlas(SOURCE_MAGIC_METER, 104, 6, 0, "0:0", "0:0", 0));
             textures.Add(HUD_NOTORIETY_MEDIUM, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "2:1", "2:1", 0)); 
             textures.Add(HUD_PICKPOCKET_ICON_PETTY, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:2", "3:2", 0));
+            textures.Add(HUD_EMPTY_BOTTLE, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "0:3", "0:3", 0));
+            textures.Add(HUD_RED_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "1:3", "1:3", 0));
+            textures.Add(HUD_GREEN_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "2:3", "2:3", 0));
+            textures.Add(HUD_BLUE_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:3", "3:3", 0));
 
             //drops
             textures.Add(DROPS_HEART, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:0", "0:0"));
