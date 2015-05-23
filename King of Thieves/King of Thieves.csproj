@@ -223,6 +223,7 @@
     <Compile Include="usr\local\GameMenu\CPauseMenuElement.cs" />
     <Compile Include="usr\local\MapEditor.cs" />
     <Compile Include="usr\local\PlayableState.cs" />
+    <Compile Include="usr\local\splash\CDedicationPage.cs" />
     <Compile Include="usr\local\splash\CTitleState.cs" />
     <Compile Include="usr\local\Testbed.cs" />
   </ItemGroup>
