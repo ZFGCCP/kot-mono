@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-
+using King_of_Thieves.usr.local.GameMenu;
 namespace King_of_Thieves.Actors.HUD.buttons
 {
     class CButtonController
@@ -14,6 +14,17 @@ namespace King_of_Thieves.Actors.HUD.buttons
         private CButton _buttonAction = new CButton(CButton.HUD_BUTTON_TYPE.ACTION);
         private counters.CRupeeCounter _rupeeCounter = new counters.CRupeeCounter();
         private Actors.HUD.Text.CTextBox _textBoxController = new Text.CTextBox();
+        public CPauseMenuElement currentElementLeft = null;
+        public CPauseMenuElement currentElementRight = null;
+
+        private HUDOPTIONS _bottleState0 = HUDOPTIONS.EMPTY_BOTTLE;
+        private HUDOPTIONS _bottleState1 = HUDOPTIONS.EMPTY_BOTTLE;
+        private HUDOPTIONS _bottleState2 = HUDOPTIONS.EMPTY_BOTTLE;
+        private HUDOPTIONS _bottleState3 = HUDOPTIONS.EMPTY_BOTTLE;
+
+        public CPauseMenuElement[] bottleRef = new CPauseMenuElement[4];
+
+
 
         public void createTextBox(string message)
         {
@@ -96,6 +107,38 @@ namespace King_of_Thieves.Actors.HUD.buttons
             {
                 return _buttonRight.hudItem;
             }
+        }
+
+        public void changeBottleContents(int bottleNum, HUDOPTIONS content)
+        {
+            switch (content)
+            {
+                case HUDOPTIONS.EMPTY_BOTTLE:
+                    CMasterControl.buttonController.bottleRef[bottleNum].sprite = new Graphics.CSprite(Graphics.CTextures.HUD_EMPTY_BOTTLE);
+                    CMasterControl.buttonController.bottleRef[bottleNum].MenuText = "Empty Bottle";
+                    break;
+
+                case HUDOPTIONS.BLUE_POTION:
+                    CMasterControl.buttonController.bottleRef[bottleNum].sprite = new Graphics.CSprite(Graphics.CTextures.HUD_BLUE_POTION);
+                    CMasterControl.buttonController.bottleRef[bottleNum].MenuText = "Blue Potion";
+                    break;
+
+                case HUDOPTIONS.GREEN_POTION:
+                    CMasterControl.buttonController.bottleRef[bottleNum].sprite = new Graphics.CSprite(Graphics.CTextures.HUD_GREEN_POTION);
+                    CMasterControl.buttonController.bottleRef[bottleNum].MenuText = "Green Potion";
+                    break;
+
+                case HUDOPTIONS.RED_POTION:
+                    CMasterControl.buttonController.bottleRef[bottleNum].sprite = new Graphics.CSprite(Graphics.CTextures.HUD_RED_POTION);
+                    CMasterControl.buttonController.bottleRef[bottleNum].MenuText = "Red Potion";
+                    break;
+
+                default:
+                    throw new ArgumentException("Invalid bottle content added to bottle " + bottleNum);
+                    break;
+            }
+
+            CMasterControl.buttonController.bottleRef[bottleNum].hudOptions = content;
         }
     }
 }

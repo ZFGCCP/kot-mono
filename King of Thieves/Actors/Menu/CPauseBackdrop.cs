@@ -94,6 +94,7 @@ namespace King_of_Thieves.Actors.Menu
             {
                 item = ((CPauseMenuElement)_menu.MenuElements[cursorLocation]).hudOptions;
                 CMasterControl.buttonController.switchLeftItem(item);
+                CMasterControl.buttonController.currentElementLeft = (CPauseMenuElement)_menu.MenuElements[cursorLocation];
                 CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["menu:selectItem"]);
             }
         }
@@ -107,6 +108,7 @@ namespace King_of_Thieves.Actors.Menu
             {
                 item = ((CPauseMenuElement)_menu.MenuElements[cursorLocation]).hudOptions;
                 CMasterControl.buttonController.switchRightItem(item);
+                CMasterControl.buttonController.currentElementRight = (CPauseMenuElement)_menu.MenuElements[cursorLocation];
                 CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["menu:selectItem"]);
             }
         }

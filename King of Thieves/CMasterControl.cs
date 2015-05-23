@@ -106,6 +106,16 @@ namespace King_of_Thieves
             menu.AddMenuElement(bottle4);
 
             menu.Recache();
+
+            CMasterControl.buttonController.bottleRef[0] = bottle1;
+            CMasterControl.buttonController.bottleRef[1] = bottle2;
+            CMasterControl.buttonController.bottleRef[2] = bottle3;
+            CMasterControl.buttonController.bottleRef[3] = bottle4;
+
+            CMasterControl.buttonController.changeBottleContents(1, Actors.HUD.buttons.HUDOPTIONS.RED_POTION);
+            CMasterControl.buttonController.changeBottleContents(2, Actors.HUD.buttons.HUDOPTIONS.GREEN_POTION);
+            CMasterControl.buttonController.changeBottleContents(3, Actors.HUD.buttons.HUDOPTIONS.BLUE_POTION);
+
             return menu;
         }
 

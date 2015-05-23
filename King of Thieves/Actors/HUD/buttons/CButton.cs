@@ -90,33 +90,39 @@ namespace King_of_Thieves.Actors.HUD.buttons
             {
                 case HUDOPTIONS.ARROWS:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS);
-                    hudItem = HUDOPTIONS.ARROWS;
+                    break;
+
+                case HUDOPTIONS.BLUE_POTION:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BLUE_POTION);
                     break;
 
                 case HUDOPTIONS.BOMB_CANNON:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
-                    hudItem = HUDOPTIONS.BOMB_CANNON;
                     break;
 
                 //place holder for now
                 case HUDOPTIONS.BOOMERANG:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
-                    hudItem = HUDOPTIONS.BOOMERANG;
+                    break;
+
+                case HUDOPTIONS.GREEN_POTION:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_GREEN_POTION);
                     break;
 
                 case HUDOPTIONS.EMPTY_BOTTLE:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_EMPTY_BOTTLE);
-                    hudItem = HUDOPTIONS.EMPTY_BOTTLE;
                     break;
 
                 case HUDOPTIONS.FIRE_ARROWS:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS_FIRE);
-                    hudItem = HUDOPTIONS.FIRE_ARROWS;
                     break;
 
                 case HUDOPTIONS.ICE_ARROWS:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS_ICE);
-                    hudItem = HUDOPTIONS.ICE_ARROWS;
+                    break;
+
+                case HUDOPTIONS.RED_POTION:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_RED_POTION);
                     break;
             }
         }
