@@ -78,6 +78,7 @@ namespace King_of_Thieves.Actors
         SHOOTING_CANNON,
         SMASH,
         SWINGING,
+        SWING_BOTTLE,
         SHOCKED,
         STUNNED,
         TALK_READY,

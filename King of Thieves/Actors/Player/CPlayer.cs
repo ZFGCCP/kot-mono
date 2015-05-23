@@ -1149,6 +1149,30 @@ namespace King_of_Thieves.Actors.Player
             
         }
 
+        private void _swingBottle()
+        {
+            _state = ACTOR_STATES.SWING_BOTTLE;
+
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    swapImage("playerSwingDown");
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage("playerSwingLeft");
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage("playerSwingRight");
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage("playerSwingUp");
+                    break;
+            }
+        }
+
         //non negative == left
         //negative == right
         private void _useItem(sbyte leftOrRight)
@@ -1174,6 +1198,10 @@ namespace King_of_Thieves.Actors.Player
 
                 case HUD.buttons.HUDOPTIONS.FIRE_ARROWS:
                     _beginArrowCharge(Projectiles.ARROW_TYPES.FIRE);
+                    break;
+
+                case HUD.buttons.HUDOPTIONS.EMPTY_BOTTLE:
+                    _swingBottle();
                     break;
 
                 case HUD.buttons.HUDOPTIONS.ICE_ARROWS:
