@@ -51,6 +51,9 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_CHARGE_ARROW_LEFT = PLAYER + "chargeArrowLeft";
         public const string PLAYER_HOLD_ARROW_LEFT = PLAYER + "holdArrowLeft";
         public const string PLAYER_SHOOT_ARROW_LEFT = PLAYER + "shootArrowLeft";
+        public const string PLAYER_CHARGE_ARROW_RIGHT = PLAYER + "chargeArrowRight";
+        public const string PLAYER_HOLD_ARROW_RIGHT = PLAYER + "holdArrowRight";
+        public const string PLAYER_SHOOT_ARROW_RIGHT = PLAYER + "shootArrowRight";
         public const string PLAYER_CHARGE_ARROW_UP = PLAYER + "chargeArrowUp";
         public const string PLAYER_HOLD_ARROW_UP = PLAYER + "holdArrowUp";
         public const string PLAYER_SHOOT_ARROW_UP = PLAYER + "shootArrowUp";
@@ -81,34 +84,44 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_GOT_ITEM = PLAYER + "gotItem";
         public const string PLAYER_WALKDOWN = PLAYER + "WalkDown";
         public const string PLAYER_WALKLEFT = PLAYER + "WalkLeft";
+        public const string PLAYER_WALKRIGHT = PLAYER + "WalkRight";
         public const string PLAYER_WALKUP = PLAYER + "WalkUp";
         public const string PLAYER_IDLEDOWN = PLAYER + "IdleDown";
         public const string PLAYER_IDLEUP = PLAYER + "IdleUp";
         public const string PLAYER_IDLELEFT = PLAYER + "IdleLeft";
+        public const string PLAYER_IDLERIGHT = PLAYER + "IdleRight";
         public const string PLAYER_SWINGUP = PLAYER + "SwingUp";
         public const string PLAYER_SWINGDOWN = PLAYER + "SwingDown";
         public const string PLAYER_SWINGLEFT = PLAYER + "SwingLeft";
+        public const string PLAYER_SWINGRIGHT = PLAYER + "SwingRight";
         public const string PLAYER_ROLLDOWN = PLAYER + "RollDown";
-        public const string PLAYERR_ROLLUP = PLAYER + "RollUp";
+        public const string PLAYER_ROLLUP = PLAYER + "RollUp";
         public const string PLAYER_ROLLLEFT = PLAYER + "RollLeft";
+        public const string PLAYER_ROLLRIGHT = PLAYER + "RollRight";
         public const string PLAYER_LIFTDOWN = PLAYER + "LiftDown";
         public const string PLAYER_LIFTUP = PLAYER + "LiftUp";
         public const string PLAYER_LIFTLEFT = PLAYER + "LiftLeft";
+        public const string PLAYER_LIFTRIGHT = PLAYER + "LiftRight";
         public const string PLAYER_CARRYDOWN = PLAYER + "CarryDown";
         public const string PLAYER_CARRYUP = PLAYER + "CarryUp";
         public const string PLAYER_CARRYLEFT = PLAYER + "CarryLeft";
+        public const string PLAYER_CARRYRIGHT = PLAYER + "CarryRight";
         public const string PLAYER_LIFTIDLEDOWN = PLAYER + "LiftIdleDown";
         public const string PLAYER_LIFTIDLEUP = PLAYER + "LiftIdleUp";
         public const string PLAYER_LIFTIDLELEFT = PLAYER + "LiftIdleLeft";
+        public const string PLAYER_LIFTIDLERIGHT = PLAYER + "LiftIdleRight";
         public const string PLAYER_THROWDOWN = PLAYER + "ThrowDown";
         public const string PLAYER_THROWUP = PLAYER + "ThrowUp";
         public const string PLAYER_THROWLEFT = PLAYER + "ThrowLeft";
+        public const string PLAYER_THROWRIGHT = PLAYER + "ThrowRight";
         public const string PLAYER_SHOCKDOWN = PLAYER + "ShockDown";
         public const string PLAYER_SHOCKLEFT = PLAYER + "ShockLeft";
+        public const string PLAYER_SHOCKRIGHT = PLAYER + "ShockRight";
         public const string PLAYER_SHOCKUP = PLAYER + "ShockUp";
         public const string PLAYER_FREEZEDOWN = PLAYER + "FreezeDown";
         public const string PLAYER_FREEZEUP = PLAYER + "FreezeUp";
         public const string PLAYER_FREEZELEFT = PLAYER + "FreezeLeft";
+        public const string PLAYER_FREEZERIGHT = PLAYER + "FreezeRight";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -193,7 +206,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_SWINGDOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:0", "33:0", 45));
             textures.Add(PLAYER_SWINGLEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:1", "32:1", 45));
             textures.Add(PLAYER_ROLLDOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:12", "47:12", 25));
-            textures.Add(PLAYERR_ROLLUP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:13", "47:13", 25));
+            textures.Add(PLAYER_ROLLUP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:13", "47:13", 25));
             textures.Add(PLAYER_ROLLLEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:14", "46:14", 25));
             textures.Add(PLAYER_LIFTDOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "0:29", "4:29", 10));
             textures.Add(PLAYER_LIFTUP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "0:31", "4:31", 10));
@@ -250,12 +263,6 @@ namespace King_of_Thieves.Graphics
             textures.Add(WOOD_SHIELD_DISENGAGE_DOWN, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:1", "2:1", 15));
             textures.Add(WOOD_SHIELD_LEFT, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "0:2", "0:2", 0));
             textures.Add(WOOD_SHIELD_UP, new CTextureAtlas(SOURCE_SHIELDS, 32, 32, 1, "1:2", "1:2", 0));
-
-            textures.Add("chuChu:Wobble", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:0", "15:0", 12));
-            textures.Add("chuChu:Idle", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:1", "7:1", 5));
-            textures.Add("chuChu:PopUp", new CTextureAtlas("chuchuGreen", 32, 32, 1, "8:1", "10:1", 5));
-            textures.Add("chuChu:Hop", new CTextureAtlas("chuchuGreen", 32, 32, 1, "0:2", "6:2", 7));
-            textures.Add("chuChu:PopDown", new CTextureAtlas("chuchuGreen", 32, 32, 1, "7:2", "9:2", 5));
 
             textures.Add("keese:Idle", new CTextureAtlas("keese", 32, 32, 1, "0:0", "0:0"));
             textures.Add("keese:Fly", new CTextureAtlas("keese", 32, 32, 1, "1:0", "5:0",15));
@@ -348,7 +355,6 @@ namespace King_of_Thieves.Graphics
         {
             rawTextures.Add("Player", _content.Load<Texture2D>("Player"));
             rawTextures.Add("Swords", _content.Load<Texture2D>("Swords"));
-            rawTextures.Add("chuchuGreen", _content.Load<Texture2D>("chuchuGreen"));
             rawTextures.Add("keese", _content.Load<Texture2D>("keese"));
             rawTextures.Add("test", _content.Load<Texture2D>("tiletest"));
             rawTextures.Add("ages", _content.Load<Texture2D>("AGES_TILESET_1F"));

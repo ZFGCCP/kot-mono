@@ -48,7 +48,7 @@ namespace King_of_Thieves.Actors.Player
             _hitBox = new Collision.CHitBox(this, 10, 18, 12, 15);
 
             
-            image = _imageIndex["PlayerWalkDown"];
+            image = _imageIndex[Graphics.CTextures.PLAYER_IDLEDOWN];
             _velocity = new Vector2(0, 0);
             startTimer5(15);
             _drawDepth = 9;
@@ -64,76 +64,76 @@ namespace King_of_Thieves.Actors.Player
 
             //We're creating A LOT of strings here -- This needs to be handled with a constants class or something
             base._initializeResources();
-            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite("Player:WalkDown"));
+            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKDOWN));
 
-            _imageIndex.Add("PlayerWalkDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKDOWN));
-            _imageIndex.Add("PlayerWalkLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKLEFT));
-            _imageIndex.Add("PlayerWalkRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKLEFT, true));
-            _imageIndex.Add("PlayerWalkUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKUP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_WALKDOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKDOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_WALKLEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKLEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_WALKRIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKLEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_WALKUP, new Graphics.CSprite(Graphics.CTextures.PLAYER_WALKUP));
 
-            _imageIndex.Add("PlayerIdleDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLEDOWN));
-            _imageIndex.Add("PlayerIdleUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLEUP));
-            _imageIndex.Add("PlayerIdleLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLELEFT));
-            _imageIndex.Add("PlayerIdleRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLELEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_IDLEDOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLEDOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_IDLEUP, new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLEUP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_IDLELEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLELEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_IDLERIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_IDLELEFT, true));
 
-            _imageIndex.Add("PlayerSwingUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGUP));
-            _imageIndex.Add("PlayerSwingDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGDOWN));
-            _imageIndex.Add("PlayerSwingRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGLEFT, true));
-            _imageIndex.Add("PlayerSwingLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGLEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SWINGUP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGUP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SWINGDOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGDOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SWINGLEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGLEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SWINGRIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SWINGLEFT,true));
 
-            _imageIndex.Add("PlayerRollDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_ROLLDOWN));
-            _imageIndex.Add("PlayerRollUp", new Graphics.CSprite(Graphics.CTextures.PLAYERR_ROLLUP));
-            _imageIndex.Add("PlayerRollLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_ROLLLEFT));
-            _imageIndex.Add("PlayerRollRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_ROLLLEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_ROLLDOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_ROLLDOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_ROLLUP, new Graphics.CSprite(Graphics.CTextures.PLAYER_ROLLUP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_ROLLLEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_ROLLLEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_ROLLRIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_ROLLLEFT, true));
 
-            _imageIndex.Add("PlayerLiftDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTDOWN));
-            _imageIndex.Add("PlayerLiftUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTUP));
-            _imageIndex.Add("PlayerLiftLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTLEFT));
-            _imageIndex.Add("PlayerLiftRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTLEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_LIFTDOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTDOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_LIFTUP, new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTUP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_LIFTLEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTLEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_LIFTRIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTLEFT, true));
 
-            _imageIndex.Add("PlayerCarryDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYDOWN));
-            _imageIndex.Add("PlayerCarryUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYUP));
-            _imageIndex.Add("PlayerCarryLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYLEFT));
-            _imageIndex.Add("PlayerCarryRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYLEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CARRYDOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYDOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CARRYUP, new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYUP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CARRYLEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYLEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CARRYRIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_CARRYLEFT, true));
 
-            _imageIndex.Add("PlayerLiftIdleDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLEDOWN));
-            _imageIndex.Add("PlayerLiftIdleUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLEUP));
-            _imageIndex.Add("PlayerLiftIdleLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLELEFT));
-            _imageIndex.Add("PlayerLiftIdleRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLELEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_LIFTIDLEDOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLEDOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_LIFTIDLEUP, new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLEUP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_LIFTIDLELEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLELEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_LIFTIDLERIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_LIFTIDLELEFT, true));
 
-            _imageIndex.Add("PlayerThrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWDOWN));
-            _imageIndex.Add("PlayerThrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWUP));
-            _imageIndex.Add("PlayerThrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWLEFT));
-            _imageIndex.Add("PlayerThrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWLEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_THROWDOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWDOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_THROWUP, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWUP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_THROWLEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWLEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_THROWRIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROWLEFT, true));
 
-            _imageIndex.Add("PlayerShockDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKDOWN));
-            _imageIndex.Add("PlayerShockUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKUP));
-            _imageIndex.Add("PlayerShockLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKLEFT));
-            _imageIndex.Add("PlayerShockRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKLEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOCKDOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKDOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOCKUP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKUP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOCKLEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKLEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOCKRIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOCKLEFT, true));
 
-            _imageIndex.Add("PlayerFreezeDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZEDOWN));
-            _imageIndex.Add("PlayerFreezeUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZEUP));
-            _imageIndex.Add("PlayerFreezeLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZELEFT));
-            _imageIndex.Add("PlayerFreezeRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZELEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FREEZEDOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZEDOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FREEZEUP, new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZEUP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FREEZELEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZELEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FREEZERIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_FREEZELEFT, true));
 
-            _imageIndex.Add("PlayerChargeArrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_DOWN));
-            _imageIndex.Add("PlayerChargeArrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_UP));
-            _imageIndex.Add("PlayerChargeArrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT));
-            _imageIndex.Add("PlayerChargeArrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_ARROW_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_ARROW_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_ARROW_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT, true));
 
-            _imageIndex.Add("PlayerHoldArrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_DOWN));
-            _imageIndex.Add("PlayerHoldArrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_UP));
-            _imageIndex.Add("PlayerHoldArrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT));
-            _imageIndex.Add("PlayerHoldArrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_ARROW_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_ARROW_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_ARROW_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT, true));
 
-            _imageIndex.Add("PlayerShootArrowDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_DOWN));
-            _imageIndex.Add("PlayerShootArrowUp", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_UP));
-            _imageIndex.Add("PlayerShootArrowLeft", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT));
-            _imageIndex.Add("PlayerShootArrowRight", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_ARROW_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_ARROW_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_ARROW_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT, true));
 
-            _imageIndex.Add("PlayerHoldCannonDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN));
 
-            _imageIndex.Add("PlayerShootCannonDown", new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN));
 
             _imageIndex.Add(_THROW_BOOMERANG_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_DOWN));
             _imageIndex.Add(_THROW_BOOMERANG_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT));
@@ -376,13 +376,13 @@ namespace King_of_Thieves.Actors.Player
                         {
                             if (_carrying)
                             {
-                                swapImage("PlayerCarryLeft");
+                                swapImage(Graphics.CTextures.PLAYER_CARRYLEFT);
                                 _velocity.X = -1;
                                 _state = ACTOR_STATES.MOVING;
                             }
                             else
                             {
-                                image = _imageIndex["PlayerWalkLeft"];
+                                image = _imageIndex[Graphics.CTextures.PLAYER_WALKLEFT];
                                 _velocity.X = -1;
                                 _state = ACTOR_STATES.MOVING;
                             }
@@ -394,13 +394,13 @@ namespace King_of_Thieves.Actors.Player
                         {
                             if (_carrying)
                             {
-                                swapImage("PlayerCarryRight");
+                                swapImage(Graphics.CTextures.PLAYER_CARRYRIGHT);
                                 _velocity.X = 1;
                                 _state = ACTOR_STATES.MOVING;
                             }
                             else
                             {
-                                image = _imageIndex["PlayerWalkRight"];
+                                image = _imageIndex[Graphics.CTextures.PLAYER_WALKRIGHT];
                                 _velocity.X = 1;
                                 _state = ACTOR_STATES.MOVING;
                             }
@@ -413,13 +413,13 @@ namespace King_of_Thieves.Actors.Player
                             if (_carrying)
                             {
                                 _velocity.Y = -1;
-                                swapImage("PlayerCarryUp");
+                                swapImage(Graphics.CTextures.PLAYER_CARRYUP);
                                 _state = ACTOR_STATES.MOVING;
                             }
                             else
                             {
                                 _velocity.Y = -1;
-                                image = _imageIndex["PlayerWalkUp"];
+                                image = _imageIndex[Graphics.CTextures.PLAYER_WALKUP];
                                 _state = ACTOR_STATES.MOVING;
                             }
 
@@ -431,13 +431,13 @@ namespace King_of_Thieves.Actors.Player
                             
                             if (_carrying)
                             {
-                                swapImage("PlayerCarryDown");
+                                swapImage(Graphics.CTextures.PLAYER_CARRYDOWN);
                                 _velocity.Y = 1;
                                 _state = ACTOR_STATES.MOVING;
                             }
                             else
                             {
-                                image = _imageIndex["PlayerWalkDown"];
+                                image = _imageIndex[Graphics.CTextures.PLAYER_WALKDOWN];
                                 _velocity.Y = 1;
                                 _state = ACTOR_STATES.MOVING;
                             }
@@ -575,19 +575,19 @@ namespace King_of_Thieves.Actors.Player
                             switch (_direction)
                             {
                                 case DIRECTION.DOWN:
-                                    swapImage("PlayerThrowDown");
+                                    swapImage(Graphics.CTextures.PLAYER_THROWDOWN);
                                     break;
 
                                 case DIRECTION.UP:
-                                    swapImage("PlayerThrowUp");
+                                    swapImage(Graphics.CTextures.PLAYER_THROWUP);
                                     break;
 
                                 case DIRECTION.LEFT:
-                                    swapImage("PlayerThrowLeft");
+                                    swapImage(Graphics.CTextures.PLAYER_THROWLEFT);
                                     break;
 
                                 case DIRECTION.RIGHT:
-                                    swapImage("PlayerThrowRight");
+                                    swapImage(Graphics.CTextures.PLAYER_THROWRIGHT);
                                     break;
                             }
 
@@ -648,7 +648,7 @@ namespace King_of_Thieves.Actors.Player
                         CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
                         _angle = 270;
                         _acceptInput = true;
-                        swapImage("PlayerIdleDown");
+                        swapImage(Graphics.CTextures.PLAYER_IDLEDOWN);
                     }
                     break;
 
@@ -674,19 +674,19 @@ namespace King_of_Thieves.Actors.Player
                     switch (_direction)
                     {
                         case DIRECTION.DOWN:
-                            swapImage("PlayerLiftDown");
+                            swapImage(Graphics.CTextures.PLAYER_LIFTDOWN);
                             break;
 
                         case DIRECTION.UP:
-                            swapImage("PlayerLiftUp");
+                            swapImage(Graphics.CTextures.PLAYER_LIFTUP);
                             break;
 
                         case DIRECTION.LEFT:
-                            swapImage("PlayerLiftLeft");
+                            swapImage(Graphics.CTextures.PLAYER_LIFTLEFT);
                             break;
 
                         case DIRECTION.RIGHT:
-                            swapImage("PlayerLiftRight");
+                            swapImage(Graphics.CTextures.PLAYER_LIFTRIGHT);
                             break;
 
                     }
@@ -703,22 +703,22 @@ namespace King_of_Thieves.Actors.Player
                         {
 
                             case DIRECTION.DOWN:
-                                swapImage("PlayerRollDown");
+                                swapImage(Graphics.CTextures.PLAYER_ROLLDOWN);
                                 _position.Y += 2;
                                 break;
 
                             case DIRECTION.UP:
-                                swapImage("PlayerRollUp");
+                                swapImage(Graphics.CTextures.PLAYER_ROLLUP);
                                 _position.Y -= 2;
                                 break;
 
                             case DIRECTION.LEFT:
-                                swapImage("PlayerRollLeft");
+                                swapImage(Graphics.CTextures.PLAYER_ROLLLEFT);
                                 _position.X -= 2;
                                 break;
 
                             case DIRECTION.RIGHT:
-                                swapImage("PlayerRollRight");
+                                swapImage(Graphics.CTextures.PLAYER_ROLLRIGHT);
                                 _position.X += 2;
                                 break;
                         }
@@ -761,25 +761,25 @@ namespace King_of_Thieves.Actors.Player
                         switch (_direction)
                         {
                             case DIRECTION.UP:
-                                swapImage("PlayerSwingUp");
+                                swapImage(Graphics.CTextures.PLAYER_SWINGUP);
                                 swordPos.X = _position.X - 13;
                                 swordPos.Y = _position.Y - 13;
                                 break;
 
                             case DIRECTION.LEFT:
-                                swapImage("PlayerSwingLeft");
+                                swapImage(Graphics.CTextures.PLAYER_SWINGLEFT);
                                 swordPos.X = _position.X - 18;
                                 swordPos.Y = _position.Y - 10;
                                 break;
 
                             case DIRECTION.RIGHT:
-                                swapImage("PlayerSwingRight");
+                                swapImage(Graphics.CTextures.PLAYER_SWINGRIGHT);
                                 swordPos.X = _position.X - 12;
                                 swordPos.Y = _position.Y - 10;
                                 break;
 
                             case DIRECTION.DOWN:
-                                swapImage("PlayerSwingDown");
+                                swapImage(Graphics.CTextures.PLAYER_SWINGDOWN);
                                 swordPos.X = _position.X - 17;
                                 swordPos.Y = _position.Y - 13;
                                 break;
@@ -794,30 +794,30 @@ namespace King_of_Thieves.Actors.Player
                     {
                         case DIRECTION.DOWN:
                             if (_carrying)
-                                swapImage("PlayerLiftIdleDown");
+                                swapImage(Graphics.CTextures.PLAYER_LIFTIDLEDOWN);
                             else
-                                swapImage("PlayerIdleDown", false);
+                                swapImage(Graphics.CTextures.PLAYER_IDLEDOWN, false);
                             break;
 
                         case DIRECTION.UP:
                             if (_carrying)
-                                swapImage("PlayerLiftIdleUp");
+                                swapImage(Graphics.CTextures.PLAYER_LIFTIDLEUP);
                             else
-                                swapImage("PlayerIdleUp", false);
+                                swapImage(Graphics.CTextures.PLAYER_IDLEUP, false);
                             break;
 
                         case DIRECTION.LEFT:
                             if (_carrying)
-                                swapImage("PlayerLiftIdleLeft");
+                                swapImage(Graphics.CTextures.PLAYER_LIFTIDLELEFT);
                             else
-                                swapImage("PlayerIdleLeft", false);
+                                swapImage(Graphics.CTextures.PLAYER_IDLELEFT, false);
                             break;
 
                         case DIRECTION.RIGHT:
                             if (_carrying)
-                                swapImage("PlayerLiftIdleRight");
+                                swapImage(Graphics.CTextures.PLAYER_LIFTIDLERIGHT);
                             else
-                                swapImage("PlayerIdleRight", false);
+                                swapImage(Graphics.CTextures.PLAYER_IDLERIGHT, false);
                             break;
                     }
 
@@ -919,19 +919,19 @@ namespace King_of_Thieves.Actors.Player
             switch (_direction)
             {
                 case DIRECTION.DOWN:
-                    swapImage("PlayerShockDown");
+                    swapImage(Graphics.CTextures.PLAYER_SHOCKDOWN);
                     break;
 
                 case DIRECTION.UP:
-                    swapImage("PlayerShockUp");
+                    swapImage(Graphics.CTextures.PLAYER_SHOCKUP);
                     break;
 
                 case DIRECTION.LEFT:
-                    swapImage("PlayerShockLeft");
+                    swapImage(Graphics.CTextures.PLAYER_SHOCKLEFT);
                     break;
 
                 case DIRECTION.RIGHT:
-                    swapImage("PlayerShockRight");
+                    swapImage(Graphics.CTextures.PLAYER_SHOCKRIGHT);
                     break;
             }
         }
@@ -961,19 +961,19 @@ namespace King_of_Thieves.Actors.Player
             switch (_direction)
             {
                 case DIRECTION.DOWN:
-                    swapImage("PlayerFreezeDown");
+                    swapImage(Graphics.CTextures.PLAYER_FREEZEDOWN);
                     break;
 
                 case DIRECTION.UP:
-                    swapImage("PlayerFreezeUp");
+                    swapImage(Graphics.CTextures.PLAYER_FREEZEUP);
                     break;
 
                 case DIRECTION.LEFT:
-                    swapImage("PlayerFreezeLeft");
+                    swapImage(Graphics.CTextures.PLAYER_FREEZELEFT);
                     break;
 
                 case DIRECTION.RIGHT:
-                    swapImage("PlayerFreezeRight");
+                    swapImage(Graphics.CTextures.PLAYER_FREEZERIGHT);
                     break;
             }
         }
@@ -995,19 +995,19 @@ namespace King_of_Thieves.Actors.Player
             switch (_direction)
             {
                 case DIRECTION.LEFT:
-                    swapImage("PlayerChargeArrowLeft");
+                    swapImage(Graphics.CTextures.PLAYER_CHARGE_ARROW_LEFT);
                     break;
 
                 case DIRECTION.RIGHT:
-                    swapImage("PlayerChargeArrowRight");
+                    swapImage(Graphics.CTextures.PLAYER_CHARGE_ARROW_RIGHT);
                     break;
 
                 case DIRECTION.DOWN:
-                    swapImage("PlayerChargeArrowDown");
+                    swapImage(Graphics.CTextures.PLAYER_CHARGE_ARROW_DOWN);
                     break;
 
                 case DIRECTION.UP:
-                    swapImage("PlayerChargeArrowUp");
+                    swapImage(Graphics.CTextures.PLAYER_CHARGE_ARROW_UP);
                     break;
             }
         }
@@ -1036,19 +1036,19 @@ namespace King_of_Thieves.Actors.Player
             switch (_direction)
             {
                 case DIRECTION.LEFT:
-                    swapImage("PlayerHoldArrowLeft");
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_ARROW_LEFT);
                     break;
 
                 case DIRECTION.RIGHT:
-                    swapImage("PlayerHoldArrowRight");
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_ARROW_RIGHT);
                     break;
 
                 case DIRECTION.DOWN:
-                    swapImage("PlayerHoldArrowDown");
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_ARROW_DOWN);
                     break;
 
                 case DIRECTION.UP:
-                    swapImage("PlayerHoldArrowUp");
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_ARROW_UP);
                     break;
             }
         }
@@ -1068,19 +1068,19 @@ namespace King_of_Thieves.Actors.Player
             switch (_direction)
             {
                 case DIRECTION.LEFT:
-                    swapImage("PlayerShootArrowLeft");
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT);
                     break;
 
                 case DIRECTION.RIGHT:
-                    swapImage("PlayerShootArrowRight");
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_RIGHT);
                     break;
 
                 case DIRECTION.DOWN:
-                    swapImage("PlayerShootArrowDown");
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_DOWN);
                     break;
 
                 case DIRECTION.UP:
-                    swapImage("PlayerShootArrowUp");
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_UP);
                     break;
             }
 
@@ -1119,7 +1119,7 @@ namespace King_of_Thieves.Actors.Player
             switch (_direction)
             {
                 case DIRECTION.DOWN:
-                    swapImage("PlayerHoldCannonDown");
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN);
                     break;
             }
         }
@@ -1135,7 +1135,7 @@ namespace King_of_Thieves.Actors.Player
             switch (_direction)
             {
                 case DIRECTION.DOWN:
-                    swapImage("PlayerShootCannonDown");
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN);
                     bombVelo.Y = (float)veloScale;
                     bombPos.Y += 30;
                     bombPos.X -= 3;
