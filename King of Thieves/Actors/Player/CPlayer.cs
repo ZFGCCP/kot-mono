@@ -1204,6 +1204,10 @@ namespace King_of_Thieves.Actors.Player
                     _swingBottle();
                     break;
 
+                case HUD.buttons.HUDOPTIONS.GREEN_POTION:
+                    _useGreenPotion();
+                    break;
+
                 case HUD.buttons.HUDOPTIONS.ICE_ARROWS:
                     _beginArrowCharge(Projectiles.ARROW_TYPES.ICE);
                     break;
@@ -1215,7 +1219,33 @@ namespace King_of_Thieves.Actors.Player
                 case HUD.buttons.HUDOPTIONS.BOOMERANG:
                     _throwBoomerang();
                     break;
+
+                case HUD.buttons.HUDOPTIONS.BLUE_POTION:
+                    _useBluePotion();
+                    break;
+
+                case HUD.buttons.HUDOPTIONS.RED_POTION:
+                    _useRedPotion();
+                    break;
             }
+        }
+
+        private void _useRedPotion()
+        {
+            CMasterControl.healthController.modifyHp(40);
+            _usingItem = false;
+        }
+
+        private void _useGreenPotion()
+        {
+            CMasterControl.magicMeter.addMagic(50);
+            _usingItem = false;
+        }
+
+        private void _useBluePotion()
+        {
+            _useRedPotion();
+            _useGreenPotion();
         }
 
         public static double glblAngle
