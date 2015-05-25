@@ -595,7 +595,25 @@ namespace King_of_Thieves.Actors.Player
                             return;
                         }
                         _state = ACTOR_STATES.ROLLING;
-                        _rollReleased = false;
+                        CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:Attack3"]);
+                        switch (_direction)
+                        {
+                            case DIRECTION.DOWN:
+                                swapImage(Graphics.CTextures.PLAYER_ROLLDOWN);
+                                break;
+
+                            case DIRECTION.UP:
+                                swapImage(Graphics.CTextures.PLAYER_ROLLUP);
+                                break;
+
+                            case DIRECTION.LEFT:
+                                swapImage(Graphics.CTextures.PLAYER_ROLLLEFT);
+                                break;
+
+                            case DIRECTION.RIGHT:
+                                swapImage(Graphics.CTextures.PLAYER_ROLLRIGHT);
+                                break;
+                        }
                         //get the FUCK out of this
                         return;
                     }
@@ -694,35 +712,27 @@ namespace King_of_Thieves.Actors.Player
                     break;
 
                 case ACTOR_STATES.ROLLING:
-                    if (!_rollReleased)
+                    Vector2 rollVelo = Vector2.Zero;
+                    switch (_direction)
                     {
-                        _rollReleased = true;
-                        CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:Attack3"]);
+
+                        case DIRECTION.DOWN:
+                            rollVelo.Y += 2;
+                            break;
+
+                        case DIRECTION.UP:
+                            rollVelo.Y -= 2;
+                            break;
+
+                        case DIRECTION.LEFT:
+                            rollVelo.X -= 2;
+                            break;
+
+                        case DIRECTION.RIGHT:
+                            rollVelo.X += 2;
+                            break;
                     }
-                        switch (_direction)
-                        {
-
-                            case DIRECTION.DOWN:
-                                swapImage(Graphics.CTextures.PLAYER_ROLLDOWN);
-                                _position.Y += 2;
-                                break;
-
-                            case DIRECTION.UP:
-                                swapImage(Graphics.CTextures.PLAYER_ROLLUP);
-                                _position.Y -= 2;
-                                break;
-
-                            case DIRECTION.LEFT:
-                                swapImage(Graphics.CTextures.PLAYER_ROLLLEFT);
-                                _position.X -= 2;
-                                break;
-
-                            case DIRECTION.RIGHT:
-                                swapImage(Graphics.CTextures.PLAYER_ROLLRIGHT);
-                                _position.X += 2;
-                                break;
-                        }
-                    
+                    moveInDirection(rollVelo);
                     break;
 
                 case ACTOR_STATES.KNOCKBACK:
