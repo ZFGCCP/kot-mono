@@ -6,6 +6,7 @@ using King_of_Thieves.Graphics;
 using Microsoft.Xna.Framework;
 using King_of_Thieves.Input;
 using Gears.Cloud;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.Actors.HUD.magic
 {
@@ -27,7 +28,7 @@ namespace King_of_Thieves.Actors.HUD.magic
             _fixedPosition.Y = 30;
         }
 
-        public override void drawMe(bool useOverlay = false)
+        public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             base.drawMe(useOverlay);
             _meter.draw((int)_position.X + 2, (int)_position.Y + 2);

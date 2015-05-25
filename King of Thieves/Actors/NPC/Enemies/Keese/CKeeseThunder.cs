@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.Actors.NPC.Enemies.Keese
 {
@@ -22,7 +23,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Keese
             _imageIndex.Add("keeseFly", new Graphics.CSprite("keeseThunder:Fly"));
         }
 
-        public override void drawMe(bool useOverlay = false)
+        public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             base.drawMe(false);
         }

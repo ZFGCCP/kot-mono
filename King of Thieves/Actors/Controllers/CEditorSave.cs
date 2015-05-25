@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Windows.Forms;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.Actors.Controllers
 {
@@ -71,7 +72,7 @@ namespace King_of_Thieves.Actors.Controllers
             }
         }
 
-        public override void drawMe(bool useOverlay = false)
+        public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             base.drawMe();
         }

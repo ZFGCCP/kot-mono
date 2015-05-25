@@ -30,7 +30,7 @@ namespace King_of_Thieves.Graphics
             _texColor.SetData(data);
         }
 
-        public override bool draw(int x, int y, bool useOverlay = false)
+        public override bool draw(int x, int y, bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             _position.X = x;
             _position.Y = y;

@@ -236,7 +236,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Wizzrobe
 
         protected abstract void _fireProjectile();
 
-        public override void drawMe(bool useOverlay = false)
+        public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             if (_state != ACTOR_STATES.INVISIBLE)
                 base.drawMe(useOverlay);

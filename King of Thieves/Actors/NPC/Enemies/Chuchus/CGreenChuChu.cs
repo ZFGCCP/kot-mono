@@ -18,6 +18,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Chuchus
         protected override void _initializeResources()
         {
             base._initializeResources();
+            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite("chuChu:Wobble"));
             _imageIndex.Add("chuChuWobble", new Graphics.CSprite("chuChu:Wobble"));
             _imageIndex.Add("chuChuPopUp", new Graphics.CSprite("chuChu:PopUp"));
             _imageIndex.Add("chuChuIdle", new Graphics.CSprite("chuChu:Idle"));

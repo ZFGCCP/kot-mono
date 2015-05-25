@@ -71,7 +71,7 @@ namespace King_of_Thieves.Actors.Controllers
             }
         }
 
-        public override void drawMe(bool useOverlay = false)
+        public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             base.drawMe();
         }

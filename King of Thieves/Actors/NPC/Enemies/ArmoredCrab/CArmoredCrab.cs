@@ -33,6 +33,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
                 Graphics.CTextures.addTexture(_WALK_NOSHELL, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:3", "3:3", 4));
             }
 
+            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite(_IDLE));
             _imageIndex.Add(_IDLE, new Graphics.CSprite(_IDLE));
             _imageIndex.Add(_WALK, new Graphics.CSprite(_WALK));
             _imageIndex.Add(_IDLE_NOSHELL, new Graphics.CSprite(_IDLE_NOSHELL));

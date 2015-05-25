@@ -56,6 +56,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Guards
                 Graphics.CTextures.addTexture(_WALK_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 24, 38, 1, "6:0", "8:0", 4));
             }
 
+            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite(_WALK_DOWN));
             _imageIndex.Add(_WALK_DOWN, new Graphics.CSprite(_WALK_DOWN));
             _imageIndex.Add(_WALK_LEFT, new Graphics.CSprite(_WALK_LEFT));
             _imageIndex.Add(_WALK_RIGHT, new Graphics.CSprite(_WALK_LEFT,true));

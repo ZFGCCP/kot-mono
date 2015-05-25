@@ -35,6 +35,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
                 Graphics.CTextures.addTexture(_SWOOP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 52, 47, 1, "0:1", "0:1", 0));
             }
 
+            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite(_IDLE));
             _imageIndex.Add(_IDLE, new Graphics.CSprite(_IDLE));
             _imageIndex.Add(_IDLE_STARE, new Graphics.CSprite(_IDLE_STARE));
             _imageIndex.Add(_FLY, new Graphics.CSprite(_FLY));

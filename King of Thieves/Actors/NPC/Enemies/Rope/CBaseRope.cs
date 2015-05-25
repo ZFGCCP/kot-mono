@@ -52,6 +52,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
                 Graphics.CTextures.addTexture(_FAST_SLITHER_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:2", "3:2", 4));
                 Graphics.CTextures.addTexture(_FAST_SLITHER_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "3:0", 4));
             }
+            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite(_SLITHER_DOWN));
             _imageIndex.Add(_SLITHER_DOWN, new Graphics.CSprite(_SLITHER_DOWN));
             _imageIndex.Add(_SLITHER_UP, new Graphics.CSprite(_SLITHER_UP));
             _imageIndex.Add(_SLITHER_LEFT, new Graphics.CSprite(_SLITHER_LEFT));
@@ -72,14 +73,22 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
         {
             base.init(name, position, dataType, compAddress, additional);
 
-            switch (additional[0])
+            try
             {
-                case "G":
-                    break;
+                switch (additional[0])
+                {
+                    case "G":
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                throw new KotException.KotBadArgumentException(ex.Message);
+            }
+
             swapImage( _SLITHER_DOWN);
             _direction = DIRECTION.DOWN;
             _state = ACTOR_STATES.MOVING;
@@ -113,7 +122,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             base.timer3(sender);
         }
 
-        public override void drawMe(bool useOverlay = false)
+        public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             
                 base.drawMe(useOverlay);

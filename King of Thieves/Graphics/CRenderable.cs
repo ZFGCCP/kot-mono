@@ -27,7 +27,7 @@ namespace King_of_Thieves.Graphics
             }
         }
 
-        public virtual bool draw(int x, int y, bool useOverlay = false)
+        public virtual bool draw(int x, int y, bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             if (isOffscreen != false)
                 renderOffScreen();

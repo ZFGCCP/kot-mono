@@ -62,15 +62,13 @@ namespace WinFormsGraphicsDevice
             layer.removeTile(index);
         }
 
-        public void dropActor(string actor, string name, int layer)
+        public void dropActor(string actor, string name, Vector2 position, int layer, string[] parameters)
         {
             Type actorType = Type.GetType(actor);
             CActor tempActor = (CActor)Activator.CreateInstance(actorType);
-            CComponent tempComponent = new CComponent();
+            CComponent tempComponent = new CComponent(_currentMap.largestAddress + 1);
 
-            Vector2 coordinates = _getMouseSnap();
-
-            tempActor.init(name, coordinates, actorType.ToString(), 0, null);
+            tempActor.init(name, position, actorType.ToString(), 0, parameters);
             tempActor.layer = layer;
             tempActor.swapImage(CActor._MAP_ICON);
 

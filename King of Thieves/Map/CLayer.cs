@@ -28,6 +28,7 @@ namespace King_of_Thieves.Map
         public CLayer(Dictionary<string, Graphics.CSprite> atlasCache)
         {
             otherImages = atlasCache;
+            _components = new ComponentManager(new ComponentFactory[] { new ComponentFactory(new List<Actors.CComponent>().ToArray()) });
         }
 
         public CLayer()
@@ -188,10 +189,8 @@ namespace King_of_Thieves.Map
 
             }
 
-            SpriteBatch batch = spriteBatch == null ? Graphics.CGraphics.spriteBatch : spriteBatch;
-
             if (_components != null)
-                _drawlist.drawAll(_layerIndex);
+                _drawlist.drawAll(_layerIndex,spriteBatch);
         }
 
         public int width

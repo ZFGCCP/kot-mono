@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.Actors.Projectiles
 {
@@ -20,7 +21,7 @@ namespace King_of_Thieves.Actors.Projectiles
             startTimer0(60);
         }
 
-        public override void drawMe(bool useOverlay = false)
+        public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             base.drawMe(useOverlay);
         }

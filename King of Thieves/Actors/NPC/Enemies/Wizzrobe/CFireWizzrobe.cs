@@ -36,6 +36,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Wizzrobe
                 Graphics.CTextures.addTexture(_WIZZROBE_ATTACK_UP, new Graphics.CTextureAtlas(_NPC_WIZZROBE, 32, 32, 0, "5:2", "5:2"));
             }
 
+            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite(_IDLE_DOWN));
             _imageIndex.Add(_IDLE_DOWN, new Graphics.CSprite(_WIZZROBE_IDLE_DOWN));
             _imageIndex.Add(_IDLE_LEFT, new Graphics.CSprite(_WIZZROBE_IDLE_LEFT));
             _imageIndex.Add(_IDLE_RIGHT, new Graphics.CSprite(_WIZZROBE_IDLE_LEFT, true));

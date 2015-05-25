@@ -24,6 +24,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
                 Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 40, 50, 1, "8:1", "8:1", 0));
             }
 
+            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite(_IDLE));
             _imageIndex.Add(_MOVING, new Graphics.CSprite(_MOVING));
             _imageIndex.Add(_IDLE, new Graphics.CSprite(_IDLE));
 

@@ -27,6 +27,7 @@ namespace King_of_Thieves.Forms.Map_Edit
         private List<string> nameSpaceList = new List<string>();
         private const string TOP_LEVEL = "King_of_Thieves.Actors.";
         private Dictionary<string, Graphics.CSprite> _atlasCache = new Dictionary<string,Graphics.CSprite>();
+        private Dictionary<string, string> _actorFullyQualifiedNames = new Dictionary<string, string>();
         private EDITOR_MODE _editorMode = EDITOR_MODE.TILE;
         private FrmNewComponent _newComponent = null;
 
@@ -154,7 +155,11 @@ namespace King_of_Thieves.Forms.Map_Edit
                 actorList.AddRange(Assembly.GetExecutingAssembly().GetTypes().ToList().Where(t => t.Namespace == nameSpace).ToList());
 
             foreach (System.Type type in actorList)
-                cmbActorList.Items.Add(type.ToString().Substring(type.ToString().LastIndexOf('.') + 1));
+            {
+                string shortName = type.ToString().Substring(type.ToString().LastIndexOf('.') + 1);
+                cmbActorList.Items.Add(shortName);
+                _actorFullyQualifiedNames.Add(shortName, type.ToString());
+            }
 
             cmbActorList.Sorted = true;
         }
@@ -220,7 +225,24 @@ namespace King_of_Thieves.Forms.Map_Edit
                     break;
 
                 case EDITOR_MODE.COMPONENT:
-                    mpvMapView.dropActor("King_of_Thieves.Actors.Player.CPlayer", "Player", 0);
+                    string actorName = "";
+                    string[] parameters = null;
+                    _newComponent = new FrmNewComponent(this);
+                    if (_newComponent.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        actorName = _newComponent.actorName;
+                        parameters = _newComponent.parameters;
+
+                        try
+                        {
+                            mpvMapView.dropActor(_actorFullyQualifiedNames[cmbActorList.Text], actorName, position, 0, parameters);
+                        }
+                        catch (KotException.KotBadArgumentException ex)
+                        {
+                            MessageBox.Show("Invalid parameter used for actor.");
+                        }
+                    }
+                    
                     break;
 
                 case EDITOR_MODE.HITBOX:
@@ -282,7 +304,10 @@ namespace King_of_Thieves.Forms.Map_Edit
 
         private void btnNewComponent_Click(object sender, EventArgs e)
         {
-            _newComponent.ShowDialog();
+            if (_newComponent.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                _editorMode = EDITOR_MODE.COMPONENT;
+            }
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)

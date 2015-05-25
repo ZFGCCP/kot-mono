@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.Actors.HUD.health
 {
@@ -70,7 +71,7 @@ namespace King_of_Thieves.Actors.HUD.health
                 portionFilled = 0;
         }
 
-        public override void drawMe(bool useOverlay = false)
+        public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             base.drawMe(useOverlay);
         }

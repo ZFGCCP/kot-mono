@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using King_of_Thieves.Graphics;
 using King_of_Thieves.Actors;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.Graphics
 {
@@ -31,7 +32,7 @@ namespace King_of_Thieves.Graphics
             
         }
 
-        public void drawAll(int layer)
+        public void drawAll(int layer, SpriteBatch spriteBatch = null)
         {
             foreach (KeyValuePair<int, List<CActor>> kvp in _drawList)
             {
@@ -45,7 +46,7 @@ namespace King_of_Thieves.Graphics
                             kvp.Value.Remove(sprite);
                             continue;
                         }
-                        sprite.drawMe();
+                        sprite.drawMe(false,spriteBatch);
                     }
                 }
             }

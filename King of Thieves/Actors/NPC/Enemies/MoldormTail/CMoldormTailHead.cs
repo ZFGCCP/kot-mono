@@ -31,6 +31,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
                 Graphics.CTextures.addTexture(_BODY, new Graphics.CTextureAtlas(_NPC_MOLDORM, 32, 32, 1, "0:2", "0:2"));
             }
 
+            _imageIndex.Add(_MAP_ICON, new Graphics.CSprite(_HEAD_UP));
             _imageIndex.Add(_HEAD_UP, new Graphics.CSprite(_HEAD_UP));
             _imageIndex.Add(_HEAD_DOWN, new Graphics.CSprite(_HEAD_UP,false,true));
             _imageIndex.Add(_HEAD_LEFT, new Graphics.CSprite(_HEAD_RIGHT, true,false));

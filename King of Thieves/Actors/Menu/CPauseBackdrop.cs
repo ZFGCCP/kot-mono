@@ -49,7 +49,7 @@ namespace King_of_Thieves.Actors.Menu
            
         }
 
-        public override void drawMe(bool useOverlay = false)
+        public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             base.drawMe(useOverlay);
 

@@ -792,14 +792,14 @@ namespace King_of_Thieves.Actors
 
         }
 
-        public virtual void drawMe(bool useOverlay = false)
+        public virtual void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             onDraw(this);
 
             //Color overlay = useOverlay ? Controllers.GameControllers.CDayClock.overlay : Color.White;
 
             if (image != null && _state != ACTOR_STATES.INVISIBLE)
-                _animationHasEnded = image.draw((int)_position.X, (int)_position.Y, useOverlay);
+                _animationHasEnded = image.draw((int)_position.X, (int)_position.Y, useOverlay, spriteBatch);
 
             if (showHitBox && _hitBox != null)
                 _hitBox.draw();

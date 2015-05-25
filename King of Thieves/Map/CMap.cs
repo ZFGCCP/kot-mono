@@ -18,6 +18,7 @@ namespace King_of_Thieves.Map
         private static Regex _valSplitter = new Regex(":");
         private List<CActor> _actorRegistry = new List<CActor>();
         private List<CComponent> _componentRegistry = new List<CComponent>(); //todo: make this a hashmap
+        private int _largestAddress = 0;
         private Gears.Cartography.Map _internalMap;
         private Graphics.CSprite _tileIndex = null;
 
@@ -124,6 +125,7 @@ namespace King_of_Thieves.Map
                         }
                         //register component
                         _componentRegistry.Add(tempComp);
+                        _largestAddress = componentAddresses;
                         compList[componentCount++] = tempComp;
                         componentAddresses++;
 
@@ -257,7 +259,13 @@ namespace King_of_Thieves.Map
         {
             _layers[layer].addComponent(component);
             _componentRegistry.Add(component);
+            _largestAddress = component.address;
             CMasterControl.commNet.Add(component.address, new List<CActorPacket>());
+
+            _layers[layer].addToDrawList(component.root);
+
+            foreach(KeyValuePair<string,CActor> kvp in component.actors)
+                _layers[layer].addToDrawList(kvp.Value);
         }
 
         public void removeComponent(CComponent component, int layer)
@@ -368,6 +376,14 @@ namespace King_of_Thieves.Map
             addToActorRegistry(actor);
 
             _layers[actor.layer].addToDrawList(actor);
+        }
+
+        public int largestAddress
+        {
+            get
+            {
+                return _largestAddress;
+            }
         }
     }
 }

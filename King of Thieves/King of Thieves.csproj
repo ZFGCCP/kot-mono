@@ -129,6 +129,7 @@
     <Compile Include="Data Struct\Graph\NodeGraph.cs" />
     <Compile Include="Data Struct\Node.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="KotException\KotBadArgumentException.cs" />
     <Compile Include="Forms\Map Editor\EditorComponents.cs">
       <SubType>Form</SubType>
     </Compile>
