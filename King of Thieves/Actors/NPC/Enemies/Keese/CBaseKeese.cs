@@ -36,6 +36,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Keese
         private float _movementSpeed; //Speed while moving normaly
         private float _attackSpeed; //Movement speed when attacking
 
+        protected const string _SPRITE_NAMESPACE = "npc:keese";
+        protected string _IDLE = _SPRITE_NAMESPACE + ":idle";
+        protected string _FLY = _SPRITE_NAMESPACE + ":fly";
+
+        private static int _keeseCount = 0;
+
         public CBaseKeese(int foh, params dropRate[] drops)
             : base(drops)
         {
@@ -64,6 +70,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Keese
 
             _attackVector = new Vector2();
             _attacking = false;
+
+            if (_keeseCount <= 0)
+                Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "keese");
+
+            _keeseCount += 1;
         }
 
         public override void collide(object sender, CActor collider)
@@ -249,6 +260,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Keese
             //    _position.X = 0;
             //TODO: Do we know map sizes yet?
             //MGZero: Nope
+        }
+
+        public override void destroy(object sender)
+        {
+            _keeseCount -= 1;
+            base.destroy(sender);
         }
     }
 }
