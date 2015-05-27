@@ -209,6 +209,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Guards
             _state = ACTOR_STATES.GO_HOME;
         }
 
+        public override void drawMe(bool useOverlay = false)
+        {
+            base.drawMe(useOverlay);
+        }
+
         private void _searchForPlayer(Vector2 playerPos)
         {
             if (isPointInHearingRange(playerPos))

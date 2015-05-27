@@ -71,11 +71,20 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
                     }
                 }
             }
+
+            if (!_hasShell && !_invulernable)
+            {
+                if (collider is Projectiles.CProjectile)
+                    _killMe = true;
+            }
         }
 
         protected override void _addCollidables()
         {
             _collidables.Add(typeof(Projectiles.CBomb));
+            _collidables.Add(typeof(Items.Swords.CSword));
+            _collidables.Add(typeof(Projectiles.CArrow));
+            _collidables.Add(typeof(Projectiles.CBoomerang));
         }
 
         public override void destroy(object sender)

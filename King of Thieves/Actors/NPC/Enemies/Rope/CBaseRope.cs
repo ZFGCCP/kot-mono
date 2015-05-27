@@ -90,36 +90,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 
         }
 
-       
-        public override void create(object sender)
-        {
-            base.create(sender);
-
-        }
-
-        public override void timer1(object sender)
-        {
-            base.timer1(sender);
-            
-        }
-
-        public override void timer2(object sender)
-        {
-            base.timer2(sender);
-        }
-
-        public override void timer3(object sender)
-        {
-            base.timer3(sender);
-        }
-
-        public override void drawMe(bool useOverlay = false)
-        {
-            
-                base.drawMe(useOverlay);
-        }
-
-        
         protected override void cleanUp()
         {
             Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
@@ -229,6 +199,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
                 _changeDirection();
 
             startTimer0(_TURN_TIME);
+        }
+
+        protected override void _addCollidables()
+        {
+            base._addCollidables();
+            _collidables.Add(typeof(Items.Swords.CSword));
+            _collidables.Add(typeof(Projectiles.CArrow));
         }
     }
 }

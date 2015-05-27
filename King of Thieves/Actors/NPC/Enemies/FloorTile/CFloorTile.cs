@@ -123,6 +123,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
             _collidables.Add(typeof(Player.CPlayer));
             _collidables.Add(typeof(Collision.CSolidTile));
             _collidables.Add(typeof(Items.Swords.CSword));
+            _collidables.Add(typeof(Items.shields.CBaseShield));
         }
     }
 }

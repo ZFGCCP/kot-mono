@@ -13,7 +13,6 @@ namespace King_of_Thieves.Actors.Player
     class CPlayer : CActor
     {
         private bool _swordReleased = true;
-        private bool _rollReleased = true;
         private static double _readableAngle = 0;
         private static Vector2 _readableCoords = new Vector2();
         private static DIRECTION _readableDirection = DIRECTION.DOWN;

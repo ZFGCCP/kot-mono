@@ -33,7 +33,7 @@ namespace King_of_Thieves.usr.local.splash
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
             Graphics.CGraphics.GPU.Clear(Color.Black);
-            Graphics.CGraphics.spriteBatch.DrawString(_sherwood, "In memory of Justin O'Leary\n\nForever the king of ZFGC\n\n2-18-86 to 5-22-15", _pos, Color.White);
+            Graphics.CGraphics.spriteBatch.DrawString(_sherwood, "In memory of Justin O'Leary\n\n Forever the king of ZFGC\n\n   2-18-86 to 5-22-15", _pos, Color.White);
         }
     }
 }
