@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 
 namespace King_of_Thieves.Graphics
 { 
@@ -24,6 +25,7 @@ namespace King_of_Thieves.Graphics
         private bool _paused = false;
         public bool removeFromDrawList = false;
         private int _timeForCurrentFrame = 0;
+        private bool _animEnd = false;
 
         private static Dictionary<int, double> _frameRateLookup = new Dictionary<int, double>();
 
@@ -99,9 +101,11 @@ namespace King_of_Thieves.Graphics
                     frameY++;
 
                     if (frameY >= _imageAtlas.tileYCount)
+                    {
                         frameY = 0;
+                        _animEnd = true;
+                    }
                 }
-                
             }
             _size = _imageAtlas.getTile(frameX, frameY);
             _position.X = x; _position.Y = y;
@@ -116,10 +120,9 @@ namespace King_of_Thieves.Graphics
             else if(_flipH)
                 CGraphics.spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
             base.draw(x,y);
-            if (_framesPassed == _totalFrames - 1)
+            if (_animEnd)
             {
-                _framesPassed = 0;
-                frameX = 0; frameY = 0;
+                _animEnd = false;
                 return true; //this is used to determine if the animation ended
             }
             return false;
