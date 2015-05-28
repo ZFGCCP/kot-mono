@@ -90,22 +90,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 
         }
 
-        protected override void cleanUp()
-        {
-            Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
-            base.cleanUp();
-        }
-
         public override void destroy(object sender)
         {
-            _ropeCount--;
-
-            if (_ropeCount <= 0)
-            {
-                cleanUp();
-                _ropeCount = 0;
-            }
-
+            _ropeCount -= 1;
+            _doNpcCountCheck(ref _ropeCount);
             base.destroy(sender);
         }
 

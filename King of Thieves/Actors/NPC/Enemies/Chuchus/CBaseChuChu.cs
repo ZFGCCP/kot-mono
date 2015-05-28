@@ -143,8 +143,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Chuchus
 
         public override void destroy(object sender)
         {
-            _chuChuCount -= 1;
+            _chuChuCount-= 1;
+            _doNpcCountCheck(ref _chuChuCount);
             base.destroy(sender);
+
+
         }
     }
 }

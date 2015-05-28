@@ -24,7 +24,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
         public COvergrownKeese() :
             base()
         {
-            if (_overgrownKeeseCount <= 0)
+            if (!Graphics.CTextures.rawTextures.ContainsKey(_SPRITE_NAMESPACE))
             {
                 Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/overgownKeese");
 
@@ -135,22 +135,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese
 
         }
 
-        protected override void cleanUp()
-        {
-            Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
-            base.cleanUp();
-        }
-
         public override void destroy(object sender)
         {
-            _overgrownKeeseCount--;
-
-            if (_overgrownKeeseCount <= 0)
-            {
-                cleanUp();
-                _overgrownKeeseCount = 0;
-            }
-
+            _overgrownKeeseCount -= 1;
+            _doNpcCountCheck(ref _overgrownKeeseCount);
             base.destroy(sender);
         }
 

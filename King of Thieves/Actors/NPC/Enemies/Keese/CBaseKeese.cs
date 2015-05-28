@@ -71,7 +71,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Keese
             _attackVector = new Vector2();
             _attacking = false;
 
-            if (_keeseCount <= 0)
+            if (!Graphics.CTextures.rawTextures.ContainsKey(_SPRITE_NAMESPACE))
                 Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "keese");
 
             _keeseCount += 1;
@@ -265,6 +265,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Keese
         public override void destroy(object sender)
         {
             _keeseCount -= 1;
+            _doNpcCountCheck(ref _keeseCount);
             base.destroy(sender);
         }
     }

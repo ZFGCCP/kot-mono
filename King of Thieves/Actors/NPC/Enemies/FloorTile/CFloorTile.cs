@@ -21,7 +21,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
         public CFloorTile() :
             base()
         {
-            if (_floorTileCount == 0)
+            if (!Graphics.CTextures.rawTextures.ContainsKey(_SPRITE_NAMESPACE))
             {
                 Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/floorTile");
 

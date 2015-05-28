@@ -93,20 +93,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Wizzrobe
 
         public override void destroy(object sender)
         {
-            _wizzrobeCount--;
-
-            if (_wizzrobeCount <= 0)
-            {
-                cleanUp();
-                _wizzrobeCount = 0;
-            }
-
+            _wizzrobeCount -= 1;
+            _doNpcCountCheck(ref _wizzrobeCount);
             base.destroy(sender);
-        }
-
-        protected override void cleanUp()
-        {
-            Graphics.CTextures.rawTextures.Remove(_NPC_WIZZROBE);
         }
 
         public override void timer0(object sender)
