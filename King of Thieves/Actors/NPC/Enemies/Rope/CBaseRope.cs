@@ -64,7 +64,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             _imageIndex.Add(_FAST_SLITHER_RIGHT, new Graphics.CSprite(_FAST_SLITHER_LEFT,true));
 
             _ropeCount += 1;
-
+            _hitBox = new Collision.CHitBox(this, 10, 10, 10, 15);
 
         }
 
@@ -95,6 +95,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             _ropeCount -= 1;
             _doNpcCountCheck(ref _ropeCount);
             base.destroy(sender);
+        }
+
+        public override void collide(object sender, CActor collider)
+        {
+            base.collide(sender, collider);
+            if (collider is Items.Swords.CSword || collider is Projectiles.CArrow || collider is Projectiles.CBomb)
+                _killMe = true;
         }
 
         public override void update(GameTime gameTime)
@@ -194,6 +201,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             base._addCollidables();
             _collidables.Add(typeof(Items.Swords.CSword));
             _collidables.Add(typeof(Projectiles.CArrow));
+            _collidables.Add(typeof(Projectiles.CBomb));
+            _collidables.Add(typeof(Projectiles.CBoomerang));
         }
     }
 }

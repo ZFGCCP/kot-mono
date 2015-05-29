@@ -183,8 +183,11 @@ namespace King_of_Thieves.Actors
             {
                 foreach (KeyValuePair<string, CSprite> kvp in _imageIndex)
                 {
-                    Graphics.CTextures.textures[kvp.Value.atlasName].Dispose();
-                    Graphics.CTextures.textures.Remove(kvp.Value.atlasName);
+                    if (Graphics.CTextures.textures.ContainsKey(kvp.Value.atlasName))
+                    {
+                        Graphics.CTextures.textures[kvp.Value.atlasName].Dispose();
+                        Graphics.CTextures.textures.Remove(kvp.Value.atlasName);
+                    }
                     kvp.Value.clean();
                 }
             }
