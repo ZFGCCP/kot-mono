@@ -21,13 +21,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
         public CFloorTile() :
             base()
         {
-            if (_floorTileCount == 0)
+            if (!Graphics.CTextures.rawTextures.ContainsKey(_SPRITE_NAMESPACE))
             {
                 Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/floorTile");
 
                 Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE,16,16,0,"0:0","0:0"));
                 Graphics.CTextures.addTexture(_SPINNING, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 16, 16, 0, "0:0", "0:1",10));
-                Graphics.CTextures.addTexture(_BREAKING, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 16, 16, 0, "1:0", "1:1", 1));
+                Graphics.CTextures.addTexture(_BREAKING, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 16, 16, 0, "1:0", "1:1", 30));
             }
 
             _imageIndex.Add(_IDLE, new Graphics.CSprite(_IDLE));
@@ -57,8 +57,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
 
         public override void destroy(object sender)
         {
+            _floorTileCount -= 1;
+            _doNpcCountCheck(ref _floorTileCount);
             base.destroy(sender);
-            swapImage(_BREAKING);
         }
 
         public override void animationEnd(object sender)
@@ -66,17 +67,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
             base.animationEnd(sender);
             if (_state == ACTOR_STATES.EXPLODE)
                 _killMe = true;
-        }
-
-        protected override void cleanUp()
-        {
-            _floorTileCount--;
-
-            if (_floorTileCount == 0)
-            {
-                Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
-                Graphics.CTextures.rawTextures.Remove(_SPRITE_NAMESPACE);
-            }
         }
 
         public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
@@ -133,6 +123,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.FloorTile
             _collidables.Add(typeof(Player.CPlayer));
             _collidables.Add(typeof(Collision.CSolidTile));
             _collidables.Add(typeof(Items.Swords.CSword));
+            _collidables.Add(typeof(Items.shields.CBaseShield));
         }
     }
 }

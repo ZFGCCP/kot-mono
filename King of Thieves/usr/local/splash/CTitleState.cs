@@ -20,6 +20,7 @@ namespace King_of_Thieves.usr.local.splash
             base()
         {
             //title - we can remove these after the title closed.  They're small enough that we can load them up as needed
+            Graphics.CSprite.initFrameRateMapping();
             Graphics.CTextures.addRawTexture("title", "title/title-background");
             Graphics.CTextures.addRawTexture("logo", "title/title-logo");
 

@@ -22,7 +22,7 @@ namespace King_of_Thieves.Actors.Effects
         {
             base._initializeResources();
 
-            _imageIndex.Add("shadow", new Graphics.CSprite("effects:Shadow", Graphics.CTextures.textures["effects:Shadow"]));
+            _imageIndex.Add("shadow", new Graphics.CSprite("effects:Shadow"));
         }
 
         public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)

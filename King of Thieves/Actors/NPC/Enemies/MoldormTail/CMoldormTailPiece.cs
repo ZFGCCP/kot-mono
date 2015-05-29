@@ -59,9 +59,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.MoldormTail
             _next = additional[1];
         }
 
-        protected override void cleanUp()
+        public override void destroy(object sender)
         {
-            Graphics.CTextures.rawTextures.Remove(_NPC_MOLDORM);
+            _moldormAndTailCount -= 1;
+            _doNpcCountCheck(ref _moldormAndTailCount);
+            base.destroy(sender);
         }
+
+       
     }
 }

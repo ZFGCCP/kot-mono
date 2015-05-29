@@ -16,7 +16,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
         public CPoe() :
             base()
         {
-            if (_poeCount <= 0)
+            if (!Graphics.CTextures.rawTextures.ContainsKey(_SPRITE_NAMESPACE))
             {
                 Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/poe");
 
@@ -84,16 +84,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Poe
 
         public override void destroy(object sender)
         {
+            _poeCount -= 1;
+            _doNpcCountCheck(ref _poeCount);
             base.destroy(sender);
-            _poeCount--;
-
-            if (_poeCount == 0)
-                cleanUp();
-        }
-
-        protected override void cleanUp()
-        {
-            Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
         }
 
         private void _selectVelocity()

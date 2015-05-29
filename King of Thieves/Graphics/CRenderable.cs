@@ -110,6 +110,8 @@ namespace King_of_Thieves.Graphics
                 _size.Height = value;
             }
         }
+
+        
         
     }
 }

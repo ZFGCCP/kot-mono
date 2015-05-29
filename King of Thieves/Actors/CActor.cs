@@ -126,6 +126,7 @@ namespace King_of_Thieves.Actors
         protected bool _invulernable = false;
         protected int _collisionDirectionX = 0;
         protected int _collisionDirectionY = 0;
+        private bool _flagForResourceCleanup = false;
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -177,7 +178,23 @@ namespace King_of_Thieves.Actors
         public virtual void click(object sender) { }
         public virtual void tap(object sender) { }
 
-        protected virtual void cleanUp() { }
+        protected virtual void cleanUp() 
+        {
+            if (_flagForResourceCleanup)
+            {
+                foreach (KeyValuePair<string, CSprite> kvp in _imageIndex)
+                {
+                    if (Graphics.CTextures.textures.ContainsKey(kvp.Value.atlasName))
+                    {
+                        Graphics.CTextures.textures[kvp.Value.atlasName].Dispose();
+                        Graphics.CTextures.textures.Remove(kvp.Value.atlasName);
+                    }
+                    kvp.Value.clean();
+                }
+            }
+
+            _imageIndex.Clear();
+        }
         public virtual void destroy(object sender)
         {
             if (_hitBox != null)
@@ -279,6 +296,11 @@ namespace King_of_Thieves.Actors
             double angle = _calculateAngle(position);
 
             _directionChange(angle);
+        }
+
+        protected void _flagResourceCleanup()
+        {
+            _flagForResourceCleanup = true;
         }
 
         protected void _directionChange(double angle)
@@ -1065,6 +1087,14 @@ namespace King_of_Thieves.Actors
                     return true;
             }
             return false;
+        }
+
+        protected bool _getFlagForResourceCleanup
+        {
+            get
+            {
+                return _flagForResourceCleanup;
+            }
         }
     }
 }

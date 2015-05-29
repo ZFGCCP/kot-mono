@@ -44,13 +44,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 
                 Graphics.CTextures.rawTextures.Add(_SPRITE_NAMESPACE, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/rope"));
 
-                Graphics.CTextures.addTexture(_SLITHER_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 2));
-                Graphics.CTextures.addTexture(_SLITHER_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:2", "3:2", 2));
-                Graphics.CTextures.addTexture(_SLITHER_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "3:0", 2));
+                Graphics.CTextures.addTexture(_SLITHER_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 10));
+                Graphics.CTextures.addTexture(_SLITHER_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:2", "3:2", 10));
+                Graphics.CTextures.addTexture(_SLITHER_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "3:0", 10));
 
-                Graphics.CTextures.addTexture(_FAST_SLITHER_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 4));
-                Graphics.CTextures.addTexture(_FAST_SLITHER_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:2", "3:2", 4));
-                Graphics.CTextures.addTexture(_FAST_SLITHER_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "3:0", 4));
+                Graphics.CTextures.addTexture(_FAST_SLITHER_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:1", "3:1", 30));
+                Graphics.CTextures.addTexture(_FAST_SLITHER_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:2", "3:2", 30));
+                Graphics.CTextures.addTexture(_FAST_SLITHER_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "3:0", 30));
             }
             _imageIndex.Add(_MAP_ICON, new Graphics.CSprite(_SLITHER_DOWN));
             _imageIndex.Add(_SLITHER_DOWN, new Graphics.CSprite(_SLITHER_DOWN));
@@ -65,7 +65,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             _imageIndex.Add(_FAST_SLITHER_RIGHT, new Graphics.CSprite(_FAST_SLITHER_LEFT,true));
 
             _ropeCount += 1;
-
+            _hitBox = new Collision.CHitBox(this, 10, 10, 10, 15);
 
         }
 
@@ -99,53 +99,18 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
 
         }
 
-       
-        public override void create(object sender)
-        {
-            base.create(sender);
-
-        }
-
-        public override void timer1(object sender)
-        {
-            base.timer1(sender);
-            
-        }
-
-        public override void timer2(object sender)
-        {
-            base.timer2(sender);
-        }
-
-        public override void timer3(object sender)
-        {
-            base.timer3(sender);
-        }
-
-        public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
-        {
-            
-                base.drawMe(useOverlay);
-        }
-
-        
-        protected override void cleanUp()
-        {
-            Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
-            base.cleanUp();
-        }
-
         public override void destroy(object sender)
         {
-            _ropeCount--;
-
-            if (_ropeCount <= 0)
-            {
-                cleanUp();
-                _ropeCount = 0;
-            }
-
+            _ropeCount -= 1;
+            _doNpcCountCheck(ref _ropeCount);
             base.destroy(sender);
+        }
+
+        public override void collide(object sender, CActor collider)
+        {
+            base.collide(sender, collider);
+            if (collider is Items.Swords.CSword || collider is Projectiles.CArrow || collider is Projectiles.CBomb)
+                _killMe = true;
         }
 
         public override void update(GameTime gameTime)
@@ -238,6 +203,15 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
                 _changeDirection();
 
             startTimer0(_TURN_TIME);
+        }
+
+        protected override void _addCollidables()
+        {
+            base._addCollidables();
+            _collidables.Add(typeof(Items.Swords.CSword));
+            _collidables.Add(typeof(Projectiles.CArrow));
+            _collidables.Add(typeof(Projectiles.CBomb));
+            _collidables.Add(typeof(Projectiles.CBoomerang));
         }
     }
 }

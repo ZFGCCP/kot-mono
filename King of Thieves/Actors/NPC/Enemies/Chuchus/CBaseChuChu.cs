@@ -19,20 +19,27 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Chuchus
         //attack: jump at the player
 
         private Vector2 _jumpTo;
+        private static int _chuChuCount = 0;
+        protected const string _SPRITE_NAMESPACE = "npc:chuchu";
+
+        protected string _WOBBLE = _SPRITE_NAMESPACE + ":wobble";
+        protected string _POPUP = _SPRITE_NAMESPACE + ":popup";
+        protected string _IDLE = _SPRITE_NAMESPACE + ":idle";
+        protected string _HOP = _SPRITE_NAMESPACE + ":hop";
+        protected string _POPDOWN = _SPRITE_NAMESPACE + ":popdown";
 
         public CBaseChuChu(int sight, float fov, int foh, params dropRate[] drops)
             : base(drops)
         {
+            if (!Graphics.CTextures.rawTextures.ContainsKey(_SPRITE_NAMESPACE))
+                Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "chuchuGreen");
+
             _lineOfSight = sight;
             _visionRange = fov;
             _hearingRadius = foh;
             _state = ACTOR_STATES.IDLE;
-            image = _imageIndex["chuChuIdle"];
-        }
-
-        protected override void _initializeResources()
-        {
-            base._initializeResources();
+            image = _imageIndex[_IDLE];
+            _chuChuCount += 1;
         }
 
         protected override void idle()
@@ -46,7 +53,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Chuchus
             //70% chance of the chu chu popping up to chase the player
             if (_randNum.Next(0, 1000000) <= 10000)
             {
-                swapImage("chuChuPopUp");
+                swapImage(_POPUP);
                 _state = ACTOR_STATES.POPUP;
             }
         }
@@ -56,17 +63,17 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Chuchus
             {
                 case ACTOR_STATES.ATTACK:
                     _state = ACTOR_STATES.WOBBLE;
-                    swapImage("chuChuWobble", false);
+                    swapImage(_WOBBLE, false);
                     break;
 
                 case ACTOR_STATES.POPUP:
                     _state = ACTOR_STATES.WOBBLE;
-                    swapImage("chuChuWobble", false);
+                    swapImage(_WOBBLE, false);
                     break;
 
                 case ACTOR_STATES.POPDOWN:
                     _state = ACTOR_STATES.IDLE;
-                    swapImage("chuChuIdle", false);
+                    swapImage(_IDLE, false);
                     break;
             }
         }
@@ -75,7 +82,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Chuchus
         {
 
             _state = ACTOR_STATES.POPDOWN;
-            swapImage("chuChuPopDown", false);
+            swapImage(_POPDOWN, false);
             base.timer0(sender);
         }
 
@@ -88,17 +95,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Chuchus
             {
                 _jumpTo = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
                 _state = ACTOR_STATES.ATTACK;
-                swapImage("chuChuHop", false);
+                swapImage(_HOP, false);
             }
 
             if (MathExt.MathExt.distance(_position, new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY)) > _hearingRadius)
             {
                 _state = ACTOR_STATES.IDLE;
                 startTimer0(1);
-
-                
-                    
-
             }
 
             //base.chase();
@@ -136,6 +139,15 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Chuchus
                     break;
 
             }
+        }
+
+        public override void destroy(object sender)
+        {
+            _chuChuCount-= 1;
+            _doNpcCountCheck(ref _chuChuCount);
+            base.destroy(sender);
+
+
         }
     }
 }

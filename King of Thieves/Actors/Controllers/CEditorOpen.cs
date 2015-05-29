@@ -16,7 +16,7 @@ namespace King_of_Thieves.Actors.Controllers
 
         public CEditorOpen()
         {
-            _imageIndex.Add("iconOpen", new Graphics.CSprite("editor:icons:open", Graphics.CTextures.textures["editor:icons:open"]));
+            _imageIndex.Add("iconOpen", new Graphics.CSprite("editor:icons:open"));
             _position = new Vector2(25, 4);
 
             swapImage("iconOpen", false);

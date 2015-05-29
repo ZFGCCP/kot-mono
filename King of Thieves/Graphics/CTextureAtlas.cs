@@ -10,7 +10,7 @@ using System.IO;
 
 namespace King_of_Thieves.Graphics
 {
-    public class CTextureAtlas
+    public class CTextureAtlas : IDisposable
     {
         public int FrameWidth = 0, FrameHeight = 0, FrameRate = 0, CellSpacing = 0, Column = 0, Row = 0, CurrentCell = 0;
         private Rectangle[,] _textureAtlas;
@@ -20,6 +20,7 @@ namespace King_of_Thieves.Graphics
         private static Regex _cellFormat = new Regex("^[0-9]+:[0-9]+$");
         private static Regex _cellSplitter = new Regex(":");
         private bool _isTileSet;
+        private int _timeSlice = 0;
 
         public CTextureAtlas(Texture2D sourceImage, string source, int _frameWidth, int _frameHeight, int _cellSpacing)
         {
@@ -79,6 +80,7 @@ namespace King_of_Thieves.Graphics
             CellSpacing = _cellSpacing;
             _sourceImage = CTextures.rawTextures[sourceImage];
             FrameRate = frameRate;
+            _timeSlice = frameRate;
 
             _fixedWidth = (sourceRect.Width / (_frameWidth + _cellSpacing));
             _fixedHeight = (sourceRect.Height / (_frameHeight + _cellSpacing));
@@ -100,6 +102,14 @@ namespace King_of_Thieves.Graphics
 
             _textureAtlas = new Rectangle[_fixedWidth, _fixedHeight];
             _assembleTextureAtlas(this);
+        }
+
+        public int timeSlice
+        {
+            get
+            {
+                return _timeSlice;
+            }
         }
 
         public bool isTileSet
@@ -218,6 +228,12 @@ namespace King_of_Thieves.Graphics
                         textureAtlas.FrameHeight);
                 }
             }
+        }
+
+        public new void Dispose()
+        {
+            _textureAtlas = null;
+            _sourceImage = null;
         }
     }
 }

@@ -106,15 +106,27 @@ namespace King_of_Thieves.Actors.NPC.Enemies
 
         }
 
+        protected void _doNpcCountCheck(ref int counter)
+        {
+            if (counter <= 0)
+            {
+                counter = 0;
+                _flagResourceCleanup();
+            }
+        }
+
         public override void destroy(object sender)
         {
             Items.Drops.CDroppable itemToDrop = _dropItem();
+            Graphics.CEffects.createEffect(Graphics.CEffects.EXPLOSION,_position);
 
             if (itemToDrop != null)
                 Map.CMapManager.addActorToComponent(itemToDrop, CReservedAddresses.DROP_CONTROLLER);
 
             if (_hitBox != null)
                 base.destroy(sender);
+
+            cleanUp();
         }
 
         private Items.Drops.CDroppable _dropItem()
@@ -135,16 +147,6 @@ namespace King_of_Thieves.Actors.NPC.Enemies
 
             return null;
             
-        }
-
-        protected bool _checkLineofSight(float x, float y)
-        {
-            
-
-
-
-
-            return false;
         }
 
         protected Vector2 getRandomPointInSightRange()

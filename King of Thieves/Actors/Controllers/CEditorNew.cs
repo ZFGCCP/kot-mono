@@ -14,7 +14,7 @@ namespace King_of_Thieves.Actors.Controllers
 
         public CEditorNew()
         {
-            _imageIndex.Add("iconNew", new Graphics.CSprite("editor:icons", Graphics.CTextures.textures["editor:icons"]));
+            _imageIndex.Add("iconNew", new Graphics.CSprite("editor:icons"));
             _position = new Vector2(5, 5);
 
             swapImage("iconNew", false);

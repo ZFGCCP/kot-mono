@@ -23,14 +23,14 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
         public CArmoredCrab() :
             base()
         {
-            if (_armoredCrabCount <= 0)
+            if (!Graphics.CTextures.rawTextures.ContainsKey(SPRITE_NAMESPACE))
             {
-                Graphics.CTextures.rawTextures.Add(SPRITE_NAMESPACE, CMasterControl.glblContent.Load<Texture2D>(@"sprites/npc/armoredCrabNew"));
+                Graphics.CTextures.addRawTexture(SPRITE_NAMESPACE, @"sprites/npc/armoredCrabNew");
 
                 Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:0", "0:0", 0));
-                Graphics.CTextures.addTexture(_WALK, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:0", "3:0", 4));
+                Graphics.CTextures.addTexture(_WALK, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:0", "3:0", 10));
                 Graphics.CTextures.addTexture(_IDLE_NOSHELL, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:3", "0:3", 0));
-                Graphics.CTextures.addTexture(_WALK_NOSHELL, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:3", "3:3", 4));
+                Graphics.CTextures.addTexture(_WALK_NOSHELL, new Graphics.CTextureAtlas(SPRITE_NAMESPACE, 32, 32, 0, "0:3", "3:3", 10));
             }
 
             _imageIndex.Add(_MAP_ICON, new Graphics.CSprite(_IDLE));
@@ -72,31 +72,27 @@ namespace King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab
                     }
                 }
             }
+
+            if (!_hasShell && !_invulernable)
+            {
+                if (collider is Projectiles.CProjectile)
+                    _killMe = true;
+            }
         }
 
         protected override void _addCollidables()
         {
             _collidables.Add(typeof(Projectiles.CBomb));
+            _collidables.Add(typeof(Items.Swords.CSword));
+            _collidables.Add(typeof(Projectiles.CArrow));
+            _collidables.Add(typeof(Projectiles.CBoomerang));
         }
 
         public override void destroy(object sender)
         {
-            _armoredCrabCount--;
-
-            if (_armoredCrabCount <= 0)
-            {
-                cleanUp();
-                _armoredCrabCount = 0;
-            }
-
+            _armoredCrabCount -= 1;
+            _doNpcCountCheck(ref _armoredCrabCount);
             base.destroy(sender);
-        }
-
-        protected override void cleanUp()
-        {
-            Graphics.CTextures.cleanUp(SPRITE_NAMESPACE);
-            _armoredCrabCount = 0;
-            base.cleanUp();
         }
 
         private void _chooseNewPoint()

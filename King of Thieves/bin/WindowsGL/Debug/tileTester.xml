@@ -158,6 +158,14 @@
 					<actor name = "ropeTest" type = "King_of_Thieves.Actors.NPC.Enemies.Rope.CBaseRope" coordinates="70:70" params="G"></actor>
 				</actors>
 			</component>
+			<component>
+				<actors>
+					<actor name="floorTileTest" type="King_of_Thieves.Actors.NPC.Enemies.FloorTile.CFloorTileMaster" coordinates = "150:120" params="3"></actor>
+					<actor name="floorTileTestCHILD0" type="King_of_Thieves.Actors.NPC.Enemies.FloorTile.CFloorTile" coordinates = "150:120" params="60"></actor>
+					<actor name="floorTileTestCHILD1" type="King_of_Thieves.Actors.NPC.Enemies.FloorTile.CFloorTile" coordinates = "166:120" params="120"></actor>
+					<actor name="floorTileTestCHILD2" type="King_of_Thieves.Actors.NPC.Enemies.FloorTile.CFloorTile" coordinates = "182:120" params="180"></actor>
+				</actors>
+			</component>
 			</components>
 	</layer>
   </layers>

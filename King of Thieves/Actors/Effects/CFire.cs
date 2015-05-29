@@ -18,7 +18,7 @@ namespace King_of_Thieves.Actors.Effects
         {
             base._initializeResources();
 
-            _imageIndex.Add("fire", new Graphics.CSprite("effects:Fire", Graphics.CTextures.textures["effects:Fire"]));
+            _imageIndex.Add("fire", new Graphics.CSprite("effects:Fire"));
         }
 
         public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)

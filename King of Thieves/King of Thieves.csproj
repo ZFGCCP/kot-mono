@@ -83,7 +83,6 @@
     <Compile Include="Actors\Menu\CPauseBackdrop.cs" />
     <Compile Include="Actors\NPC\Other\CTownsFolk.cs" />
     <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CArmoredCrab.cs" />
-    <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CCrabShell.cs" />
     <Compile Include="Actors\NPC\Enemies\CBaseEnemy.cs" />
     <Compile Include="Actors\NPC\Enemies\Chuchus\CBaseChuChu.cs" />
     <Compile Include="Actors\NPC\Enemies\Chuchus\CGreenChuChu.cs" />
@@ -225,6 +224,7 @@
     <Compile Include="usr\local\GameMenu\CPauseMenuElement.cs" />
     <Compile Include="usr\local\MapEditor.cs" />
     <Compile Include="usr\local\PlayableState.cs" />
+    <Compile Include="usr\local\splash\CDedicationPage.cs" />
     <Compile Include="usr\local\splash\CTitleState.cs" />
     <Compile Include="usr\local\Testbed.cs" />
   </ItemGroup>

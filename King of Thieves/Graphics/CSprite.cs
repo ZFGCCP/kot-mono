@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 
 namespace King_of_Thieves.Graphics
 { 
@@ -23,6 +24,10 @@ namespace King_of_Thieves.Graphics
         private bool _isEffect = false;
         private bool _paused = false;
         public bool removeFromDrawList = false;
+        private int _timeForCurrentFrame = 0;
+        private bool _animEnd = false;
+
+        private static Dictionary<int, double> _frameRateLookup = new Dictionary<int, double>();
 
         public CSprite(string atlasName, bool flipH = false, bool flipV = false, Effect shader = null, bool isEffect = false, int rotation = 0, params VertexPositionColor[] vertices)
             : base(shader, vertices)
@@ -30,7 +35,7 @@ namespace King_of_Thieves.Graphics
             init(atlasName, Graphics.CTextures.textures[atlasName], shader, flipH, flipV, isEffect, rotation, vertices);
         }
 
-        public CSprite(string atlasName, Dictionary<string, CTextureAtlas> texture, Effect shader = null, bool flipH = false, bool flipV = false, bool isEffect = false, params VertexPositionColor[] vertices)
+        private CSprite(string atlasName, Dictionary<string, CTextureAtlas> texture, Effect shader = null, bool flipH = false, bool flipV = false, bool isEffect = false, params VertexPositionColor[] vertices)
             : base(shader, vertices)
         {
             init(atlasName, texture[atlasName], shader, flipH, flipV, isEffect, 0, vertices);
@@ -46,6 +51,11 @@ namespace King_of_Thieves.Graphics
             : base(null, null)
         {
             init(sprite.atlasName, sprite._imageAtlas, null, sprite._flipH, sprite._flipV, sprite._isEffect, 0, null);
+        }
+
+        ~CSprite()
+        {
+            _imageAtlas = null;
         }
 
         private void init(string atlasName, CTextureAtlas atlas, Effect shader = null, bool flipH = false, bool flipV = false, bool isEffect = false, int rotation = 0, params VertexPositionColor[] vertices)
@@ -79,11 +89,12 @@ namespace King_of_Thieves.Graphics
             if (_imageAtlas == null)
                 throw new FormatException("Unable to draw sprite " + _name);
 
-            _frameTracker += _imageAtlas.FrameRate;
+            _timeForCurrentFrame += CMasterControl.gameTime.ElapsedGameTime.Milliseconds;
 
-            if (!_paused && _frameTracker >= 60)
+
+            if (_imageAtlas.FrameRate != 0 && !_paused && _timeForCurrentFrame >= _frameRateLookup[_imageAtlas.FrameRate])
             {
-                _frameTracker = 0;
+                _timeForCurrentFrame = 0;
                 frameX++;
                 _framesPassed++;
 
@@ -93,9 +104,11 @@ namespace King_of_Thieves.Graphics
                     frameY++;
 
                     if (frameY >= _imageAtlas.tileYCount)
+                    {
                         frameY = 0;
+                        _animEnd = true;
+                    }
                 }
-                
             }
             _size = _imageAtlas.getTile(frameX, frameY);
             _position.X = x; _position.Y = y;
@@ -117,10 +130,9 @@ namespace King_of_Thieves.Graphics
             {
                 int q = 0;
             }
-            if (_framesPassed == _totalFrames - 1)
+            if (_animEnd)
             {
-                _framesPassed = 0;
-                frameX = 0; frameY = 0;
+                _animEnd = false;
                 return true; //this is used to determine if the animation ended
             }
             return false;
@@ -164,6 +176,21 @@ namespace King_of_Thieves.Graphics
             this.frameY = frameY;
         }
 
-        
+        public void clean()
+        {
+            _imageAtlas = null;
+        }
+
+        public static void initFrameRateMapping()
+        {
+            _frameRateLookup.Clear();
+            double timePerFrame = CMasterControl.gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            _frameRateLookup.Add(0, 0);
+            for (int i = 1; i <= 60; i++)
+            {
+                _frameRateLookup.Add(i, 1000.0/(double)i);
+            }
+        }
     }
 }

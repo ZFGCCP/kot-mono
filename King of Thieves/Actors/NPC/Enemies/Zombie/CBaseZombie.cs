@@ -25,7 +25,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
         public CBaseZombie()
             : base()
         {
-            if (_zombieCount <= 0)
+            if (!Graphics.CTextures.rawTextures.ContainsKey(_SPRITE_NAMESPACE))
                 Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/zombie");
 
             _zombieCount += 1;
@@ -68,18 +68,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Zombie
             Map.CMapManager.addActorToComponent(screecher, this.componentAddress);
         }
 
-        protected override void cleanUp()
-        {
-            if (_zombieCount <= 0)
-                Graphics.CTextures.cleanUp(_SPRITE_NAMESPACE);
-        }
-
         public override void destroy(object sender)
         {
-            base.destroy(sender);
             _zombieCount -= 1;
-
-            cleanUp();
+            _doNpcCountCheck(ref _zombieCount);
+            base.destroy(sender);
         }
 
         protected override void _addCollidables()
