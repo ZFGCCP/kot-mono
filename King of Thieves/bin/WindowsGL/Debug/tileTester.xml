@@ -106,13 +106,13 @@
 				<actors>
 					<actor name="armoredCrab" type="King_of_Thieves.Actors.NPC.Enemies.ArmoredCrab.CArmoredCrab" coordinates = "70:50"></actor>
 				</actors>
-			</component>
+			</component>-->
 			<component>
 				<actors>
 					<actor name="overgrownKeese" type="King_of_Thieves.Actors.NPC.Enemies.OvergrownKeese.COvergrownKeese" coordinates = "100:100"></actor>
 				</actors>
 			</component>
-			<component>
+			<!--<component>
 				<actors>
 					<actor name="chestTest" type="King_of_Thieves.Actors.Items.decoration.CChest" coordinates = "20:100" params="0,1,4"></actor>
 				</actors>
@@ -141,11 +141,11 @@
 					<actor name="townsfolk" type="King_of_Thieves.Actors.NPC.Other.CTownsFolk" coordinates="30:30"></actor>
 				</actors>
 			</component>
-			<component>
+			<!--<component>
 				<actors>
 					<actor name="guardTest" type="King_of_Thieves.Actors.NPC.Enemies.Guards.CCastleGuard" coordinates="50:50"></actor>
 				</actors>
-			</component>
+			</component>-->
 			<component>
 				<actors>
 					<actor name = "player" type = "King_of_Thieves.Actors.Player.CPlayer" coordinates = "0:0"></actor>
