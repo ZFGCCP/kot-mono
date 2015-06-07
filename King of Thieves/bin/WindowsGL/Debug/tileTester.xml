@@ -166,6 +166,11 @@
 					<actor name="floorTileTestCHILD2" type="King_of_Thieves.Actors.NPC.Enemies.FloorTile.CFloorTile" coordinates = "182:120" params="180"></actor>
 				</actors>
 			</component>
+			<component>
+			    <actors>
+					<actor name = "bokoblinTest" type = "King_of_Thieves.Actors.NPC.Enemies.Bokoblin.CBokoblin" coordinates="80:80"></actor>
+				</actors>
+			</component>
 			</components>
 	</layer>
   </layers>
