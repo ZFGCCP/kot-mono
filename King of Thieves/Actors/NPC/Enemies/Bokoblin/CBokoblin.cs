@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
 using System.Text;
 
 namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
@@ -49,6 +50,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
 
             _bokoblinCount += 1;
             _goIdle();
+            _lineOfSight = 50;
+            _visionRange = 60;
         }
 
         public override void destroy(object sender)
@@ -148,6 +151,27 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
                 default:
                     break;
             }
+        }
+
+        private void _searchForPlayer()
+        {
+            Vector2 playerPos = Vector2.Zero;
+
+            playerPos.X = Player.CPlayer.glblX;
+            playerPos.Y = Player.CPlayer.glblY;
+
+            if (isPointInHearingRange(playerPos))
+                _state = ACTOR_STATES.CHASE;
+        }
+
+        private void _chasePlayer()
+        {
+            Vector2 playerPos = Vector2.Zero;
+
+            playerPos.X = Player.CPlayer.glblX;
+            playerPos.Y = Player.CPlayer.glblY;
+
+            moveToPoint2(playerPos.X, playerPos.Y, 1);
         }
     }
 }
