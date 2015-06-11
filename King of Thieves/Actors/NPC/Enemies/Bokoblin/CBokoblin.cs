@@ -21,6 +21,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
         private const string _IDLE_RIGHT = _SPRITE_NAMESPACE + ":idleRight";
 
         private static int _bokoblinCount = 0;
+        private const int _ATTACK_RADIUS = 20;
 
         public CBokoblin() :
             base()
@@ -52,6 +53,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
             _goIdle();
             _lineOfSight = 50;
             _visionRange = 60;
+            _hearingRadius = 60;
         }
 
         public override void destroy(object sender)
@@ -69,6 +71,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
             {
                 case ACTOR_STATES.MOVING:
                     moveInDirection(_velocity);
+                    _searchForPlayer();
+                    break;
+
+                case ACTOR_STATES.CHASE:
+                    _chasePlayer();
                     break;
             }
         }
@@ -162,6 +169,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
 
             if (isPointInHearingRange(playerPos))
                 _state = ACTOR_STATES.CHASE;
+            else
+            {
+                if (_state == ACTOR_STATES.CHASE)
+                    _goIdle();
+            }
         }
 
         private void _chasePlayer()
