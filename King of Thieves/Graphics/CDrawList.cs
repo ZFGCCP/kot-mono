@@ -32,6 +32,15 @@ namespace King_of_Thieves.Graphics
             
         }
 
+        public void removeSpriteFromDrawList(CActor sprite)
+        {
+            int depth = sprite.drawDepth;
+            if (!_drawList.ContainsKey(depth))
+                return;
+
+            _drawList[depth].Remove(sprite);
+        }
+
         public void drawAll(int layer, SpriteBatch spriteBatch = null)
         {
             foreach (KeyValuePair<int, List<CActor>> kvp in _drawList)

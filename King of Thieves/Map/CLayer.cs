@@ -35,6 +35,11 @@ namespace King_of_Thieves.Map
         {
         }
 
+        public void removeFromDrawList(Actors.CActor actor)
+        {
+            _drawlist.removeSpriteFromDrawList(actor);
+        }
+
         public void addToDrawList(Actors.CActor actor)
         {
             _drawlist.addSpriteToList(actor.drawDepth, actor);

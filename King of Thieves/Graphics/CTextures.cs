@@ -122,6 +122,10 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_FREEZEUP = PLAYER + "FreezeUp";
         public const string PLAYER_FREEZELEFT = PLAYER + "FreezeLeft";
         public const string PLAYER_FREEZERIGHT = PLAYER + "FreezeRight";
+        public const string PLAYER_SHADOWLEFT = PLAYER + "ShadowLeft";
+        public const string PLAYER_SHADOWRIGHT = PLAYER + "ShadowRight";
+        public const string PLAYER_SHADOWUP = PLAYER + "ShadowUp";
+        public const string PLAYER_SHADOWDOWN = PLAYER + "ShadowDown";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -137,6 +141,7 @@ namespace King_of_Thieves.Graphics
         public const string HUD_RED_POTION = HUD + "redPotion";
         public const string HUD_GREEN_POTION = HUD + "greenPotion";
         public const string HUD_BLUE_POTION = HUD + "bluePotion";
+        public const string HUD_SHADOW_MEDALLION = HUD + "shadowMedallion";
 
         public const string HUD_TEXTBOX = HUD + "text:textBox";
         public const string HUD_HEALTH0 = HUD + "health0";
@@ -224,9 +229,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_THROWDOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "5:29", "8:29", 10));
             textures.Add(PLAYER_THROWUP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "5:31", "8:31", 10));
             textures.Add(PLAYER_THROWLEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "5:30", "8:30", 20));
-            textures.Add(PLAYER_SHOCKDOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "37:30", "38:30", 60));
-            textures.Add(PLAYER_SHOCKLEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:30", "41:30", 60));
-            textures.Add(PLAYER_SHOCKUP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "37:31", "38:31", 60));
+            textures.Add(PLAYER_SHOCKDOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "37:30", "38:30", 30));
+            textures.Add(PLAYER_SHOCKLEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:30", "41:30", 30));
+            textures.Add(PLAYER_SHOCKUP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "37:31", "38:31", 30));
             textures.Add(PLAYER_FREEZEDOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:4", "11:4", 0));
             textures.Add(PLAYER_FREEZEUP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "13:4", "13:4", 0));
             textures.Add(PLAYER_FREEZELEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "12:4", "12:4", 0));
@@ -257,6 +262,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_THROW_BOOMERANG_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:23", "22:23", 15));
             textures.Add(PLAYER_THROW_BOOMERANG_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:22", "22:22", 15));
             textures.Add(PLAYER_GOT_ITEM, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "21:2", "21:2", 0));
+            textures.Add(PLAYER_SHADOWDOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "10:2", "10:2", 0));
+            textures.Add(PLAYER_SHADOWLEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:2", "11:2", 0));
+            textures.Add(PLAYER_SHADOWUP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "12:2", "12:2", 0));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));
@@ -329,6 +337,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_RED_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "1:3", "1:3", 0));
             textures.Add(HUD_GREEN_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "2:3", "2:3", 0));
             textures.Add(HUD_BLUE_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:3", "3:3", 0));
+            textures.Add(HUD_SHADOW_MEDALLION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "4:0", "4:0", 0));
 
             //drops
             textures.Add(DROPS_HEART, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:0", "0:0"));

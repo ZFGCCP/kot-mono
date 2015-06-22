@@ -685,9 +685,6 @@ namespace King_of_Thieves.Actors
 
         public virtual void update(GameTime gameTime)
         {
-            //check collisions(This should realy be done after all objects have updated. As it is now two objects can be colliding, be drawn and THEN acted on for their collision)
-            //doCollision();
-
             if (_killMe)
             {
                 Map.CMapManager.removeFromActorRegistry(this);

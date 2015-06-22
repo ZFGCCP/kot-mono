@@ -17,7 +17,8 @@ namespace King_of_Thieves.Actors.HUD.buttons
         FIRE_ARROWS,
         GREEN_POTION,
         ICE_ARROWS,
-        RED_POTION
+        RED_POTION,
+        SHADOW_MEDALLION
 
     }
 
@@ -124,6 +125,10 @@ namespace King_of_Thieves.Actors.HUD.buttons
 
                 case HUDOPTIONS.RED_POTION:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_RED_POTION);
+                    break;
+
+                case HUDOPTIONS.SHADOW_MEDALLION:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_SHADOW_MEDALLION);
                     break;
             }
         }

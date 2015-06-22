@@ -63,10 +63,12 @@ namespace King_of_Thieves
             rocsCape.MenuText = "Roc's Cape";
             menu.AddMenuElement(rocsCape);
 
-            CPauseMenuElement shadowCLoak = new CPauseMenuElement(new Vector2(137, 77), 7, 5, 2, 10);
-            shadowCLoak.Selectable = true;
-            rocsCape.MenuText = "Shadow Cloak";
-            menu.AddMenuElement(shadowCLoak);
+            CPauseMenuElement shadowMedallion = new CPauseMenuElement(new Vector2(137, 77), 7, 5, 2, 10);
+            shadowMedallion.Selectable = true;
+            shadowMedallion.MenuText = "Shadow Medallion";
+            shadowMedallion.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_SHADOW_MEDALLION);
+            shadowMedallion.hudOptions = Actors.HUD.buttons.HUDOPTIONS.SHADOW_MEDALLION;
+            menu.AddMenuElement(shadowMedallion);
 
             CPauseMenuElement magnetGloves = new CPauseMenuElement(new Vector2(188, 77), 4, 6, 3, 11);
             magnetGloves.Selectable = true;

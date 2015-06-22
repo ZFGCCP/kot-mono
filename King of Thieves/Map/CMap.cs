@@ -357,6 +357,7 @@ namespace King_of_Thieves.Map
         public void removeFromActorRegistry(CActor actor)
         {
             _actorRegistry.Remove(actor);
+            _layers[actor.layer].removeFromDrawList(actor);
         }
 
         public void registerWithCommNet()
@@ -376,6 +377,11 @@ namespace King_of_Thieves.Map
             addToActorRegistry(actor);
 
             _layers[actor.layer].addToDrawList(actor);
+        }
+
+        public void removeActorFromComponent(CActor actor, int componentId)
+        {
+            removeFromActorRegistry(actor);
         }
 
         public int largestAddress

@@ -77,6 +77,8 @@
     <Compile Include="Actors\Items\shields\CBaseShield.cs" />
     <Compile Include="Actors\Items\shields\CWoodShield.cs" />
     <Compile Include="Actors\Items\Swords\CGerudoSword.cs" />
+    <Compile Include="Actors\Items\weapons\CShadowMedallion.cs" />
+    <Compile Include="Actors\Items\weapons\CShockStick.cs" />
     <Compile Include="Actors\Menu\CMenu.cs" />
     <Compile Include="Actors\Menu\CMenuCursor.cs" />
     <Compile Include="Actors\Menu\CMenuItem.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="Actors\NPC\Other\CTownsFolkHead.cs" />
     <Compile Include="Actors\NPC\Other\Maple\CMaple.cs" />
     <Compile Include="Actors\Player\CPlayer.cs" />
+    <Compile Include="Actors\Player\CShadowClone.cs" />
     <Compile Include="Actors\Projectiles\CArrow.cs" />
     <Compile Include="Actors\Projectiles\CBomb.cs" />
     <Compile Include="Actors\Projectiles\CBoomerang.cs" />

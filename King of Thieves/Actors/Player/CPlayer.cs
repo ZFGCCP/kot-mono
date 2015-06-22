@@ -29,6 +29,9 @@ namespace King_of_Thieves.Actors.Player
         private string _currentShieldSprite = "";
         private string _currentShieldIdleSprite = "";
         private Projectiles.ARROW_TYPES _arrowType = Projectiles.ARROW_TYPES.STANDARD;
+        private bool _wearingShadowCloak = false;
+        public bool cloneExists = false;
+        private bool _canMoveClone = false;
 
         private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
         private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
@@ -160,8 +163,6 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP));
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_UP));
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP));
-
-
         }
 
         public override void timer5(object sender)
@@ -449,8 +450,13 @@ namespace King_of_Thieves.Actors.Player
                     }
                     if (input.keysPressed.Contains(Keys.Space))
                     {
-                        _state = ACTOR_STATES.SWINGING;
-                        _swordReleased = false;
+                        if (_wearingShadowCloak)
+                            _createShadowClone();
+                        else
+                        {
+                            _state = ACTOR_STATES.SWINGING;
+                            _swordReleased = false;
+                        }
                     }
                 }
                 else if (_state == ACTOR_STATES.SHIELDING)
@@ -1236,6 +1242,10 @@ namespace King_of_Thieves.Actors.Player
                 case HUD.buttons.HUDOPTIONS.RED_POTION:
                     _useRedPotion();
                     break;
+
+                case HUD.buttons.HUDOPTIONS.SHADOW_MEDALLION:
+                    _useShadowCloak();
+                    break;
             }
         }
 
@@ -1255,6 +1265,42 @@ namespace King_of_Thieves.Actors.Player
         {
             _useRedPotion();
             _useGreenPotion();
+        }
+
+        private void _useShadowCloak()
+        {
+            _wearingShadowCloak = !_wearingShadowCloak;
+            _usingItem = false;
+        }
+
+        private void _createShadowClone()
+        {
+            Vector2 pos = new Vector2(_position.X, _position.Y);
+            if (cloneExists)
+            {
+                if (_canMoveClone)
+                {
+                    _canMoveClone = false;
+                    component.actors[_name + "Clone"].jumpToPoint(pos.X,pos.Y);
+                    ((CShadowClone)component.actors[_name + "Clone"]).changeDirection(_direction);
+                    startTimer1(30);
+                }
+            }
+            else
+            {
+                CActor clone = new CShadowClone();
+                clone.init(_name + "Clone", pos, "", this.componentAddress, ((int)_direction).ToString());
+                Map.CMapManager.addActorToComponent(clone, componentAddress);
+                cloneExists = true;
+
+                startTimer1(30);
+            }
+        }
+
+        public override void timer1(object sender)
+        {
+            if (cloneExists)
+                _canMoveClone = true;
         }
 
         public static double glblAngle

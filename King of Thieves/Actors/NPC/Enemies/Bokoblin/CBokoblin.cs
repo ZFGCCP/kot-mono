@@ -20,8 +20,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
         private const string _IDLE_LEFT = _SPRITE_NAMESPACE + ":idleLeft";
         private const string _IDLE_RIGHT = _SPRITE_NAMESPACE + ":idleRight";
 
+        private const string _ATTACK_DOWN = _SPRITE_NAMESPACE + ":attackDown";
+        private const string _ATTACK_UP = _SPRITE_NAMESPACE + ":attackUp";
+        private const string _ATTACK_LEFT = _SPRITE_NAMESPACE + ":attackLeft";
+        private const string _ATTACK_RIGHT = _SPRITE_NAMESPACE + ":attackRight";
+
         private static int _bokoblinCount = 0;
-        private const int _ATTACK_RADIUS = 20;
+        private const int _ATTACK_RADIUS = 40;
 
         public CBokoblin() :
             base()
@@ -37,6 +42,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
                 Graphics.CTextures.addTexture(_IDLE_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 41, 41, 1, "0:0", "0:0", 0));
                 Graphics.CTextures.addTexture(_IDLE_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 41, 41, 1, "0:4", "0:4", 0));
                 Graphics.CTextures.addTexture(_IDLE_RIGHT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 41, 41, 1, "0:2", "0:2", 0));
+
+                Graphics.CTextures.addTexture(_ATTACK_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 41, 41, 1, "0:1", "2:1", 0));
+                Graphics.CTextures.addTexture(_ATTACK_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 41, 41, 1, "0:5", "2:5", 0));
+                Graphics.CTextures.addTexture(_ATTACK_RIGHT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 41, 41, 1, "0:3", "2:3", 0));
             }
 
             _imageIndex.Add(_WALK_DOWN, new Graphics.CSprite(_WALK_DOWN));
@@ -49,11 +58,16 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
             _imageIndex.Add(_IDLE_RIGHT, new Graphics.CSprite(_IDLE_RIGHT));
             _imageIndex.Add(_IDLE_LEFT, new Graphics.CSprite(_IDLE_RIGHT, true));
 
+            _imageIndex.Add(_ATTACK_DOWN, new Graphics.CSprite(_ATTACK_DOWN));
+            _imageIndex.Add(_ATTACK_UP, new Graphics.CSprite(_ATTACK_UP));
+            _imageIndex.Add(_ATTACK_RIGHT, new Graphics.CSprite(_ATTACK_RIGHT));
+            _imageIndex.Add(_ATTACK_LEFT, new Graphics.CSprite(_ATTACK_RIGHT, true));
+
             _bokoblinCount += 1;
             _goIdle();
             _lineOfSight = 50;
             _visionRange = 60;
-            _hearingRadius = 60;
+            _hearingRadius = 100;
         }
 
         public override void destroy(object sender)
@@ -183,7 +197,67 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Bokoblin
             playerPos.X = Player.CPlayer.glblX;
             playerPos.Y = Player.CPlayer.glblY;
 
-            moveToPoint2(playerPos.X, playerPos.Y, 1);
+            _direction = moveToPoint2(playerPos.X, playerPos.Y, 1);
+
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    swapImage(_WALK_DOWN);
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(_WALK_LEFT);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(_WALK_RIGHT);
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(_WALK_UP);
+                    break;
+            }
+
+            if (MathExt.MathExt.checkPointInCircle(_position, playerPos, _ATTACK_RADIUS))
+            {
+                _state = ACTOR_STATES.ALERT;
+                startTimer2(60);
+            }
+        }
+
+        public override void timer2(object sender)
+        {
+            _attack();
+        }
+
+        private void _attack()
+        {
+            _state = ACTOR_STATES.ATTACK;
+
+            switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    swapImage(_ATTACK_DOWN);
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(_ATTACK_UP);
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(_ATTACK_LEFT);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(_ATTACK_RIGHT);
+                    break;
+            }
+        }
+
+        public override void animationEnd(object sender)
+        {
+            if (_state == ACTOR_STATES.ATTACK)
+                _goIdle();
         }
     }
 }
