@@ -58,6 +58,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.LikeLike
                     {
                         _state = ACTOR_STATES.POPUP;
                         swapImage(_POPUP);
+                        _hitBox = new Collision.CHitBox(this, 0, 10, 15, 15);
                     }
                     break;
 
