@@ -60,6 +60,7 @@
     <Compile Include="Actors\HUD\CCameraBoundary.cs" />
     <Compile Include="Actors\HUD\CHUDElement.cs" />
     <Compile Include="Actors\HUD\counters\CBaseCounter.cs" />
+    <Compile Include="Actors\HUD\counters\CBombCounter.cs" />
     <Compile Include="Actors\HUD\counters\CRupeeCounter.cs" />
     <Compile Include="Actors\HUD\health\CHealth.cs" />
     <Compile Include="Actors\HUD\health\CHealthController.cs" />

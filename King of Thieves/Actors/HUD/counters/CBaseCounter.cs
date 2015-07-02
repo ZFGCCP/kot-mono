@@ -42,7 +42,7 @@ namespace King_of_Thieves.Actors.HUD.counters
         public void decrement(int amount, bool instant = false)
         {
             _state = ACTOR_STATES.DECREMENT;
-            _incrementAmount = -amount;
+            _incrementAmount = amount;
             _instantaneousUpdate = instant;
         }
 
@@ -81,7 +81,7 @@ namespace King_of_Thieves.Actors.HUD.counters
 
                     _amount -= allowedIncrement;
                 }
-                else if(_amount > 0 && _incrementAmount >= _amount)
+                else if(_amount > 0 && _incrementAmount > 0)
                 {
                     _amount -= 1;
                     _incrementAmount -= 1;

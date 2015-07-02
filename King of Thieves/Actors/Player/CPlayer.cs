@@ -490,9 +490,10 @@ namespace King_of_Thieves.Actors.Player
             {
                 if (input.keysReleased.Contains(Keys.T))
                 {
-                    Items.Drops.CRupeeDrop rupee = new Items.Drops.CRupeeDrop();
+                    /*Items.Drops.CRupeeDrop rupee = new Items.Drops.CRupeeDrop();
                     rupee.init("rupeeTest", _position - new Vector2(20, 20), "", this.componentAddress, "P");
-                    Map.CMapManager.addActorToComponent(rupee, this.componentAddress);
+                    Map.CMapManager.addActorToComponent(rupee, this.componentAddress);*/
+                    CMasterControl.buttonController.modifyBombs(10);
                 }
 
                 if (!(Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysPressed)
