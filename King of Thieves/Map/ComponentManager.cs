@@ -22,12 +22,15 @@ namespace King_of_Thieves.Map
         {
             Dictionary<int, List<string>> output = new Dictionary<int,List<string>>();
 
-            foreach (Actors.CActor actor in _actorRegistry)
+            if (_actorRegistry != null)
             {
-                if (!output.ContainsKey(actor.componentAddress))
-                    output.Add(actor.componentAddress, new List<string>());
+                foreach (Actors.CActor actor in _actorRegistry)
+                {
+                    if (!output.ContainsKey(actor.componentAddress))
+                        output.Add(actor.componentAddress, new List<string>());
 
-                output[actor.componentAddress].Add(actor.getMapHeaderInfo());
+                    output[actor.componentAddress].Add(actor.getMapHeaderInfo());
+                }
             }
 
             return output;

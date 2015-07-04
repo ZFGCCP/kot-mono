@@ -329,6 +329,8 @@ namespace King_of_Thieves.Forms.Map_Edit
                 if (openFileDialog1.FileName.Trim() != string.Empty)
                 {
                     string fileName = openFileDialog1.FileName;
+                    _loadedMap = new Map.CMap(fileName);
+                    mpvMapView.map = _loadedMap;
                 }
             }
         }
