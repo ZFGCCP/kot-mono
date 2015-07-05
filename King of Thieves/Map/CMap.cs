@@ -190,8 +190,7 @@ namespace King_of_Thieves.Map
         public void writeMap(string fileName)
         {
             //Gears.Cartography.Map
-            if (_internalMap == null)
-            {
+
                 _internalMap = new Gears.Cartography.Map();
 
                 _internalMap.VERSION = "1";
@@ -243,7 +242,6 @@ namespace King_of_Thieves.Map
                     }
                     
                 }
-            }
 
             _internalMap.serializeToXml(fileName);
 

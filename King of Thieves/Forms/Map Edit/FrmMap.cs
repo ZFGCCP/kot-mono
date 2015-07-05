@@ -333,10 +333,13 @@ namespace King_of_Thieves.Forms.Map_Edit
                     string fileName = openFileDialog1.FileName;
                     _loadedMap = new Map.CMap(fileName);
                     mpvMapView.map = _loadedMap;
+                    cmbLayers.Items.Clear();
 
                     //load layers
                     foreach(Map.CLayer layer in _loadedMap._layers)
                         cmbLayers.Items.Add(layer.NAME);
+
+                    cmbLayers.SelectedIndex = 0;
                 }
             }
         }
