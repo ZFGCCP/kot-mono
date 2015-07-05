@@ -47,7 +47,7 @@ namespace King_of_Thieves.Map
             return managers;
         }
 
-        public CMap(string fileName)
+        public CMap(string fileName, Dictionary<string, Graphics.CSprite> atlasCache = null)
         {
             _internalMap = Gears.Cartography.Map.deserialize(fileName);
             _layers = new List<CLayer>(_internalMap.NUM_LAYERS);
@@ -63,6 +63,7 @@ namespace King_of_Thieves.Map
                 
                 int componentAddresses = 2;
                 int componentCount = 0;
+                
                 Actors.CComponent[] compList = new CComponent[layer.COMPONENTS == null ? 0 : layer.COMPONENTS.Count()];
                 Dictionary<string, Graphics.CSprite> tileSets = new Dictionary<string, Graphics.CSprite>();
                 //=======================================================================
@@ -137,7 +138,11 @@ namespace King_of_Thieves.Map
                 actorsForDrawList.Clear();
                 _layers.Add(tempLayer);
                 //_layers[layerCount] = new CLayer(layer.NAME, compList, tiles, ref _tileIndex, Convert.ToDouble(_internalMap.VERSION));
-                _layers[layerCount++].otherImages = tileSets;
+
+                if (atlasCache == null)
+                    tempLayer.otherImages = tileSets;
+                else
+                    tempLayer.otherImages = atlasCache;
 
             }
 
@@ -190,8 +195,7 @@ namespace King_of_Thieves.Map
         public void writeMap(string fileName)
         {
             //Gears.Cartography.Map
-            if (_internalMap == null)
-            {
+
                 _internalMap = new Gears.Cartography.Map();
 
                 _internalMap.VERSION = "1";
@@ -243,7 +247,6 @@ namespace King_of_Thieves.Map
                     }
                     
                 }
-            }
 
             _internalMap.serializeToXml(fileName);
 

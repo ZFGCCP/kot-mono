@@ -58,7 +58,7 @@ namespace King_of_Thieves.Map
             return _components.actorHeaderMap();
         }
 
-        public CLayer(string name, Actors.CComponent[] components, CTile[] tiles, ref Graphics.CSprite image,  int index, double version = 1)
+        public CLayer(string name, Actors.CComponent[] components, CTile[] tiles, ref Graphics.CSprite image, int index, double version = 1)
         {
             _width = 0; _height = 0;
             NAME = name;

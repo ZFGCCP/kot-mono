@@ -331,12 +331,15 @@ namespace King_of_Thieves.Forms.Map_Edit
                 if (openFileDialog1.FileName.Trim() != string.Empty)
                 {
                     string fileName = openFileDialog1.FileName;
-                    _loadedMap = new Map.CMap(fileName);
+                    _loadedMap = new Map.CMap(fileName,_atlasCache);
                     mpvMapView.map = _loadedMap;
+                    cmbLayers.Items.Clear();
 
                     //load layers
                     foreach(Map.CLayer layer in _loadedMap._layers)
                         cmbLayers.Items.Add(layer.NAME);
+
+                    cmbLayers.SelectedIndex = 0;
                 }
             }
         }
@@ -344,6 +347,11 @@ namespace King_of_Thieves.Forms.Map_Edit
         private void mpvMapView_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
 		#endif
     }
