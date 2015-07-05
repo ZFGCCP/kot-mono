@@ -331,6 +331,10 @@ namespace King_of_Thieves.Forms.Map_Edit
                     string fileName = openFileDialog1.FileName;
                     _loadedMap = new Map.CMap(fileName);
                     mpvMapView.map = _loadedMap;
+
+                    //load layers
+                    foreach(Map.CLayer layer in _loadedMap._layers)
+                        cmbLayers.Items.Add(layer.NAME);
                 }
             }
         }
