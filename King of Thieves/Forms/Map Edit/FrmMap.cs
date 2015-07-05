@@ -272,8 +272,10 @@ namespace King_of_Thieves.Forms.Map_Edit
 
 
             cmbLayers.Items.Add(layerName);
+            Map.CLayer layer = new Map.CLayer(_atlasCache);
+            layer.NAME = layerName;
 
-            _loadedMap._layers.Add(new Map.CLayer(_atlasCache));
+            _loadedMap._layers.Add(layer);
 
         }
 

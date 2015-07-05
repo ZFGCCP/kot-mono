@@ -27,6 +27,7 @@ namespace King_of_Thieves.Map
             _internalMap = null;
             _layers = new List<CLayer>(1);
             _layers.Add(new CLayer(atlasCache));
+            _layers[0].NAME = "root";
         }
 
         public CMap(params CLayer[] layers)
