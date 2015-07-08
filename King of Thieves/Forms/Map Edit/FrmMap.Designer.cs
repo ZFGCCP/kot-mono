@@ -36,13 +36,12 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.mapHScroll = new System.Windows.Forms.HScrollBar();
+            this.mapVScroll = new System.Windows.Forms.VScrollBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.hsbTexture = new System.Windows.Forms.HScrollBar();
             this.vsbTexture = new System.Windows.Forms.VScrollBar();
-            this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.cmbTilesets = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnNewComponent = new System.Windows.Forms.Button();
@@ -58,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddLayer = new System.Windows.Forms.Button();
             this.btnDeleteLayer = new System.Windows.Forms.Button();
+            this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -91,50 +91,54 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // hScrollBar1
+            // mapHScroll
             // 
-            this.hScrollBar1.Location = new System.Drawing.Point(292, 526);
-            this.hScrollBar1.Name = "hScrollBar1";
-            this.hScrollBar1.Size = new System.Drawing.Size(500, 17);
-            this.hScrollBar1.TabIndex = 2;
+            this.mapHScroll.LargeChange = 1;
+            this.mapHScroll.Location = new System.Drawing.Point(292, 526);
+            this.mapHScroll.Name = "mapHScroll";
+            this.mapHScroll.Size = new System.Drawing.Size(500, 17);
+            this.mapHScroll.TabIndex = 2;
+            this.mapHScroll.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
             // 
-            // vScrollBar1
+            // mapVScroll
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(795, 43);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 480);
-            this.vScrollBar1.TabIndex = 3;
+            this.mapVScroll.LargeChange = 1;
+            this.mapVScroll.Location = new System.Drawing.Point(795, 43);
+            this.mapVScroll.Name = "mapVScroll";
+            this.mapVScroll.Size = new System.Drawing.Size(17, 480);
+            this.mapVScroll.TabIndex = 3;
+            this.mapVScroll.Scroll += new System.Windows.Forms.ScrollEventHandler(this.mapVScroll_Scroll);
             // 
             // tabControl1
             // 
@@ -177,17 +181,6 @@
             this.vsbTexture.Size = new System.Drawing.Size(17, 256);
             this.vsbTexture.TabIndex = 5;
             this.vsbTexture.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vsbTexture_Scroll);
-            // 
-            // txvTextures
-            // 
-            this.txvTextures.BackColor = System.Drawing.Color.Black;
-            this.txvTextures.Location = new System.Drawing.Point(3, 3);
-            this.txvTextures.Name = "txvTextures";
-            this.txvTextures.Size = new System.Drawing.Size(240, 256);
-            this.txvTextures.TabIndex = 2;
-            this.txvTextures.VSync = false;
-            this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
-            this.txvTextures.Click += new System.EventHandler(this.txvTextures_Click);
             // 
             // cmbTilesets
             // 
@@ -309,6 +302,17 @@
             this.btnDeleteLayer.UseVisualStyleBackColor = true;
             this.btnDeleteLayer.Click += new System.EventHandler(this.btnDeleteLayer_Click);
             // 
+            // txvTextures
+            // 
+            this.txvTextures.BackColor = System.Drawing.Color.Black;
+            this.txvTextures.Location = new System.Drawing.Point(3, 3);
+            this.txvTextures.Name = "txvTextures";
+            this.txvTextures.Size = new System.Drawing.Size(240, 256);
+            this.txvTextures.TabIndex = 2;
+            this.txvTextures.VSync = false;
+            this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
+            this.txvTextures.Click += new System.EventHandler(this.txvTextures_Click);
+            // 
             // mpvMapView
             // 
             this.mpvMapView.BackColor = System.Drawing.Color.Black;
@@ -330,8 +334,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbLayers);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.vScrollBar1);
-            this.Controls.Add(this.hScrollBar1);
+            this.Controls.Add(this.mapVScroll);
+            this.Controls.Add(this.mapHScroll);
             this.Controls.Add(this.mpvMapView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -360,8 +364,8 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private WinFormsGraphicsDevice.SpinningTriangleControl mpvMapView;
-        private System.Windows.Forms.HScrollBar hScrollBar1;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.HScrollBar mapHScroll;
+        private System.Windows.Forms.VScrollBar mapVScroll;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ComboBox cmbTilesets;

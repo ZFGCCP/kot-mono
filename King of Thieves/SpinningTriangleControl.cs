@@ -35,6 +35,10 @@ namespace WinFormsGraphicsDevice
         private CTile _selectedTile;
         private CSprite _selectedSprite;
         private CMap _currentMap = null;
+        private King_of_Thieves.Graphics.CCamera _camera = new King_of_Thieves.Graphics.CCamera();
+
+        private int _HScrollVal = 0;
+        private int _VScrollVal = 0;
 
         public void changeSelectedTile(CTile tile)
         {
@@ -47,16 +51,36 @@ namespace WinFormsGraphicsDevice
             
         }
 
-        public void dropTile(CTile tile, CLayer layer)
+        public void dropTile(CTile tile, CLayer layer, int offSetX = 0, int offSetY = 0)
         {
             CTile newTile = new CTile(tile);
-            Vector2 position = _getMouseSnap();
+            Vector2 position = _getMouseSnap(offSetX,offSetY);
             newTile.tileCoords = position;
             layer.addTile(newTile);
         }
 
-        public void removeTile(CLayer layer, Vector2 position)
+        public void scrollVertical(int amount)
         {
+            Vector3 translation = Vector3.Zero;
+            translation.Y = amount;
+            translation.X = _camera.position.X;
+            _VScrollVal = amount;
+            _camera.jump(translation);
+        }
+
+        public void scrollHorizontal(int amount)
+        {
+            Vector3 translation = Vector3.Zero;
+            translation.X = amount;
+            translation.Y = _camera.position.Y;
+            _HScrollVal = amount;
+            _camera.jump(translation);
+        }
+
+        public void removeTile(CLayer layer, Vector2 position,int offSetX = 0, int offSetY = 0)
+        {
+            position.X += offSetX;
+            position.Y += offSetY;
             int index = layer.indexOfTileReverse(position);
 
             layer.removeTile(index);
@@ -106,7 +130,7 @@ namespace WinFormsGraphicsDevice
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, _camera.transformation);
 
             _currentMap.draw(spriteBatch);
 
@@ -129,6 +153,7 @@ namespace WinFormsGraphicsDevice
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+            _camera.update();
 
             System.Drawing.Point mousePos = PointToClient(MousePosition);
 
@@ -137,16 +162,16 @@ namespace WinFormsGraphicsDevice
                 int snapX = (int)System.Math.Floor((mousePos.X) / 16.0);
                 int snapY = (int)System.Math.Floor((mousePos.Y) / 16.0);
 
-                _selectedTile.tileCoords = _getMouseSnap();
+                _selectedTile.tileCoords = _getMouseSnap(-_HScrollVal,-_VScrollVal);
             }
         }
 
-        private Vector2 _getMouseSnap()
+        private Vector2 _getMouseSnap(int offSetX = 0, int offSetY = 0)
         {
             System.Drawing.Point mousePos = PointToClient(MousePosition);
 
-            int snapX = (int)System.Math.Floor((mousePos.X) / 16.0);
-            int snapY = (int)System.Math.Floor((mousePos.Y) / 16.0);
+            int snapX = (int)System.Math.Floor((mousePos.X + offSetX) / 16.0);
+            int snapY = (int)System.Math.Floor((mousePos.Y + offSetY) / 16.0);
 
             return new Vector2(snapX, snapY);
         }
