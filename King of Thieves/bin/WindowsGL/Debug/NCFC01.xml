@@ -3,7 +3,7 @@
   <version>1</version>
   <layerCount>2</layerCount>
   <layers>
-    <layer width="0" height="0">
+    <layer width="0" height="0" name="root">
       <tiles>
         <tile coordinates="16:29" tileSet="tileset:outdoors:hyruleCastleTown" selection="5:10" />
         <tile coordinates="16:28" tileSet="tileset:outdoors:hyruleCastleTown" selection="5:9" />
@@ -41,7 +41,7 @@
         <tile coordinates="11:11" tileSet="tileset:outdoors:hyruleCastleTown" selection="28:6" />
       </tiles>
     </layer>
-    <layer width="0" height="0">
+    <layer width="0" height="0" name="TreeTop">
       <tiles>
         <tile coordinates="3:12" tileSet="tileset:outdoors:hyruleCastleTown" selection="28:5" />
         <tile coordinates="3:14" tileSet="tileset:outdoors:hyruleCastleTown" selection="28:5" />
