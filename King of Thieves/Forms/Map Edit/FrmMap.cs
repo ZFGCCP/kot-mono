@@ -30,6 +30,9 @@ namespace King_of_Thieves.Forms.Map_Edit
         private Dictionary<string, string> _actorFullyQualifiedNames = new Dictionary<string, string>();
         private EDITOR_MODE _editorMode = EDITOR_MODE.TILE;
         private FrmNewComponent _newComponent = null;
+        King_of_Thieves.Map.CTile tile = null;
+
+        
 
         public FrmMap()
         {
@@ -112,7 +115,7 @@ namespace King_of_Thieves.Forms.Map_Edit
             cmbActorList.SelectedIndex = 0;
 
             _newMap();
-
+            tile = txvTextures.selectTile(hsbTexture.Value, vsbTexture.Value);
            
         }
 
@@ -206,7 +209,7 @@ namespace King_of_Thieves.Forms.Map_Edit
 
         private void txvTextures_Click(object sender, EventArgs e)
         {
-            King_of_Thieves.Map.CTile tile = txvTextures.selectTile(hsbTexture.Value, vsbTexture.Value);
+            tile = txvTextures.selectTile(hsbTexture.Value, vsbTexture.Value);
 
             mpvMapView.changeSelectedTile(tile);
         }
@@ -219,9 +222,9 @@ namespace King_of_Thieves.Forms.Map_Edit
             {
                 case EDITOR_MODE.TILE:
                     if (args.Button == System.Windows.Forms.MouseButtons.Left)
-                        mpvMapView.dropTile(txvTextures.currentTile, _loadedMap.getLayer(cmbLayers.SelectedIndex));
+                        mpvMapView.dropTile(txvTextures.currentTile, _loadedMap.getLayer(cmbLayers.SelectedIndex),mapHScroll.Value,mapVScroll.Value);
                     else if (args.Button == System.Windows.Forms.MouseButtons.Right)
-                        mpvMapView.removeTile(_loadedMap.getLayer(cmbLayers.SelectedIndex),position);
+                        mpvMapView.removeTile(_loadedMap.getLayer(cmbLayers.SelectedIndex), position,mapHScroll.Value, mapVScroll.Value);
                     break;
 
                 case EDITOR_MODE.COMPONENT:
@@ -352,6 +355,16 @@ namespace King_of_Thieves.Forms.Map_Edit
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            mpvMapView.scrollHorizontal(-mapHScroll.Value);
+        }
+
+        private void mapVScroll_Scroll(object sender, ScrollEventArgs e)
+        {
+            mpvMapView.scrollVertical(-mapVScroll.Value);
         }
 		#endif
     }
