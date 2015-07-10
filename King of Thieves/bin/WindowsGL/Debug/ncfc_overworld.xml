@@ -1546,12 +1546,17 @@
       </tiles>
 	  <components>
 		<component>
-				<actors>
-					<actor name = "player" type = "King_of_Thieves.Actors.Player.CPlayer" coordinates = "0:0"></actor>
-					<actor name = "sword" type = "King_of_Thieves.Actors.Items.Swords.CSword" coordinates = "0:0"></actor>
-					<actor name = "shield" type = "King_of_Thieves.Actors.Items.shields.CWoodShield" coordinates = "0:0"></actor>
-				</actors>
-			</component>
+			<actors>
+				<actor name = "player" type = "King_of_Thieves.Actors.Player.CPlayer" coordinates = "0:0"></actor>
+				<actor name = "sword" type = "King_of_Thieves.Actors.Items.Swords.CSword" coordinates = "0:0"></actor>
+				<actor name = "shield" type = "King_of_Thieves.Actors.Items.shields.CWoodShield" coordinates = "0:0"></actor>
+			</actors>
+		</component>
+		<component>
+			<actors>
+				<actor name="hideoutChange" type = "King_of_Thieves.Actors.Collision.CMapChanger" coordinates = "128:304" params="10,10,thieves_hideout_f1.xml"></actor>
+			</actors>
+		</component>
 	  </components>
     </layer>
     <layer width="0" height="0" name="overlays">
