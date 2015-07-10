@@ -30,7 +30,7 @@ namespace King_of_Thieves.Actors.Collision
 
         public override void collide(object sender, CActor collider)
         {
-            CMasterControl.mapManager.swapMap(_mapName);
+            CMasterControl.mapManager.swapMap(_mapName, "player",_playerPosition);
             
         }
 

@@ -39,9 +39,10 @@ namespace King_of_Thieves.Map
             clear();
         }
 
-        public void setActorToFollow(string actorName)
+        public Actors.CActor setActorToFollow(string actorName)
         {
             CMasterControl.camera.actorToFollow = _currentMap.queryActorRegistry(actorName)[0];
+            return CMasterControl.camera.actorToFollow;
         }
 
         public Graphics.CSprite getDroppableSprite(string droppable)
@@ -80,11 +81,14 @@ namespace King_of_Thieves.Map
             }
         }
 
-        public void swapMap(string mapName)
+        public void swapMap(string mapName, string actorToFollow, Vector2 followerCoords)
         {
             _currentMap = mapPool[mapName];
             CMasterControl.commNet.Clear();
             _currentMap.registerWithCommNet();
+
+            Actors.CActor actor = setActorToFollow(actorToFollow);
+            actor.position = followerCoords;
         }
 
         public void cacheMaps(bool clearMaps, params string[] maps)
