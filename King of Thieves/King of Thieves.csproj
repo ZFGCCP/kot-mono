@@ -86,6 +86,7 @@
     <Compile Include="Actors\Menu\CPauseBackdrop.cs" />
     <Compile Include="Actors\NPC\Enemies\Bokoblin\CBokoblin.cs" />
     <Compile Include="Actors\NPC\Enemies\LikeLike\CLikeLike.cs" />
+    <Compile Include="Actors\NPC\Other\CDemoWiseMan.cs" />
     <Compile Include="Actors\NPC\Other\CTownsFolk.cs" />
     <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CArmoredCrab.cs" />
     <Compile Include="Actors\NPC\Enemies\CBaseEnemy.cs" />
@@ -558,6 +559,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\tilesets\indoors\thieves_hideout.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\tilesets\outdoors\demoTiles.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -13,7 +13,7 @@ namespace King_of_Thieves.usr.local
         public PlayableState()
             : base()
         {
-            CMasterControl.mapManager.swapMap("tileTester.xml");
+            CMasterControl.mapManager.swapMap("ncfc_overworld.xml");
             CMasterControl.mapManager.setActorToFollow("player");
         }
 
