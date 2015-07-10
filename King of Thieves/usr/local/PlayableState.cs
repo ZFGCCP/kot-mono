@@ -3,6 +3,7 @@ using King_of_Thieves.Actors;
 using Gears.Cloud;
 using King_of_Thieves.Input;
 using King_of_Thieves.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.usr.local
 {
@@ -13,8 +14,7 @@ namespace King_of_Thieves.usr.local
         public PlayableState()
             : base()
         {
-            CMasterControl.mapManager.swapMap("ncfc_overworld.xml");
-            CMasterControl.mapManager.setActorToFollow("player");
+            CMasterControl.mapManager.swapMap("tileTester.xml","player",Vector2.Zero);
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
