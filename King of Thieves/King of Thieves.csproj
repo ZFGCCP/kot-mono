@@ -558,10 +558,10 @@
     <Content Include="Content\tilesets\outdoors\hyruleCastleTown.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\tilesets\outdoors\demoTiles.xnb">
+    <Content Include="Content\tilesets\indoors\thieves_hideout.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\tilesets\indoors\thieves_hideout.xnb">
+    <Content Include="Content\tilesets\outdoors\demoTiles.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
