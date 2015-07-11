@@ -87,6 +87,7 @@ namespace King_of_Thieves.Map
             CMasterControl.commNet.Clear();
             _currentMap.registerWithCommNet();
 
+            CMasterControl.camera.jump(new Vector3(followerCoords.X, followerCoords.Y, 0));
             Actors.CActor actor = setActorToFollow(actorToFollow);
             actor.position = followerCoords;
         }
