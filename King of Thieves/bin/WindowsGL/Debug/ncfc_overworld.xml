@@ -1554,7 +1554,7 @@
 		</component>
 		<component>
 			<actors>
-				<actor name="hideoutChange" type = "King_of_Thieves.Actors.Collision.CMapChanger" coordinates = "128:304" params="210,290,thieves_hideout_f1.xml"></actor>
+				<actor name="hideoutChange" type = "King_of_Thieves.Actors.Collision.CMapChanger" coordinates = "128:304" params="265,285,thieves_hideout_f1.xml"></actor>
 			</actors>
 		</component>
 	  </components>
