@@ -87,8 +87,13 @@ namespace King_of_Thieves.Map
             CMasterControl.commNet.Clear();
             _currentMap.registerWithCommNet();
 
-            CMasterControl.camera.jump(new Vector3(followerCoords.X, followerCoords.Y, 0));
+            
             Actors.CActor actor = setActorToFollow(actorToFollow);
+            Vector3 cameraDiff = new Vector3(-CMasterControl.camera.position.X - followerCoords.X, -CMasterControl.camera.position.Y - followerCoords.Y, 0);
+
+            CMasterControl.camera.translate(cameraDiff);
+            CMasterControl.camera.translate(new Vector3(160, 120, 0));
+            CMasterControl.camera.setBoundary(new Vector2(followerCoords.X - 80,followerCoords.Y - 60));
             actor.position = followerCoords;
         }
 
