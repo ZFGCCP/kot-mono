@@ -43,6 +43,7 @@
     <Compile Include="Actors\CActorTest.cs" />
     <Compile Include="Actors\CComponent.cs" />
     <Compile Include="Actors\Collision\CHitBox.cs" />
+    <Compile Include="Actors\Collision\CMapChanger.cs" />
     <Compile Include="Actors\Collision\CSolidTile.cs" />
     <Compile Include="Actors\Controllers\CEditorInputController.cs" />
     <Compile Include="Actors\Controllers\CEditorNew.cs" />
