@@ -42,6 +42,7 @@
     <Compile Include="Actors\CActorPacket.cs" />
     <Compile Include="Actors\CActorTest.cs" />
     <Compile Include="Actors\CComponent.cs" />
+    <Compile Include="Actors\Collision\CDoor.cs" />
     <Compile Include="Actors\Collision\CHitBox.cs" />
     <Compile Include="Actors\Collision\CMapChanger.cs" />
     <Compile Include="Actors\Collision\CSolidTile.cs" />
