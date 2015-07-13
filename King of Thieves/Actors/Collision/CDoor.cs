@@ -14,5 +14,22 @@ namespace King_of_Thieves.Actors.Collision
         {
             _hitBox = new CHitBox(this, 0, 0, 16, 16);
         }
+
+        public override void init(string name, Microsoft.Xna.Framework.Vector2 position, string dataType, int compAddress, params string[] additional)
+        {
+            base.init(name, position, dataType, compAddress, additional);
+
+            _locked = Convert.ToInt32(additional[0]) > 0;
+        }
+
+        protected override void _addCollidables()
+        {
+            _collidables.Add(typeof(Player.CPlayer));
+        }
+
+        public override void collide(object sender, CActor collider)
+        {
+            _killMe = true;
+        }
     }
 }
