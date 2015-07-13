@@ -1557,6 +1557,15 @@
 				<actor name="hideoutChange" type = "King_of_Thieves.Actors.Collision.CMapChanger" coordinates = "128:304" params="265,285,thieves_hideout_f1.xml"></actor>
 			</actors>
 		</component>
+		<component>
+			<actors>
+				<actor name="hitbox01" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "97:250" params = "78,54"></actor>
+				<actor name="hitbox02" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "97:304" params = "32,16"></actor>
+				<actor name="hitbox03" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "145:304" params = "80,16"></actor>
+				
+				<actor name="hitbox04" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "488:360" params = "32,32"></actor>
+			</actors>
+		</component>
 	  </components>
     </layer>
     <layer width="0" height="0" name="overlays">
