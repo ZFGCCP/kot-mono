@@ -1172,6 +1172,20 @@
         <tile coordinates="9:22" tileSet="tileset:outdoors:demoTiles" selection="14:23" />
         <tile coordinates="9:21" tileSet="tileset:outdoors:demoTiles" selection="14:25" />
       </tiles>
+	  <components>
+		<component>
+			<actors>
+				<actor name = "player" type = "King_of_Thieves.Actors.Player.CPlayer" coordinates = "64:128"></actor>
+				<actor name = "sword" type = "King_of_Thieves.Actors.Items.Swords.CSword" coordinates = "64:128"></actor>
+				<actor name = "shield" type = "King_of_Thieves.Actors.Items.shields.CWoodShield" coordinates = "64:128"></actor>
+			</actors>
+		</component>
+		<component>
+			<actors>
+				<actor name="overworldChange" type = "King_of_Thieves.Actors.Collision.CMapChanger" coordinates = "231:530" params="246,110,ncfc_overworld.xml"></actor>
+			</actors>
+		</component>
+	</components>
     </layer>
     <layer width="0" height="0" name="overlays">
       <tiles>

@@ -123,6 +123,7 @@ namespace King_of_Thieves
             //CMasterControl.mapManager.cacheMaps(false, "tileTester.xml");
             CMasterControl.mapManager.cacheMaps(false, "thieves_hideout_f1.xml");
             CMasterControl.mapManager.cacheMaps(false, "ncfc_overworld.xml");
+            CMasterControl.mapManager.cacheMaps(false, "ncfc_temple.xml");
 
             //textTest = new Actors.HUD.Text.CTextBox();
             CMasterControl.buttonController = new Actors.HUD.buttons.CButtonController();
