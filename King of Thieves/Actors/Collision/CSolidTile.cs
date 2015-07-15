@@ -17,7 +17,7 @@ namespace King_of_Thieves.Actors.Collision
         {
             base.init(name, position, dataType, compAddress, additional);
 
-            if (additional.Length >= 2)
+            if (additional != null)
                 _hitBox = new CHitBox(this, 0, 0, Convert.ToInt32(additional[0]), Convert.ToInt32(additional[1]));
         }
 
