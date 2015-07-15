@@ -88,6 +88,7 @@
     <Compile Include="Actors\Menu\CPauseBackdrop.cs" />
     <Compile Include="Actors\NPC\Enemies\Bokoblin\CBokoblin.cs" />
     <Compile Include="Actors\NPC\Enemies\LikeLike\CLikeLike.cs" />
+    <Compile Include="Actors\NPC\Other\CDemoWiseMan.cs" />
     <Compile Include="Actors\NPC\Other\CTownsFolk.cs" />
     <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CArmoredCrab.cs" />
     <Compile Include="Actors\NPC\Enemies\CBaseEnemy.cs" />

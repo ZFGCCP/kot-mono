@@ -582,6 +582,11 @@
 				<actor name="hideoutChange" type = "King_of_Thieves.Actors.Collision.CMapChanger" coordinates = "272:320" params="128,328,ncfc_overworld.xml"></actor>
 			</actors>
 		</component>
+		<component>
+			<actors>
+				<actor name="demoDog" type="King_of_Thieves.Actors.NPC.Other.CDemoWiseMan" coordinates = "100:100"></actor>
+			</actors>
+		</component>
 	  </components>
     </layer>
     <layer width="0" height="0" name="overlays">

@@ -10,6 +10,8 @@ namespace King_of_Thieves.Actors.NPC.Other
         private const string _SPRITE_NAMESPACE = "npc:puppup";
         private const string _IDLE = _SPRITE_NAMESPACE + ":idle";
 
+        private bool _firstTime = true;
+
         private string _openingMessage = "Sup! I'm the wise guy of the demo! But even us wise guys need help! An item of mine was stolen " +
                                          "and I really need it back! It was taken by the cult known as ZFGC. I don't know who they are, but " +
                                          "they're probably a bunch of smelly basement dwellers who dress up as anime characters and " +
@@ -34,28 +36,33 @@ namespace King_of_Thieves.Actors.NPC.Other
 
         }
 
-        public override void update(Microsoft.Xna.Framework.GameTime gameTime)
+        public override void roomStart(object sender)
         {
-            base.update(gameTime);
-            if (_firstTick)
+            if (_firstTime)
             {
                 CMasterControl.buttonController.createTextBox(_openingMessage);
                 _state = ACTOR_STATES.IDLE;
+                _firstTime = false;
             }
-            else
-            {
-                if (_state == ACTOR_STATES.IDLE)
-                {
-                    if (Actors.HUD.Text.CTextBox.messageFinished)
-                    {
-                        CMasterControl.buttonController.createTextBox(_controlsMessage);
-                        _state = ACTOR_STATES.IDLE_STARE;
-                    }
-                }
-            }
-
         }
 
+        public override void update(Microsoft.Xna.Framework.GameTime gameTime)
+        {
+            base.update(gameTime);
 
+            if (_state == ACTOR_STATES.IDLE)
+            {
+                if (Actors.HUD.Text.CTextBox.messageFinished)
+                {
+                    startTimer0(30);
+                    _state = ACTOR_STATES.IDLE_STARE;
+                }
+            }
+        }
+
+        public override void timer0(object sender)
+        {
+            CMasterControl.buttonController.createTextBox(_controlsMessage);
+        }
     }
 }
