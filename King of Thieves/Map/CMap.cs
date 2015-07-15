@@ -302,6 +302,8 @@ namespace King_of_Thieves.Map
             //handle collisions
             for (int i = 0; i < _componentRegistry.Count(); i++)
                 _componentRegistry[i].doCollision();
+
+            CMasterControl.mapManager.checkAndSwapMap();
         }
 
         public CComponent queryComponentRegistry(int id)
