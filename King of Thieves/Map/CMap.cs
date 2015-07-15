@@ -304,6 +304,8 @@ namespace King_of_Thieves.Map
                 _componentRegistry[i].doCollision();
 
             CMapManager.turnOffRoomStart();
+
+            CMasterControl.mapManager.checkAndSwapMap();
         }
 
         public CComponent queryComponentRegistry(int id)

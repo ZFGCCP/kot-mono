@@ -16,6 +16,15 @@ namespace King_of_Thieves.Map
         private static Dictionary<string, Graphics.CSprite> _droppableActorSpriteCache = new Dictionary<string, Graphics.CSprite>();
         private static bool _roomStart = false;
 
+        private static bool _mapSwapIssued = false;
+        private static string _mapName, _actorToFollow;
+        private static Vector2 _followerCoords = new Vector2();
+
+        public void checkAndSwapMap()
+        {
+            if (_mapSwapIssued)
+                _swapMap();
+        }
 
         public static object propertyGetter(string actorName, Map.EActorProperties property)
         {
@@ -97,20 +106,32 @@ namespace King_of_Thieves.Map
 
         public void swapMap(string mapName, string actorToFollow, Vector2 followerCoords)
         {
-            _currentMap = mapPool[mapName];
+            _mapSwapIssued = true;
+            _mapName = mapName;
+            _actorToFollow = actorToFollow;
+            _followerCoords = followerCoords;
+
+            if (_currentMap == null)
+                _swapMap();
+        }
+
+        private void _swapMap()
+        {
+            _currentMap = mapPool[_mapName];
             CMasterControl.commNet.Clear();
             _currentMap.registerWithCommNet();
 
-            
-            Actors.CActor actor = setActorToFollow(actorToFollow);
-            Vector3 cameraDiff = new Vector3(-CMasterControl.camera.position.X - followerCoords.X, -CMasterControl.camera.position.Y - followerCoords.Y, 0);
+
+            Actors.CActor actor = setActorToFollow(_actorToFollow);
+            Vector3 cameraDiff = new Vector3(-CMasterControl.camera.position.X - _followerCoords.X, -CMasterControl.camera.position.Y - _followerCoords.Y, 0);
 
             CMasterControl.camera.translate(cameraDiff);
             CMasterControl.camera.translate(new Vector3(160, 120, 0));
-            CMasterControl.camera.setBoundary(new Vector2(followerCoords.X - 80,followerCoords.Y - 60));
-            actor.position = followerCoords;
+            CMasterControl.camera.setBoundary(new Vector2(_followerCoords.X - 80, _followerCoords.Y - 60));
+            actor.position = _followerCoords;
 
             _roomStart = true;
+            _mapSwapIssued = false;
         }
 
         public void cacheMaps(bool clearMaps, params string[] maps)
