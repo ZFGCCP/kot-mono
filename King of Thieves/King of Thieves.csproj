@@ -119,6 +119,7 @@
     <Compile Include="Actors\NPC\Enemies\Zombie\CGibdo.cs" />
     <Compile Include="Actors\NPC\Enemies\Zombie\CZombieScreecher.cs" />
     <Compile Include="Actors\NPC\Other\CTownsFolkHead.cs" />
+    <Compile Include="Actors\NPC\Other\DemoGuys\CSwordGuy.cs" />
     <Compile Include="Actors\NPC\Other\Maple\CMaple.cs" />
     <Compile Include="Actors\Player\CPlayer.cs" />
     <Compile Include="Actors\Player\CShadowClone.cs" />
@@ -564,6 +565,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\tilesets\outdoors\demoTiles.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\metallica.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
