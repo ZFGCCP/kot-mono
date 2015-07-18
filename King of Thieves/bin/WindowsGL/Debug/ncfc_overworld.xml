@@ -1581,6 +1581,8 @@
 				
 				<actor name="hitbox12" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "0:80" params = "256,32"></actor>
 				<actor name="hitbox13" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "272:80" params = "328,32"></actor>
+
+				<actor name="hitbox14" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "432:160" params = "48,32"></actor>
 			</actors>
 		</component>
 	  </components>

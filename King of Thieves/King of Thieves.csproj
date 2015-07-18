@@ -470,6 +470,7 @@
   <ItemGroup>
     <Folder Include="Actors\Items\Drops\playerStats\" />
     <Folder Include="Content\bin\WindowsGL\" />
+    <Folder Include="Content\music\" />
     <Folder Include="Content\obj\WindowsGL\" />
   </ItemGroup>
   <ItemGroup>
@@ -565,9 +566,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\tilesets\outdoors\demoTiles.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\music\metallica.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
