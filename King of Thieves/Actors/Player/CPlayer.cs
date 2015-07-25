@@ -650,8 +650,9 @@ namespace King_of_Thieves.Actors.Player
                 }
             }
 
-            if (_canOpenManu && input.keysReleased.Contains(Keys.Enter))
-                Master.Push(new usr.local.GameMenu.CPauseMenu(CMasterControl.itemPauseMenu(), CMasterControl.questPauseMenu()));
+            //Disabled for NCFC
+            /*if (_canOpenManu && input.keysReleased.Contains(Keys.Enter))
+                Master.Push(new usr.local.GameMenu.CPauseMenu(CMasterControl.itemPauseMenu(), CMasterControl.questPauseMenu()));*/
         }
 
 
