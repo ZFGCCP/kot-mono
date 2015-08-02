@@ -42,6 +42,7 @@
     <Compile Include="Actors\CActorPacket.cs" />
     <Compile Include="Actors\CActorTest.cs" />
     <Compile Include="Actors\CComponent.cs" />
+    <Compile Include="Actors\Items\decoration\CDoor.cs" />
     <Compile Include="Actors\Collision\CHitBox.cs" />
     <Compile Include="Actors\Collision\CMapChanger.cs" />
     <Compile Include="Actors\Collision\CSolidTile.cs" />
@@ -556,6 +557,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\tilesets\outdoors\hyruleCastleTown.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\tilesets\indoors\jim_morrison.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
