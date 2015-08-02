@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using King_of_Thieves.Actors.Collision;
 
-namespace King_of_Thieves.Actors.Collision
+namespace King_of_Thieves.Actors.Items.decoration
 {
     class CDoor : CActor
     {
