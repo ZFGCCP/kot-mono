@@ -825,3 +825,14 @@
 /processorParam:TextureFormat=Color
 /build:sprites/npc/friendly/swordguy.png
 
+#begin tilesets/indoors/jim_morrison.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:tilesets/indoors/jim_morrison.png
+
