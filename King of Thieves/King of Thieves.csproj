@@ -42,7 +42,7 @@
     <Compile Include="Actors\CActorPacket.cs" />
     <Compile Include="Actors\CActorTest.cs" />
     <Compile Include="Actors\CComponent.cs" />
-    <Compile Include="Actors\Collision\CDoor.cs" />
+    <Compile Include="Actors\Items\decoration\CDoor.cs" />
     <Compile Include="Actors\Collision\CHitBox.cs" />
     <Compile Include="Actors\Collision\CMapChanger.cs" />
     <Compile Include="Actors\Collision\CSolidTile.cs" />
@@ -75,6 +75,7 @@
     <Compile Include="Actors\Items\decoration\CChest.cs" />
     <Compile Include="Actors\Items\decoration\CPot.cs" />
     <Compile Include="Actors\Items\Drops\CDroppable.cs" />
+    <Compile Include="Actors\Items\Drops\CFireHydrant.cs" />
     <Compile Include="Actors\Items\Drops\CHeartDrop.cs" />
     <Compile Include="Actors\Items\Drops\CRupeeDrop.cs" />
     <Compile Include="Actors\Items\shields\CBaseShield.cs" />
