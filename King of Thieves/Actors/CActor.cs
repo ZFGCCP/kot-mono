@@ -891,6 +891,11 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        public void kill()
+        {
+            _killMe = true;
+        }
+
         private bool _noCollide
         {
             get

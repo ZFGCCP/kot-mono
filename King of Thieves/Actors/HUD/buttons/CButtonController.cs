@@ -14,6 +14,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
         private CButton _buttonAction = new CButton(CButton.HUD_BUTTON_TYPE.ACTION);
         private counters.CRupeeCounter _rupeeCounter = new counters.CRupeeCounter();
         private counters.CBombCounter _bombCounter = new counters.CBombCounter();
+        private counters.CArrowCounter _arrowCounter = new counters.CArrowCounter();
         private Actors.HUD.Text.CTextBox _textBoxController = new Text.CTextBox();
         public CPauseMenuElement currentElementLeft = null;
         public CPauseMenuElement currentElementRight = null;
@@ -38,7 +39,8 @@ namespace King_of_Thieves.Actors.HUD.buttons
             _buttonLeft.update(gameTime);
             _buttonAction.update(gameTime);
             _rupeeCounter.update(gameTime);
-            _bombCounter.update(gameTime);
+            //_bombCounter.update(gameTime);
+            _arrowCounter.update(gameTime);
             _textBoxController.update(gameTime);
         }
 
@@ -68,13 +70,22 @@ namespace King_of_Thieves.Actors.HUD.buttons
                 _bombCounter.increment(amount, instant);
         }
 
+        public void modifyArrows(int amount, bool instant = false)
+        {
+            if (amount < 0)
+                _arrowCounter.decrement(Math.Abs(amount), instant);
+            else
+                _arrowCounter.increment(amount, instant);
+        }
+
         public void drawMe(SpriteBatch spriteBatch)
         {
             _buttonLeft.drawMe();
             _buttonRight.drawMe();
             //_buttonAction.drawMe();
             _rupeeCounter.drawMe();
-            _bombCounter.drawMe();
+            //_bombCounter.drawMe();
+            _arrowCounter.drawMe();
             _textBoxController.drawMe();
         }
 
@@ -117,6 +128,14 @@ namespace King_of_Thieves.Actors.HUD.buttons
             get
             {
                 return _buttonRight.hudItem;
+            }
+        }
+
+        public int arrowCount
+        {
+            get
+            {
+                return _arrowCounter.amount;
             }
         }
 
