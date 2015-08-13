@@ -121,6 +121,7 @@
     <Compile Include="Actors\NPC\Enemies\Zombie\CGibdo.cs" />
     <Compile Include="Actors\NPC\Enemies\Zombie\CZombieScreecher.cs" />
     <Compile Include="Actors\NPC\Other\CTownsFolkHead.cs" />
+    <Compile Include="Actors\NPC\Other\DemoGuys\CKeyGuy.cs" />
     <Compile Include="Actors\NPC\Other\DemoGuys\CSwordGuy.cs" />
     <Compile Include="Actors\NPC\Other\DemoGuys\CSwordGuyHead.cs" />
     <Compile Include="Actors\NPC\Other\Maple\CMaple.cs" />
