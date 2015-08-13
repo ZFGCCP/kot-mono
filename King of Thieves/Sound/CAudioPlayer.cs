@@ -78,6 +78,9 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Background:Shock", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/shock")));
             soundBank.Add("Background:itemFanfare", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfare")));
             soundBank.Add("Background:itemFanfareSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfareSmall")));
+
+            //music
+            soundBank.Add("bgm:metallica", new CSound(CMasterControl.glblContent.Load<SoundEffect>("music/metallica")));
         }
 
         public void stop()

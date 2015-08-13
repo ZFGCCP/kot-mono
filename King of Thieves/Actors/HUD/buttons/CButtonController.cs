@@ -26,6 +26,8 @@ namespace King_of_Thieves.Actors.HUD.buttons
 
         public CPauseMenuElement[] bottleRef = new CPauseMenuElement[4];
 
+        public bool playerHasSword = false;
+
 
 
         public void createTextBox(string message)

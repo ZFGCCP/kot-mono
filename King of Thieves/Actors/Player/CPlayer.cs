@@ -197,7 +197,7 @@ namespace King_of_Thieves.Actors.Player
                         _collideWithNpcResponse(collider, false);
                 }
 
-                if (collider is NPC.Other.CTownsFolk)
+                if (collider is NPC.Other.CTownsFolk || collider is NPC.Other.DemoGuys.CSwordGuy)
                 {
                     solidCollide(collider);
                 }
@@ -459,7 +459,7 @@ namespace King_of_Thieves.Actors.Player
                     {
                         if (_wearingShadowCloak)
                             _createShadowClone();
-                        else
+                        else if (CMasterControl.buttonController.playerHasSword)
                         {
                             _state = ACTOR_STATES.SWINGING;
                             _swordReleased = false;
@@ -933,6 +933,7 @@ namespace King_of_Thieves.Actors.Player
 
             //other NPCs
             _collidables.Add(typeof(Actors.NPC.Other.CTownsFolk));
+            _collidables.Add(typeof(Actors.NPC.Other.DemoGuys.CSwordGuy));
         }
 
         public override void shock()

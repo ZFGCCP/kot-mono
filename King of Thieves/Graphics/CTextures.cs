@@ -26,6 +26,7 @@ namespace King_of_Thieves.Graphics
         public const string ITEMS = "items:";
         public const string SHIELDS = ITEMS + "shields:";
         public const string SWORDS = ITEMS + "swords:";
+        public const string DEMO_FOLK = "demoFolk:";
 
         //actual constants
         public const string EFFECT_ENERGY_BALL_SMALL = EFFECTS + "energyBallSmall";
@@ -173,6 +174,15 @@ namespace King_of_Thieves.Graphics
         public const string GERUDO_SWORD_LEFT = SWORDS + "gerudoSwordLeft";
         public const string GERUDO_SWORD_RIGHT = SWORDS + "gerudoSwordRight";
 
+        public const string DEMO_FOLK_SWORD_GUY_UP = DEMO_FOLK + "swordGuyUp";
+        public const string DEMO_FOLK_SWORD_GUY_RIGHT = DEMO_FOLK + "swordGuyRight";
+        public const string DEMO_FOLK_SWORD_GUY_LEFT = DEMO_FOLK + "swordGuyLeft";
+        public const string DEMO_FOLK_SWORD_GUY_DOWN = DEMO_FOLK + "swordGuyDown";
+
+        public const string DEMO_FOLK_SWORD_GUY_HEAD_UP = DEMO_FOLK + "swordGuyHeadUp";
+        public const string DEMO_FOLK_SWORD_GUY_HEAD_RIGHT = DEMO_FOLK + "swordGuyHeadRight";
+        public const string DEMO_FOLK_SWORD_GUY_HEAD_LEFT = DEMO_FOLK + "swordGuyHeadLeft";
+        public const string DEMO_FOLK_SWORD_GUY_HEAD_DOWN = DEMO_FOLK + "swordGuyHeadDown";
        
         //source images
         public const string SOURCE_PLAYER = "Player";
@@ -352,6 +362,15 @@ namespace King_of_Thieves.Graphics
             textures.Add(DROPS_RUPEE_BLUE, new CTextureAtlas("drops:drops01", 16, 16, 1, "1:1", "1:1"));
             textures.Add(DROPS_RUPEE_ORANGE, new CTextureAtlas("drops:drops01", 16, 16, 1, "2:1", "2:1"));
             textures.Add(DROPS_RUPEE_PURPLE, new CTextureAtlas("drops:drops01", 16, 16, 1, "3:1", "3:1"));
+
+            //demo folk
+            textures.Add(DEMO_FOLK_SWORD_GUY_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "1:3", "1:3"));
+            textures.Add(DEMO_FOLK_SWORD_GUY_LEFT, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "0:3", "0:3"));
+            textures.Add(DEMO_FOLK_SWORD_GUY_UP, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "0:2", "0:2"));
+
+            textures.Add(DEMO_FOLK_SWORD_GUY_HEAD_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "1:1", "1:1"));
+            textures.Add(DEMO_FOLK_SWORD_GUY_HEAD_LEFT, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "0:1", "0:1"));
+            textures.Add(DEMO_FOLK_SWORD_GUY_HEAD_UP, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "0:0", "0:0"));
         }
 
         public static void addRawTexture(string textureName, string fileNameNoExt)
@@ -394,6 +413,8 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("effects:explosion", _content.Load<Texture2D>(@"effects/bomb-explosion"));
             rawTextures.Add("effects:various", _content.Load<Texture2D>(@"effects/various-effects"));
             
+            //demo folk
+            rawTextures.Add(DEMO_FOLK, _content.Load<Texture2D>(@"sprites/npc/friendly/demoFolk"));
 
             //hud
             rawTextures.Add("hud", _content.Load<Texture2D>("hud/textbox2"));

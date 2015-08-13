@@ -1547,6 +1547,11 @@
 	  <components>
 	   <component>
 			<actors>
+				<actor name="swordGuy" type="King_of_Thieves.Actors.NPC.Other.DemoGuys.CSwordGuy" coordinates = "145:130"></actor>
+			</actors>
+	   </component>
+	   <component>
+			<actors>
 				<actor name="doorTest" type = "King_of_Thieves.Actors.Items.decoration.CDoor" coordinates = "252:96" params="1,1"></actor>
 			</actors>
 		</component>
