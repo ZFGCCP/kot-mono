@@ -101,8 +101,8 @@ namespace King_of_Thieves.Actors.NPC.Other
             if (!_itemGiven)
             {
                 _itemGiven = true;
-                if (_randNum.Next(100) >= 50)
-                {
+                //if (_randNum.Next(100) >= 50)
+                //{
                     _hasPettyItem = true;
                     indicator.CIndicatorPickpocketPetty petty = new indicator.CIndicatorPickpocketPetty();
                     petty.init(_name + "pickpocketPettyIndicator", new Microsoft.Xna.Framework.Vector2(_position.X + 5, _position.Y - 20), "", this.componentAddress);
@@ -111,7 +111,7 @@ namespace King_of_Thieves.Actors.NPC.Other
                     Actors.Items.Drops.CRupeeDrop rupeeDrop = new Items.Drops.CRupeeDrop();
                     rupeeDrop.init(this.name + "loadedItem", _position, "", this.componentAddress, "G", "false", "false");
                     Map.CMapManager.addActorToComponent(rupeeDrop, this.componentAddress);
-                }
+                //}
             }
             if (_state == ACTOR_STATES.MOVING)
                 moveInDirection(_velocity);
@@ -120,19 +120,20 @@ namespace King_of_Thieves.Actors.NPC.Other
             
             if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _hearingRadius))
             {
-                if (_checkIfPointInView(playerPos) && checkIfFacing(playerPos, Player.CPlayer.glblDirection))
+                if (_checkIfPointInView(playerPos) && checkIfFacing(playerPos, Player.CPlayer.glblDirection) && _state != ACTOR_STATES.BEING_PICKED)
                 {
                     _state = ACTOR_STATES.TALK_READY;
                     CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.TALK);
                     _playerInSight = true;
                 }
-                else if (_checkIfPointBehind(playerPos) && checkIfBackFacing(playerPos, Player.CPlayer.glblDirection) && _hasItemToPick)
+                else if (_checkIfPointBehind(playerPos) && checkIfBackFacing(playerPos, Player.CPlayer.glblDirection) && _hasItemToPick && _state != ACTOR_STATES.BEING_PICKED)
                 {
                     CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.PICK);
+                    _state = ACTOR_STATES.PICK_READY;
                 }
                 else
                 {
-                    if (_playerInSight)
+                    if (_playerInSight && (_state == ACTOR_STATES.PICK_READY || _state == ACTOR_STATES.TALK_READY))
                     {
                         _state = ACTOR_STATES.IDLE;
                         CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
@@ -174,11 +175,11 @@ namespace King_of_Thieves.Actors.NPC.Other
 
                 if (!CMasterControl.buttonController.textBoxWait)
                 {
-                    if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.TALK)
+                    if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.TALK && _state == ACTOR_STATES.TALK_READY)
                         startTimer0(2);
                 }
 
-                if(CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.PICK && CMasterControl.pickPocketMeter == null)
+                if(CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.PICK && _state == ACTOR_STATES.PICK_READY && CMasterControl.pickPocketMeter == null)
                     startTimer2(2);
                
             }
