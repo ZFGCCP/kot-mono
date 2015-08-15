@@ -183,6 +183,16 @@ namespace King_of_Thieves.Graphics
         public const string DEMO_FOLK_SWORD_GUY_HEAD_RIGHT = DEMO_FOLK + "swordGuyHeadRight";
         public const string DEMO_FOLK_SWORD_GUY_HEAD_LEFT = DEMO_FOLK + "swordGuyHeadLeft";
         public const string DEMO_FOLK_SWORD_GUY_HEAD_DOWN = DEMO_FOLK + "swordGuyHeadDown";
+
+        public const string DEMO_FOLK_KEY_GUY_UP = DEMO_FOLK + "keyGuyUp";
+        public const string DEMO_FOLK_KEY_GUY_RIGHT = DEMO_FOLK + "keyGuyRight";
+        public const string DEMO_FOLK_KEY_GUY_LEFT = DEMO_FOLK + "keyGuyLeft";
+        public const string DEMO_FOLK_KEY_GUY_DOWN = DEMO_FOLK + "keyGuyDown";
+
+        public const string DEMO_FOLK_KEY_GUY_HEAD_UP = DEMO_FOLK + "keyGuyHeadUp";
+        public const string DEMO_FOLK_KEY_GUY_HEAD_RIGHT = DEMO_FOLK + "keyGuyHeadRight";
+        public const string DEMO_FOLK_KEY_GUY_HEAD_LEFT = DEMO_FOLK + "keyGuyHeadLeft";
+        public const string DEMO_FOLK_KEY_GUY_HEAD_DOWN = DEMO_FOLK + "keyGuyHeadDown";
        
         //source images
         public const string SOURCE_PLAYER = "Player";
@@ -371,6 +381,14 @@ namespace King_of_Thieves.Graphics
             textures.Add(DEMO_FOLK_SWORD_GUY_HEAD_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "1:1", "1:1"));
             textures.Add(DEMO_FOLK_SWORD_GUY_HEAD_LEFT, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "0:1", "0:1"));
             textures.Add(DEMO_FOLK_SWORD_GUY_HEAD_UP, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "0:0", "0:0"));
+
+            textures.Add(DEMO_FOLK_KEY_GUY_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "3:3", "3:3"));
+            textures.Add(DEMO_FOLK_KEY_GUY_LEFT, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "2:3", "2:3"));
+            textures.Add(DEMO_FOLK_KEY_GUY_UP, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "2:2", "2:2"));
+
+            textures.Add(DEMO_FOLK_KEY_GUY_HEAD_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "3:1", "3:1"));
+            textures.Add(DEMO_FOLK_KEY_GUY_HEAD_LEFT, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "2:1", "2:1"));
+            textures.Add(DEMO_FOLK_KEY_GUY_HEAD_UP, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "2:0", "2:0"));
         }
 
         public static void addRawTexture(string textureName, string fileNameNoExt)
