@@ -65,6 +65,7 @@ namespace King_of_Thieves.Actors
         MOVING,
         NIGHT,
         PICKING,
+        PICK_READY,
         POPDOWN,
         POPUP,
         ROLLING,
