@@ -67,19 +67,20 @@ namespace King_of_Thieves.Actors.NPC.Other.DemoGuys
             Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
             if (MathExt.MathExt.checkPointInCircle(playerPos, _position, _hearingRadius))
             {
-                if (_checkIfPointInView(playerPos) && checkIfFacing(playerPos, Player.CPlayer.glblDirection))
+                if (_checkIfPointInView(playerPos) && checkIfFacing(playerPos, Player.CPlayer.glblDirection) && _state != ACTOR_STATES.BEING_PICKED)
                 {
                     _state = ACTOR_STATES.TALK_READY;
                     CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.TALK);
                     _playerInSight = true;
                 }
-                else if (_checkIfPointBehind(playerPos) && checkIfBackFacing(playerPos, Player.CPlayer.glblDirection) && _hasItemToPick)
+                else if (_checkIfPointBehind(playerPos) && checkIfBackFacing(playerPos, Player.CPlayer.glblDirection) && _hasItemToPick && _state != ACTOR_STATES.BEING_PICKED)
                 {
                     CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.PICK);
+                    _state = ACTOR_STATES.PICK_READY;
                 }
                 else
                 {
-                    if (_playerInSight)
+                    if (_playerInSight && (_state == ACTOR_STATES.PICK_READY || _state == ACTOR_STATES.TALK_READY))
                     {
                         _state = ACTOR_STATES.IDLE;
                         CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
@@ -91,33 +92,36 @@ namespace King_of_Thieves.Actors.NPC.Other.DemoGuys
 
         public override void timer4(object sender)
         {
-            _direction = (DIRECTION)_randNum.Next(0, 3);
-
-            switch (_direction)
+            if (_state == ACTOR_STATES.IDLE)
             {
-                case DIRECTION.DOWN:
-                    _angle = 270;
-                    _backAngle = 90;
-                    swapImage(_FACE_DOWN);
-                    break;
+                _direction = (DIRECTION)_randNum.Next(0, 3);
 
-                case DIRECTION.LEFT:
-                    _angle = 180;
-                    _backAngle = 0;
-                    swapImage(_FACE_LEFT);
-                    break;
+                switch (_direction)
+                {
+                    case DIRECTION.DOWN:
+                        _angle = 270;
+                        _backAngle = 90;
+                        swapImage(_FACE_DOWN);
+                        break;
 
-                case DIRECTION.RIGHT:
-                    _angle = 0;
-                    _backAngle = 180;
-                    swapImage(_FACE_RIGHT);
-                    break;
+                    case DIRECTION.LEFT:
+                        _angle = 180;
+                        _backAngle = 0;
+                        swapImage(_FACE_LEFT);
+                        break;
 
-                case DIRECTION.UP:
-                    _angle = 90;
-                    _backAngle = 270;
-                    swapImage(_FACE_UP);
-                    break;
+                    case DIRECTION.RIGHT:
+                        _angle = 0;
+                        _backAngle = 180;
+                        swapImage(_FACE_RIGHT);
+                        break;
+
+                    case DIRECTION.UP:
+                        _angle = 90;
+                        _backAngle = 270;
+                        swapImage(_FACE_UP);
+                        break;
+                }
             }
 
             startTimer4(120);
@@ -200,23 +204,16 @@ namespace King_of_Thieves.Actors.NPC.Other.DemoGuys
                         CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
                         CMasterControl.buttonController.playerHasSword = true;
                     }
-                    else
-                    {
-                        startTimer3(2);
-                        _hasItemToPick = false;
-                        _backLineOfSight = 0;
-                        _backVisionRange = 0;
-                    }
                     _state = ACTOR_STATES.IDLE;
                 }
 
                 if (!CMasterControl.buttonController.textBoxWait)
                 {
-                    if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.TALK)
+                    if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.TALK && _state == ACTOR_STATES.TALK_READY)
                         startTimer0(2);
                 }
 
-                if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.PICK && CMasterControl.pickPocketMeter == null)
+                if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.PICK && _state == ACTOR_STATES.PICK_READY && CMasterControl.pickPocketMeter == null)
                     startTimer2(2);
 
             }

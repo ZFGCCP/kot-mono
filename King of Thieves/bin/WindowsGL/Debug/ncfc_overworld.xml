@@ -1556,6 +1556,11 @@
 			</actors>
 		</component>
 		<component>
+				<actors>
+					<actor name="townsfolk" type="King_of_Thieves.Actors.NPC.Other.CTownsFolk" coordinates="220:130"></actor>
+				</actors>
+			</component>
+		<component>
 			<actors>
 				<actor name = "player" type = "King_of_Thieves.Actors.Player.CPlayer" coordinates = "64:128"></actor>
 				<actor name = "sword" type = "King_of_Thieves.Actors.Items.Swords.CSword" coordinates = "64:128"></actor>
