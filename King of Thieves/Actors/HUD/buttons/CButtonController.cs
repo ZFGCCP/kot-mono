@@ -74,6 +74,14 @@ namespace King_of_Thieves.Actors.HUD.buttons
                 _bombCounter.increment(amount, instant);
         }
 
+        public bool hasKey
+        {
+            get
+            {
+                return _keyCounter.amount > 0;
+            }
+        }
+
         public void giveKey()
         {
             _keyCounter.increment(1, true);

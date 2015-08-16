@@ -204,7 +204,14 @@ namespace King_of_Thieves.Actors.Player
                 else if (collider is Items.decoration.CDoor)
                 {
                     if (((Items.decoration.CDoor)collider).isLocked)
+                    {
                         solidCollide(collider);
+                        if (CMasterControl.buttonController.hasKey)
+                        {
+                            collider.kill();
+                            CMasterControl.buttonController.useKey();
+                        }
+                    }
                     else
                         collider.kill();
                 }
