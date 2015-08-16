@@ -14,6 +14,7 @@ namespace King_of_Thieves.Map
         private Dictionary<string, CMap> mapPool = null;
         private static Actors.CComponent _droppableComponent = new Actors.CComponent(1);
         private static Dictionary<string, Graphics.CSprite> _droppableActorSpriteCache = new Dictionary<string, Graphics.CSprite>();
+        private static bool _roomStart = false;
 
         private static bool _mapSwapIssued = false;
         private static string _mapName, _actorToFollow;
@@ -66,6 +67,19 @@ namespace King_of_Thieves.Map
             }
         }
 
+        public static bool roomStart
+        {
+            get
+            {
+                return _roomStart;
+            }
+        }
+
+        public static void turnOffRoomStart()
+        {
+            _roomStart = false;
+        }
+
         public void drawMap()
         {
             if (_currentMap != null)
@@ -115,6 +129,8 @@ namespace King_of_Thieves.Map
             CMasterControl.camera.translate(new Vector3(160, 120, 0));
             CMasterControl.camera.setBoundary(new Vector2(_followerCoords.X - 80, _followerCoords.Y - 60));
             actor.position = _followerCoords;
+
+            _roomStart = true;
             _mapSwapIssued = false;
         }
 

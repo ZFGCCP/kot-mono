@@ -69,7 +69,8 @@ namespace King_of_Thieves.Actors.Items.decoration
         COMPASS_ZORA,
         COMPASS_SHIEKAH,
         COMPASS_CLOCK,
-        MOON_PEARL
+        MOON_PEARL,
+        HYDRANT
     }
 
     class CChest : CActor
@@ -143,6 +144,12 @@ namespace King_of_Thieves.Actors.Items.decoration
                     Items.Drops.CRupeeDrop rupee = new Drops.CRupeeDrop();
                     rupee.init(this.name + "loadedItem", _position, "", this.componentAddress, "G", "true");
                     Map.CMapManager.addActorToComponent(rupee, this.componentAddress);
+                    break;
+
+                case ITEMS_INSIDE.HYDRANT:
+                    Items.Drops.CFireHydrant hydrant = new Drops.CFireHydrant();
+                    hydrant.init(this.name + "loadedItem", _position, "", this.componentAddress);
+                    Map.CMapManager.addActorToComponent(hydrant, this.componentAddress);
                     break;
 
                 default:

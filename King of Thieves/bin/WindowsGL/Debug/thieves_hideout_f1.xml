@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" width="0" height="0">
+  <version>1</version>
+  <layerCount>2</layerCount>
+  <layers>
+    <layer width="0" height="0" name="root">
+      <tiles>
+        <tile coordinates="0:6" tileSet="tileset:indoors:thievesHideout" selection="0:0" />
+        <tile coordinates="0:7" tileSet="tileset:indoors:thievesHideout" selection="0:1" />
+        <tile coordinates="0:8" tileSet="tileset:indoors:thievesHideout" selection="0:2" />
+        <tile coordinates="0:10" tileSet="tileset:indoors:thievesHideout" selection="0:2" />
+        <tile coordinates="0:12" tileSet="tileset:indoors:thievesHideout" selection="0:2" />
+        <tile coordinates="0:14" tileSet="tileset:indoors:thievesHideout" selection="0:2" />
+        <tile coordinates="0:16" tileSet="tileset:indoors:thievesHideout" selection="0:2" />
+        <tile coordinates="0:18" tileSet="tileset:indoors:thievesHideout" selection="0:2" />
+        <tile coordinates="0:9" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="0:11" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="0:13" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="0:15" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="0:17" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="0:19" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="0:20" tileSet="tileset:indoors:thievesHideout" selection="0:4" />
+        <tile coordinates="0:21" tileSet="tileset:indoors:thievesHideout" selection="0:5" />
+        <tile coordinates="1:21" tileSet="tileset:indoors:thievesHideout" selection="1:5" />
+        <tile coordinates="1:20" tileSet="tileset:indoors:thievesHideout" selection="1:4" />
+        <tile coordinates="1:19" tileSet="tileset:indoors:thievesHideout" selection="1:3" />
+        <tile coordinates="1:17" tileSet="tileset:indoors:thievesHideout" selection="1:3" />
+        <tile coordinates="1:15" tileSet="tileset:indoors:thievesHideout" selection="1:3" />
+        <tile coordinates="1:13" tileSet="tileset:indoors:thievesHideout" selection="1:3" />
+        <tile coordinates="1:11" tileSet="tileset:indoors:thievesHideout" selection="1:3" />
+        <tile coordinates="1:9" tileSet="tileset:indoors:thievesHideout" selection="1:3" />
+        <tile coordinates="1:8" tileSet="tileset:indoors:thievesHideout" selection="1:2" />
+        <tile coordinates="1:10" tileSet="tileset:indoors:thievesHideout" selection="1:2" />
+        <tile coordinates="1:12" tileSet="tileset:indoors:thievesHideout" selection="1:2" />
+        <tile coordinates="1:14" tileSet="tileset:indoors:thievesHideout" selection="1:2" />
+        <tile coordinates="1:16" tileSet="tileset:indoors:thievesHideout" selection="1:2" />
+        <tile coordinates="1:18" tileSet="tileset:indoors:thievesHideout" selection="1:2" />
+        <tile coordinates="1:7" tileSet="tileset:indoors:thievesHideout" selection="1:1" />
+        <tile coordinates="1:6" tileSet="tileset:indoors:thievesHideout" selection="1:0" />
+        <tile coordinates="2:21" tileSet="tileset:indoors:thievesHideout" selection="9:8" />
+        <tile coordinates="2:20" tileSet="tileset:indoors:thievesHideout" selection="9:7" />
+        <tile coordinates="3:20" tileSet="tileset:indoors:thievesHideout" selection="10:7" />
+        <tile coordinates="3:21" tileSet="tileset:indoors:thievesHideout" selection="10:8" />
+        <tile coordinates="4:20" tileSet="tileset:indoors:thievesHideout" selection="2:4" />
+        <tile coordinates="4:21" tileSet="tileset:indoors:thievesHideout" selection="2:5" />
+        <tile coordinates="5:21" tileSet="tileset:indoors:thievesHideout" selection="3:5" />
+        <tile coordinates="5:20" tileSet="tileset:indoors:thievesHideout" selection="3:4" />
+        <tile coordinates="6:21" tileSet="tileset:indoors:thievesHideout" selection="9:8" />
+        <tile coordinates="7:21" tileSet="tileset:indoors:thievesHideout" selection="10:8" />
+        <tile coordinates="7:20" tileSet="tileset:indoors:thievesHideout" selection="10:7" />
+        <tile coordinates="6:20" tileSet="tileset:indoors:thievesHideout" selection="9:7" />
+        <tile coordinates="8:20" tileSet="tileset:indoors:thievesHideout" selection="2:4" />
+        <tile coordinates="8:21" tileSet="tileset:indoors:thievesHideout" selection="2:5" />
+        <tile coordinates="9:21" tileSet="tileset:indoors:thievesHideout" selection="3:5" />
+        <tile coordinates="9:20" tileSet="tileset:indoors:thievesHideout" selection="3:4" />
+        <tile coordinates="10:21" tileSet="tileset:indoors:thievesHideout" selection="4:5" />
+        <tile coordinates="11:21" tileSet="tileset:indoors:thievesHideout" selection="5:5" />
+        <tile coordinates="11:20" tileSet="tileset:indoors:thievesHideout" selection="5:4" />
+        <tile coordinates="10:20" tileSet="tileset:indoors:thievesHideout" selection="4:4" />
+        <tile coordinates="10:19" tileSet="tileset:indoors:thievesHideout" selection="4:3" />
+        <tile coordinates="11:19" tileSet="tileset:indoors:thievesHideout" selection="5:3" />
+        <tile coordinates="11:18" tileSet="tileset:indoors:thievesHideout" selection="5:2" />
+        <tile coordinates="10:18" tileSet="tileset:indoors:thievesHideout" selection="4:2" />
+        <tile coordinates="10:17" tileSet="tileset:indoors:thievesHideout" selection="4:3" />
+        <tile coordinates="11:17" tileSet="tileset:indoors:thievesHideout" selection="5:3" />
+        <tile coordinates="11:15" tileSet="tileset:indoors:thievesHideout" selection="5:3" />
+        <tile coordinates="11:13" tileSet="tileset:indoors:thievesHideout" selection="5:3" />
+        <tile coordinates="11:14" tileSet="tileset:indoors:thievesHideout" selection="5:2" />
+        <tile coordinates="11:16" tileSet="tileset:indoors:thievesHideout" selection="5:2" />
+        <tile coordinates="10:16" tileSet="tileset:indoors:thievesHideout" selection="4:2" />
+        <tile coordinates="10:14" tileSet="tileset:indoors:thievesHideout" selection="4:2" />
+        <tile coordinates="10:13" tileSet="tileset:indoors:thievesHideout" selection="4:3" />
+        <tile coordinates="10:15" tileSet="tileset:indoors:thievesHideout" selection="4:3" />
+        <tile coordinates="10:12" tileSet="tileset:indoors:thievesHideout" selection="6:1" />
+        <tile coordinates="10:11" tileSet="tileset:indoors:thievesHideout" selection="6:0" />
+        <tile coordinates="11:11" tileSet="tileset:indoors:thievesHideout" selection="7:0" />
+        <tile coordinates="11:12" tileSet="tileset:indoors:thievesHideout" selection="7:1" />
+        <tile coordinates="12:12" tileSet="tileset:indoors:thievesHideout" selection="8:1" />
+        <tile coordinates="12:11" tileSet="tileset:indoors:thievesHideout" selection="8:0" />
+        <tile coordinates="13:11" tileSet="tileset:indoors:thievesHideout" selection="9:0" />
+        <tile coordinates="13:12" tileSet="tileset:indoors:thievesHideout" selection="9:1" />
+        <tile coordinates="13:13" tileSet="tileset:indoors:thievesHideout" selection="1:2" />
+        <tile coordinates="13:15" tileSet="tileset:indoors:thievesHideout" selection="1:2" />
+        <tile coordinates="13:17" tileSet="tileset:indoors:thievesHideout" selection="1:2" />
+        <tile coordinates="13:19" tileSet="tileset:indoors:thievesHideout" selection="1:2" />
+        <tile coordinates="12:17" tileSet="tileset:indoors:thievesHideout" selection="0:2" />
+        <tile coordinates="12:15" tileSet="tileset:indoors:thievesHideout" selection="0:2" />
+        <tile coordinates="12:19" tileSet="tileset:indoors:thievesHideout" selection="0:2" />
+        <tile coordinates="12:14" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="12:16" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="12:18" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="13:18" tileSet="tileset:indoors:thievesHideout" selection="1:3" />
+        <tile coordinates="13:16" tileSet="tileset:indoors:thievesHideout" selection="1:3" />
+        <tile coordinates="13:14" tileSet="tileset:indoors:thievesHideout" selection="1:3" />
+        <tile coordinates="12:13" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="12:20" tileSet="tileset:indoors:thievesHideout" selection="0:4" />
+        <tile coordinates="12:21" tileSet="tileset:indoors:thievesHideout" selection="0:5" />
+        <tile coordinates="13:21" tileSet="tileset:indoors:thievesHideout" selection="1:5" />
+        <tile coordinates="13:20" tileSet="tileset:indoors:thievesHideout" selection="1:4" />
+        <tile coordinates="2:7" tileSet="tileset:indoors:thievesHideout" selection="6:5" />
+        <tile coordinates="4:7" tileSet="tileset:indoors:thievesHideout" selection="8:5" />
+        <tile coordinates="3:7" tileSet="tileset:indoors:thievesHideout" selection="0:6" />
+        <tile coordinates="5:7" tileSet="tileset:indoors:thievesHideout" selection="2:1" />
+        <tile coordinates="7:7" tileSet="tileset:indoors:thievesHideout" selection="2:1" />
+        <tile coordinates="9:7" tileSet="tileset:indoors:thievesHideout" selection="2:1" />
+        <tile coordinates="11:7" tileSet="tileset:indoors:thievesHideout" selection="2:1" />
+        <tile coordinates="5:6" tileSet="tileset:indoors:thievesHideout" selection="2:0" />
+        <tile coordinates="7:6" tileSet="tileset:indoors:thievesHideout" selection="2:0" />
+        <tile coordinates="9:6" tileSet="tileset:indoors:thievesHideout" selection="2:0" />
+        <tile coordinates="11:6" tileSet="tileset:indoors:thievesHideout" selection="2:0" />
+        <tile coordinates="10:6" tileSet="tileset:indoors:thievesHideout" selection="3:0" />
+        <tile coordinates="8:6" tileSet="tileset:indoors:thievesHideout" selection="3:0" />
+        <tile coordinates="6:6" tileSet="tileset:indoors:thievesHideout" selection="3:0" />
+        <tile coordinates="6:7" tileSet="tileset:indoors:thievesHideout" selection="3:1" />
+        <tile coordinates="8:7" tileSet="tileset:indoors:thievesHideout" selection="3:1" />
+        <tile coordinates="10:7" tileSet="tileset:indoors:thievesHideout" selection="3:1" />
+        <tile coordinates="14:20" tileSet="tileset:indoors:thievesHideout" selection="2:4" />
+        <tile coordinates="14:21" tileSet="tileset:indoors:thievesHideout" selection="2:5" />
+        <tile coordinates="15:21" tileSet="tileset:indoors:thievesHideout" selection="3:5" />
+        <tile coordinates="15:20" tileSet="tileset:indoors:thievesHideout" selection="3:4" />
+        <tile coordinates="16:20" tileSet="tileset:indoors:thievesHideout" selection="6:6" />
+        <tile coordinates="18:20" tileSet="tileset:indoors:thievesHideout" selection="8:6" />
+        <tile coordinates="17:20" tileSet="tileset:indoors:thievesHideout" selection="0:15" />
+        <tile coordinates="19:21" tileSet="tileset:indoors:thievesHideout" selection="2:5" />
+        <tile coordinates="20:20" tileSet="tileset:indoors:thievesHideout" selection="3:4" />
+        <tile coordinates="20:21" tileSet="tileset:indoors:thievesHideout" selection="3:5" />
+        <tile coordinates="21:21" tileSet="tileset:indoors:thievesHideout" selection="4:5" />
+        <tile coordinates="22:21" tileSet="tileset:indoors:thievesHideout" selection="5:5" />
+        <tile coordinates="22:20" tileSet="tileset:indoors:thievesHideout" selection="5:4" />
+        <tile coordinates="21:20" tileSet="tileset:indoors:thievesHideout" selection="4:4" />
+        <tile coordinates="21:19" tileSet="tileset:indoors:thievesHideout" selection="4:3" />
+        <tile coordinates="21:17" tileSet="tileset:indoors:thievesHideout" selection="4:3" />
+        <tile coordinates="21:15" tileSet="tileset:indoors:thievesHideout" selection="4:3" />
+        <tile coordinates="22:19" tileSet="tileset:indoors:thievesHideout" selection="5:3" />
+        <tile coordinates="22:17" tileSet="tileset:indoors:thievesHideout" selection="5:3" />
+        <tile coordinates="22:15" tileSet="tileset:indoors:thievesHideout" selection="5:3" />
+        <tile coordinates="21:16" tileSet="tileset:indoors:thievesHideout" selection="4:2" />
+        <tile coordinates="21:18" tileSet="tileset:indoors:thievesHideout" selection="4:2" />
+        <tile coordinates="22:18" tileSet="tileset:indoors:thievesHideout" selection="5:2" />
+        <tile coordinates="22:16" tileSet="tileset:indoors:thievesHideout" selection="5:2" />
+        <tile coordinates="21:14" tileSet="tileset:indoors:thievesHideout" selection="4:2" />
+        <tile coordinates="22:14" tileSet="tileset:indoors:thievesHideout" selection="5:2" />
+        <tile coordinates="2:8" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="3:8" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="3:9" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="2:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="2:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="4:9" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="5:8" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="5:9" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="4:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="2:11" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="2:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="3:9" tileSet="tileset:indoors:thievesHideout" selection="17:0" />
+        <tile coordinates="2:9" tileSet="tileset:indoors:thievesHideout" selection="16:0" />
+        <tile coordinates="2:10" tileSet="tileset:indoors:thievesHideout" selection="16:1" />
+        <tile coordinates="2:11" tileSet="tileset:indoors:thievesHideout" selection="16:2" />
+        <tile coordinates="3:10" tileSet="tileset:indoors:thievesHideout" selection="17:1" />
+        <tile coordinates="4:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="4:11" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="4:11" tileSet="tileset:indoors:thievesHideout" selection="18:2" />
+        <tile coordinates="4:10" tileSet="tileset:indoors:thievesHideout" selection="18:1" />
+        <tile coordinates="4:9" tileSet="tileset:indoors:thievesHideout" selection="18:0" />
+        <tile coordinates="3:11" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="3:11" tileSet="tileset:indoors:thievesHideout" selection="17:2" />
+        <tile coordinates="3:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="4:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="4:13" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="2:13" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="2:12" tileSet="tileset:indoors:thievesHideout" selection="16:0" />
+        <tile coordinates="2:13" tileSet="tileset:indoors:thievesHideout" selection="16:1" />
+        <tile coordinates="3:13" tileSet="tileset:indoors:thievesHideout" selection="17:1" />
+        <tile coordinates="3:12" tileSet="tileset:indoors:thievesHideout" selection="17:0" />
+        <tile coordinates="4:12" tileSet="tileset:indoors:thievesHideout" selection="18:0" />
+        <tile coordinates="4:13" tileSet="tileset:indoors:thievesHideout" selection="18:1" />
+        <tile coordinates="2:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="3:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="4:15" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="4:14" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="4:14" tileSet="tileset:indoors:thievesHideout" selection="18:2" />
+        <tile coordinates="3:14" tileSet="tileset:indoors:thievesHideout" selection="17:2" />
+        <tile coordinates="2:14" tileSet="tileset:indoors:thievesHideout" selection="16:2" />
+        <tile coordinates="3:15" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="2:15" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="2:16" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="2:17" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="2:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="3:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="4:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="4:17" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="4:16" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="2:15" tileSet="tileset:indoors:thievesHideout" selection="16:0" />
+        <tile coordinates="3:15" tileSet="tileset:indoors:thievesHideout" selection="17:0" />
+        <tile coordinates="3:16" tileSet="tileset:indoors:thievesHideout" selection="17:1" />
+        <tile coordinates="2:16" tileSet="tileset:indoors:thievesHideout" selection="16:1" />
+        <tile coordinates="4:15" tileSet="tileset:indoors:thievesHideout" selection="18:0" />
+        <tile coordinates="4:16" tileSet="tileset:indoors:thievesHideout" selection="18:1" />
+        <tile coordinates="4:17" tileSet="tileset:indoors:thievesHideout" selection="18:2" />
+        <tile coordinates="2:17" tileSet="tileset:indoors:thievesHideout" selection="16:2" />
+        <tile coordinates="3:17" tileSet="tileset:indoors:thievesHideout" selection="17:2" />
+        <tile coordinates="2:19" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="3:19" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="4:19" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="5:19" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="5:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="5:17" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="5:16" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="5:15" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="6:13" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="5:13" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="5:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="6:14" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="6:15" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="5:12" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="5:11" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="6:11" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="5:10" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="9:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="8:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="7:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="7:13" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="8:13" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:13" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="7:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="7:15" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:15" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:14" tileSet="tileset:indoors:thievesHideout" selection="18:3" />
+        <tile coordinates="7:14" tileSet="tileset:indoors:thievesHideout" selection="16:3" />
+        <tile coordinates="8:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="8:14" tileSet="tileset:indoors:thievesHideout" selection="17:3" />
+        <tile coordinates="7:15" tileSet="tileset:indoors:thievesHideout" selection="16:4" />
+        <tile coordinates="8:15" tileSet="tileset:indoors:thievesHideout" selection="17:4" />
+        <tile coordinates="9:15" tileSet="tileset:indoors:thievesHideout" selection="18:4" />
+        <tile coordinates="6:16" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="7:16" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="9:16" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="8:16" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:16" tileSet="tileset:indoors:thievesHideout" selection="18:5" />
+        <tile coordinates="8:16" tileSet="tileset:indoors:thievesHideout" selection="17:5" />
+        <tile coordinates="7:16" tileSet="tileset:indoors:thievesHideout" selection="16:5" />
+        <tile coordinates="9:17" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="6:17" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="7:17" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="6:19" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="6:18" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="8:17" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:19" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="8:19" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="7:19" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="7:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="8:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:17" tileSet="tileset:indoors:thievesHideout" selection="18:3" />
+        <tile coordinates="8:17" tileSet="tileset:indoors:thievesHideout" selection="17:3" />
+        <tile coordinates="7:17" tileSet="tileset:indoors:thievesHideout" selection="16:3" />
+        <tile coordinates="7:18" tileSet="tileset:indoors:thievesHideout" selection="16:4" />
+        <tile coordinates="7:19" tileSet="tileset:indoors:thievesHideout" selection="16:5" />
+        <tile coordinates="8:19" tileSet="tileset:indoors:thievesHideout" selection="17:5" />
+        <tile coordinates="9:18" tileSet="tileset:indoors:thievesHideout" selection="18:4" />
+        <tile coordinates="9:19" tileSet="tileset:indoors:thievesHideout" selection="18:5" />
+        <tile coordinates="8:18" tileSet="tileset:indoors:thievesHideout" selection="17:4" />
+        <tile coordinates="6:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="12:6" tileSet="tileset:indoors:thievesHideout" selection="3:0" />
+        <tile coordinates="14:6" tileSet="tileset:indoors:thievesHideout" selection="3:0" />
+        <tile coordinates="16:6" tileSet="tileset:indoors:thievesHideout" selection="3:0" />
+        <tile coordinates="18:6" tileSet="tileset:indoors:thievesHideout" selection="3:0" />
+        <tile coordinates="12:7" tileSet="tileset:indoors:thievesHideout" selection="3:1" />
+        <tile coordinates="14:7" tileSet="tileset:indoors:thievesHideout" selection="3:1" />
+        <tile coordinates="16:7" tileSet="tileset:indoors:thievesHideout" selection="3:1" />
+        <tile coordinates="18:7" tileSet="tileset:indoors:thievesHideout" selection="3:1" />
+        <tile coordinates="13:6" tileSet="tileset:indoors:thievesHideout" selection="2:0" />
+        <tile coordinates="15:6" tileSet="tileset:indoors:thievesHideout" selection="2:0" />
+        <tile coordinates="17:6" tileSet="tileset:indoors:thievesHideout" selection="2:0" />
+        <tile coordinates="17:7" tileSet="tileset:indoors:thievesHideout" selection="2:1" />
+        <tile coordinates="15:7" tileSet="tileset:indoors:thievesHideout" selection="2:1" />
+        <tile coordinates="13:7" tileSet="tileset:indoors:thievesHideout" selection="2:1" />
+        <tile coordinates="19:6" tileSet="tileset:indoors:thievesHideout" selection="2:0" />
+        <tile coordinates="19:7" tileSet="tileset:indoors:thievesHideout" selection="2:1" />
+        <tile coordinates="20:7" tileSet="tileset:indoors:thievesHideout" selection="3:1" />
+        <tile coordinates="20:6" tileSet="tileset:indoors:thievesHideout" selection="3:0" />
+        <tile coordinates="21:7" tileSet="tileset:indoors:thievesHideout" selection="8:3" />
+        <tile coordinates="22:7" tileSet="tileset:indoors:thievesHideout" selection="9:3" />
+        <tile coordinates="22:6" tileSet="tileset:indoors:thievesHideout" selection="9:2" />
+        <tile coordinates="21:6" tileSet="tileset:indoors:thievesHideout" selection="8:2" />
+        <tile coordinates="21:5" tileSet="tileset:indoors:thievesHideout" selection="0:3" />
+        <tile coordinates="22:5" tileSet="tileset:indoors:thievesHideout" selection="1:3" />
+        <tile coordinates="21:4" tileSet="tileset:indoors:thievesHideout" selection="0:1" />
+        <tile coordinates="21:3" tileSet="tileset:indoors:thievesHideout" selection="0:0" />
+        <tile coordinates="22:3" tileSet="tileset:indoors:thievesHideout" selection="1:0" />
+        <tile coordinates="22:4" tileSet="tileset:indoors:thievesHideout" selection="1:1" />
+        <tile coordinates="23:2" tileSet="tileset:indoors:thievesHideout" selection="7:13" />
+        <tile coordinates="23:3" tileSet="tileset:indoors:thievesHideout" selection="7:14" />
+        <tile coordinates="24:1" tileSet="tileset:indoors:thievesHideout" selection="8:12" />
+        <tile coordinates="24:2" tileSet="tileset:indoors:thievesHideout" selection="8:13" />
+        <tile coordinates="24:3" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="23:4" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="23:4" tileSet="tileset:indoors:thievesHideout" selection="7:15" />
+        <tile coordinates="24:3" tileSet="tileset:indoors:thievesHideout" selection="8:14" />
+        <tile coordinates="25:1" tileSet="tileset:indoors:thievesHideout" selection="13:10" />
+        <tile coordinates="25:2" tileSet="tileset:indoors:thievesHideout" selection="13:11" />
+        <tile coordinates="26:2" tileSet="tileset:indoors:thievesHideout" selection="14:11" />
+        <tile coordinates="26:1" tileSet="tileset:indoors:thievesHideout" selection="14:10" />
+        <tile coordinates="27:1" tileSet="tileset:indoors:thievesHideout" selection="15:10" />
+        <tile coordinates="27:2" tileSet="tileset:indoors:thievesHideout" selection="15:11" />
+        <tile coordinates="28:1" tileSet="tileset:indoors:thievesHideout" selection="7:8" />
+        <tile coordinates="29:2" tileSet="tileset:indoors:thievesHideout" selection="8:9" />
+        <tile coordinates="28:2" tileSet="tileset:indoors:thievesHideout" selection="7:9" />
+        <tile coordinates="29:3" tileSet="tileset:indoors:thievesHideout" selection="8:10" />
+        <tile coordinates="28:3" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="29:4" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="28:3" tileSet="tileset:indoors:thievesHideout" selection="7:10" />
+        <tile coordinates="29:4" tileSet="tileset:indoors:thievesHideout" selection="8:11" />
+        <tile coordinates="30:3" tileSet="tileset:indoors:thievesHideout" selection="4:0" />
+        <tile coordinates="30:4" tileSet="tileset:indoors:thievesHideout" selection="4:1" />
+        <tile coordinates="31:3" tileSet="tileset:indoors:thievesHideout" selection="5:0" />
+        <tile coordinates="31:4" tileSet="tileset:indoors:thievesHideout" selection="5:1" />
+        <tile coordinates="31:5" tileSet="tileset:indoors:thievesHideout" selection="14:7" />
+        <tile coordinates="30:5" tileSet="tileset:indoors:thievesHideout" selection="13:7" />
+        <tile coordinates="30:6" tileSet="tileset:indoors:thievesHideout" selection="13:8" />
+        <tile coordinates="31:6" tileSet="tileset:indoors:thievesHideout" selection="14:8" />
+        <tile coordinates="31:7" tileSet="tileset:indoors:thievesHideout" selection="14:9" />
+        <tile coordinates="30:7" tileSet="tileset:indoors:thievesHideout" selection="13:9" />
+        <tile coordinates="31:8" tileSet="tileset:indoors:thievesHideout" selection="5:4" />
+        <tile coordinates="30:8" tileSet="tileset:indoors:thievesHideout" selection="4:4" />
+        <tile coordinates="30:9" tileSet="tileset:indoors:thievesHideout" selection="4:5" />
+        <tile coordinates="31:9" tileSet="tileset:indoors:thievesHideout" selection="5:5" />
+        <tile coordinates="29:10" tileSet="tileset:indoors:thievesHideout" selection="10:13" />
+        <tile coordinates="29:9" tileSet="tileset:indoors:thievesHideout" selection="10:12" />
+        <tile coordinates="28:10" tileSet="tileset:indoors:thievesHideout" selection="9:13" />
+        <tile coordinates="28:11" tileSet="tileset:indoors:thievesHideout" selection="9:14" />
+        <tile coordinates="28:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="29:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="29:8" tileSet="tileset:indoors:thievesHideout" selection="10:11" />
+        <tile coordinates="28:9" tileSet="tileset:indoors:thievesHideout" selection="9:12" />
+        <tile coordinates="27:10" tileSet="tileset:indoors:thievesHideout" selection="3:4" />
+        <tile coordinates="27:11" tileSet="tileset:indoors:thievesHideout" selection="3:5" />
+        <tile coordinates="25:11" tileSet="tileset:indoors:thievesHideout" selection="3:5" />
+        <tile coordinates="23:11" tileSet="tileset:indoors:thievesHideout" selection="3:5" />
+        <tile coordinates="23:10" tileSet="tileset:indoors:thievesHideout" selection="3:4" />
+        <tile coordinates="25:10" tileSet="tileset:indoors:thievesHideout" selection="3:4" />
+        <tile coordinates="24:11" tileSet="tileset:indoors:thievesHideout" selection="2:5" />
+        <tile coordinates="26:11" tileSet="tileset:indoors:thievesHideout" selection="2:5" />
+        <tile coordinates="24:10" tileSet="tileset:indoors:thievesHideout" selection="2:4" />
+        <tile coordinates="26:10" tileSet="tileset:indoors:thievesHideout" selection="2:4" />
+        <tile coordinates="22:10" tileSet="tileset:indoors:thievesHideout" selection="7:0" />
+        <tile coordinates="21:10" tileSet="tileset:indoors:thievesHideout" selection="6:0" />
+        <tile coordinates="21:11" tileSet="tileset:indoors:thievesHideout" selection="6:1" />
+        <tile coordinates="22:11" tileSet="tileset:indoors:thievesHideout" selection="7:1" />
+        <tile coordinates="21:12" tileSet="tileset:indoors:thievesHideout" selection="4:2" />
+        <tile coordinates="22:12" tileSet="tileset:indoors:thievesHideout" selection="5:2" />
+        <tile coordinates="22:13" tileSet="tileset:indoors:thievesHideout" selection="5:3" />
+        <tile coordinates="21:13" tileSet="tileset:indoors:thievesHideout" selection="4:3" />
+        <tile coordinates="11:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="12:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="15:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="22:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="26:5" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="25:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="23:6" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="19:13" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:15" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="14:13" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="14:16" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="14:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="13:8" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="8:9" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="6:9" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="19:16" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="20:18" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="14:19" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="23:9" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="25:5" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="23:5" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="27:3" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="28:5" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="29:6" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="7:11" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="13:9" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="14:8" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="14:12" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="15:12" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="15:15" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="14:15" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="17:17" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="18:11" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="19:10" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="19:11" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="18:10" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="14:9" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="15:9" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="15:13" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="15:16" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="17:16" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="18:17" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="19:17" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="20:17" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="15:18" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="9:8" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="25:9" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="28:7" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="29:5" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="28:6" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="29:7" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="26:9" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="27:9" tileSet="tileset:indoors:thievesHideout" selection="3:3" />
+        <tile coordinates="20:11" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="24:9" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="24:4" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="24:5" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="19:8" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="20:8" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="6:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="7:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="7:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="7:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="6:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="8:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="8:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="8:11" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="9:11" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="10:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="10:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="10:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="11:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="11:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="12:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="12:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="13:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="14:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="15:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="17:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="18:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="17:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:11" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="15:11" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="14:11" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="14:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="15:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="15:17" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="14:17" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:16" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:17" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="15:19" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="19:20" tileSet="tileset:indoors:thievesHideout" selection="2:4" />
+        <tile coordinates="18:19" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:19" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="18:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="17:19" tileSet="tileset:indoors:thievesHideout" selection="1:9" />
+        <tile coordinates="16:19" tileSet="tileset:indoors:thievesHideout" selection="0:9" />
+        <tile coordinates="18:19" tileSet="tileset:indoors:thievesHideout" selection="2:9" />
+        <tile coordinates="17:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="19:19" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="19:18" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="20:19" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="20:16" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="20:15" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="20:13" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="20:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="20:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="17:13" tileSet="tileset:indoors:thievesHideout" selection="3:2" />
+        <tile coordinates="18:14" tileSet="tileset:indoors:thievesHideout" selection="2:2" />
+        <tile coordinates="17:14" tileSet="tileset:indoors:thievesHideout" selection="2:3" />
+        <tile coordinates="17:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="17:11" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:13" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="16:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="17:15" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="18:15" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="18:16" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="19:15" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="19:14" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="19:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="18:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="17:12" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="18:13" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="18:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="19:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="20:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="20:10" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="21:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="21:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="22:9" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="23:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="23:7" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="24:6" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="24:7" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="24:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="25:7" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="25:6" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="27:6" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="26:6" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="26:7" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="27:7" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="27:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="28:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="26:8" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="27:5" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="28:4" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="27:4" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="26:4" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="25:4" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="25:3" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="26:3" tileSet="tileset:indoors:thievesHideout" selection="0:8" />
+        <tile coordinates="24:6" tileSet="tileset:indoors:thievesHideout" selection="2:8" />
+        <tile coordinates="28:6" tileSet="tileset:indoors:thievesHideout" selection="2:8" />
+        <tile coordinates="26:4" tileSet="tileset:indoors:thievesHideout" selection="2:8" />
+        <tile coordinates="26:8" tileSet="tileset:indoors:thievesHideout" selection="2:8" />
+        <tile coordinates="25:5" tileSet="tileset:indoors:thievesHideout" selection="3:6" />
+        <tile coordinates="26:5" tileSet="tileset:indoors:thievesHideout" selection="4:6" />
+        <tile coordinates="27:5" tileSet="tileset:indoors:thievesHideout" selection="5:6" />
+        <tile coordinates="27:6" tileSet="tileset:indoors:thievesHideout" selection="5:7" />
+        <tile coordinates="26:6" tileSet="tileset:indoors:thievesHideout" selection="4:7" />
+        <tile coordinates="25:6" tileSet="tileset:indoors:thievesHideout" selection="3:7" />
+        <tile coordinates="25:7" tileSet="tileset:indoors:thievesHideout" selection="3:8" />
+        <tile coordinates="26:7" tileSet="tileset:indoors:thievesHideout" selection="4:8" />
+        <tile coordinates="27:7" tileSet="tileset:indoors:thievesHideout" selection="5:8" />
+        <tile coordinates="12:8" tileSet="tileset:indoors:thievesHideout" selection="13:2" />
+        <tile coordinates="12:7" tileSet="tileset:indoors:thievesHideout" selection="13:1" />
+        <tile coordinates="12:6" tileSet="tileset:indoors:thievesHideout" selection="13:0" />
+        <tile coordinates="13:8" tileSet="tileset:indoors:thievesHideout" selection="14:2" />
+        <tile coordinates="14:8" tileSet="tileset:indoors:thievesHideout" selection="15:2" />
+        <tile coordinates="14:7" tileSet="tileset:indoors:thievesHideout" selection="15:1" />
+        <tile coordinates="13:7" tileSet="tileset:indoors:thievesHideout" selection="14:1" />
+        <tile coordinates="13:6" tileSet="tileset:indoors:thievesHideout" selection="14:0" />
+        <tile coordinates="14:6" tileSet="tileset:indoors:thievesHideout" selection="15:0" />
+        <tile coordinates="15:8" tileSet="tileset:indoors:thievesHideout" selection="10:2" />
+        <tile coordinates="16:8" tileSet="tileset:indoors:thievesHideout" selection="11:2" />
+        <tile coordinates="17:8" tileSet="tileset:indoors:thievesHideout" selection="12:2" />
+        <tile coordinates="17:7" tileSet="tileset:indoors:thievesHideout" selection="12:1" />
+        <tile coordinates="16:7" tileSet="tileset:indoors:thievesHideout" selection="11:1" />
+        <tile coordinates="15:7" tileSet="tileset:indoors:thievesHideout" selection="10:1" />
+        <tile coordinates="15:6" tileSet="tileset:indoors:thievesHideout" selection="10:0" />
+        <tile coordinates="16:6" tileSet="tileset:indoors:thievesHideout" selection="11:0" />
+        <tile coordinates="17:6" tileSet="tileset:indoors:thievesHideout" selection="12:0" />
+        <tile coordinates="14:12" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="15:12" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="15:13" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="14:13" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="14:13" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="14:14" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="20:12" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="19:13" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="20:13" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="19:14" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="20:13" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="20:14" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="15:15" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="16:15" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="14:16" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="15:16" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="16:16" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="14:17" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="15:16" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="15:17" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="16:17" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="16:18" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="20:17" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="19:17" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="19:18" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="20:18" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+        <tile coordinates="20:18" tileSet="tileset:indoors:thievesHideout" selection="2:6" />
+        <tile coordinates="20:19" tileSet="tileset:indoors:thievesHideout" selection="2:7" />
+      </tiles>
+	  <components>
+		<component>
+			<actors>
+				<actor name="hitbox01" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "0:96" params = "480,32"></actor>
+				<actor name="hitbox02" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "352:102" params = "32,100"></actor>
+				<actor name="hitbox03" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "336:160" params = "32,160"></actor>
+				<actor name="hitbox04" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "288:320" params = "64,32"></actor>
+				<actor name="hitbox05" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "0:320" params = "272,32"></actor>
+				<actor name="hitbox06" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "160:176" params = "64,160"></actor>
+				<actor name="hitbox07" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "0:128" params = "32,210"></actor>
+				
+				<actor name="hitbox08" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "32:156" params = "40,30"></actor>
+				<actor name="hitbox09" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "32:204" params = "40,30"></actor>
+				<actor name="hitbox10" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "32:252" params = "40,30"></actor>
+				<actor name="hitbox11" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "120:226" params = "40,30"></actor>
+				<actor name="hitbox12" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "120:274" params = "40,30"></actor>
+				
+				<actor name="hitbox13" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "224:194" params = "32,16"></actor>
+				<actor name="hitbox14" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "224:210" params = "16,16"></actor>
+				<actor name="hitbox15" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "224:258" params = "32,16"></actor>
+				<actor name="hitbox16" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "240:242" params = "32,16"></actor>
+				<actor name="hitbox17" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "256:274" params = "16,16"></actor>
+				<actor name="hitbox18" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "304:274" params = "32,16"></actor>
+				<actor name="hitbox19" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "320:290" params = "16,16"></actor>
+				<actor name="hitbox20" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "320:194" params = "16,16"></actor>
+				<actor name="hitbox21" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "304:210" params = "32,16"></actor>
+				<actor name="hitbox22" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "192:108" params = "96,32"></actor>
+				
+			</actors>
+		</component>
+	  
+		<component>
+			<actors>
+				<actor name = "player" type = "King_of_Thieves.Actors.Player.CPlayer" coordinates = "0:0"></actor>
+				<actor name = "sword" type = "King_of_Thieves.Actors.Items.Swords.CSword" coordinates = "0:0"></actor>
+				<actor name = "shield" type = "King_of_Thieves.Actors.Items.shields.CWoodShield" coordinates = "0:0"></actor>
+			</actors>
+		</component>
+		<component>
+			<actors>
+				<actor name="hideoutChange" type = "King_of_Thieves.Actors.Collision.CMapChanger" coordinates = "272:320" params="128,328,ncfc_overworld.xml"></actor>
+			</actors>
+		</component>
+		<component>
+			<actors>
+				<actor name="demoDog" type="King_of_Thieves.Actors.NPC.Other.CDemoWiseMan" coordinates = "100:100"></actor>
+			</actors>
+		</component>
+	  </components>
+    </layer>
+    <layer width="0" height="0" name="overlays">
+      <tiles>
+        <tile coordinates="2:6" tileSet="tileset:indoors:thievesHideout" selection="6:4" />
+        <tile coordinates="3:6" tileSet="tileset:indoors:thievesHideout" selection="7:4" />
+        <tile coordinates="4:6" tileSet="tileset:indoors:thievesHideout" selection="8:4" />
+        <tile coordinates="16:21" tileSet="tileset:indoors:thievesHideout" selection="0:11" />
+        <tile coordinates="17:21" tileSet="tileset:indoors:thievesHideout" selection="1:11" />
+        <tile coordinates="18:21" tileSet="tileset:indoors:thievesHideout" selection="2:11" />
+      </tiles>
+    </layer>
+  </layers>
+</Map>

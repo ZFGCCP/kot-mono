@@ -303,6 +303,8 @@ namespace King_of_Thieves.Map
             for (int i = 0; i < _componentRegistry.Count(); i++)
                 _componentRegistry[i].doCollision();
 
+            CMapManager.turnOffRoomStart();
+
             CMasterControl.mapManager.checkAndSwapMap();
         }
 

@@ -14,7 +14,7 @@ namespace King_of_Thieves.usr.local
         public PlayableState()
             : base()
         {
-            CMasterControl.mapManager.swapMap("tileTester.xml","player",Vector2.Zero);
+            CMasterControl.mapManager.swapMap("thieves_hideout_f1.xml","player",new Vector2(265,235));
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)

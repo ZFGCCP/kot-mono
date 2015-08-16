@@ -197,9 +197,16 @@ namespace King_of_Thieves.Actors.Player
                         _collideWithNpcResponse(collider, false);
                 }
 
-                if (collider is NPC.Other.CTownsFolk)
+                if (collider is NPC.Other.CTownsFolk || collider is NPC.Other.DemoGuys.CSwordGuy || collider is NPC.Other.DemoGuys.CKeyGuy)
                 {
                     solidCollide(collider);
+                }
+                else if (collider is Items.decoration.CDoor)
+                {
+                    if (((Items.decoration.CDoor)collider).isLocked)
+                        solidCollide(collider);
+                    else
+                        collider.kill();
                 }
             }
         }
@@ -452,7 +459,7 @@ namespace King_of_Thieves.Actors.Player
                     {
                         if (_wearingShadowCloak)
                             _createShadowClone();
-                        else
+                        else if (CMasterControl.buttonController.playerHasSword)
                         {
                             _state = ACTOR_STATES.SWINGING;
                             _swordReleased = false;
@@ -493,7 +500,7 @@ namespace King_of_Thieves.Actors.Player
                     /*Items.Drops.CRupeeDrop rupee = new Items.Drops.CRupeeDrop();
                     rupee.init("rupeeTest", _position - new Vector2(20, 20), "", this.componentAddress, "P");
                     Map.CMapManager.addActorToComponent(rupee, this.componentAddress);*/
-                    CMasterControl.buttonController.modifyBombs(10);
+                    CMasterControl.buttonController.modifyArrows(10);
                 }
 
                 if (!(Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysPressed)
@@ -650,8 +657,9 @@ namespace King_of_Thieves.Actors.Player
                 }
             }
 
-            if (_canOpenManu && input.keysReleased.Contains(Keys.Enter))
-                Master.Push(new usr.local.GameMenu.CPauseMenu(CMasterControl.itemPauseMenu(), CMasterControl.questPauseMenu()));
+            //Disabled for NCFC
+            /*if (_canOpenManu && input.keysReleased.Contains(Keys.Enter))
+                Master.Push(new usr.local.GameMenu.CPauseMenu(CMasterControl.itemPauseMenu(), CMasterControl.questPauseMenu()));*/
         }
 
 
@@ -921,9 +929,12 @@ namespace King_of_Thieves.Actors.Player
             _collidables.Add(typeof(Actors.Collision.CSolidTile));
             _collidables.Add(typeof(Actors.Items.decoration.CPot));
             _collidables.Add(typeof(Actors.Items.decoration.CChest));
+            _collidables.Add(typeof(Actors.Items.decoration.CDoor));
 
             //other NPCs
             _collidables.Add(typeof(Actors.NPC.Other.CTownsFolk));
+            _collidables.Add(typeof(Actors.NPC.Other.DemoGuys.CSwordGuy));
+            _collidables.Add(typeof(Actors.NPC.Other.DemoGuys.CKeyGuy));
         }
 
         public override void shock()
@@ -1071,6 +1082,7 @@ namespace King_of_Thieves.Actors.Player
 
         private void _shootArrow()
         {
+            CMasterControl.buttonController.modifyArrows(-1);
             //if (_lastHudKeyPressed == Keys.Left)
                 state = ACTOR_STATES.SHOOTING_ARROW;
 
@@ -1209,7 +1221,10 @@ namespace King_of_Thieves.Actors.Player
             switch (option)
             {
                 case HUD.buttons.HUDOPTIONS.ARROWS:
-                    _beginArrowCharge(Projectiles.ARROW_TYPES.STANDARD);
+                    if (CMasterControl.buttonController.arrowCount > 0)
+                        _beginArrowCharge(Projectiles.ARROW_TYPES.STANDARD);
+                    else
+                        _usingItem = false;
                     break;
 
                 case HUD.buttons.HUDOPTIONS.FIRE_ARROWS:

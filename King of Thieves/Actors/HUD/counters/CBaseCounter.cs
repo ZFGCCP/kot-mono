@@ -66,12 +66,15 @@ namespace King_of_Thieves.Actors.HUD.counters
                         _incrementAmount = allowedIncrement;
 
                     _amount += _incrementAmount;
+                    _state = ACTOR_STATES.IDLE;
                 }
-                else if(_amount < _capacity && _incrementAmount > 0)
+                else if (_amount < _capacity && _incrementAmount > 0)
                 {
                     _amount += 1;
                     _incrementAmount -= 1;
                 }
+                else
+                    _state = ACTOR_STATES.IDLE;
             }
             else if (_state == ACTOR_STATES.DECREMENT)
             {
@@ -80,12 +83,15 @@ namespace King_of_Thieves.Actors.HUD.counters
                     int allowedIncrement = _incrementAmount > _amount ? _incrementAmount : _amount;
 
                     _amount -= allowedIncrement;
+                    _state = ACTOR_STATES.IDLE;
                 }
                 else if(_amount > 0 && _incrementAmount > 0)
                 {
                     _amount -= 1;
                     _incrementAmount -= 1;
                 }
+                else
+                    _state = ACTOR_STATES.IDLE;
             }
         }
 
@@ -94,6 +100,14 @@ namespace King_of_Thieves.Actors.HUD.counters
             base.draw(sender);
             Graphics.CGraphics.spriteBatch.DrawString(_sherwood, _amount.ToString(), _position + _textOffset + _SHADOW, Color.Black);
             Graphics.CGraphics.spriteBatch.DrawString(_sherwood, _amount.ToString(), _position + _textOffset, _textColor);
+        }
+
+        public int amount
+        {
+            get
+            {
+                return _amount;
+            }
         }
     }
 }

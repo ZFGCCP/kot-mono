@@ -14,6 +14,8 @@ namespace King_of_Thieves.Actors.HUD.buttons
         private CButton _buttonAction = new CButton(CButton.HUD_BUTTON_TYPE.ACTION);
         private counters.CRupeeCounter _rupeeCounter = new counters.CRupeeCounter();
         private counters.CBombCounter _bombCounter = new counters.CBombCounter();
+        private counters.CArrowCounter _arrowCounter = new counters.CArrowCounter();
+        private counters.CKeyCounter _keyCounter = new counters.CKeyCounter();
         private Actors.HUD.Text.CTextBox _textBoxController = new Text.CTextBox();
         public CPauseMenuElement currentElementLeft = null;
         public CPauseMenuElement currentElementRight = null;
@@ -24,6 +26,8 @@ namespace King_of_Thieves.Actors.HUD.buttons
         private HUDOPTIONS _bottleState3 = HUDOPTIONS.EMPTY_BOTTLE;
 
         public CPauseMenuElement[] bottleRef = new CPauseMenuElement[4];
+
+        public bool playerHasSword = false;
 
 
 
@@ -38,8 +42,10 @@ namespace King_of_Thieves.Actors.HUD.buttons
             _buttonLeft.update(gameTime);
             _buttonAction.update(gameTime);
             _rupeeCounter.update(gameTime);
-            _bombCounter.update(gameTime);
+            //_bombCounter.update(gameTime);
+            _arrowCounter.update(gameTime);
             _textBoxController.update(gameTime);
+            _keyCounter.update(gameTime);
         }
 
         public void changeActionIconState(HUD_ACTION_OPTIONS option)
@@ -68,14 +74,34 @@ namespace King_of_Thieves.Actors.HUD.buttons
                 _bombCounter.increment(amount, instant);
         }
 
+        public void giveKey()
+        {
+            _keyCounter.increment(1, true);
+        }
+
+        public void useKey()
+        {
+            _keyCounter.decrement(1, true);
+        }
+
+        public void modifyArrows(int amount, bool instant = false)
+        {
+            if (amount < 0)
+                _arrowCounter.decrement(Math.Abs(amount), instant);
+            else
+                _arrowCounter.increment(amount, instant);
+        }
+
         public void drawMe(SpriteBatch spriteBatch)
         {
             _buttonLeft.drawMe();
             _buttonRight.drawMe();
             //_buttonAction.drawMe();
             _rupeeCounter.drawMe();
-            _bombCounter.drawMe();
+            //_bombCounter.drawMe();
+            _arrowCounter.drawMe();
             _textBoxController.drawMe();
+            _keyCounter.drawMe();
         }
 
         public bool textBoxActive
@@ -117,6 +143,14 @@ namespace King_of_Thieves.Actors.HUD.buttons
             get
             {
                 return _buttonRight.hudItem;
+            }
+        }
+
+        public int arrowCount
+        {
+            get
+            {
+                return _arrowCounter.amount;
             }
         }
 

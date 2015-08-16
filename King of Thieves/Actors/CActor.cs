@@ -161,6 +161,7 @@ namespace King_of_Thieves.Actors
         public event actorEventHandler onMouseClick;
         public event actorEventHandler onClick;
         public event actorEventHandler onTap;
+        public event actorEventHandler onRoomStart;
 
         public virtual void create(object sender) { }
         public virtual void keyDown(object sender) { }
@@ -178,6 +179,7 @@ namespace King_of_Thieves.Actors
         public virtual void mouseClick(object sender) { }
         public virtual void click(object sender) { }
         public virtual void tap(object sender) { }
+        public virtual void roomStart(object sender) { }
 
         protected virtual void cleanUp() 
         {
@@ -236,6 +238,7 @@ namespace King_of_Thieves.Actors
             onTimer3 += new actorEventHandler(timer3);
             onTimer4 += new actorEventHandler(timer4);
             onTimer5 += new actorEventHandler(timer5);
+            onRoomStart += new actorEventHandler(roomStart);
 
             _name = name;
             _collidables = new List<Type>();
@@ -269,6 +272,7 @@ namespace King_of_Thieves.Actors
             onFrame -= new actorEventHandler(frame);
             onKeyRelease -= new actorEventHandler(keyRelease);
             onDraw -= new actorEventHandler(draw);
+            onRoomStart -= new actorEventHandler(roomStart);
         }
 
         public string dataType
@@ -693,6 +697,9 @@ namespace King_of_Thieves.Actors
             }
             else
             {
+                if (Map.CMapManager.roomStart)
+                    onRoomStart(this);
+
                 if (_animationHasEnded)
                     try
                     {
@@ -883,6 +890,11 @@ namespace King_of_Thieves.Actors
             {
                 return _killMe;
             }
+        }
+
+        public void kill()
+        {
+            _killMe = true;
         }
 
         private bool _noCollide

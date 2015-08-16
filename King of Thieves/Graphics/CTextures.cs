@@ -26,6 +26,7 @@ namespace King_of_Thieves.Graphics
         public const string ITEMS = "items:";
         public const string SHIELDS = ITEMS + "shields:";
         public const string SWORDS = ITEMS + "swords:";
+        public const string DEMO_FOLK = "demoFolk:";
 
         //actual constants
         public const string EFFECT_ENERGY_BALL_SMALL = EFFECTS + "energyBallSmall";
@@ -133,6 +134,8 @@ namespace King_of_Thieves.Graphics
         public const string HUD_BOMB_CANNON = HUD + "bombCannon";
         public const string HUD_RUPEES = HUD + "rupees";
         public const string HUD_BOMB_COUNTER = HUD + "bombCounter";
+        public const string HUD_ARROW_COUNTER = HUD + "arrowCounter";
+        public const string HUD_KEYS = HUD + "keyCounter";
         public const string HUD_ACTION = HUD + "action";
         public const string HUD_PAUSE_CURSOR = HUD + "pauseCursor";
         public const string HUD_MAGIC_METER = HUD + "magicMeter";
@@ -172,6 +175,25 @@ namespace King_of_Thieves.Graphics
         public const string GERUDO_SWORD_LEFT = SWORDS + "gerudoSwordLeft";
         public const string GERUDO_SWORD_RIGHT = SWORDS + "gerudoSwordRight";
 
+        public const string DEMO_FOLK_SWORD_GUY_UP = DEMO_FOLK + "swordGuyUp";
+        public const string DEMO_FOLK_SWORD_GUY_RIGHT = DEMO_FOLK + "swordGuyRight";
+        public const string DEMO_FOLK_SWORD_GUY_LEFT = DEMO_FOLK + "swordGuyLeft";
+        public const string DEMO_FOLK_SWORD_GUY_DOWN = DEMO_FOLK + "swordGuyDown";
+
+        public const string DEMO_FOLK_SWORD_GUY_HEAD_UP = DEMO_FOLK + "swordGuyHeadUp";
+        public const string DEMO_FOLK_SWORD_GUY_HEAD_RIGHT = DEMO_FOLK + "swordGuyHeadRight";
+        public const string DEMO_FOLK_SWORD_GUY_HEAD_LEFT = DEMO_FOLK + "swordGuyHeadLeft";
+        public const string DEMO_FOLK_SWORD_GUY_HEAD_DOWN = DEMO_FOLK + "swordGuyHeadDown";
+
+        public const string DEMO_FOLK_KEY_GUY_UP = DEMO_FOLK + "keyGuyUp";
+        public const string DEMO_FOLK_KEY_GUY_RIGHT = DEMO_FOLK + "keyGuyRight";
+        public const string DEMO_FOLK_KEY_GUY_LEFT = DEMO_FOLK + "keyGuyLeft";
+        public const string DEMO_FOLK_KEY_GUY_DOWN = DEMO_FOLK + "keyGuyDown";
+
+        public const string DEMO_FOLK_KEY_GUY_HEAD_UP = DEMO_FOLK + "keyGuyHeadUp";
+        public const string DEMO_FOLK_KEY_GUY_HEAD_RIGHT = DEMO_FOLK + "keyGuyHeadRight";
+        public const string DEMO_FOLK_KEY_GUY_HEAD_LEFT = DEMO_FOLK + "keyGuyHeadLeft";
+        public const string DEMO_FOLK_KEY_GUY_HEAD_DOWN = DEMO_FOLK + "keyGuyHeadDown";
        
         //source images
         public const string SOURCE_PLAYER = "Player";
@@ -286,6 +308,8 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:test", new CTextureAtlas("test", 16, 16, 0, "0:0", "15:15",0,false,false,true));
             textures.Add("tileset:ages", new CTextureAtlas("ages", 16, 16, 0, "0:0", "15:15", 0, false, false, true));
             textures.Add("tileset:outdoors:hyruleCastleTown", new CTextureAtlas("tileset:outdoors:hyruleCastleTown", 16, 16, 0, "0:0", "31:17", 0, false, false, true));
+            textures.Add("tileset:indoors:thievesHideout", new CTextureAtlas("tileset:indoors:thievesHideout", 16, 16, 0, "0:0", "18:15", 0, false, false, true));
+            textures.Add("tileset:outdoors:demoTiles", new CTextureAtlas("tileset:outdoors:demoTiles", 16, 16, 0, "0:0", "49:41", 0, false, false, true));
             textures.Add("tileset:indoors:house", new CTextureAtlas("tileset:indoors:house", 16, 16, 0, "0:0", "24:16", 0, false, false, true));
             textures.Add("tileset:smallLantern", new CTextureAtlas("tileset:items:smallItems", 16, 16, 1, "0:0", "8:0", 5, false, false, false));
             textures.Add("tileset:items:chests-small", new CTextureAtlas("tileset:items:chests-small", 16, 16, 1, "0:0", "1:2", 0, false, false, false));
@@ -329,7 +353,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_ACTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:0", "3:0", 0));
             textures.Add(HUD_BOMB_CANNON, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "1:1", "1:1", 0));
             textures.Add(HUD_RUPEES, new CTextureAtlas("health", 16, 16, 1, "0:1", "0:1", 0));
+            textures.Add(HUD_KEYS, new CTextureAtlas("health", 16, 16, 1, "3:1", "3:1", 0));
             textures.Add(HUD_BOMB_COUNTER, new CTextureAtlas("health", 16, 16, 1, "1:1", "1:1", 0));
+            textures.Add(HUD_ARROW_COUNTER, new CTextureAtlas("health", 16, 16, 1, "2:1", "2:1", 0));
             textures.Add(HUD_ITEM_SCREEN, new CTextureAtlas(SOURCE_MENU, 320, 240, 0, "0:0", "0:0", 0));
             textures.Add(HUD_QUEST_SCREEN, new CTextureAtlas(SOURCE_MENU, 320, 240, 0, "1:0", "1:0", 0));
             textures.Add(HUD_PAUSE_CURSOR, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:1", "3:1", 0));
@@ -348,6 +374,23 @@ namespace King_of_Thieves.Graphics
             textures.Add(DROPS_RUPEE_BLUE, new CTextureAtlas("drops:drops01", 16, 16, 1, "1:1", "1:1"));
             textures.Add(DROPS_RUPEE_ORANGE, new CTextureAtlas("drops:drops01", 16, 16, 1, "2:1", "2:1"));
             textures.Add(DROPS_RUPEE_PURPLE, new CTextureAtlas("drops:drops01", 16, 16, 1, "3:1", "3:1"));
+
+            //demo folk
+            textures.Add(DEMO_FOLK_SWORD_GUY_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "1:3", "1:3"));
+            textures.Add(DEMO_FOLK_SWORD_GUY_LEFT, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "0:3", "0:3"));
+            textures.Add(DEMO_FOLK_SWORD_GUY_UP, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "0:2", "0:2"));
+
+            textures.Add(DEMO_FOLK_SWORD_GUY_HEAD_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "1:1", "1:1"));
+            textures.Add(DEMO_FOLK_SWORD_GUY_HEAD_LEFT, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "0:1", "0:1"));
+            textures.Add(DEMO_FOLK_SWORD_GUY_HEAD_UP, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "0:0", "0:0"));
+
+            textures.Add(DEMO_FOLK_KEY_GUY_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "3:3", "3:3"));
+            textures.Add(DEMO_FOLK_KEY_GUY_LEFT, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "2:3", "2:3"));
+            textures.Add(DEMO_FOLK_KEY_GUY_UP, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "2:2", "2:2"));
+
+            textures.Add(DEMO_FOLK_KEY_GUY_HEAD_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "3:1", "3:1"));
+            textures.Add(DEMO_FOLK_KEY_GUY_HEAD_LEFT, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "2:1", "2:1"));
+            textures.Add(DEMO_FOLK_KEY_GUY_HEAD_UP, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "2:0", "2:0"));
         }
 
         public static void addRawTexture(string textureName, string fileNameNoExt)
@@ -383,11 +426,15 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("tileset:items:chests-small", _content.Load<Texture2D>(@"tilesets/items/chests-small"));
             rawTextures.Add("tileset:items:smallItems", _content.Load<Texture2D>(@"tilesets/items/smallItems"));
             rawTextures.Add("tileset:outdoors:hyruleCastleTown", _content.Load<Texture2D>(@"tilesets/outdoors/hyruleCastleTown"));
+            rawTextures.Add("tileset:outdoors:demoTiles", _content.Load<Texture2D>(@"tilesets/outdoors/demoTiles"));
+            rawTextures.Add("tileset:indoors:thievesHideout", _content.Load<Texture2D>(@"tilesets/indoors/thieves_hideout"));
 
             //effects
             rawTextures.Add("effects:explosion", _content.Load<Texture2D>(@"effects/bomb-explosion"));
             rawTextures.Add("effects:various", _content.Load<Texture2D>(@"effects/various-effects"));
             
+            //demo folk
+            rawTextures.Add(DEMO_FOLK, _content.Load<Texture2D>(@"sprites/npc/friendly/demoFolk"));
 
             //hud
             rawTextures.Add("hud", _content.Load<Texture2D>("hud/textbox2"));

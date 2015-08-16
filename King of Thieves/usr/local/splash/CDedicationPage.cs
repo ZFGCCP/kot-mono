@@ -19,7 +19,7 @@ namespace King_of_Thieves.usr.local.splash
 
         public CDedicationPage()
         {
-
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:metallica"]);
         }
 
         public override void Update(GameTime gameTime)
@@ -27,7 +27,10 @@ namespace King_of_Thieves.usr.local.splash
             _timer--;
 
             if (_timer <= 0)
+            {
+                CMasterControl.audioPlayer.stopSfx(CMasterControl.audioPlayer.soundBank["bgm:metallica"]);
                 Master.Push(new CTitleState());
+            }
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
