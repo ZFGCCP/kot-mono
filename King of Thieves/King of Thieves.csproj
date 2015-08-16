@@ -43,6 +43,7 @@
     <Compile Include="Actors\CActorTest.cs" />
     <Compile Include="Actors\CComponent.cs" />
     <Compile Include="Actors\HUD\counters\CArrowCounter.cs" />
+    <Compile Include="Actors\HUD\counters\CKeyCounter.cs" />
     <Compile Include="Actors\Items\decoration\CDoor.cs" />
     <Compile Include="Actors\Collision\CHitBox.cs" />
     <Compile Include="Actors\Collision\CMapChanger.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Actors\NPC\Enemies\Zombie\CZombieScreecher.cs" />
     <Compile Include="Actors\NPC\Other\CTownsFolkHead.cs" />
     <Compile Include="Actors\NPC\Other\DemoGuys\CKeyGuy.cs" />
+    <Compile Include="Actors\NPC\Other\DemoGuys\CKeyGuyHead.cs" />
     <Compile Include="Actors\NPC\Other\DemoGuys\CSwordGuy.cs" />
     <Compile Include="Actors\NPC\Other\DemoGuys\CSwordGuyHead.cs" />
     <Compile Include="Actors\NPC\Other\Maple\CMaple.cs" />

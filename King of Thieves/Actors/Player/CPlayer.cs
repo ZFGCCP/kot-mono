@@ -197,7 +197,7 @@ namespace King_of_Thieves.Actors.Player
                         _collideWithNpcResponse(collider, false);
                 }
 
-                if (collider is NPC.Other.CTownsFolk || collider is NPC.Other.DemoGuys.CSwordGuy)
+                if (collider is NPC.Other.CTownsFolk || collider is NPC.Other.DemoGuys.CSwordGuy || collider is NPC.Other.DemoGuys.CKeyGuy)
                 {
                     solidCollide(collider);
                 }
@@ -934,6 +934,7 @@ namespace King_of_Thieves.Actors.Player
             //other NPCs
             _collidables.Add(typeof(Actors.NPC.Other.CTownsFolk));
             _collidables.Add(typeof(Actors.NPC.Other.DemoGuys.CSwordGuy));
+            _collidables.Add(typeof(Actors.NPC.Other.DemoGuys.CKeyGuy));
         }
 
         public override void shock()
