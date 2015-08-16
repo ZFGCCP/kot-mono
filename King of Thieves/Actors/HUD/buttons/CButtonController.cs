@@ -15,6 +15,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
         private counters.CRupeeCounter _rupeeCounter = new counters.CRupeeCounter();
         private counters.CBombCounter _bombCounter = new counters.CBombCounter();
         private counters.CArrowCounter _arrowCounter = new counters.CArrowCounter();
+        private counters.CKeyCounter _keyCounter = new counters.CKeyCounter();
         private Actors.HUD.Text.CTextBox _textBoxController = new Text.CTextBox();
         public CPauseMenuElement currentElementLeft = null;
         public CPauseMenuElement currentElementRight = null;
@@ -44,6 +45,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
             //_bombCounter.update(gameTime);
             _arrowCounter.update(gameTime);
             _textBoxController.update(gameTime);
+            _keyCounter.update(gameTime);
         }
 
         public void changeActionIconState(HUD_ACTION_OPTIONS option)
@@ -72,6 +74,16 @@ namespace King_of_Thieves.Actors.HUD.buttons
                 _bombCounter.increment(amount, instant);
         }
 
+        public void giveKey()
+        {
+            _keyCounter.increment(1, true);
+        }
+
+        public void useKey()
+        {
+            _keyCounter.decrement(1, true);
+        }
+
         public void modifyArrows(int amount, bool instant = false)
         {
             if (amount < 0)
@@ -89,6 +101,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
             //_bombCounter.drawMe();
             _arrowCounter.drawMe();
             _textBoxController.drawMe();
+            _keyCounter.drawMe();
         }
 
         public bool textBoxActive

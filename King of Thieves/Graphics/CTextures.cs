@@ -135,6 +135,7 @@ namespace King_of_Thieves.Graphics
         public const string HUD_RUPEES = HUD + "rupees";
         public const string HUD_BOMB_COUNTER = HUD + "bombCounter";
         public const string HUD_ARROW_COUNTER = HUD + "arrowCounter";
+        public const string HUD_KEYS = HUD + "keyCounter";
         public const string HUD_ACTION = HUD + "action";
         public const string HUD_PAUSE_CURSOR = HUD + "pauseCursor";
         public const string HUD_MAGIC_METER = HUD + "magicMeter";
@@ -352,6 +353,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_ACTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:0", "3:0", 0));
             textures.Add(HUD_BOMB_CANNON, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "1:1", "1:1", 0));
             textures.Add(HUD_RUPEES, new CTextureAtlas("health", 16, 16, 1, "0:1", "0:1", 0));
+            textures.Add(HUD_KEYS, new CTextureAtlas("health", 16, 16, 1, "3:1", "3:1", 0));
             textures.Add(HUD_BOMB_COUNTER, new CTextureAtlas("health", 16, 16, 1, "1:1", "1:1", 0));
             textures.Add(HUD_ARROW_COUNTER, new CTextureAtlas("health", 16, 16, 1, "2:1", "2:1", 0));
             textures.Add(HUD_ITEM_SCREEN, new CTextureAtlas(SOURCE_MENU, 320, 240, 0, "0:0", "0:0", 0));
