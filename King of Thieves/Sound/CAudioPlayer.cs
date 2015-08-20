@@ -81,6 +81,8 @@ namespace King_of_Thieves.Sound
 
             //music
             soundBank.Add("bgm:metallica", new CSound(CMasterControl.glblContent.Load<SoundEffect>("music/metallica")));
+            soundBank.Add("bgm:house", new CSound(CMasterControl.glblContent.Load<SoundEffect>("music/house"), true, true));
+            soundBank.Add("bgm:houseIntro", new CSound(CMasterControl.glblContent.Load<SoundEffect>("music/houseIntro")));
         }
 
         public void stop()
