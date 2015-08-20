@@ -242,6 +242,7 @@
     <Compile Include="usr\local\PlayableState.cs" />
     <Compile Include="usr\local\splash\CDedicationPage.cs" />
     <Compile Include="usr\local\splash\CTitleState.cs" />
+    <Compile Include="usr\local\splash\CZFGCSplash.cs" />
     <Compile Include="usr\local\Testbed.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -583,6 +584,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sprites\npc\friendly\demoFolk.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\house.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\houseIntro.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\npc\friendly\demoPup.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

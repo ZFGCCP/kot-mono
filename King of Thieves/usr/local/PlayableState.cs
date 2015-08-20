@@ -14,7 +14,7 @@ namespace King_of_Thieves.usr.local
         public PlayableState()
             : base()
         {
-            CMasterControl.mapManager.swapMap("thieves_hideout_f1.xml","player",new Vector2(265,235));
+            CMasterControl.mapManager.swapMap("thieves_hideout_f1.xml","player",new Vector2(265,135));
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
@@ -35,7 +35,7 @@ namespace King_of_Thieves.usr.local
             CMasterControl.healthController.update(gameTime);
             CMasterControl.buttonController.update(gameTime);
             CMasterControl.magicMeter.update(gameTime);
-            clockTest.update(gameTime);
+            //clockTest.update(gameTime);
 
             if (CMasterControl.pickPocketMeter != null)
                 CMasterControl.pickPocketMeter.update(gameTime);

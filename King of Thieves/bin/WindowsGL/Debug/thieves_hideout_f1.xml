@@ -614,7 +614,7 @@
 		</component>
 		<component>
 			<actors>
-				<actor name="demoDog" type="King_of_Thieves.Actors.NPC.Other.CDemoWiseMan" coordinates = "100:100"></actor>
+				<actor name="demoDog" type="King_of_Thieves.Actors.NPC.Other.CDemoWiseMan" coordinates = "350:135"></actor>
 			</actors>
 		</component>
 	  </components>

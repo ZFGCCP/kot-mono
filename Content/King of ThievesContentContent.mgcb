@@ -847,3 +847,26 @@
 /processorParam:TextureFormat=Color
 /build:sprites/npc/friendly/demoFolk.png
 
+#begin music/house.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/house.wav
+
+#begin music/houseIntro.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/houseIntro.wav
+
+#begin sprites/npc/friendly/demoPup.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:sprites/npc/friendly/demoPup.png
+

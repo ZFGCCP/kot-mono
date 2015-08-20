@@ -28,12 +28,13 @@ namespace King_of_Thieves.Sound
             _song = null;
         }
 
-        public CSound(SoundEffect fx, bool Track)
+        public CSound(SoundEffect fx, bool Track, bool isLooped = false)
         {
             _sfxInstance = fx.CreateInstance();
             _sfx = null;
             _song = null;
             _track = Track;
+            _sfxInstance.IsLooped = isLooped;
         }
 
         public CSound(Song song, bool loop, int repeat)

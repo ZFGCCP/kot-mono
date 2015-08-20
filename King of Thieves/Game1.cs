@@ -90,7 +90,7 @@ namespace King_of_Thieves
 
             CTextures.init(Content);
 
-            Master.Push(new DevMenu());
+            
             //Master.Push(new PlayableState());
 
             Master.GetInputManager().AddInputHandler(new CInput());
@@ -100,6 +100,7 @@ namespace King_of_Thieves
 
 
             base.Initialize();
+            Master.Push(new usr.local.splash.CZFGCSplash());
         }
 
         /// <summary>

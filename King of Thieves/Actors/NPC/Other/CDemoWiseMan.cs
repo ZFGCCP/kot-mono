@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using King_of_Thieves.Input;
+using Gears.Cloud;
 
 namespace King_of_Thieves.Actors.NPC.Other
 {
@@ -10,7 +13,8 @@ namespace King_of_Thieves.Actors.NPC.Other
         private const string _SPRITE_NAMESPACE = "npc:puppup";
         private const string _IDLE = _SPRITE_NAMESPACE + ":idle";
 
-        private bool _firstTime = false;
+        private bool _firstTime = true;
+        private bool _playerInSight = false;
 
         private string _openingMessage = "Sup! I'm the wise guy of the demo! But even us wise guys need help! An item of mine was stolen " +
                                          "and I really need it back! It was taken by the cult known as ZFGC. I don't know who they are, but " +
@@ -31,9 +35,24 @@ namespace King_of_Thieves.Actors.NPC.Other
                                           "is at least half full! Easy, right? Try it out when you get outside! There would normally be a pause menu, but it's " +
                                           "disabled for this demo. Maybe next time! Alright, have fun out there!";
 
+        private string _greatSuccess = "WHOA!! IS THAT..?! IT IS!! I can't believe you found it!" +
+                                       "How can I ever repay you? I don't quite know yet..Well, I suppose" +
+                                       "You'll just have to wait until the full game for repayment! Until then, " +
+                                       "feel free to roam around. Thanks for playing!";
+
         public CDemoWiseMan()
         {
+            Graphics.CTextures.addRawTexture(_SPRITE_NAMESPACE, "sprites/npc/friendly/demoPup");
 
+            Graphics.CTextures.addTexture(_IDLE, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 23, 21, 0, "0:0", "0:0"));
+
+            _imageIndex.Add(_IDLE, new Graphics.CSprite(_IDLE));
+            swapImage(_IDLE);
+
+            _lineOfSight = 60;
+            _angle = 180;
+            _direction = DIRECTION.LEFT;
+            _visionRange = 90;
         }
 
         public override void roomStart(object sender)
@@ -44,11 +63,20 @@ namespace King_of_Thieves.Actors.NPC.Other
                 _state = ACTOR_STATES.IDLE;
                 _firstTime = false;
             }
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:houseIntro"]);
+            startTimer2(86);
+        }
+
+        public override void timer2(object sender)
+        {
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:house"]);
         }
 
         public override void update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             base.update(gameTime);
+
+            Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
 
             if (_state == ACTOR_STATES.IDLE)
             {
@@ -58,11 +86,57 @@ namespace King_of_Thieves.Actors.NPC.Other
                     _state = ACTOR_STATES.IDLE_STARE;
                 }
             }
+            else
+            {
+                if (_checkIfPointInView(playerPos) && checkIfFacing(playerPos, Player.CPlayer.glblDirection))
+                {
+                    _state = ACTOR_STATES.TALK_READY;
+                    CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.TALK);
+                    _playerInSight = true;
+                }
+                else
+                {
+                    if (_playerInSight && _state == ACTOR_STATES.TALK_READY)
+                    {
+                        _state = ACTOR_STATES.IDLE_STARE;
+                        CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.NONE);
+                        _playerInSight = false;
+                    }
+                }
+            }
         }
 
         public override void timer0(object sender)
         {
             CMasterControl.buttonController.createTextBox(_controlsMessage);
+        }
+
+        public override void keyRelease(object sender)
+        {
+            base.keyRelease(sender);
+
+            Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+            CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+
+            if (input.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.C))
+            {
+                if (!CMasterControl.buttonController.textBoxWait)
+                {
+                    if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.TALK && _state == ACTOR_STATES.TALK_READY)
+                        startTimer1(2);
+                }
+            }
+        }
+
+        public override void timer1(object sender)
+        {
+            if (CMasterControl.buttonController.playerHasHydrant)
+            {
+                CMasterControl.buttonController.createTextBox(_greatSuccess);
+                _lineOfSight = 0;
+            }
+            else
+                CMasterControl.buttonController.createTextBox("Woof! Woof!");
         }
     }
 }

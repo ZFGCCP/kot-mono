@@ -48,6 +48,7 @@ namespace King_of_Thieves.Graphics
         public const string DROPS_RUPEE_BLUE = DROPS + "rupeeBlue";
         public const string DROPS_RUPEE_ORANGE = DROPS + "rupeeOrange";
         public const string DROPS_RUPEE_PURPLE = DROPS + "rupeePurple";
+        public const string DROPS_FIRE_HYDRANT = DROPS + "fireHydrant";
 
         public const string PLAYER_CHARGE_ARROW_LEFT = PLAYER + "chargeArrowLeft";
         public const string PLAYER_HOLD_ARROW_LEFT = PLAYER + "holdArrowLeft";
@@ -374,6 +375,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(DROPS_RUPEE_BLUE, new CTextureAtlas("drops:drops01", 16, 16, 1, "1:1", "1:1"));
             textures.Add(DROPS_RUPEE_ORANGE, new CTextureAtlas("drops:drops01", 16, 16, 1, "2:1", "2:1"));
             textures.Add(DROPS_RUPEE_PURPLE, new CTextureAtlas("drops:drops01", 16, 16, 1, "3:1", "3:1"));
+            textures.Add(DROPS_FIRE_HYDRANT, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:3", "0:3"));
 
             //demo folk
             textures.Add(DEMO_FOLK_SWORD_GUY_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "1:3", "1:3"));
