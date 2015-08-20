@@ -14,7 +14,7 @@ namespace King_of_Thieves.usr.local.splash
     class CDedicationPage : MenuReadyGameState
     {
         private static SpriteFont _sherwood = CMasterControl.glblContent.Load<SpriteFont>(@"Fonts/sherwood");
-        private int _timer = 250;
+        private int _timer = 800;
         private Vector2 _pos = new Vector2(90, 80);
 
         public CDedicationPage()
