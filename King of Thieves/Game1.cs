@@ -34,6 +34,7 @@ namespace King_of_Thieves
 
 		Stopwatch _updateTimer = new Stopwatch();
 		Stopwatch _drawTimer = new Stopwatch();
+        bool first = true;
 
         System.Timers.Timer _fpsTimer = new System.Timers.Timer(1000);
         public void _fpsHandler(object sender, ElapsedEventArgs e) { updateFPS = updateFrames; updateFrames = 0; drawFPS = drawFrames; drawFrames = 0; }
@@ -100,7 +101,7 @@ namespace King_of_Thieves
 
 
             base.Initialize();
-            Master.Push(new usr.local.splash.CZFGCSplash());
+            
         }
 
         /// <summary>
@@ -149,6 +150,12 @@ namespace King_of_Thieves
         protected override void Update(GameTime gameTime)
         {
             CMasterControl.gameTime = gameTime;
+
+            if (first)
+            {
+                Master.Push(new usr.local.splash.CZFGCSplash());
+                first = false;
+            }
 
             updateFrames++;
 

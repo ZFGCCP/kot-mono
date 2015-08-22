@@ -1229,6 +1229,8 @@
 				<actor name="hitbox27" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "288:256" params = "16,16"></actor>
 				
 				<actor name="hitbox28" type = "King_of_Thieves.Actors.Collision.CSolidTile" coordinates = "160:32" params = "128,16"></actor>
+				
+				<actor name="music" type="King_of_Thieves.Actors.NPC.Other.DemoGuys.CTempleMusic" coordinates="0:0"></actor>
 			</actors>
 		</component>
 	</components>

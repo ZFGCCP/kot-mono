@@ -393,6 +393,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(DEMO_FOLK_KEY_GUY_HEAD_DOWN, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "3:1", "3:1"));
             textures.Add(DEMO_FOLK_KEY_GUY_HEAD_LEFT, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "2:1", "2:1"));
             textures.Add(DEMO_FOLK_KEY_GUY_HEAD_UP, new CTextureAtlas(DEMO_FOLK, 32, 32, 1, "2:0", "2:0"));
+
+            //splash
+            textures.Add("splash:link", new CTextureAtlas("splash:link", 16, 24, 1, "0:0", "6:0", 15));
         }
 
         public static void addRawTexture(string textureName, string fileNameNoExt)
@@ -417,6 +420,8 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("effects", _content.Load<Texture2D>("effects"));
             rawTextures.Add("potSmall", _content.Load<Texture2D>("potSmall"));
             rawTextures.Add("maple", _content.Load<Texture2D>("maple"));
+
+            rawTextures.Add("splash:link", _content.Load<Texture2D>("sprites/other/splash"));
 
             rawTextures.Add(SOURCE_SHIELDS, _content.Load<Texture2D>("sprites/items/shields"));
 

@@ -86,8 +86,12 @@ namespace King_of_Thieves.Actors.NPC.Other.DemoGuys
                 CActor head = new CKeyGuyHead();
                 head.init(_name + "head", _position, "", this.componentAddress);
                 Map.CMapManager.addActorToComponent(head, this.componentAddress);
+
                 _firstTick = false;
             }
+
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:kakariko"]);
+
             startTimer4(120);
         }
 

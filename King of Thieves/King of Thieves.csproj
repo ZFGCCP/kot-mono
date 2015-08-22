@@ -126,6 +126,7 @@
     <Compile Include="Actors\NPC\Other\DemoGuys\CKeyGuyHead.cs" />
     <Compile Include="Actors\NPC\Other\DemoGuys\CSwordGuy.cs" />
     <Compile Include="Actors\NPC\Other\DemoGuys\CSwordGuyHead.cs" />
+    <Compile Include="Actors\NPC\Other\DemoGuys\CTempleMusic.cs" />
     <Compile Include="Actors\NPC\Other\Maple\CMaple.cs" />
     <Compile Include="Actors\Player\CPlayer.cs" />
     <Compile Include="Actors\Player\CShadowClone.cs" />
@@ -596,6 +597,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\music\title.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\other\splash.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\kakariko.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\temple.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

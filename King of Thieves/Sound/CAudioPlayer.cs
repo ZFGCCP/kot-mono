@@ -84,6 +84,8 @@ namespace King_of_Thieves.Sound
             soundBank.Add("bgm:house", new CSound(CMasterControl.glblContent.Load<SoundEffect>("music/house"), true, true));
             soundBank.Add("bgm:houseIntro", new CSound(CMasterControl.glblContent.Load<SoundEffect>("music/houseIntro")));
             soundBank.Add("bgm:title", new CSound(CMasterControl.glblContent.Load<SoundEffect>("music/title")));
+            soundBank.Add("bgm:kakariko", new CSound(CMasterControl.glblContent.Load<SoundEffect>("music/kakariko"),true,true));
+            soundBank.Add("bgm:temple", new CSound(CMasterControl.glblContent.Load<SoundEffect>("music/temple"), true, true));
         }
 
         public void stop()
