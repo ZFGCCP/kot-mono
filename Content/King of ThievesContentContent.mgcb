@@ -870,3 +870,9 @@
 /processorParam:TextureFormat=Color
 /build:sprites/npc/friendly/demoPup.png
 
+#begin music/title.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/title.wav
+
