@@ -37,7 +37,7 @@ namespace King_of_Thieves.Graphics
             threshold = new Vector3(80, 30,0);
 
 
-            _boundary = new Actors.HUD.CCameraBoundary(new Rectangle(80, 30, 100, 100));
+            _boundary = new Actors.HUD.CCameraBoundary(new Rectangle(0, 0, 100, 100));
         }
 
         public void setBoundary(Vector2 position)

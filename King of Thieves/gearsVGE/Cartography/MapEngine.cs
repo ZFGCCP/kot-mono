@@ -150,6 +150,10 @@ namespace Gears.Cartography
 
         [XmlElement("bgmfile")]
         public string BGM_FILE_LOC {get; set;}
+        [XmlElement("width")]
+        public int WIDTH { get; set; }
+        [XmlElement("height")]
+        public int HEIGHT { get; set; }
         [XmlElement("fadeinfile")]
         public string FADE_IN_FILE_LOC {get; set;}
         [XmlElement("fadeoutfile")]

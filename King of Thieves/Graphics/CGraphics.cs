@@ -12,6 +12,7 @@ namespace King_of_Thieves.Graphics
         private static GraphicsDeviceManager _graphicsInfo;
         public static  SpriteBatch spriteBatch;
         public static RenderTarget2D _rtar2D = null;
+        public static RenderTarget2D fullScreenRenderTarget = null;
         public static GraphicsDevice GPU
         {
             get
@@ -30,6 +31,7 @@ namespace King_of_Thieves.Graphics
             Gears.Cloud.ViewportHandler.SetScreen(width, height);
             _graphicsInfo.PreferredBackBufferWidth = width;
             _graphicsInfo.PreferredBackBufferHeight = height;
+            fullScreenRenderTarget = new RenderTarget2D(GPU, width, height, true, SurfaceFormat.Color, DepthFormat.Depth24);
             _graphicsInfo.ApplyChanges();
         }
 

@@ -81,6 +81,7 @@ namespace King_of_Thieves
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Graphics.CGraphics.acquireGraphics(ref graphics);
+            CGraphics.fullScreenRenderTarget = new RenderTarget2D(CGraphics.GPU, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, true, SurfaceFormat.Color, DepthFormat.Depth24);
 
             _fpsTimer.Elapsed += new ElapsedEventHandler(_fpsHandler);
             _fpsTimer.Enabled = true;
@@ -187,6 +188,9 @@ namespace King_of_Thieves
 
             //Store drawtime from previous frame
             _drawTimer.Start();
+
+            //GraphicsDevice.SetRenderTarget(CGraphics.fullScreenRenderTarget);
+
             GraphicsDevice.Clear(Master.GetClearColor());
 
             CMasterControl.camera.update(gameTime);
@@ -209,6 +213,13 @@ namespace King_of_Thieves
                                     "FPS(Draw: " + drawFPS + " | Update: " + updateFPS + ") \n";
                 spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts/benchmarker"), debugString, Vector2.Zero, Color.White);
             }
+
+
+            //GraphicsDevice.SetRenderTarget(null);
+            /*spriteBatch.Draw((Texture2D)CGraphics.fullScreenRenderTarget, new Rectangle(0,0,
+                                                                                       graphics.PreferredBackBufferWidth,
+                                                                                       graphics.PreferredBackBufferHeight),
+                                                                                       Color.White);*/
 
             spriteBatch.End();
 

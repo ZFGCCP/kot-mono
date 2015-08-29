@@ -21,6 +21,8 @@ namespace King_of_Thieves.Map
         private int _largestAddress = 0;
         private Gears.Cartography.Map _internalMap;
         private Graphics.CSprite _tileIndex = null;
+        private int _width = 0;
+        private int _height = 0;
 
         public CMap(Dictionary<string, Graphics.CSprite> atlasCache = null)
         {
@@ -55,8 +57,9 @@ namespace King_of_Thieves.Map
 
             /*if (_internalMap.TILESET != null)
                 _tileIndex = new Graphics.CSprite(_internalMap.TILESET, Graphics.CTextures.textures[_internalMap.TILESET]);*/
-           
 
+            _width = _internalMap.WIDTH;
+            _height = _internalMap.HEIGHT;
 
             foreach (Gears.Cartography.layer layer in _internalMap.LAYERS)
             {

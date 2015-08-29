@@ -82,6 +82,8 @@ namespace King_of_Thieves.Actors.Items.decoration
        private const string _CHESTS_LARGE = "chests-large";
        private bool _isLoaded = false;
 
+       private Actors.Collision.CHitBox _openBox = null;
+
 
        public CChest() :
            base()
@@ -111,6 +113,8 @@ namespace King_of_Thieves.Actors.Items.decoration
 
             _imageIndex.Add(_CHESTS_SMALL, new Graphics.CSprite("tileset:items:chests-small"));
             _hitBox = new Collision.CHitBox(this, 0, 0, 16, 16);
+
+            _openBox = new Collision.CHitBox(this, 0, 16, 16, 16);
 
             switch (_chestType)
             {
@@ -173,7 +177,7 @@ namespace King_of_Thieves.Actors.Items.decoration
                 Vector2 origin = _position;
                 origin.Y -= 16;
 
-                if (_checkIfPointInView(playerPos,origin) && playerDirection == DIRECTION.UP)
+                if (_openBox.checkCollision(playerPos) && playerDirection == DIRECTION.UP)
                     CMasterControl.buttonController.changeActionIconState(HUD.buttons.HUD_ACTION_OPTIONS.OPEN);
             }
         }
