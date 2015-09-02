@@ -34,15 +34,14 @@ namespace King_of_Thieves.Graphics
         {
             scale = new Vector3(1, 1, 1);
             position = new Vector3(0, 0, 0);
-            threshold = new Vector3(80, 30,0);
 
 
-            _boundary = new Actors.HUD.CCameraBoundary(new Rectangle(0, 0, 100, 100));
+            _boundary = new Actors.HUD.CCameraBoundary(new Rectangle(128, 30, 1, 1));
         }
 
         public void setBoundary(Vector2 position)
         {
-            _boundary = new Actors.HUD.CCameraBoundary(new Rectangle((int)position.X, (int)position.Y, 100, 100));
+            _boundary = new Actors.HUD.CCameraBoundary(new Rectangle((int)position.X, (int)position.Y, 1, 1));
         }
 
         public void jump(Vector3 position)

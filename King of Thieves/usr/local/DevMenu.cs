@@ -36,7 +36,7 @@ namespace King_of_Thieves.usr.local
             playTestElement.SetThrowPushEvent(new System.Action(() =>
             {
                 //Master.Push(new PlayableState());
-                Master.Push(new splash.CDedicationPage());
+                Master.Push(new splash.CTitleState());
             }));
 			_menu.AddMenuElement(playTestElement);
 

@@ -289,6 +289,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:indoors:house", new CTextureAtlas("tileset:indoors:house", 16, 16, 0, "0:0", "24:16", 0, false, false, true));
             textures.Add("tileset:smallLantern", new CTextureAtlas("tileset:items:smallItems", 16, 16, 1, "0:0", "8:0", 5, false, false, false));
             textures.Add("tileset:items:chests-small", new CTextureAtlas("tileset:items:chests-small", 16, 16, 1, "0:0", "1:2", 0, false, false, false));
+            textures.Add("tileset:outdoors:demoTiles", new CTextureAtlas("tileset:outdoors:demoTiles", 16, 16, 0, "0:0", "49:41", 0, false, false, true));
 
             //items and shit
             textures.Add("items:decor:potSmall", new CTextureAtlas("potSmall", 48, 48, 1, "0:0", "0:0"));
@@ -383,6 +384,7 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("tileset:items:chests-small", _content.Load<Texture2D>(@"tilesets/items/chests-small"));
             rawTextures.Add("tileset:items:smallItems", _content.Load<Texture2D>(@"tilesets/items/smallItems"));
             rawTextures.Add("tileset:outdoors:hyruleCastleTown", _content.Load<Texture2D>(@"tilesets/outdoors/hyruleCastleTown"));
+            rawTextures.Add("tileset:outdoors:demoTiles", _content.Load<Texture2D>(@"tilesets/outdoors/demoTiles"));
 
             //effects
             rawTextures.Add("effects:explosion", _content.Load<Texture2D>(@"effects/bomb-explosion"));

@@ -52,5 +52,21 @@ namespace King_of_Thieves.Actors.HUD
                 return _boundingRect.Bottom;
             }
         }
+
+        public int width
+        {
+            get
+            {
+                return right - left;
+            }
+        }
+
+        public int height
+        {
+            get
+            {
+                return top - bottom;
+            }
+        }
     }
 }

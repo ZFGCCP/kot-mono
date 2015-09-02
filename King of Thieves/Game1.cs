@@ -78,7 +78,7 @@ namespace King_of_Thieves
             graphics.PreferredBackBufferWidth = ViewportHandler.GetWidth();
             graphics.PreferredBackBufferHeight = ViewportHandler.GetHeight();
             graphics.SynchronizeWithVerticalRetrace = true;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
             Graphics.CGraphics.acquireGraphics(ref graphics);
             CGraphics.fullScreenRenderTarget = new RenderTarget2D(CGraphics.GPU, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, true, SurfaceFormat.Color, DepthFormat.Depth24);
@@ -123,6 +123,7 @@ namespace King_of_Thieves
             menuComo.root = testMenu;
             CMasterControl.mapManager.cacheMaps(false, "tileTester.xml");
             CMasterControl.mapManager.cacheMaps(false, "thieves-house-f1.xml");
+            CMasterControl.mapManager.cacheMaps(false, "ncfc_overworld.xml");
 
             //textTest = new Actors.HUD.Text.CTextBox();
             CMasterControl.buttonController = new Actors.HUD.buttons.CButtonController();
@@ -155,6 +156,10 @@ namespace King_of_Thieves
             {
                 this.Exit();
             }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.F11))
+                graphics.IsFullScreen = !graphics.IsFullScreen;
+
             //Exit when Escape is pressed(Dunno if this iterferes with the editor?)
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
@@ -165,15 +170,9 @@ namespace King_of_Thieves
             _updateTimer.Start();
             
             Master.Update(gameTime);
-            //CMasterControl.mapManager.updateMap(gameTime);
+
             _updateTimer.Stop();
 
-            //if (CMasterControl.glblInput.keysReleased.Contains(Microsoft.Xna.Framework.Input.Keys.Z))
-                //textTest.displayMessageBox("The quick brown fox jumped over the fence. I am a potato. blah blah Ash rocks etc testing some mad wacky shit hello am i your god please eat me for i am delicious blah blah abcdefgh i jklmno pqrs t u vwxyz hoo hahahahaha look at me i'm a text box i go to school i wear glasses ganondorf can suck a my linky ding dong while i shoot fire arrows wearing some kinda cloak. I have over 9000 master swords and they're all up Ganondorf's butthole. ");
-
-
-            //textTest.update(gameTime);
-            //CMasterControl.audioPlayer.Update();
             base.Update(gameTime);
             
         }
@@ -189,7 +188,10 @@ namespace King_of_Thieves
             //Store drawtime from previous frame
             _drawTimer.Start();
 
-            //GraphicsDevice.SetRenderTarget(CGraphics.fullScreenRenderTarget);
+            if (graphics.IsFullScreen)
+                GraphicsDevice.SetRenderTarget(CGraphics.fullScreenRenderTarget);
+            else
+                GraphicsDevice.SetRenderTarget(null);
 
             GraphicsDevice.Clear(Master.GetClearColor());
 
@@ -198,8 +200,6 @@ namespace King_of_Thieves
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, CMasterControl.camera.transformation);
             
             Master.Draw(spriteBatch);
-
-            //textTest.drawMe();
 
             _drawTimer.Stop();
 
@@ -214,13 +214,19 @@ namespace King_of_Thieves
                 spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts/benchmarker"), debugString, Vector2.Zero, Color.White);
             }
 
+            float aspect = GraphicsDevice.DisplayMode.AspectRatio;
 
-            //GraphicsDevice.SetRenderTarget(null);
-            /*spriteBatch.Draw((Texture2D)CGraphics.fullScreenRenderTarget, new Rectangle(0,0,
-                                                                                       graphics.PreferredBackBufferWidth,
-                                                                                       graphics.PreferredBackBufferHeight),
-                                                                                       Color.White);*/
+            spriteBatch.End();
 
+            spriteBatch.Begin(SpriteSortMode.Immediate);
+            if (graphics.IsFullScreen)
+            {
+                GraphicsDevice.SetRenderTarget(null);
+                spriteBatch.Draw((Texture2D)CGraphics.fullScreenRenderTarget, new Rectangle(0,0,
+                                                                                           graphics.PreferredBackBufferWidth,
+                                                                                           graphics.PreferredBackBufferHeight),
+                                                                                           Color.White);
+            }
             spriteBatch.End();
 
             base.Draw(gameTime);
