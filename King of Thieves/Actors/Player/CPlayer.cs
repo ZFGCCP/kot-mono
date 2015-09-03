@@ -335,11 +335,11 @@ namespace King_of_Thieves.Actors.Player
                         Master.Pop();
                     }
 
-                    if (input.keysPressed.Contains(Keys.Left) && _lastHudKeyPressed != Keys.Left)
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_LEFT_ITEM)) && _lastHudKeyPressed != input.getKey(CInput.KEY_LEFT_ITEM))
                         _useItem(0);
-                    else if (input.keysPressed.Contains(Keys.Right) && _lastHudKeyPressed != Keys.Right)
+                    else if (input.keysPressed.Contains(input.getKey(CInput.KEY_RIGHT_ITEM)) && _lastHudKeyPressed != input.getKey(CInput.KEY_RIGHT_ITEM))
                         _useItem(-1);
-                    else if (input.keysPressed.Contains(Keys.LeftShift))
+                    else if (input.keysPressed.Contains(input.getKey(CInput.KEY_SHIELD)))
                     {
                         if (_state != ACTOR_STATES.SHIELDING && _state != ACTOR_STATES.SHIELD_ENGAGE)
                         {
@@ -372,7 +372,7 @@ namespace King_of_Thieves.Actors.Player
 
                     if (!_usingItem)
                     {
-                        if (input.keysPressed.Contains(Keys.A))
+                        if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_LEFT)))
                         {
                             if (_carrying)
                             {
@@ -390,7 +390,7 @@ namespace King_of_Thieves.Actors.Player
                             _direction = DIRECTION.LEFT;
                         }
 
-                        if (input.keysPressed.Contains(Keys.D))
+                        if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_RIGHT)))
                         {
                             if (_carrying)
                             {
@@ -408,7 +408,7 @@ namespace King_of_Thieves.Actors.Player
                             _direction = DIRECTION.RIGHT;
                         }
 
-                        if (input.keysPressed.Contains(Keys.W))
+                        if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_UP)))
                         {
                             if (_carrying)
                             {
@@ -426,7 +426,7 @@ namespace King_of_Thieves.Actors.Player
                             _direction = DIRECTION.UP;
                         }
 
-                        if (input.keysPressed.Contains(Keys.S))
+                        if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_DOWN)))
                         {
                             
                             if (_carrying)
@@ -448,7 +448,7 @@ namespace King_of_Thieves.Actors.Player
                         moveInDirection(_velocity);
                         _oldVelocity = _velocity;
                     }
-                    if (input.keysPressed.Contains(Keys.Space))
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_SWORD)))
                     {
                         if (_wearingShadowCloak)
                             _createShadowClone();
@@ -461,13 +461,13 @@ namespace King_of_Thieves.Actors.Player
                 }
                 else if (_state == ACTOR_STATES.SHIELDING)
                 {
-                    if (input.keysPressed.Contains(Keys.A))
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_LEFT)))
                         _velocity.X = -.5f;
-                    if (input.keysPressed.Contains(Keys.D))
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_RIGHT)))
                         _velocity.X = .5f;
-                    if (input.keysPressed.Contains(Keys.S))
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_DOWN)))
                         _velocity.Y = .5f;
-                    if (input.keysPressed.Contains(Keys.W))
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_UP)))
                         _velocity.Y = -.5f;
 
                     if (_velocity.X == 0 && _velocity.Y == 0)

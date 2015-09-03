@@ -31,6 +31,7 @@ namespace King_of_Thieves
         Actors.Menu.CMenu testMenu;
         CComponent menuComo = new CComponent();
         Actors.HUD.Text.CTextBox textTest = null;
+        Matrix scaleMatrix = new Matrix();
 
 		Stopwatch _updateTimer = new Stopwatch();
 		Stopwatch _drawTimer = new Stopwatch();
@@ -43,8 +44,8 @@ namespace King_of_Thieves
         int drawFPS;
 
         //Screen Resolution defaults
-        private const int ScreenWidth = 320;
-        private const int ScreenHeight = 240;
+        private const int ScreenWidth = 800;
+        private const int ScreenHeight =600;
 
         public Game1()
         {
@@ -78,7 +79,7 @@ namespace King_of_Thieves
             graphics.PreferredBackBufferWidth = ViewportHandler.GetWidth();
             graphics.PreferredBackBufferHeight = ViewportHandler.GetHeight();
             graphics.SynchronizeWithVerticalRetrace = true;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Graphics.CGraphics.acquireGraphics(ref graphics);
             CGraphics.fullScreenRenderTarget = new RenderTarget2D(CGraphics.GPU, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, true, SurfaceFormat.Color, DepthFormat.Depth24);
@@ -99,6 +100,10 @@ namespace King_of_Thieves
             CMasterControl.healthController = new Actors.HUD.health.CHealthController(20,78);
             CMasterControl.magicMeter = new Actors.HUD.magic.CMagicMeter();
 
+            scaleMatrix = Matrix.CreateScale(
+                           2.5f,
+                           2.5f,
+                           1f);
 
             base.Initialize();
         }
@@ -188,10 +193,9 @@ namespace King_of_Thieves
             //Store drawtime from previous frame
             _drawTimer.Start();
 
-            if (graphics.IsFullScreen)
+
                 GraphicsDevice.SetRenderTarget(CGraphics.fullScreenRenderTarget);
-            else
-                GraphicsDevice.SetRenderTarget(null);
+
 
             GraphicsDevice.Clear(Master.GetClearColor());
 
@@ -218,15 +222,14 @@ namespace King_of_Thieves
 
             spriteBatch.End();
 
-            spriteBatch.Begin(SpriteSortMode.Immediate);
-            if (graphics.IsFullScreen)
-            {
+            spriteBatch.Begin(SpriteSortMode.Immediate,null,null,null,null,null,scaleMatrix);
+
                 GraphicsDevice.SetRenderTarget(null);
                 spriteBatch.Draw((Texture2D)CGraphics.fullScreenRenderTarget, new Rectangle(0,0,
-                                                                                           graphics.PreferredBackBufferWidth,
-                                                                                           graphics.PreferredBackBufferHeight),
+                                                                                           800,
+                                                                                          600),
                                                                                            Color.White);
-            }
+
             spriteBatch.End();
 
             base.Draw(gameTime);

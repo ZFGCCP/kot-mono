@@ -20,7 +20,38 @@ namespace King_of_Thieves.Input
         private MouseState _mouseStatePrevious;
         public keyEventArgs keyEvents = new keyEventArgs();
         private List<Keys> _temp = new List<Keys>();
-        
+
+        public const string KEY_ACTION = "KEY:ACTION";
+        public const string KEY_SWORD = "KEY:SWORD";
+        public const string KEY_SHIELD = "KEY:SHIELD";
+        public const string KEY_LEFT_ITEM = "KEY:LEFT_ITEM";
+        public const string KEY_RIGHT_ITEM = "KEY:RIGHT_ITEM";
+        public const string KEY_WALK_UP = "KEY:WALK_UP";
+        public const string KEY_WALK_DOWN = "KEY:WALK_DOWN";
+        public const string KEY_WALK_LEFT = "KEY:WALK_LEFT";
+        public const string KEY_WALK_RIGHT = "KEY:WALK_RIGHT";
+
+        private Dictionary<string, Keys> _keyMapping = new Dictionary<string, Keys>();
+
+        public CInput()
+        {
+            _keyMapping.Add(KEY_ACTION, Keys.Up);
+            _keyMapping.Add(KEY_SWORD, Keys.Space);
+            _keyMapping.Add(KEY_SHIELD, Keys.LeftShift);
+            _keyMapping.Add(KEY_LEFT_ITEM, Keys.Left);
+            _keyMapping.Add(KEY_RIGHT_ITEM, Keys.Right);
+
+            _keyMapping.Add(KEY_WALK_UP, Keys.W);
+            _keyMapping.Add(KEY_WALK_DOWN, Keys.S);
+            _keyMapping.Add(KEY_WALK_LEFT, Keys.A);
+            _keyMapping.Add(KEY_WALK_RIGHT, Keys.D);
+        }
+
+        public Keys getKey(String key)
+        {
+            return _keyMapping[key];
+        }
+
         public bool getInputDown(Buttons button)
         {
             if (!_padStateCurrent.IsConnected)
