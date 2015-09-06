@@ -44,8 +44,8 @@ namespace King_of_Thieves
         int drawFPS;
 
         //Screen Resolution defaults
-        private const int ScreenWidth = 800;
-        private const int ScreenHeight =600;
+        private const int ScreenWidth = 720;
+        private const int ScreenHeight = 480;
 
         public Game1()
         {
@@ -101,8 +101,8 @@ namespace King_of_Thieves
             CMasterControl.magicMeter = new Actors.HUD.magic.CMagicMeter();
 
             scaleMatrix = Matrix.CreateScale(
-                           2.5f,
-                           2.5f,
+                           3f,
+                           3f,
                            1f);
 
             base.Initialize();
@@ -222,12 +222,14 @@ namespace King_of_Thieves
 
             spriteBatch.End();
 
-            spriteBatch.Begin(SpriteSortMode.Immediate,null,null,null,null,null,scaleMatrix);
+            spriteBatch.Begin(SpriteSortMode.Immediate,null,SamplerState.PointWrap,null,null,null,scaleMatrix);
+
+            
 
                 GraphicsDevice.SetRenderTarget(null);
                 spriteBatch.Draw((Texture2D)CGraphics.fullScreenRenderTarget, new Rectangle(0,0,
-                                                                                           800,
-                                                                                          600),
+                                                                                           720,
+                                                                                          480),
                                                                                            Color.White);
 
             spriteBatch.End();

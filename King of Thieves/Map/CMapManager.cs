@@ -112,7 +112,7 @@ namespace King_of_Thieves.Map
             Vector3 cameraDiff = new Vector3(-CMasterControl.camera.position.X - _followerCoords.X, -CMasterControl.camera.position.Y - _followerCoords.Y, 0);
 
             CMasterControl.camera.translate(cameraDiff);
-            CMasterControl.camera.translate(new Vector3(260, 260, 0));
+            CMasterControl.camera.translate(new Vector3(230, 230, 0));
             CMasterControl.camera.setBoundary(new Vector2(_followerCoords.X - 120, _followerCoords.Y - 150));
             actor.position = _followerCoords;
             _mapSwapIssued = false;

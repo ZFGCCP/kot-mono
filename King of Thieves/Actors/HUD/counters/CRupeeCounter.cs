@@ -15,7 +15,7 @@ namespace King_of_Thieves.Actors.HUD.counters
             : base(_RUPEE_WALLET_CAPACITY, 0)
         {
             _fixedPosition.X = 10;
-            _fixedPosition.Y = 210;
+            _fixedPosition.Y = 140;
 
             _textOffset.X = 15;
             _textOffset.Y = 1;
