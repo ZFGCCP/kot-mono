@@ -28,6 +28,8 @@ namespace King_of_Thieves.Actors.Player
         private int _bombVelo = 0;
         private string _currentShieldSprite = "";
         private string _currentShieldIdleSprite = "";
+        private string _currentSwordChargeSprite = "";
+        private string _currentSwordChargeIdleSprite = "";
         private Projectiles.ARROW_TYPES _arrowType = Projectiles.ARROW_TYPES.STANDARD;
         private bool _wearingShadowCloak = false;
         public bool cloneExists = false;
@@ -163,6 +165,26 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_DISENGAGE_UP));
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_WALK_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_WALK_UP));
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHIELD_IDLE_UP));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_SWORD_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_SWORD_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_SWORD_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_SWORD_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_SWORD_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_SWORD_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_SWORD_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_SWORD_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_SWORD_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_SWORD_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_SWORD_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_SWORD_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_SWORD_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_SWORD_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CHARGE_SWORD_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_CHARGE_SWORD_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SPIN_ATTACK_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SPIN_ATTACK_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SPIN_ATTACK_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SPIN_ATTACK_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SPIN_ATTACK_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SPIN_ATTACK_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SPIN_ATTACK_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SPIN_ATTACK_LEFT, true));
         }
 
         public override void timer5(object sender)
@@ -247,11 +269,41 @@ namespace King_of_Thieves.Actors.Player
             switch (_state)
             {
                 case ACTOR_STATES.SWINGING:
-                    _state = ACTOR_STATES.IDLE;
+                    CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_SWORD)))
+                    {
+                        _state = ACTOR_STATES.PULLSWORD;
+
+                        switch (_direction)
+                        {
+                            case DIRECTION.DOWN:
+                                swapImage(Graphics.CTextures.PLAYER_PULL_SWORD_DOWN);
+                                break;
+
+                            case DIRECTION.LEFT:
+                                swapImage(Graphics.CTextures.PLAYER_PULL_SWORD_LEFT);
+                                break;
+
+                            case DIRECTION.RIGHT:
+                                swapImage(Graphics.CTextures.PLAYER_PULL_SWORD_RIGHT);
+                                break;
+
+                            case DIRECTION.UP:
+                                swapImage(Graphics.CTextures.PLAYER_PULL_SWORD_UP);
+                                break;
+                        }
+                    }
+                    else
+                        _state = ACTOR_STATES.IDLE;
                     break;
 
                 case ACTOR_STATES.ROLLING:
                     _state = ACTOR_STATES.IDLE;
+                    break;
+
+                case ACTOR_STATES.SPIN_ATTACK:
+                    _state = ACTOR_STATES.IDLE;
+                    _acceptInput = true;
                     break;
 
                 case ACTOR_STATES.LIFT:
@@ -280,6 +332,37 @@ namespace King_of_Thieves.Actors.Player
                     Projectiles.CBoomerang boomerang = new Projectiles.CBoomerang(_oldVelocity, position, direction, 2);
                     Map.CMapManager.addActorToComponent(boomerang, this.componentAddress);
                     _usingItem = false;
+                    break;
+
+                case ACTOR_STATES.PULLSWORD:
+                    _state = ACTOR_STATES.CHARGING_SWORD;
+                    _acceptInput = true;
+
+                    switch (_direction)
+                    {
+                        case DIRECTION.DOWN:
+                            _currentSwordChargeSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_DOWN;
+                            _currentSwordChargeIdleSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_DOWN;
+                            break;
+
+                        case DIRECTION.LEFT:
+                            _currentSwordChargeSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_LEFT;
+                            _currentSwordChargeIdleSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_LEFT;
+                            break;
+
+                        case DIRECTION.RIGHT:
+                            _currentSwordChargeSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_RIGHT;
+                            _currentSwordChargeIdleSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_RIGHT;
+                            break;
+
+                        case DIRECTION.UP:
+                            _currentSwordChargeSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_UP;
+                            _currentSwordChargeIdleSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_UP;
+                            break;
+
+                        default:
+                            break;
+                    }
                     break;
 
                 case ACTOR_STATES.SHIELD_ENGAGE:
@@ -462,18 +545,37 @@ namespace King_of_Thieves.Actors.Player
                 else if (_state == ACTOR_STATES.SHIELDING)
                 {
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_LEFT)))
-                        _velocity.X = -.5f;
+                        _velocity.X = -1f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_RIGHT)))
-                        _velocity.X = .5f;
+                        _velocity.X = 1f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_DOWN)))
-                        _velocity.Y = .5f;
+                        _velocity.Y = 1f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_UP)))
-                        _velocity.Y = -.5f;
+                        _velocity.Y = -1f;
 
                     if (_velocity.X == 0 && _velocity.Y == 0)
                         swapImage(_currentShieldIdleSprite);
                     else
                         swapImage(_currentShieldSprite);
+
+                    moveInDirection(_velocity);
+                    _oldVelocity = _velocity;
+                }
+                else if (_state == ACTOR_STATES.CHARGING_SWORD)
+                {
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_LEFT)))
+                        _velocity.X = -1f;
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_RIGHT)))
+                        _velocity.X = 1f;
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_DOWN)))
+                        _velocity.Y = 1f;
+                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_UP)))
+                        _velocity.Y = -1f;
+
+                    if (_velocity.X == 0 && _velocity.Y == 0)
+                        swapImage(_currentSwordChargeIdleSprite);
+                    else
+                        swapImage(_currentSwordChargeSprite);
 
                     moveInDirection(_velocity);
                     _oldVelocity = _velocity;
@@ -502,7 +604,7 @@ namespace King_of_Thieves.Actors.Player
                         _state = ACTOR_STATES.IDLE;
                 }
 
-                if (input.keysReleased.Contains(Keys.Left) || input.keysReleased.Contains(Keys.Right))
+                if (input.keysReleased.Contains(input.getKey(CInput.KEY_LEFT_ITEM)) || input.keysReleased.Contains(input.getKey(CInput.KEY_RIGHT_ITEM)))
                 {
                     switch (state)
                     {
@@ -523,7 +625,34 @@ namespace King_of_Thieves.Actors.Player
                     _lastHudKeyPressed = Keys.None;
                 }
 
-                if (input.keysReleased.Contains(Keys.LeftShift))
+                if (_state == ACTOR_STATES.CHARGING_SWORD)
+                {
+                    if (input.keysReleased.Contains(input.getKey(CInput.KEY_SWORD)))
+                    {
+                        _state = ACTOR_STATES.SPIN_ATTACK;
+                        _acceptInput = false;
+                        switch (_direction)
+                        {
+                            case DIRECTION.DOWN:
+                                swapImage(Graphics.CTextures.PLAYER_SPIN_ATTACK_DOWN);
+                                break;
+
+                            case DIRECTION.LEFT:
+                                swapImage(Graphics.CTextures.PLAYER_SPIN_ATTACK_LEFT);
+                                break;
+
+                            case DIRECTION.RIGHT:
+                                swapImage(Graphics.CTextures.PLAYER_SPIN_ATTACK_RIGHT);
+                                break;
+
+                            case DIRECTION.UP:
+                                swapImage(Graphics.CTextures.PLAYER_SPIN_ATTACK_UP);
+                                break;
+                        }
+                    }
+                }
+
+                if (input.keysReleased.Contains(input.getKey(CInput.KEY_SHIELD)))
                 {
                     if (_state == ACTOR_STATES.SHIELDING || _state == ACTOR_STATES.SHIELD_ENGAGE)
                     {
@@ -550,7 +679,7 @@ namespace King_of_Thieves.Actors.Player
                     }
                 }
 
-                if (input.keysReleased.Contains(Keys.C))
+                if (input.keysReleased.Contains(input.getKey(CInput.KEY_ACTION)))
                 {
                     //check HUD state
                     if (CMasterControl.buttonController.actionIconState == HUD.buttons.HUD_ACTION_OPTIONS.OPEN)

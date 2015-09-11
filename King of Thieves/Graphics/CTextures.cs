@@ -126,6 +126,22 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_SHADOWRIGHT = PLAYER + "ShadowRight";
         public const string PLAYER_SHADOWUP = PLAYER + "ShadowUp";
         public const string PLAYER_SHADOWDOWN = PLAYER + "ShadowDown";
+        public const string PLAYER_PULL_SWORD_UP = PLAYER + "PullSwordUp";
+        public const string PLAYER_PULL_SWORD_DOWN = PLAYER + "PullSwordDown";
+        public const string PLAYER_PULL_SWORD_LEFT = PLAYER + "PullSwordLeft";
+        public const string PLAYER_PULL_SWORD_RIGHT = PLAYER + "PullSwordRight";
+        public const string PLAYER_CHARGE_SWORD_IDLE_UP = PLAYER + "ChargeSwordIdleUp";
+        public const string PLAYER_CHARGE_SWORD_IDLE_DOWN = PLAYER + "ChargeSwordIdleDown";
+        public const string PLAYER_CHARGE_SWORD_IDLE_LEFT = PLAYER + "ChargeSwordIdleLeft";
+        public const string PLAYER_CHARGE_SWORD_IDLE_RIGHT = PLAYER + "ChargeSwordIdleRight";
+        public const string PLAYER_CHARGE_SWORD_UP = PLAYER + "ChargeSwordUp";
+        public const string PLAYER_CHARGE_SWORD_DOWN = PLAYER + "ChargeSwordDown";
+        public const string PLAYER_CHARGE_SWORD_LEFT = PLAYER + "ChargeSwordLeft";
+        public const string PLAYER_CHARGE_SWORD_RIGHT = PLAYER + "ChargeSwordRight";
+        public const string PLAYER_SPIN_ATTACK_UP = PLAYER + "SpinAttackUp";
+        public const string PLAYER_SPIN_ATTACK_DOWN = PLAYER + "SpinAttackDown";
+        public const string PLAYER_SPIN_ATTACK_LEFT = PLAYER + "SpinAttackLeft";
+        public const string PLAYER_SPIN_ATTACK_RIGHT = PLAYER + "SpinAttackRight";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -266,6 +282,18 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_SHADOWDOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "10:2", "10:2", 0));
             textures.Add(PLAYER_SHADOWLEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:2", "11:2", 0));
             textures.Add(PLAYER_SHADOWUP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "12:2", "12:2", 0));
+            textures.Add(PLAYER_PULL_SWORD_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:3", "31:3", 15));
+            textures.Add(PLAYER_PULL_SWORD_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:4", "31:4", 15));
+            textures.Add(PLAYER_PULL_SWORD_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:5", "31:5", 15));
+            textures.Add(PLAYER_CHARGE_SWORD_IDLE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:3", "25:3", 0));
+            textures.Add(PLAYER_CHARGE_SWORD_IDLE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:4", "25:4", 0));
+            textures.Add(PLAYER_CHARGE_SWORD_IDLE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "25:5", "25:5", 0));
+            textures.Add(PLAYER_CHARGE_SWORD_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:3", "27:3", 15));
+            textures.Add(PLAYER_CHARGE_SWORD_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:4", "27:4", 15));
+            textures.Add(PLAYER_CHARGE_SWORD_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:5", "27:5", 15));
+            textures.Add(PLAYER_SPIN_ATTACK_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:0", "43:0", 20));
+            textures.Add(PLAYER_SPIN_ATTACK_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:1", "43:1", 20));
+            textures.Add(PLAYER_SPIN_ATTACK_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:2", "43:2", 20));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));
@@ -290,6 +318,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:smallLantern", new CTextureAtlas("tileset:items:smallItems", 16, 16, 1, "0:0", "8:0", 5, false, false, false));
             textures.Add("tileset:items:chests-small", new CTextureAtlas("tileset:items:chests-small", 16, 16, 1, "0:0", "1:2", 0, false, false, false));
             textures.Add("tileset:outdoors:demoTiles", new CTextureAtlas("tileset:outdoors:demoTiles", 16, 16, 0, "0:0", "49:41", 0, false, false, true));
+            textures.Add("tileset:outdoors:castleTown", new CTextureAtlas("tileset:outdoors:castleTown", 16, 16, 0, "0:0", "54:46", 0, false, false, true));
 
             //items and shit
             textures.Add("items:decor:potSmall", new CTextureAtlas("potSmall", 48, 48, 1, "0:0", "0:0"));
@@ -385,6 +414,7 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("tileset:items:smallItems", _content.Load<Texture2D>(@"tilesets/items/smallItems"));
             rawTextures.Add("tileset:outdoors:hyruleCastleTown", _content.Load<Texture2D>(@"tilesets/outdoors/hyruleCastleTown"));
             rawTextures.Add("tileset:outdoors:demoTiles", _content.Load<Texture2D>(@"tilesets/outdoors/demoTiles"));
+            rawTextures.Add("tileset:outdoors:castleTown", _content.Load<Texture2D>(@"tilesets/outdoors/castleTown"));
 
             //effects
             rawTextures.Add("effects:explosion", _content.Load<Texture2D>(@"effects/bomb-explosion"));

@@ -124,19 +124,23 @@
             // 
             // mapHScroll
             // 
-            this.mapHScroll.LargeChange = 1;
+            this.mapHScroll.LargeChange = 16;
             this.mapHScroll.Location = new System.Drawing.Point(292, 526);
+            this.mapHScroll.Maximum = 3000;
             this.mapHScroll.Name = "mapHScroll";
             this.mapHScroll.Size = new System.Drawing.Size(500, 17);
+            this.mapHScroll.SmallChange = 16;
             this.mapHScroll.TabIndex = 2;
             this.mapHScroll.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
             // 
             // mapVScroll
             // 
-            this.mapVScroll.LargeChange = 1;
+            this.mapVScroll.LargeChange = 16;
             this.mapVScroll.Location = new System.Drawing.Point(795, 43);
+            this.mapVScroll.Maximum = 3000;
             this.mapVScroll.Name = "mapVScroll";
             this.mapVScroll.Size = new System.Drawing.Size(17, 480);
+            this.mapVScroll.SmallChange = 16;
             this.mapVScroll.TabIndex = 3;
             this.mapVScroll.Scroll += new System.Windows.Forms.ScrollEventHandler(this.mapVScroll_Scroll);
             // 
