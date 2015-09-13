@@ -34,6 +34,7 @@ namespace King_of_Thieves.Actors.Player
         private bool _wearingShadowCloak = false;
         public bool cloneExists = false;
         private bool _canMoveClone = false;
+        private bool _canChargeSword = false;
 
         private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
         private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
@@ -270,7 +271,7 @@ namespace King_of_Thieves.Actors.Player
             {
                 case ACTOR_STATES.SWINGING:
                     CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
-                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_SWORD)))
+                    if (_canChargeSword && input.keysPressed.Contains(input.getKey(CInput.KEY_SWORD)))
                     {
                         _state = ACTOR_STATES.PULLSWORD;
 
@@ -295,6 +296,8 @@ namespace King_of_Thieves.Actors.Player
                     }
                     else
                         _state = ACTOR_STATES.IDLE;
+
+                    _canChargeSword = false;
                     break;
 
                 case ACTOR_STATES.ROLLING:
@@ -346,7 +349,7 @@ namespace King_of_Thieves.Actors.Player
                             break;
 
                         case DIRECTION.LEFT:
-                            _currentSwordChargeSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_LEFT;
+                            _currentSwordChargeSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_LEFT;
                             _currentSwordChargeIdleSprite = Graphics.CTextures.PLAYER_CHARGE_SWORD_IDLE_LEFT;
                             break;
 
@@ -538,6 +541,7 @@ namespace King_of_Thieves.Actors.Player
                         else
                         {
                             _state = ACTOR_STATES.SWINGING;
+                            _canChargeSword = true;
                             _swordReleased = false;
                         }
                     }
@@ -625,9 +629,9 @@ namespace King_of_Thieves.Actors.Player
                     _lastHudKeyPressed = Keys.None;
                 }
 
-                if (_state == ACTOR_STATES.CHARGING_SWORD)
+                if (input.keysReleased.Contains(input.getKey(CInput.KEY_SWORD)))
                 {
-                    if (input.keysReleased.Contains(input.getKey(CInput.KEY_SWORD)))
+                    if (_state == ACTOR_STATES.CHARGING_SWORD)
                     {
                         _state = ACTOR_STATES.SPIN_ATTACK;
                         _acceptInput = false;
@@ -649,6 +653,10 @@ namespace King_of_Thieves.Actors.Player
                                 swapImage(Graphics.CTextures.PLAYER_SPIN_ATTACK_UP);
                                 break;
                         }
+                    }
+                    else if (_state == ACTOR_STATES.SWINGING)
+                    {
+                        _canChargeSword = false;
                     }
                 }
 
