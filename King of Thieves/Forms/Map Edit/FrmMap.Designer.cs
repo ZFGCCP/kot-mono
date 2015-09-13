@@ -59,6 +59,7 @@
             this.btnDeleteLayer = new System.Windows.Forms.Button();
             this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
+            this.btnInsertAfter = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -328,11 +329,22 @@
             this.mpvMapView.Load += new System.EventHandler(this.mpvMapView_Load);
             this.mpvMapView.Click += new System.EventHandler(this.mpvMapView_Click);
             // 
+            // btnInsertAfter
+            // 
+            this.btnInsertAfter.Location = new System.Drawing.Point(45, 519);
+            this.btnInsertAfter.Name = "btnInsertAfter";
+            this.btnInsertAfter.Size = new System.Drawing.Size(75, 23);
+            this.btnInsertAfter.TabIndex = 9;
+            this.btnInsertAfter.Text = "Insert After";
+            this.btnInsertAfter.UseVisualStyleBackColor = true;
+            this.btnInsertAfter.Click += new System.EventHandler(this.btnInsertAfter_Click);
+            // 
             // FrmMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 548);
+            this.Controls.Add(this.btnInsertAfter);
             this.Controls.Add(this.btnDeleteLayer);
             this.Controls.Add(this.btnAddLayer);
             this.Controls.Add(this.label1);
@@ -390,5 +402,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbActorList;
         private System.Windows.Forms.Button btnNewComponent;
+        private System.Windows.Forms.Button btnInsertAfter;
     }
 }

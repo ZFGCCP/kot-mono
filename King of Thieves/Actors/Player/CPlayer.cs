@@ -937,8 +937,8 @@ namespace King_of_Thieves.Actors.Player
                                 swordPos.Y = _position.Y - 13;
                                 break;
                         }
-
-                        _triggerUserEvent(0, "sword", _direction, swordPos.X, swordPos.Y);
+                        ((Items.Swords.CSword)component.actors["sword"]).swingSword(_direction, swordPos);
+                        //_triggerUserEvent(0, "sword", _direction, swordPos.X, swordPos.Y);
                     }
 
                     break;

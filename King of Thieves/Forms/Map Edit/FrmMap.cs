@@ -262,24 +262,32 @@ namespace King_of_Thieves.Forms.Map_Edit
 
         private void btnAddLayer_Click(object sender, EventArgs e)
         {
+            Map.CLayer layer = _createNewLayer();
+
+            if (layer != null)
+            {
+                _loadedMap._layers.Add(layer);
+                cmbLayers.Items.Add(layer.NAME);
+            }
+        }
+
+        private Map.CLayer _createNewLayer()
+        {
             string layerName = string.Empty;
 
-            if ((layerName = showInputDialog("Add New Layer", "Please Enter a layer name.","New Layer" + cmbLayers.Items.Count)) == string.Empty)
-                return;
-            
+            if ((layerName = showInputDialog("Add New Layer", "Please Enter a layer name.", "New Layer" + cmbLayers.Items.Count)) == string.Empty)
+                return null;
+
             if (cmbLayers.Items.Contains(layerName))
             {
                 MessageBox.Show("There is already a layer with that name.", "Add New Layer", MessageBoxButtons.OK);
-                return;
+                return null;
             }
 
-
-            cmbLayers.Items.Add(layerName);
             Map.CLayer layer = new Map.CLayer(_atlasCache);
             layer.NAME = layerName;
 
-            _loadedMap._layers.Add(layer);
-
+            return layer;
         }
 
         private void btnDeleteLayer_Click(object sender, EventArgs e)
@@ -365,6 +373,18 @@ namespace King_of_Thieves.Forms.Map_Edit
         private void mapVScroll_Scroll(object sender, ScrollEventArgs e)
         {
             mpvMapView.scrollVertical(-mapVScroll.Value);
+        }
+
+        private void btnInsertAfter_Click(object sender, EventArgs e)
+        {
+            Map.CLayer layer = _createNewLayer();
+            int insertIndex = cmbLayers.SelectedIndex + 1;
+
+            if (layer != null)
+            {
+                _loadedMap._layers.Insert(insertIndex, layer);
+                cmbLayers.Items.Insert(insertIndex, layer.NAME);
+            }
         }
 		#endif
     }

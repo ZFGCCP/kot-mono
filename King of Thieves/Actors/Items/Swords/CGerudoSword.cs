@@ -31,12 +31,6 @@ namespace King_of_Thieves.Actors.Items.Swords
             _name = swordName;
         }
 
-        protected override void _registerUserEvents()
-        {
-            base._registerUserEvents();
-            _userEvents.Add(0, userEventSwing);
-        }
-
         protected override void _initializeResources()
         {
             base._initializeResources();
@@ -47,31 +41,31 @@ namespace King_of_Thieves.Actors.Items.Swords
             _imageIndex.Add(Graphics.CTextures.GERUDO_SWORD_UP, new Graphics.CSprite(Graphics.CTextures.GERUDO_SWORD_UP));
         }
 
-        public void userEventSwing(object sender)
+        public void swingSword(DIRECTION direction, Vector2 position)
         {
-            _position = new Vector2((float)userParams[1], (float)userParams[2]);
-            switch ((DIRECTION)userParams[0])
+            _position = position;
+            switch (direction)
             {
                 case DIRECTION.UP:
-                    swapImage(Graphics.CTextures.GERUDO_SWORD_UP);
+                    swapImage(Graphics.CTextures.GERUDO_SWORD_UP, false);
                     _hitBox = _gerudoSwordBoxes[0];
                     _hitBox.offset = _upOffset;
                     break;
 
                 case DIRECTION.DOWN:
-                    swapImage(Graphics.CTextures.GERUDO_SWORD_DOWN);
+                    swapImage(Graphics.CTextures.GERUDO_SWORD_DOWN, false);
                     _hitBox = _gerudoSwordBoxes[0];
                     _hitBox.offset = _downOffset;
                     break;
 
                 case DIRECTION.LEFT:
-                    swapImage(Graphics.CTextures.GERUDO_SWORD_LEFT);
+                    swapImage(Graphics.CTextures.GERUDO_SWORD_LEFT, false);
                     _hitBox = _gerudoSwordBoxes[1];
                     _hitBox.offset = _leftOffset;
                     break;
 
                 case DIRECTION.RIGHT:
-                    swapImage(Graphics.CTextures.GERUDO_SWORD_RIGHT);
+                    swapImage(Graphics.CTextures.GERUDO_SWORD_RIGHT, false);
                     _hitBox = _gerudoSwordBoxes[1];
                     _hitBox.offset = _rightOffset;
                     break;
@@ -79,7 +73,6 @@ namespace King_of_Thieves.Actors.Items.Swords
                 default:
                     break;
             }
-            
         }
 
         public override void animationEnd(object sender)
