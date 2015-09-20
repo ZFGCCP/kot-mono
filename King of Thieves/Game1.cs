@@ -202,7 +202,7 @@ namespace King_of_Thieves
 
             CMasterControl.camera.update(gameTime);
 
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, CMasterControl.camera.transformation);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, CMasterControl.camera.transformation);
             
             Master.Draw(spriteBatch);
 
