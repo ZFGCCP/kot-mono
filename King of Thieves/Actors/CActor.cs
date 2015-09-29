@@ -114,6 +114,7 @@ namespace King_of_Thieves.Actors
         protected Dictionary<string, Sound.CSound> _soundIndex;
         private bool _animationHasEnded = false;
         public List<object> userParams = new List<object>();
+        public List<string> mapParams = new List<string>();
         public bool _followRoot = true;
         public int layer;
         public CComponent component;
@@ -623,12 +624,19 @@ namespace King_of_Thieves.Actors
 
         public void swapImage(string imageIndex, bool triggerAnimEnd = true)
         {
-            image = _imageIndex[imageIndex];
-            _currentImageIndex = imageIndex;
-
-            if (triggerAnimEnd)
+            try
             {
-                _animationHasEnded = true;
+                image = _imageIndex[imageIndex];
+                _currentImageIndex = imageIndex;
+
+                if (triggerAnimEnd)
+                {
+                    _animationHasEnded = true;
+                }
+            }
+            catch (KeyNotFoundException ex)
+            {
+
             }
         }
 

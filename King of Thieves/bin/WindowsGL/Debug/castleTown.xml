@@ -10,9 +10,17 @@
         <tile coordinates="8:23" tileSet="tileset:outdoors:castleTown" selection="31:3" />
         <tile coordinates="8:24" tileSet="tileset:outdoors:castleTown" selection="31:3" />
       </tiles>
+      <components>
+        <component address="-3">
+          <actors>
+            <actor name="dropController" type="King_of_Thieves.Actors.Controllers.GameControllers.CDropController" coordinates="0:0" />
+          </actors>
+        </component>
+      </components>
     </layer>
     <layer width="0" height="0" name="rootOverlays">
       <tiles />
+      <components />
     </layer>
     <layer width="0" height="0" name="slums">
       <tiles>
@@ -2325,6 +2333,19 @@
         <tile coordinates="88:38" tileSet="tileset:outdoors:castleTown" selection="6:20" />
         <tile coordinates="88:39" tileSet="tileset:outdoors:castleTown" selection="6:20" />
       </tiles>
+      <components>
+        <component address="-2">
+          <actors>
+            <actor name="player" type="King_of_Thieves.Actors.Player.CPlayer" coordinates="400:1000" />
+			<!--260,560-->
+          </actors>
+        </component>
+        <component address="3">
+          <actors>
+            <actor name="toAverage" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="384:950" params="64,16,4"/>
+          </actors>
+        </component>
+      </components>
     </layer>
     <layer width="0" height="0" name="slumsOverlays">
       <tiles>
@@ -3225,6 +3246,7 @@
         <tile coordinates="83:65" tileSet="tileset:outdoors:castleTown" selection="21:19" />
         <tile coordinates="82:65" tileSet="tileset:outdoors:castleTown" selection="20:19" />
       </tiles>
+      <components />
     </layer>
     <layer width="0" height="0" name="average">
       <tiles>
@@ -5608,6 +5630,14 @@
         <tile coordinates="60:25" tileSet="tileset:outdoors:castleTown" selection="1:11" />
         <tile coordinates="60:24" tileSet="tileset:outdoors:castleTown" selection="6:6" />
       </tiles>
+	  <components>
+        <component address="4">
+          <actors>
+            <actor name="toSlums" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="384:960" params="64,16,2"/>
+			<!--192:480-->
+          </actors>
+        </component>
+      </components>
     </layer>
     <layer width="0" height="0" name="averageOverlays">
       <tiles>
@@ -6376,6 +6406,7 @@
         <tile coordinates="36:86" tileSet="tileset:outdoors:castleTown" selection="6:2" />
         <tile coordinates="35:86" tileSet="tileset:outdoors:castleTown" selection="5:2" />
       </tiles>
+      <components />
     </layer>
     <layer width="0" height="0" name="heights">
       <tiles>
@@ -8205,6 +8236,7 @@
         <tile coordinates="86:6" tileSet="tileset:outdoors:castleTown" selection="12:44" />
         <tile coordinates="86:7" tileSet="tileset:outdoors:castleTown" selection="12:45" />
       </tiles>
+      <components />
     </layer>
     <layer width="0" height="0" name="heightsOverlays">
       <tiles>
@@ -8905,6 +8937,7 @@
         <tile coordinates="86:3" tileSet="tileset:outdoors:castleTown" selection="12:41" />
         <tile coordinates="86:4" tileSet="tileset:outdoors:castleTown" selection="12:42" />
       </tiles>
+      <components />
     </layer>
   </layers>
 </Map>

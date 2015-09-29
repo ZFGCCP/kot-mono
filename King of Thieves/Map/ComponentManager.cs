@@ -36,6 +36,14 @@ namespace King_of_Thieves.Map
             return output;
         }
 
+        public int componentCount
+        {
+            get
+            {
+                return factorySize(0);
+            }
+        }
+
         public void addComponent(Actors.CComponent component)
         {
             base.AddUnit(component, 0);

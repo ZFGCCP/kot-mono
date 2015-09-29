@@ -95,6 +95,7 @@ namespace WinFormsGraphicsDevice
             tempActor.init(name, position, actorType.ToString(), 0, parameters);
             tempActor.layer = layer;
             tempActor.swapImage(CActor._MAP_ICON);
+            tempActor.mapParams = new System.Collections.Generic.List<string>(parameters);
 
             tempComponent.addActor(tempActor, name);
 
@@ -130,7 +131,7 @@ namespace WinFormsGraphicsDevice
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, _camera.transformation);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, _camera.transformation);
 
             _currentMap.draw(spriteBatch);
 
@@ -152,17 +153,24 @@ namespace WinFormsGraphicsDevice
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint(e);
-            _camera.update();
-
-            System.Drawing.Point mousePos = PointToClient(MousePosition);
-
-            if (_selectedTile != null)
+            try
             {
-                int snapX = (int)System.Math.Floor((mousePos.X) / 16.0);
-                int snapY = (int)System.Math.Floor((mousePos.Y) / 16.0);
+                base.OnPaint(e);
+                _camera.update();
 
-                _selectedTile.tileCoords = _getMouseSnap(-_HScrollVal,-_VScrollVal);
+                System.Drawing.Point mousePos = PointToClient(MousePosition);
+
+                if (_selectedTile != null)
+                {
+                    int snapX = (int)System.Math.Floor((mousePos.X) / 16.0);
+                    int snapY = (int)System.Math.Floor((mousePos.Y) / 16.0);
+
+                    _selectedTile.tileCoords = _getMouseSnap(-_HScrollVal, -_VScrollVal);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 

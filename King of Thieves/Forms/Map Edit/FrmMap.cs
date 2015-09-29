@@ -10,6 +10,7 @@ using Gears.Cloud;
 using Microsoft.VisualBasic;
 using System.Reflection;
 using Microsoft.Xna.Framework;
+using King_of_Thieves.Actors;
 
 namespace King_of_Thieves.Forms.Map_Edit
 {
@@ -31,6 +32,8 @@ namespace King_of_Thieves.Forms.Map_Edit
         private EDITOR_MODE _editorMode = EDITOR_MODE.TILE;
         private FrmNewComponent _newComponent = null;
         King_of_Thieves.Map.CTile tile = null;
+        private Vector2 _hitboxTopLeft = new Vector2(-1, -1);
+        private int _hitBoxCounter = 0;
 
         
 
@@ -97,6 +100,8 @@ namespace King_of_Thieves.Forms.Map_Edit
 
         private void FrmMap_Load(object sender, EventArgs e)
         {
+            Graphics.CSprite.initFrameRateMapping();
+
             foreach (KeyValuePair<string,Graphics.CTextureAtlas> tileset in Graphics.CTextures.textures)
                 if (tileset.Value.isTileSet)
                 {
@@ -143,7 +148,8 @@ namespace King_of_Thieves.Forms.Map_Edit
                 if (stringVal.IndexOf(TOP_LEVEL + "Items") == 0 ||
                     stringVal.IndexOf(TOP_LEVEL + "NPC") == 0 ||
                     stringVal.IndexOf(TOP_LEVEL + "Player") == 0 ||
-                    stringVal.IndexOf(TOP_LEVEL + "World") == 0
+                    stringVal.IndexOf(TOP_LEVEL + "World") == 0 ||
+                    stringVal.IndexOf(TOP_LEVEL + "Collision") == 0
                     ) nameSpaceList.Add(stringVal);
             }
         }
@@ -238,7 +244,7 @@ namespace King_of_Thieves.Forms.Map_Edit
 
                         try
                         {
-                            mpvMapView.dropActor(_actorFullyQualifiedNames[cmbActorList.Text], actorName, position, 0, parameters);
+                            mpvMapView.dropActor(_actorFullyQualifiedNames[cmbActorList.Text], actorName, position, cmbLayers.SelectedIndex, parameters);
                         }
                         catch (KotException.KotBadArgumentException ex)
                         {
@@ -249,6 +255,28 @@ namespace King_of_Thieves.Forms.Map_Edit
                     break;
 
                 case EDITOR_MODE.HITBOX:
+                    if (_hitboxTopLeft.X == -1 && _hitboxTopLeft.Y == -1)
+                    {
+                        _hitboxTopLeft = position;
+                    }
+                    else
+                    {
+                        if (args.Button == System.Windows.Forms.MouseButtons.Right)
+                        {
+                            _hitboxTopLeft = new Vector2(-1, -1);
+                            return;
+                        }
+                        string hbParams = "";
+                        King_of_Thieves.Actors.Collision.CSolidTile box = new Actors.Collision.CSolidTile((int)_hitboxTopLeft.X, (int)_hitboxTopLeft.Y, (int)(position.X - _hitboxTopLeft.X), (int)(position.Y - _hitboxTopLeft.Y));
+                        _hitBoxCounter += 1;
+                        
+
+                        hbParams = (int)(position.X - _hitboxTopLeft.X) + ":" + (int)(position.Y - _hitboxTopLeft.Y);
+                        string[] hbParamsArr = hbParams.Split(':');
+                        mpvMapView.dropActor("King_of_Thieves.Actors.Collision.CSolidTile", "hitbox" + _hitBoxCounter, _hitboxTopLeft, cmbLayers.SelectedIndex, hbParamsArr);
+
+                    }
+
                     break;
             }
         }
@@ -313,6 +341,8 @@ namespace King_of_Thieves.Forms.Map_Edit
                 _editorMode = EDITOR_MODE.TILE;
             else if (tabControl1.SelectedTab.Text == "Components")
                 _editorMode = EDITOR_MODE.COMPONENT;
+            else if (tabControl1.SelectedTab.Text == "Hitboxes")
+                _editorMode = EDITOR_MODE.HITBOX;
         }
 
         private void btnNewComponent_Click(object sender, EventArgs e)

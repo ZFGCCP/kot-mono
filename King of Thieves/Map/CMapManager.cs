@@ -30,6 +30,11 @@ namespace King_of_Thieves.Map
             return _currentMap.getProperty(actorName, property);
         }
 
+        public static void switchComponentLayer(Actors.CComponent component, int toLayer)
+        {
+            _currentMap.switchComponentToLayer(component, toLayer);
+        }
+
         public static object propertyGetterFromComponent(int componentAddress, string actorName, Map.EActorProperties property)
         {
             return _currentMap.getProperty(componentAddress, actorName, property);
@@ -111,9 +116,11 @@ namespace King_of_Thieves.Map
             Actors.CActor actor = setActorToFollow(_actorToFollow);
             Vector3 cameraDiff = new Vector3(-CMasterControl.camera.position.X - _followerCoords.X, -CMasterControl.camera.position.Y - _followerCoords.Y, 0);
 
-            CMasterControl.camera.translate(cameraDiff);
-            CMasterControl.camera.translate(new Vector3(230, 230, 0));
-            CMasterControl.camera.setBoundary(new Vector2(_followerCoords.X - 120, _followerCoords.Y - 150));
+            /*CMasterControl.camera.translate(cameraDiff);
+            CMasterControl.camera.translate(new Vector3(230, 230, 0));*/
+            CMasterControl.camera.translate(new Vector3(100 - _followerCoords.X, 60 - _followerCoords.Y, 0));
+            
+            CMasterControl.camera.setBoundary(_followerCoords);
             actor.position = _followerCoords;
             _mapSwapIssued = false;
         }
@@ -150,5 +157,7 @@ namespace King_of_Thieves.Map
         {
             _currentMap.addActorToComponent(actor, componentAddress);
         }
+
+
     }
 }

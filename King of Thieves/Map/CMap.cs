@@ -49,6 +49,25 @@ namespace King_of_Thieves.Map
             return managers;
         }
 
+        public void switchComponentToLayer(CComponent component, int toLayer)
+        {
+            //draw list swap
+            _layers[component.layer].removeFromDrawList(component.root);
+            _layers[toLayer].addToDrawList(component.root);
+            component.root.layer = toLayer;
+            foreach (CActor actor in component.actors.Values)
+            {
+                _layers[component.layer].removeFromDrawList(actor);
+                _layers[toLayer].addToDrawList(actor);
+                actor.layer = toLayer;
+            }
+
+            int fromLayer = component.layer;
+            _layers[fromLayer].removeComponent(component);
+            component.layer = toLayer;
+            _layers[toLayer].addComponent(component);
+        }
+
         public CMap(string fileName, Dictionary<string, Graphics.CSprite> atlasCache = null)
         {
             _internalMap = Gears.Cartography.Map.deserialize(fileName);
@@ -104,7 +123,7 @@ namespace King_of_Thieves.Map
                     
                     foreach (Gears.Cartography.component component in layer.COMPONENTS)
                     {
-                        CComponent tempComp = new CComponent(componentAddresses);
+                        CComponent tempComp = new CComponent(component.ADDRESS);
                         foreach (Gears.Cartography.actors actor in component.ACTORS)
                         {
                             Type actorType = Type.GetType(actor.TYPE);
@@ -130,6 +149,7 @@ namespace King_of_Thieves.Map
                         }
                         //register component
                         _componentRegistry.Add(tempComp);
+                        tempComp.layer = layerCount;
                         _largestAddress = componentAddresses;
                         compList[componentCount++] = tempComp;
                         componentAddresses++;
@@ -140,6 +160,7 @@ namespace King_of_Thieves.Map
                 tempLayer.addToDrawList(actorsForDrawList);
                 actorsForDrawList.Clear();
                 _layers.Add(tempLayer);
+                layerCount++;
                 //_layers[layerCount] = new CLayer(layer.NAME, compList, tiles, ref _tileIndex, Convert.ToDouble(_internalMap.VERSION));
 
                 if (atlasCache == null)
@@ -149,13 +170,13 @@ namespace King_of_Thieves.Map
 
             }
 
-            Actors.CComponent[] managers = _createManagers();
+            /*Actors.CComponent[] managers = _createManagers();
             //add controllers
             foreach (Actors.CComponent component in managers)
             {
                 _layers[0].addComponent(component);
                 _componentRegistry.Add(component);
-            }
+            }*/
 
         }
 
@@ -216,26 +237,50 @@ namespace King_of_Thieves.Map
 
                     _internalMap.LAYERS[i].TILES = new Gears.Cartography.tile[_layers[i].numberOfTiles];
                     actorData = _layers[i].getActorHeaderInfo();
-                    //_internalMap.LAYERS[i].COMPONENTS = new Gears.Cartography.component[actorData.Keys.Count];
+                    _internalMap.LAYERS[i].COMPONENTS = new Gears.Cartography.component[_layers[i].componentCount];
 
-                    /*int componentCounter = 0;
-                    foreach (KeyValuePair<int, List<String>> kvp in actorData)
+                    int componentCounter = 0;
+                    foreach (CComponent component in _componentRegistry)
                     {
-                        _internalMap.LAYERS[i].COMPONENTS[componentCounter] = new Gears.Cartography.component();
-                        Gears.Cartography.component comp = _internalMap.LAYERS[i].COMPONENTS[componentCounter];
-                        comp.ADDRESS = kvp.Key;
-
-                        comp.ACTORS = new Gears.Cartography.actors[kvp.Value.Count()];
-
-                        for (int j = 0; j < kvp.Value.Count(); j++)
+                        if (component.layer == i)
                         {
-                            string[] header = kvp.Value[j].Split(';');
-                            comp.ACTORS[j].NAME = header[0];
-                            comp.ACTORS[j].TYPE = header[1];
-                            comp.ACTORS[j].COORDS = header[2];
+                            _internalMap.LAYERS[i].COMPONENTS[componentCounter] = new Gears.Cartography.component();
+                            Gears.Cartography.component comp = _internalMap.LAYERS[i].COMPONENTS[componentCounter];
+                            comp.ADDRESS = component.address;
+
+                            comp.ACTORS = new Gears.Cartography.actors[component.actors.Count + 1];
+
+                            //write the root component
+                            comp.ACTORS[0] = new Gears.Cartography.actors();
+                            comp.ACTORS[0].NAME = component.root.name;
+                            comp.ACTORS[0].TYPE = component.root.dataType;
+                            comp.ACTORS[0].COORDS = component.root.position.X + ":" + component.root.position.Y;
+
+                            foreach (string param in component.root.mapParams)
+                                comp.ACTORS[0].param += param + ":";
+
+                            if (comp.ACTORS[0].param != null)
+                                comp.ACTORS[0].param = comp.ACTORS[0].param.Substring(0, comp.ACTORS[0].param.Length - 2);
+
+                            //write the rest
+                            for (int j = 1; j < comp.ACTORS.Count(); j++)
+                            {
+                                List<CActor> actors = component.actors.Values.ToList();
+
+                                comp.ACTORS[j] = new Gears.Cartography.actors();
+                                comp.ACTORS[j].NAME = actors[j].name;
+                                comp.ACTORS[j].TYPE = actors[j].dataType;
+                                comp.ACTORS[j].COORDS = actors[j].position.X + ":" + actors[j].position.Y;
+
+                                foreach (string param in actors[j].mapParams)
+                                    comp.ACTORS[j].param += param + ":";
+
+                                if (comp.ACTORS[j].param.Length != null)
+                                    comp.ACTORS[j].param = comp.ACTORS[j].param.Substring(0, comp.ACTORS[j].param.Length - 2);
+                            }
+                            componentCounter++;
                         }
-                        componentCounter++;
-                    }*/
+                    }
 
                     for (int j = 0; j < _internalMap.LAYERS[i].TILES.Count(); j++)
                     {

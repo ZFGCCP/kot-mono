@@ -108,5 +108,12 @@ namespace Gears.Playable
             _units = units.ToList();
             //Initialize();
         }
+        public int unitsSize
+        {
+            get
+            {
+                return _units.Count;
+            }
+        }
     }
 }

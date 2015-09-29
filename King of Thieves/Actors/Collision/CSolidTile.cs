@@ -13,6 +13,13 @@ namespace King_of_Thieves.Actors.Collision
             _followRoot = false;
         }
 
+        public CSolidTile(int x, int y, int width, int height)
+            : base()
+        {
+            _hitBox = new CHitBox(this, x, y, width, height);
+            _followRoot = false;
+        }
+
         public override void init(string name, Microsoft.Xna.Framework.Vector2 position, string dataType, int compAddress, params string[] additional)
         {
             base.init(name, position, dataType, compAddress, additional);

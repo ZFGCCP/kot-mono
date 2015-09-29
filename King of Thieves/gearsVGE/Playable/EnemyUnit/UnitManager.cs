@@ -23,6 +23,10 @@ namespace Gears.Playable
         {
             //
         }
+        public int factorySize(int factory)
+        {
+            return _factories[factory].unitsSize;
+        }
         public void AddUnit(Unit unit, int factory)
         {
             _factories[factory].AddUnit(unit);

@@ -112,7 +112,13 @@ namespace King_of_Thieves.Map
             else
                 throw new InvalidOperationException("Cannot reinitialize a layer's components once they have been initialized.");
         }
-
+        public int componentCount
+        {
+            get
+            {
+                return _components.componentCount;
+            }
+        }
         //returns the first occurance
         public int indexOfTile(Vector2 coords)
         {
