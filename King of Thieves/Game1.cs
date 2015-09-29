@@ -170,7 +170,7 @@ namespace King_of_Thieves
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            CMasterControl.camera.update(gameTime);
+            
             CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
             if (input.getInputRelease(Microsoft.Xna.Framework.Input.Keys.B))
                 CActor.showHitBox = !CActor.showHitBox;
@@ -179,6 +179,8 @@ namespace King_of_Thieves
             Master.Update(gameTime);
 
             _updateTimer.Stop();
+
+            CMasterControl.camera.update(gameTime);
 
             base.Update(gameTime);
             
