@@ -170,11 +170,12 @@ namespace King_of_Thieves
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
+            CMasterControl.camera.update(gameTime);
             CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
             if (input.getInputRelease(Microsoft.Xna.Framework.Input.Keys.B))
                 CActor.showHitBox = !CActor.showHitBox;
             _updateTimer.Start();
-            
+
             Master.Update(gameTime);
 
             _updateTimer.Stop();
@@ -200,7 +201,7 @@ namespace King_of_Thieves
 
             GraphicsDevice.Clear(Master.GetClearColor());
 
-            CMasterControl.camera.update(gameTime);
+            
 
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, CMasterControl.camera.transformation);
             
