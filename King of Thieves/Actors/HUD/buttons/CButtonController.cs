@@ -14,6 +14,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
         private CButton _buttonAction = new CButton(CButton.HUD_BUTTON_TYPE.ACTION);
         private counters.CRupeeCounter _rupeeCounter = new counters.CRupeeCounter();
         private counters.CBombCounter _bombCounter = new counters.CBombCounter();
+		private info.CBenchmarkInfo _benchmarkInfo = new info.CBenchmarkInfo();
         private Actors.HUD.Text.CTextBox _textBoxController = new Text.CTextBox();
         public CPauseMenuElement currentElementLeft = null;
         public CPauseMenuElement currentElementRight = null;
@@ -39,6 +40,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
             _buttonAction.update(gameTime);
             _rupeeCounter.update(gameTime);
             _bombCounter.update(gameTime);
+			_benchmarkInfo.update (gameTime);
             _textBoxController.update(gameTime);
         }
 
@@ -75,6 +77,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
             //_buttonAction.drawMe();
             _rupeeCounter.drawMe();
             _bombCounter.drawMe();
+			_benchmarkInfo.drawMe ();
             _textBoxController.drawMe();
         }
 

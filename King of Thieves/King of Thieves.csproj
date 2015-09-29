@@ -236,6 +236,8 @@
     <Compile Include="usr\local\splash\CDedicationPage.cs" />
     <Compile Include="usr\local\splash\CTitleState.cs" />
     <Compile Include="usr\local\Testbed.cs" />
+    <Compile Include="Actors\HUD\info\CBaseInfo.cs" />
+    <Compile Include="Actors\HUD\info\CBenchmarkInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -470,6 +472,7 @@
     <Folder Include="Actors\Items\Drops\playerStats\" />
     <Folder Include="Content\bin\WindowsGL\" />
     <Folder Include="Content\obj\WindowsGL\" />
+    <Folder Include="Actors\HUD\info\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\editor\arrow-small.xnb" />
