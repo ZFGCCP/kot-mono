@@ -28,9 +28,9 @@ namespace King_of_Thieves.Actors.HUD.info
 		}
 
 
-		public override void draw(object sender)
+		public override void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
 		{
-			base.draw(sender);
+			base.drawMe();
 			this.drawTextWithShadow(this._info, this._textColor);
 		}
 

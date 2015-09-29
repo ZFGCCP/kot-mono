@@ -472,7 +472,6 @@
     <Folder Include="Actors\Items\Drops\playerStats\" />
     <Folder Include="Content\bin\WindowsGL\" />
     <Folder Include="Content\obj\WindowsGL\" />
-    <Folder Include="Actors\HUD\info\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\editor\arrow-small.xnb" />

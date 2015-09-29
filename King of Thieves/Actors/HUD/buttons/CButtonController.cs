@@ -77,7 +77,10 @@ namespace King_of_Thieves.Actors.HUD.buttons
             //_buttonAction.drawMe();
             _rupeeCounter.drawMe();
             _bombCounter.drawMe();
-			_benchmarkInfo.drawMe ();
+
+            if(CActor.showHitBox)
+			    _benchmarkInfo.drawMe();
+
             _textBoxController.drawMe();
         }
 
