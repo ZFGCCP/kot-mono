@@ -187,16 +187,19 @@ namespace King_of_Thieves.Map
         {
             foreach (CTile tile in _tiles)
             {
-                Vector2 dimensions = Vector2.Zero;
+                
+                    Vector2 dimensions = Vector2.Zero;
 
-                //get tileset info
-                if (string.IsNullOrEmpty(tile.tileSet))
-                    dimensions = new Vector2(Graphics.CTextures.textures[_image.atlasName].FrameWidth, Graphics.CTextures.textures[_image.atlasName].FrameHeight);
-                else
-                    dimensions = new Vector2(Graphics.CTextures.textures[tile.tileSet].FrameWidth, Graphics.CTextures.textures[tile.tileSet].FrameHeight);
+                    //get tileset info
+                    if (string.IsNullOrEmpty(tile.tileSet))
+                        dimensions = new Vector2(Graphics.CTextures.textures[_image.atlasName].FrameWidth, Graphics.CTextures.textures[_image.atlasName].FrameHeight);
+                    else
+                        dimensions = new Vector2(Graphics.CTextures.textures[tile.tileSet].FrameWidth, Graphics.CTextures.textures[tile.tileSet].FrameHeight);
 
-
-               otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y,true,spriteBatch);
+                if (CMasterControl.buttonController.checkCullBoundary(tile.tileCoords, dimensions))
+                {
+                    otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y, true, spriteBatch);
+                }
 
             }
 
