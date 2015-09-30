@@ -142,7 +142,7 @@ namespace King_of_Thieves.Map
 
                             tempActor.init(actor.NAME, coordinates, actorType.ToString(), componentAddresses, actor.param == null ? null : actor.param.Split(','));
                             tempActor.layer = layerCount;
-
+                            tempActor.swapImage(CActor._MAP_ICON);
                             _actorRegistry.Add(tempActor);
                             actorsForDrawList.Add(tempActor);
 
@@ -257,10 +257,10 @@ namespace King_of_Thieves.Map
                             comp.ACTORS[0].COORDS = component.root.position.X + ":" + component.root.position.Y;
 
                             foreach (string param in component.root.mapParams)
-                                comp.ACTORS[0].param += param + ":";
+                                comp.ACTORS[0].param += param + ",";
 
                             if (comp.ACTORS[0].param != null)
-                                comp.ACTORS[0].param = comp.ACTORS[0].param.Substring(0, comp.ACTORS[0].param.Length - 2);
+                                comp.ACTORS[0].param = comp.ACTORS[0].param.Substring(0, comp.ACTORS[0].param.Length - 1);
 
                             //write the rest
                             for (int j = 1; j < comp.ACTORS.Count(); j++)
@@ -275,8 +275,8 @@ namespace King_of_Thieves.Map
                                 foreach (string param in actors[j].mapParams)
                                     comp.ACTORS[j].param += param + ":";
 
-                                if (comp.ACTORS[j].param.Length != null)
-                                    comp.ACTORS[j].param = comp.ACTORS[j].param.Substring(0, comp.ACTORS[j].param.Length - 2);
+                                if (comp.ACTORS[j].param != null)
+                                    comp.ACTORS[j].param = comp.ACTORS[j].param.Substring(0, comp.ACTORS[j].param.Length - 1);
                             }
                             componentCounter++;
                         }

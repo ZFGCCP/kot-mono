@@ -184,12 +184,12 @@ namespace WinFormsGraphicsDevice
             return new Vector2(snapX, snapY);
         }
 
-        public Vector2 getMouseSnapCoords()
+        public Vector2 getMouseSnapCoords(int offSetX = 0, int offSetY = 0)
         {
             System.Drawing.Point mousePos = PointToClient(MousePosition);
 
-            int snapX = mousePos.X;
-            int snapY = mousePos.Y;
+            int snapX = mousePos.X + offSetX;
+            int snapY = mousePos.Y + offSetY;
 
             return new Vector2(snapX, snapY);
         }

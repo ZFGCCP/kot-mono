@@ -378,6 +378,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(DROPS_RUPEE_BLUE, new CTextureAtlas("drops:drops01", 16, 16, 1, "1:1", "1:1"));
             textures.Add(DROPS_RUPEE_ORANGE, new CTextureAtlas("drops:drops01", 16, 16, 1, "2:1", "2:1"));
             textures.Add(DROPS_RUPEE_PURPLE, new CTextureAtlas("drops:drops01", 16, 16, 1, "3:1", "3:1"));
+
+            //debug
+            textures.Add("debug:redBox", new CTextureAtlas("debug:redBox", 1, 1, 0, "0:0", "0:0"));
         }
 
         public static void addRawTexture(string textureName, string fileNameNoExt)
@@ -427,6 +430,13 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add(SOURCE_HUD_BUTTONS, _content.Load<Texture2D>("hud/buttons"));
             rawTextures.Add(SOURCE_MENU, _content.Load<Texture2D>("hud/menu"));
             rawTextures.Add(SOURCE_MAGIC_METER, _content.Load<Texture2D>("hud/magicMeter"));
+
+            Texture2D texture = new Texture2D(CGraphics.GPU, 1, 1, false, SurfaceFormat.Color);
+            Color[] c = new Color[1];
+            c[0] = Color.FromNonPremultiplied(255, 0, 0, 200);
+            texture.SetData<Color>(c);
+
+            rawTextures.Add("debug:redBox", texture);
         }
 
         public static void cleanUp(string nameSpace = "")

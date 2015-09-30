@@ -244,6 +244,8 @@ namespace King_of_Thieves.Forms.Map_Edit
 
                         try
                         {
+                            position.X += mapHScroll.Value;
+                            position.Y += mapVScroll.Value;
                             mpvMapView.dropActor(_actorFullyQualifiedNames[cmbActorList.Text], actorName, position, cmbLayers.SelectedIndex, parameters);
                         }
                         catch (KotException.KotBadArgumentException ex)

@@ -444,6 +444,9 @@ namespace King_of_Thieves.Actors
             _position = position;
             _componentAddress = (int)compAddress;
             _dataType = dataType;
+
+            if (additional != null)
+                mapParams = additional.ToList();
         }
 
         public Vector2 velocity

@@ -2337,12 +2337,11 @@
         <component address="-2">
           <actors>
             <actor name="player" type="King_of_Thieves.Actors.Player.CPlayer" coordinates="400:1000" />
-			<!--260,560-->
           </actors>
         </component>
         <component address="3">
           <actors>
-            <actor name="toAverage" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="384:950" params="64,16,4"/>
+            <actor name="toAverage" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="384:950" params="64,16,4" />
           </actors>
         </component>
       </components>
@@ -5630,11 +5629,15 @@
         <tile coordinates="60:25" tileSet="tileset:outdoors:castleTown" selection="1:11" />
         <tile coordinates="60:24" tileSet="tileset:outdoors:castleTown" selection="6:6" />
       </tiles>
-	  <components>
+      <components>
         <component address="4">
           <actors>
-            <actor name="toSlums" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="384:960" params="64,16,2"/>
-			<!--192:480-->
+            <actor name="toSlums" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="384:960" params="64,16,2" />
+          </actors>
+        </component>
+        <component address="5">
+          <actors>
+            <actor name="toHeights" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="641:408" params="64,16,6" />
           </actors>
         </component>
       </components>
@@ -8236,7 +8239,13 @@
         <tile coordinates="86:6" tileSet="tileset:outdoors:castleTown" selection="12:44" />
         <tile coordinates="86:7" tileSet="tileset:outdoors:castleTown" selection="12:45" />
       </tiles>
-      <components />
+      <components>
+        <component address="6">
+          <actors>
+            <actor name="fromHeights" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="642:432" params="64,16,4" />
+          </actors>
+        </component>
+      </components>
     </layer>
     <layer width="0" height="0" name="heightsOverlays">
       <tiles>

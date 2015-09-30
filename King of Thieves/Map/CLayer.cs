@@ -196,7 +196,7 @@ namespace King_of_Thieves.Map
                     else
                         dimensions = new Vector2(Graphics.CTextures.textures[tile.tileSet].FrameWidth, Graphics.CTextures.textures[tile.tileSet].FrameHeight);
 
-                if (CMasterControl.buttonController.checkCullBoundary(tile.tileCoords, dimensions))
+                if (spriteBatch != null || CMasterControl.buttonController.checkCullBoundary(tile.tileCoords, dimensions))
                 {
                     otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y, true, spriteBatch);
                 }
