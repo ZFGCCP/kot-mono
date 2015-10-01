@@ -17,6 +17,7 @@ namespace King_of_Thieves.Map
         private double _mapVersion;
         private Graphics.CDrawList _drawlist = new Graphics.CDrawList();
         private int _layerIndex;
+        private int _hitboxAddress = Actors.CReservedAddresses.HITBOX_NOT_PRESENT;
 
         private List<CTile> _tiles = new List<CTile>(); //raw tile data
 
@@ -33,6 +34,18 @@ namespace King_of_Thieves.Map
 
         public CLayer()
         {
+        }
+
+        public int hitboxAddress
+        {
+            get
+            {
+                return _hitboxAddress;
+            }
+            set
+            {
+                _hitboxAddress = value;
+            }
         }
 
         public void removeFromDrawList(Actors.CActor actor)
@@ -58,7 +71,7 @@ namespace King_of_Thieves.Map
             return _components.actorHeaderMap();
         }
 
-        public CLayer(string name, Actors.CComponent[] components, CTile[] tiles, ref Graphics.CSprite image, int index, double version = 1)
+        public CLayer(string name, Actors.CComponent[] components, CTile[] tiles, ref Graphics.CSprite image, int index, double version = 1, int hitBoxAddress = Actors.CReservedAddresses.HITBOX_NOT_PRESENT)
         {
             _width = 0; _height = 0;
             NAME = name;
@@ -67,6 +80,7 @@ namespace King_of_Thieves.Map
             _components = new ComponentManager(new ComponentFactory[]{ new ComponentFactory(components) } );
             _mapVersion = version;
             _layerIndex = index;
+            _hitboxAddress = hitBoxAddress;
         }
 
         ~CLayer()

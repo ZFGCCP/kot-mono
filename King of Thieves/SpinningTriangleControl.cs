@@ -90,7 +90,25 @@ namespace WinFormsGraphicsDevice
         {
             Type actorType = Type.GetType(actor);
             CActor tempActor = (CActor)Activator.CreateInstance(actorType);
-            CComponent tempComponent = new CComponent(_currentMap.largestAddress + 1);
+            CComponent tempComponent = null;
+            bool dontAddComp = false;
+            if (actorType == typeof(King_of_Thieves.Actors.Collision.CSolidTile))
+            {
+                if (_currentMap._layers[layer].hitboxAddress == CReservedAddresses.HITBOX_NOT_PRESENT)
+                {
+                    tempComponent = new CComponent(_currentMap.largestAddress + 1);
+                    _currentMap._layers[layer].hitboxAddress = tempComponent.address;
+                }
+                else
+                {
+                    tempComponent = _currentMap.queryComponentRegistry(_currentMap._layers[layer].hitboxAddress);
+                    dontAddComp = true;
+                }
+            }
+            else
+            {
+                tempComponent = new CComponent(_currentMap.largestAddress + 1);
+            }
 
             tempActor.init(name, position, actorType.ToString(), 0, parameters);
             tempActor.layer = layer;
@@ -100,8 +118,11 @@ namespace WinFormsGraphicsDevice
             tempComponent.addActor(tempActor, name);
 
             _currentMap.addToActorRegistry(tempActor);
-            _currentMap.addComponent(tempComponent, layer);
-            
+
+            if (!dontAddComp)
+                _currentMap.addComponent(tempComponent, layer);
+            else
+                _currentMap._layers[layer].addToDrawList(tempActor);
         }
 
         /// <summary>

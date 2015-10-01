@@ -2344,6 +2344,57 @@
             <actor name="toAverage" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="384:950" params="64,16,4" />
           </actors>
         </component>
+        <component address="7">
+          <actors>
+            <actor name="hitbox1" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="529:1097" params="45,103" />
+            <actor name="hitbox4" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="449:928" params="126,79" />
+            <actor name="hitbox5" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="226:945" params="157,61" />
+            <actor name="hitbox6" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="240:1047" params="66,204" />
+            <actor name="hitbox7" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="305:1184" params="29,67" />
+            <actor name="hitbox8" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="239:1258" params="172,85" />
+            <actor name="hitbox9" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="449:1271" params="123,38" />
+            <actor name="hitbox10" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="211:1343" params="1211,79" />
+            <actor name="hitbox11" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="241:997" params="121,57" />
+            <actor name="hitbox12" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="468:1006" params="71,50" />
+            <actor name="hitbox13" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="321:1088" params="29,45" />
+            <actor name="hitbox14" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="353:1153" params="30,44" />
+            <actor name="hitbox15" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="336:1159" params="15,37" />
+            <actor name="hitbox16" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="384:1160" params="15,35" />
+            <actor name="hitbox17" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="306:1095" params="14,35" />
+            <actor name="hitbox18" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="353:1094" params="14,38" />
+            <actor name="hitbox19" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="690:1270" params="233,72" />
+            <actor name="hitbox20" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="689:928" params="318,79" />
+            <actor name="hitbox21" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="688:998" params="43,150" />
+            <actor name="hitbox22" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="728:1099" params="99,50" />
+            <actor name="hitbox23" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="803:1002" params="122,54" />
+            <actor name="hitbox24" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1011:1285" params="378,57" />
+            <actor name="hitbox25" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1344:1128" params="46,199" />
+            <actor name="hitbox26" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1184:733" params="207,96" />
+            <actor name="hitbox27" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1296:822" params="94,137" />
+            <actor name="hitbox28" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1008:657" params="78,142" />
+            <actor name="hitbox29" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1011:596" params="215,91" />
+            <actor name="hitbox30" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1267:637" params="120,50" />
+            <actor name="hitbox31" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="977:597" params="439,71" />
+            <actor name="hitbox32" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1393:668" params="28,675" />
+            <actor name="hitbox33" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1301:1042" params="69,27" />
+            <actor name="hitbox34" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1078:1040" params="67,28" />
+            <actor name="hitbox35" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="998:1041" params="67,18" />
+            <actor name="hitbox36" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1122:892" params="38,27" />
+            <actor name="hitbox37" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1208:832" params="6,31" />
+            <actor name="hitbox38" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1216:863" params="30,16" />
+            <actor name="hitbox39" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1265:865" params="30,14" />
+            <actor name="hitbox40" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1201:1137" params="30,29" />
+            <actor name="hitbox41" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1136:1220" params="31,9" />
+            <actor name="hitbox42" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1106:1220" params="12,11" />
+            <actor name="hitbox43" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1089:1237" params="13,11" />
+            <actor name="hitbox44" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1053:1200" params="33,43" />
+            <actor name="hitbox45" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1163:1204" params="6,12" />
+            <actor name="hitbox46" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="993:1168" params="10,27" />
+            <actor name="hitbox47" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1234:1007" params="62,15" />
+            <actor name="hitbox48" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="555:953" params="142,54" />
+            <actor name="hitbox49" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1006:798" params="48,198" />
+          </actors>
+        </component>
       </components>
     </layer>
     <layer width="0" height="0" name="slumsOverlays">
@@ -5638,6 +5689,20 @@
         <component address="5">
           <actors>
             <actor name="toHeights" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="641:408" params="64,16,6" />
+          </actors>
+        </component>
+        <component address="8">
+          <actors>
+            <actor name="hitbox2" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="576:929" params="15,426" />
+            <actor name="hitbox3" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="672:929" params="14,424" />
+            <actor name="hitbox50" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="418:444" params="169,65" />
+            <actor name="hitbox51" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="387:384" params="251,63" />
+            <actor name="hitbox52" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="290:387" params="100,60" />
+            <actor name="hitbox53" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="158:385" params="96,60" />
+            <actor name="hitbox54" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="127:426" params="46,502" />
+            <actor name="hitbox55" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="174:928" params="205,20" />
+            <actor name="hitbox56" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="226:873" params="152,54" />
+            <actor name="hitbox57" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="450:874" params="123,52" />
           </actors>
         </component>
       </components>

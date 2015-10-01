@@ -23,6 +23,7 @@ namespace King_of_Thieves.Map
         private Graphics.CSprite _tileIndex = null;
         private int _width = 0;
         private int _height = 0;
+        public int hitBoxCounter = 0;
 
         public CMap(Dictionary<string, Graphics.CSprite> atlasCache = null)
         {
@@ -79,13 +80,14 @@ namespace King_of_Thieves.Map
 
             _width = _internalMap.WIDTH;
             _height = _internalMap.HEIGHT;
-
+            _largestAddress = 0;
             foreach (Gears.Cartography.layer layer in _internalMap.LAYERS)
             {
                 
                 int componentAddresses = 2;
                 int componentCount = 0;
-                
+                int hitboxAddress = CReservedAddresses.HITBOX_NOT_PRESENT;
+
                 Actors.CComponent[] compList = new CComponent[layer.COMPONENTS == null ? 0 : layer.COMPONENTS.Count()];
                 Dictionary<string, Graphics.CSprite> tileSets = new Dictionary<string, Graphics.CSprite>();
                 //=======================================================================
@@ -127,7 +129,13 @@ namespace King_of_Thieves.Map
                         foreach (Gears.Cartography.actors actor in component.ACTORS)
                         {
                             Type actorType = Type.GetType(actor.TYPE);
-                            
+
+                            if (actorType == typeof(King_of_Thieves.Actors.Collision.CSolidTile))
+                            {
+                                hitboxAddress = component.ADDRESS;
+                                hitBoxCounter += 1;
+                            }
+
                             CActor tempActor = (CActor)Activator.CreateInstance(actorType);
 
                             Vector2 coordinates = Vector2.Zero;
@@ -150,13 +158,15 @@ namespace King_of_Thieves.Map
                         //register component
                         _componentRegistry.Add(tempComp);
                         tempComp.layer = layerCount;
-                        _largestAddress = componentAddresses;
+                        if (tempComp.address > _largestAddress)
+                            _largestAddress = tempComp.address;
+
                         compList[componentCount++] = tempComp;
                         componentAddresses++;
 
                     }
                 }
-                CLayer tempLayer = new CLayer(layer.NAME, compList, tiles, ref _tileIndex, layerCount, Convert.ToDouble(_internalMap.VERSION));
+                CLayer tempLayer = new CLayer(layer.NAME, compList, tiles, ref _tileIndex, layerCount, Convert.ToDouble(_internalMap.VERSION),hitboxAddress);
                 tempLayer.addToDrawList(actorsForDrawList);
                 actorsForDrawList.Clear();
                 _layers.Add(tempLayer);
@@ -268,12 +278,12 @@ namespace King_of_Thieves.Map
                                 List<CActor> actors = component.actors.Values.ToList();
 
                                 comp.ACTORS[j] = new Gears.Cartography.actors();
-                                comp.ACTORS[j].NAME = actors[j].name;
-                                comp.ACTORS[j].TYPE = actors[j].dataType;
-                                comp.ACTORS[j].COORDS = actors[j].position.X + ":" + actors[j].position.Y;
+                                comp.ACTORS[j].NAME = actors[j - 1].name;
+                                comp.ACTORS[j].TYPE = actors[j - 1].dataType;
+                                comp.ACTORS[j].COORDS = actors[j - 1].position.X + ":" + actors[j - 1].position.Y;
 
-                                foreach (string param in actors[j].mapParams)
-                                    comp.ACTORS[j].param += param + ":";
+                                foreach (string param in actors[j - 1].mapParams)
+                                    comp.ACTORS[j].param += param + ",";
 
                                 if (comp.ACTORS[j].param != null)
                                     comp.ACTORS[j].param = comp.ACTORS[j].param.Substring(0, comp.ACTORS[j].param.Length - 1);

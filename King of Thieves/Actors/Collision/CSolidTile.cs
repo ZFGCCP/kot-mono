@@ -33,7 +33,11 @@ namespace King_of_Thieves.Actors.Collision
             base.init(name, position, dataType, compAddress, additional);
 
             if (additional != null)
+            {
                 _hitBox = new CHitBox(this, 0, 0, Convert.ToInt32(additional[0]), Convert.ToInt32(additional[1]));
+                _width = (int)(_hitBox.halfWidth * 2f);
+                _height = (int)(_hitBox.halfHeight * 2f);
+            }
 
             _imageIndex.Add("debug:redBox", new Graphics.CSprite("debug:redBox"));
         }
@@ -45,8 +49,8 @@ namespace King_of_Thieves.Actors.Collision
 
         public override void drawMe(bool useOverlay = false, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch = null)
         {
-            if (currentImageIndex == _MAP_ICON)
-                CGraphics.spriteBatch.Draw(Graphics.CTextures.rawTextures["debug:redBox"], new Rectangle((int)(position.X), (int)(position.Y),
+            if (spriteBatch != null)
+                spriteBatch.Draw(Graphics.CTextures.rawTextures["debug:redBox"], new Rectangle((int)(position.X), (int)(position.Y),
                                             _width, _height), null, Color.White);
             else
                 base.drawMe(useOverlay, spriteBatch);

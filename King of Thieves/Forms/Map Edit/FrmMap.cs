@@ -257,6 +257,8 @@ namespace King_of_Thieves.Forms.Map_Edit
                     break;
 
                 case EDITOR_MODE.HITBOX:
+                    position.X += mapHScroll.Value;
+                    position.Y += mapVScroll.Value;
                     if (_hitboxTopLeft.X == -1 && _hitboxTopLeft.Y == -1)
                     {
                         _hitboxTopLeft = position;
@@ -276,6 +278,7 @@ namespace King_of_Thieves.Forms.Map_Edit
                         hbParams = (int)(position.X - _hitboxTopLeft.X) + ":" + (int)(position.Y - _hitboxTopLeft.Y);
                         string[] hbParamsArr = hbParams.Split(':');
                         mpvMapView.dropActor("King_of_Thieves.Actors.Collision.CSolidTile", "hitbox" + _hitBoxCounter, _hitboxTopLeft, cmbLayers.SelectedIndex, hbParamsArr);
+                        _hitboxTopLeft = new Vector2(-1, -1);
 
                     }
 
@@ -375,6 +378,7 @@ namespace King_of_Thieves.Forms.Map_Edit
                 {
                     string fileName = openFileDialog1.FileName;
                     _loadedMap = new Map.CMap(fileName,_atlasCache);
+                    _hitBoxCounter = _loadedMap.hitBoxCounter;
                     mpvMapView.map = _loadedMap;
                     cmbLayers.Items.Clear();
 

@@ -30,8 +30,8 @@
         {
             this.btnPlayTest = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbActorCategory = new System.Windows.Forms.ComboBox();
             this.lstActorList = new System.Windows.Forms.ListBox();
+            this.cmbActorCategory = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,8 +56,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Actors";
             // 
+            // lstActorList
+            // 
+            this.lstActorList.FormattingEnabled = true;
+            this.lstActorList.Location = new System.Drawing.Point(7, 47);
+            this.lstActorList.Name = "lstActorList";
+            this.lstActorList.Size = new System.Drawing.Size(263, 134);
+            this.lstActorList.TabIndex = 5;
+            // 
             // cmbActorCategory
             // 
+            this.cmbActorCategory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbActorCategory.FormattingEnabled = true;
             this.cmbActorCategory.Items.AddRange(new object[] {
             "All",
@@ -70,14 +79,6 @@
             this.cmbActorCategory.Size = new System.Drawing.Size(264, 21);
             this.cmbActorCategory.TabIndex = 4;
             this.cmbActorCategory.SelectedIndexChanged += new System.EventHandler(this.cmbActorCategory_SelectedIndexChanged);
-            // 
-            // lstActorList
-            // 
-            this.lstActorList.FormattingEnabled = true;
-            this.lstActorList.Location = new System.Drawing.Point(7, 47);
-            this.lstActorList.Name = "lstActorList";
-            this.lstActorList.Size = new System.Drawing.Size(263, 134);
-            this.lstActorList.TabIndex = 5;
             // 
             // EditorComponents
             // 

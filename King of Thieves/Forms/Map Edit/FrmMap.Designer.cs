@@ -47,6 +47,11 @@
             this.btnNewComponent = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbActorList = new System.Windows.Forms.ComboBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.componentContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -60,17 +65,12 @@
             this.btnInsertAfter = new System.Windows.Forms.Button();
             this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.componentContextMenu.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.componentContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -237,11 +237,62 @@
             // 
             // cmbActorList
             // 
+            this.cmbActorList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbActorList.FormattingEnabled = true;
             this.cmbActorList.Location = new System.Drawing.Point(51, 20);
             this.cmbActorList.Name = "cmbActorList";
             this.cmbActorList.Size = new System.Drawing.Size(209, 21);
             this.cmbActorList.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.label4);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(266, 424);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Hitboxes";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 97);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(261, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Only the hitboxes of the current layer will be displayed.";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 70);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(178, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "followed by the bottom right position.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 57);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(215, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Drop a hitbox by clicking the top left position";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(141, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "You are now in hitbox mode.";
             // 
             // openFileDialog1
             // 
@@ -346,56 +397,6 @@
             this.mpvMapView.Load += new System.EventHandler(this.mpvMapView_Load);
             this.mpvMapView.Click += new System.EventHandler(this.mpvMapView_Click);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Controls.Add(this.label3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(266, 424);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Hitboxes";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "You are now in hitbox mode.";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(215, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Drop a hitbox by clicking the top left position";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 70);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(178, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "followed by the bottom right position.";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 97);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(261, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Only the hitboxes of the current layer will be displayed.";
-            // 
             // FrmMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,9 +422,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.componentContextMenu.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.componentContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
