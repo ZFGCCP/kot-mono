@@ -333,6 +333,7 @@ namespace King_of_Thieves.Actors.Player
                 case ACTOR_STATES.THROW_BOOMERANG:
                     _state = ACTOR_STATES.IDLE;
                     Projectiles.CBoomerang boomerang = new Projectiles.CBoomerang(_oldVelocity, position, direction, 2);
+                    boomerang.layer = layer;
                     Map.CMapManager.addActorToComponent(boomerang, this.componentAddress);
                     _usingItem = false;
                     break;
@@ -1056,7 +1057,7 @@ namespace King_of_Thieves.Actors.Player
 
             //world things
             _collidables.Add(typeof(Actors.Collision.CSolidTile));
-            _collidables.Add(typeof(Actors.Items.decoration.CPot));
+            //_collidables.Add(typeof(Actors.Items.decoration.CPot));
             _collidables.Add(typeof(Actors.Items.decoration.CChest));
 
             //other NPCs
@@ -1172,6 +1173,7 @@ namespace King_of_Thieves.Actors.Player
 
             Vector2 arrowVelocity = Vector2.Zero;
             Projectiles.CArrow arrow = new Actors.Projectiles.CArrow(_direction,arrowVelocity,_position, arrowType);
+            arrow.layer = layer;
             Map.CMapManager.addActorToComponent(arrow, this.componentAddress);
             _lastArrowShotName = arrow.name;
         }
