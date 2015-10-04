@@ -7,7 +7,11 @@ namespace King_of_Thieves.Actors.Items.Liftables
 {
     class CLiftable : CActor
     {
-
+        protected const string _SPRITE_NAMESPACE = "items:liftable:";
+        protected const string _IDLE = _SPRITE_NAMESPACE + "idle";
+        protected const string _CARRY_LEFT_RIGHT = _SPRITE_NAMESPACE + ":carryLeftRight";
+        protected const string _CARRY_UP_DOWN = _SPRITE_NAMESPACE + ":carryUpDown";
+        protected const string _BREAK = _SPRITE_NAMESPACE + ":break";
 
         public CLiftable() :
             base()
