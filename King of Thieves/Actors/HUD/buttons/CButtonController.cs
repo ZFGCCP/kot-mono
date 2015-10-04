@@ -157,7 +157,6 @@ namespace King_of_Thieves.Actors.HUD.buttons
 
                 default:
                     throw new ArgumentException("Invalid bottle content added to bottle " + bottleNum);
-                    break;
             }
 
             CMasterControl.buttonController.bottleRef[bottleNum].hudOptions = content;
