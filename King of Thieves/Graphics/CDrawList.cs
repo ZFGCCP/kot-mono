@@ -10,11 +10,11 @@ namespace King_of_Thieves.Graphics
 {
     class CDrawList
     {
-        private Dictionary<int, List<CActor>> _drawList;
+        private SortedDictionary<int, List<CActor>> _drawList; 
 
         public CDrawList()
         {
-            _drawList = new Dictionary<int, List<CActor>>();
+            _drawList = new SortedDictionary<int, List<CActor>>();
         }
 
         public void addSpriteToList(int depth, CActor sprite)
@@ -41,6 +41,13 @@ namespace King_of_Thieves.Graphics
             _drawList[depth].Remove(sprite);
         }
 
+        public void changeSpriteDepth(CActor sprite, int currentDepth, int newDepth)
+        {
+            _drawList[currentDepth].Remove(sprite);
+            _drawList[newDepth].Add(sprite);
+            sprite.drawDepth = newDepth;
+        }
+
         public void drawAll(int layer, SpriteBatch spriteBatch = null)
         {
             foreach (KeyValuePair<int, List<CActor>> kvp in _drawList)
@@ -48,6 +55,7 @@ namespace King_of_Thieves.Graphics
                 for (int i = 0; i < kvp.Value.Count; i++)
                 {
                     CActor sprite = kvp.Value[i];
+
                     if (sprite.layer == layer)
                     {
                         if (sprite.killMe)

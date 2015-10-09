@@ -897,6 +897,10 @@ namespace King_of_Thieves.Actors
             {
                 return _killMe;
             }
+            set
+            {
+                _killMe = value;
+            }
         }
 
         private bool _noCollide
@@ -1062,6 +1066,10 @@ namespace King_of_Thieves.Actors
             get
             {
                 return _drawDepth;
+            }
+            set
+            {
+                _drawDepth = value;
             }
         }
 

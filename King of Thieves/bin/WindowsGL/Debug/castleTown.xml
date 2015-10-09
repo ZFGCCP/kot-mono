@@ -2395,6 +2395,11 @@
             <actor name="hitbox49" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1006:798" params="48,198" />
           </actors>
         </component>
+        <component address="9">
+          <actors>
+            <actor name="barrelTest" type="King_of_Thieves.Actors.Items.Liftables.CBarrel" coordinates="472:1116" />
+          </actors>
+        </component>
       </components>
     </layer>
     <layer width="0" height="0" name="slumsOverlays">
@@ -8339,6 +8344,15 @@
         <component address="6">
           <actors>
             <actor name="fromHeights" type="King_of_Thieves.Actors.Collision.CLayerChanger" coordinates="642:432" params="64,16,4" />
+          </actors>
+        </component>
+        <component address="10">
+          <actors>
+            <actor name="hitbox89" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="992:194" params="95,26" />
+            <actor name="hitbox90" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="866:195" params="90,24" />
+            <actor name="hitbox91" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1121:195" params="94,27" />
+            <actor name="hitbox92" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1251:193" params="92,26" />
+            <actor name="hitbox93" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1105:131" params="44,24" />
           </actors>
         </component>
       </components>

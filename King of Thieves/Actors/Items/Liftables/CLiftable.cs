@@ -13,10 +13,13 @@ namespace King_of_Thieves.Actors.Items.Liftables
         protected const string _CARRY_UP_DOWN = _SPRITE_NAMESPACE + ":carryUpDown";
         protected const string _BREAK = _SPRITE_NAMESPACE + ":break";
 
+        private static int _liftableCount = 0;
+
         public CLiftable() :
             base()
         {
             _state = ACTOR_STATES.IDLE;
+            _liftableCount++;
         }
 
         public override void init(string name, Microsoft.Xna.Framework.Vector2 position, string dataType, int compAddress, params string[] additional)

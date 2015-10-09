@@ -196,7 +196,7 @@ namespace King_of_Thieves.Actors.Player
 
         public override void collide(object sender, CActor collider)
         {
-            if (!collider.noCollide && (collider is CSolidTile || collider is Items.decoration.CChest))
+            if (!collider.noCollide && (collider is CSolidTile || collider is Items.decoration.CChest || collider is Items.Liftables.CLiftable))
             {
                 solidCollide(collider);
             }
@@ -1057,7 +1057,7 @@ namespace King_of_Thieves.Actors.Player
 
             //world things
             _collidables.Add(typeof(Actors.Collision.CSolidTile));
-            //_collidables.Add(typeof(Actors.Items.decoration.CPot));
+            _collidables.Add(typeof(Actors.Items.Liftables.CLiftable));
             _collidables.Add(typeof(Actors.Items.decoration.CChest));
 
             //other NPCs
@@ -1457,6 +1457,15 @@ namespace King_of_Thieves.Actors.Player
             {
                 return _readableDirection;
             }
+        }
+
+        private void _liftObject(Actors.Items.Liftables.CLiftable liftable)
+        {
+            Type liftableType = liftable.GetType();
+            Actors.Items.Liftables.CLiftable newLiftable = (Actors.Items.Liftables.CLiftable)Activator.CreateInstance(liftableType);
+            newLiftable.init(liftable.name + "Clone", _position, liftable.dataType, this.componentAddress, "T");
+            Map.CMapManager.addActorToComponent(newLiftable, this.componentAddress);
+            liftable.killMe = true;
         }
     }
 }
