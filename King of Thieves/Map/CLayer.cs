@@ -36,6 +36,11 @@ namespace King_of_Thieves.Map
         {
         }
 
+        public void swapDrawDepth(int newDepth, Actors.CActor sprite)
+        {
+            _drawlist.changeSpriteDepth(sprite, sprite.drawDepth, newDepth);
+        }
+
         public int hitboxAddress
         {
             get

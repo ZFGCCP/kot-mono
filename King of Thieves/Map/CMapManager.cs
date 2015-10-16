@@ -25,6 +25,12 @@ namespace King_of_Thieves.Map
                 _swapMap();
         }
 
+        public static void swapDrawDepth(int newDepth, Actors.CActor sprite)
+        {
+            if (_currentMap != null)
+                _currentMap.swapDrawDepth(newDepth, sprite);
+        }
+
         public static object propertyGetter(string actorName, Map.EActorProperties property)
         {
             return _currentMap.getProperty(actorName, property);

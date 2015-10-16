@@ -177,7 +177,7 @@ namespace King_of_Thieves.Actors
             }
         }
 
-        private void _destroyActors()
+        private void _destroyActors(bool hardDelete = true)
         {
             root.remove();
             root = null;
@@ -186,10 +186,22 @@ namespace King_of_Thieves.Actors
             foreach (KeyValuePair<string, CActor> kvp in actors)
             {
                 kvp.Value.remove();
-                Map.CMapManager.removeFromActorRegistry(kvp.Value);
+
+                if (hardDelete)
+                    Map.CMapManager.removeFromActorRegistry(kvp.Value);
             }
             actors.Clear();
             Map.CMapManager.removeComponent(this);
+        }
+
+        public void mergeComponent(CComponent componentToMerge)
+        {
+            addActor(componentToMerge.root, root.name);
+
+            foreach (Actors.CActor actor in componentToMerge.actors.Values)
+                addActor(actor, actor.name);
+
+            componentToMerge._destroyActors(false);
         }
 
         public int getAddress()

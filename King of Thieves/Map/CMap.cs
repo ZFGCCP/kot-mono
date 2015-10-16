@@ -38,6 +38,11 @@ namespace King_of_Thieves.Map
             _layers = layers.ToList();
         }
 
+        public void swapDrawDepth(int newDepth, Actors.CActor sprite)
+        {
+            _layers[sprite.layer].swapDrawDepth(newDepth, sprite);
+        }
+
         private Actors.CComponent[] _createManagers()
         {
             Actors.CComponent[] managers = new Actors.CComponent[1];

@@ -51,6 +51,7 @@ namespace King_of_Thieves.Actors
         FROZEN,
         GO_HOME,
         GOT_ITEM,
+        HIDDEN,
         HOLD,
         HOLD_ARROW,
         HOLD_CANNON,
@@ -132,6 +133,7 @@ namespace King_of_Thieves.Actors
         protected int _collisionDirectionX = 0;
         protected int _collisionDirectionY = 0;
         private bool _flagForResourceCleanup = false;
+        public bool hidden = false;
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -832,7 +834,7 @@ namespace King_of_Thieves.Actors
 
             //Color overlay = useOverlay ? Controllers.GameControllers.CDayClock.overlay : Color.White;
 
-            if (image != null && _state != ACTOR_STATES.INVISIBLE)
+            if (image != null && _state != ACTOR_STATES.INVISIBLE && !hidden)
                 _animationHasEnded = image.draw((int)_position.X, (int)_position.Y, useOverlay, spriteBatch);
 
             if (showHitBox && _hitBox != null)

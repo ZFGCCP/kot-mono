@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using King_of_Thieves.Input;
+using Gears.Cloud;
 
 namespace King_of_Thieves.Actors.Items.Liftables
 {
@@ -31,16 +33,26 @@ namespace King_of_Thieves.Actors.Items.Liftables
             _hitBox = new Collision.CHitBox(this, 8, 5, 16, 24);
         }
 
-        public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
+        public override void update(GameTime gameTime)
         {
-            base.init(name, position, dataType, compAddress, additional);
+            base.update(gameTime);
+        }
 
-            /*if (additional != null > 0 && additional[0] == "T")
-            {
-                _position.Y -= 10;
-                startTimer0(30);
-                
-            }*/
+        public override void lift()
+        {
+            base.lift();
+            Vector2 pos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+            pos.Y -= 10;
+            _state = ACTOR_STATES.LIFT;
+            jumpToPoint(pos.X, pos.Y);
+            startTimer0(30);
+        }
+
+        private void _dropOverPlayer()
+        {
+            _position.Y += 10;
+            _state = ACTOR_STATES.CARRY;
+            component.root.hidden = true;
         }
 
         public override void timer0(object sender)
@@ -48,10 +60,15 @@ namespace King_of_Thieves.Actors.Items.Liftables
             _dropOverPlayer();
         }
 
-        private void _dropOverPlayer()
+        public override void keyRelease(object sender)
         {
-            _state = ACTOR_STATES.CARRY;
-            _position.X += 10;
+            CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+
+            if (_state == ACTOR_STATES.CARRY && input.keysReleased.Contains(input.getKey(CInput.KEY_ACTION)))
+            {
+                toss();
+                _followRoot = false;
+            }
         }
     }
 }

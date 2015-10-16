@@ -44,6 +44,10 @@ namespace King_of_Thieves.Graphics
         public void changeSpriteDepth(CActor sprite, int currentDepth, int newDepth)
         {
             _drawList[currentDepth].Remove(sprite);
+
+            if (!_drawList.ContainsKey(newDepth))
+                _drawList.Add(newDepth, new List<CActor>());
+
             _drawList[newDepth].Add(sprite);
             sprite.drawDepth = newDepth;
         }

@@ -30,16 +30,38 @@ namespace King_of_Thieves.Actors.Items.Liftables
         public virtual void toss()
         {
             _state = ACTOR_STATES.TOSSING;
+            startTimer1(30);
+
+            switch (component.root.direction)
+            {
+                case DIRECTION.DOWN:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, 1);
+                    break;
+
+                case DIRECTION.UP:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(0, -1);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(1, 0);
+                    break;
+
+                case DIRECTION.LEFT:
+                    _velocity = new Microsoft.Xna.Framework.Vector2(-1, 0);
+                    break;
+            }
         }
 
         public virtual void lift()
         {
             _state = ACTOR_STATES.LIFT;
+            Map.CMapManager.swapDrawDepth(9, this);
         }
 
         protected virtual void _break()
         {
             _state = ACTOR_STATES.EXPLODE;
+            swapImage(_BREAK);
         }
 
         public override void animationEnd(object sender)
@@ -50,6 +72,20 @@ namespace King_of_Thieves.Actors.Items.Liftables
                     _killMe = true;
                     break;
             }
+        }
+
+        public override void update(Microsoft.Xna.Framework.GameTime gameTime)
+        {
+            base.update(gameTime);
+            if (_state == ACTOR_STATES.TOSSING)
+            {
+                moveInDirection(_velocity);
+            }
+        }
+
+        public override void timer1(object sender)
+        {
+            _break();
         }
 
     }

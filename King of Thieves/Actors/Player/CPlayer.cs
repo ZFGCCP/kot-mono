@@ -35,6 +35,7 @@ namespace King_of_Thieves.Actors.Player
         public bool cloneExists = false;
         private bool _canMoveClone = false;
         private bool _canChargeSword = false;
+        private string _currentLiftable = "";
 
         private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
         private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
@@ -196,7 +197,7 @@ namespace King_of_Thieves.Actors.Player
 
         public override void collide(object sender, CActor collider)
         {
-            if (!collider.noCollide && (collider is CSolidTile || collider is Items.decoration.CChest || collider is Items.Liftables.CLiftable))
+            if (!collider.noCollide && (collider is CSolidTile || collider is Items.decoration.CChest))
             {
                 solidCollide(collider);
             }
@@ -223,6 +224,15 @@ namespace King_of_Thieves.Actors.Player
                 if (collider is NPC.Other.CTownsFolk)
                 {
                     solidCollide(collider);
+                }
+                else if (collider is Items.Liftables.CLiftable)
+                {
+                    solidCollide(collider);
+                    CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+                    if (input.keysReleased.Contains(input.getKey(CInput.KEY_ACTION)))
+                    {
+                        _liftObject((Items.Liftables.CLiftable)collider);
+                    }
                 }
             }
         }
@@ -713,8 +723,9 @@ namespace King_of_Thieves.Actors.Player
                     {
                         if (_carrying)
                         {
-                            _triggerUserEvent(0, "carryMe", _direction);
                             _state = ACTOR_STATES.THROWING;
+                            hidden = false;
+
 
                             switch (_direction)
                             {
@@ -1461,11 +1472,31 @@ namespace King_of_Thieves.Actors.Player
 
         private void _liftObject(Actors.Items.Liftables.CLiftable liftable)
         {
-            Type liftableType = liftable.GetType();
-            Actors.Items.Liftables.CLiftable newLiftable = (Actors.Items.Liftables.CLiftable)Activator.CreateInstance(liftableType);
-            newLiftable.init(liftable.name + "Clone", _position, liftable.dataType, this.componentAddress, "T");
-            Map.CMapManager.addActorToComponent(newLiftable, this.componentAddress);
-            liftable.killMe = true;
+            liftable.lift();
+            _state = ACTOR_STATES.LIFT;
+            this.component.mergeComponent(liftable.component);
+            _currentLiftable = liftable.name;
+
+            switch (_direction)
+            {
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.PLAYER_LIFTLEFT);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.PLAYER_LIFTRIGHT);
+                    break;
+
+                case DIRECTION.DOWN:
+                    swapImage(Graphics.CTextures.PLAYER_LIFTDOWN);
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.PLAYER_LIFTUP);
+                    break;
+
+            }
+            
         }
     }
 }
