@@ -358,10 +358,7 @@ namespace King_of_Thieves.Map
         {
             for (int i = 0; i < _componentRegistry.Count(); i++)
                 if (_componentRegistry[i].killMe)
-                {
                     removeComponent(_componentRegistry[i], _componentRegistry[i].layer);
-                    _componentRegistry.Remove(_componentRegistry[i]);
-                }
 
             foreach (CLayer layer in _layers)
                 layer.updateLayer(gameTime);

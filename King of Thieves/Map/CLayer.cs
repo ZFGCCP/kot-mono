@@ -219,7 +219,7 @@ namespace King_of_Thieves.Map
                 {
                     otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y, true, spriteBatch);
                 }
-
+                tile.update();
             }
 
             if (_components != null)

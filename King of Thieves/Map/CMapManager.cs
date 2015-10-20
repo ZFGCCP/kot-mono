@@ -166,6 +166,7 @@ namespace King_of_Thieves.Map
                 throw new KotException.KotInvalidActorException("Root actor cannot be null when calling addComponent");
 
             Actors.CComponent component = new Actors.CComponent(_currentMap.largestAddress + 1);
+            component.layer = root.layer;
 
             addComponent(component);
             addActorToComponent(root, component.address);

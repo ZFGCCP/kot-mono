@@ -51,7 +51,6 @@ namespace King_of_Thieves.Actors.Items.Liftables
             _state = ACTOR_STATES.TOSSING;
             startTimer1(30);
             component.moveActorToNewComponent(this);
-            
         }
 
         public virtual void lift()

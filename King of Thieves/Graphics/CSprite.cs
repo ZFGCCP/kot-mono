@@ -27,7 +27,7 @@ namespace King_of_Thieves.Graphics
         private int _timeForCurrentFrame = 0;
         private bool _animEnd = false;
 
-        private static Dictionary<int, double> _frameRateLookup = new Dictionary<int, double>();
+        public static Dictionary<int, double> _frameRateLookup = new Dictionary<int, double>();
 
         public CSprite(string atlasName, bool flipH = false, bool flipV = false, Effect shader = null, bool isEffect = false, int rotation = 0, params VertexPositionColor[] vertices)
             : base(shader, vertices)

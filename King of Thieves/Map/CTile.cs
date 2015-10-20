@@ -9,7 +9,7 @@ namespace King_of_Thieves.Map
 {
     public class CTile
     {
-        private Vector2 _tileBounds;
+        protected Vector2 _tileBounds;
         public Vector2 tileCoords;
         public string tileSet;
         private Actors.Collision.CHitBox _boundary = null;
@@ -57,12 +57,15 @@ namespace King_of_Thieves.Map
             return (_boundary.checkCollision(mouseCoords));
         }
 
-        public void draw(King_of_Thieves.Graphics.CSprite image, SpriteBatch spriteBatch, int offSetX = 0, int offsetY = 0)
+        public virtual void draw(King_of_Thieves.Graphics.CSprite image, SpriteBatch spriteBatch, int offSetX = 0, int offsetY = 0)
         {
             Vector2 dimensions = Vector2.Zero;
             dimensions = new Vector2(Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
 
             image.draw((int)(tileCoords.X + offSetX), (int)(tileCoords.Y + offsetY), (int)(atlasCoords.X), (int)(atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y, true, spriteBatch);
         }
+
+        //used in inherited classes only
+        public virtual void update() { }
     }
 }

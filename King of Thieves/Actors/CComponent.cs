@@ -22,6 +22,7 @@ namespace King_of_Thieves.Actors
         private bool _killMe = false;
         public int layer = 0;
         public bool useDrawOverlay = true;
+        private bool _softDelete = false;
 
         public object getProperty(string actorName, Map.EActorProperties property)
         {
@@ -68,6 +69,12 @@ namespace King_of_Thieves.Actors
                 default:
                     return null;
             }
+        }
+
+        public void softDelete()
+        {
+            _softDelete = true;
+            _killMe = true;
         }
 
         protected override string TextureFileLocation
@@ -147,7 +154,7 @@ namespace King_of_Thieves.Actors
 
             if (root.killMe)
             {
-                _destroyActors();
+                _destroyActors(_softDelete);
                 enabled = false;
             }
 

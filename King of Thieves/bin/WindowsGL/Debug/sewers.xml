@@ -275,6 +275,38 @@
         <tile coordinates="30:28" tileSet="tileset:indoors:sewer" selection="4:14" />
         <tile coordinates="30:27" tileSet="tileset:indoors:sewer" selection="4:13" />
         <tile coordinates="30:29" tileSet="tileset:indoors:sewer" selection="4:14" />
+        <tile coordinates="39:45" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:46" tileSet="tileset:indoors:sewer" selection="16:19" />
+        <tile coordinates="39:44" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:43" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:42" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:41" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:40" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:39" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:38" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:37" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:36" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:35" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:34" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:33" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:32" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:31" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:30" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:29" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:28" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="39:27" tileSet="tileset:indoors:sewer" selection="16:18" />
+        <tile coordinates="32:26" tileSet="tileset:indoors:sewer" selection="6:14" />
+        <tile coordinates="32:25" tileSet="tileset:indoors:sewer" selection="13:7" />
+        <tile coordinates="32:24" tileSet="tileset:indoors:sewer" selection="13:6" />
+        <tile coordinates="33:24" tileSet="tileset:indoors:sewer" selection="14:6" />
+        <tile coordinates="33:25" tileSet="tileset:indoors:sewer" selection="14:7" />
+        <tile coordinates="32:23" tileSet="tileset:indoors:sewer" selection="7:13" />
+        <tile coordinates="33:23" tileSet="tileset:indoors:sewer" selection="7:13" />
+        <tile coordinates="33:26" tileSet="tileset:indoors:sewer" selection="7:13" />
+        <tile coordinates="34:26" tileSet="tileset:indoors:sewer" selection="7:13" />
+        <tile coordinates="34:25" tileSet="tileset:indoors:sewer" selection="7:13" />
+        <tile coordinates="34:24" tileSet="tileset:indoors:sewer" selection="7:13" />
+        <tile coordinates="34:23" tileSet="tileset:indoors:sewer" selection="7:13" />
       </tiles>
       <components />
     </layer>
