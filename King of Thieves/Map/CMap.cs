@@ -329,10 +329,14 @@ namespace King_of_Thieves.Map
             _largestAddress = component.address;
             CMasterControl.commNet.Add(component.address, new List<CActorPacket>());
 
-            _layers[layer].addToDrawList(component.root);
+            if (component.root != null)
+                _layers[layer].addToDrawList(component.root);
 
             foreach(KeyValuePair<string,CActor> kvp in component.actors)
                 _layers[layer].addToDrawList(kvp.Value);
+
+            if (component.address > _largestAddress)
+                _largestAddress = component.address;
         }
 
         public void removeComponent(CComponent component, int layer)

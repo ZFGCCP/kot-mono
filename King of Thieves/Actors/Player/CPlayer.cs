@@ -225,7 +225,7 @@ namespace King_of_Thieves.Actors.Player
                 {
                     solidCollide(collider);
                 }
-                else if (collider is Items.Liftables.CLiftable)
+                else if (collider is Items.Liftables.CLiftable && (_state != ACTOR_STATES.LIFT && _state != ACTOR_STATES.THROWING && !_carrying))
                 {
                     solidCollide(collider);
                     CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;

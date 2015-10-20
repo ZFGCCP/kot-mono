@@ -159,6 +159,27 @@ namespace King_of_Thieves.Map
             _currentMap.removeComponent(component, component.layer);
         }
 
+        //builds a new component from the given actors
+        public static void addComponent(Actors.CActor root, Dictionary<string, Actors.CActor> actors)
+        {
+            if (root == null)
+                throw new KotException.KotInvalidActorException("Root actor cannot be null when calling addComponent");
+
+            Actors.CComponent component = new Actors.CComponent(_currentMap.largestAddress + 1);
+
+            addComponent(component);
+            addActorToComponent(root, component.address);
+
+            if (actors != null)
+                foreach (Actors.CActor actor in actors.Values)
+                    addActorToComponent(actor, component.address);
+        }
+
+        public static void addComponent(Actors.CComponent component)
+        {
+            _currentMap.addComponent(component, component.layer);
+        }
+
         public static void addActorToComponent(Actors.CActor actor, int componentAddress)
         {
             _currentMap.addActorToComponent(actor, componentAddress);

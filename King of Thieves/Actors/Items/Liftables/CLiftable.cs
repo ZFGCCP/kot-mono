@@ -29,9 +29,6 @@ namespace King_of_Thieves.Actors.Items.Liftables
 
         public virtual void toss()
         {
-            _state = ACTOR_STATES.TOSSING;
-            startTimer1(30);
-
             switch (component.root.direction)
             {
                 case DIRECTION.DOWN:
@@ -50,12 +47,18 @@ namespace King_of_Thieves.Actors.Items.Liftables
                     _velocity = new Microsoft.Xna.Framework.Vector2(-1, 0);
                     break;
             }
+
+            _state = ACTOR_STATES.TOSSING;
+            startTimer1(30);
+            component.moveActorToNewComponent(this);
+            
         }
 
         public virtual void lift()
         {
             _state = ACTOR_STATES.LIFT;
             Map.CMapManager.swapDrawDepth(9, this);
+            _followRoot = true;
         }
 
         protected virtual void _break()

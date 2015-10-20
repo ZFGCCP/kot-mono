@@ -205,6 +205,7 @@
     <Compile Include="Graphics\CTextures.cs" />
     <Compile Include="Graphics\CVertex.cs" />
     <Compile Include="Input\CInput.cs" />
+    <Compile Include="KotException\KotInvalidActorException.cs" />
     <Compile Include="Map\CLayer.cs" />
     <Compile Include="Map\CMap.cs" />
     <Compile Include="Map\CMapManager.cs" />

@@ -155,19 +155,20 @@ namespace King_of_Thieves.Actors
             {
                 //update the root's old position and then update the actor
                 root.update(gameTime);
-
-                foreach (KeyValuePair<string, CActor> kvp in actors)
+                List<CActor> _actors = actors.Values.ToList();
+                for (int i = 0; i < actors.Count; i++)
                 {
-                    if (kvp.Value.killMe)
+                    CActor actor = _actors[i];
+                    if (actor.killMe)
                     {
-                        removeActor(kvp.Value, true);
+                        removeActor(actor, true);
                         continue;
                     }
                     //first get messages from the commNet
-                    _checkCommNet(kvp.Key, kvp.Value);
+                    _checkCommNet(actor.name, actor);
 
                     //update
-                    kvp.Value.update(gameTime);
+                    actor.update(gameTime);
                 }
                 //remove any actors that are to be removed
                 for (int i = 0; i < _removeThese.Count(); i++)
@@ -196,14 +197,25 @@ namespace King_of_Thieves.Actors
 
         public void mergeComponent(CComponent componentToMerge)
         {
-            addActor(componentToMerge.root, root.name);
+            addActor(componentToMerge.root, componentToMerge.root.name);
 
             foreach (Actors.CActor actor in componentToMerge.actors.Values)
                 addActor(actor, actor.name);
 
-            componentToMerge._destroyActors(false);
+            Map.CMapManager.removeComponent(componentToMerge);
         }
 
+        public void moveActorToNewComponent(CActor actor)
+        {
+            if (!actors.ContainsValue(actor))
+                throw new KotException.KotInvalidActorException("Actor does not belong to this component");
+
+            if (actor == root)
+                throw new KotException.KotInvalidActorException("Cannot move root actor to a new component");
+
+            actors.Remove(actor.name);
+            Map.CMapManager.addComponent(actor, null);
+        }
         public int getAddress()
         {
             return _address;
