@@ -29,6 +29,22 @@ namespace King_of_Thieves.Map
             _tileYCount = (int)(_endingPosition.Y - _startingPosition.Y);
         }
 
+        public int speed
+        {
+            get
+            {
+                return _speed;
+            }
+        }
+
+        public Vector2 atlasCoordsEnd
+        {
+            get
+            {
+                return _endingPosition;
+            }
+        }
+
         public override void update()
         {
             _timeForCurrentFrame += CMasterControl.gameTime.ElapsedGameTime.Milliseconds;

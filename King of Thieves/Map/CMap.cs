@@ -112,11 +112,18 @@ namespace King_of_Thieves.Map
                                                       (float)Convert.ToDouble(_valSplitter.Split(tile.TILESELECTION)[1]));
                     Vector2 mapCoords = new Vector2((float)Convert.ToDouble(_valSplitter.Split(tile.COORDS)[0]),
                                                       (float)Convert.ToDouble(_valSplitter.Split(tile.COORDS)[1]));
+                    Vector2 atlasCoordsEnd = Vector2.Zero;
+                    if (tile.TILESELECTIONEND != null)
+                        atlasCoordsEnd = new Vector2((float)Convert.ToDouble(_valSplitter.Split(tile.TILESELECTIONEND)[0]),
+                                                             (float)Convert.ToDouble(_valSplitter.Split(tile.TILESELECTIONEND)[1]));
 
                     if (!tileSets.ContainsKey(tile.TILESET))
                         tileSets.Add(tile.TILESET, new Graphics.CSprite(tile.TILESET));
 
-                    tiles[tileCounter++] = new CTile(atlasCoords, mapCoords, tile.TILESET);
+                    if (tile.TILESELECTIONEND == null)
+                        tiles[tileCounter++] = new CTile(atlasCoords, mapCoords, tile.TILESET);
+                    else
+                        tiles[tileCounter++] = new CAnimatedTile(atlasCoords, atlasCoordsEnd, mapCoords, tile.TILESET, tile.SPEED);
 
 
                 }
@@ -305,7 +312,16 @@ namespace King_of_Thieves.Map
                         _internalMap.LAYERS[i].TILES[j].COORDS = temp.tileCoords.X + ":" + temp.tileCoords.Y;
                         _internalMap.LAYERS[i].TILES[j].TILESELECTION = temp.atlasCoords.X + ":" + temp.atlasCoords.Y;
                         _internalMap.LAYERS[i].TILES[j].TILESET = temp.tileSet;
+
+                        CAnimatedTile animTemp = temp as CAnimatedTile;
+                        if (animTemp != null)
+                        {
+                            _internalMap.LAYERS[i].TILES[j].TILESELECTIONEND = animTemp.atlasCoordsEnd.X + ":" + animTemp.atlasCoordsEnd.Y;
+                            _internalMap.LAYERS[i].TILES[j].SPEED = animTemp.speed;
+                        }
+
                         temp = null;
+                        animTemp = null;
 
                     }
                     

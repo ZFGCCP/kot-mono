@@ -95,7 +95,15 @@ namespace King_of_Thieves.Map
 
         public CTile getTileInfo(int index)
         {
-            return new CTile(_tiles[index].atlasCoords, _tiles[index].tileCoords, _tiles[index].tileSet);
+            CTile temp = _tiles[index] as CAnimatedTile;
+
+            if (temp == null)
+                return new CTile(_tiles[index].atlasCoords, _tiles[index].tileCoords, _tiles[index].tileSet);
+            else
+            {
+                CAnimatedTile anim = (CAnimatedTile)temp;
+                return new CAnimatedTile(anim.atlasCoords, anim.atlasCoordsEnd, anim.tileCoords, anim.tileSet, anim.speed);
+            }
         }
 
         public int numberOfTiles

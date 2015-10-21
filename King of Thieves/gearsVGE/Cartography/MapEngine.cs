@@ -243,6 +243,10 @@ namespace Gears.Cartography
         public string TILESET { get; set; }
         [XmlAttribute("selection")] //the coordinate set for the piece of the atlas to use
         public string TILESELECTION { get; set; }
+        [XmlAttribute("selectionEnd")] //the coordinate set where the sheet ends.  For animated tiles only.
+        public string TILESELECTIONEND { get; set;  }
+        [XmlAttribute("speed")]
+        public int SPEED { get; set; }
     }
 
     [Serializable]
