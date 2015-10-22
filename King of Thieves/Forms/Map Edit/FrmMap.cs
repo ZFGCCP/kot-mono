@@ -34,7 +34,9 @@ namespace King_of_Thieves.Forms.Map_Edit
         King_of_Thieves.Map.CTile tile = null;
         private Vector2 _hitboxTopLeft = new Vector2(-1, -1);
         private int _hitBoxCounter = 0;
-
+        private bool _animationSelectMode = false;
+        private Vector2 _animStart = new Vector2(-1, -1);
+        private Vector2 _animEnd = new Vector2(-1, -1);
         
 
         public FrmMap()
@@ -216,6 +218,21 @@ namespace King_of_Thieves.Forms.Map_Edit
         private void txvTextures_Click(object sender, EventArgs e)
         {
             tile = txvTextures.selectTile(hsbTexture.Value, vsbTexture.Value);
+
+            if (_animationSelectMode)
+            {
+                if (_animStart.X == -1)
+                    _animStart = tile.atlasCoords;
+                else
+                {
+                    _animEnd = tile.atlasCoords;
+                    tile = txvTextures.selectAnimatedTile(_animStart, _animEnd);
+                    _animationSelectMode = false;
+                    btnNewAnimated.BackColor = System.Drawing.Color.Transparent;
+                    _animStart = new Vector2(-1, -1);
+                    _animEnd = new Vector2(-1, -1);
+                }
+            }
 
             mpvMapView.changeSelectedTile(tile);
         }
@@ -421,6 +438,16 @@ namespace King_of_Thieves.Forms.Map_Edit
                 _loadedMap._layers.Insert(insertIndex, layer);
                 cmbLayers.Items.Insert(insertIndex, layer.NAME);
             }
+        }
+
+        private void btnNewAnimated_Click(object sender, EventArgs e)
+        {
+            _animationSelectMode = !_animationSelectMode;
+
+            if (_animationSelectMode)
+                btnNewAnimated.BackColor = System.Drawing.Color.Red;
+            else
+                btnNewAnimated.BackColor = System.Drawing.Color.Transparent;
         }
 		#endif
     }

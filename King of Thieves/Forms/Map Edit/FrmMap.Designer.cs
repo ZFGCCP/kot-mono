@@ -42,6 +42,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.hsbTexture = new System.Windows.Forms.HScrollBar();
             this.vsbTexture = new System.Windows.Forms.VScrollBar();
+            this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.cmbTilesets = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnNewComponent = new System.Windows.Forms.Button();
@@ -63,8 +64,8 @@
             this.btnAddLayer = new System.Windows.Forms.Button();
             this.btnDeleteLayer = new System.Windows.Forms.Button();
             this.btnInsertAfter = new System.Windows.Forms.Button();
-            this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
+            this.btnNewAnimated = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -165,6 +166,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnNewAnimated);
             this.tabPage1.Controls.Add(this.hsbTexture);
             this.tabPage1.Controls.Add(this.vsbTexture);
             this.tabPage1.Controls.Add(this.txvTextures);
@@ -193,6 +195,17 @@
             this.vsbTexture.Size = new System.Drawing.Size(17, 256);
             this.vsbTexture.TabIndex = 5;
             this.vsbTexture.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vsbTexture_Scroll);
+            // 
+            // txvTextures
+            // 
+            this.txvTextures.BackColor = System.Drawing.Color.Black;
+            this.txvTextures.Location = new System.Drawing.Point(3, 3);
+            this.txvTextures.Name = "txvTextures";
+            this.txvTextures.Size = new System.Drawing.Size(240, 256);
+            this.txvTextures.TabIndex = 2;
+            this.txvTextures.VSync = false;
+            this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
+            this.txvTextures.Click += new System.EventHandler(this.txvTextures_Click);
             // 
             // cmbTilesets
             // 
@@ -375,17 +388,6 @@
             this.btnInsertAfter.UseVisualStyleBackColor = true;
             this.btnInsertAfter.Click += new System.EventHandler(this.btnInsertAfter_Click);
             // 
-            // txvTextures
-            // 
-            this.txvTextures.BackColor = System.Drawing.Color.Black;
-            this.txvTextures.Location = new System.Drawing.Point(3, 3);
-            this.txvTextures.Name = "txvTextures";
-            this.txvTextures.Size = new System.Drawing.Size(240, 256);
-            this.txvTextures.TabIndex = 2;
-            this.txvTextures.VSync = false;
-            this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
-            this.txvTextures.Click += new System.EventHandler(this.txvTextures_Click);
-            // 
             // mpvMapView
             // 
             this.mpvMapView.BackColor = System.Drawing.Color.Black;
@@ -396,6 +398,16 @@
             this.mpvMapView.VSync = false;
             this.mpvMapView.Load += new System.EventHandler(this.mpvMapView_Load);
             this.mpvMapView.Click += new System.EventHandler(this.mpvMapView_Click);
+            // 
+            // btnNewAnimated
+            // 
+            this.btnNewAnimated.Location = new System.Drawing.Point(8, 322);
+            this.btnNewAnimated.Name = "btnNewAnimated";
+            this.btnNewAnimated.Size = new System.Drawing.Size(243, 23);
+            this.btnNewAnimated.TabIndex = 6;
+            this.btnNewAnimated.Text = "Create New Animated Tile";
+            this.btnNewAnimated.UseVisualStyleBackColor = true;
+            this.btnNewAnimated.Click += new System.EventHandler(this.btnNewAnimated_Click);
             // 
             // FrmMap
             // 
@@ -468,5 +480,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnNewAnimated;
     }
 }

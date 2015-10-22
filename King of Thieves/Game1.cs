@@ -128,7 +128,7 @@ namespace King_of_Thieves
             menuComo.root = testMenu;
             CMasterControl.mapManager.cacheMaps(false, "tileTester.xml");
             CMasterControl.mapManager.cacheMaps(false, "thieves-house-f1.xml");
-            CMasterControl.mapManager.cacheMaps(false, "ncfc_overworld.xml");
+            CMasterControl.mapManager.cacheMaps(false, "sewers.xml");
             CMasterControl.mapManager.cacheMaps(false, "castleTown.xml");
 
             //textTest = new Actors.HUD.Text.CTextBox();

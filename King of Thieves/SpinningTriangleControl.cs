@@ -53,7 +53,13 @@ namespace WinFormsGraphicsDevice
 
         public void dropTile(CTile tile, CLayer layer, int offSetX = 0, int offSetY = 0)
         {
-            CTile newTile = new CTile(tile);
+            CTile test = tile as CAnimatedTile;
+            CTile newTile = null;
+            if (test == null)
+                newTile = new CTile(tile);
+            else
+                newTile = new CAnimatedTile((CAnimatedTile)tile);
+
             Vector2 position = _getMouseSnap(offSetX,offSetY);
             newTile.tileCoords = position;
             layer.addTile(newTile);
@@ -158,6 +164,7 @@ namespace WinFormsGraphicsDevice
 
             if (_selectedTile != null && _selectedSprite != null)
             {
+                _selectedTile.update();
                 _selectedTile.draw(_selectedSprite, spriteBatch);
             }
             spriteBatch.End();

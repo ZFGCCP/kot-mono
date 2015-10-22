@@ -34,6 +34,13 @@ namespace WinFormsGraphicsDevice
             return tile;
         }
 
+        public King_of_Thieves.Map.CAnimatedTile selectAnimatedTile(Vector2 atlasStart, Vector2 atlasEnd)
+        {
+            King_of_Thieves.Map.CAnimatedTile tile = new King_of_Thieves.Map.CAnimatedTile(atlasStart, atlasEnd, Vector2.Zero, _currentSprite.atlasName, 1);
+            _currentTile = tile;
+            return tile;
+        }
+
         public void scrollVertical(int amount)
         {
             Vector3 translation = Vector3.Zero;

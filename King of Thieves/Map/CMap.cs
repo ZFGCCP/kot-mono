@@ -316,6 +316,7 @@ namespace King_of_Thieves.Map
                         CAnimatedTile animTemp = temp as CAnimatedTile;
                         if (animTemp != null)
                         {
+                            _internalMap.LAYERS[i].TILES[j].TILESELECTION = animTemp.startingPosition.X + ":" + animTemp.startingPosition.Y;
                             _internalMap.LAYERS[i].TILES[j].TILESELECTIONEND = animTemp.atlasCoordsEnd.X + ":" + animTemp.atlasCoordsEnd.Y;
                             _internalMap.LAYERS[i].TILES[j].SPEED = animTemp.speed;
                         }

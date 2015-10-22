@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.Map
 {
-    class CAnimatedTile : CTile
+    public class CAnimatedTile : CTile
     {
         private int _speed = 0;
         private int _timeForCurrentFrame = 0;
@@ -19,6 +19,16 @@ namespace King_of_Thieves.Map
         private int _width = 0;
         private int _height = 0;
 
+        public CAnimatedTile(CAnimatedTile copy) : 
+            base(copy)
+        {
+            _speed = copy._speed;
+            _startingPosition = copy._startingPosition;
+            _endingPosition = copy._endingPosition;
+            _tileXCount = copy._tileXCount;
+            _tileYCount = copy._tileYCount;
+        }
+
         public CAnimatedTile(Vector2 atlasCoords, Vector2 atlasCoordsEnd, Vector2 mapCoords, string tileSet, int speed) :
             base(atlasCoords, mapCoords, tileSet)
         {
@@ -27,6 +37,14 @@ namespace King_of_Thieves.Map
             _endingPosition = atlasCoordsEnd;
             _tileXCount = (int)(_endingPosition.X - _startingPosition.X);
             _tileYCount = (int)(_endingPosition.Y - _startingPosition.Y);
+        }
+
+        public Vector2 startingPosition
+        {
+            get
+            {
+                return _startingPosition;
+            }
         }
 
         public int speed
