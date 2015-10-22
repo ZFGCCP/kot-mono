@@ -55,13 +55,13 @@ namespace King_of_Thieves.Map
                 _timeForCurrentFrame = 0;
                 _tileBounds.X += 1;
 
-                if (_tileBounds.X >= _tileXCount)
+                if (_tileBounds.X > _endingPosition.X)
                 {
-                    _tileBounds.X = 0;
+                    _tileBounds.X = _startingPosition.X;
                     _tileBounds.Y++;
 
-                    if (_tileBounds.Y >= _tileYCount)
-                        _tileBounds.Y = 0;
+                    if (_tileBounds.Y > _endingPosition.Y)
+                        _tileBounds.Y = _startingPosition.Y;
                 }
             }
         }

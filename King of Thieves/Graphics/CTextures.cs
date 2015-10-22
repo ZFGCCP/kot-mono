@@ -12,6 +12,7 @@ namespace King_of_Thieves.Graphics
     {
         public readonly static Dictionary<string, CTextureAtlas> textures = new Dictionary<string, CTextureAtlas>();
         public readonly static Dictionary<string, Texture2D> rawTextures = new Dictionary<string, Texture2D>();
+        public readonly static Dictionary<string, Map.CAnimatedTile> animatedTiles = new Dictionary<string, Map.CAnimatedTile>();
         private static ContentManager _content;
         private static RenderTarget2D _tileMapGen = null;
         private static SpriteBatch _tileBatch = null;
