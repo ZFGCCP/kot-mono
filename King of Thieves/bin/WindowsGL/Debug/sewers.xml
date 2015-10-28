@@ -295,154 +295,655 @@
         <tile coordinates="39:29" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
         <tile coordinates="39:28" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
         <tile coordinates="39:27" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
-        <tile coordinates="32:26" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
         <tile coordinates="32:25" tileSet="tileset:indoors:sewer" selection="13:7" speed="0" />
         <tile coordinates="32:24" tileSet="tileset:indoors:sewer" selection="13:6" speed="0" />
         <tile coordinates="33:24" tileSet="tileset:indoors:sewer" selection="14:6" speed="0" />
         <tile coordinates="33:25" tileSet="tileset:indoors:sewer" selection="14:7" speed="0" />
         <tile coordinates="32:23" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
         <tile coordinates="33:23" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
-        <tile coordinates="33:26" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
-        <tile coordinates="34:26" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
         <tile coordinates="34:25" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
         <tile coordinates="34:24" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
         <tile coordinates="34:23" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
-        <tile coordinates="14:29" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="26:29" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="26:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="26:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="26:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="25:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="25:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="25:30" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="25:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="24:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="24:30" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="24:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="24:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="23:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="23:31" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="23:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="23:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="17:29" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="14:30" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="14:31" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
+        <tile coordinates="27:34" tileSet="tileset:indoors:sewer" selection="17:16" speed="0" />
+        <tile coordinates="27:33" tileSet="tileset:indoors:sewer" selection="17:14" speed="0" />
+        <tile coordinates="31:30" tileSet="tileset:indoors:sewer" selection="16:14" speed="0" />
+        <tile coordinates="30:30" tileSet="tileset:indoors:sewer" selection="14:13" speed="0" />
+        <tile coordinates="30:31" tileSet="tileset:indoors:sewer" selection="14:14" speed="0" />
+        <tile coordinates="38:22" tileSet="tileset:indoors:sewer" selection="6:12" speed="0" />
+        <tile coordinates="37:22" tileSet="tileset:indoors:sewer" selection="6:12" speed="0" />
+        <tile coordinates="38:21" tileSet="tileset:indoors:sewer" selection="6:11" speed="0" />
+        <tile coordinates="37:21" tileSet="tileset:indoors:sewer" selection="7:11" speed="0" />
+        <tile coordinates="39:21" tileSet="tileset:indoors:sewer" selection="7:11" speed="0" />
+        <tile coordinates="39:22" tileSet="tileset:indoors:sewer" selection="7:12" speed="0" />
+        <tile coordinates="9:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="8:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="13:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="14:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="14:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="14:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="14:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="14:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="14:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="13:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="14:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="14:36" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="14:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="14:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="14:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="14:39" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
+        <tile coordinates="14:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="14:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="14:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="14:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="17:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="19:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="22:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="22:40" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
+        <tile coordinates="22:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="22:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="22:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="22:37" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
+        <tile coordinates="22:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="22:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="22:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="22:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="22:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="22:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="22:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="22:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="23:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="24:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="25:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="26:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="26:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="26:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="26:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="25:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="24:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="23:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="22:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="21:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:29" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="19:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="18:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:30" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="17:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:30" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="19:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:30" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:33" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:35" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:36" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:39" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="21:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:41" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:37" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="20:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="19:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="17:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:41" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:36" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="15:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="17:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="15:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:40" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="17:40" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="15:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="17:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="18:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="19:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="21:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="22:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="22:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="23:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="23:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="24:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="24:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="25:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="25:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="20:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="19:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="17:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="17:38" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="19:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="19:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="19:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="19:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="19:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="19:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="19:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="19:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="19:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="19:32" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:31" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:33" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="18:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="17:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="19:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="17:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:30" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="16:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="16:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="17:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="17:38" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="17:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:37" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="17:36" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="17:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:35" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="17:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="17:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:33" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="17:32" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
         <tile coordinates="17:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="16:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
-        <tile coordinates="9:34" tileSet="tileset:indoors:sewer" selection="17:12" selectionEnd="17:12" speed="1" />
-        <tile coordinates="8:34" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="18:31" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="32:28" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="32:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="33:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="33:28" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="38:28" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="38:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="37:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="37:28" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="35:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="36:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="36:28" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="35:28" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="34:28" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="34:29" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="39:21" tileSet="tileset:indoors:sewer" selection="15:5" selectionEnd="18:5" speed="15" />
+        <tile coordinates="39:22" tileSet="tileset:indoors:sewer" selection="15:6" selectionEnd="18:6" speed="15" />
+        <tile coordinates="40:21" tileSet="tileset:indoors:sewer" selection="15:9" selectionEnd="18:9" speed="15" />
+        <tile coordinates="41:21" tileSet="tileset:indoors:sewer" selection="15:9" selectionEnd="18:9" speed="15" />
+        <tile coordinates="40:22" tileSet="tileset:indoors:sewer" selection="15:10" selectionEnd="18:10" speed="15" />
+        <tile coordinates="41:22" tileSet="tileset:indoors:sewer" selection="15:10" selectionEnd="18:10" speed="15" />
+        <tile coordinates="42:21" tileSet="tileset:indoors:sewer" selection="15:7" selectionEnd="18:7" speed="15" />
+        <tile coordinates="42:22" tileSet="tileset:indoors:sewer" selection="15:8" selectionEnd="18:8" speed="15" />
+        <tile coordinates="40:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="31:31" tileSet="tileset:indoors:sewer" selection="16:16" speed="0" />
+        <tile coordinates="36:22" tileSet="tileset:indoors:sewer" selection="12:5" speed="0" />
+        <tile coordinates="36:21" tileSet="tileset:indoors:sewer" selection="12:4" speed="0" />
+        <tile coordinates="35:21" tileSet="tileset:indoors:sewer" selection="11:4" speed="0" />
+        <tile coordinates="35:22" tileSet="tileset:indoors:sewer" selection="11:5" speed="0" />
+        <tile coordinates="34:22" tileSet="tileset:indoors:sewer" selection="10:5" speed="0" />
+        <tile coordinates="34:21" tileSet="tileset:indoors:sewer" selection="10:4" speed="0" />
+        <tile coordinates="33:21" tileSet="tileset:indoors:sewer" selection="12:15" speed="0" />
+        <tile coordinates="33:22" tileSet="tileset:indoors:sewer" selection="12:16" speed="0" />
+        <tile coordinates="32:21" tileSet="tileset:indoors:sewer" selection="12:15" speed="0" />
+        <tile coordinates="32:22" tileSet="tileset:indoors:sewer" selection="12:16" speed="0" />
+        <tile coordinates="31:23" tileSet="tileset:indoors:sewer" selection="15:14" speed="0" />
+        <tile coordinates="30:23" tileSet="tileset:indoors:sewer" selection="14:14" speed="0" />
+        <tile coordinates="31:22" tileSet="tileset:indoors:sewer" selection="16:13" speed="0" />
+        <tile coordinates="31:21" tileSet="tileset:indoors:sewer" selection="15:13" speed="0" />
+        <tile coordinates="30:21" tileSet="tileset:indoors:sewer" selection="14:13" speed="0" />
+        <tile coordinates="30:22" tileSet="tileset:indoors:sewer" selection="14:13" speed="0" />
+        <tile coordinates="35:23" tileSet="tileset:indoors:sewer" selection="13:8" speed="0" />
+        <tile coordinates="35:24" tileSet="tileset:indoors:sewer" selection="13:9" speed="0" />
+        <tile coordinates="35:25" tileSet="tileset:indoors:sewer" selection="13:9" speed="0" />
+        <tile coordinates="36:25" tileSet="tileset:indoors:sewer" selection="14:9" speed="0" />
+        <tile coordinates="36:24" tileSet="tileset:indoors:sewer" selection="14:8" speed="0" />
+        <tile coordinates="36:23" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="37:23" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="37:24" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="37:25" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="43:21" tileSet="tileset:indoors:sewer" selection="12:15" speed="0" />
+        <tile coordinates="44:21" tileSet="tileset:indoors:sewer" selection="12:15" speed="0" />
+        <tile coordinates="45:21" tileSet="tileset:indoors:sewer" selection="12:15" speed="0" />
+        <tile coordinates="46:21" tileSet="tileset:indoors:sewer" selection="12:15" speed="0" />
+        <tile coordinates="47:21" tileSet="tileset:indoors:sewer" selection="12:15" speed="0" />
+        <tile coordinates="43:22" tileSet="tileset:indoors:sewer" selection="6:18" speed="0" />
+        <tile coordinates="44:22" tileSet="tileset:indoors:sewer" selection="6:18" speed="0" />
+        <tile coordinates="45:22" tileSet="tileset:indoors:sewer" selection="6:18" speed="0" />
+        <tile coordinates="46:22" tileSet="tileset:indoors:sewer" selection="6:18" speed="0" />
+        <tile coordinates="47:22" tileSet="tileset:indoors:sewer" selection="6:18" speed="0" />
+        <tile coordinates="48:21" tileSet="tileset:indoors:sewer" selection="15:5" selectionEnd="18:5" speed="15" />
+        <tile coordinates="48:22" tileSet="tileset:indoors:sewer" selection="15:6" selectionEnd="18:6" speed="15" />
+        <tile coordinates="49:21" tileSet="tileset:indoors:sewer" selection="15:9" selectionEnd="18:9" speed="15" />
+        <tile coordinates="50:21" tileSet="tileset:indoors:sewer" selection="15:9" selectionEnd="18:9" speed="15" />
+        <tile coordinates="49:22" tileSet="tileset:indoors:sewer" selection="15:10" selectionEnd="18:10" speed="15" />
+        <tile coordinates="50:22" tileSet="tileset:indoors:sewer" selection="15:10" selectionEnd="18:10" speed="15" />
+        <tile coordinates="51:21" tileSet="tileset:indoors:sewer" selection="15:7" selectionEnd="18:7" speed="15" />
+        <tile coordinates="51:22" tileSet="tileset:indoors:sewer" selection="15:8" selectionEnd="18:8" speed="15" />
+        <tile coordinates="38:26" tileSet="tileset:indoors:sewer" selection="18:22" speed="0" />
+        <tile coordinates="37:26" tileSet="tileset:indoors:sewer" selection="17:22" speed="0" />
+        <tile coordinates="36:26" tileSet="tileset:indoors:sewer" selection="17:22" speed="0" />
+        <tile coordinates="35:26" tileSet="tileset:indoors:sewer" selection="17:22" speed="0" />
+        <tile coordinates="34:26" tileSet="tileset:indoors:sewer" selection="17:22" speed="0" />
+        <tile coordinates="33:26" tileSet="tileset:indoors:sewer" selection="17:22" speed="0" />
+        <tile coordinates="32:26" tileSet="tileset:indoors:sewer" selection="17:22" speed="0" />
+        <tile coordinates="38:25" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="38:24" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="38:23" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="39:23" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="39:24" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="39:25" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="39:26" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="32:27" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="33:27" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="34:27" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="35:27" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="36:27" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="37:27" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="38:27" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="34:45" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="37:48" tileSet="tileset:indoors:sewer" selection="6:16" speed="0" />
+        <tile coordinates="38:48" tileSet="tileset:indoors:sewer" selection="6:16" speed="0" />
+        <tile coordinates="42:48" tileSet="tileset:indoors:sewer" selection="6:16" speed="0" />
+        <tile coordinates="46:48" tileSet="tileset:indoors:sewer" selection="6:16" speed="0" />
+        <tile coordinates="45:48" tileSet="tileset:indoors:sewer" selection="7:16" speed="0" />
+        <tile coordinates="44:48" tileSet="tileset:indoors:sewer" selection="7:16" speed="0" />
+        <tile coordinates="43:48" tileSet="tileset:indoors:sewer" selection="7:16" speed="0" />
+        <tile coordinates="41:48" tileSet="tileset:indoors:sewer" selection="7:16" speed="0" />
+        <tile coordinates="40:48" tileSet="tileset:indoors:sewer" selection="7:16" speed="0" />
+        <tile coordinates="39:48" tileSet="tileset:indoors:sewer" selection="7:16" speed="0" />
+        <tile coordinates="40:46" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="41:46" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="42:46" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="39:47" tileSet="tileset:indoors:sewer" selection="13:17" speed="0" />
+        <tile coordinates="40:47" tileSet="tileset:indoors:sewer" selection="13:17" speed="0" />
+        <tile coordinates="41:47" tileSet="tileset:indoors:sewer" selection="13:17" speed="0" />
+        <tile coordinates="42:47" tileSet="tileset:indoors:sewer" selection="13:17" speed="0" />
+        <tile coordinates="46:47" tileSet="tileset:indoors:sewer" selection="13:17" speed="0" />
+        <tile coordinates="44:47" tileSet="tileset:indoors:sewer" selection="13:17" speed="0" />
+        <tile coordinates="45:47" tileSet="tileset:indoors:sewer" selection="13:17" speed="0" />
+        <tile coordinates="43:47" tileSet="tileset:indoors:sewer" selection="6:21" speed="0" />
+        <tile coordinates="46:46" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="45:46" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="44:46" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="43:46" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="8:35" tileSet="tileset:indoors:sewer" selection="17:20" speed="0" />
+        <tile coordinates="8:33" tileSet="tileset:indoors:sewer" selection="17:22" speed="0" />
+        <tile coordinates="7:34" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="48:27" tileSet="tileset:indoors:sewer" selection="10:17" speed="0" />
+        <tile coordinates="48:30" tileSet="tileset:indoors:sewer" selection="10:18" speed="0" />
+        <tile coordinates="48:31" tileSet="tileset:indoors:sewer" selection="10:18" speed="0" />
+        <tile coordinates="48:32" tileSet="tileset:indoors:sewer" selection="10:18" speed="0" />
+        <tile coordinates="48:33" tileSet="tileset:indoors:sewer" selection="10:18" speed="0" />
+        <tile coordinates="48:28" tileSet="tileset:indoors:sewer" selection="10:18" speed="0" />
+        <tile coordinates="49:27" tileSet="tileset:indoors:sewer" selection="11:17" speed="0" />
+        <tile coordinates="50:27" tileSet="tileset:indoors:sewer" selection="12:17" speed="0" />
+        <tile coordinates="51:27" tileSet="tileset:indoors:sewer" selection="12:17" speed="0" />
+        <tile coordinates="48:29" tileSet="tileset:indoors:sewer" selection="10:19" speed="0" />
+        <tile coordinates="47:33" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:32" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:31" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:30" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:29" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:28" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:27" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="48:26" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="49:26" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="50:26" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="51:26" tileSet="tileset:indoors:sewer" selection="17:19" speed="0" />
+        <tile coordinates="47:26" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="51:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="51:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="51:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="50:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="50:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="50:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="49:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="49:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="49:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="48:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="48:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="48:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="47:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="47:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="47:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:23" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:24" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:45" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:45" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:45" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:45" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:45" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:45" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:45" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:44" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:43" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:42" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:41" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:40" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:38" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:37" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:39" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:36" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:35" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:34" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:32" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:33" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:31" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:30" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:29" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:28" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:27" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:26" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:25" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:26" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:28" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:27" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:29" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:30" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:32" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:31" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:33" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:35" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:34" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:36" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:37" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:38" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:40" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:39" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:41" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:42" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:43" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="46:44" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:44" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:44" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:44" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:44" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:44" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:43" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:42" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:41" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:39" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:40" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:38" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:37" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:36" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:35" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:33" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:34" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:32" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:31" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:30" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:29" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:28" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:27" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:26" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:26" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:26" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:26" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:26" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:27" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:27" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:27" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:27" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:28" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:28" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:28" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:28" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:29" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:29" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:29" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:29" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:30" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:30" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:30" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:30" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:31" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:31" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:31" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:31" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:32" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:32" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:32" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:32" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:33" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:33" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:33" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:33" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:34" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:34" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:34" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:34" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:35" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:35" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:35" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:35" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:36" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:36" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:36" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:36" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:37" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:37" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:37" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:37" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:38" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:38" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:38" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:38" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:39" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:39" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:39" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:39" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:40" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:40" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:40" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:40" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:41" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:41" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:41" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:41" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:42" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:42" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:42" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:42" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="45:43" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="44:43" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="43:43" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="42:43" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="51:42" tileSet="tileset:indoors:sewer" selection="17:20" speed="0" />
+        <tile coordinates="52:42" tileSet="tileset:indoors:sewer" selection="17:20" speed="0" />
+        <tile coordinates="53:42" tileSet="tileset:indoors:sewer" selection="17:20" speed="0" />
+        <tile coordinates="54:42" tileSet="tileset:indoors:sewer" selection="17:20" speed="0" />
+        <tile coordinates="49:37" tileSet="tileset:indoors:sewer" selection="11:21" speed="0" />
+        <tile coordinates="49:38" tileSet="tileset:indoors:sewer" selection="11:22" speed="0" />
+        <tile coordinates="48:37" tileSet="tileset:indoors:sewer" selection="10:21" speed="0" />
+        <tile coordinates="48:38" tileSet="tileset:indoors:sewer" selection="10:22" speed="0" />
+        <tile coordinates="48:34" tileSet="tileset:indoors:sewer" selection="10:19" speed="0" />
+        <tile coordinates="48:35" tileSet="tileset:indoors:sewer" selection="10:19" speed="0" />
+        <tile coordinates="48:36" tileSet="tileset:indoors:sewer" selection="10:19" speed="0" />
+        <tile coordinates="47:34" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:35" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:36" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:37" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:38" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:39" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:40" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:41" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:42" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:44" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:43" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:45" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:46" tileSet="tileset:indoors:sewer" selection="18:19" speed="0" />
+        <tile coordinates="48:46" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="48:45" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="48:44" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="48:43" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="48:42" tileSet="tileset:indoors:sewer" selection="16:20" speed="0" />
+        <tile coordinates="48:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="49:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="48:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="48:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="50:42" tileSet="tileset:indoors:sewer" selection="17:20" speed="0" />
+        <tile coordinates="49:42" tileSet="tileset:indoors:sewer" selection="17:20" speed="0" />
+        <tile coordinates="50:37" tileSet="tileset:indoors:sewer" selection="12:21" speed="0" />
+        <tile coordinates="50:38" tileSet="tileset:indoors:sewer" selection="12:22" speed="0" />
+        <tile coordinates="51:38" tileSet="tileset:indoors:sewer" selection="10:5" speed="0" />
+        <tile coordinates="51:37" tileSet="tileset:indoors:sewer" selection="10:4" speed="0" />
+        <tile coordinates="52:37" tileSet="tileset:indoors:sewer" selection="11:4" speed="0" />
+        <tile coordinates="52:38" tileSet="tileset:indoors:sewer" selection="11:5" speed="0" />
+        <tile coordinates="53:38" tileSet="tileset:indoors:sewer" selection="12:5" speed="0" />
+        <tile coordinates="53:37" tileSet="tileset:indoors:sewer" selection="12:4" speed="0" />
+        <tile coordinates="54:37" tileSet="tileset:indoors:sewer" selection="13:15" speed="0" />
+        <tile coordinates="55:37" tileSet="tileset:indoors:sewer" selection="13:15" speed="0" />
+        <tile coordinates="54:38" tileSet="tileset:indoors:sewer" selection="7:18" speed="0" />
+        <tile coordinates="55:38" tileSet="tileset:indoors:sewer" selection="7:18" speed="0" />
+        <tile coordinates="49:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="49:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="55:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="55:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="55:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="54:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="54:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="54:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="53:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="53:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="53:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="52:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="52:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="52:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="51:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="51:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="51:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="50:39" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="50:40" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="50:41" tileSet="tileset:indoors:sewer" selection="16:11" selectionEnd="17:12" speed="1" />
+        <tile coordinates="49:36" tileSet="tileset:indoors:sewer" selection="11:20" speed="0" />
+        <tile coordinates="49:28" tileSet="tileset:indoors:sewer" selection="11:12" speed="0" />
+        <tile coordinates="49:29" tileSet="tileset:indoors:sewer" selection="11:13" speed="0" />
+        <tile coordinates="49:30" tileSet="tileset:indoors:sewer" selection="11:13" speed="0" />
+        <tile coordinates="49:31" tileSet="tileset:indoors:sewer" selection="11:20" speed="0" />
+        <tile coordinates="49:32" tileSet="tileset:indoors:sewer" selection="11:20" speed="0" />
+        <tile coordinates="49:33" tileSet="tileset:indoors:sewer" selection="11:20" speed="0" />
+        <tile coordinates="49:34" tileSet="tileset:indoors:sewer" selection="11:13" speed="0" />
+        <tile coordinates="49:35" tileSet="tileset:indoors:sewer" selection="11:13" speed="0" />
+        <tile coordinates="50:28" tileSet="tileset:indoors:sewer" selection="13:12" speed="0" />
+        <tile coordinates="51:28" tileSet="tileset:indoors:sewer" selection="13:12" speed="0" />
+        <tile coordinates="56:38" tileSet="tileset:indoors:sewer" selection="17:13" speed="0" />
+        <tile coordinates="56:39" tileSet="tileset:indoors:sewer" selection="10:20" speed="0" />
+        <tile coordinates="56:40" tileSet="tileset:indoors:sewer" selection="10:20" speed="0" />
+        <tile coordinates="56:41" tileSet="tileset:indoors:sewer" selection="10:20" speed="0" />
+        <tile coordinates="56:44" tileSet="tileset:indoors:sewer" selection="4:5" speed="0" />
+        <tile coordinates="47:48" tileSet="tileset:indoors:sewer" selection="13:12" speed="0" />
+        <tile coordinates="48:48" tileSet="tileset:indoors:sewer" selection="13:12" speed="0" />
+        <tile coordinates="51:48" tileSet="tileset:indoors:sewer" selection="13:12" speed="0" />
+        <tile coordinates="52:48" tileSet="tileset:indoors:sewer" selection="13:12" speed="0" />
+        <tile coordinates="50:48" tileSet="tileset:indoors:sewer" selection="12:12" speed="0" />
+        <tile coordinates="49:48" tileSet="tileset:indoors:sewer" selection="12:12" speed="0" />
+        <tile coordinates="53:48" tileSet="tileset:indoors:sewer" selection="12:12" speed="0" />
+        <tile coordinates="54:48" tileSet="tileset:indoors:sewer" selection="12:12" speed="0" />
+        <tile coordinates="47:47" tileSet="tileset:indoors:sewer" selection="7:21" speed="0" />
+        <tile coordinates="48:47" tileSet="tileset:indoors:sewer" selection="12:11" speed="0" />
+        <tile coordinates="54:47" tileSet="tileset:indoors:sewer" selection="12:11" speed="0" />
+        <tile coordinates="53:47" tileSet="tileset:indoors:sewer" selection="12:11" speed="0" />
+        <tile coordinates="51:47" tileSet="tileset:indoors:sewer" selection="12:11" speed="0" />
+        <tile coordinates="50:47" tileSet="tileset:indoors:sewer" selection="12:11" speed="0" />
+        <tile coordinates="49:47" tileSet="tileset:indoors:sewer" selection="12:11" speed="0" />
+        <tile coordinates="54:46" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="53:46" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="52:46" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="51:46" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="50:46" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="49:46" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="52:47" tileSet="tileset:indoors:sewer" selection="13:11" speed="0" />
+        <tile coordinates="55:46" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="55:45" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="55:44" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="56:43" tileSet="tileset:indoors:sewer" selection="14:10" speed="0" />
+        <tile coordinates="55:43" tileSet="tileset:indoors:sewer" selection="13:10" speed="0" />
+        <tile coordinates="55:42" tileSet="tileset:indoors:sewer" selection="13:9" speed="0" />
+        <tile coordinates="56:42" tileSet="tileset:indoors:sewer" selection="14:9" speed="0" />
+        <tile coordinates="54:43" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="54:44" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="54:45" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="53:45" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="51:44" tileSet="tileset:indoors:sewer" selection="13:8" speed="0" />
+        <tile coordinates="51:45" tileSet="tileset:indoors:sewer" selection="13:9" speed="0" />
+        <tile coordinates="50:45" tileSet="tileset:indoors:sewer" selection="12:9" speed="0" />
+        <tile coordinates="50:44" tileSet="tileset:indoors:sewer" selection="12:8" speed="0" />
+        <tile coordinates="49:45" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="49:44" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="49:43" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="50:43" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="51:43" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="53:43" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="53:44" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="52:43" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="52:44" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="52:45" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="56:42" tileSet="tileset:indoors:sewer" selection="4:3" speed="0" />
+        <tile coordinates="50:29" tileSet="tileset:indoors:sewer" selection="8:4" speed="0" />
+        <tile coordinates="55:36" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="50:36" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="51:35" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="53:31" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="53:33" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="54:36" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="51:34" tileSet="tileset:indoors:sewer" selection="6:4" speed="0" />
+        <tile coordinates="52:34" tileSet="tileset:indoors:sewer" selection="7:4" speed="0" />
+        <tile coordinates="52:33" tileSet="tileset:indoors:sewer" selection="8:4" speed="0" />
+        <tile coordinates="50:32" tileSet="tileset:indoors:sewer" selection="14:8" speed="0" />
+        <tile coordinates="51:29" tileSet="tileset:indoors:sewer" selection="13:6" speed="0" />
+        <tile coordinates="51:30" tileSet="tileset:indoors:sewer" selection="13:7" speed="0" />
+        <tile coordinates="52:30" tileSet="tileset:indoors:sewer" selection="14:7" speed="0" />
+        <tile coordinates="52:29" tileSet="tileset:indoors:sewer" selection="14:6" speed="0" />
+        <tile coordinates="52:36" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="51:36" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="52:35" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="53:36" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="53:35" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="53:34" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="50:35" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="50:34" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="50:33" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="51:33" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="51:32" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="51:31" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="50:31" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="50:30" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="52:31" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="52:32" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="53:32" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="55:35" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="54:35" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="53:30" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="53:29" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="54:29" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="55:30" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="55:29" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="55:31" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="55:32" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="55:33" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="55:34" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="54:34" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="54:33" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="54:32" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="54:31" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
+        <tile coordinates="54:30" tileSet="tileset:indoors:sewer" selection="7:13" speed="0" />
       </tiles>
       <components>
         <component address="-2">
@@ -460,6 +961,10 @@
         <tile coordinates="12:33" tileSet="tileset:indoors:sewer" selection="2:3" speed="0" />
         <tile coordinates="12:34" tileSet="tileset:indoors:sewer" selection="2:4" speed="0" />
         <tile coordinates="12:35" tileSet="tileset:indoors:sewer" selection="2:5" speed="0" />
+        <tile coordinates="57:44" tileSet="tileset:indoors:sewer" selection="5:5" speed="0" />
+        <tile coordinates="57:43" tileSet="tileset:indoors:sewer" selection="5:4" speed="0" />
+        <tile coordinates="57:42" tileSet="tileset:indoors:sewer" selection="5:3" speed="0" />
+        <tile coordinates="56:45" tileSet="tileset:indoors:sewer" selection="8:14" speed="0" />
       </tiles>
       <components />
     </layer>
@@ -479,10 +984,6 @@
         <tile coordinates="25:40" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
         <tile coordinates="25:41" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
         <tile coordinates="26:41" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
-        <tile coordinates="23:42" tileSet="tileset:indoors:sewer" selection="6:15" speed="0" />
-        <tile coordinates="24:42" tileSet="tileset:indoors:sewer" selection="6:15" speed="0" />
-        <tile coordinates="23:43" tileSet="tileset:indoors:sewer" selection="6:16" speed="0" />
-        <tile coordinates="24:43" tileSet="tileset:indoors:sewer" selection="6:16" speed="0" />
         <tile coordinates="26:43" tileSet="tileset:indoors:sewer" selection="7:16" speed="0" />
         <tile coordinates="25:43" tileSet="tileset:indoors:sewer" selection="7:16" speed="0" />
         <tile coordinates="26:42" tileSet="tileset:indoors:sewer" selection="7:15" speed="0" />
@@ -632,6 +1133,208 @@
         <tile coordinates="37:42" tileSet="tileset:indoors:sewer" selection="4:20" speed="0" />
         <tile coordinates="37:37" tileSet="tileset:indoors:sewer" selection="4:20" speed="0" />
         <tile coordinates="37:36" tileSet="tileset:indoors:sewer" selection="4:20" speed="0" />
+        <tile coordinates="23:42" tileSet="tileset:indoors:sewer" selection="17:14" speed="0" />
+        <tile coordinates="23:43" tileSet="tileset:indoors:sewer" selection="6:16" speed="0" />
+        <tile coordinates="24:43" tileSet="tileset:indoors:sewer" selection="6:16" speed="0" />
+        <tile coordinates="32:32" tileSet="tileset:indoors:sewer" selection="1:9" speed="0" />
+        <tile coordinates="33:32" tileSet="tileset:indoors:sewer" selection="1:9" speed="0" />
+        <tile coordinates="34:32" tileSet="tileset:indoors:sewer" selection="1:9" speed="0" />
+        <tile coordinates="35:32" tileSet="tileset:indoors:sewer" selection="1:9" speed="0" />
+        <tile coordinates="36:32" tileSet="tileset:indoors:sewer" selection="1:9" speed="0" />
+        <tile coordinates="31:20" tileSet="tileset:indoors:sewer" selection="5:14" speed="0" />
+        <tile coordinates="31:19" tileSet="tileset:indoors:sewer" selection="5:14" speed="0" />
+        <tile coordinates="31:18" tileSet="tileset:indoors:sewer" selection="5:14" speed="0" />
+        <tile coordinates="31:17" tileSet="tileset:indoors:sewer" selection="5:14" speed="0" />
+        <tile coordinates="31:16" tileSet="tileset:indoors:sewer" selection="5:14" speed="0" />
+        <tile coordinates="30:20" tileSet="tileset:indoors:sewer" selection="4:14" speed="0" />
+        <tile coordinates="30:19" tileSet="tileset:indoors:sewer" selection="4:14" speed="0" />
+        <tile coordinates="30:18" tileSet="tileset:indoors:sewer" selection="4:13" speed="0" />
+        <tile coordinates="30:17" tileSet="tileset:indoors:sewer" selection="4:14" speed="0" />
+        <tile coordinates="30:16" tileSet="tileset:indoors:sewer" selection="4:13" speed="0" />
+        <tile coordinates="31:15" tileSet="tileset:indoors:sewer" selection="5:13" speed="0" />
+        <tile coordinates="30:15" tileSet="tileset:indoors:sewer" selection="4:14" speed="0" />
+        <tile coordinates="31:14" tileSet="tileset:indoors:sewer" selection="5:12" speed="0" />
+        <tile coordinates="30:14" tileSet="tileset:indoors:sewer" selection="4:12" speed="0" />
+        <tile coordinates="30:13" tileSet="tileset:indoors:sewer" selection="4:11" speed="0" />
+        <tile coordinates="31:13" tileSet="tileset:indoors:sewer" selection="5:11" speed="0" />
+        <tile coordinates="32:15" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="32:20" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="32:19" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="33:20" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="34:20" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="35:20" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="35:19" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="34:19" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="33:19" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="34:18" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="32:18" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="33:18" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="33:17" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="33:15" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="32:16" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="32:17" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="33:16" tileSet="tileset:indoors:sewer" selection="6:14" speed="0" />
+        <tile coordinates="34:16" tileSet="tileset:indoors:sewer" selection="14:8" speed="0" />
+        <tile coordinates="34:15" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="34:17" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="36:20" tileSet="tileset:indoors:sewer" selection="13:10" speed="0" />
+        <tile coordinates="36:19" tileSet="tileset:indoors:sewer" selection="13:9" speed="0" />
+        <tile coordinates="36:18" tileSet="tileset:indoors:sewer" selection="13:8" speed="0" />
+        <tile coordinates="35:18" tileSet="tileset:indoors:sewer" selection="12:8" speed="0" />
+        <tile coordinates="37:19" tileSet="tileset:indoors:sewer" selection="14:9" speed="0" />
+        <tile coordinates="37:20" tileSet="tileset:indoors:sewer" selection="14:10" speed="0" />
+        <tile coordinates="37:18" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="37:15" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="36:15" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="35:15" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="35:16" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="35:17" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="36:17" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="37:17" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="37:16" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="36:16" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="46:20" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="45:20" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="46:15" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="45:15" tileSet="tileset:indoors:sewer" selection="6:13" speed="0" />
+        <tile coordinates="45:16" tileSet="tileset:indoors:sewer" selection="13:6" speed="0" />
+        <tile coordinates="45:17" tileSet="tileset:indoors:sewer" selection="13:7" speed="0" />
+        <tile coordinates="46:17" tileSet="tileset:indoors:sewer" selection="14:7" speed="0" />
+        <tile coordinates="46:16" tileSet="tileset:indoors:sewer" selection="14:6" speed="0" />
+        <tile coordinates="45:19" tileSet="tileset:indoors:sewer" selection="13:10" speed="0" />
+        <tile coordinates="45:18" tileSet="tileset:indoors:sewer" selection="13:9" speed="0" />
+        <tile coordinates="46:18" tileSet="tileset:indoors:sewer" selection="14:9" speed="0" />
+        <tile coordinates="46:19" tileSet="tileset:indoors:sewer" selection="14:10" speed="0" />
+        <tile coordinates="39:14" tileSet="tileset:indoors:sewer" selection="6:8" speed="0" />
+        <tile coordinates="40:14" tileSet="tileset:indoors:sewer" selection="7:8" speed="0" />
+        <tile coordinates="41:14" tileSet="tileset:indoors:sewer" selection="8:8" speed="0" />
+        <tile coordinates="42:14" tileSet="tileset:indoors:sewer" selection="9:8" speed="0" />
+        <tile coordinates="42:17" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="42:18" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="42:20" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="40:20" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:20" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:19" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:19" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:18" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:18" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:17" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:17" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:16" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:16" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="41:15" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="40:15" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="39:13" tileSet="tileset:indoors:sewer" selection="6:7" speed="0" />
+        <tile coordinates="40:13" tileSet="tileset:indoors:sewer" selection="7:7" speed="0" />
+        <tile coordinates="41:13" tileSet="tileset:indoors:sewer" selection="8:7" speed="0" />
+        <tile coordinates="42:13" tileSet="tileset:indoors:sewer" selection="9:7" speed="0" />
+        <tile coordinates="38:13" tileSet="tileset:indoors:sewer" selection="7:11" speed="0" />
+        <tile coordinates="32:13" tileSet="tileset:indoors:sewer" selection="7:11" speed="0" />
+        <tile coordinates="34:13" tileSet="tileset:indoors:sewer" selection="7:11" speed="0" />
+        <tile coordinates="33:13" tileSet="tileset:indoors:sewer" selection="6:11" speed="0" />
+        <tile coordinates="35:13" tileSet="tileset:indoors:sewer" selection="7:17" speed="0" />
+        <tile coordinates="36:13" tileSet="tileset:indoors:sewer" selection="7:17" speed="0" />
+        <tile coordinates="37:13" tileSet="tileset:indoors:sewer" selection="7:17" speed="0" />
+        <tile coordinates="38:14" tileSet="tileset:indoors:sewer" selection="6:12" speed="0" />
+        <tile coordinates="37:14" tileSet="tileset:indoors:sewer" selection="6:12" speed="0" />
+        <tile coordinates="36:14" tileSet="tileset:indoors:sewer" selection="6:12" speed="0" />
+        <tile coordinates="35:14" tileSet="tileset:indoors:sewer" selection="6:12" speed="0" />
+        <tile coordinates="34:14" tileSet="tileset:indoors:sewer" selection="6:12" speed="0" />
+        <tile coordinates="32:14" tileSet="tileset:indoors:sewer" selection="6:12" speed="0" />
+        <tile coordinates="33:14" tileSet="tileset:indoors:sewer" selection="6:12" speed="0" />
+        <tile coordinates="40:17" tileSet="tileset:indoors:sewer" selection="14:4" speed="0" />
+        <tile coordinates="41:17" tileSet="tileset:indoors:sewer" selection="14:4" speed="0" />
+        <tile coordinates="48:13" tileSet="tileset:indoors:sewer" selection="6:7" speed="0" />
+        <tile coordinates="49:13" tileSet="tileset:indoors:sewer" selection="7:7" speed="0" />
+        <tile coordinates="50:13" tileSet="tileset:indoors:sewer" selection="8:7" speed="0" />
+        <tile coordinates="51:13" tileSet="tileset:indoors:sewer" selection="9:7" speed="0" />
+        <tile coordinates="48:14" tileSet="tileset:indoors:sewer" selection="6:8" speed="0" />
+        <tile coordinates="49:14" tileSet="tileset:indoors:sewer" selection="7:8" speed="0" />
+        <tile coordinates="50:14" tileSet="tileset:indoors:sewer" selection="8:8" speed="0" />
+        <tile coordinates="51:14" tileSet="tileset:indoors:sewer" selection="9:8" speed="0" />
+        <tile coordinates="43:13" tileSet="tileset:indoors:sewer" selection="7:11" speed="0" />
+        <tile coordinates="47:13" tileSet="tileset:indoors:sewer" selection="7:11" speed="0" />
+        <tile coordinates="45:13" tileSet="tileset:indoors:sewer" selection="7:11" speed="0" />
+        <tile coordinates="44:13" tileSet="tileset:indoors:sewer" selection="6:11" speed="0" />
+        <tile coordinates="46:13" tileSet="tileset:indoors:sewer" selection="6:17" speed="0" />
+        <tile coordinates="47:14" tileSet="tileset:indoors:sewer" selection="7:12" speed="0" />
+        <tile coordinates="43:14" tileSet="tileset:indoors:sewer" selection="7:12" speed="0" />
+        <tile coordinates="45:14" tileSet="tileset:indoors:sewer" selection="7:12" speed="0" />
+        <tile coordinates="44:14" tileSet="tileset:indoors:sewer" selection="7:12" speed="0" />
+        <tile coordinates="46:14" tileSet="tileset:indoors:sewer" selection="7:12" speed="0" />
+        <tile coordinates="51:15" tileSet="tileset:indoors:sewer" selection="18:17" speed="0" />
+        <tile coordinates="51:16" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="51:17" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="51:18" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="51:19" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="51:20" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="47:20" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="47:19" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="47:18" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="47:17" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="47:16" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="47:15" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="48:15" tileSet="tileset:indoors:sewer" selection="16:17" speed="0" />
+        <tile coordinates="48:16" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="48:17" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="48:18" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="48:19" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="48:20" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="49:15" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="50:15" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="49:16" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="50:16" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="50:17" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="49:17" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="49:18" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="50:18" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="50:19" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="49:19" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="49:20" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="50:20" tileSet="tileset:indoors:sewer" selection="17:18" speed="0" />
+        <tile coordinates="52:15" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="52:16" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="52:17" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="52:18" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="52:19" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="52:20" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="47:17" tileSet="tileset:indoors:sewer" selection="13:4" speed="0" />
+        <tile coordinates="48:17" tileSet="tileset:indoors:sewer" selection="14:4" speed="0" />
+        <tile coordinates="49:17" tileSet="tileset:indoors:sewer" selection="14:4" speed="0" />
+        <tile coordinates="50:17" tileSet="tileset:indoors:sewer" selection="14:4" speed="0" />
+        <tile coordinates="51:17" tileSet="tileset:indoors:sewer" selection="14:4" speed="0" />
+        <tile coordinates="52:17" tileSet="tileset:indoors:sewer" selection="15:4" speed="0" />
+        <tile coordinates="38:15" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="38:16" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="38:17" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="38:18" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="38:19" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="38:20" tileSet="tileset:indoors:sewer" selection="18:21" speed="0" />
+        <tile coordinates="39:15" tileSet="tileset:indoors:sewer" selection="16:17" speed="0" />
+        <tile coordinates="39:16" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="39:17" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="39:18" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="39:19" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="39:20" tileSet="tileset:indoors:sewer" selection="16:18" speed="0" />
+        <tile coordinates="42:15" tileSet="tileset:indoors:sewer" selection="18:17" speed="0" />
+        <tile coordinates="42:16" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="42:19" tileSet="tileset:indoors:sewer" selection="18:18" speed="0" />
+        <tile coordinates="43:15" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="43:16" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="43:17" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="43:18" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="43:19" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="43:20" tileSet="tileset:indoors:sewer" selection="16:21" speed="0" />
+        <tile coordinates="44:15" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="44:16" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="44:17" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="44:18" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="44:19" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="44:20" tileSet="tileset:indoors:sewer" selection="17:21" speed="0" />
+        <tile coordinates="38:17" tileSet="tileset:indoors:sewer" selection="13:4" speed="0" />
+        <tile coordinates="43:17" tileSet="tileset:indoors:sewer" selection="15:4" speed="0" />
+        <tile coordinates="42:17" tileSet="tileset:indoors:sewer" selection="14:4" speed="0" />
+        <tile coordinates="39:17" tileSet="tileset:indoors:sewer" selection="14:4" speed="0" />
       </tiles>
       <components />
     </layer>

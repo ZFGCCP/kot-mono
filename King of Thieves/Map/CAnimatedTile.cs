@@ -33,7 +33,7 @@ namespace King_of_Thieves.Map
             base(atlasCoords, mapCoords, tileSet)
         {
             _speed = speed;
-            _startingPosition = atlasCoords;
+            _startingPosition = new Vector2(atlasCoords.X,atlasCoords.Y);
             _endingPosition = atlasCoordsEnd;
             _tileXCount = (int)(_endingPosition.X - _startingPosition.X);
             _tileYCount = (int)(_endingPosition.Y - _startingPosition.Y);

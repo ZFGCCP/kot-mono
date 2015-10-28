@@ -102,7 +102,7 @@ namespace King_of_Thieves.Map
             else
             {
                 CAnimatedTile anim = (CAnimatedTile)temp;
-                return new CAnimatedTile(anim.atlasCoords, anim.atlasCoordsEnd, anim.tileCoords, anim.tileSet, anim.speed);
+                return new CAnimatedTile(anim.startingPosition, anim.atlasCoordsEnd, anim.tileCoords, anim.tileSet, anim.speed);
             }
         }
 
