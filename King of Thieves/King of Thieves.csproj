@@ -583,6 +583,7 @@
     <Content Include="Content\tilesets\indoors\sewer.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Content\tilesets\indoors\castleTownIndoors.xnb" />
   </ItemGroup>
   <!-- Specify the search path explicitly so the ResolveAssemblyReferences task picks the right ones -->
   <Target Name="BeforeResolveReferences">
