@@ -130,6 +130,7 @@ namespace King_of_Thieves
             CMasterControl.mapManager.cacheMaps(false, "thieves-house-f1.xml");
             CMasterControl.mapManager.cacheMaps(false, "sewers.xml");
             CMasterControl.mapManager.cacheMaps(false, "castleTown.xml");
+            CMasterControl.mapManager.cacheMaps(false, "castleTownInteriors.xml");
 
             //textTest = new Actors.HUD.Text.CTextBox();
             CMasterControl.buttonController = new Actors.HUD.buttons.CButtonController();

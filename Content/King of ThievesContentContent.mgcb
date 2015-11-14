@@ -913,3 +913,9 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/benchmarker.spritefont
 
+#begin music/test.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/test.ogg
+
