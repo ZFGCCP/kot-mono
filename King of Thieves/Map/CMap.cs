@@ -423,6 +423,17 @@ namespace King_of_Thieves.Map
             return query.ToArray();
         }
 
+        public Actors.CActor[] queryActorRegistry(Type type)
+        {
+            var query = from actor in _actorRegistry
+                        where _isTypePartOfFamily(type, actor.GetType())
+                        select actor;
+
+
+            return query.ToArray();
+        }
+
+
         public Actors.CActor[] queryActorRegistry(String actorName)
         {
             var query = from actor in _actorRegistry

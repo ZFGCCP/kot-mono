@@ -11,6 +11,7 @@ namespace King_of_Thieves.Actors.Collision
     {
         private int _width;
         private int _height;
+        public static int currentSelectedLayer = -1;
 
         public CSolidTile() : base()
         {
@@ -49,7 +50,7 @@ namespace King_of_Thieves.Actors.Collision
 
         public override void drawMe(bool useOverlay = false, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch = null)
         {
-            if (spriteBatch != null)
+            if (spriteBatch != null && currentSelectedLayer == layer)
                 spriteBatch.Draw(Graphics.CTextures.rawTextures["debug:redBox"], new Rectangle((int)(position.X), (int)(position.Y),
                                             _width, _height), null, Color.White);
             else

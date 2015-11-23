@@ -449,6 +449,11 @@ namespace King_of_Thieves.Forms.Map_Edit
             else
                 btnNewAnimated.BackColor = System.Drawing.Color.Transparent;
         }
-		#endif
+
+        private void cmbLayers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Actors.Collision.CSolidTile.currentSelectedLayer = cmbLayers.SelectedIndex;
+        }
+#endif
     }
 }

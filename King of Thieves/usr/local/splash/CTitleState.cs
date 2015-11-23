@@ -30,7 +30,7 @@ namespace King_of_Thieves.usr.local.splash
             _background = new Graphics.CSprite("title:background");
             _logo = new Graphics.CSprite("title:logo");
 
-            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:title"]);
+            //CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:test"]);
 
         }
 
@@ -48,12 +48,11 @@ namespace King_of_Thieves.usr.local.splash
                 if (_freezeCounter-- <= 0)
                     _freeze = false;
             }
-            else
-                if (CMasterControl.glblInput.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.Enter))
-                {
-                    Master.Push(new PlayableState());
-                    CMasterControl.audioPlayer.stopAllSfx();
-                }
+            else if (CMasterControl.glblInput.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.Enter))
+            {
+                Master.Push(new PlayableState());
+                CMasterControl.audioPlayer.stopAllMusic();
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace King_of_Thieves.usr.local
         public PlayableState()
             : base()
         {
-            CMasterControl.mapManager.swapMap("castleTownInteriors.xml", "player",new Vector2(0,0));
+            CMasterControl.mapManager.swapMap("castleTownInteriors.xml", "player",new Vector2(64,64));
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)

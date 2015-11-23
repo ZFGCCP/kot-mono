@@ -128,6 +128,7 @@ namespace King_of_Thieves.Map
             
             CMasterControl.camera.setBoundary(_followerCoords);
             actor.position = _followerCoords;
+            _setCameraLimit(actor);
             _mapSwapIssued = false;
         }
 
@@ -148,6 +149,23 @@ namespace King_of_Thieves.Map
             mapPool = null;
         }
 
+        private static void _setCameraLimit(Actors.CActor follower)
+        {
+            Actors.CActor[] limiters = _currentMap.queryActorRegistry(typeof(Actors.Collision.CCameraLimit));
+            CMasterControl.camera.cameraLimit = null;
+
+            foreach(Actors.CActor limiter in limiters)
+            {
+                Actors.Collision.CCameraLimit limit = (Actors.Collision.CCameraLimit)limiter;
+
+                if (limit.isPointWithin(follower.position))
+                {
+                    CMasterControl.camera.cameraLimit = limit;
+                    break;
+                }
+            }
+
+        }
 
         public static void removeFromActorRegistry(Actors.CActor actor)
         {

@@ -40,6 +40,7 @@
             this.mapVScroll = new System.Windows.Forms.VScrollBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnNewAnimated = new System.Windows.Forms.Button();
             this.hsbTexture = new System.Windows.Forms.HScrollBar();
             this.vsbTexture = new System.Windows.Forms.VScrollBar();
             this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
@@ -65,7 +66,6 @@
             this.btnDeleteLayer = new System.Windows.Forms.Button();
             this.btnInsertAfter = new System.Windows.Forms.Button();
             this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
-            this.btnNewAnimated = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -178,6 +178,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tiles";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnNewAnimated
+            // 
+            this.btnNewAnimated.Location = new System.Drawing.Point(8, 322);
+            this.btnNewAnimated.Name = "btnNewAnimated";
+            this.btnNewAnimated.Size = new System.Drawing.Size(243, 23);
+            this.btnNewAnimated.TabIndex = 6;
+            this.btnNewAnimated.Text = "Create New Animated Tile";
+            this.btnNewAnimated.UseVisualStyleBackColor = true;
+            this.btnNewAnimated.Click += new System.EventHandler(this.btnNewAnimated_Click);
             // 
             // hsbTexture
             // 
@@ -348,6 +358,7 @@
             this.cmbLayers.Name = "cmbLayers";
             this.cmbLayers.Size = new System.Drawing.Size(124, 21);
             this.cmbLayers.TabIndex = 5;
+            this.cmbLayers.SelectedIndexChanged += new System.EventHandler(this.cmbLayers_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -398,16 +409,6 @@
             this.mpvMapView.VSync = false;
             this.mpvMapView.Load += new System.EventHandler(this.mpvMapView_Load);
             this.mpvMapView.Click += new System.EventHandler(this.mpvMapView_Click);
-            // 
-            // btnNewAnimated
-            // 
-            this.btnNewAnimated.Location = new System.Drawing.Point(8, 322);
-            this.btnNewAnimated.Name = "btnNewAnimated";
-            this.btnNewAnimated.Size = new System.Drawing.Size(243, 23);
-            this.btnNewAnimated.TabIndex = 6;
-            this.btnNewAnimated.Text = "Create New Animated Tile";
-            this.btnNewAnimated.UseVisualStyleBackColor = true;
-            this.btnNewAnimated.Click += new System.EventHandler(this.btnNewAnimated_Click);
             // 
             // FrmMap
             // 
