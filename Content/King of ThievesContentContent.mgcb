@@ -841,12 +841,6 @@
 /processorParam:TextureFormat=Color
 /build:tilesets/indoors/jim_morrison.png
 
-#begin music/title.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:music/title.wav
-
 #begin tilesets/outdoors/demoTiles.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -918,4 +912,10 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:music/test.ogg
+
+#begin music/title.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/title.ogg
 

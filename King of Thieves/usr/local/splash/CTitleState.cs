@@ -30,7 +30,7 @@ namespace King_of_Thieves.usr.local.splash
             _background = new Graphics.CSprite("title:background");
             _logo = new Graphics.CSprite("title:logo");
 
-            //CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:test"]);
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:title"]);
 
         }
 
