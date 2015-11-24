@@ -3,7 +3,7 @@
 
 /outputDir:..\King of Thieves\Content
 /intermediateDir:obj\Windows
-/platform:Windows
+/platform:Linux
 /config:
 /profile:HiDef
 /compress:False
