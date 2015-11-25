@@ -8,8 +8,8 @@ namespace King_of_Thieves.Actors.HUD.other
 {
     class CCullBoundary : CHUDElement
     {
-        private int _width = 304;
-        private int _height = 224;
+        private int _width = 272;
+        private int _height = 192;
 
         public CCullBoundary() :
             base()

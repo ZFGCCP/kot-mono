@@ -48,12 +48,11 @@ namespace King_of_Thieves.usr.local.splash
                 if (_freezeCounter-- <= 0)
                     _freeze = false;
             }
-            else
-                if (CMasterControl.glblInput.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.Enter))
-                {
-                    Master.Push(new PlayableState());
-                    CMasterControl.audioPlayer.stopAllSfx();
-                }
+            else if (CMasterControl.glblInput.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.Enter))
+            {
+                Master.Push(new PlayableState());
+                CMasterControl.audioPlayer.stopAllMusic();
+            }
         }
     }
 }

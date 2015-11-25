@@ -1,4 +1,5 @@
 ﻿#region Using Statements
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
@@ -146,8 +147,16 @@ namespace WinFormsGraphicsDevice
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint(e);
-            _camera.update();
+            try
+            {
+                base.OnPaint(e);
+                _camera.update();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                spriteBatch.End();
+            }
         }
 
         public King_of_Thieves.Graphics.CSprite currentSprite

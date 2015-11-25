@@ -48,7 +48,7 @@ namespace King_of_Thieves.Sound
         {
             get
             {
-                return _sfxInstance.State == SoundState.Playing;
+                return _sfxInstance == null ? false : _sfxInstance.State == SoundState.Playing;
             }
         }
 
