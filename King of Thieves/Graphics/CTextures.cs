@@ -321,7 +321,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:outdoors:demoTiles", new CTextureAtlas("tileset:outdoors:demoTiles", 16, 16, 0, "0:0", "49:41", 0, false, false, true));
             textures.Add("tileset:outdoors:castleTown", new CTextureAtlas("tileset:outdoors:castleTown", 16, 16, 0, "0:0", "54:46", 0, false, false, true));
             textures.Add("tileset:indoors:sewer", new CTextureAtlas("tileset:indoors:sewer", 16, 16, 0, "0:0", "18:22", 0, false, false, true));
-            textures.Add("tileset:indoors:castleTown", new CTextureAtlas("tileset:indoors:castleTown", 16, 16, 0, "0:0", "45:44", 0, false, false, true));
+            textures.Add("tileset:indoors:castleTown", new CTextureAtlas("tileset:indoors:castleTown", 16, 16, 0, "0:0", "49:44", 0, false, false, true));
 
             //items and shit
             textures.Add("items:decor:potSmall", new CTextureAtlas("potSmall", 48, 48, 1, "0:0", "0:0"));

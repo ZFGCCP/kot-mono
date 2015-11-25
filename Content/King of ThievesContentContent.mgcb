@@ -919,3 +919,9 @@
 /processorParam:Quality=Best
 /build:music/title.ogg
 
+#begin music/town.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/town.ogg
+
