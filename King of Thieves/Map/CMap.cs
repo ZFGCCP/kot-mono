@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using King_of_Thieves.Actors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace King_of_Thieves.Map
 {
@@ -24,6 +25,8 @@ namespace King_of_Thieves.Map
         private int _width = 0;
         private int _height = 0;
         public int hitBoxCounter = 0;
+        private string _bgmRef = null;
+        private string _bgmLoc = null;
 
         public CMap(Dictionary<string, Graphics.CSprite> atlasCache = null)
         {
@@ -79,6 +82,17 @@ namespace King_of_Thieves.Map
             _internalMap = Gears.Cartography.Map.deserialize(fileName);
             _layers = new List<CLayer>(_internalMap.NUM_LAYERS);
             int layerCount = 0;
+            
+
+            //cache bgm
+            if (_internalMap.BGM_FILE != null && !CMasterControl.audioPlayer.soundBank.ContainsKey(_internalMap.BGM_FILE.BGM_REF_NAME))
+            {
+                CMasterControl.audioPlayer.soundBank.Add(_internalMap.BGM_FILE.BGM_REF_NAME,
+                                                         new Sound.CSound(CMasterControl.glblContent.Load<Song>(_internalMap.BGM_FILE.BGM_FILE_LOC), true, -1));
+
+                _bgmRef = _internalMap.BGM_FILE.BGM_REF_NAME;
+                _bgmLoc = _internalMap.BGM_FILE.BGM_FILE_LOC;
+            }
 
             /*if (_internalMap.TILESET != null)
                 _tileIndex = new Graphics.CSprite(_internalMap.TILESET, Graphics.CTextures.textures[_internalMap.TILESET]);*/
@@ -248,6 +262,10 @@ namespace King_of_Thieves.Map
                 _internalMap.LAYERS = new Gears.Cartography.layer[_layers.Count()];
                 _internalMap.NUM_LAYERS = (byte)_internalMap.LAYERS.Count();
                 _internalMap.TILESET = _tileIndex == null ? null : _tileIndex.atlasName;
+                _internalMap.BGM_FILE = new Gears.Cartography.bgmFile();
+
+                _internalMap.BGM_FILE.BGM_FILE_LOC = _bgmLoc;
+                _internalMap.BGM_FILE.BGM_REF_NAME = _bgmRef;
 
                 for (int i = 0; i < _layers.Count(); i++)
                 {
@@ -422,6 +440,16 @@ namespace King_of_Thieves.Map
 
             return query.ToArray();
         }
+        
+        public Actors.CActor[] queryActorRegistry(Type type, Vector2 position)
+        {
+            var query = from actor in _actorRegistry
+                        where _isTypePartOfFamily(type, actor.GetType()) &&
+                              actor.hitBox.checkCollision(position)
+                        select actor;
+
+            return query.ToArray();
+        }
 
         public Actors.CActor[] queryActorRegistry(Type type)
         {
@@ -480,6 +508,7 @@ namespace King_of_Thieves.Map
         public void removeActorFromComponent(CActor actor, int componentId)
         {
             removeFromActorRegistry(actor);
+            queryComponentRegistry(componentId).removeActor(actor);
         }
 
         public int largestAddress
@@ -487,6 +516,14 @@ namespace King_of_Thieves.Map
             get
             {
                 return _largestAddress;
+            }
+        }
+
+        public string bgmRef
+        {
+            get
+            {
+                return _bgmRef;
             }
         }
     }

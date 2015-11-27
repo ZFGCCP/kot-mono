@@ -121,12 +121,13 @@ namespace King_of_Thieves.Map
 
             Actors.CActor actor = setActorToFollow(_actorToFollow);
             Vector3 cameraDiff = new Vector3(-CMasterControl.camera.position.X - _followerCoords.X, -CMasterControl.camera.position.Y - _followerCoords.Y, 0);
-
-            /*CMasterControl.camera.translate(cameraDiff);
-            CMasterControl.camera.translate(new Vector3(230, 230, 0));*/
+            CMasterControl.camera.jump(Vector3.Zero);
             CMasterControl.camera.translate(new Vector3(100 - _followerCoords.X, 60 - _followerCoords.Y, 0));
-            
             CMasterControl.camera.setBoundary(_followerCoords);
+
+            if (!string.IsNullOrWhiteSpace(_currentMap.bgmRef))
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank[_currentMap.bgmRef]);
+
             actor.position = _followerCoords;
             _setCameraLimit(actor);
             _mapSwapIssued = false;

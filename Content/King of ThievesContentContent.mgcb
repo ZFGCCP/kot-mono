@@ -925,3 +925,15 @@
 /processorParam:Quality=Best
 /build:music/town.ogg
 
+#begin music/house.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/house.ogg
+
+#begin music/houseIntro.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/houseIntro.ogg
+

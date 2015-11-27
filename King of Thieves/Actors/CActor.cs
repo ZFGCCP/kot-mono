@@ -463,7 +463,7 @@ namespace King_of_Thieves.Actors
         {
             get
             {
-                return _componentAddress;
+                return component.address;
             }
         }
 

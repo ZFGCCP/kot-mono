@@ -274,35 +274,48 @@ namespace King_of_Thieves.Forms.Map_Edit
                     break;
 
                 case EDITOR_MODE.HITBOX:
-                    position.X += mapHScroll.Value;
-                    position.Y += mapVScroll.Value;
-                    if (_hitboxTopLeft.X == -1 && _hitboxTopLeft.Y == -1)
-                    {
-                        _hitboxTopLeft = position;
-                    }
-                    else
-                    {
-                        if (args.Button == System.Windows.Forms.MouseButtons.Right)
-                        {
-                            _hitboxTopLeft = new Vector2(-1, -1);
-                            return;
-                        }
-                        string hbParams = "";
-                        King_of_Thieves.Actors.Collision.CSolidTile box = new Actors.Collision.CSolidTile((int)_hitboxTopLeft.X, (int)_hitboxTopLeft.Y, (int)(position.X - _hitboxTopLeft.X), (int)(position.Y - _hitboxTopLeft.Y));
-                        _hitBoxCounter += 1;
-                        
 
-                        hbParams = (int)(position.X - _hitboxTopLeft.X) + ":" + (int)(position.Y - _hitboxTopLeft.Y);
-                        string[] hbParamsArr = hbParams.Split(':');
-                        mpvMapView.dropActor("King_of_Thieves.Actors.Collision.CSolidTile", "hitbox" + _hitBoxCounter, _hitboxTopLeft, cmbLayers.SelectedIndex, hbParamsArr);
-                        _hitboxTopLeft = new Vector2(-1, -1);
-
-                    }
+                    dropHitbox(position, args);
 
                     break;
             }
         }
 
+        private void dropHitbox(Vector2 position, MouseEventArgs args)
+        {
+            
+            if (_hitboxTopLeft.X == -1 && _hitboxTopLeft.Y == -1)
+            {
+                if (args.Button == MouseButtons.Right)
+                    mpvMapView.deleteHitbox(position, mapHScroll.Value, mapVScroll.Value);
+                else
+                {
+                    position.X += mapHScroll.Value;
+                    position.Y += mapVScroll.Value;
+                    _hitboxTopLeft = position;
+                }
+            }
+            else
+            {
+                position.X += mapHScroll.Value;
+                position.Y += mapVScroll.Value;
+                if (args.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    _hitboxTopLeft = new Vector2(-1, -1);
+                    return;
+                }
+                string hbParams = "";
+                King_of_Thieves.Actors.Collision.CSolidTile box = new Actors.Collision.CSolidTile((int)_hitboxTopLeft.X, (int)_hitboxTopLeft.Y, (int)(position.X - _hitboxTopLeft.X), (int)(position.Y - _hitboxTopLeft.Y));
+                _hitBoxCounter += 1;
+
+
+                hbParams = (int)(position.X - _hitboxTopLeft.X) + ":" + (int)(position.Y - _hitboxTopLeft.Y);
+                string[] hbParamsArr = hbParams.Split(':');
+                mpvMapView.dropActor("King_of_Thieves.Actors.Collision.CSolidTile", "hitbox" + _hitBoxCounter, _hitboxTopLeft, cmbLayers.SelectedIndex, hbParamsArr);
+                _hitboxTopLeft = new Vector2(-1, -1);
+
+            }
+        }
 
 
         private void txvTextures_Load(object sender, EventArgs e)
@@ -453,6 +466,16 @@ namespace King_of_Thieves.Forms.Map_Edit
         private void cmbLayers_SelectedIndexChanged(object sender, EventArgs e)
         {
             Actors.Collision.CSolidTile.currentSelectedLayer = cmbLayers.SelectedIndex;
+        }
+
+        private void mpvMapView_MouseMove(object sender, MouseEventArgs e)
+        {
+            Vector2 mouseCoords = mpvMapView.getMouseSnapCoords();
+            mouseCoords.X += mapHScroll.Value;
+            mouseCoords.Y += mapVScroll.Value;
+            string coordLabel = string.Format("{0,-8}{1,-5}{2,-8}{3,-5}", "Mouse X:", ((int)mouseCoords.X).ToString(), "Mouse Y:", ((int)mouseCoords.Y).ToString());
+            label7.Text = coordLabel;
+
         }
 #endif
     }
