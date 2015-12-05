@@ -26,6 +26,7 @@ namespace King_of_Thieves.Graphics
         public bool removeFromDrawList = false;
         private int _timeForCurrentFrame = 0;
         private bool _animEnd = false;
+        private bool _inLastFrame = false;
 
         public static Dictionary<int, double> _frameRateLookup = new Dictionary<int, double>();
 
@@ -89,27 +90,14 @@ namespace King_of_Thieves.Graphics
             if (_imageAtlas == null)
                 throw new FormatException("Unable to draw sprite " + _name);
 
-            _timeForCurrentFrame += CMasterControl.gameTime.ElapsedGameTime.Milliseconds;
+            int lastFrameTime = CMasterControl.gameTime.ElapsedGameTime.Milliseconds;
+            _timeForCurrentFrame += lastFrameTime;
+            double endFrameTime = _frameRateLookup[_imageAtlas.FrameRate] - lastFrameTime / 2.0;
 
+            int relativeFrameCount = _timeForCurrentFrame / lastFrameTime;
+            int maxFrameCount = (int)(_frameRateLookup[_imageAtlas.FrameRate] / (double)lastFrameTime);
+            _framesPassed++;
 
-            if (_imageAtlas.FrameRate != 0 && !_paused && _timeForCurrentFrame >= _frameRateLookup[_imageAtlas.FrameRate])
-            {
-                _timeForCurrentFrame = 0;
-                frameX++;
-                _framesPassed++;
-
-                if (frameX >= _imageAtlas.tileXCount)
-                {
-                    frameX = 0;
-                    frameY++;
-
-                    if (frameY >= _imageAtlas.tileYCount)
-                    {
-                        frameY = 0;
-                        _animEnd = true;
-                    }
-                }
-            }
             _size = _imageAtlas.getTile(frameX, frameY);
             _position.X = x; _position.Y = y;
             //CGraphics.spriteBatch.Draw(_imageAtlas.sourceImage, _position, _size, Color.White);
@@ -130,6 +118,31 @@ namespace King_of_Thieves.Graphics
             {
                 int q = 0;
             }
+
+            if (_imageAtlas.FrameRate != 0 && !_paused && _timeForCurrentFrame >= _frameRateLookup[_imageAtlas.FrameRate])
+            {
+                _timeForCurrentFrame = 0;
+
+                if (frameX >= _imageAtlas.tileXCount - 1 && frameY >= _imageAtlas.tileYCount - 1)
+                    _inLastFrame = true;
+
+                frameX++;
+                _framesPassed = 0;
+
+                if (frameX == _imageAtlas.tileXCount)
+                {
+                    frameX = 0;
+                    frameY++;
+
+                    if (frameY == _imageAtlas.tileYCount)
+                    {
+                        frameY = 0;
+                        _inLastFrame = false;
+                        _animEnd = true;
+                    }
+                }
+            }
+
             if (_animEnd)
             {
                 _animEnd = false;

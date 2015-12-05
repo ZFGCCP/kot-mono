@@ -91,6 +91,8 @@ namespace King_of_Thieves.Actors
         THROWING,
         TOSSING,
         UNLOCKED,
+        VAULT,
+        VAULT_IDLE,
         WOBBLE,
         YIELD
     }
@@ -164,6 +166,7 @@ namespace King_of_Thieves.Actors
         public event actorEventHandler onTimer3;
         public event actorEventHandler onTimer4;
         public event actorEventHandler onTimer5;
+        public event actorEventHandler onTimer6;
         public event actorEventHandler onMouseClick;
         public event actorEventHandler onClick;
         public event actorEventHandler onTap;
@@ -181,6 +184,7 @@ namespace King_of_Thieves.Actors
         public virtual void timer3(object sender) { }
         public virtual void timer4(object sender) { }
         public virtual void timer5(object sender) { }
+        public virtual void timer6(object sender) { }
         public virtual void mouseClick(object sender) { }
         public virtual void click(object sender) { }
         public virtual void tap(object sender) { }
@@ -222,6 +226,7 @@ namespace King_of_Thieves.Actors
         private int _timer3 = -1;
         private int _timer4 = -1;
         private int _timer5 = -1;
+        private int _timer6 = -1;
 
         public CActor()
             
@@ -242,6 +247,7 @@ namespace King_of_Thieves.Actors
             onTimer3 += new actorEventHandler(timer3);
             onTimer4 += new actorEventHandler(timer4);
             onTimer5 += new actorEventHandler(timer5);
+            onTimer6 += new actorEventHandler(timer6);
 
             _name = name;
             _collidables = new List<Type>();
@@ -409,6 +415,11 @@ namespace King_of_Thieves.Actors
             _timer5 = ticks;
         }
 
+        public void startTimer6(int ticks)
+        {
+            _timer6 = ticks;
+        }
+
         public void stopTimer0()
         {
             _timer0 = 0;
@@ -437,6 +448,11 @@ namespace King_of_Thieves.Actors
         public void stopTimer5()
         {
             _timer5 = 0;
+        }
+
+        public void stopTimer6()
+        {
+            _timer6 = 0;
         }
 
         //overload this and call the base to process your own parameters
@@ -811,6 +827,17 @@ namespace King_of_Thieves.Actors
                     {
                         _timer5 = -1;
                         onTimer5(this);
+                    }
+                }
+
+                if (_timer6 >= 0)
+                {
+                    _timer6--;
+
+                    if (_timer6 <= 0)
+                    {
+                        _timer6 = -1;
+                        onTimer6(this);
                     }
                 }
 

@@ -143,6 +143,14 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_SPIN_ATTACK_DOWN = PLAYER + "SpinAttackDown";
         public const string PLAYER_SPIN_ATTACK_LEFT = PLAYER + "SpinAttackLeft";
         public const string PLAYER_SPIN_ATTACK_RIGHT = PLAYER + "SpinAttackRight";
+        public const string PLAYER_VAULT_UP = PLAYER + "VaultUp";
+        public const string PLAYER_VAULT_LEFT = PLAYER + "VaultLeft";
+        public const string PLAYER_VAULT_RIGHT = PLAYER + "VaultRight";
+        public const string PLAYER_VAULT_DOWN = PLAYER + "VaultDown";
+        public const string PLAYER_VAULT_IDLE_LEFT = PLAYER + "VaultIdleLeft";
+        public const string PLAYER_VAULT_IDLE_RIGHT = PLAYER + "VaultIdleRight";
+        public const string PLAYER_VAULT_IDLE_UP = PLAYER + "VaultIdleUp";
+        public const string PLAYER_VAULT_IDLE_DOWN = PLAYER + "VaultIdleDown";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -295,6 +303,12 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_SPIN_ATTACK_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:0", "43:0", 20));
             textures.Add(PLAYER_SPIN_ATTACK_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:1", "43:1", 20));
             textures.Add(PLAYER_SPIN_ATTACK_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:2", "43:2", 20));
+            textures.Add(PLAYER_VAULT_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "2:9", "7:9", 20));
+            textures.Add(PLAYER_VAULT_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "2:10", "7:10", 20));
+            textures.Add(PLAYER_VAULT_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "2:11", "7:11", 20));
+            textures.Add(PLAYER_VAULT_IDLE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "7:9", "7:9", 0));
+            textures.Add(PLAYER_VAULT_IDLE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "7:10", "7:10", 0));
+            textures.Add(PLAYER_VAULT_IDLE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "7:11", "7:11", 0));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));

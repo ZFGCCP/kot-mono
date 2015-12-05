@@ -25,12 +25,12 @@ namespace King_of_Thieves.Actors.HUD.health
 
             _position = new Microsoft.Xna.Framework.Vector2();
 
-            _position.Y = _heartNumber <= _MAX_HEARTS_PER_ROW ? 9 : 16;
+            _position.Y = _heartNumber <= _MAX_HEARTS_PER_ROW ? 9 : 15;
 
             if (heartNumber <= 10)
-                _position.X = heartNumber * _MAX_HEARTS_PER_ROW;
+                _position.X = heartNumber * 8;
             else
-                _position.X = (heartNumber - _MAX_HEARTS_PER_ROW) * 10;
+                _position.X = (heartNumber - _MAX_HEARTS_PER_ROW) * 8;
 
             _fixedPosition = _position;
 

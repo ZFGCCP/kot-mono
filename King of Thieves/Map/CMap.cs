@@ -85,10 +85,11 @@ namespace King_of_Thieves.Map
             
 
             //cache bgm
-            if (_internalMap.BGM_FILE != null && !CMasterControl.audioPlayer.soundBank.ContainsKey(_internalMap.BGM_FILE.BGM_REF_NAME))
+            if (_internalMap.BGM_FILE != null)
             {
-                CMasterControl.audioPlayer.soundBank.Add(_internalMap.BGM_FILE.BGM_REF_NAME,
-                                                         new Sound.CSound(CMasterControl.glblContent.Load<Song>(_internalMap.BGM_FILE.BGM_FILE_LOC), true, -1));
+                if(!CMasterControl.audioPlayer.soundBank.ContainsKey(_internalMap.BGM_FILE.BGM_REF_NAME))
+                    CMasterControl.audioPlayer.soundBank.Add(_internalMap.BGM_FILE.BGM_REF_NAME,
+                                                             new Sound.CSound(CMasterControl.glblContent.Load<Song>(_internalMap.BGM_FILE.BGM_FILE_LOC), true, -1));
 
                 _bgmRef = _internalMap.BGM_FILE.BGM_REF_NAME;
                 _bgmLoc = _internalMap.BGM_FILE.BGM_FILE_LOC;
@@ -256,95 +257,99 @@ namespace King_of_Thieves.Map
         {
             //Gears.Cartography.Map
 
-                _internalMap = new Gears.Cartography.Map();
+            _internalMap = new Gears.Cartography.Map();
 
-                _internalMap.VERSION = "1";
-                _internalMap.LAYERS = new Gears.Cartography.layer[_layers.Count()];
-                _internalMap.NUM_LAYERS = (byte)_internalMap.LAYERS.Count();
-                _internalMap.TILESET = _tileIndex == null ? null : _tileIndex.atlasName;
+            _internalMap.VERSION = "1";
+            _internalMap.LAYERS = new Gears.Cartography.layer[_layers.Count()];
+            _internalMap.NUM_LAYERS = (byte)_internalMap.LAYERS.Count();
+            _internalMap.TILESET = _tileIndex == null ? null : _tileIndex.atlasName;
+
+            if (!string.IsNullOrWhiteSpace(_bgmLoc) && !string.IsNullOrWhiteSpace(_bgmRef))
+            {
                 _internalMap.BGM_FILE = new Gears.Cartography.bgmFile();
 
                 _internalMap.BGM_FILE.BGM_FILE_LOC = _bgmLoc;
                 _internalMap.BGM_FILE.BGM_REF_NAME = _bgmRef;
+            }
 
-                for (int i = 0; i < _layers.Count(); i++)
+            for (int i = 0; i < _layers.Count(); i++)
+            {
+                Dictionary<int, List<string>> actorData = null;
+                _internalMap.LAYERS[i] = new Gears.Cartography.layer();
+                _internalMap.LAYERS[i].LAYER_WIDTH = _layers[i].width;
+                _internalMap.LAYERS[i].LAYER_HEIGHT = _layers[i].height;
+                _internalMap.LAYERS[i].NAME = _layers[i].NAME;
+
+                _internalMap.LAYERS[i].TILES = new Gears.Cartography.tile[_layers[i].numberOfTiles];
+                actorData = _layers[i].getActorHeaderInfo();
+                _internalMap.LAYERS[i].COMPONENTS = new Gears.Cartography.component[_layers[i].componentCount];
+
+                int componentCounter = 0;
+                foreach (CComponent component in _componentRegistry)
                 {
-                    Dictionary<int, List<string>> actorData = null;
-                    _internalMap.LAYERS[i] = new Gears.Cartography.layer();
-                    _internalMap.LAYERS[i].LAYER_WIDTH = _layers[i].width;
-                    _internalMap.LAYERS[i].LAYER_HEIGHT = _layers[i].height;
-                    _internalMap.LAYERS[i].NAME = _layers[i].NAME;
-
-                    _internalMap.LAYERS[i].TILES = new Gears.Cartography.tile[_layers[i].numberOfTiles];
-                    actorData = _layers[i].getActorHeaderInfo();
-                    _internalMap.LAYERS[i].COMPONENTS = new Gears.Cartography.component[_layers[i].componentCount];
-
-                    int componentCounter = 0;
-                    foreach (CComponent component in _componentRegistry)
+                    if (component.layer == i)
                     {
-                        if (component.layer == i)
+                        _internalMap.LAYERS[i].COMPONENTS[componentCounter] = new Gears.Cartography.component();
+                        Gears.Cartography.component comp = _internalMap.LAYERS[i].COMPONENTS[componentCounter];
+                        comp.ADDRESS = component.address;
+
+                        comp.ACTORS = new Gears.Cartography.actors[component.actors.Count + 1];
+
+                        //write the root component
+                        comp.ACTORS[0] = new Gears.Cartography.actors();
+                        comp.ACTORS[0].NAME = component.root.name;
+                        comp.ACTORS[0].TYPE = component.root.dataType;
+                        comp.ACTORS[0].COORDS = component.root.position.X + ":" + component.root.position.Y;
+
+                        foreach (string param in component.root.mapParams)
+                            comp.ACTORS[0].param += param + ",";
+
+                        if (comp.ACTORS[0].param != null)
+                            comp.ACTORS[0].param = comp.ACTORS[0].param.Substring(0, comp.ACTORS[0].param.Length - 1);
+
+                        //write the rest
+                        for (int j = 1; j < comp.ACTORS.Count(); j++)
                         {
-                            _internalMap.LAYERS[i].COMPONENTS[componentCounter] = new Gears.Cartography.component();
-                            Gears.Cartography.component comp = _internalMap.LAYERS[i].COMPONENTS[componentCounter];
-                            comp.ADDRESS = component.address;
+                            List<CActor> actors = component.actors.Values.ToList();
 
-                            comp.ACTORS = new Gears.Cartography.actors[component.actors.Count + 1];
+                            comp.ACTORS[j] = new Gears.Cartography.actors();
+                            comp.ACTORS[j].NAME = actors[j - 1].name;
+                            comp.ACTORS[j].TYPE = actors[j - 1].dataType;
+                            comp.ACTORS[j].COORDS = actors[j - 1].position.X + ":" + actors[j - 1].position.Y;
 
-                            //write the root component
-                            comp.ACTORS[0] = new Gears.Cartography.actors();
-                            comp.ACTORS[0].NAME = component.root.name;
-                            comp.ACTORS[0].TYPE = component.root.dataType;
-                            comp.ACTORS[0].COORDS = component.root.position.X + ":" + component.root.position.Y;
+                            foreach (string param in actors[j - 1].mapParams)
+                                comp.ACTORS[j].param += param + ",";
 
-                            foreach (string param in component.root.mapParams)
-                                comp.ACTORS[0].param += param + ",";
-
-                            if (comp.ACTORS[0].param != null)
-                                comp.ACTORS[0].param = comp.ACTORS[0].param.Substring(0, comp.ACTORS[0].param.Length - 1);
-
-                            //write the rest
-                            for (int j = 1; j < comp.ACTORS.Count(); j++)
-                            {
-                                List<CActor> actors = component.actors.Values.ToList();
-
-                                comp.ACTORS[j] = new Gears.Cartography.actors();
-                                comp.ACTORS[j].NAME = actors[j - 1].name;
-                                comp.ACTORS[j].TYPE = actors[j - 1].dataType;
-                                comp.ACTORS[j].COORDS = actors[j - 1].position.X + ":" + actors[j - 1].position.Y;
-
-                                foreach (string param in actors[j - 1].mapParams)
-                                    comp.ACTORS[j].param += param + ",";
-
-                                if (comp.ACTORS[j].param != null)
-                                    comp.ACTORS[j].param = comp.ACTORS[j].param.Substring(0, comp.ACTORS[j].param.Length - 1);
-                            }
-                            componentCounter++;
+                            if (comp.ACTORS[j].param != null)
+                                comp.ACTORS[j].param = comp.ACTORS[j].param.Substring(0, comp.ACTORS[j].param.Length - 1);
                         }
+                        componentCounter++;
                     }
-
-                    for (int j = 0; j < _internalMap.LAYERS[i].TILES.Count(); j++)
-                    {
-                        _internalMap.LAYERS[i].TILES[j] = new Gears.Cartography.tile();
-
-                        CTile temp = _layers[i].getTileInfo(j);
-                        _internalMap.LAYERS[i].TILES[j].COORDS = temp.tileCoords.X + ":" + temp.tileCoords.Y;
-                        _internalMap.LAYERS[i].TILES[j].TILESELECTION = temp.atlasCoords.X + ":" + temp.atlasCoords.Y;
-                        _internalMap.LAYERS[i].TILES[j].TILESET = temp.tileSet;
-
-                        CAnimatedTile animTemp = temp as CAnimatedTile;
-                        if (animTemp != null)
-                        {
-                            _internalMap.LAYERS[i].TILES[j].TILESELECTION = animTemp.startingPosition.X + ":" + animTemp.startingPosition.Y;
-                            _internalMap.LAYERS[i].TILES[j].TILESELECTIONEND = animTemp.atlasCoordsEnd.X + ":" + animTemp.atlasCoordsEnd.Y;
-                            _internalMap.LAYERS[i].TILES[j].SPEED = animTemp.speed;
-                        }
-
-                        temp = null;
-                        animTemp = null;
-
-                    }
-                    
                 }
+
+                for (int j = 0; j < _internalMap.LAYERS[i].TILES.Count(); j++)
+                {
+                    _internalMap.LAYERS[i].TILES[j] = new Gears.Cartography.tile();
+
+                    CTile temp = _layers[i].getTileInfo(j);
+                    _internalMap.LAYERS[i].TILES[j].COORDS = temp.tileCoords.X + ":" + temp.tileCoords.Y;
+                    _internalMap.LAYERS[i].TILES[j].TILESELECTION = temp.atlasCoords.X + ":" + temp.atlasCoords.Y;
+                    _internalMap.LAYERS[i].TILES[j].TILESET = temp.tileSet;
+
+                    CAnimatedTile animTemp = temp as CAnimatedTile;
+                    if (animTemp != null)
+                    {
+                        _internalMap.LAYERS[i].TILES[j].TILESELECTION = animTemp.startingPosition.X + ":" + animTemp.startingPosition.Y;
+                        _internalMap.LAYERS[i].TILES[j].TILESELECTIONEND = animTemp.atlasCoordsEnd.X + ":" + animTemp.atlasCoordsEnd.Y;
+                        _internalMap.LAYERS[i].TILES[j].SPEED = animTemp.speed;
+                    }
+
+                    temp = null;
+                    animTemp = null;
+
+                }
+                    
+            }
 
             _internalMap.serializeToXml(fileName);
 

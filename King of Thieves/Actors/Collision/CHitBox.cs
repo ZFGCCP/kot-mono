@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using King_of_Thieves.Graphics;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace King_of_Thieves.Actors.Collision
 {
@@ -13,6 +12,8 @@ namespace King_of_Thieves.Actors.Collision
         private Vector2 _halfSize;
         private Vector2 _center;
         private CActor actor; //Actor for this hitbox 
+        private static RNGCryptoServiceProvider _cryptoRand = new RNGCryptoServiceProvider();
+        private static char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW XYZ1234567890".ToCharArray();
 
         //Texture for drawing hitbox
         Texture2D texture;
@@ -62,22 +63,22 @@ namespace King_of_Thieves.Actors.Collision
 
 
             if (actor == null)
-                distance = Math.Abs((offset.X) - (point.X));
+                distance = (point.X) - (offset.X);
             else
-                distance = Math.Abs((actor.position.X + _center.X) - (point.X));
+                distance = (point.X) - (actor.position.X);
             length = _halfSize.X * 2;
 
-            if (distance < length)
+            if (distance < length && distance > -1)
             {
 
                 if (actor == null)
-                    distance = Math.Abs((offset.Y) - (point.Y));
+                    distance = (point.Y) - (offset.Y);
                 else
-                    distance = Math.Abs((actor.position.Y + _center.Y) - (point.Y));
+                    distance = (point.Y) - (actor.position.Y);
 
                 length = _halfSize.Y * 2;
 
-                return distance < length;
+                return distance < length && distance > -1;
             }
 
             return false;
@@ -147,6 +148,18 @@ namespace King_of_Thieves.Actors.Collision
                 _center.X = _halfSize.X + value.X;
                 _center.Y = _halfSize.Y + value.Y;
             }
+        }
+
+        public static string produceRandomName()
+        {
+            byte[] data = new byte[16];
+            _cryptoRand.GetNonZeroBytes(data);
+            StringBuilder result = new StringBuilder(16);
+
+            foreach (byte b in data)
+                result.Append(chars[b % (chars.Length - 1)]);
+
+            return result.ToString();
         }
     }
 }

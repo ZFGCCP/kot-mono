@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" width="0" height="0">
   <version>1</version>
+  <bgmfile bgmFileLocation="music/house" bgmRefName="bgm:house" />
   <width>0</width>
   <height>0</height>
   <layerCount>5</layerCount>
@@ -6512,6 +6513,41 @@
         <component address="5">
           <actors>
             <actor name="tavernLimit" type="King_of_Thieves.Actors.Collision.CCameraLimit" coordinates="1456:0" params="256,192" />
+          </actors>
+        </component>
+        <component address="6">
+          <actors>
+            <actor name="sebastianLimit" type="King_of_Thieves.Actors.Collision.CCameraLimit" coordinates="1136:0" params="208,160" />
+          </actors>
+        </component>
+        <component address="7">
+          <actors>
+            <actor name="tailorLimit" type="King_of_Thieves.Actors.Collision.CCameraLimit" coordinates="1072:400" params="224,320" />
+          </actors>
+        </component>
+        <component address="8">
+          <actors>
+            <actor name="pawnShopLimit" type="King_of_Thieves.Actors.Collision.CCameraLimit" coordinates="528:0" params="208,352" />
+          </actors>
+        </component>
+        <component address="9">
+          <actors>
+            <actor name="postOfficeF1Limit" type="King_of_Thieves.Actors.Collision.CCameraLimit" coordinates="528:608" params="512,592" />
+          </actors>
+        </component>
+        <component address="10">
+          <actors>
+            <actor name="cafeLimit" type="King_of_Thieves.Actors.Collision.CCameraLimit" coordinates="816:0" params="240,192" />
+          </actors>
+        </component>
+        <component address="11">
+          <actors>
+            <actor name="apartmentLimitUpstairs" type="King_of_Thieves.Actors.Collision.CCameraLimit" coordinates="1072:736" params="560,160" />
+          </actors>
+        </component>
+        <component address="12">
+          <actors>
+            <actor name="apartmentLimitDownstairs" type="King_of_Thieves.Actors.Collision.CCameraLimit" coordinates="1072:912" params="560,160" />
           </actors>
         </component>
       </components>

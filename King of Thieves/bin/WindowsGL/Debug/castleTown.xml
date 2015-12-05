@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" width="0" height="0">
   <version>1</version>
+  <bgmfile bgmFileLocation="music/town" bgmRefName="bgm:castleTown" />
   <width>0</width>
   <height>0</height>
   <layerCount>8</layerCount>
-  <bgmfile bgmFileLocation="music/town" bgmRefName="bgm:castleTown"></bgmfile>
   <layers>
     <layer width="0" height="0" name="root">
       <tiles>
@@ -2355,7 +2355,7 @@
             <actor name="hitbox8" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="239:1258" params="172,85" />
             <actor name="hitbox9" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="449:1271" params="123,38" />
             <actor name="hitbox10" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="211:1343" params="1211,79" />
-            <actor name="hitbox12" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="468:1006" params="71,50" />
+            <actor name="hitbox95" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="467:1004" params="25,52" />
             <actor name="hitbox13" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="321:1088" params="29,45" />
             <actor name="hitbox14" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="353:1153" params="30,44" />
             <actor name="hitbox15" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="336:1159" params="15,37" />
@@ -2366,11 +2366,11 @@
             <actor name="hitbox20" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="689:928" params="318,79" />
             <actor name="hitbox21" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="688:998" params="43,150" />
             <actor name="hitbox22" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="728:1099" params="99,50" />
-            <actor name="hitbox23" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="803:1002" params="122,54" />
+            <actor name="hitboxóÕŽô#x1;´=úonæo#x7;G." type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="802:1004" params="60,55" />
             <actor name="hitbox24" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1011:1285" params="378,57" />
             <actor name="hitbox25" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1344:1128" params="46,199" />
             <actor name="hitbox26" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1184:733" params="207,96" />
-            <actor name="hitbox27" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1296:822" params="94,137" />
+            <actor name="hitboxÂûO@é—gt;nÂùšgt;lt;¡‡|" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1296:820" params="95,82" />
             <actor name="hitbox28" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1008:657" params="78,142" />
             <actor name="hitbox29" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1011:596" params="215,91" />
             <actor name="hitbox30" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1267:637" params="120,50" />
@@ -2395,6 +2395,9 @@
             <actor name="hitbox49" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1006:798" params="48,198" />
             <actor name="hitbox93" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="338:1002" params="25,53" />
             <actor name="hitbox94" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="282:1002" params="33,55" />
+            <actor name="hitbox96" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="519:1003" params="19,54" />
+            <actor name="hitboxFsƒ™ÓÚaË'H^#x14;Æ^#x12;SîÑ" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1297:923" params="98,37" />
+            <actor name="hitbox#x1B;Ø°.#x10;#x1D;±}k*ñ#x1E;‰{." type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="882:1004" params="44,52" />
           </actors>
         </component>
         <component address="9">
@@ -2405,6 +2408,21 @@
         <component address="11">
           <actors>
             <actor name="toTavern" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="320:1040" params="1650,129,castleTownInteriors.xml" />
+          </actors>
+        </component>
+        <component address="12">
+          <actors>
+            <actor name="toSebastian" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="495:1040" params="1232,100,castleTownInteriors.xml" />
+          </actors>
+        </component>
+        <component address="13">
+          <actors>
+            <actor name="toTailor" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="1296:903" params="1113,653,castleTownInteriors.xml" />
+          </actors>
+        </component>
+        <component address="14">
+          <actors>
+            <actor name="toPawnShop" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="862:1039" params="626,293,castleTownInteriors.xml" />
           </actors>
         </component>
       </components>
@@ -5734,11 +5752,11 @@
             <actor name="hitbox74" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="609:450" params="31,26" />
             <actor name="hitbox75" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="691:371" params="279,61" />
             <actor name="hitbox76" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="800:432" params="142,45" />
-            <actor name="hitbox77" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="833:479" params="21,13" />
-            <actor name="hitbox78" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="895:475" params="13,16" />
+            <actor name="hitbox1NzbsO78v6oOXgTm" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="881:470" params="32,31" />
+            <actor name="hitboxchbT8ngkbd5C4nVL" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="831:475" params="33,25" />
             <actor name="hitbox79" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="817:489" params="12,22" />
             <actor name="hitbox80" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="913:495" params="10,14" />
-            <actor name="hitbox81" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="527:568" params="46,245" />
+            <actor name="hitboxboo8nW2vqHcE pKv" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="528:729" params="48,86" />
             <actor name="hitbox82" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="266:537" params="149,85" />
             <actor name="hitbox83" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="449:540" params="30,82" />
             <actor name="hitbox84" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="514:540" params="34,79" />
@@ -5746,6 +5764,23 @@
             <actor name="hitbox86" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="274:731" params="133,85" />
             <actor name="hitbox87" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="447:730" params="31,84" />
             <actor name="hitbox88" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="511:735" params="21,73" />
+            <actor name="hitboxxDduSEX4EP29tr5D" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="528:545" params="47,166" />
+            <actor name="hitboxrusj7LuHlv2bEgCd" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="528:702" params="26,53" />
+          </actors>
+        </component>
+        <component address="15">
+          <actors>
+            <actor name="toPostOffice" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="864:480" params="784,1102,castleTownInteriors.xml" />
+          </actors>
+        </component>
+        <component address="16">
+          <actors>
+            <actor name="toCafe" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="562:711" params="1003,131,castleTownInteriors.xml" />
+          </actors>
+        </component>
+        <component address="20">
+          <actors>
+            <actor name="vaulterTest" type="King_of_Thieves.Actors.Collision.CVaulter" coordinates="862:923" params="80,16,60,0,1" />
           </actors>
         </component>
       </components>
@@ -8360,6 +8395,21 @@
             <actor name="hitbox91" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1121:195" params="94,27" />
             <actor name="hitbox92" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1251:193" params="92,26" />
             <actor name="hitbox93" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1105:131" params="44,24" />
+          </actors>
+        </component>
+        <component address="17">
+          <actors>
+            <actor name="toForsithia" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="1024:108" params="1154,1019,castleTownInteriors.xml" />
+          </actors>
+        </component>
+        <component address="18">
+          <actors>
+            <actor name="toCatLady" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="1168:108" params="1344,1019,castleTownInteriors.xml" />
+          </actors>
+        </component>
+        <component address="19">
+          <actors>
+            <actor name="toEugene" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="1329:108" params="1536,1019,castleTownInteriors.xml" />
           </actors>
         </component>
       </components>

@@ -36,6 +36,7 @@ namespace King_of_Thieves.Actors.Player
         private bool _canMoveClone = false;
         private bool _canChargeSword = false;
         private string _currentLiftable = "";
+        private Vector2 _vaultSpeed = Vector2.Zero;
 
         private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
         private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
@@ -187,6 +188,16 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_SPIN_ATTACK_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SPIN_ATTACK_DOWN));
             _imageIndex.Add(Graphics.CTextures.PLAYER_SPIN_ATTACK_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SPIN_ATTACK_LEFT));
             _imageIndex.Add(Graphics.CTextures.PLAYER_SPIN_ATTACK_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SPIN_ATTACK_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_IDLE_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_IDLE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_IDLE_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_IDLE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_IDLE_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_IDLE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_IDLE_LEFT, true));
         }
 
         public override void timer5(object sender)
@@ -197,41 +208,55 @@ namespace King_of_Thieves.Actors.Player
 
         public override void collide(object sender, CActor collider)
         {
-            if (!collider.noCollide && (collider is CSolidTile || collider is Items.decoration.CChest))
+            if (!noCollide && !collider.noCollide)
             {
-                solidCollide(collider);
-            }
-            else
-            {
-                //every enemy should have some knockback.
-                //we'll add an attribute here eventually for enemies that
-                //don't (ex beamos)
-                //As for damage, it will ultimately be up to the
-                //enemy actor to handle
-                if (!INVINCIBLE_STATES.Contains(_state))
+                if ((collider is CSolidTile || collider is Items.decoration.CChest))
                 {
-                    if (collider is NPC.Enemies.CBaseEnemy ||
-                        collider is Projectiles.CEnergyWave||
-                        collider is Projectiles.CFireBall)
+                    solidCollide(collider);
+                }
+                else
+                {
+                    //every enemy should have some knockback.
+                    //we'll add an attribute here eventually for enemies that
+                    //don't (ex beamos)
+                    //As for damage, it will ultimately be up to the
+                    //enemy actor to handle
+                    if (!INVINCIBLE_STATES.Contains(_state))
                     {
-                        if (!(collider is NPC.Enemies.Zombie.CBaseZombie))
-                            _collideWithNpcResponse(collider);
+                        if (collider is NPC.Enemies.CBaseEnemy ||
+                            collider is Projectiles.CEnergyWave ||
+                            collider is Projectiles.CFireBall)
+                        {
+                            if (!(collider is NPC.Enemies.Zombie.CBaseZombie))
+                                _collideWithNpcResponse(collider);
+                        }
+                        else if (collider is Projectiles.CIceBall)
+                            _collideWithNpcResponse(collider, false);
                     }
-                    else if (collider is Projectiles.CIceBall)
-                        _collideWithNpcResponse(collider, false);
-                }
 
-                if (collider is NPC.Other.CTownsFolk)
-                {
-                    solidCollide(collider);
-                }
-                else if (collider is Items.Liftables.CLiftable && (_state != ACTOR_STATES.LIFT && _state != ACTOR_STATES.THROWING && !_carrying))
-                {
-                    solidCollide(collider);
-                    CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
-                    if (input.keysReleased.Contains(input.getKey(CInput.KEY_ACTION)))
+                    if (collider is NPC.Other.CTownsFolk)
                     {
-                        _liftObject((Items.Liftables.CLiftable)collider);
+                        solidCollide(collider);
+                    }
+                    else if (collider is Items.Liftables.CLiftable && (_state != ACTOR_STATES.LIFT && _state != ACTOR_STATES.THROWING && !_carrying))
+                    {
+                        solidCollide(collider);
+                        CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+                        if (input.keysReleased.Contains(input.getKey(CInput.KEY_ACTION)))
+                        {
+                            _liftObject((Items.Liftables.CLiftable)collider);
+                        }
+                    }
+                    else if (collider is Collision.CVaulter)
+                    {
+                        Collision.CVaulter vaulter = (CVaulter)collider;
+                        _state = ACTOR_STATES.VAULT;
+                        noCollide = true;
+                        startTimer6(vaulter.airTime);
+
+                        _vaultSpeed = vaulter.vaultDirection;
+
+                        swapImage(Graphics.CTextures.PLAYER_VAULT_DOWN);
                     }
                 }
             }
@@ -269,10 +294,6 @@ namespace King_of_Thieves.Actors.Player
         public override void destroy(object sender)
         {
             throw new NotImplementedException();
-        }
-
-        public override void draw(object sender)
-        {
         }
 
         public override void animationEnd(object sender)
@@ -412,6 +433,11 @@ namespace King_of_Thieves.Actors.Player
 
                 case ACTOR_STATES.SHIELD_DISENGAGE:
                     _state = ACTOR_STATES.IDLE;
+                    break;
+
+                case ACTOR_STATES.VAULT:
+                    swapImage(Graphics.CTextures.PLAYER_VAULT_IDLE_DOWN);
+                    _state = ACTOR_STATES.VAULT_IDLE;
                     break;
             }
 
@@ -992,6 +1018,14 @@ namespace King_of_Thieves.Actors.Player
                     if (_bombVelo < 120)
                         _bombVelo++;
                     break;
+
+                case ACTOR_STATES.VAULT:
+                    _position += _vaultSpeed;
+                    break;
+
+                case ACTOR_STATES.VAULT_IDLE:
+                    _position += _vaultSpeed;
+                    break;
             }
 
             switch (_direction)
@@ -1070,6 +1104,7 @@ namespace King_of_Thieves.Actors.Player
             _collidables.Add(typeof(Actors.Collision.CSolidTile));
             _collidables.Add(typeof(Actors.Items.Liftables.CLiftable));
             _collidables.Add(typeof(Actors.Items.decoration.CChest));
+            _collidables.Add(typeof(Actors.Collision.CVaulter));
 
             //other NPCs
             _collidables.Add(typeof(Actors.NPC.Other.CTownsFolk));
@@ -1114,7 +1149,13 @@ namespace King_of_Thieves.Actors.Player
         {
             _state = ACTOR_STATES.IDLE;
             _acceptInput = true;
-            
+        }
+
+        public override void timer6(object sender)
+        {
+            _state = ACTOR_STATES.IDLE;
+            noCollide = false;
+            _velocity = Vector2.Zero;
         }
 
         public override void freeze()

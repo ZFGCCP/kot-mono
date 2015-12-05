@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Gears.Cloud;
-using Microsoft.VisualBasic;
 using System.Reflection;
 using Microsoft.Xna.Framework;
 using King_of_Thieves.Actors;
+using King_of_Thieves.Actors.Collision;
 
 namespace King_of_Thieves.Forms.Map_Edit
 {
@@ -311,7 +306,7 @@ namespace King_of_Thieves.Forms.Map_Edit
 
                 hbParams = (int)(position.X - _hitboxTopLeft.X) + ":" + (int)(position.Y - _hitboxTopLeft.Y);
                 string[] hbParamsArr = hbParams.Split(':');
-                mpvMapView.dropActor("King_of_Thieves.Actors.Collision.CSolidTile", "hitbox" + _hitBoxCounter, _hitboxTopLeft, cmbLayers.SelectedIndex, hbParamsArr);
+                mpvMapView.dropActor("King_of_Thieves.Actors.Collision.CSolidTile", "hitbox" + CHitBox.produceRandomName(), _hitboxTopLeft, cmbLayers.SelectedIndex, hbParamsArr);
                 _hitboxTopLeft = new Vector2(-1, -1);
 
             }
