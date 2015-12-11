@@ -5896,6 +5896,26 @@
             <actor name="hitbox230" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="833:815" params="45,15" />
           </actors>
         </component>
+        <component address="13">
+          <actors>
+            <actor name="fromCafe" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="1647:163" params="320,1068,castleTown.xml" />
+          </actors>
+        </component>
+        <component address="14">
+          <actors>
+            <actor name="fromHouse" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="1231:137" params="495,1077,castleTown.xml" />
+          </actors>
+        </component>
+        <component address="15">
+          <actors>
+            <actor name="fromCuriosity" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="623:331" params="864,1071,castleTown.xml" />
+          </actors>
+        </component>
+        <component address="16">
+          <actors>
+            <actor name="fromTailor" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="1073:655" params="1277,905,castleTown.xml" />
+          </actors>
+        </component>
       </components>
     </layer>
     <layer width="0" height="0" name="rootOverlays">

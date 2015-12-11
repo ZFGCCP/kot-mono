@@ -36,11 +36,11 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lstParams = new System.Windows.Forms.ListBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.txtParamValue = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtParamValue = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lstParams = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -126,23 +126,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parameters";
             // 
-            // lstParams
+            // label3
             // 
-            this.lstParams.FormattingEnabled = true;
-            this.lstParams.Location = new System.Drawing.Point(6, 19);
-            this.lstParams.Name = "lstParams";
-            this.lstParams.Size = new System.Drawing.Size(342, 95);
-            this.lstParams.TabIndex = 10;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Parameter Value";
             // 
-            // btnAdd
+            // txtParamValue
             // 
-            this.btnAdd.Location = new System.Drawing.Point(200, 118);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 11;
-            this.btnAdd.Text = "+";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.txtParamValue.Location = new System.Drawing.Point(92, 120);
+            this.txtParamValue.Name = "txtParamValue";
+            this.txtParamValue.Size = new System.Drawing.Size(100, 20);
+            this.txtParamValue.TabIndex = 13;
             // 
             // btnDelete
             // 
@@ -154,21 +152,23 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // txtParamValue
+            // btnAdd
             // 
-            this.txtParamValue.Location = new System.Drawing.Point(92, 120);
-            this.txtParamValue.Name = "txtParamValue";
-            this.txtParamValue.Size = new System.Drawing.Size(100, 20);
-            this.txtParamValue.TabIndex = 13;
+            this.btnAdd.Location = new System.Drawing.Point(200, 118);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 11;
+            this.btnAdd.Text = "+";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // label3
+            // lstParams
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Parameter Value";
+            this.lstParams.FormattingEnabled = true;
+            this.lstParams.Location = new System.Drawing.Point(6, 19);
+            this.lstParams.Name = "lstParams";
+            this.lstParams.Size = new System.Drawing.Size(342, 95);
+            this.lstParams.TabIndex = 10;
             // 
             // FrmNewComponent
             // 
@@ -181,6 +181,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmNewComponent";
             this.Text = "Create New Component";
+            this.Load += new System.EventHandler(this.FrmNewComponent_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

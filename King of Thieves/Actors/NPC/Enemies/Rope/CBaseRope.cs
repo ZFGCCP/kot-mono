@@ -111,6 +111,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             base.collide(sender, collider);
             if (collider is Items.Swords.CSword || collider is Projectiles.CArrow || collider is Projectiles.CBomb)
                 _killMe = true;
+
+            if (collider is Collision.CSolidTile || collider is Collision.CLayerChanger)
+            {
+                solidCollide(collider);
+                _changeDirection(true);
+            }
         }
 
         public override void update(GameTime gameTime)
@@ -161,10 +167,17 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             }
         }
 
-        private void _changeDirection()
+        private void _changeDirection(bool chooseNewDirection = false)
         {
-            DIRECTION oldDirection = _direction;
-            _direction = (DIRECTION)_randNum.Next(0, 4);
+            do
+            {
+                DIRECTION oldDirection = _direction;
+                _direction = (DIRECTION)_randNum.Next(0, 4);
+
+                if (oldDirection == _direction)
+                    chooseNewDirection = false;
+            }
+            while (chooseNewDirection);
 
             switch (_direction)
             {
@@ -212,6 +225,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             _collidables.Add(typeof(Projectiles.CArrow));
             _collidables.Add(typeof(Projectiles.CBomb));
             _collidables.Add(typeof(Projectiles.CBoomerang));
+            _collidables.Add(typeof(Collision.CSolidTile));
+            _collidables.Add(typeof(Collision.CLayerChanger));
         }
     }
 }

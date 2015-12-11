@@ -41,6 +41,9 @@ namespace King_of_Thieves.Actors
         CHARGING_ARROW,
         CHARGING_SWORD,
         CHASE,
+        CLIMB_END,
+        CLIMBING,
+        CLIMBING_IDLE,
         DAWN,
         DAY,
         DECREMENT,
@@ -136,6 +139,7 @@ namespace King_of_Thieves.Actors
         protected int _collisionDirectionY = 0;
         private bool _flagForResourceCleanup = false;
         public bool hidden = false;
+        private Queue<CActor> _actorsToBeRegistered = new Queue<CActor>();
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -1144,6 +1148,24 @@ namespace King_of_Thieves.Actors
             {
                 return _flagForResourceCleanup;
             }
+        }
+
+        protected void _queueActorForRegistration(CActor actor)
+        {
+            _actorsToBeRegistered.Enqueue(actor);
+        }
+
+        public bool registrationsQueued
+        {
+            get
+            {
+                return _actorsToBeRegistered.Count > 0;
+            }
+        }
+
+        public CActor popActorForRegistration()
+        {
+            return _actorsToBeRegistered.Dequeue();
         }
     }
 }

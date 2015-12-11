@@ -10,6 +10,8 @@
       <tiles>
         <tile coordinates="8:23" tileSet="tileset:outdoors:castleTown" selection="31:3" speed="0" />
         <tile coordinates="8:24" tileSet="tileset:outdoors:castleTown" selection="31:3" speed="0" />
+        <tile coordinates="57:64" tileSet="tileset:outdoors:castleTown" selection="8:3" speed="0" />
+        <tile coordinates="57:65" tileSet="tileset:outdoors:castleTown" selection="8:3" speed="0" />
       </tiles>
       <components>
         <component address="-3">
@@ -2333,11 +2335,96 @@
         <tile coordinates="88:37" tileSet="tileset:outdoors:castleTown" selection="6:19" speed="0" />
         <tile coordinates="88:38" tileSet="tileset:outdoors:castleTown" selection="6:20" speed="0" />
         <tile coordinates="88:39" tileSet="tileset:outdoors:castleTown" selection="6:20" speed="0" />
+        <tile coordinates="86:54" tileSet="tileset:outdoors:castleTown" selection="11:11" speed="0" />
+        <tile coordinates="86:55" tileSet="tileset:outdoors:castleTown" selection="11:12" speed="0" />
+        <tile coordinates="85:55" tileSet="tileset:outdoors:castleTown" selection="10:12" speed="0" />
+        <tile coordinates="85:54" tileSet="tileset:outdoors:castleTown" selection="9:11" speed="0" />
+        <tile coordinates="84:54" tileSet="tileset:outdoors:castleTown" selection="9:11" speed="0" />
+        <tile coordinates="84:55" tileSet="tileset:outdoors:castleTown" selection="9:12" speed="0" />
+        <tile coordinates="84:56" tileSet="tileset:outdoors:castleTown" selection="9:13" speed="0" />
+        <tile coordinates="60:62" tileSet="tileset:outdoors:castleTown" selection="24:30" speed="0" />
+        <tile coordinates="59:62" tileSet="tileset:outdoors:castleTown" selection="23:30" speed="0" />
+        <tile coordinates="58:62" tileSet="tileset:outdoors:castleTown" selection="22:30" speed="0" />
+        <tile coordinates="58:66" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:67" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:68" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:69" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:70" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:71" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:72" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:73" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:74" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:75" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:76" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:77" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:78" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:79" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:80" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:81" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:82" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="60:82" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:81" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:80" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:79" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:78" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:77" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:76" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:75" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:74" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:73" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:72" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:71" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:70" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:69" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:68" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:67" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:66" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="59:82" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:81" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:80" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:79" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:78" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:77" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:76" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:75" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:74" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:73" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:72" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:71" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:70" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:69" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:68" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:67" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:66" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="58:83" tileSet="tileset:outdoors:castleTown" selection="22:31" selectionEnd="24:31" speed="1" />
+        <tile coordinates="59:83" tileSet="tileset:outdoors:castleTown" selection="22:31" selectionEnd="24:31" speed="1" />
+        <tile coordinates="60:83" tileSet="tileset:outdoors:castleTown" selection="22:31" selectionEnd="24:31" speed="1" />
+        <tile coordinates="60:65" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:64" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="60:63" tileSet="tileset:outdoors:castleTown" selection="24:32" speed="0" />
+        <tile coordinates="59:63" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:64" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="59:65" tileSet="tileset:outdoors:castleTown" selection="23:32" speed="0" />
+        <tile coordinates="58:65" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:64" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="58:63" tileSet="tileset:outdoors:castleTown" selection="22:32" speed="0" />
+        <tile coordinates="60:61" tileSet="tileset:outdoors:castleTown" selection="4:15" speed="0" />
+        <tile coordinates="59:61" tileSet="tileset:outdoors:castleTown" selection="3:15" speed="0" />
+        <tile coordinates="60:61" tileSet="tileset:outdoors:castleTown" selection="24:29" speed="0" />
+        <tile coordinates="59:61" tileSet="tileset:outdoors:castleTown" selection="23:29" speed="0" />
+        <tile coordinates="58:61" tileSet="tileset:outdoors:castleTown" selection="22:29" speed="0" />
+        <tile coordinates="57:63" tileSet="tileset:outdoors:castleTown" selection="8:3" speed="0" />
+        <tile coordinates="61:71" tileSet="tileset:outdoors:castleTown" selection="26:33" speed="0" />
+        <tile coordinates="60:71" tileSet="tileset:outdoors:castleTown" selection="25:33" speed="0" />
+        <tile coordinates="59:71" tileSet="tileset:outdoors:castleTown" selection="24:33" speed="0" />
+        <tile coordinates="58:71" tileSet="tileset:outdoors:castleTown" selection="23:33" speed="0" />
+        <tile coordinates="57:71" tileSet="tileset:outdoors:castleTown" selection="22:33" speed="0" />
       </tiles>
       <components>
         <component address="-2">
           <actors>
             <actor name="player" type="King_of_Thieves.Actors.Player.CPlayer" coordinates="400:1000" />
+            <actor name="sword" type="King_of_Thieves.Actors.Items.Swords.CSword" coordinates="0:0" />
           </actors>
         </component>
         <component address="3">
@@ -2423,6 +2510,43 @@
         <component address="14">
           <actors>
             <actor name="toPawnShop" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="862:1039" params="626,293,castleTownInteriors.xml" />
+          </actors>
+        </component>
+        <component address="21">
+          <actors>
+            <actor name="climberTest" type="King_of_Thieves.Actors.Collision.CClimber" coordinates="1360:900" params="16,66" />
+            <actor name="climberTestLanding" type="King_of_Thieves.Actors.Collision.CClimberLanding" coordinates="1360:885" params="16,16" />
+            <actor name="climberTestFloor" type="King_of_Thieves.Actors.Collision.CClimberFloor" coordinates="1360:996" params="16,16" />
+          </actors>
+        </component>
+        <component address="22">
+          <actors>
+            <actor name="ropeTest" type="King_of_Thieves.Actors.NPC.Enemies.Rope.CBaseRope" coordinates="497:1207" params="G" />
+          </actors>
+        </component>
+        <component address="23">
+          <actors>
+            <actor name="rope2" type="King_of_Thieves.Actors.NPC.Enemies.Rope.CBaseRope" coordinates="811:1197" params="G" />
+          </actors>
+        </component>
+        <component address="24">
+          <actors>
+            <actor name="rope3" type="King_of_Thieves.Actors.NPC.Enemies.Rope.CBaseRope" coordinates="891:1100" params="G" />
+          </actors>
+        </component>
+        <component address="25">
+          <actors>
+            <actor name="rope4" type="King_of_Thieves.Actors.NPC.Enemies.Rope.CBaseRope" coordinates="763:1052" params="G" />
+          </actors>
+        </component>
+        <component address="26">
+          <actors>
+            <actor name="rope5" type="King_of_Thieves.Actors.NPC.Enemies.Rope.CBaseRope" coordinates="1132:1094" params="G" />
+          </actors>
+        </component>
+        <component address="27">
+          <actors>
+            <actor name="rop6" type="King_of_Thieves.Actors.NPC.Enemies.Rope.CBaseRope" coordinates="1204:938" params="G" />
           </actors>
         </component>
       </components>
@@ -3164,12 +3288,9 @@
         <tile coordinates="86:51" tileSet="tileset:outdoors:castleTown" selection="11:11" speed="0" />
         <tile coordinates="86:52" tileSet="tileset:outdoors:castleTown" selection="11:11" speed="0" />
         <tile coordinates="86:53" tileSet="tileset:outdoors:castleTown" selection="11:11" speed="0" />
-        <tile coordinates="86:54" tileSet="tileset:outdoors:castleTown" selection="11:11" speed="0" />
         <tile coordinates="85:51" tileSet="tileset:outdoors:castleTown" selection="9:11" speed="0" />
         <tile coordinates="85:52" tileSet="tileset:outdoors:castleTown" selection="9:11" speed="0" />
         <tile coordinates="85:53" tileSet="tileset:outdoors:castleTown" selection="9:11" speed="0" />
-        <tile coordinates="85:54" tileSet="tileset:outdoors:castleTown" selection="9:11" speed="0" />
-        <tile coordinates="84:54" tileSet="tileset:outdoors:castleTown" selection="9:11" speed="0" />
         <tile coordinates="83:54" tileSet="tileset:outdoors:castleTown" selection="9:11" speed="0" />
         <tile coordinates="82:54" tileSet="tileset:outdoors:castleTown" selection="9:11" speed="0" />
         <tile coordinates="82:53" tileSet="tileset:outdoors:castleTown" selection="9:11" speed="0" />
@@ -3185,10 +3306,6 @@
         <tile coordinates="81:56" tileSet="tileset:outdoors:castleTown" selection="7:13" speed="0" />
         <tile coordinates="82:56" tileSet="tileset:outdoors:castleTown" selection="8:13" speed="0" />
         <tile coordinates="83:56" tileSet="tileset:outdoors:castleTown" selection="8:13" speed="0" />
-        <tile coordinates="84:56" tileSet="tileset:outdoors:castleTown" selection="8:13" speed="0" />
-        <tile coordinates="86:55" tileSet="tileset:outdoors:castleTown" selection="11:12" speed="0" />
-        <tile coordinates="85:55" tileSet="tileset:outdoors:castleTown" selection="10:12" speed="0" />
-        <tile coordinates="84:55" tileSet="tileset:outdoors:castleTown" selection="10:12" speed="0" />
         <tile coordinates="83:55" tileSet="tileset:outdoors:castleTown" selection="10:12" speed="0" />
         <tile coordinates="82:55" tileSet="tileset:outdoors:castleTown" selection="10:12" speed="0" />
         <tile coordinates="70:61" tileSet="tileset:outdoors:castleTown" selection="27:6" speed="0" />

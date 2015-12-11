@@ -61,6 +61,10 @@
     <Compile Include="Actors\CActorTest.cs" />
     <Compile Include="Actors\CComponent.cs" />
     <Compile Include="Actors\Collision\CCameraLimit.cs" />
+    <Compile Include="Actors\Collision\CClimber.cs" />
+    <Compile Include="Actors\Collision\CClimberFloor.cs" />
+    <Compile Include="Actors\Collision\CClimberLanding.cs" />
+    <Compile Include="Actors\Collision\CCollidable.cs" />
     <Compile Include="Actors\Collision\CLayerChanger.cs" />
     <Compile Include="Actors\Collision\CVaulter.cs" />
     <Compile Include="Actors\HUD\other\CCullBoundary.cs" />
@@ -628,6 +632,24 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\music\houseIntro.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\npc\enemyDie.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\npc\rump.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\grunt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\jump.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\jump_fall.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\land.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

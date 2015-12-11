@@ -181,6 +181,16 @@ namespace King_of_Thieves.Map
                             _actorRegistry.Add(tempActor);
                             actorsForDrawList.Add(tempActor);
 
+                            //add queued actors
+                            while (tempActor.registrationsQueued)
+                            {
+                                CActor registration = tempActor.popActorForRegistration();
+                                tempComp.addActor(registration, registration.name);
+                                registration.layer = layerCount;
+                                _actorRegistry.Add(registration);
+                                actorsForDrawList.Add(registration);
+                            }
+
                         }
                         //register component
                         _componentRegistry.Add(tempComp);

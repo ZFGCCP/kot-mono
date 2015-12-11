@@ -151,6 +151,9 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_VAULT_IDLE_RIGHT = PLAYER + "VaultIdleRight";
         public const string PLAYER_VAULT_IDLE_UP = PLAYER + "VaultIdleUp";
         public const string PLAYER_VAULT_IDLE_DOWN = PLAYER + "VaultIdleDown";
+        public const string PLAYER_CLIMB_IDLE = PLAYER + "ClimbIdle";
+        public const string PLAYER_CLIMB = PLAYER + "Climb";
+        public const string PLAYER_CLIMB_UP = PLAYER + "ClimbUp";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -309,6 +312,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_VAULT_IDLE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "7:9", "7:9", 0));
             textures.Add(PLAYER_VAULT_IDLE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "7:10", "7:10", 0));
             textures.Add(PLAYER_VAULT_IDLE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "7:11", "7:11", 0));
+            textures.Add(PLAYER_CLIMB, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "37:16", "44:16", 20));
+            textures.Add(PLAYER_CLIMB_IDLE, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "44:16", "44:16", 0));
+            textures.Add(PLAYER_CLIMB_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "45:16", "49:16", 15));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));
@@ -452,7 +458,7 @@ namespace King_of_Thieves.Graphics
 
             Texture2D texture = new Texture2D(CGraphics.GPU, 1, 1, false, SurfaceFormat.Color);
             Color[] c = new Color[1];
-            c[0] = Color.FromNonPremultiplied(255, 0, 0, 200);
+            c[0] = Color.FromNonPremultiplied(255, 255, 255, 200);
             texture.SetData<Color>(c);
 
             rawTextures.Add("debug:redBox", texture);

@@ -39,5 +39,14 @@ namespace King_of_Thieves.Actors.Collision
             base._addCollidables();
             _collidables.Add(typeof(Player.CPlayer));
         }
+
+        public override void drawMe(bool useOverlay = false, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch = null)
+        {
+            if (spriteBatch != null)
+                spriteBatch.Draw(Graphics.CTextures.rawTextures["debug:redBox"], new Rectangle((int)(position.X), (int)(position.Y),
+                                            16, 16), null, Color.Gold);
+            else
+                base.drawMe(useOverlay, spriteBatch);
+        }
     }
 }
