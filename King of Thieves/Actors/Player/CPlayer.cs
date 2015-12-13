@@ -898,6 +898,12 @@ namespace King_of_Thieves.Actors.Player
             _velocity.X = 0;
             _velocity.Y = 0;
 
+            //are we dead?
+            if (CMasterControl.healthController.isDead)
+            {
+                _state = ACTOR_STATES.DIEING;
+            }
+
             switch (_state)
             {
                 case ACTOR_STATES.GOT_ITEM:
