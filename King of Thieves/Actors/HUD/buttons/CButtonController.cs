@@ -37,6 +37,11 @@ namespace King_of_Thieves.Actors.HUD.buttons
             _textBoxController.displayMessageBox(message);
         }
 
+        public void createTextBox(params string[] messages)
+        {
+            _textBoxController.displayMessageBox(messages);
+        }
+
         public void update(GameTime gameTime)
         {
             _buttonRight.update(gameTime);
