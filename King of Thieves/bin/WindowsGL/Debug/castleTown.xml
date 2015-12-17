@@ -2549,6 +2549,11 @@
             <actor name="rop6" type="King_of_Thieves.Actors.NPC.Enemies.Rope.CBaseRope" coordinates="1204:938" params="G" />
           </actors>
         </component>
+        <component address="28">
+          <actors>
+            <actor name="rumplestiltskin" type="King_of_Thieves.Actors.NPC.Enemies.Rump.CRump" coordinates="410:980" />
+          </actors>
+        </component>
       </components>
     </layer>
     <layer width="0" height="0" name="slumsOverlays">

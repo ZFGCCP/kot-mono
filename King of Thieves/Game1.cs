@@ -88,7 +88,7 @@ namespace King_of_Thieves
             _fpsTimer.Enabled = true;
             _fpsTimer.Start();
 
-            Master.SetClearColor(Color.CornflowerBlue);
+            Master.SetClearColor(Color.Black);
 
             CTextures.init(Content);
 

@@ -38,6 +38,7 @@ namespace King_of_Thieves.Actors.Player
         private string _currentLiftable = "";
         private Vector2 _vaultSpeed = Vector2.Zero;
         private bool _climbing = false;
+        private int _deadSpinCount = 0;
 
         private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
         private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
@@ -203,6 +204,10 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_CLIMB, new Graphics.CSprite(Graphics.CTextures.PLAYER_CLIMB));
             _imageIndex.Add(Graphics.CTextures.PLAYER_CLIMB_IDLE, new Graphics.CSprite(Graphics.CTextures.PLAYER_CLIMB_IDLE));
             _imageIndex.Add(Graphics.CTextures.PLAYER_CLIMB_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_CLIMB_UP));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DIE_SPIN, new Graphics.CSprite(Graphics.CTextures.PLAYER_DIE_SPIN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DIE_FALL, new Graphics.CSprite(Graphics.CTextures.PLAYER_DIE_FALL));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DEAD, new Graphics.CSprite(Graphics.CTextures.PLAYER_DEAD));
         }
 
         public override void timer5(object sender)
@@ -485,6 +490,23 @@ namespace King_of_Thieves.Actors.Player
                 case ACTOR_STATES.CLIMB_END:
                     _climbing = false;
                     _state = ACTOR_STATES.IDLE;
+                    break;
+
+                case ACTOR_STATES.DIEING:
+                    _deadSpinCount++;
+
+                    if (_deadSpinCount >= 2)
+                    {
+                        swapImage(Graphics.CTextures.PLAYER_DIE_FALL);
+                        CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:fallScream"]);
+                        _state = ACTOR_STATES.DIE_FALL;
+                    }
+                    break;
+
+                case ACTOR_STATES.DIE_FALL:
+                    swapImage(Graphics.CTextures.PLAYER_DEAD);
+                    _state = ACTOR_STATES.DEAD;
+                    CMasterControl.buttonController.beginFade(Vector3.Zero);
                     break;
             }
 
@@ -901,7 +923,13 @@ namespace King_of_Thieves.Actors.Player
             //are we dead?
             if (CMasterControl.healthController.isDead)
             {
-                _state = ACTOR_STATES.DIEING;
+                if (_state != ACTOR_STATES.DIE_FALL && _state != ACTOR_STATES.DEAD && _state != ACTOR_STATES.DIEING)
+                {
+                    _state = ACTOR_STATES.DIEING;
+                     CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:dying"]);
+                    CMasterControl.audioPlayer.stopAllMusic();
+                    swapImage(Graphics.CTextures.PLAYER_DIE_SPIN);
+                }
             }
 
             switch (_state)

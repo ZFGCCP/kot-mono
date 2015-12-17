@@ -67,6 +67,7 @@
     <Compile Include="Actors\Collision\CCollidable.cs" />
     <Compile Include="Actors\Collision\CLayerChanger.cs" />
     <Compile Include="Actors\Collision\CVaulter.cs" />
+    <Compile Include="Actors\HUD\CScreenFader.cs" />
     <Compile Include="Actors\HUD\other\CCullBoundary.cs" />
     <Compile Include="Actors\Items\decoration\CDoor.cs" />
     <Compile Include="Actors\Collision\CHitBox.cs" />
@@ -259,6 +260,8 @@
     <Compile Include="usr\local\EditorMode.cs" />
     <Compile Include="usr\local\GameMenu\CPauseMenu.cs" />
     <Compile Include="usr\local\GameMenu\CPauseMenuElement.cs" />
+    <Compile Include="usr\local\GameMenu\GameOverState.cs" />
+    <Compile Include="usr\local\GameOver.cs" />
     <Compile Include="usr\local\MapEditor.cs" />
     <Compile Include="usr\local\PlayableState.cs" />
     <Compile Include="usr\local\splash\CDedicationPage.cs" />
@@ -651,6 +654,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sounds\link\land.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\Dying.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\fallScream.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

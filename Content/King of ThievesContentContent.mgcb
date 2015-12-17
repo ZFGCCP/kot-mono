@@ -979,3 +979,15 @@
 /processorParam:Quality=Best
 /build:sounds/link/land.wav
 
+#begin sounds/link/Dying.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/link/Dying.wav
+
+#begin sounds/link/fallScream.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/link/fallScream.wav
+

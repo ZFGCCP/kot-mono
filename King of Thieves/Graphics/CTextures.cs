@@ -154,6 +154,9 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_CLIMB_IDLE = PLAYER + "ClimbIdle";
         public const string PLAYER_CLIMB = PLAYER + "Climb";
         public const string PLAYER_CLIMB_UP = PLAYER + "ClimbUp";
+        public const string PLAYER_DIE_SPIN = PLAYER + "DieSpin";
+        public const string PLAYER_DIE_FALL = PLAYER + "DieFall";
+        public const string PLAYER_DEAD = PLAYER + "Dead";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -314,7 +317,10 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_VAULT_IDLE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "7:11", "7:11", 0));
             textures.Add(PLAYER_CLIMB, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "37:16", "44:16", 20));
             textures.Add(PLAYER_CLIMB_IDLE, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "44:16", "44:16", 0));
-            textures.Add(PLAYER_CLIMB_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "45:16", "49:16", 15));
+            textures.Add(PLAYER_CLIMB_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "45:16", "49:16", 18));
+            textures.Add(PLAYER_DIE_SPIN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "15:5", "16:6", 4));
+            textures.Add(PLAYER_DIE_FALL, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:8", "21:8", 15));
+            textures.Add(PLAYER_DEAD, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "21:8", "21:8", 0));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));

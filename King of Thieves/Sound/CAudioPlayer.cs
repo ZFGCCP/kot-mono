@@ -52,6 +52,8 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Player:hop", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/jump")));
             soundBank.Add("Player:land", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/land")));
             soundBank.Add("Player:jumpFall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/jump_fall")));
+            soundBank.Add("Player:fallScream", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/fallScream")));
+            soundBank.Add("Player:dying", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/Dying")));
 
             soundBank.Add("Items:explosionSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/bomb_explode")));
             soundBank.Add("Items:boomerang", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/boomerang")));

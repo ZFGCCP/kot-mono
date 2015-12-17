@@ -117,6 +117,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
                 solidCollide(collider);
                 _changeDirection(true);
             }
+            else if(collider is Player.CPlayer)
+            {
+                 collider.dealDamange(2, collider);
+                _changeDirection(true);
+            }
         }
 
         public override void update(GameTime gameTime)
@@ -227,6 +232,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             _collidables.Add(typeof(Projectiles.CBoomerang));
             _collidables.Add(typeof(Collision.CSolidTile));
             _collidables.Add(typeof(Collision.CLayerChanger));
+            _collidables.Add(typeof(Player.CPlayer));
         }
     }
 }

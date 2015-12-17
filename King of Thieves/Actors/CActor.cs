@@ -48,6 +48,7 @@ namespace King_of_Thieves.Actors
         DAY,
         DEAD,
         DECREMENT,
+        DIE_FALL,
         DIEING,
         DUSK,
         EXPLODE,

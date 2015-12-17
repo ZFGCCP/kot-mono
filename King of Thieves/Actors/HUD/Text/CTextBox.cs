@@ -22,6 +22,7 @@ namespace King_of_Thieves.Actors.HUD.Text
         private static bool _messageFinished = false;
         private bool _wait = false;
         private int _currentMessageIndex = 0;
+        private Vector2 _offset = new Vector2(10, 93);
 
         public static bool messageFinished
         {
@@ -43,8 +44,7 @@ namespace King_of_Thieves.Actors.HUD.Text
                 for(int i = 0; i < messages.Length; i++)
                     _messageQueue[i] = messages[i];
 
-                _fixedPosition.X = 10;
-                _fixedPosition.Y = 93;
+                _fixedPosition = _offset;
                 _processedMessage = _processMessage(true);
             }
         }
@@ -58,8 +58,7 @@ namespace King_of_Thieves.Actors.HUD.Text
                 _active = true;
                 _messageQueue = new string[1];
                 _messageQueue[0] = message;
-                _fixedPosition.X = 40;
-                _fixedPosition.Y = 165;
+                _fixedPosition = _offset;
                 _processedMessage = _processMessage(true);
             }
             
@@ -72,8 +71,7 @@ namespace King_of_Thieves.Actors.HUD.Text
                 _currentMessageIndex = 0;
                 _active = true;
                 _messageQueue[0] = message;
-                _fixedPosition.X = 40;
-                _fixedPosition.Y = 165;
+                _fixedPosition = _offset;
                 _processedMessage = _processMessage(true);
             }
         }
