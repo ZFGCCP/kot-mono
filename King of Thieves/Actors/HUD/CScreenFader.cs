@@ -64,7 +64,7 @@ namespace King_of_Thieves.Actors.HUD
             else
             {
                 _isActive = false;
-                Master.Push(new usr.local.GameOver());
+                Master.Push(new usr.local.GameOver(CMasterControl.gameOverMenu()));
             }
         }
 

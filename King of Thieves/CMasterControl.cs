@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Gears.Navigation;
 using King_of_Thieves.usr.local.GameMenu;
+using Gears.Cloud;
 
 namespace King_of_Thieves
 {
@@ -175,5 +174,47 @@ namespace King_of_Thieves
             return menu;
         }
         
+        public static Menu gameOverMenu()
+        {
+            Menu menu = new Menu();
+
+            MenuElement titleMenuElement = new MenuElement();
+            titleMenuElement.MenuText = "Game Over";
+            titleMenuElement.Selectable = false;
+            titleMenuElement.Hidden = false;
+            titleMenuElement.ActiveArea = new Rectangle(90, 40, 30, 30);
+            titleMenuElement.ForegroundColor = new Color(225, 225, 225);
+            titleMenuElement.ActiveForegroundColor = new Color(100, 100, 100);
+            titleMenuElement.SpriteFont = @"Fonts\sherwood";
+            menu.AddMenuElement(titleMenuElement);
+
+            MenuElement saveAndCont = new MenuElement();
+            saveAndCont.MenuText = "Continue";
+            saveAndCont.Selectable = true;
+            saveAndCont.Hidden = false;
+            saveAndCont.ActiveArea = new Rectangle(90, 70, 600, 100);
+            saveAndCont.ForegroundColor = new Color(225, 225, 225);
+            saveAndCont.ActiveForegroundColor = new Color(255, 200, 200);
+            saveAndCont.SpriteFont = @"Fonts\sherwood";
+            menu.AddMenuElement(saveAndCont);
+
+            MenuElement saveAndQuit = new MenuElement();
+            saveAndQuit.MenuText = "Quit";
+            saveAndQuit.Selectable = true;
+            saveAndQuit.Hidden = false;
+            saveAndQuit.ActiveArea = new Rectangle(90, 90, 600, 100);
+            saveAndQuit.ForegroundColor = new Color(225, 225, 225);
+            saveAndQuit.ActiveForegroundColor = new Color(255, 200, 200);
+            saveAndQuit.SpriteFont = @"Fonts\sherwood";
+            saveAndQuit.SetThrowPushEvent(new Action(() =>
+            {
+                Master.Push(new usr.local.splash.CTitleState());   
+            }));
+            menu.AddMenuElement(saveAndQuit);
+
+
+            menu.Recache();
+            return menu;
+        }
     }
 }

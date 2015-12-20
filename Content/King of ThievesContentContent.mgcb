@@ -991,3 +991,9 @@
 /processorParam:Quality=Best
 /build:sounds/link/fallScream.wav
 
+#begin music/gameOver.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/gameOver.ogg
+

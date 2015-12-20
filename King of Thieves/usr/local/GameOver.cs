@@ -8,16 +8,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace King_of_Thieves.usr.local
 {
-    class GameOver : MenuReadyGameState
+    class GameOver : MenuState
     {
-        public override void Draw(SpriteBatch spriteBatch)
+        public GameOver(Menu menu) :
+            base(menu)
         {
-
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-
+            CMasterControl.camera.jump(Vector3.Zero);
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:gameOver"]);
         }
     }
 }
