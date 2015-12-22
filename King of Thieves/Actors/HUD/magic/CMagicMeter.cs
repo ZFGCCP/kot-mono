@@ -21,9 +21,9 @@ namespace King_of_Thieves.Actors.HUD.magic
         {
             _imageIndex.Add(Graphics.CTextures.HUD_MAGIC_METER, new CSprite(Graphics.CTextures.HUD_MAGIC_METER));
             swapImage(Graphics.CTextures.HUD_MAGIC_METER);
-            _capacity = 100;
-            _amount = 100;
-            _meter = new CRect(100, 2, 0, 0, new Microsoft.Xna.Framework.Color(72, 248, 24));
+            _capacity = 76;
+            _amount = 76;
+            _meter = new CRect(78, 2, 0, 0, new Microsoft.Xna.Framework.Color(72, 248, 24));
             _fixedPosition.X = 14;
             _fixedPosition.Y = 30;
         }

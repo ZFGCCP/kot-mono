@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 {
-    class CRump : CActor
+    class CRump : CBaseEnemy
     {
 
 
@@ -35,6 +35,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         private const string _RUMP_GESTURE = _SPRITE_NAMESPACE + ":gesture";
         private const string _RUMP_GESTURE_IDLE = _SPRITE_NAMESPACE + ":gestureIdle";
 
+        private bool _battleMode = false;
+
         public CRump() :
             base()
         {
@@ -47,6 +49,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
             _imageIndex.Add(_RUMP_IDLE_DOWN, new Graphics.CSprite(_RUMP_IDLE_DOWN));
             _imageIndex.Add(_RUMP_GESTURE_IDLE, new Graphics.CSprite(_RUMP_GESTURE_IDLE));
             _imageIndex.Add(_RUMP_GESTURE, new Graphics.CSprite(_RUMP_GESTURE));
+
+            _hitBox = new Collision.CHitBox(this, 10, 18, 12, 15);
         }
 
         public override void roomStart(object sender)
@@ -56,6 +60,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 CMasterControl.buttonController.createTextBox(_dialog, _dialogContinued, _dialogContinued2);
                 _state = ACTOR_STATES.TALK_READY;
                 swapImage(_RUMP_IDLE_DOWN,false);
+            }
+            else if(_battleMode)
+            {
+                _vanish();
             }
         }
 
@@ -75,14 +83,76 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 if (_openingDialog)
                 {
                     _openingDialog = false;
-                    swapImage(_RUMP_GESTURE);
+                    _taunt();
                 }
                 else
-                {
-                    Graphics.CEffects.createEffect(Graphics.CEffects.SMOKE_POOF, new Vector2(_position.X - 10,_position.Y));
                     _killMe = true;
-                }
             }
+        }
+
+        private void _taunt()
+        {
+            swapImage(_RUMP_GESTURE);
+        }
+
+        private void _chargeFireBall()
+        {
+
+        }
+
+        private void _shootFireBall()
+        {
+
+        }
+
+        private void _appear()
+        {
+
+            _state = ACTOR_STATES.IDLE;
+            Vector2 playerPos = (Vector2)Map.CMapManager.propertyGetter("player", Map.EActorProperties.POSITION);
+            lookAt(playerPos);
+
+            /*switch (_direction)
+            {
+                case DIRECTION.DOWN:
+                    swapImage(_IDLE_DOWN);
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(_IDLE_UP);
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(_IDLE_LEFT);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(_IDLE_RIGHT);
+                    break;
+            }*/
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:wizzrobe:vanish"]);
+            Graphics.CEffects.createEffect(Graphics.CEffects.SMOKE_POOF, new Vector2(_position.X - 13, _position.Y - 5));
+        }
+
+        private void _vanish(bool showEffect = true)
+        {
+            if (showEffect)
+            {
+                Graphics.CEffects.createEffect(Graphics.CEffects.SMOKE_POOF, new Vector2(_position.X - 13, _position.Y - 5));
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:wizzrobe:vanish"]);
+            }
+
+            _state = ACTOR_STATES.INVISIBLE;
+
+            Random rand = new Random();
+            startTimer1(180);
+            rand = null;
+
+        }
+
+        public override void timer1(object sender)
+        {
+            _appear();
         }
 
         public override void animationEnd(object sender)
@@ -94,6 +164,25 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                     CMasterControl.buttonController.createTextBox(_dialogContinued3);
                     break;
             }
+        }
+
+        public override void collide(object sender, CActor collider)
+        {
+            if (collider is Player.CPlayer)
+            {
+                collider.dealDamange(2, collider);
+            }
+            if (collider is Items.Swords.CSword)
+            {
+                collider.shock();
+            }
+        }
+
+        protected override void _addCollidables()
+        {
+            _collidables.Add(typeof(Player.CPlayer));
+            _collidables.Add(typeof(Projectiles.CArrow));
+            _collidables.Add(typeof(Items.Swords.CSword));
         }
 
 

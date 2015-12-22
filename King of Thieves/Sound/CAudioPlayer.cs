@@ -86,7 +86,7 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Background:itemFanfare", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfare")));
             soundBank.Add("Background:itemFanfareSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfareSmall")));
             soundBank.Add("bgm:title", new CSound(CMasterControl.glblContent.Load<Song>("music/title"),false,0));
-            soundBank.Add("bgm:gameOver", new CSound(CMasterControl.glblContent.Load<Song>("music/gameOver"), false, 0));
+            soundBank.Add("bgm:gameOver", new CSound(CMasterControl.glblContent.Load<Song>("music/gameOver"), true, -1));
         }
 
         public void stop()

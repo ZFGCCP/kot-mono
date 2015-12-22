@@ -116,6 +116,7 @@
     <Compile Include="Actors\NPC\Enemies\Bokoblin\CBokoblin.cs" />
     <Compile Include="Actors\NPC\Enemies\LikeLike\CLikeLike.cs" />
     <Compile Include="Actors\NPC\Enemies\Rump\CRump.cs" />
+    <Compile Include="Actors\NPC\Other\CIngo.cs" />
     <Compile Include="Actors\NPC\Other\CTownsFolk.cs" />
     <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CArmoredCrab.cs" />
     <Compile Include="Actors\NPC\Enemies\CBaseEnemy.cs" />

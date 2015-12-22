@@ -14,7 +14,7 @@ namespace King_of_Thieves.usr.local
             base(menu)
         {
             CMasterControl.camera.jump(Vector3.Zero);
-            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:gameOver"]);
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:gameOver"],-1);
         }
     }
 }
