@@ -2509,7 +2509,7 @@
         </component>
         <component address="14">
           <actors>
-            <actor name="toPawnShop" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="862:1039" params="626,293,castleTownInteriors.xml" />
+            <actor name="toPawnShop" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="862:1030" params="626,293,castleTownInteriors.xml" />
           </actors>
         </component>
         <component address="21">
@@ -2552,6 +2552,16 @@
         <component address="28">
           <actors>
             <actor name="rumplestiltskin" type="King_of_Thieves.Actors.NPC.Enemies.Rump.CRump" coordinates="410:980" />
+          </actors>
+        </component>
+        <component address="29">
+          <actors>
+            <actor name="demoDoor" type="King_of_Thieves.Actors.Items.decoration.CDemoDoor" coordinates="860:1039" params="1" />
+          </actors>
+        </component>
+        <component address="30">
+          <actors>
+            <actor name="ingo" type="King_of_Thieves.Actors.NPC.Other.CIngo" coordinates="860:1024" params="false" />
           </actors>
         </component>
       </components>

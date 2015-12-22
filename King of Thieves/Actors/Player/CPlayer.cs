@@ -220,7 +220,7 @@ namespace King_of_Thieves.Actors.Player
         {
             if ((!noCollide && !collider.noCollide))
             {
-                if ((collider is CSolidTile || collider is Items.decoration.CChest) && !_climbing)
+                if ((collider is CSolidTile || collider is Items.decoration.CChest || collider is Items.decoration.CDoor) && !_climbing)
                 {
                     solidCollide(collider);
                 }
@@ -1207,6 +1207,7 @@ namespace King_of_Thieves.Actors.Player
             _collidables.Add(typeof(Actors.Items.decoration.CChest));
             _collidables.Add(typeof(Actors.Collision.CVaulter));
             _collidables.Add(typeof(Actors.Collision.CCollidable));
+            _collidables.Add(typeof(Actors.Items.decoration.CDoor));
 
             //other NPCs
             _collidables.Add(typeof(Actors.NPC.Other.CTownsFolk));

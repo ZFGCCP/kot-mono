@@ -234,5 +234,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             _collidables.Add(typeof(Collision.CLayerChanger));
             _collidables.Add(typeof(Player.CPlayer));
         }
+
+        public static int ropeCount
+        {
+            get
+            {
+                return _ropeCount;
+            }
+        }
     }
 }

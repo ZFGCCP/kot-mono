@@ -25,6 +25,7 @@ namespace King_of_Thieves.Graphics
         public const string DROPS = "Drops:";
         public const string HUD = "HUD:";
         public const string ITEMS = "items:";
+        public const string DOORS = ITEMS + "doors:";
         public const string SHIELDS = ITEMS + "shields:";
         public const string SWORDS = ITEMS + "swords:";
 
@@ -203,6 +204,7 @@ namespace King_of_Thieves.Graphics
         public const string GERUDO_SWORD_LEFT = SWORDS + "gerudoSwordLeft";
         public const string GERUDO_SWORD_RIGHT = SWORDS + "gerudoSwordRight";
 
+        public const string GREEN_DOOR = DOORS + "greenDoor";
        
         //source images
         public const string SOURCE_PLAYER = "Player";
@@ -211,6 +213,7 @@ namespace King_of_Thieves.Graphics
         public const string SOURCE_MENU = "menu";
         public const string SOURCE_MAGIC_METER = "magicMeter";
         public const string SOURCE_HUD_BUTTONS = "hudButtons";
+        public const string SOURCE_DOORS = "doors";
         
 
         public static void init(ContentManager content)
@@ -352,6 +355,7 @@ namespace King_of_Thieves.Graphics
             //items and shit
             textures.Add("items:decor:potSmall", new CTextureAtlas("potSmall", 48, 48, 1, "0:0", "0:0"));
             textures.Add("items:decor:potSmallBreak", new CTextureAtlas("potSmall", 48, 48, 1, "1:0", "8:0",10));
+            textures.Add(GREEN_DOOR, new CTextureAtlas(SOURCE_DOORS, 24, 15, 0, "0:0", "0:0",0));
 
             //effects
             textures.Add("effects:explosion", new CTextureAtlas("effects:explosion", 64, 64, 0, "0:0", "10:0", 10));
@@ -436,6 +440,7 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("maple", _content.Load<Texture2D>("maple"));
 
             rawTextures.Add(SOURCE_SHIELDS, _content.Load<Texture2D>("sprites/items/shields"));
+            rawTextures.Add(SOURCE_DOORS, _content.Load<Texture2D>("tilesets/indoors/jim_morrison"));
 
             //drops
             rawTextures.Add("drops:drops01", _content.Load<Texture2D>("sprites/drops/drops01"));
