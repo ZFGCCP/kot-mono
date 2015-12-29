@@ -27,6 +27,7 @@ namespace King_of_Thieves.Map
         public int hitBoxCounter = 0;
         private string _bgmRef = null;
         private string _bgmLoc = null;
+        public bool[] flags = new bool[10];
 
         public CMap(Dictionary<string, Graphics.CSprite> atlasCache = null)
         {
@@ -417,7 +418,6 @@ namespace King_of_Thieves.Map
             for (int i = 0; i < _componentRegistry.Count(); i++)
                 _componentRegistry[i].doCollision();
             CMasterControl.mapManager.checkAndSwapMap();
-            CMapManager.turnOffRoomStart();
         }
 
         public CComponent queryComponentRegistry(int id)

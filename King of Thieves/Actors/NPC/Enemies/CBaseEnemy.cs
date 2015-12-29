@@ -31,7 +31,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies
         ICE
     }
 
-    public abstract class CBaseEnemy : CActor
+    public abstract class CBaseEnemy : Other.CBaseNpc
     {
         protected Dictionary<Items.Drops.CDroppable, float> _itemDrop = new Dictionary<Items.Drops.CDroppable,float>();
         protected bool _huntPlayer = false;

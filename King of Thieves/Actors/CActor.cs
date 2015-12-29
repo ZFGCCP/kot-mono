@@ -55,6 +55,7 @@ namespace King_of_Thieves.Actors
         FLYING,
         FOLLOW_PLAYER,
         FROZEN,
+        FURIOUS,
         GO_HOME,
         GOT_ITEM,
         HIDDEN,
@@ -78,6 +79,7 @@ namespace King_of_Thieves.Actors
         POPUP,
         PULLSWORD,
         ROLLING,
+        SEARCHING,
         SHIELD_ENGAGE,
         SHIELD_DISENGAGE,
         SHIELDING,
@@ -97,6 +99,16 @@ namespace King_of_Thieves.Actors
         THROWING,
         TOSSING,
         UNLOCKED,
+        USER_STATE0,
+        USER_STATE1,
+        USER_STATE2,
+        USER_STATE3,
+        USER_STATE4,
+        USER_STATE5,
+        USER_STATE6,
+        USER_STATE7,
+        USER_STATE8,
+        USER_STATE9,
         VAULT,
         VAULT_IDLE,
         WOBBLE,
@@ -271,13 +283,6 @@ namespace King_of_Thieves.Actors
 
             _position = position;
 
-            try
-            {
-                onCreate(this);
-            }
-            catch (NotImplementedException)
-            { }
-
             _registerUserEvents();
             _registerSystemEvents();
             _initializeResources();
@@ -433,37 +438,37 @@ namespace King_of_Thieves.Actors
 
         public void stopTimer0()
         {
-            _timer0 = 0;
+            _timer0 = -1;
         }
 
         public void stopTimer1()
         {
-            _timer1 = 0;
+            _timer1 = -1;
         }
 
         public void stopTimer2()
         {
-            _timer2 = 0;
+            _timer2 = -1;
         }
 
         public void stopTimer3()
         {
-            _timer3 = 0;
+            _timer3 = -1;
         }
 
         public void stopTimer4()
         {
-            _timer4 = 0;
+            _timer4 = -1;
         }
 
         public void stopTimer5()
         {
-            _timer5 = 0;
+            _timer5 = -1;
         }
 
         public void stopTimer6()
         {
-            _timer6 = 0;
+            _timer6 = -1;
         }
 
         //overload this and call the base to process your own parameters
@@ -476,6 +481,13 @@ namespace King_of_Thieves.Actors
 
             if (additional != null)
                 mapParams = additional.ToList();
+
+            try
+            {
+                onCreate(this);
+            }
+            catch (NotImplementedException)
+            { }
         }
 
         public Vector2 velocity

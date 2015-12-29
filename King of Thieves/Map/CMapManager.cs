@@ -22,8 +22,20 @@ namespace King_of_Thieves.Map
 
         public void checkAndSwapMap()
         {
+            CMapManager.turnOffRoomStart();
+
             if (_mapSwapIssued)
                 _swapMap();
+        }
+
+        public void flipFlag(int flag)
+        {
+            _currentMap.flags[flag] = !_currentMap.flags[flag];
+        }
+
+        public bool checkFlag(int flag)
+        {
+            return _currentMap.flags[flag];
         }
 
         public static void swapDrawDepth(int newDepth, Actors.CActor sprite)
@@ -223,6 +235,14 @@ namespace King_of_Thieves.Map
             _currentMap.addActorToComponent(actor, componentAddress);
         }
 
+        public static int getActorComponentAddress(string actorName)
+        {
+            Actors.CActor[] actors = _currentMap.queryActorRegistry(actorName);
 
+            if (actors.Length > 0)
+                return actors[0].component.address;
+            else
+                throw new KotException.KotInvalidActorException("No actor found with the name " + actorName);
+        }
     }
 }

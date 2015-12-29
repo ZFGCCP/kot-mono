@@ -20,10 +20,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         private string _dialogContinued3 = "It's simple, dearie!  Just find the curiosity shop and it's yours! And of course by yours, I mean mine! Hyeheheheh!";
 
         //curiosity shop dialog
-        private string _shopDialog = "Excellent work, dearie! This shop keeper has been a thorn in my side for far too long! Now..";
-        private string _shopDialog2 = "...Kill him!";
-        private string _shopDialog3 = "...?! Letting him get away..Oh fine! It wasn't part of our agreement anyway! Now, give the fairy dust to me!";
-        private string _shopDialog4 = "No! NO! We had a DEAL! You WILL pay the price!";
+        private string[] _shopDialog = { "Excellent work, dearie! This shop keeper has been a thorn in my side for far too long! Now..", "...Kill him!","...?! Letting him get away..Oh fine! It wasn't part of our agreement anyway! Now, give the fairy dust to me!" };
+        private string[] _shopDialog2 = { "No! NO! We had a DEAL! You WILL pay the price!" };
 
         //end combat dialog
         private string _endDialog = "Enough! I should have just done this in the first place!";
@@ -36,6 +34,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         private const string _RUMP_GESTURE_IDLE = _SPRITE_NAMESPACE + ":gestureIdle";
 
         private bool _battleMode = false;
+        private bool _shopMode = false;
 
         public CRump() :
             base()
@@ -71,10 +70,30 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
             }
         }
 
+        public override void create(object sender)
+        {
+            if (_shopMode)
+            {
+                _state = ACTOR_STATES.IDLE;
+                startTimer3(70);
+                swapImage(_RUMP_IDLE_DOWN);
+                Graphics.CEffects.createEffect(Graphics.CEffects.SMOKE_POOF, _position);
+            }
+        }
+
         public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
         {
+            if (additional != null && additional.Length > 0)
+            {
+                if (additional[0] == "true")
+                    _shopMode = true;
+                else if (additional[0] == "false")
+                    _battleMode = true;
+            }
+            else
+                _openingDialog = true;
+
             base.init(name, position, dataType, compAddress, additional);
-            _openingDialog = true;
 
         }
 
@@ -82,16 +101,38 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         {
             base.update(gameTime);
 
-            if (_state == ACTOR_STATES.TALK_READY && Actors.HUD.Text.CTextBox.messageFinished)
+            if (_battleMode)
             {
-                if (_openingDialog)
-                {
-                    _openingDialog = false;
-                    _taunt();
-                }
-                else
-                    _killMe = true;
+
             }
+            else
+            {
+                if (_state == ACTOR_STATES.TALK_READY && Actors.HUD.Text.CTextBox.messageFinished)
+                {
+                    if (_openingDialog)
+                    {
+                        _openingDialog = false;
+                        _taunt();
+                    }
+                    else
+                        _killMe = true;
+                }
+                else if (_state == ACTOR_STATES.IDLE_STARE && Actors.HUD.Text.CTextBox.messageFinished)
+                {
+                    startTimer0(60);
+                }
+                else if (_state == ACTOR_STATES.ALERT && Actors.HUD.Text.CTextBox.messageFinished)
+                {
+                    startTimer2(60);
+                }
+            }
+        }
+
+        public override void timer3(object sender)
+        {
+            int ingoAddress = Map.CMapManager.getActorComponentAddress("ingo");
+
+            CMasterControl.commNet[ingoAddress].Add(new CActorPacket(0, "ingo", this));
         }
 
         private void _taunt()
@@ -107,6 +148,48 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         private void _shootFireBall()
         {
 
+        }
+
+        private void _shopDialogBegin(object sender)
+        {
+            startTimer4(30);
+            _state = ACTOR_STATES.USER_STATE0;
+        }
+
+        protected override void dialogBegin(object sender)
+        {
+            if (_state == ACTOR_STATES.USER_STATE0)
+                _currentDialog = _shopDialog;
+            else if (_state == ACTOR_STATES.USER_STATE1)
+                _currentDialog = _shopDialog2;
+
+            base.dialogBegin(sender);
+        }
+
+        protected override void dialogEnd(object sender)
+        {
+            if (_state == ACTOR_STATES.USER_STATE0)
+            {
+                _state = ACTOR_STATES.USER_STATE1;
+                startTimer4(60);
+            }
+            else if(_state == ACTOR_STATES.USER_STATE1)
+            {
+                CMasterControl.mapManager.cacheMaps(false, "rumpleBattle.xml");
+                CMasterControl.mapManager.swapMap("rumpleBattle.xml", "player", new Vector2(129, 161));
+            }
+            base.dialogEnd(sender);
+        }
+
+
+        public override void timer4(object sender)
+        {
+            _triggerTextEvent();
+        }
+        protected override void _registerUserEvents()
+        {
+            base._registerUserEvents();
+            _userEvents.Add(0, _shopDialogBegin);
         }
 
         private void _appear()

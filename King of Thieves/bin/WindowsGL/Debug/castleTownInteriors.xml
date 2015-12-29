@@ -5916,6 +5916,16 @@
             <actor name="fromTailor" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="1073:655" params="1277,905,castleTown.xml" />
           </actors>
         </component>
+        <component address="17">
+          <actors>
+            <actor name="ingo" type="King_of_Thieves.Actors.NPC.Other.CIngo" coordinates="620:130" params="true" />
+          </actors>
+        </component>
+        <component address="18">
+          <actors>
+            <actor name="fairyDust" type="King_of_Thieves.Actors.NPC.Other.CGoldFairyDust" coordinates="629:210" />
+          </actors>
+        </component>
       </components>
     </layer>
     <layer width="0" height="0" name="rootOverlays">
