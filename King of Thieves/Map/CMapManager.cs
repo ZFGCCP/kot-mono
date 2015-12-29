@@ -20,12 +20,19 @@ namespace King_of_Thieves.Map
         private static string _mapName, _actorToFollow;
         private static Vector2 _followerCoords = new Vector2();
 
+        private static Graphics.CTransitionEffect _transition = null;
+
+        public const int TRANSITION_RUMPLE_SWIRL = 0;
+
         public void checkAndSwapMap()
         {
             CMapManager.turnOffRoomStart();
 
             if (_mapSwapIssued)
-                _swapMap();
+            {
+                if (_transition == null)
+                    _swapMap(); 
+            }
         }
 
         public void flipFlag(int flag)
@@ -107,6 +114,22 @@ namespace King_of_Thieves.Map
         {
             if (_currentMap != null)
                 _currentMap.draw();
+
+            //draw the transition if it's there
+            if (_transition != null)
+            {
+                _transition.draw((int)CMasterControl.camera._normalizedPosition.X, (int)CMasterControl.camera._normalizedPosition.Y);
+
+                if (_transition.fadeOutComplete)
+                {
+                    _transition = null;
+                    return;
+                }
+
+                if (_transition.fadeInComplete)
+                    _swapMap();
+            }
+
         }
 
         public void updateMap(GameTime gameTime)
@@ -127,12 +150,24 @@ namespace King_of_Thieves.Map
             }
         }
 
-        public void swapMap(string mapName, string actorToFollow, Vector2 followerCoords)
+        private void _prepareTransition(int transitionEffect)
+        {
+            if (transitionEffect > -1)
+                switch(transitionEffect)
+                {
+                    case TRANSITION_RUMPLE_SWIRL:
+                        _transition = new Graphics.CTransitionEffect(Graphics.CTextures.TRANSITION_RUMPLE, 30, 30);
+                        break;
+                }
+        }
+
+        public void swapMap(string mapName, string actorToFollow, Vector2 followerCoords, int transitionEffect = -1)
         {
             _mapSwapIssued = true;
             _mapName = mapName;
             _actorToFollow = actorToFollow;
             _followerCoords = followerCoords;
+            _prepareTransition(transitionEffect);
 
             if (_currentMap == null)
                 _swapMap();
@@ -143,7 +178,6 @@ namespace King_of_Thieves.Map
             _currentMap = mapPool[_mapName];
             CMasterControl.commNet.Clear();
             _currentMap.registerWithCommNet();
-
 
 
             Actors.CActor actor = setActorToFollow(_actorToFollow);

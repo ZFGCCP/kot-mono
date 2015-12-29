@@ -176,7 +176,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
             else if(_state == ACTOR_STATES.USER_STATE1)
             {
                 CMasterControl.mapManager.cacheMaps(false, "rumpleBattle.xml");
-                CMasterControl.mapManager.swapMap("rumpleBattle.xml", "player", new Vector2(129, 161));
+                CMasterControl.mapManager.swapMap("rumpleBattle.xml", "player", new Vector2(129, 161),Map.CMapManager.TRANSITION_RUMPLE_SWIRL);
             }
             base.dialogEnd(sender);
         }

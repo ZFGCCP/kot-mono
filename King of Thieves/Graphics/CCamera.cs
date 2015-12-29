@@ -124,5 +124,13 @@ namespace King_of_Thieves.Graphics
                 _limit = value;
             }
         }
+
+        public Vector2 topLeftCorner
+        {
+            get
+            {
+                return _normalizedPosition;
+            }
+        }
     }
 }

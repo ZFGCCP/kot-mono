@@ -28,6 +28,7 @@ namespace King_of_Thieves.Graphics
         public const string DOORS = ITEMS + "doors:";
         public const string SHIELDS = ITEMS + "shields:";
         public const string SWORDS = ITEMS + "swords:";
+        public const string TRANSITIONS = "transition:";
 
         //actual constants
         public const string EFFECT_ENERGY_BALL_SMALL = EFFECTS + "energyBallSmall";
@@ -205,6 +206,8 @@ namespace King_of_Thieves.Graphics
         public const string GERUDO_SWORD_RIGHT = SWORDS + "gerudoSwordRight";
 
         public const string GREEN_DOOR = DOORS + "greenDoor";
+
+        public const string TRANSITION_RUMPLE = TRANSITIONS + "rumple";
        
         //source images
         public const string SOURCE_PLAYER = "Player";
@@ -406,6 +409,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_BLUE_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:3", "3:3", 0));
             textures.Add(HUD_SHADOW_MEDALLION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "4:0", "4:0", 0));
 
+            //transitions
+            textures.Add(TRANSITION_RUMPLE, new CTextureAtlas(TRANSITION_RUMPLE, 240, 160, 0, "0:0", "3:2", 15));
+
             //drops
             textures.Add(DROPS_HEART, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:0", "0:0"));
             textures.Add(DROPS_RUPEE_GREEN, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:1", "0:1"));
@@ -460,7 +466,9 @@ namespace King_of_Thieves.Graphics
             //effects
             rawTextures.Add("effects:explosion", _content.Load<Texture2D>(@"effects/bomb-explosion"));
             rawTextures.Add("effects:various", _content.Load<Texture2D>(@"effects/various-effects"));
-            
+
+            //transitions
+            rawTextures.Add(TRANSITION_RUMPLE, _content.Load<Texture2D>(@"sprites/transitions/rumpleTransition"));
 
             //hud
             rawTextures.Add("hud", _content.Load<Texture2D>("hud/textbox2"));
