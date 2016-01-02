@@ -50,8 +50,8 @@ namespace King_of_Thieves.usr.local.splash
             }
             else if (CMasterControl.glblInput.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.Enter))
             {
-                Master.Push(new PlayableState());
                 CMasterControl.audioPlayer.stopAllMusic();
+                Master.Push(new PlayableState());
             }
         }
     }

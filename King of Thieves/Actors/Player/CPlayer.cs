@@ -36,6 +36,9 @@ namespace King_of_Thieves.Actors.Player
         private bool _canMoveClone = false;
         private bool _canChargeSword = false;
         private string _currentLiftable = "";
+        private Vector2 _vaultSpeed = Vector2.Zero;
+        private bool _climbing = false;
+        private int _deadSpinCount = 0;
 
         private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
         private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
@@ -187,6 +190,24 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_SPIN_ATTACK_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SPIN_ATTACK_DOWN));
             _imageIndex.Add(Graphics.CTextures.PLAYER_SPIN_ATTACK_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SPIN_ATTACK_LEFT));
             _imageIndex.Add(Graphics.CTextures.PLAYER_SPIN_ATTACK_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SPIN_ATTACK_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_IDLE_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_IDLE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_IDLE_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_IDLE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_IDLE_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_VAULT_IDLE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_VAULT_IDLE_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CLIMB, new Graphics.CSprite(Graphics.CTextures.PLAYER_CLIMB));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CLIMB_IDLE, new Graphics.CSprite(Graphics.CTextures.PLAYER_CLIMB_IDLE));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_CLIMB_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_CLIMB_UP));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DIE_SPIN, new Graphics.CSprite(Graphics.CTextures.PLAYER_DIE_SPIN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DIE_FALL, new Graphics.CSprite(Graphics.CTextures.PLAYER_DIE_FALL));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DEAD, new Graphics.CSprite(Graphics.CTextures.PLAYER_DEAD));
         }
 
         public override void timer5(object sender)
@@ -197,42 +218,92 @@ namespace King_of_Thieves.Actors.Player
 
         public override void collide(object sender, CActor collider)
         {
-            if (!collider.noCollide && (collider is CSolidTile || collider is Items.decoration.CChest))
+            if ((!noCollide && !collider.noCollide))
             {
-                solidCollide(collider);
-            }
-            else
-            {
-                //every enemy should have some knockback.
-                //we'll add an attribute here eventually for enemies that
-                //don't (ex beamos)
-                //As for damage, it will ultimately be up to the
-                //enemy actor to handle
-                if (!INVINCIBLE_STATES.Contains(_state))
+                if ((collider is CSolidTile || collider is Items.decoration.CChest || collider is Items.decoration.CDoor) && !_climbing)
                 {
-                    if (collider is NPC.Enemies.CBaseEnemy ||
-                        collider is Projectiles.CEnergyWave||
-                        collider is Projectiles.CFireBall)
-                    {
-                        if (!(collider is NPC.Enemies.Zombie.CBaseZombie))
-                            _collideWithNpcResponse(collider);
-                    }
-                    else if (collider is Projectiles.CIceBall)
-                        _collideWithNpcResponse(collider, false);
+                    solidCollide(collider);
                 }
+                else
+                {
+                    //every enemy should have some knockback.
+                    //we'll add an attribute here eventually for enemies that
+                    //don't (ex beamos)
+                    //As for damage, it will ultimately be up to the
+                    //enemy actor to handle
+                    if (!INVINCIBLE_STATES.Contains(_state))
+                    {
+                        if (collider is NPC.Enemies.CBaseEnemy ||
+                            collider is Projectiles.CEnergyWave ||
+                            collider is Projectiles.CFireBall)
+                        {
+                            //if (!(collider is NPC.Enemies.Zombie.CBaseZombie))
+                                _collideWithNpcResponse(collider);
+                        }
+                        else if (collider is Projectiles.CIceBall)
+                            _collideWithNpcResponse(collider, false);
+                    }
 
-                if (collider is NPC.Other.CTownsFolk)
-                {
-                    solidCollide(collider);
-                }
-                else if (collider is Items.Liftables.CLiftable && (_state != ACTOR_STATES.LIFT && _state != ACTOR_STATES.THROWING && !_carrying))
-                {
-                    solidCollide(collider);
-                    CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
-                    if (input.keysReleased.Contains(input.getKey(CInput.KEY_ACTION)))
+                    if (collider is NPC.Other.CTownsFolk)
                     {
-                        _liftObject((Items.Liftables.CLiftable)collider);
+                        solidCollide(collider);
                     }
+                    else if (collider is Items.Liftables.CLiftable && (_state != ACTOR_STATES.LIFT && _state != ACTOR_STATES.THROWING && !_carrying))
+                    {
+                        solidCollide(collider);
+                        CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+                        if (input.keysReleased.Contains(input.getKey(CInput.KEY_ACTION)))
+                        {
+                            _liftObject((Items.Liftables.CLiftable)collider);
+                        }
+                    }
+                    else if (collider is Collision.CVaulter)
+                    {
+                        Collision.CVaulter vaulter = (CVaulter)collider;
+                        _state = ACTOR_STATES.VAULT;
+                        noCollide = true;
+                        startTimer6(vaulter.airTime);
+
+                        _vaultSpeed = vaulter.vaultDirection;
+
+                        swapImage(Graphics.CTextures.PLAYER_VAULT_DOWN);
+                        CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:grunt"]);
+                        CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:hop"]);
+                    }
+                    else if (collider is Collision.CCollidable)
+                    {
+                        _handleCollidableCollisions((Collision.CCollidable)collider);
+                    }
+                }
+            }
+        }
+
+        private void _handleCollidableCollisions(Actors.Collision.CCollidable collider)
+        {
+            if (collider is Collision.CClimber)
+            {
+                switch (_state)
+                {
+                    case ACTOR_STATES.MOVING:
+                        _climbing = true;
+                        break;
+                }
+            }
+            else if (collider is Collision.CClimberFloor)
+            {
+                if (_climbing)
+                {
+                    _state = ACTOR_STATES.IDLE;
+                    _climbing = false;
+                }
+            }
+            else if(collider is Collision.CClimberLanding)
+            {
+                if (_climbing)
+                {
+                    _state = ACTOR_STATES.CLIMB_END;
+                    swapImage(Graphics.CTextures.PLAYER_CLIMB_UP);
+
                 }
             }
         }
@@ -269,10 +340,6 @@ namespace King_of_Thieves.Actors.Player
         public override void destroy(object sender)
         {
             throw new NotImplementedException();
-        }
-
-        public override void draw(object sender)
-        {
         }
 
         public override void animationEnd(object sender)
@@ -413,6 +480,34 @@ namespace King_of_Thieves.Actors.Player
                 case ACTOR_STATES.SHIELD_DISENGAGE:
                     _state = ACTOR_STATES.IDLE;
                     break;
+
+                case ACTOR_STATES.VAULT:
+                    swapImage(Graphics.CTextures.PLAYER_VAULT_IDLE_DOWN);
+                    _state = ACTOR_STATES.VAULT_IDLE;
+                    CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:jumpFall"]);
+                    break;
+
+                case ACTOR_STATES.CLIMB_END:
+                    _climbing = false;
+                    _state = ACTOR_STATES.IDLE;
+                    break;
+
+                case ACTOR_STATES.DIEING:
+                    _deadSpinCount++;
+
+                    if (_deadSpinCount >= 2)
+                    {
+                        swapImage(Graphics.CTextures.PLAYER_DIE_FALL);
+                        CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:fallScream"]);
+                        _state = ACTOR_STATES.DIE_FALL;
+                    }
+                    break;
+
+                case ACTOR_STATES.DIE_FALL:
+                    swapImage(Graphics.CTextures.PLAYER_DEAD);
+                    _state = ACTOR_STATES.DEAD;
+                    CMasterControl.buttonController.beginFade(Vector3.Zero);
+                    break;
             }
 
             
@@ -477,6 +572,7 @@ namespace King_of_Thieves.Actors.Player
                                 _velocity.X = -1;
                                 _state = ACTOR_STATES.MOVING;
                             }
+                            else if (_climbing) { }
                             else
                             {
                                 image = _imageIndex[Graphics.CTextures.PLAYER_WALKLEFT];
@@ -495,6 +591,7 @@ namespace King_of_Thieves.Actors.Player
                                 _velocity.X = 1;
                                 _state = ACTOR_STATES.MOVING;
                             }
+                            else if (_climbing) { }
                             else
                             {
                                 image = _imageIndex[Graphics.CTextures.PLAYER_WALKRIGHT];
@@ -511,6 +608,12 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 _velocity.Y = -1;
                                 swapImage(Graphics.CTextures.PLAYER_CARRYUP);
+                                _state = ACTOR_STATES.MOVING;
+                            }
+                            else if(_climbing)
+                            {
+                                _velocity.Y = -1;
+                                swapImage(Graphics.CTextures.PLAYER_CLIMB);
                                 _state = ACTOR_STATES.MOVING;
                             }
                             else
@@ -530,6 +633,12 @@ namespace King_of_Thieves.Actors.Player
                             {
                                 swapImage(Graphics.CTextures.PLAYER_CARRYDOWN);
                                 _velocity.Y = 1;
+                                _state = ACTOR_STATES.MOVING;
+                            }
+                            else if (_climbing)
+                            {
+                                _velocity.Y = 1;
+                                swapImage(Graphics.CTextures.PLAYER_CLIMB);
                                 _state = ACTOR_STATES.MOVING;
                             }
                             else
@@ -560,13 +669,13 @@ namespace King_of_Thieves.Actors.Player
                 else if (_state == ACTOR_STATES.SHIELDING)
                 {
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_LEFT)))
-                        _velocity.X = -1f;
+                        _velocity.X = -.5f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_RIGHT)))
-                        _velocity.X = 1f;
+                        _velocity.X = .5f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_DOWN)))
-                        _velocity.Y = 1f;
+                        _velocity.Y = .5f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_UP)))
-                        _velocity.Y = -1f;
+                        _velocity.Y = -.5f;
 
                     if (_velocity.X == 0 && _velocity.Y == 0)
                         swapImage(_currentShieldIdleSprite);
@@ -811,6 +920,18 @@ namespace King_of_Thieves.Actors.Player
             _velocity.X = 0;
             _velocity.Y = 0;
 
+            //are we dead?
+            if (CMasterControl.healthController.isDead)
+            {
+                if (_state != ACTOR_STATES.DIE_FALL && _state != ACTOR_STATES.DEAD && _state != ACTOR_STATES.DIEING)
+                {
+                    _state = ACTOR_STATES.DIEING;
+                     CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:dying"]);
+                    CMasterControl.audioPlayer.stopAllMusic();
+                    swapImage(Graphics.CTextures.PLAYER_DIE_SPIN);
+                }
+            }
+
             switch (_state)
             {
                 case ACTOR_STATES.GOT_ITEM:
@@ -955,35 +1076,40 @@ namespace King_of_Thieves.Actors.Player
 
                     break;
                 case ACTOR_STATES.IDLE:
-                    switch (_direction)
+                    if (_climbing)
+                        swapImage(Graphics.CTextures.PLAYER_CLIMB_IDLE);
+                    else
                     {
-                        case DIRECTION.DOWN:
-                            if (_carrying)
-                                swapImage(Graphics.CTextures.PLAYER_LIFTIDLEDOWN);
-                            else
-                                swapImage(Graphics.CTextures.PLAYER_IDLEDOWN, false);
-                            break;
+                        switch (_direction)
+                        {
+                            case DIRECTION.DOWN:
+                                if (_carrying)
+                                    swapImage(Graphics.CTextures.PLAYER_LIFTIDLEDOWN);
+                                else
+                                    swapImage(Graphics.CTextures.PLAYER_IDLEDOWN, false);
+                                break;
 
-                        case DIRECTION.UP:
-                            if (_carrying)
-                                swapImage(Graphics.CTextures.PLAYER_LIFTIDLEUP);
-                            else
-                                swapImage(Graphics.CTextures.PLAYER_IDLEUP, false);
-                            break;
+                            case DIRECTION.UP:
+                                if (_carrying)
+                                    swapImage(Graphics.CTextures.PLAYER_LIFTIDLEUP);
+                                else
+                                    swapImage(Graphics.CTextures.PLAYER_IDLEUP, false);
+                                break;
 
-                        case DIRECTION.LEFT:
-                            if (_carrying)
-                                swapImage(Graphics.CTextures.PLAYER_LIFTIDLELEFT);
-                            else
-                                swapImage(Graphics.CTextures.PLAYER_IDLELEFT, false);
-                            break;
+                            case DIRECTION.LEFT:
+                                if (_carrying)
+                                    swapImage(Graphics.CTextures.PLAYER_LIFTIDLELEFT);
+                                else
+                                    swapImage(Graphics.CTextures.PLAYER_IDLELEFT, false);
+                                break;
 
-                        case DIRECTION.RIGHT:
-                            if (_carrying)
-                                swapImage(Graphics.CTextures.PLAYER_LIFTIDLERIGHT);
-                            else
-                                swapImage(Graphics.CTextures.PLAYER_IDLERIGHT, false);
-                            break;
+                            case DIRECTION.RIGHT:
+                                if (_carrying)
+                                    swapImage(Graphics.CTextures.PLAYER_LIFTIDLERIGHT);
+                                else
+                                    swapImage(Graphics.CTextures.PLAYER_IDLERIGHT, false);
+                                break;
+                        }
                     }
 
                     break;
@@ -991,6 +1117,14 @@ namespace King_of_Thieves.Actors.Player
                 case ACTOR_STATES.HOLD_CANNON:
                     if (_bombVelo < 120)
                         _bombVelo++;
+                    break;
+
+                case ACTOR_STATES.VAULT:
+                    _position += _vaultSpeed;
+                    break;
+
+                case ACTOR_STATES.VAULT_IDLE:
+                    _position += _vaultSpeed;
                     break;
             }
 
@@ -1065,11 +1199,15 @@ namespace King_of_Thieves.Actors.Player
             _collidables.Add(typeof(NPC.Enemies.Keese.CKeeseThunder));
             _collidables.Add(typeof(NPC.Enemies.Zombie.CBaseZombie));
             _collidables.Add(typeof(Projectiles.CEnergyWave));
+            _collidables.Add(typeof(NPC.Enemies.CBaseEnemy));
 
             //world things
             _collidables.Add(typeof(Actors.Collision.CSolidTile));
             _collidables.Add(typeof(Actors.Items.Liftables.CLiftable));
             _collidables.Add(typeof(Actors.Items.decoration.CChest));
+            _collidables.Add(typeof(Actors.Collision.CVaulter));
+            _collidables.Add(typeof(Actors.Collision.CCollidable));
+            _collidables.Add(typeof(Actors.Items.decoration.CDoor));
 
             //other NPCs
             _collidables.Add(typeof(Actors.NPC.Other.CTownsFolk));
@@ -1114,7 +1252,14 @@ namespace King_of_Thieves.Actors.Player
         {
             _state = ACTOR_STATES.IDLE;
             _acceptInput = true;
-            
+        }
+
+        public override void timer6(object sender)
+        {
+            _state = ACTOR_STATES.IDLE;
+            noCollide = false;
+            _velocity = Vector2.Zero;
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:land"]);
         }
 
         public override void freeze()

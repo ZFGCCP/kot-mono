@@ -77,5 +77,10 @@ namespace King_of_Thieves.Forms.Map_Edit
                 return copiedList;
             }
         }
+
+        private void FrmNewComponent_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

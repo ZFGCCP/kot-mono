@@ -17,6 +17,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
 		private info.CBenchmarkInfo _benchmarkInfo = new info.CBenchmarkInfo();
         private Actors.HUD.Text.CTextBox _textBoxController = new Text.CTextBox();
         private other.CCullBoundary _cullBoundary = new other.CCullBoundary();
+        private CScreenFader _screenFader = new CScreenFader();
         public CPauseMenuElement currentElementLeft = null;
         public CPauseMenuElement currentElementRight = null;
 
@@ -37,6 +38,11 @@ namespace King_of_Thieves.Actors.HUD.buttons
             _textBoxController.displayMessageBox(message);
         }
 
+        public void createTextBox(params string[] messages)
+        {
+            _textBoxController.displayMessageBox(messages);
+        }
+
         public void update(GameTime gameTime)
         {
             _buttonRight.update(gameTime);
@@ -47,6 +53,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
 			_benchmarkInfo.update (gameTime);
             _textBoxController.update(gameTime);
             _cullBoundary.update(gameTime);
+            _screenFader.update(gameTime);
         }
 
         public void changeActionIconState(HUD_ACTION_OPTIONS option)
@@ -82,11 +89,18 @@ namespace King_of_Thieves.Actors.HUD.buttons
             //_buttonAction.drawMe();
             _rupeeCounter.drawMe();
             _bombCounter.drawMe();
+            
 
             if(CActor.showHitBox)
 			    _benchmarkInfo.drawMe();
 
             _textBoxController.drawMe();
+            _screenFader.drawMe();
+        }
+
+        public void beginFade(Vector3 color)
+        {
+            _screenFader.beginFade(color);
         }
 
         public bool textBoxActive

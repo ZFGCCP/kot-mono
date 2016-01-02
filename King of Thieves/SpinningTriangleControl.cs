@@ -222,5 +222,13 @@ namespace WinFormsGraphicsDevice
 
             return new Vector2(snapX, snapY);
         }
+
+        public void deleteHitbox(Vector2 position, int offSetX, int offSetY)
+        {
+            CActor[] hitboxes = _currentMap.queryActorRegistry(typeof(King_of_Thieves.Actors.Collision.CSolidTile), getMouseSnapCoords(offSetX,offSetY));
+
+            if (hitboxes != null && hitboxes.Length > 0)
+                _currentMap.removeActorFromComponent(hitboxes[0], hitboxes[0].componentAddress);
+        }
     }
 }

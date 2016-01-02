@@ -41,14 +41,21 @@ namespace King_of_Thieves.Actors
         CHARGING_ARROW,
         CHARGING_SWORD,
         CHASE,
+        CLIMB_END,
+        CLIMBING,
+        CLIMBING_IDLE,
         DAWN,
         DAY,
+        DEAD,
         DECREMENT,
+        DIE_FALL,
+        DIEING,
         DUSK,
         EXPLODE,
         FLYING,
         FOLLOW_PLAYER,
         FROZEN,
+        FURIOUS,
         GO_HOME,
         GOT_ITEM,
         HIDDEN,
@@ -72,6 +79,7 @@ namespace King_of_Thieves.Actors
         POPUP,
         PULLSWORD,
         ROLLING,
+        SEARCHING,
         SHIELD_ENGAGE,
         SHIELD_DISENGAGE,
         SHIELDING,
@@ -91,6 +99,18 @@ namespace King_of_Thieves.Actors
         THROWING,
         TOSSING,
         UNLOCKED,
+        USER_STATE0,
+        USER_STATE1,
+        USER_STATE2,
+        USER_STATE3,
+        USER_STATE4,
+        USER_STATE5,
+        USER_STATE6,
+        USER_STATE7,
+        USER_STATE8,
+        USER_STATE9,
+        VAULT,
+        VAULT_IDLE,
         WOBBLE,
         YIELD
     }
@@ -134,6 +154,7 @@ namespace King_of_Thieves.Actors
         protected int _collisionDirectionY = 0;
         private bool _flagForResourceCleanup = false;
         public bool hidden = false;
+        private Queue<CActor> _actorsToBeRegistered = new Queue<CActor>();
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -164,9 +185,11 @@ namespace King_of_Thieves.Actors
         public event actorEventHandler onTimer3;
         public event actorEventHandler onTimer4;
         public event actorEventHandler onTimer5;
+        public event actorEventHandler onTimer6;
         public event actorEventHandler onMouseClick;
         public event actorEventHandler onClick;
         public event actorEventHandler onTap;
+        public event actorEventHandler onRoomStart;
 
         public virtual void create(object sender) { }
         public virtual void keyDown(object sender) { }
@@ -181,9 +204,11 @@ namespace King_of_Thieves.Actors
         public virtual void timer3(object sender) { }
         public virtual void timer4(object sender) { }
         public virtual void timer5(object sender) { }
+        public virtual void timer6(object sender) { }
         public virtual void mouseClick(object sender) { }
         public virtual void click(object sender) { }
         public virtual void tap(object sender) { }
+        public virtual void roomStart(object sender) { }
 
         protected virtual void cleanUp() 
         {
@@ -222,6 +247,7 @@ namespace King_of_Thieves.Actors
         private int _timer3 = -1;
         private int _timer4 = -1;
         private int _timer5 = -1;
+        private int _timer6 = -1;
 
         public CActor()
             
@@ -242,6 +268,8 @@ namespace King_of_Thieves.Actors
             onTimer3 += new actorEventHandler(timer3);
             onTimer4 += new actorEventHandler(timer4);
             onTimer5 += new actorEventHandler(timer5);
+            onTimer6 += new actorEventHandler(timer6);
+            onRoomStart += new actorEventHandler(roomStart);
 
             _name = name;
             _collidables = new List<Type>();
@@ -254,13 +282,6 @@ namespace King_of_Thieves.Actors
             { ;}
 
             _position = position;
-
-            try
-            {
-                onCreate(this);
-            }
-            catch (NotImplementedException)
-            { }
 
             _registerUserEvents();
             _registerSystemEvents();
@@ -275,6 +296,7 @@ namespace King_of_Thieves.Actors
             onFrame -= new actorEventHandler(frame);
             onKeyRelease -= new actorEventHandler(keyRelease);
             onDraw -= new actorEventHandler(draw);
+            onRoomStart -= new actorEventHandler(roomStart);
         }
 
         public string dataType
@@ -409,34 +431,44 @@ namespace King_of_Thieves.Actors
             _timer5 = ticks;
         }
 
+        public void startTimer6(int ticks)
+        {
+            _timer6 = ticks;
+        }
+
         public void stopTimer0()
         {
-            _timer0 = 0;
+            _timer0 = -1;
         }
 
         public void stopTimer1()
         {
-            _timer1 = 0;
+            _timer1 = -1;
         }
 
         public void stopTimer2()
         {
-            _timer2 = 0;
+            _timer2 = -1;
         }
 
         public void stopTimer3()
         {
-            _timer3 = 0;
+            _timer3 = -1;
         }
 
         public void stopTimer4()
         {
-            _timer4 = 0;
+            _timer4 = -1;
         }
 
         public void stopTimer5()
         {
-            _timer5 = 0;
+            _timer5 = -1;
+        }
+
+        public void stopTimer6()
+        {
+            _timer6 = -1;
         }
 
         //overload this and call the base to process your own parameters
@@ -449,6 +481,13 @@ namespace King_of_Thieves.Actors
 
             if (additional != null)
                 mapParams = additional.ToList();
+
+            try
+            {
+                onCreate(this);
+            }
+            catch (NotImplementedException)
+            { }
         }
 
         public Vector2 velocity
@@ -463,7 +502,7 @@ namespace King_of_Thieves.Actors
         {
             get
             {
-                return _componentAddress;
+                return component.address;
             }
         }
 
@@ -709,6 +748,9 @@ namespace King_of_Thieves.Actors
             }
             else
             {
+                if (Map.CMapManager.roomStart)
+                    onRoomStart(this);
+
                 if (_animationHasEnded)
                     try
                     {
@@ -811,6 +853,17 @@ namespace King_of_Thieves.Actors
                     {
                         _timer5 = -1;
                         onTimer5(this);
+                    }
+                }
+
+                if (_timer6 >= 0)
+                {
+                    _timer6--;
+
+                    if (_timer6 <= 0)
+                    {
+                        _timer6 = -1;
+                        onTimer6(this);
                     }
                 }
 
@@ -1117,6 +1170,24 @@ namespace King_of_Thieves.Actors
             {
                 return _flagForResourceCleanup;
             }
+        }
+
+        protected void _queueActorForRegistration(CActor actor)
+        {
+            _actorsToBeRegistered.Enqueue(actor);
+        }
+
+        public bool registrationsQueued
+        {
+            get
+            {
+                return _actorsToBeRegistered.Count > 0;
+            }
+        }
+
+        public CActor popActorForRegistration()
+        {
+            return _actorsToBeRegistered.Dequeue();
         }
     }
 }

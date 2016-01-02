@@ -66,6 +66,7 @@
             this.btnDeleteLayer = new System.Windows.Forms.Button();
             this.btnInsertAfter = new System.Windows.Forms.Button();
             this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
+            this.label7 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -133,7 +134,7 @@
             // mapHScroll
             // 
             this.mapHScroll.LargeChange = 16;
-            this.mapHScroll.Location = new System.Drawing.Point(292, 526);
+            this.mapHScroll.Location = new System.Drawing.Point(292, 549);
             this.mapHScroll.Maximum = 3000;
             this.mapHScroll.Name = "mapHScroll";
             this.mapHScroll.Size = new System.Drawing.Size(500, 17);
@@ -144,7 +145,7 @@
             // mapVScroll
             // 
             this.mapVScroll.LargeChange = 16;
-            this.mapVScroll.Location = new System.Drawing.Point(795, 43);
+            this.mapVScroll.Location = new System.Drawing.Point(795, 66);
             this.mapVScroll.Maximum = 3000;
             this.mapVScroll.Name = "mapVScroll";
             this.mapVScroll.Size = new System.Drawing.Size(17, 480);
@@ -402,19 +403,30 @@
             // mpvMapView
             // 
             this.mpvMapView.BackColor = System.Drawing.Color.Black;
-            this.mpvMapView.Location = new System.Drawing.Point(280, 43);
+            this.mpvMapView.Location = new System.Drawing.Point(280, 66);
             this.mpvMapView.Name = "mpvMapView";
             this.mpvMapView.Size = new System.Drawing.Size(512, 480);
             this.mpvMapView.TabIndex = 1;
             this.mpvMapView.VSync = false;
             this.mpvMapView.Load += new System.EventHandler(this.mpvMapView_Load);
             this.mpvMapView.Click += new System.EventHandler(this.mpvMapView_Click);
+            this.mpvMapView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mpvMapView_MouseMove);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(280, 43);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Mouse Coordinates";
             // 
             // FrmMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 548);
+            this.ClientSize = new System.Drawing.Size(812, 573);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnInsertAfter);
             this.Controls.Add(this.btnDeleteLayer);
             this.Controls.Add(this.btnAddLayer);
@@ -482,5 +494,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnNewAnimated;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -14,8 +14,7 @@ namespace King_of_Thieves.usr.local
         public PlayableState()
             : base()
         {
-            CMasterControl.mapManager.swapMap("castleTownInteriors.xml", "player",new Vector2(64,64));
-            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:castleTown"]);
+            CMasterControl.mapManager.swapMap("castleTown.xml", "player",new Vector2(400,1024));
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)

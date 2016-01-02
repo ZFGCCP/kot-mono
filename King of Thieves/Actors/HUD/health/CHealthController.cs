@@ -117,5 +117,13 @@ namespace King_of_Thieves.Actors.HUD.health
                     _hearts[i].portionFilled = 4;
             }
         }
+
+        public bool isDead
+        {
+            get
+            {
+                return _hp == 0;
+            }
+        }
     }
 }

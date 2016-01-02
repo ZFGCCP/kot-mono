@@ -14,13 +14,15 @@ namespace King_of_Thieves.Actors.HUD.Text
         private readonly Vector2 _BOX_SCREEN = new Vector2(40, 175);
         private const int _LINE_MAX_CHARS = 43;
         private const int _THREE_LINE_MAX = _LINE_MAX_CHARS * 3;
-        private string _messageQueue = "";
+        private string[] _messageQueue = null;
         private string _processedMessage = "";
         private Graphics.CSprite _textBox = new Graphics.CSprite("HUD:text:textBox");
         private bool _active = false;
         private bool _showBox = false;
         private static bool _messageFinished = false;
         private bool _wait = false;
+        private int _currentMessageIndex = 0;
+        private Vector2 _offset = new Vector2(10, 93);
 
         public static bool messageFinished
         {
@@ -30,15 +32,33 @@ namespace King_of_Thieves.Actors.HUD.Text
             }
         }
 
+        public void displayMessageBox(params string[] messages)
+        {
+            if (!_wait)
+            {
+                _currentMessageIndex = 0;
+                _showBox = true;
+                _active = true;
+                _messageQueue = new string[messages.Length];
+                
+                for(int i = 0; i < messages.Length; i++)
+                    _messageQueue[i] = messages[i];
+
+                _fixedPosition = _offset;
+                _processedMessage = _processMessage(true);
+            }
+        }
+
         public void displayMessageBox(string message)
         {
             if (!_wait)
             {
+                _currentMessageIndex = 0;
                 _showBox = true;
                 _active = true;
-                _messageQueue = message;
-                _fixedPosition.X = 40;
-                _fixedPosition.Y = 165;
+                _messageQueue = new string[1];
+                _messageQueue[0] = message;
+                _fixedPosition = _offset;
                 _processedMessage = _processMessage(true);
             }
             
@@ -48,10 +68,10 @@ namespace King_of_Thieves.Actors.HUD.Text
         {
             if (!_wait)
             {
+                _currentMessageIndex = 0;
                 _active = true;
-                _messageQueue = message;
-                _fixedPosition.X = 40;
-                _fixedPosition.Y = 165;
+                _messageQueue[0] = message;
+                _fixedPosition = _offset;
                 _processedMessage = _processMessage(true);
             }
         }
@@ -88,18 +108,28 @@ namespace King_of_Thieves.Actors.HUD.Text
                 return null;
 
             string output = "";
-            string workingMessage = _messageQueue;
+            string workingMessage = "";
 
-            _checkMessageLength(ref workingMessage);
-            output = _divideLines(workingMessage);
-
-            if (string.IsNullOrEmpty(output.Trim()))
+            if (_currentMessageIndex >= _messageQueue.Length)
             {
                 _active = false;
                 _messageFinished = true;
                 _wait = true;
                 CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Text:textBoxClose"]);
                 startTimer0(15);
+                return string.Empty;
+            }
+            
+            workingMessage = _messageQueue[_currentMessageIndex];
+
+            _checkMessageLength(ref workingMessage);
+            output = _divideLines(workingMessage).Trim();
+
+            if (string.IsNullOrEmpty(output))
+            {
+                _currentMessageIndex += 1;
+
+                output = _processMessage(isFirst);
             }
             else if (!isFirst)
                 CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Text:textBoxContinue"]);
@@ -111,18 +141,18 @@ namespace King_of_Thieves.Actors.HUD.Text
         {
             if (_messageQueue.Length > _THREE_LINE_MAX)
             {
-                workingMessage = _messageQueue.Substring(0, _THREE_LINE_MAX);
-                _messageQueue = _messageQueue.Substring(_THREE_LINE_MAX);
+                workingMessage = _messageQueue[_currentMessageIndex].Substring(0, _THREE_LINE_MAX);
+                _messageQueue[_currentMessageIndex] = _messageQueue[_currentMessageIndex].Substring(_THREE_LINE_MAX);
 
-                if (workingMessage.Last() != ' ' && _messageQueue.First() != ' ')
+                if (workingMessage.Last() != ' ' && _messageQueue[_currentMessageIndex].First() != ' ')
                 {
                     string lastWord = workingMessage.Substring(workingMessage.LastIndexOf(' '));
                     workingMessage = workingMessage.Remove(workingMessage.LastIndexOf(lastWord));
-                    _messageQueue = _messageQueue.Insert(0, lastWord).TrimStart();
+                    _messageQueue[_currentMessageIndex] = _messageQueue[_currentMessageIndex].Insert(0, lastWord).TrimStart();
                 }
             }
             else
-                _messageQueue = "";
+                _messageQueue[_currentMessageIndex] = "";
         }
 
         private string _divideLines(string workingMessage)
@@ -144,7 +174,7 @@ namespace King_of_Thieves.Actors.HUD.Text
                         for (int j = i; j < words.Count(); j++)
                             joinedWords += words[j] + " ";
 
-                        _messageQueue = _messageQueue.Insert(0, joinedWords.Trim());
+                        _messageQueue[_currentMessageIndex] = _messageQueue[_currentMessageIndex].Insert(0, joinedWords.Trim());
                         break;
                     }
                     output += "\n";

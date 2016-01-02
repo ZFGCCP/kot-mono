@@ -48,6 +48,12 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Player:Electrocute", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/shocked")));
             soundBank.Add("Player:Hurt1", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/hurt1")));
             soundBank.Add("Items:Decor:ItemSmash", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/MC_Shatter")));
+            soundBank.Add("Player:grunt", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/grunt")));
+            soundBank.Add("Player:hop", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/jump")));
+            soundBank.Add("Player:land", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/land")));
+            soundBank.Add("Player:jumpFall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/jump_fall")));
+            soundBank.Add("Player:fallScream", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/fallScream")));
+            soundBank.Add("Player:dying", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/link/Dying")));
 
             soundBank.Add("Items:explosionSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/bomb_explode")));
             soundBank.Add("Items:boomerang", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/boomerang")));
@@ -65,6 +71,7 @@ namespace King_of_Thieves.Sound
             //npcs
             soundBank.Add("Npc:wizzrobe:vanish", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/wizzrobevanish")));
             soundBank.Add("Npc:redead:screech", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/redeadScreech")));
+            soundBank.Add("Npc:die", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/enemyDie")));
 
             //menus
             soundBank.Add("menu:openMenu", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/menu/menuOpen")));
@@ -79,7 +86,7 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Background:itemFanfare", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfare")));
             soundBank.Add("Background:itemFanfareSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfareSmall")));
             soundBank.Add("bgm:title", new CSound(CMasterControl.glblContent.Load<Song>("music/title"),false,0));
-            soundBank.Add("bgm:castleTown", new CSound(CMasterControl.glblContent.Load<Song>("music/town"), true, -1));
+            soundBank.Add("bgm:gameOver", new CSound(CMasterControl.glblContent.Load<Song>("music/gameOver"), true, -1));
         }
 
         public void stop()

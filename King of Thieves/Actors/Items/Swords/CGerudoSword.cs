@@ -80,6 +80,11 @@ namespace King_of_Thieves.Actors.Items.Swords
             image = null;
             _hitBox = null;
         }
+
+        public override void shock()
+        {
+            component.root.shock();
+        }
     }
 }
 

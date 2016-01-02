@@ -31,7 +31,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies
         ICE
     }
 
-    public abstract class CBaseEnemy : CActor
+    public abstract class CBaseEnemy : Other.CBaseNpc
     {
         protected Dictionary<Items.Drops.CDroppable, float> _itemDrop = new Dictionary<Items.Drops.CDroppable,float>();
         protected bool _huntPlayer = false;
@@ -118,7 +118,9 @@ namespace King_of_Thieves.Actors.NPC.Enemies
         public override void destroy(object sender)
         {
             Items.Drops.CDroppable itemToDrop = _dropItem();
-            Graphics.CEffects.createEffect(Graphics.CEffects.EXPLOSION,_position);
+            Vector2 explosionPos = new Vector2(_position.X - 10, _position.Y - 10);
+            Graphics.CEffects.createEffect(Graphics.CEffects.EXPLOSION,explosionPos);
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:die"]);
 
             if (itemToDrop != null)
                 Map.CMapManager.addActorToComponent(itemToDrop, CReservedAddresses.DROP_CONTROLLER);

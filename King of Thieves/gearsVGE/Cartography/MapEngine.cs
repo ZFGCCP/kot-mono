@@ -41,7 +41,6 @@ namespace Gears.Cartography
             //debug values
             map0.VERSION = "0.1.0";
 
-            map0.BGM_FILE_LOC = "BGM_FILE_LOC DIRECTORY test";
             map0.FADE_IN_FILE_LOC = "FADE_IN_FILE_LOC DIRECTORY test";
             map0.FADE_OUT_FILE_LOC = "FADE_OUT_FILE_LOC DIRECTORY test";
             map0.BG_IMAGE_FILE_LOC = "BG_IMAGE_FILE_LOC DIRECTORY test";
@@ -73,7 +72,6 @@ namespace Gears.Cartography
                         map = (Map)deserializer.Deserialize(textReader);
 
                         Debug.Out("@MAP/VERSION=" + map.VERSION);
-                        Debug.Out("@MAP/BGMFILE=" + map.BGM_FILE_LOC);
                         Debug.Out("@MAP/FADEINFILE=" + map.FADE_IN_FILE_LOC);
                         Debug.Out("@MAP/FADEOUTFILE=" + map.FADE_OUT_FILE_LOC);
                         Debug.Out("@MAP/BGIFILE=" + map.BG_IMAGE_FILE_LOC);
@@ -149,7 +147,8 @@ namespace Gears.Cartography
         public string VERSION {get; set;}
 
         [XmlElement("bgmfile")]
-        public string BGM_FILE_LOC {get; set;}
+        public bgmFile BGM_FILE {get; set;}
+
         [XmlElement("width")]
         public int WIDTH { get; set; }
         [XmlElement("height")]
@@ -273,6 +272,15 @@ namespace Gears.Cartography
         public string COORDS { get; set; }
         [XmlAttribute("params")] //if any, this will probably be blank in most cases.
         public string param { get; set; }
+    }
+
+    [Serializable]
+    public class bgmFile
+    {
+        [XmlAttribute("bgmFileLocation")]
+        public string BGM_FILE_LOC { get; set; }
+        [XmlAttribute("bgmRefName")]
+        public string BGM_REF_NAME { get; set; }
     }
 
 

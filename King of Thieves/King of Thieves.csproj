@@ -61,8 +61,16 @@
     <Compile Include="Actors\CActorTest.cs" />
     <Compile Include="Actors\CComponent.cs" />
     <Compile Include="Actors\Collision\CCameraLimit.cs" />
+    <Compile Include="Actors\Collision\CClimber.cs" />
+    <Compile Include="Actors\Collision\CClimberFloor.cs" />
+    <Compile Include="Actors\Collision\CClimberLanding.cs" />
+    <Compile Include="Actors\Collision\CCollidable.cs" />
     <Compile Include="Actors\Collision\CLayerChanger.cs" />
+    <Compile Include="Actors\Collision\CVaulter.cs" />
+    <Compile Include="Actors\Collision\GameChangers\CPawnShopAlerter.cs" />
+    <Compile Include="Actors\HUD\CScreenFader.cs" />
     <Compile Include="Actors\HUD\other\CCullBoundary.cs" />
+    <Compile Include="Actors\Items\decoration\CDemoDoor.cs" />
     <Compile Include="Actors\Items\decoration\CDoor.cs" />
     <Compile Include="Actors\Collision\CHitBox.cs" />
     <Compile Include="Actors\Collision\CMapChanger.cs" />
@@ -109,6 +117,10 @@
     <Compile Include="Actors\Menu\CPauseBackdrop.cs" />
     <Compile Include="Actors\NPC\Enemies\Bokoblin\CBokoblin.cs" />
     <Compile Include="Actors\NPC\Enemies\LikeLike\CLikeLike.cs" />
+    <Compile Include="Actors\NPC\Enemies\Rump\CRump.cs" />
+    <Compile Include="Actors\NPC\CBaseNpc.cs" />
+    <Compile Include="Actors\NPC\Other\CGoldFairyDust.cs" />
+    <Compile Include="Actors\NPC\Other\CIngo.cs" />
     <Compile Include="Actors\NPC\Other\CTownsFolk.cs" />
     <Compile Include="Actors\NPC\Enemies\ArmoredCrab\CArmoredCrab.cs" />
     <Compile Include="Actors\NPC\Enemies\CBaseEnemy.cs" />
@@ -157,6 +169,7 @@
     <Compile Include="Data Struct\Graph\NodeGraph.cs" />
     <Compile Include="Data Struct\Node.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="Graphics\CTransitionEffect.cs" />
     <Compile Include="KotException\KotBadArgumentException.cs" />
     <Compile Include="Forms\Map Editor\EditorComponents.cs">
       <SubType>Form</SubType>
@@ -253,6 +266,8 @@
     <Compile Include="usr\local\EditorMode.cs" />
     <Compile Include="usr\local\GameMenu\CPauseMenu.cs" />
     <Compile Include="usr\local\GameMenu\CPauseMenuElement.cs" />
+    <Compile Include="usr\local\GameMenu\GameOverState.cs" />
+    <Compile Include="usr\local\GameOver.cs" />
     <Compile Include="usr\local\MapEditor.cs" />
     <Compile Include="usr\local\PlayableState.cs" />
     <Compile Include="usr\local\splash\CDedicationPage.cs" />
@@ -615,6 +630,66 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\music\town.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\house.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\house.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\houseIntro.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\houseIntro.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\npc\enemyDie.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\npc\rump.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\grunt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\jump.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\jump_fall.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\land.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\Dying.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\link\fallScream.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\gameOver.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\gameOver.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\tilesets\indoors\jim_morrison.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\npc\friendly\ingo.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\tilesets\indoors\rumpFightRoom.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\bossBattle.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\music\bossBattle.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\transitions\rumpleTransition.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
