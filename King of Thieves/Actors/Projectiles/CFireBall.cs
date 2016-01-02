@@ -25,6 +25,7 @@ namespace King_of_Thieves.Actors.Projectiles
 
 
             shoot();
+            _followRoot = false;
             startTimer0(60);
         }
 

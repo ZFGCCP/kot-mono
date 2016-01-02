@@ -71,6 +71,16 @@ namespace King_of_Thieves.MathExt
             return false;
         }
 
+        public static double radiansToDegrees(double radians)
+        {
+            return radians * (Math.PI / 180.0);
+        }
+
+        public static double degreesToRadians(double degrees)
+        {
+            return degrees * (180.0 / Math.PI);
+        }
+
         public static bool checkPointWithinRange(Vector2 P, Vector2 topLeft, Vector2 bottomRight)
         {
             return (P.X >= topLeft.X && P.X <= bottomRight.X) && (P.Y >= topLeft.Y && P.Y <= bottomRight.Y);
@@ -83,6 +93,17 @@ namespace King_of_Thieves.MathExt
             vec.X = (float)Math.Round(Math.Cos(theta) * distance);
             vec.Y = (float)-Math.Round(Math.Sin(theta) * distance);
             return vec;
+        }
+
+        public static Vector2 calculateVectorComponents(float magnitude, float angle)
+        {
+            Vector2 output = Vector2.Zero;
+            double radians = degreesToRadians(angle);
+
+            output.X = (float)(Math.Sin(radians) * magnitude);
+            output.Y = (float)(Math.Cos(radians) * magnitude);
+
+            return output;
         }
     }
 }

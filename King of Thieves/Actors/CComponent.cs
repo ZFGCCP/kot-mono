@@ -163,10 +163,11 @@ namespace King_of_Thieves.Actors
                 //update the root's old position and then update the actor
                 _checkCommNet(root.name, root);
                 root.update(gameTime);
-                List<CActor> _actors = actors.Values.ToList();
+                //List<CActor> _actors = actors.Values.ToList();
+
                 for (int i = 0; i < actors.Count; i++)
                 {
-                    CActor actor = _actors[i];
+                    CActor actor = actors.Values.ElementAt(i);
                     if (actor.killMe)
                     {
                         removeActor(actor, true);

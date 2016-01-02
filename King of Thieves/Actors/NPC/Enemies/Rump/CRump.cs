@@ -33,8 +33,19 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         private const string _RUMP_GESTURE = _SPRITE_NAMESPACE + ":gesture";
         private const string _RUMP_GESTURE_IDLE = _SPRITE_NAMESPACE + ":gestureIdle";
 
+        private const string _RUMP_THROW_FIREBALL_UP = _SPRITE_NAMESPACE + ":throwUp";
+        private const string _RUMP_THROW_FIREBALL_DOWN = _SPRITE_NAMESPACE + ":throwDown";
+        private const string _RUMP_THROW_FIREBALL_LEFT = _SPRITE_NAMESPACE + ":throwLeft";
+        private const string _RUMP_THROW_FIREBALL_RIGHT = _SPRITE_NAMESPACE + ":throwRight";
+
         private bool _battleMode = false;
         private bool _shopMode = false;
+        private int _currentPositionIndex = 0;
+
+        private bool _isReal = false;
+
+        private static List<Vector2> _allowedPositionList = new List<Vector2>();
+        private static Stack<Vector2> _removedPositions = new Stack<Vector2>();
 
         public CRump() :
             base()
@@ -47,13 +58,44 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 Graphics.CTextures.addTexture(_RUMP_IDLE_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:0", "0:0"));
                 Graphics.CTextures.addTexture(_RUMP_GESTURE, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "1:0", "6:0", 15));
                 Graphics.CTextures.addTexture(_RUMP_GESTURE_IDLE, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "7:0", "7:0"));
+
+                Graphics.CTextures.addTexture(_RUMP_THROW_FIREBALL_UP, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:3", "10:3",15));
+                Graphics.CTextures.addTexture(_RUMP_THROW_FIREBALL_DOWN, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:1", "10:1", 15));
+                Graphics.CTextures.addTexture(_RUMP_THROW_FIREBALL_LEFT, new Graphics.CTextureAtlas(_SPRITE_NAMESPACE, 32, 32, 1, "0:2", "10:2", 15));
             }
 
             _imageIndex.Add(_RUMP_IDLE_DOWN, new Graphics.CSprite(_RUMP_IDLE_DOWN));
             _imageIndex.Add(_RUMP_GESTURE_IDLE, new Graphics.CSprite(_RUMP_GESTURE_IDLE));
             _imageIndex.Add(_RUMP_GESTURE, new Graphics.CSprite(_RUMP_GESTURE));
 
+            _imageIndex.Add(_RUMP_THROW_FIREBALL_UP, new Graphics.CSprite(_RUMP_THROW_FIREBALL_UP));
+            _imageIndex.Add(_RUMP_THROW_FIREBALL_DOWN, new Graphics.CSprite(_RUMP_THROW_FIREBALL_DOWN));
+            _imageIndex.Add(_RUMP_THROW_FIREBALL_LEFT, new Graphics.CSprite(_RUMP_THROW_FIREBALL_LEFT));
+            _imageIndex.Add(_RUMP_THROW_FIREBALL_RIGHT, new Graphics.CSprite(_RUMP_THROW_FIREBALL_LEFT,true));
+
             _hitBox = new Collision.CHitBox(this, 10, 18, 12, 15);
+            _followRoot = false;
+        }
+
+        //only call this one once!
+        private void _fullReconstructAllowedPositions()
+        {
+            _allowedPositionList.Clear();
+            _removedPositions.Clear();
+            _allowedPositionList.Add(new Vector2(38, 38));
+            _allowedPositionList.Add(new Vector2(73, 38));
+            _allowedPositionList.Add(new Vector2(200, 38));
+            _allowedPositionList.Add(new Vector2(38, 135));
+            _allowedPositionList.Add(new Vector2(231, 177));
+            _allowedPositionList.Add(new Vector2(91, 210));
+            _allowedPositionList.Add(new Vector2(175, 210));
+        }
+
+        //use this one otherwise
+        private void _reconstructAllowedPositions()
+        {
+            while (_removedPositions.Count > 0)
+                _allowedPositionList.Add(_removedPositions.Pop());
         }
 
         public override void roomStart(object sender)
@@ -88,7 +130,15 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 if (additional[0] == "true")
                     _shopMode = true;
                 else if (additional[0] == "false")
+                {
                     _battleMode = true;
+                    _fullReconstructAllowedPositions();
+                }
+
+                if (additional.Length >= 2 && additional[1] == "true")
+                    _isReal = true;
+                else
+                    _isReal = false;
             }
             else
                 _openingDialog = true;
@@ -142,12 +192,36 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
         private void _chargeFireBall()
         {
+            _state = ACTOR_STATES.CHARGING_ARROW;
+            switch (_direction)
+            {
+                case DIRECTION.LEFT:
+                    swapImage(_RUMP_THROW_FIREBALL_LEFT);
+                    break;
 
+                case DIRECTION.RIGHT:
+                    swapImage(_RUMP_THROW_FIREBALL_RIGHT);
+                    break;
+
+                case DIRECTION.DOWN:
+                    swapImage(_RUMP_THROW_FIREBALL_DOWN);
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(_RUMP_THROW_FIREBALL_UP);
+                    break;
+            }
         }
 
         private void _shootFireBall()
         {
-
+            Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+            double angleBetween = MathExt.MathExt.angle(_position, playerPos);
+            Vector2 velocity = MathExt.MathExt.calculateVectorComponents(2.0f, (float)angleBetween);
+            Projectiles.CFireBall fireBall = new Projectiles.CFireBall(_direction, velocity, _position);
+            fireBall.init("fireBall" + _name, _position, "", this.componentAddress);
+            Map.CMapManager.addActorToComponent(fireBall, this.componentAddress);
+            _vanish();
         }
 
         private void _shopDialogBegin(object sender)
@@ -199,6 +273,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
             Vector2 playerPos = (Vector2)Map.CMapManager.propertyGetter("player", Map.EActorProperties.POSITION);
             lookAt(playerPos);
 
+            int positionIndex = _randNum.Next(0, _allowedPositionList.Count - 1);
+            jumpToPoint(_allowedPositionList[positionIndex].X, _allowedPositionList[positionIndex].Y);
+            _currentPositionIndex = positionIndex;
+
+            _removeCurrentPosition();
+            swapImage(_RUMP_IDLE_DOWN);
             /*switch (_direction)
             {
                 case DIRECTION.DOWN:
@@ -219,6 +299,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
             }*/
             CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:wizzrobe:vanish"]);
             Graphics.CEffects.createEffect(Graphics.CEffects.SMOKE_POOF, new Vector2(_position.X - 13, _position.Y - 5));
+            startTimer5(180);
+        }
+
+        public override void timer5(object sender)
+        {
+            _chargeFireBall();
         }
 
         private void _vanish(bool showEffect = true)
@@ -231,10 +317,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
             _state = ACTOR_STATES.INVISIBLE;
 
-            Random rand = new Random();
             startTimer1(180);
-            rand = null;
 
+            if (_removedPositions.Count == 0)
+                _fullReconstructAllowedPositions();
         }
 
         public override void timer1(object sender)
@@ -250,28 +336,56 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                     swapImage(_RUMP_GESTURE_IDLE);
                     CMasterControl.buttonController.createTextBox(_dialogContinued3);
                     break;
+
+                case ACTOR_STATES.CHARGING_ARROW:
+                    _shootFireBall();
+                    _vanish();
+                    break;
             }
         }
 
         public override void collide(object sender, CActor collider)
         {
             if (collider is Player.CPlayer)
-            {
                 collider.dealDamange(2, collider);
-            }
-            if (collider is Items.Swords.CSword)
-            {
+
+            if (collider is Items.Swords.CSword && !_isReal)
                 collider.shock();
-            }
+
+            if (collider is Projectiles.CArrow)
+                if (!_isReal)
+                    _removeCurrentPosition();
+                else
+                {
+                    _vanish();
+                    _fullReconstructAllowedPositions();
+                }
+        }
+
+        private void _removeCurrentPosition(bool cacheIt = false)
+        {
+            Vector2 cache = Vector2.Zero;
+            cache = _allowedPositionList[_currentPositionIndex];
+
+            _allowedPositionList.RemoveAt(_currentPositionIndex);
+
+            if (cacheIt)
+                _removedPositions.Push(cache);
         }
 
         protected override void _addCollidables()
         {
             _collidables.Add(typeof(Player.CPlayer));
-            _collidables.Add(typeof(Projectiles.CArrow));
             _collidables.Add(typeof(Items.Swords.CSword));
+            _collidables.Add(typeof(Projectiles.CArrow));
         }
 
-
+        public bool isReal
+        {
+            get
+            {
+                return _isReal;
+            }
+        }
     }
 }

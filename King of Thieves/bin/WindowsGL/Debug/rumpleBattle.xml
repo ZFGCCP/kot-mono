@@ -332,6 +332,13 @@
             <actor name="player" type="King_of_Thieves.Actors.Player.CPlayer" coordinates="129:161" />
           </actors>
         </component>
+		<component address="4">
+			<actors>
+				<actor name="realRumple" type="King_of_Thieves.Actors.NPC.Enemies.Rump.CRump" coordinates = "0:0" params="false,true" />
+				<actor name="fakeRumple0" type="King_of_Thieves.Actors.NPC.Enemies.Rump.CRump" coordinates = "0:0" params="false,false" />
+				<actor name="fakeRumple1" type="King_of_Thieves.Actors.NPC.Enemies.Rump.CRump" coordinates = "0:0" params="false,false" />
+			</actors>
+		</component>
       </components>
     </layer>
     <layer width="0" height="0" name="cameraBoundary">
