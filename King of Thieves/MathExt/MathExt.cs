@@ -73,12 +73,12 @@ namespace King_of_Thieves.MathExt
 
         public static double radiansToDegrees(double radians)
         {
-            return radians * (Math.PI / 180.0);
+            return radians * (180.0 / Math.PI);
         }
 
         public static double degreesToRadians(double degrees)
         {
-            return degrees * (180.0 / Math.PI);
+            return degrees * (Math.PI / 180.0);
         }
 
         public static bool checkPointWithinRange(Vector2 P, Vector2 topLeft, Vector2 bottomRight)

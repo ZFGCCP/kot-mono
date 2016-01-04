@@ -192,6 +192,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
         private void _chargeFireBall()
         {
+            Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
+            lookAt(playerPos);
             _state = ACTOR_STATES.CHARGING_ARROW;
             switch (_direction)
             {
@@ -217,6 +219,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         {
             Vector2 playerPos = new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY);
             double angleBetween = MathExt.MathExt.angle(_position, playerPos);
+
             Vector2 velocity = MathExt.MathExt.calculateVectorComponents(2.0f, (float)angleBetween);
             Projectiles.CFireBall fireBall = new Projectiles.CFireBall(_direction, velocity, _position);
             fireBall.init("fireBall" + _name, _position, "", this.componentAddress);
@@ -271,10 +274,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
             _state = ACTOR_STATES.IDLE;
             Vector2 playerPos = (Vector2)Map.CMapManager.propertyGetter("player", Map.EActorProperties.POSITION);
-            lookAt(playerPos);
 
             int positionIndex = _randNum.Next(0, _allowedPositionList.Count - 1);
             jumpToPoint(_allowedPositionList[positionIndex].X, _allowedPositionList[positionIndex].Y);
+            lookAt(playerPos);
             _currentPositionIndex = positionIndex;
 
             _removeCurrentPosition();
