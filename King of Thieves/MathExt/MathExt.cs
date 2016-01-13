@@ -100,8 +100,8 @@ namespace King_of_Thieves.MathExt
             Vector2 output = Vector2.Zero;
             double radians = degreesToRadians(angle);
 
-            output.X = (float)(Math.Sin(radians) * magnitude);
-            output.Y = (float)(Math.Cos(radians) * magnitude);
+            output.X = (float)(Math.Cos(radians) * magnitude);
+            output.Y = -(float)(Math.Sin(radians) * magnitude);
 
             return output;
         }

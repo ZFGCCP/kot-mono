@@ -259,6 +259,7 @@ namespace King_of_Thieves.Actors
                     {
                         actors.Remove(actor.name);
                         actor.component = null;
+                        Map.CMapManager.removeFromActorRegistry(actor);
                     }
                     catch (KeyNotFoundException) { }
                 }

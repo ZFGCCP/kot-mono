@@ -327,7 +327,7 @@
             <actor name="hitbox3d2lEbBUBfVqxDt3" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="96:22" params="79,58" />
           </actors>
         </component>
-        <component address="3">
+        <component address="-2">
           <actors>
             <actor name="player" type="King_of_Thieves.Actors.Player.CPlayer" coordinates="129:161" />
           </actors>

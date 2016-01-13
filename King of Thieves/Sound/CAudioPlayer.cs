@@ -72,6 +72,7 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Npc:wizzrobe:vanish", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/wizzrobevanish")));
             soundBank.Add("Npc:redead:screech", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/redeadScreech")));
             soundBank.Add("Npc:die", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/enemyDie")));
+            soundBank.Add("Npc:bossHit", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/npc/bossHit")));
 
             //menus
             soundBank.Add("menu:openMenu", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/menu/menuOpen")));

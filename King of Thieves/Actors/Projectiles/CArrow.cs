@@ -69,17 +69,7 @@ namespace King_of_Thieves.Actors.Projectiles
         {
             base.collide(sender, collider);
 
-            if (collider is NPC.Enemies.Rump.CRump)
-            {
-                if (((NPC.Enemies.Rump.CRump)collider).isReal)
-                    dealDamange(1, collider);
-                else
-                {
-
-                }
-                _killMe = true;
-            }
-            else if (!(collider is Actors.NPC.Enemies.Poe.CPoe))
+            if (!(collider is Actors.NPC.Enemies.Poe.CPoe))
             {
                 _killMe = true;
             }

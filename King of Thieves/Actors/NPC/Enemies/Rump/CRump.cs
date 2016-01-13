@@ -24,7 +24,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         private string[] _shopDialog2 = { "No! NO! We had a DEAL! You WILL pay the price!" };
 
         //end combat dialog
-        private string _endDialog = "Enough! I should have just done this in the first place!";
+        private string[] _endDialog = { "Enough! I should have just done this in the first place!" };
         private string _endDialog2 = "?! ..W-WHAT ARE YOU..?! NO!!!!";
         private static bool _openingDialog = true;
 
@@ -41,6 +41,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         private bool _battleMode = false;
         private bool _shopMode = false;
         private int _currentPositionIndex = 0;
+        private bool _wasStruckByArrow = false;
 
         private bool _isReal = false;
 
@@ -75,6 +76,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
             _hitBox = new Collision.CHitBox(this, 10, 18, 12, 15);
             _followRoot = false;
+            _hp = 5;
         }
 
         //only call this one once!
@@ -151,11 +153,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         {
             base.update(gameTime);
 
-            if (_battleMode)
-            {
-
-            }
-            else
+            if(!_battleMode)
             {
                 if (_state == ACTOR_STATES.TALK_READY && Actors.HUD.Text.CTextBox.messageFinished)
                 {
@@ -175,6 +173,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 {
                     startTimer2(60);
                 }
+                else if(_state == ACTOR_STATES.ATTACK)
+                {
+                    _currentDialog = _endDialog;
+                    _triggerTextEvent();
+                }
             }
         }
 
@@ -183,6 +186,19 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
             int ingoAddress = Map.CMapManager.getActorComponentAddress("ingo");
 
             CMasterControl.commNet[ingoAddress].Add(new CActorPacket(0, "ingo", this));
+        }
+
+        public override void destroy(object sender)
+        {
+            base.destroy(sender);
+
+            if (_battleMode)
+            {
+                CRump rump = new CRump();
+                rump.init("rumpEndSequence", _position, "", CReservedAddresses.NON_ASSIGNED);
+                rump._state = ACTOR_STATES.ATTACK;
+                Map.CMapManager.addComponent(rump, new Dictionary<string, CActor>());
+            }
         }
 
         private void _taunt()
@@ -224,13 +240,35 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
             Projectiles.CFireBall fireBall = new Projectiles.CFireBall(_direction, velocity, _position);
             fireBall.init("fireBall" + _name, _position, "", this.componentAddress);
             Map.CMapManager.addActorToComponent(fireBall, this.componentAddress);
-            _vanish();
         }
 
         private void _shopDialogBegin(object sender)
         {
             startTimer4(30);
             _state = ACTOR_STATES.USER_STATE0;
+        }
+
+        private void _arrowResponse()
+        {
+            ((CRump)component.root)._instructClones();
+            if (_isReal)
+            {
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:bossHit"]);
+                dealDamange(1, this);
+            }
+        }
+
+        private void _instructClones()
+        {
+            foreach(KeyValuePair<String,CActor> kvp in component.actors)
+            {
+                CRump rump = (CRump)kvp.Value;
+                rump._vanish();
+                rump.stopTimer5();
+            }
+
+            ((CRump)component.root)._vanish();
+            ((CRump)component.root).stopTimer5();
         }
 
         protected override void dialogBegin(object sender)
@@ -320,10 +358,23 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
             _state = ACTOR_STATES.INVISIBLE;
 
+            Vector2 _currentPosition = new Vector2(_position.X, _position.Y);
+
+            jumpToPoint(1000, 1000);
+
             startTimer1(180);
 
-            if (_removedPositions.Count == 0)
+            if (!_isReal)
+            {
+                if (!_wasStruckByArrow)
+                    _allowedPositionList.Add(_currentPosition);
+            }
+
+            if ((_isReal && _wasStruckByArrow) || _removedPositions.Count == 0 || _allowedPositionList.Count < 3)
                 _fullReconstructAllowedPositions();
+
+            _wasStruckByArrow = false;
+
         }
 
         public override void timer1(object sender)
@@ -356,18 +407,25 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 collider.shock();
 
             if (collider is Projectiles.CArrow)
+            {
+                _wasStruckByArrow = true;
+
                 if (!_isReal)
-                    _removeCurrentPosition();
-                else
-                {
-                    _vanish();
-                    _fullReconstructAllowedPositions();
-                }
+                    _removeCurrentPosition(true);
+
+                collider.killMe = true;
+
+                _arrowResponse();
+            }
         }
 
         private void _removeCurrentPosition(bool cacheIt = false)
         {
             Vector2 cache = Vector2.Zero;
+
+            if (_allowedPositionList.Count <= _currentPositionIndex)
+                return;
+
             cache = _allowedPositionList[_currentPositionIndex];
 
             _allowedPositionList.RemoveAt(_currentPositionIndex);
