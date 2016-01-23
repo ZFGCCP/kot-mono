@@ -2564,6 +2564,11 @@
             <actor name="ingo" type="King_of_Thieves.Actors.NPC.Other.CIngo" coordinates="860:1024" params="false" />
           </actors>
         </component>
+        <component address="32">
+          <actors>
+            <actor name="clark" type="King_of_Thieves.Actors.NPC.Other.TownsFolk.CClark" coordinates="380:1167" />
+          </actors>
+        </component>
       </components>
     </layer>
     <layer width="0" height="0" name="slumsOverlays">
@@ -8542,6 +8547,11 @@
         <component address="19">
           <actors>
             <actor name="toEugene" type="King_of_Thieves.Actors.Collision.CMapChanger" coordinates="1329:108" params="1536,1019,castleTownInteriors.xml" />
+          </actors>
+        </component>
+        <component address="31">
+          <actors>
+            <actor name="bernice" type="King_of_Thieves.Actors.NPC.Other.TownsFolk.CBernice" coordinates="1097:166" />
           </actors>
         </component>
       </components>

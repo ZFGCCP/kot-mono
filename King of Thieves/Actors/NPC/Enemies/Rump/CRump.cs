@@ -47,6 +47,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
         private static List<Vector2> _allowedPositionList = new List<Vector2>();
         private static Stack<Vector2> _removedPositions = new Stack<Vector2>();
+        private bool _defeatVanish = false;
 
         public CRump() :
             base()
@@ -76,7 +77,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
             _hitBox = new Collision.CHitBox(this, 10, 18, 12, 15);
             _followRoot = false;
-            _hp = 5;
+            _hp = 1;
         }
 
         //only call this one once!
@@ -151,6 +152,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
         public override void update(GameTime gameTime)
         {
+            if (_hp <= 0)
+            {
+                _hp = 1;
+                _state = ACTOR_STATES.VAULT;
+            }
+
             base.update(gameTime);
 
             if(!_battleMode)
@@ -177,6 +184,14 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 {
                     _currentDialog = _endDialog;
                     _triggerTextEvent();
+                }
+            }
+            else
+            {
+                if (_state == ACTOR_STATES.VAULT)
+                {
+                    _vanish(true, true);
+                    _killClones();
                 }
             }
         }
@@ -262,13 +277,28 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         {
             foreach(KeyValuePair<String,CActor> kvp in component.actors)
             {
-                CRump rump = (CRump)kvp.Value;
-                rump._vanish();
-                rump.stopTimer5();
+                if (kvp.Value is CRump)
+                {
+                    CRump rump = (CRump)kvp.Value;
+                    rump._vanish();
+                    rump.stopTimer5();
+                }
             }
 
             ((CRump)component.root)._vanish();
             ((CRump)component.root).stopTimer5();
+        }
+
+        private void _killClones()
+        {
+            foreach (KeyValuePair<String, CActor> kvp in component.actors)
+            {
+                if (kvp.Value is CRump)
+                {
+                    CRump rump = (CRump)kvp.Value;
+                    rump.killMe = true;
+                }
+            }
         }
 
         protected override void dialogBegin(object sender)
@@ -277,6 +307,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 _currentDialog = _shopDialog;
             else if (_state == ACTOR_STATES.USER_STATE1)
                 _currentDialog = _shopDialog2;
+            else if (_state == ACTOR_STATES.CHASE)
+                _currentDialog = _endDialog;
 
             base.dialogBegin(sender);
         }
@@ -292,6 +324,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
             {
                 CMasterControl.mapManager.cacheMaps(false, "rumpleBattle.xml");
                 CMasterControl.mapManager.swapMap("rumpleBattle.xml", "player", new Vector2(129, 161),Map.CMapManager.TRANSITION_RUMPLE_SWIRL);
+            }
+            else if(_state == ACTOR_STATES.CHASE)
+            {
+                startTimer6(180);
             }
             base.dialogEnd(sender);
         }
@@ -310,37 +346,47 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         private void _appear()
         {
 
-            _state = ACTOR_STATES.IDLE;
-            Vector2 playerPos = (Vector2)Map.CMapManager.propertyGetter("player", Map.EActorProperties.POSITION);
-
-            int positionIndex = _randNum.Next(0, _allowedPositionList.Count - 1);
-            jumpToPoint(_allowedPositionList[positionIndex].X, _allowedPositionList[positionIndex].Y);
-            lookAt(playerPos);
-            _currentPositionIndex = positionIndex;
-
-            _removeCurrentPosition();
-            swapImage(_RUMP_IDLE_DOWN);
-            /*switch (_direction)
+            if (!_defeatVanish)
             {
-                case DIRECTION.DOWN:
-                    swapImage(_IDLE_DOWN);
-                    break;
+                _state = ACTOR_STATES.IDLE;
+                Vector2 playerPos = (Vector2)Map.CMapManager.propertyGetter("player", Map.EActorProperties.POSITION);
 
-                case DIRECTION.UP:
-                    swapImage(_IDLE_UP);
-                    break;
+                int positionIndex = _randNum.Next(0, _allowedPositionList.Count - 1);
+                jumpToPoint(_allowedPositionList[positionIndex].X, _allowedPositionList[positionIndex].Y);
+                lookAt(playerPos);
+                _currentPositionIndex = positionIndex;
 
-                case DIRECTION.LEFT:
-                    swapImage(_IDLE_LEFT);
-                    break;
+                _removeCurrentPosition();
+                swapImage(_RUMP_IDLE_DOWN);
+                startTimer5(180);
+                /*switch (_direction)
+                {
+                    case DIRECTION.DOWN:
+                        swapImage(_IDLE_DOWN);
+                        break;
 
-                case DIRECTION.RIGHT:
-                    swapImage(_IDLE_RIGHT);
-                    break;
-            }*/
+                    case DIRECTION.UP:
+                        swapImage(_IDLE_UP);
+                        break;
+
+                    case DIRECTION.LEFT:
+                        swapImage(_IDLE_LEFT);
+                        break;
+
+                    case DIRECTION.RIGHT:
+                        swapImage(_IDLE_RIGHT);
+                        break;
+                }*/
+            }
+            else
+            {
+                _state = ACTOR_STATES.CHASE;
+                _triggerTextEvent();
+                CMasterControl.commNet[CReservedAddresses.PLAYER].Add(new CActorPacket(0, "player", this));
+            }
             CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:wizzrobe:vanish"]);
             Graphics.CEffects.createEffect(Graphics.CEffects.SMOKE_POOF, new Vector2(_position.X - 13, _position.Y - 5));
-            startTimer5(180);
+            
         }
 
         public override void timer5(object sender)
@@ -348,7 +394,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
             _chargeFireBall();
         }
 
-        private void _vanish(bool showEffect = true)
+        private void _vanish(bool showEffect = true, bool goCenter = false)
         {
             if (showEffect)
             {
@@ -360,20 +406,29 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
             Vector2 _currentPosition = new Vector2(_position.X, _position.Y);
 
-            jumpToPoint(1000, 1000);
-
-            startTimer1(180);
-
-            if (!_isReal)
+            if (!goCenter)
             {
-                if (!_wasStruckByArrow)
-                    _allowedPositionList.Add(_currentPosition);
+                jumpToPoint(1000, 1000);
+
+                startTimer1(180);
+
+                if (!_isReal)
+                {
+                    if (!_wasStruckByArrow)
+                        _allowedPositionList.Add(_currentPosition);
+                }
+
+                if ((_isReal && _wasStruckByArrow) || _removedPositions.Count == 0 || _allowedPositionList.Count < 3)
+                    _fullReconstructAllowedPositions();
+
+                _wasStruckByArrow = false;
             }
-
-            if ((_isReal && _wasStruckByArrow) || _removedPositions.Count == 0 || _allowedPositionList.Count < 3)
-                _fullReconstructAllowedPositions();
-
-            _wasStruckByArrow = false;
+            else
+            {
+                jumpToPoint(128, 128);
+                startTimer1(60);
+                _defeatVanish = true;
+            }
 
         }
 
@@ -411,7 +466,13 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 _wasStruckByArrow = true;
 
                 if (!_isReal)
+                {
                     _removeCurrentPosition(true);
+                    Items.Drops.CArrowDrop arrow = new Items.Drops.CArrowDrop();
+                    arrow.init(_name + "_arrowDrop" + Collision.CHitBox.produceRandomName(), _position, "", this.componentAddress);
+                    arrow.layer = this.layer;
+                    Map.CMapManager.addActorToComponent(arrow, this.componentAddress);
+                }
 
                 collider.killMe = true;
 

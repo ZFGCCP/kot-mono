@@ -137,8 +137,9 @@ namespace King_of_Thieves.Actors
             {
                 root.doCollision();
 
-                foreach (KeyValuePair<string, CActor> kvp in actors)
+                for (int i = 0; i < actors.Count; i++)
                 {
+                    KeyValuePair<string, CActor> kvp = actors.ElementAt(i);
                     if (!kvp.Value.killMe)
                     {
                         kvp.Value.doCollision();

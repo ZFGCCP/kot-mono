@@ -41,6 +41,7 @@ namespace King_of_Thieves.Actors
         CHARGING_ARROW,
         CHARGING_SWORD,
         CHASE,
+        CHOKE,
         CLIMB_END,
         CLIMBING,
         CLIMBING_IDLE,
@@ -88,6 +89,7 @@ namespace King_of_Thieves.Actors
         SHOOK_OFF,
         SHOOTING_ARROW,
         SHOOTING_CANNON,
+        SHOVE,
         SMASH,
         SPIN_ATTACK,
         SWINGING,
@@ -155,6 +157,7 @@ namespace King_of_Thieves.Actors
         private bool _flagForResourceCleanup = false;
         public bool hidden = false;
         private Queue<CActor> _actorsToBeRegistered = new Queue<CActor>();
+        protected Queue<Vector2> _path0 = new Queue<Vector2>();
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -313,6 +316,12 @@ namespace King_of_Thieves.Actors
             
 
             return angle;
+        }
+
+        protected void _followPath(params Vector2[] path)
+        {
+            foreach (Vector2 vec in path)
+                _path0.Enqueue(vec);
         }
 
         private void _registerSystemEvents()
@@ -766,27 +775,34 @@ namespace King_of_Thieves.Actors
                     image.Y = (int)_position.Y;
                 }
 
+                //follow paths if there are any
+                while(_path0.Count > 0)
+                {
+                    Vector2 pathVec = _path0.Dequeue();
+                    _position += pathVec;
+                }
+
                 if ((Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysPressed)
-                    onKeyDown(this);
+                    onKeyDown(Master.GetInputManager().GetCurrentInputHandler());
 
                 if ((Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysReleased)
-                    onKeyRelease(this);
+                    onKeyRelease(Master.GetInputManager().GetCurrentInputHandler());
 
                 if ((Master.GetInputManager().GetCurrentInputHandler() as CInput).mouseLeftClick)
                 {
-                    onMouseClick(this);
+                    onMouseClick(Master.GetInputManager().GetCurrentInputHandler());
 
 
                     if (_hitBox != null && _hitBox.checkCollision(new Vector2((Master.GetInputManager().GetCurrentInputHandler() as CInput).mouseX,
                                                             (Master.GetInputManager().GetCurrentInputHandler() as CInput).mouseY)))
                     {
-                        click(this);
+                        click(Master.GetInputManager().GetCurrentInputHandler());
                     }
                 }
 
                 if ((Master.GetInputManager().GetCurrentInputHandler() as CInput).mouseLeftRelease)
                 {
-                    onTap(this);
+                    onTap(Master.GetInputManager().GetCurrentInputHandler());
                 }
 
                 //new timer stuff THANKS ASH

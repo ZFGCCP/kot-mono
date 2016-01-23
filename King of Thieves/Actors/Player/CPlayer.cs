@@ -208,6 +208,9 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_DIE_SPIN, new Graphics.CSprite(Graphics.CTextures.PLAYER_DIE_SPIN));
             _imageIndex.Add(Graphics.CTextures.PLAYER_DIE_FALL, new Graphics.CSprite(Graphics.CTextures.PLAYER_DIE_FALL));
             _imageIndex.Add(Graphics.CTextures.PLAYER_DEAD, new Graphics.CSprite(Graphics.CTextures.PLAYER_DEAD));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_WIGGLE, new Graphics.CSprite(Graphics.CTextures.PLAYER_WIGGLE));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FALL_ON_ASS, new Graphics.CSprite(Graphics.CTextures.PLAYER_FALL_ON_ASS));
         }
 
         public override void timer5(object sender)
@@ -244,7 +247,7 @@ namespace King_of_Thieves.Actors.Player
                             _collideWithNpcResponse(collider, false);
                     }
 
-                    if (collider is NPC.Other.CTownsFolk)
+                    if (collider is NPC.Other.CTownsFolk || (collider is NPC.Other.CBaseNpc && !(collider is NPC.Enemies.CBaseEnemy)))
                     {
                         solidCollide(collider);
                     }
@@ -330,6 +333,7 @@ namespace King_of_Thieves.Actors.Player
         protected override void _registerUserEvents()
         {
             base._registerUserEvents();
+            _userEvents.Add(0, _rumpShoveToCenter);
         }
 
         public override void create(object sender)
@@ -934,6 +938,17 @@ namespace King_of_Thieves.Actors.Player
 
             switch (_state)
             {
+                case ACTOR_STATES.SHOVE:
+                    moveToPoint2(128, 90, 2.0f);
+
+                    if ((_position.X >= 125 && _position.Y <= 131) &&
+                        (_position.Y >= 87 && _position.Y <= 93))
+                    {
+                        _state = ACTOR_STATES.CHOKE;
+                        swapImage(Graphics.CTextures.PLAYER_WIGGLE);
+                    }
+                    break;
+
                 case ACTOR_STATES.GOT_ITEM:
                     if (Actors.HUD.Text.CTextBox.messageFinished)
                     {
@@ -1211,6 +1226,7 @@ namespace King_of_Thieves.Actors.Player
 
             //other NPCs
             _collidables.Add(typeof(Actors.NPC.Other.CTownsFolk));
+            _collidables.Add(typeof(Actors.NPC.Other.CBaseNpc));
         }
 
         public override void shock()
@@ -1366,34 +1382,39 @@ namespace King_of_Thieves.Actors.Player
 
         private void _shootArrow()
         {
-            //if (_lastHudKeyPressed == Keys.Left)
+            if (CMasterControl.buttonController.arrowCount > 0)
+            {
+                CMasterControl.buttonController.modifyArrows(-1);
                 state = ACTOR_STATES.SHOOTING_ARROW;
 
-            _triggerUserEvent(0, _lastArrowShotName);
+                _triggerUserEvent(0, _lastArrowShotName);
 
-            _lastArrowShotName = string.Empty;
+                _lastArrowShotName = string.Empty;
 
-            if (_arrowType != Projectiles.ARROW_TYPES.STANDARD)
-                CMasterControl.magicMeter.subtractMagic(2);
+                if (_arrowType != Projectiles.ARROW_TYPES.STANDARD)
+                    CMasterControl.magicMeter.subtractMagic(2);
 
-            switch (_direction)
-            {
-                case DIRECTION.LEFT:
-                    swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT);
-                    break;
+                switch (_direction)
+                {
+                    case DIRECTION.LEFT:
+                        swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT);
+                        break;
 
-                case DIRECTION.RIGHT:
-                    swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_RIGHT);
-                    break;
+                    case DIRECTION.RIGHT:
+                        swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_RIGHT);
+                        break;
 
-                case DIRECTION.DOWN:
-                    swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_DOWN);
-                    break;
+                    case DIRECTION.DOWN:
+                        swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_DOWN);
+                        break;
 
-                case DIRECTION.UP:
-                    swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_UP);
-                    break;
+                    case DIRECTION.UP:
+                        swapImage(Graphics.CTextures.PLAYER_SHOOT_ARROW_UP);
+                        break;
+                }
             }
+            else
+                _state = ACTOR_STATES.IDLE;
 
             _usingItem = false;
         }
@@ -1643,5 +1664,17 @@ namespace King_of_Thieves.Actors.Player
             }
             
         }
+
+
+        //===========================================================================
+        //=========================cutscene related things===========================
+        //===========================================================================
+        private void _rumpShoveToCenter(object sender)
+        {
+            _state = ACTOR_STATES.SHOVE;
+            _acceptInput = false;
+            noCollide = true;
+        }
+
     }
 }
