@@ -188,6 +188,17 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        private void _disposeActors()
+        {
+            root.Dispose();
+            root = null;
+
+            foreach (KeyValuePair<string, CActor> kvp in actors)
+                kvp.Value.Dispose();
+
+            actors.Clear();
+        }
+
         private void _destroyActors(bool hardDelete = true)
         {
             root.remove();
@@ -196,10 +207,10 @@ namespace King_of_Thieves.Actors
 
             foreach (KeyValuePair<string, CActor> kvp in actors)
             {
-                kvp.Value.remove();
-
                 if (hardDelete)
                     Map.CMapManager.removeFromActorRegistry(kvp.Value);
+
+                kvp.Value.remove();
             }
             actors.Clear();
             Map.CMapManager.removeComponent(this);
@@ -261,12 +272,19 @@ namespace King_of_Thieves.Actors
                         actors.Remove(actor.name);
                         actor.component = null;
                         Map.CMapManager.removeFromActorRegistry(actor);
+                        actor.Dispose();
                     }
                     catch (KeyNotFoundException) { }
                 }
             }
             else
                 _removeThese.Add(actor);
+        }
+
+        public override void Dispose()
+        {
+            _disposeActors();
+            _removeThese.Clear();
         }
     }
 }

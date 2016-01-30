@@ -13,6 +13,7 @@ namespace King_of_Thieves.usr.local
         public GameOver(Menu menu) :
             base(menu)
         {
+            CMasterControl.mapManager.unloadAllMaps();
             CMasterControl.camera.jump(Vector3.Zero);
             CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:gameOver"],-1);
         }

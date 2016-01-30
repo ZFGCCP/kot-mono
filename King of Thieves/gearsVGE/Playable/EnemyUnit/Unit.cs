@@ -19,7 +19,7 @@ namespace Gears.Playable
     /// <summary>
     /// TODO: Comments. Clean up. Refactor.
     /// </summary>
-    public abstract class Unit : Entity
+    public abstract class Unit : Entity, IDisposable
     {
         protected internal BoundingBox _boundingBox;
         protected internal Vector3[] _transformedPoints;
@@ -169,5 +169,7 @@ namespace Gears.Playable
         public virtual void onAnimStart() { }//local event
         public virtual void onMapStart() { }//global event //onLoad  ? -> global Trigger
         public virtual void onMapEnd() { }//global event   //onUnload? -> global Trigger
+
+        public abstract void Dispose();
     }
 }

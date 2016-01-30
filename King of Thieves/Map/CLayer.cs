@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.Map
 {
-    class CLayer
+    class CLayer : IDisposable
     {
         private ComponentManager _components;
         public string NAME;
@@ -253,6 +253,19 @@ namespace King_of_Thieves.Map
         public void addImage(Graphics.CSprite image)
         {
             _image = image;
+        }
+
+        public void Dispose()
+        {
+            foreach (CTile tile in _tiles)
+                tile.Dispose();
+
+            _components.disposeFactories();
+
+            otherImages.Clear();
+
+            _tiles.Clear();
+            _tiles = null;
         }
     }
 }

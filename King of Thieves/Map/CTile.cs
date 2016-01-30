@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace King_of_Thieves.Map
 {
-    public class CTile
+    public class CTile : IDisposable
     {
         protected Vector2 _tileBounds;
         public Vector2 tileCoords;
@@ -67,5 +67,10 @@ namespace King_of_Thieves.Map
 
         //used in inherited classes only
         public virtual void update() { }
+
+        public void Dispose()
+        {
+            _boundary = null;
+        }
     }
 }

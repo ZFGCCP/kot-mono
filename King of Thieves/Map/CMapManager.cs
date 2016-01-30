@@ -23,6 +23,7 @@ namespace King_of_Thieves.Map
         private static Graphics.CTransitionEffect _transition = null;
 
         public const int TRANSITION_RUMPLE_SWIRL = 0;
+        public const int TRANSITION_FADE_TO_BLACK = 1;
 
         public void checkAndSwapMap()
         {
@@ -158,6 +159,10 @@ namespace King_of_Thieves.Map
                     case TRANSITION_RUMPLE_SWIRL:
                         _transition = new Graphics.CTransitionEffect(Graphics.CTextures.TRANSITION_RUMPLE, 30, 30);
                         break;
+
+                    case TRANSITION_FADE_TO_BLACK:
+                        _transition = new Graphics.CTransitionEffect(Graphics.CTextures.TRANSITION_FADE_TO_BLACK, 30, 30);
+                        break;
                 }
         }
 
@@ -171,6 +176,30 @@ namespace King_of_Thieves.Map
 
             if (_currentMap == null)
                 _swapMap();
+        }
+
+        public void unloadMap(string mapName)
+        {
+            CMap map = null;
+            if (mapPool.ContainsKey(mapName))
+            {
+                map = mapPool[mapName];
+
+                if (map != null)
+                {
+                    map.Dispose();
+                    mapPool.Remove(mapName);
+                }
+            }
+        }
+
+        public void unloadAllMaps()
+        {
+            for(int i = 0; i < mapPool.Keys.Count; i++)
+            {
+                string map = mapPool.Keys.ElementAt(i);
+                unloadMap(map);
+            }
         }
 
         private void _swapMap()

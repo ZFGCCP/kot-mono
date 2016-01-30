@@ -51,12 +51,15 @@ namespace King_of_Thieves.Actors
         DECREMENT,
         DIE_FALL,
         DIEING,
+        DROP,
+        DROP_ITEM,
         DUSK,
         EXPLODE,
         FLYING,
         FOLLOW_PLAYER,
         FROZEN,
         FURIOUS,
+        GET_UP,
         GO_HOME,
         GOT_ITEM,
         HIDDEN,
@@ -74,6 +77,7 @@ namespace King_of_Thieves.Actors
         MORNING,
         MOVING,
         NIGHT,
+        PANIC,
         PICKING,
         PICK_READY,
         POPDOWN,
@@ -117,7 +121,7 @@ namespace King_of_Thieves.Actors
         YIELD
     }
 
-    public abstract class CActor
+    public abstract class CActor : IDisposable
     {
         public IList<ACTOR_STATES> INVINCIBLE_STATES = new List<ACTOR_STATES>{ACTOR_STATES.KNOCKBACK, ACTOR_STATES.SHOCKED, ACTOR_STATES.FROZEN}.AsReadOnly();
         protected Vector2 _position = Vector2.Zero;
@@ -158,6 +162,7 @@ namespace King_of_Thieves.Actors
         public bool hidden = false;
         private Queue<CActor> _actorsToBeRegistered = new Queue<CActor>();
         protected Queue<Vector2> _path0 = new Queue<Vector2>();
+        protected CCommNetRef _componentAddressLkup = null; //for use with the commnet.  Store an address of sender here if you need to pass a message back to it at some point
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -237,6 +242,8 @@ namespace King_of_Thieves.Actors
                 _hitBox.destroy();
                 _hitBox = null;
             }
+
+            Dispose();
         }
 
         protected virtual void applyEffects(){}
@@ -293,13 +300,7 @@ namespace King_of_Thieves.Actors
 
         ~CActor()
         {
-            onCreate -= new actorEventHandler(create);
-            onDestroy -= new actorEventHandler(destroy);
-            onKeyDown -= new actorEventHandler(keyDown);
-            onFrame -= new actorEventHandler(frame);
-            onKeyRelease -= new actorEventHandler(keyRelease);
-            onDraw -= new actorEventHandler(draw);
-            onRoomStart -= new actorEventHandler(roomStart);
+            
         }
 
         public string dataType
@@ -1204,6 +1205,35 @@ namespace King_of_Thieves.Actors
         public CActor popActorForRegistration()
         {
             return _actorsToBeRegistered.Dequeue();
+        }
+
+        public virtual void Dispose()
+        {
+            _imageIndex.Clear();
+            _soundIndex.Clear();
+
+            onCreate -= new actorEventHandler(create);
+            onDestroy -= new actorEventHandler(destroy);
+            onKeyDown -= new actorEventHandler(keyDown);
+            onFrame -= new actorEventHandler(frame);
+            onKeyRelease -= new actorEventHandler(keyRelease);
+            onDraw -= new actorEventHandler(draw);
+            onRoomStart -= new actorEventHandler(roomStart);
+            onAnimationEnd -= new actorEventHandler(animationEnd);
+            onCollide -= new collideHandler(collide);
+            onMouseClick -= new actorEventHandler(mouseClick);
+            onTap -= new actorEventHandler(tap);
+            onTimer0 -= new actorEventHandler(timer0);
+            onTimer1 -= new actorEventHandler(timer1);
+            onTimer2 -= new actorEventHandler(timer2);
+            onTimer3 -= new actorEventHandler(timer3);
+            onTimer4 -= new actorEventHandler(timer4);
+            onTimer5 -= new actorEventHandler(timer5);
+            onTimer6 -= new actorEventHandler(timer6);
+
+            _userEvents.Clear();
+            _userEventsToFire.Clear();
+            _collidables.Clear();
         }
     }
 }

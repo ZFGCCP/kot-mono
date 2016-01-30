@@ -25,7 +25,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
         //end combat dialog
         private string[] _endDialog = { "Enough! I should have just done this in the first place!" };
-        private string _endDialog2 = "?! ..W-WHAT ARE YOU..?! NO!!!!";
+        private string[] _endDialog2 = { "THE FAIRY DUST?! ..W-WHAT ARE YOU..?! NO!!!!" };
         private static bool _openingDialog = true;
 
         private const string _SPRITE_NAMESPACE = "rump";
@@ -309,6 +309,8 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 _currentDialog = _shopDialog2;
             else if (_state == ACTOR_STATES.CHASE)
                 _currentDialog = _endDialog;
+            else if (_state == ACTOR_STATES.PANIC)
+                _currentDialog = _endDialog2;
 
             base.dialogBegin(sender);
         }
@@ -326,9 +328,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
                 CMasterControl.mapManager.swapMap("rumpleBattle.xml", "player", new Vector2(129, 161),Map.CMapManager.TRANSITION_RUMPLE_SWIRL);
             }
             else if(_state == ACTOR_STATES.CHASE)
-            {
                 startTimer6(180);
-            }
+            else if(_state == ACTOR_STATES.PANIC)
+                CMasterControl.commNet[CReservedAddresses.PLAYER].Add(new CActorPacket(1, "player", this));
+
             base.dialogEnd(sender);
         }
 
@@ -341,6 +344,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
         {
             base._registerUserEvents();
             _userEvents.Add(0, _shopDialogBegin);
+            _userEvents.Add(1, _notTheDust);
         }
 
         private void _appear()
@@ -508,6 +512,12 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
             {
                 return _isReal;
             }
+        }
+
+        private void _notTheDust(object sender)
+        {
+            _state = ACTOR_STATES.PANIC;
+            _triggerTextEvent();
         }
     }
 }

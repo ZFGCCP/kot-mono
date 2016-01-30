@@ -59,6 +59,7 @@
     <Compile Include="Actors\CActor.cs" />
     <Compile Include="Actors\CActorPacket.cs" />
     <Compile Include="Actors\CActorTest.cs" />
+    <Compile Include="Actors\CCommNetRef.cs" />
     <Compile Include="Actors\CComponent.cs" />
     <Compile Include="Actors\Collision\CCameraLimit.cs" />
     <Compile Include="Actors\Collision\CClimber.cs" />
@@ -702,6 +703,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sprites\npc\friendly\friendlyNPCs.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\transitions\fadeToBlack.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

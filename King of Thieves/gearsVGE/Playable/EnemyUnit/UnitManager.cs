@@ -35,6 +35,14 @@ namespace Gears.Playable
         {
             _factories[factory].RemoveUnit(unit);
         }
+        public void disposeFactories()
+        {
+            foreach (UnitTypeFactory utf in _factories)
+            {
+                utf.disposeUnits();
+            }
+            _factories = null;
+        }
         public void Update(GameTime gameTime)
         {
             foreach (UnitTypeFactory utf in _factories)

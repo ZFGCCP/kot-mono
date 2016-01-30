@@ -38,6 +38,17 @@ namespace Gears.Playable
                 return _units;
             }
         }
+        public void disposeUnits()
+        {
+            if (_units != null)
+            {
+                for (int i = 0; i < _units.Count; i++)
+                {
+                    _units[i].Dispose();
+                }
+                _units.Clear();
+            }
+        }
         public void Update(GameTime gameTime)
         {
             if (_units != null)

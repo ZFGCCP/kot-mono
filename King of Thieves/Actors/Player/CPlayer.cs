@@ -211,6 +211,13 @@ namespace King_of_Thieves.Actors.Player
 
             _imageIndex.Add(Graphics.CTextures.PLAYER_WIGGLE, new Graphics.CSprite(Graphics.CTextures.PLAYER_WIGGLE));
             _imageIndex.Add(Graphics.CTextures.PLAYER_FALL_ON_ASS, new Graphics.CSprite(Graphics.CTextures.PLAYER_FALL_ON_ASS));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_UP_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_UP_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_UP_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_UP_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_UP_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_UP_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_UP_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_UP_LEFT,true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD));
         }
 
         public override void timer5(object sender)
@@ -334,14 +341,10 @@ namespace King_of_Thieves.Actors.Player
         {
             base._registerUserEvents();
             _userEvents.Add(0, _rumpShoveToCenter);
+            _userEvents.Add(1, _rumpDropFairyDust);
         }
 
         public override void create(object sender)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void destroy(object sender)
         {
             throw new NotImplementedException();
         }
@@ -511,6 +514,18 @@ namespace King_of_Thieves.Actors.Player
                     swapImage(Graphics.CTextures.PLAYER_DEAD);
                     _state = ACTOR_STATES.DEAD;
                     CMasterControl.buttonController.beginFade(Vector3.Zero);
+                    break;
+
+                case ACTOR_STATES.DROP:
+                    swapImage(_GOT_ITEM);
+                    _state = ACTOR_STATES.HOLD;
+                    CMasterControl.commNet[_componentAddressLkup.componentAddress].Add(new CActorPacket(1, _componentAddressLkup.actorName, this));
+                    break;
+
+                case ACTOR_STATES.DROP_ITEM:
+                    swapImage(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD);
+                    state = ACTOR_STATES.USER_STATE0;
+                    startTimer6(120);
                     break;
             }
 
@@ -946,6 +961,7 @@ namespace King_of_Thieves.Actors.Player
                     {
                         _state = ACTOR_STATES.CHOKE;
                         swapImage(Graphics.CTextures.PLAYER_WIGGLE);
+                        startTimer6(120);
                     }
                     break;
 
@@ -1272,10 +1288,29 @@ namespace King_of_Thieves.Actors.Player
 
         public override void timer6(object sender)
         {
-            _state = ACTOR_STATES.IDLE;
-            noCollide = false;
-            _velocity = Vector2.Zero;
-            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:land"]);
+            if (_state == ACTOR_STATES.CHOKE)
+            {
+                swapImage(Graphics.CTextures.PLAYER_SHOCKDOWN);
+                _state = ACTOR_STATES.SHOCKED;
+                startTimer6(180);
+            }
+            else if(_state == ACTOR_STATES.SHOCKED)
+            {
+                _state = ACTOR_STATES.DROP;
+                swapImage(Graphics.CTextures.PLAYER_FALL_ON_ASS);
+            }
+            else if(_state == ACTOR_STATES.USER_STATE0)
+            {
+                Graphics.CEffects.createEffect("effects:smokePoof", _position);
+                _state = ACTOR_STATES.INVISIBLE;
+            }
+            else
+            {
+                _state = ACTOR_STATES.IDLE;
+                noCollide = false;
+                _velocity = Vector2.Zero;
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:land"]);
+            }
         }
 
         public override void freeze()
@@ -1674,6 +1709,13 @@ namespace King_of_Thieves.Actors.Player
             _state = ACTOR_STATES.SHOVE;
             _acceptInput = false;
             noCollide = true;
+            _componentAddressLkup = new CCommNetRef(((CActor)sender).componentAddress,((CActor)sender).name);
+        }
+
+        private void _rumpDropFairyDust(object sender)
+        {
+            swapImage(Graphics.CTextures.PLAYER_PULL_UP_DOWN);
+            _state = ACTOR_STATES.DROP_ITEM;
         }
 
     }
