@@ -47,11 +47,11 @@ namespace King_of_Thieves.Actors.HUD.health
 
         public void update(GameTime gametime)
         {
-            if (CMasterControl.glblInput.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.Up))
+            /*if (CMasterControl.glblInput.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.Up))
                 modifyHp(1);
 
             if (CMasterControl.glblInput.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.Down))
-                modifyHp(-1);
+                modifyHp(-1);*/
 
             foreach (CHealth health in _hearts)
                 health.update(gametime);

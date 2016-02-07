@@ -92,8 +92,6 @@ namespace King_of_Thieves.Actors.NPC.Other
             _position += _velocity;
             if (CMasterControl.mapManager.checkFlag(0))
             {
-                _state = ACTOR_STATES.FURIOUS;
-                CMasterControl.mapManager.flipFlag(0);
                 swapImage(_IDLE_DOWN);
             }
 
@@ -164,7 +162,6 @@ namespace King_of_Thieves.Actors.NPC.Other
             else if (_state == ACTOR_STATES.FURIOUS)
             {
                 _currentDialog = _hide;
-                _state = ACTOR_STATES.FURIOUS;
                 stopTimer0();
                 stopTimer1();
             }
@@ -181,12 +178,14 @@ namespace King_of_Thieves.Actors.NPC.Other
             if (_state == ACTOR_STATES.FURIOUS)
             {
                 Enemies.Rump.CRump rumple = new Enemies.Rump.CRump();
-                rumple.init("rumplestiltskin", new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY - 40), "", CReservedAddresses.NON_ASSIGNED, "true");
+                rumple.init("rumplestiltskin", new Vector2(_position.X - 20, Player.CPlayer.glblY - 40), "", CReservedAddresses.NON_ASSIGNED, "true");
 
                 Map.CMapManager.addComponent(rumple, new Dictionary<string, CActor>());
             }
             else if(_state == ACTOR_STATES.USER_STATE0)
                 CMasterControl.commNet[_callBackActorAddress].Add(new CActorPacket(0, _callBackActorName, this));
+            else if(_state == ACTOR_STATES.USER_STATE1)
+                _state = ACTOR_STATES.FURIOUS;
         }
 
         private bool _watch()
@@ -208,6 +207,7 @@ namespace King_of_Thieves.Actors.NPC.Other
         {
             base._registerUserEvents();
             _userEvents.Add(0, _getScaredShitless);
+            _userEvents.Add(1, _alertToPlayer);
         }
 
         private void _getScaredShitless(object sender)
@@ -216,6 +216,15 @@ namespace King_of_Thieves.Actors.NPC.Other
             _callBackActorAddress = ((Actors.CActor)sender).componentAddress;
             _callBackActorName = ((Actors.CActor)sender).name;
             _triggerTextEvent();
+        }
+
+        private void _alertToPlayer(object sender)
+        {
+            _currentDialog = _busted;
+            _state = ACTOR_STATES.USER_STATE1;
+            _triggerTextEvent();
+            stopTimer0();
+            stopTimer1();
         }
         
     }

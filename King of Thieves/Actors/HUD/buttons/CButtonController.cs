@@ -14,6 +14,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
         private CButton _buttonAction = new CButton(CButton.HUD_BUTTON_TYPE.ACTION);
         private counters.CRupeeCounter _rupeeCounter = new counters.CRupeeCounter();
         private counters.CBombCounter _bombCounter = new counters.CBombCounter();
+        private counters.CArrowCounter _arrowCounter = new counters.CArrowCounter();
 		private info.CBenchmarkInfo _benchmarkInfo = new info.CBenchmarkInfo();
         private Actors.HUD.Text.CTextBox _textBoxController = new Text.CTextBox();
         private other.CCullBoundary _cullBoundary = new other.CCullBoundary();
@@ -50,10 +51,19 @@ namespace King_of_Thieves.Actors.HUD.buttons
             _buttonAction.update(gameTime);
             _rupeeCounter.update(gameTime);
             _bombCounter.update(gameTime);
+            _arrowCounter.update(gameTime);
 			_benchmarkInfo.update (gameTime);
             _textBoxController.update(gameTime);
             _cullBoundary.update(gameTime);
             _screenFader.update(gameTime);
+        }
+
+        public int arrowCount
+        {
+            get
+            {
+                return _arrowCounter.amount;
+            }
         }
 
         public void changeActionIconState(HUD_ACTION_OPTIONS option)
@@ -82,6 +92,14 @@ namespace King_of_Thieves.Actors.HUD.buttons
                 _bombCounter.increment(amount, instant);
         }
 
+        public void modifyArrows(int amount, bool instant = false)
+        {
+            if (amount < 0)
+                _arrowCounter.decrement(Math.Abs(amount), instant);
+            else
+                _arrowCounter.increment(amount, instant);
+        }
+
         public void drawMe(SpriteBatch spriteBatch)
         {
             _buttonLeft.drawMe();
@@ -89,7 +107,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
             //_buttonAction.drawMe();
             _rupeeCounter.drawMe();
             _bombCounter.drawMe();
-            
+            _arrowCounter.drawMe();
 
             if(CActor.showHitBox)
 			    _benchmarkInfo.drawMe();

@@ -41,6 +41,7 @@ namespace King_of_Thieves.Actors
         CHARGING_ARROW,
         CHARGING_SWORD,
         CHASE,
+        CHOKE,
         CLIMB_END,
         CLIMBING,
         CLIMBING_IDLE,
@@ -50,12 +51,15 @@ namespace King_of_Thieves.Actors
         DECREMENT,
         DIE_FALL,
         DIEING,
+        DROP,
+        DROP_ITEM,
         DUSK,
         EXPLODE,
         FLYING,
         FOLLOW_PLAYER,
         FROZEN,
         FURIOUS,
+        GET_UP,
         GO_HOME,
         GOT_ITEM,
         HIDDEN,
@@ -73,6 +77,7 @@ namespace King_of_Thieves.Actors
         MORNING,
         MOVING,
         NIGHT,
+        PANIC,
         PICKING,
         PICK_READY,
         POPDOWN,
@@ -88,6 +93,7 @@ namespace King_of_Thieves.Actors
         SHOOK_OFF,
         SHOOTING_ARROW,
         SHOOTING_CANNON,
+        SHOVE,
         SMASH,
         SPIN_ATTACK,
         SWINGING,
@@ -115,7 +121,7 @@ namespace King_of_Thieves.Actors
         YIELD
     }
 
-    public abstract class CActor
+    public abstract class CActor : IDisposable
     {
         public IList<ACTOR_STATES> INVINCIBLE_STATES = new List<ACTOR_STATES>{ACTOR_STATES.KNOCKBACK, ACTOR_STATES.SHOCKED, ACTOR_STATES.FROZEN}.AsReadOnly();
         protected Vector2 _position = Vector2.Zero;
@@ -155,6 +161,8 @@ namespace King_of_Thieves.Actors
         private bool _flagForResourceCleanup = false;
         public bool hidden = false;
         private Queue<CActor> _actorsToBeRegistered = new Queue<CActor>();
+        protected Queue<Vector2> _path0 = new Queue<Vector2>();
+        protected CCommNetRef _componentAddressLkup = null; //for use with the commnet.  Store an address of sender here if you need to pass a message back to it at some point
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -234,6 +242,8 @@ namespace King_of_Thieves.Actors
                 _hitBox.destroy();
                 _hitBox = null;
             }
+
+            Dispose();
         }
 
         protected virtual void applyEffects(){}
@@ -290,13 +300,7 @@ namespace King_of_Thieves.Actors
 
         ~CActor()
         {
-            onCreate -= new actorEventHandler(create);
-            onDestroy -= new actorEventHandler(destroy);
-            onKeyDown -= new actorEventHandler(keyDown);
-            onFrame -= new actorEventHandler(frame);
-            onKeyRelease -= new actorEventHandler(keyRelease);
-            onDraw -= new actorEventHandler(draw);
-            onRoomStart -= new actorEventHandler(roomStart);
+            
         }
 
         public string dataType
@@ -313,6 +317,12 @@ namespace King_of_Thieves.Actors
             
 
             return angle;
+        }
+
+        protected void _followPath(params Vector2[] path)
+        {
+            foreach (Vector2 vec in path)
+                _path0.Enqueue(vec);
         }
 
         private void _registerSystemEvents()
@@ -766,27 +776,34 @@ namespace King_of_Thieves.Actors
                     image.Y = (int)_position.Y;
                 }
 
+                //follow paths if there are any
+                while(_path0.Count > 0)
+                {
+                    Vector2 pathVec = _path0.Dequeue();
+                    _position += pathVec;
+                }
+
                 if ((Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysPressed)
-                    onKeyDown(this);
+                    onKeyDown(Master.GetInputManager().GetCurrentInputHandler());
 
                 if ((Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysReleased)
-                    onKeyRelease(this);
+                    onKeyRelease(Master.GetInputManager().GetCurrentInputHandler());
 
                 if ((Master.GetInputManager().GetCurrentInputHandler() as CInput).mouseLeftClick)
                 {
-                    onMouseClick(this);
+                    onMouseClick(Master.GetInputManager().GetCurrentInputHandler());
 
 
                     if (_hitBox != null && _hitBox.checkCollision(new Vector2((Master.GetInputManager().GetCurrentInputHandler() as CInput).mouseX,
                                                             (Master.GetInputManager().GetCurrentInputHandler() as CInput).mouseY)))
                     {
-                        click(this);
+                        click(Master.GetInputManager().GetCurrentInputHandler());
                     }
                 }
 
                 if ((Master.GetInputManager().GetCurrentInputHandler() as CInput).mouseLeftRelease)
                 {
-                    onTap(this);
+                    onTap(Master.GetInputManager().GetCurrentInputHandler());
                 }
 
                 //new timer stuff THANKS ASH
@@ -1188,6 +1205,35 @@ namespace King_of_Thieves.Actors
         public CActor popActorForRegistration()
         {
             return _actorsToBeRegistered.Dequeue();
+        }
+
+        public virtual void Dispose()
+        {
+            _imageIndex.Clear();
+            _soundIndex.Clear();
+
+            onCreate -= new actorEventHandler(create);
+            onDestroy -= new actorEventHandler(destroy);
+            onKeyDown -= new actorEventHandler(keyDown);
+            onFrame -= new actorEventHandler(frame);
+            onKeyRelease -= new actorEventHandler(keyRelease);
+            onDraw -= new actorEventHandler(draw);
+            onRoomStart -= new actorEventHandler(roomStart);
+            onAnimationEnd -= new actorEventHandler(animationEnd);
+            onCollide -= new collideHandler(collide);
+            onMouseClick -= new actorEventHandler(mouseClick);
+            onTap -= new actorEventHandler(tap);
+            onTimer0 -= new actorEventHandler(timer0);
+            onTimer1 -= new actorEventHandler(timer1);
+            onTimer2 -= new actorEventHandler(timer2);
+            onTimer3 -= new actorEventHandler(timer3);
+            onTimer4 -= new actorEventHandler(timer4);
+            onTimer5 -= new actorEventHandler(timer5);
+            onTimer6 -= new actorEventHandler(timer6);
+
+            _userEvents.Clear();
+            _userEventsToFire.Clear();
+            _collidables.Clear();
         }
     }
 }

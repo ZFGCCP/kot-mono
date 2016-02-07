@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace King_of_Thieves.Map
 {
-    class CMap
+    class CMap : IDisposable
     {
         public List<CLayer> _layers = null;
         private static Regex _coordFormat = new Regex("^[0-9]+:[0-9]+$");
@@ -524,6 +524,20 @@ namespace King_of_Thieves.Map
         {
             removeFromActorRegistry(actor);
             queryComponentRegistry(componentId).removeActor(actor);
+        }
+
+        public void Dispose()
+        {
+            foreach(CLayer layer in _layers)
+            {
+                layer.Dispose();
+            }
+
+            _componentRegistry.Clear();
+            _actorRegistry.Clear();
+            _internalMap = null;
+            _layers.Clear();
+            _layers = null;
         }
 
         public int largestAddress

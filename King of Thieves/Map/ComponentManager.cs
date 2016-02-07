@@ -5,7 +5,7 @@ using System.Text;
 
 namespace King_of_Thieves.Map
 {
-    class ComponentManager : Gears.Playable.UnitManager
+    class ComponentManager : Gears.Playable.UnitManager, IDisposable
     {
 
         private Actors.CActor[] _actorRegistry = null;
@@ -52,6 +52,12 @@ namespace King_of_Thieves.Map
         public void removeComponent(Actors.CComponent component)
         {
             base.RemoveUnit(component, 0);
+        }
+
+        public void Dispose()
+        {
+            _actorRegistry = null;
+            base.disposeFactories();
         }
     }
 }

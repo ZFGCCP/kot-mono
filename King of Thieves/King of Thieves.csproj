@@ -59,6 +59,7 @@
     <Compile Include="Actors\CActor.cs" />
     <Compile Include="Actors\CActorPacket.cs" />
     <Compile Include="Actors\CActorTest.cs" />
+    <Compile Include="Actors\CCommNetRef.cs" />
     <Compile Include="Actors\CComponent.cs" />
     <Compile Include="Actors\Collision\CCameraLimit.cs" />
     <Compile Include="Actors\Collision\CClimber.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Actors\Collision\CLayerChanger.cs" />
     <Compile Include="Actors\Collision\CVaulter.cs" />
     <Compile Include="Actors\Collision\GameChangers\CPawnShopAlerter.cs" />
+    <Compile Include="Actors\HUD\counters\CArrowCounter.cs" />
     <Compile Include="Actors\HUD\CScreenFader.cs" />
     <Compile Include="Actors\HUD\other\CCullBoundary.cs" />
     <Compile Include="Actors\Items\decoration\CDemoDoor.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Actors\Items\Drops\CDroppable.cs" />
     <Compile Include="Actors\Items\Drops\CHeartDrop.cs" />
     <Compile Include="Actors\Items\Drops\CRupeeDrop.cs" />
+    <Compile Include="Actors\Items\Drops\CArrowDrop.cs" />
     <Compile Include="Actors\Items\Liftables\CBarrel.cs" />
     <Compile Include="Actors\Items\Liftables\CLiftable.cs" />
     <Compile Include="Actors\Items\shields\CBaseShield.cs" />
@@ -152,6 +155,10 @@
     <Compile Include="Actors\NPC\Enemies\Zombie\CZombieScreecher.cs" />
     <Compile Include="Actors\NPC\Other\CTownsFolkHead.cs" />
     <Compile Include="Actors\NPC\Other\Maple\CMaple.cs" />
+    <Compile Include="Actors\NPC\Other\TownsFolk\CAngelo.cs" />
+    <Compile Include="Actors\NPC\Other\TownsFolk\CBernice.cs" />
+    <Compile Include="Actors\NPC\Other\TownsFolk\CClark.cs" />
+    <Compile Include="Actors\NPC\Other\TownsFolk\CGlootan.cs" />
     <Compile Include="Actors\Player\CPlayer.cs" />
     <Compile Include="Actors\Player\CShadowClone.cs" />
     <Compile Include="Actors\Projectiles\CArrow.cs" />
@@ -690,6 +697,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sprites\transitions\rumpleTransition.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\npc\bossHit.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\npc\friendly\friendlyNPCs.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sprites\transitions\fadeToBlack.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\environment\teleportWoosh.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\sounds\environment\sparkle1.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -91,7 +91,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies
         public override void update(GameTime gameTime)
         {
             base.update(gameTime);
-            if (_health <= 0)
+            if (_hp <= 0)
                 _killMe = true;
         }
 
@@ -123,7 +123,11 @@ namespace King_of_Thieves.Actors.NPC.Enemies
             CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Npc:die"]);
 
             if (itemToDrop != null)
+            {
+                itemToDrop.init(_name + "_itemDrop", _position, "", CReservedAddresses.DROP_CONTROLLER);
+                itemToDrop.layer = this.layer;
                 Map.CMapManager.addActorToComponent(itemToDrop, CReservedAddresses.DROP_CONTROLLER);
+            }
 
             if (_hitBox != null)
                 base.destroy(sender);

@@ -178,7 +178,7 @@ namespace King_of_Thieves
         {
             Menu menu = new Menu();
 
-            MenuElement titleMenuElement = new MenuElement();
+            /*MenuElement titleMenuElement = new MenuElement();
             titleMenuElement.MenuText = "Game Over";
             titleMenuElement.Selectable = false;
             titleMenuElement.Hidden = false;
@@ -186,7 +186,7 @@ namespace King_of_Thieves
             titleMenuElement.ForegroundColor = new Color(225, 225, 225);
             titleMenuElement.ActiveForegroundColor = new Color(100, 100, 100);
             titleMenuElement.SpriteFont = @"Fonts\sherwood";
-            menu.AddMenuElement(titleMenuElement);
+            menu.AddMenuElement(titleMenuElement);*/
 
             MenuElement saveAndCont = new MenuElement();
             saveAndCont.MenuText = "Continue";
@@ -196,6 +196,12 @@ namespace King_of_Thieves
             saveAndCont.ForegroundColor = new Color(225, 225, 225);
             saveAndCont.ActiveForegroundColor = new Color(255, 200, 200);
             saveAndCont.SpriteFont = @"Fonts\sherwood";
+            saveAndCont.SetThrowPushEvent(new Action(() =>
+            {
+                Master.Pop();
+                CMasterControl.mapManager.cacheMaps(false, "castleTown.xml");
+                CMasterControl.mapManager.swapMap("castleTown.xml", "player", new Vector2(400, 1024), Map.CMapManager.TRANSITION_RUMPLE_SWIRL);
+            }));
             menu.AddMenuElement(saveAndCont);
 
             MenuElement saveAndQuit = new MenuElement();

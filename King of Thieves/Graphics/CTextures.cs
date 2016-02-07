@@ -44,12 +44,14 @@ namespace King_of_Thieves.Graphics
         public const string EFFECT_EXPLOSION = EFFECTS + "explosion";
         public const string EFFECT_BOOMERANG = EFFECTS + "boomerang";
         public const string EFFECT_FIRE_SMALL = EFFECTS + "fireSmall";
+        public const string EFFECT_SPARKLE = EFFECTS + "sparkle";
 
         public const string DROPS_HEART = DROPS + "heart";
         public const string DROPS_RUPEE_GREEN = DROPS + "rupeeGreen";
         public const string DROPS_RUPEE_BLUE = DROPS + "rupeeBlue";
         public const string DROPS_RUPEE_ORANGE = DROPS + "rupeeOrange";
         public const string DROPS_RUPEE_PURPLE = DROPS + "rupeePurple";
+        public const string DROPS_ARROW = DROPS + "arrows";
 
         public const string PLAYER_CHARGE_ARROW_LEFT = PLAYER + "chargeArrowLeft";
         public const string PLAYER_HOLD_ARROW_LEFT = PLAYER + "holdArrowLeft";
@@ -159,12 +161,20 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_DIE_SPIN = PLAYER + "DieSpin";
         public const string PLAYER_DIE_FALL = PLAYER + "DieFall";
         public const string PLAYER_DEAD = PLAYER + "Dead";
+        public const string PLAYER_WIGGLE = PLAYER + "Wiggle";
+        public const string PLAYER_FALL_ON_ASS = PLAYER + "FallOnAss";
+        public const string PLAYER_PULL_UP_DOWN = PLAYER + "pullUpDown";
+        public const string PLAYER_PULL_UP_UP = PLAYER + "pullUpUp";
+        public const string PLAYER_PULL_UP_LEFT = PLAYER + "pullUpLeft";
+        public const string PLAYER_PULL_UP_RIGHT = PLAYER + "pullUpRight";
+        public const string PLAYER_PULL_DOWN_HOLD = PLAYER + "pullDownHold";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
         public const string HUD_ARROWS_ICE = HUD + "arrowsIce";
         public const string HUD_BOMB_CANNON = HUD + "bombCannon";
         public const string HUD_RUPEES = HUD + "rupees";
+        public const string HUD_ARROW_COUNTER = HUD + "arrowCounter";
         public const string HUD_BOMB_COUNTER = HUD + "bombCounter";
         public const string HUD_ACTION = HUD + "action";
         public const string HUD_PAUSE_CURSOR = HUD + "pauseCursor";
@@ -208,6 +218,7 @@ namespace King_of_Thieves.Graphics
         public const string GREEN_DOOR = DOORS + "greenDoor";
 
         public const string TRANSITION_RUMPLE = TRANSITIONS + "rumple";
+        public const string TRANSITION_FADE_TO_BLACK = TRANSITIONS + "fadeToBlack";
        
         //source images
         public const string SOURCE_PLAYER = "Player";
@@ -327,6 +338,12 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_DIE_SPIN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "15:5", "16:6", 4));
             textures.Add(PLAYER_DIE_FALL, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:8", "21:8", 15));
             textures.Add(PLAYER_DEAD, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "21:8", "21:8", 0));
+            textures.Add(PLAYER_WIGGLE, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "23:11", "27:11", 15));
+            textures.Add(PLAYER_FALL_ON_ASS, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:11", "38:11", 15));
+            textures.Add(PLAYER_PULL_UP_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "10:28", "11:28", 10));
+            textures.Add(PLAYER_PULL_UP_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "16:28", "17:28", 10));
+            textures.Add(PLAYER_PULL_UP_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "13:28", "14:28", 10));
+            textures.Add(PLAYER_PULL_DOWN_HOLD, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:28", "11:28", 10));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));
@@ -378,6 +395,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(EFFECT_BOMB, new CTextureAtlas("effects:various", 32, 32, 0, "0:3", "1:3", 1));
             textures.Add(EFFECT_BOMB_FAST_TICK, new CTextureAtlas("effects:various", 32, 32, 0, "0:3", "1:3", 10));
             textures.Add(EFFECT_BOOMERANG, new CTextureAtlas("effects:various", 32, 32, 0, "2:2", "5:3", 15));
+            textures.Add(EFFECT_SPARKLE, new CTextureAtlas("effects:various", 32, 32, 0, "4:4", "5:5", 4));
 
             //HUD
             textures.Add(HUD_TEXTBOX, new CTextureAtlas("hud", 303, 74, 0, "0:0", "0:0", 0));
@@ -396,6 +414,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_ACTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:0", "3:0", 0));
             textures.Add(HUD_BOMB_CANNON, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "1:1", "1:1", 0));
             textures.Add(HUD_RUPEES, new CTextureAtlas("health", 16, 16, 1, "0:1", "0:1", 0));
+            textures.Add(HUD_ARROW_COUNTER, new CTextureAtlas("health", 16, 16, 1, "2:1", "2:1"));
             textures.Add(HUD_BOMB_COUNTER, new CTextureAtlas("health", 16, 16, 1, "1:1", "1:1", 0));
             textures.Add(HUD_ITEM_SCREEN, new CTextureAtlas(SOURCE_MENU, 320, 240, 0, "0:0", "0:0", 0));
             textures.Add(HUD_QUEST_SCREEN, new CTextureAtlas(SOURCE_MENU, 320, 240, 0, "1:0", "1:0", 0));
@@ -411,6 +430,7 @@ namespace King_of_Thieves.Graphics
 
             //transitions
             textures.Add(TRANSITION_RUMPLE, new CTextureAtlas(TRANSITION_RUMPLE, 240, 160, 0, "0:0", "3:2", 15));
+            textures.Add(TRANSITION_FADE_TO_BLACK, new CTextureAtlas(TRANSITION_FADE_TO_BLACK, 240, 160, 0, "0:0", "1:2", 15));
 
             //drops
             textures.Add(DROPS_HEART, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:0", "0:0"));
@@ -418,6 +438,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(DROPS_RUPEE_BLUE, new CTextureAtlas("drops:drops01", 16, 16, 1, "1:1", "1:1"));
             textures.Add(DROPS_RUPEE_ORANGE, new CTextureAtlas("drops:drops01", 16, 16, 1, "2:1", "2:1"));
             textures.Add(DROPS_RUPEE_PURPLE, new CTextureAtlas("drops:drops01", 16, 16, 1, "3:1", "3:1"));
+            textures.Add(DROPS_ARROW, new CTextureAtlas("drops:drops01", 16, 16, 1, "2:0", "2:0"));
 
             //debug
             textures.Add("debug:redBox", new CTextureAtlas("debug:redBox", 1, 1, 0, "0:0", "0:0"));
@@ -430,7 +451,8 @@ namespace King_of_Thieves.Graphics
 
         public static void addTexture(string textureName, CTextureAtlas atlas)
         {
-            textures.Add(textureName, atlas);
+            if (!textures.ContainsKey(textureName))
+                textures.Add(textureName, atlas);
         }
 
         private static void _prepareTextures()
@@ -469,6 +491,7 @@ namespace King_of_Thieves.Graphics
 
             //transitions
             rawTextures.Add(TRANSITION_RUMPLE, _content.Load<Texture2D>(@"sprites/transitions/rumpleTransition"));
+            rawTextures.Add(TRANSITION_FADE_TO_BLACK, _content.Load<Texture2D>(@"sprites/transitions/fadeToBlack"));
 
             //hud
             rawTextures.Add("hud", _content.Load<Texture2D>("hud/textbox2"));

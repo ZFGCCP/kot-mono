@@ -205,5 +205,10 @@ namespace King_of_Thieves.Graphics
                 _frameRateLookup.Add(i, 1000.0/(double)i);
             }
         }
+
+        public void Dispose()
+        {
+            
+        }
     }
 }

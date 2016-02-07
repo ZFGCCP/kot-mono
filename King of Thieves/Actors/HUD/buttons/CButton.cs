@@ -66,7 +66,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
                     _imageIndex.Add(_BUTTON_RIGHT, new Graphics.CSprite("HUD:buttonRight"));
                     swapImage(_BUTTON_RIGHT);
                     _fixedPosition = new Vector2(202, 2);
-                    changeItemOverlay(HUDOPTIONS.BOOMERANG);
+                    //changeItemOverlay(HUDOPTIONS.BOOMERANG);
                     break;
 
                 case HUD_BUTTON_TYPE.ACTION:

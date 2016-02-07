@@ -95,5 +95,13 @@ namespace King_of_Thieves.Actors.HUD.counters
             Graphics.CGraphics.spriteBatch.DrawString(_sherwood, _amount.ToString(), _position + _textOffset + _SHADOW, Color.Black);
             Graphics.CGraphics.spriteBatch.DrawString(_sherwood, _amount.ToString(), _position + _textOffset, _textColor);
         }
+
+        public int amount
+        {
+            get
+            {
+                return _amount;
+            }
+        }
     }
 }

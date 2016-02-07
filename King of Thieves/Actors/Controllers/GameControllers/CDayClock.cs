@@ -155,6 +155,9 @@ namespace King_of_Thieves.Actors.Controllers.GameControllers
         {
             base.update(gameTime);
 
+            //uncomment this line for demos
+            enabled = false; 
+
             if (enabled)
             {
 
