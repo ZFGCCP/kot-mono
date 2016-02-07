@@ -3463,7 +3463,13 @@
         <tile coordinates="83:65" tileSet="tileset:outdoors:castleTown" selection="21:19" speed="0" />
         <tile coordinates="82:65" tileSet="tileset:outdoors:castleTown" selection="20:19" speed="0" />
       </tiles>
-      <components />
+      <components>
+        <component address="33">
+          <actors>
+            <actor name="vaultToSlums" type="King_of_Thieves.Actors.Collision.CVaulter" coordinates="801:1013" params="125,2,80,0,1,2" />
+          </actors>
+        </component>
+      </components>
     </layer>
     <layer width="0" height="0" name="average">
       <tiles>
@@ -5917,7 +5923,7 @@
         </component>
         <component address="20">
           <actors>
-            <actor name="vaulterTest" type="King_of_Thieves.Actors.Collision.CVaulter" coordinates="862:923" params="80,16,60,0,1" />
+            <actor name="vaulterTest" type="King_of_Thieves.Actors.Collision.CVaulter" coordinates="862:923" params="80,16,60,0,1,3" />
           </actors>
         </component>
       </components>

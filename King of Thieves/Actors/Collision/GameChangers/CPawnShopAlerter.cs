@@ -22,13 +22,11 @@ namespace King_of_Thieves.Actors.Collision.GameChangers
 
         protected override void _addCollidables()
         {
-            _collidables.Add(typeof(Player.CPlayer));
         }
 
         public override void collide(object sender, CActor collider)
         {
-            CMasterControl.mapManager.flipFlag(0);
-            _killMe = true;
+            
         }
     }
 }

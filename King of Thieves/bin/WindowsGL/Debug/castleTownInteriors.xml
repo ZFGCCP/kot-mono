@@ -5923,7 +5923,7 @@
         </component>
         <component address="18">
           <actors>
-            <actor name="fairyDust" type="King_of_Thieves.Actors.NPC.Other.CGoldFairyDust" coordinates="629:210" />
+            <actor name="fairyDust" type="King_of_Thieves.Actors.NPC.Other.CGoldFairyDust" coordinates="660:195" />
           </actors>
         </component>
       </components>

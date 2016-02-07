@@ -1069,3 +1069,15 @@
 /processorParam:TextureFormat=Color
 /build:sprites/transitions/fadeToBlack.png
 
+#begin sounds/environment/teleportWoosh.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/environment/teleportWoosh.wav
+
+#begin sounds/environment/sparkle1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/environment/sparkle1.wav
+

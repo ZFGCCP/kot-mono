@@ -44,6 +44,7 @@ namespace King_of_Thieves.Graphics
         public const string EFFECT_EXPLOSION = EFFECTS + "explosion";
         public const string EFFECT_BOOMERANG = EFFECTS + "boomerang";
         public const string EFFECT_FIRE_SMALL = EFFECTS + "fireSmall";
+        public const string EFFECT_SPARKLE = EFFECTS + "sparkle";
 
         public const string DROPS_HEART = DROPS + "heart";
         public const string DROPS_RUPEE_GREEN = DROPS + "rupeeGreen";
@@ -394,6 +395,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(EFFECT_BOMB, new CTextureAtlas("effects:various", 32, 32, 0, "0:3", "1:3", 1));
             textures.Add(EFFECT_BOMB_FAST_TICK, new CTextureAtlas("effects:various", 32, 32, 0, "0:3", "1:3", 10));
             textures.Add(EFFECT_BOOMERANG, new CTextureAtlas("effects:various", 32, 32, 0, "2:2", "5:3", 15));
+            textures.Add(EFFECT_SPARKLE, new CTextureAtlas("effects:various", 32, 32, 0, "4:4", "5:5", 4));
 
             //HUD
             textures.Add(HUD_TEXTBOX, new CTextureAtlas("hud", 303, 74, 0, "0:0", "0:0", 0));

@@ -39,6 +39,7 @@ namespace King_of_Thieves.Actors.Player
         private Vector2 _vaultSpeed = Vector2.Zero;
         private bool _climbing = false;
         private int _deadSpinCount = 0;
+        private int _vaultToLayer = -1;
 
         private const string _THROW_BOOMERANG_DOWN = "PlayerThrowBoomerangDown";
         private const string _THROW_BOOMERANG_UP = "PlayerThrowBoomerangUp";
@@ -275,7 +276,7 @@ namespace King_of_Thieves.Actors.Player
                         startTimer6(vaulter.airTime);
 
                         _vaultSpeed = vaulter.vaultDirection;
-
+                        _vaultToLayer = vaulter.layerSwap;
                         swapImage(Graphics.CTextures.PLAYER_VAULT_DOWN);
                         CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:grunt"]);
                         CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:hop"]);
@@ -314,6 +315,16 @@ namespace King_of_Thieves.Actors.Player
                     _state = ACTOR_STATES.CLIMB_END;
                     swapImage(Graphics.CTextures.PLAYER_CLIMB_UP);
 
+                }
+            }
+            else if(collider is Collision.GameChangers.CPawnShopAlerter)
+            {
+                solidCollide(collider);
+                if (!CMasterControl.mapManager.checkFlag(0))
+                {
+                    int ingoAddress = Map.CMapManager.getActorComponentAddress("ingo");
+                    CMasterControl.commNet[ingoAddress].Add(new CActorPacket(1, "ingo", this));
+                    CMasterControl.mapManager.flipFlag(0);
                 }
             }
         }
@@ -1301,11 +1312,14 @@ namespace King_of_Thieves.Actors.Player
             }
             else if(_state == ACTOR_STATES.USER_STATE0)
             {
-                Graphics.CEffects.createEffect("effects:smokePoof", _position);
+                Graphics.CEffects.createEffect("effects:smokePoof", new Vector2(_position.X - 10, _position.Y - 10));
                 _state = ACTOR_STATES.INVISIBLE;
             }
             else
             {
+                if(_state == ACTOR_STATES.VAULT_IDLE)
+                    Map.CMapManager.switchComponentLayer(this.component, _vaultToLayer);
+
                 _state = ACTOR_STATES.IDLE;
                 noCollide = false;
                 _velocity = Vector2.Zero;
@@ -1715,7 +1729,9 @@ namespace King_of_Thieves.Actors.Player
         private void _rumpDropFairyDust(object sender)
         {
             swapImage(Graphics.CTextures.PLAYER_PULL_UP_DOWN);
+            Graphics.CEffects.createEffect(Graphics.CTextures.EFFECT_SPARKLE, new Vector2(_position.X, _position.Y));
             _state = ACTOR_STATES.DROP_ITEM;
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Background:sparkle1"]);
         }
 
     }

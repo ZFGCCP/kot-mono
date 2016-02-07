@@ -86,8 +86,11 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Background:Shock", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/shock")));
             soundBank.Add("Background:itemFanfare", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfare")));
             soundBank.Add("Background:itemFanfareSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfareSmall")));
+            soundBank.Add("Background:teleportWoosh", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/teleportWoosh")));
+            soundBank.Add("Background:sparkle1", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/sparkle1")));
             soundBank.Add("bgm:title", new CSound(CMasterControl.glblContent.Load<Song>("music/title"),false,0));
             soundBank.Add("bgm:gameOver", new CSound(CMasterControl.glblContent.Load<Song>("music/gameOver"), true, -1));
+            
         }
 
         public void stop()

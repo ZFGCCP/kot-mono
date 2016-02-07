@@ -10,6 +10,7 @@ namespace King_of_Thieves.Actors.Collision
     {
         private int _airTime = 0;
         private Vector2 _vaultDirection = Vector2.Zero;
+        private int _layerSwap = -1;
 
         public CVaulter() : base()
         {
@@ -24,6 +25,16 @@ namespace King_of_Thieves.Actors.Collision
             _airTime = Convert.ToInt32(additional[2]);
 
             _vaultDirection = new Vector2(Convert.ToInt32(additional[3]), Convert.ToInt32(additional[4]));
+            _layerSwap = Convert.ToInt32(additional[5]);
+
+        }
+
+        public int layerSwap
+        {
+            get
+            {
+                return _layerSwap;
+            }
         }
 
         public int airTime
