@@ -38,7 +38,7 @@ namespace King_of_Thieves.Actors.HUD.magic
         {
             CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
 
-            if (input.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.PageDown))
+            /*if (input.keysPressed.Contains(Microsoft.Xna.Framework.Input.Keys.PageDown))
             {
                 if (_amount > 0)
                     _amount--;
@@ -47,7 +47,7 @@ namespace King_of_Thieves.Actors.HUD.magic
             {
                 if (_amount < _capacity)
                     _amount++;
-            }
+            }*/
         }
 
         public override void update(GameTime gameTime)

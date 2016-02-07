@@ -178,7 +178,7 @@ namespace King_of_Thieves.Actors.NPC.Other
             if (_state == ACTOR_STATES.FURIOUS)
             {
                 Enemies.Rump.CRump rumple = new Enemies.Rump.CRump();
-                rumple.init("rumplestiltskin", new Vector2(Player.CPlayer.glblX, Player.CPlayer.glblY - 40), "", CReservedAddresses.NON_ASSIGNED, "true");
+                rumple.init("rumplestiltskin", new Vector2(_position.X - 20, Player.CPlayer.glblY - 40), "", CReservedAddresses.NON_ASSIGNED, "true");
 
                 Map.CMapManager.addComponent(rumple, new Dictionary<string, CActor>());
             }

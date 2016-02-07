@@ -68,6 +68,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rope
             _hitBox = new Collision.CHitBox(this, 10, 10, 10, 15);
 
             _itemDrop.Add(new Items.Drops.CArrowDrop(), 100);
+            _hp = 1;
 
         }
 
