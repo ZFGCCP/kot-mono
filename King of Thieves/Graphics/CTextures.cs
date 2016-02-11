@@ -442,6 +442,9 @@ namespace King_of_Thieves.Graphics
 
             //debug
             textures.Add("debug:redBox", new CTextureAtlas("debug:redBox", 1, 1, 0, "0:0", "0:0"));
+
+            //splash
+            textures.Add("splash:link", new CTextureAtlas("splash:link", 16, 24, 1, "0:0", "6:0", 15));
         }
 
         public static void addRawTexture(string textureName, string fileNameNoExt)
@@ -470,6 +473,8 @@ namespace King_of_Thieves.Graphics
 
             rawTextures.Add(SOURCE_SHIELDS, _content.Load<Texture2D>("sprites/items/shields"));
             rawTextures.Add(SOURCE_DOORS, _content.Load<Texture2D>("tilesets/indoors/jim_morrison"));
+
+            rawTextures.Add("splash:link", _content.Load<Texture2D>("sprites/other/splash"));
 
             //drops
             rawTextures.Add("drops:drops01", _content.Load<Texture2D>("sprites/drops/drops01"));
