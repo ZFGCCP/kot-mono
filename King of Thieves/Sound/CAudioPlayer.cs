@@ -90,7 +90,9 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Background:sparkle1", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/sparkle1")));
             soundBank.Add("bgm:title", new CSound(CMasterControl.glblContent.Load<Song>("music/title"),false,0));
             soundBank.Add("bgm:gameOver", new CSound(CMasterControl.glblContent.Load<Song>("music/gameOver"), true, -1));
-            
+
+            soundBank.Add("bgm:metallica", new CSound(CMasterControl.glblContent.Load<SoundEffect>("music/metallica")));
+
         }
 
         public void stop()

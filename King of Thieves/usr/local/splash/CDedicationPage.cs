@@ -15,7 +15,7 @@ namespace King_of_Thieves.usr.local.splash
     {
         private static SpriteFont _sherwood = CMasterControl.glblContent.Load<SpriteFont>(@"Fonts/sherwood");
         private int _timer = 800;
-        private Vector2 _pos = new Vector2(90, 80);
+        private Vector2 _pos = new Vector2(50, 40);
 
         public CDedicationPage()
         {

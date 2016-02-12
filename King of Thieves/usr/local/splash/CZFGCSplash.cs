@@ -13,7 +13,7 @@ namespace King_of_Thieves.usr.local.splash
     {
         private static SpriteFont _sherwood = CMasterControl.glblContent.Load<SpriteFont>(@"Fonts/sherwood");
         private int _timer = 120;
-        private Vector2 _pos = new Vector2(100, 110);
+        private Vector2 _pos = new Vector2(60, 70);
         private Graphics.CSprite _link = null;
 
         public CZFGCSplash()
@@ -35,7 +35,7 @@ namespace King_of_Thieves.usr.local.splash
         {
             Graphics.CGraphics.GPU.Clear(Color.Black);
             Graphics.CGraphics.spriteBatch.DrawString(_sherwood, "Zelda Fan Game Central", _pos, Color.White);
-            _link.draw(70, 105);
+            _link.draw(40, 60);
         }
     }
 }

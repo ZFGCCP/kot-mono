@@ -32,6 +32,7 @@ namespace King_of_Thieves
         CComponent menuComo = new CComponent();
         Actors.HUD.Text.CTextBox textTest = null;
         Matrix scaleMatrix = new Matrix();
+        bool first = true;
 
 		Stopwatch _updateTimer = new Stopwatch();
 		Stopwatch _drawTimer = new Stopwatch();
@@ -92,7 +93,7 @@ namespace King_of_Thieves
 
             CTextures.init(Content);
 
-            Master.Push(new DevMenu());
+            //Master.Push(new DevMenu());
             //Master.Push(new PlayableState());
 
             Master.GetInputManager().AddInputHandler(new CInput());
@@ -155,6 +156,12 @@ namespace King_of_Thieves
         protected override void Update(GameTime gameTime)
         {
             CMasterControl.gameTime = gameTime;
+
+            if (first)
+            {
+                Master.Push(new usr.local.splash.CZFGCSplash());
+                first = false;
+            }
 
             updateFrames++;
 
