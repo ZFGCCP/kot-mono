@@ -1,6 +1,5 @@
 *.suo
 *.log
-*.exe
 *.pdb
 *.mdb
 *.exe.manifest
