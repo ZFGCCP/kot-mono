@@ -1,0 +1,13 @@
+Installation instructions:
+
+1. Open "open this first.zip"
+
+2. Run oalinst.exe.  This will install OpenAL to your system.  The audio engine depends on this.
+
+3. Install Return of Ganon and Roses are FF0000 fonts.
+
+4. Install .NET runtime 4.0. http://www.microsoft.com/en-us/download/details.aspx?id=17718
+
+5. Run King of Thieves.exe 
+
+For more information on this project, visit http://www.zfgc.com
