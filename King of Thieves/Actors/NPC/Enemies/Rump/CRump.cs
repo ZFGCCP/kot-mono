@@ -77,7 +77,7 @@ namespace King_of_Thieves.Actors.NPC.Enemies.Rump
 
             _hitBox = new Collision.CHitBox(this, 10, 18, 12, 15);
             _followRoot = false;
-            _hp = 1;
+            _hp = 2;
         }
 
         //only call this one once!

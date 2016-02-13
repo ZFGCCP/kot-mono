@@ -47,6 +47,7 @@ namespace King_of_Thieves.Actors.Player
         private const string _THROW_BOOMERANG_RIGHT = "PlayerThrowBoomerangRight";
         private const string _GOT_ITEM = "PlayerGotItem";
         private bool _canOpenManu = false;
+        private bool _gameEnd = false; //ew
 
         public CPlayer() :
             base()
@@ -524,7 +525,9 @@ namespace King_of_Thieves.Actors.Player
                 case ACTOR_STATES.DIE_FALL:
                     swapImage(Graphics.CTextures.PLAYER_DEAD);
                     _state = ACTOR_STATES.DEAD;
-                    CMasterControl.buttonController.beginFade(Vector3.Zero);
+                    _gameEnd = true;
+                    startTimer6(0);
+                    //CMasterControl.buttonController.beginFade(Vector3.Zero);
                     break;
 
                 case ACTOR_STATES.DROP:
@@ -1300,10 +1303,14 @@ namespace King_of_Thieves.Actors.Player
 
         public override void timer6(object sender)
         {
+            if (_gameEnd)
+                Master.GetGame().Exit();
+
             if (_state == ACTOR_STATES.CHOKE)
             {
                 swapImage(Graphics.CTextures.PLAYER_SHOCKDOWN);
                 _state = ACTOR_STATES.SHOCKED;
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:Electrocute"]);
                 startTimer6(180);
             }
             else if(_state == ACTOR_STATES.SHOCKED)
@@ -1315,6 +1322,8 @@ namespace King_of_Thieves.Actors.Player
             {
                 Graphics.CEffects.createEffect("effects:smokePoof", new Vector2(_position.X - 10, _position.Y - 10));
                 _state = ACTOR_STATES.INVISIBLE;
+                _gameEnd = true;
+                startTimer6(60);
             }
             else
             {

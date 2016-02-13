@@ -19,7 +19,7 @@ namespace King_of_Thieves.usr.local.splash
 
         public CDedicationPage()
         {
-
+            CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["bgm:metallica"]);
         }
 
         public override void Update(GameTime gameTime)
