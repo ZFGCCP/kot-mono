@@ -70,6 +70,15 @@ namespace King_of_Thieves.Actors.Player
             base.init(name, position, dataType, CReservedAddresses.PLAYER, additional);
         }
 
+        public override void roomStart(object sender)
+        {
+            //add sword
+            Items.Swords.CSword sword = new Items.Swords.CSword();
+            sword.init("sword", Vector2.Zero, "", this.componentAddress);
+            sword.layer = this.layer;
+            Map.CMapManager.addActorToComponent(sword, this.componentAddress); ;
+        }
+
         protected override void _initializeResources()
         {
 
@@ -356,10 +365,7 @@ namespace King_of_Thieves.Actors.Player
             _userEvents.Add(1, _rumpDropFairyDust);
         }
 
-        public override void create(object sender)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public override void animationEnd(object sender)
         {

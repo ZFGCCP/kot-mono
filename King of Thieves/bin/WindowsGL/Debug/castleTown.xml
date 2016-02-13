@@ -2424,7 +2424,6 @@
         <component address="-2">
           <actors>
             <actor name="player" type="King_of_Thieves.Actors.Player.CPlayer" coordinates="400:1000" />
-            <actor name="sword" type="King_of_Thieves.Actors.Items.Swords.CSword" coordinates="0:0" />
           </actors>
         </component>
         <component address="3">
