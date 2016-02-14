@@ -307,5 +307,13 @@ namespace King_of_Thieves.Map
             else
                 throw new KotException.KotInvalidActorException("No actor found with the name " + actorName);
         }
+
+        public static bool mapSwapIssued
+        {
+            get
+            {
+                return _mapSwapIssued;
+            }
+        }
     }
 }

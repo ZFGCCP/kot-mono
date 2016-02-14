@@ -430,7 +430,7 @@ namespace King_of_Thieves.Graphics
 
             //transitions
             textures.Add(TRANSITION_RUMPLE, new CTextureAtlas(TRANSITION_RUMPLE, 240, 160, 0, "0:0", "3:2", 15));
-            textures.Add(TRANSITION_FADE_TO_BLACK, new CTextureAtlas(TRANSITION_FADE_TO_BLACK, 240, 160, 0, "0:0", "1:2", 15));
+            textures.Add(TRANSITION_FADE_TO_BLACK, new CTextureAtlas(TRANSITION_FADE_TO_BLACK, 240, 160, 0, "0:0", "1:4", 15));
 
             //drops
             textures.Add(DROPS_HEART, new CTextureAtlas("drops:drops01", 16, 16, 1, "0:0", "0:0"));
