@@ -27,7 +27,8 @@ namespace King_of_Thieves.Actors.NPC.Other
 
         public override void update(GameTime gameTime)
         {
-            base.update(gameTime);
+            if (!CMasterControl.buttonController.textBoxActive)
+                base.update(gameTime);
 
             if (_textRequest)
             {
