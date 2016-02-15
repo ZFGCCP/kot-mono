@@ -69,6 +69,7 @@
     <Compile Include="Actors\Collision\CLayerChanger.cs" />
     <Compile Include="Actors\Collision\CVaulter.cs" />
     <Compile Include="Actors\Collision\GameChangers\CPawnShopAlerter.cs" />
+    <Compile Include="Actors\Collision\Water\CShallowWater.cs" />
     <Compile Include="Actors\HUD\counters\CArrowCounter.cs" />
     <Compile Include="Actors\HUD\CScreenFader.cs" />
     <Compile Include="Actors\HUD\other\CCullBoundary.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Actors\NPC\Other\TownsFolk\CGlootan.cs" />
     <Compile Include="Actors\Player\CPlayer.cs" />
     <Compile Include="Actors\Player\CShadowClone.cs" />
+    <Compile Include="Actors\Player\CWaterPuddle.cs" />
     <Compile Include="Actors\Projectiles\CArrow.cs" />
     <Compile Include="Actors\Projectiles\CBomb.cs" />
     <Compile Include="Actors\Projectiles\CBoomerang.cs" />

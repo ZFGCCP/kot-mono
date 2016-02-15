@@ -70,6 +70,15 @@ namespace King_of_Thieves.Actors.Player
             base.init(name, position, dataType, CReservedAddresses.PLAYER, additional);
         }
 
+        public override void roomStart(object sender)
+        {
+            //add sword
+            Items.Swords.CSword sword = new Items.Swords.CSword();
+            sword.init("sword", Vector2.Zero, "", this.componentAddress);
+            sword.layer = this.layer;
+            Map.CMapManager.addActorToComponent(sword, this.componentAddress); ;
+        }
+
         protected override void _initializeResources()
         {
 
@@ -356,10 +365,7 @@ namespace King_of_Thieves.Actors.Player
             _userEvents.Add(1, _rumpDropFairyDust);
         }
 
-        public override void create(object sender)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public override void animationEnd(object sender)
         {
@@ -950,6 +956,9 @@ namespace King_of_Thieves.Actors.Player
 
         public override void update(GameTime gameTime)
         {
+            if (CMasterControl.buttonController.textBoxActive)
+                return;
+
             base.update(gameTime);
             _velocity.X = 0;
             _velocity.Y = 0;
@@ -959,6 +968,7 @@ namespace King_of_Thieves.Actors.Player
             {
                 if (_state != ACTOR_STATES.DIE_FALL && _state != ACTOR_STATES.DEAD && _state != ACTOR_STATES.DIEING)
                 {
+                    //yep, we're dead.
                     _state = ACTOR_STATES.DIEING;
                      CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:dying"]);
                     CMasterControl.audioPlayer.stopAllMusic();
@@ -1583,6 +1593,10 @@ namespace King_of_Thieves.Actors.Player
 
             switch (option)
             {
+                case HUD.buttons.HUDOPTIONS.NONE:
+                    _usingItem = false;
+                    break;
+
                 case HUD.buttons.HUDOPTIONS.ARROWS:
                     _beginArrowCharge(Projectiles.ARROW_TYPES.STANDARD);
                     break;

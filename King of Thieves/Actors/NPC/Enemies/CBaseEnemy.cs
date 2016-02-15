@@ -91,6 +91,10 @@ namespace King_of_Thieves.Actors.NPC.Enemies
         public override void update(GameTime gameTime)
         {
             base.update(gameTime);
+
+            if (CMasterControl.buttonController.textBoxActive)
+                return;
+
             if (_hp <= 0)
                 _killMe = true;
         }

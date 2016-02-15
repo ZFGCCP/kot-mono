@@ -514,10 +514,14 @@ namespace King_of_Thieves.Map
 
         public void addActorToComponent(CActor actor, int componentId)
         {
-            queryComponentRegistry(componentId).addActor(actor, actor.name);
-            addToActorRegistry(actor);
+            CComponent component = queryComponentRegistry(componentId);
+            if (component != null && component.actors != null && !component.actors.ContainsKey(actor.name))
+            {
+                component.addActor(actor, actor.name);
+                addToActorRegistry(actor);
 
-            _layers[actor.layer].addToDrawList(actor);
+                _layers[actor.layer].addToDrawList(actor);
+            }
         }
 
         public void removeActorFromComponent(CActor actor, int componentId)
