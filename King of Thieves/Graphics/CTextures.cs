@@ -369,6 +369,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:items:chests-small", new CTextureAtlas("tileset:items:chests-small", 16, 16, 1, "0:0", "1:2", 0, false, false, false));
             textures.Add("tileset:outdoors:demoTiles", new CTextureAtlas("tileset:outdoors:demoTiles", 16, 16, 0, "0:0", "49:41", 0, false, false, true));
             textures.Add("tileset:outdoors:castleTown", new CTextureAtlas("tileset:outdoors:castleTown", 16, 16, 0, "0:0", "54:46", 0, false, false, true));
+            textures.Add("tileset:outdoors:kokiriForest", new CTextureAtlas("tileset:outdoors:kokiriForest", 16, 16, 0, "0:0", "16:22", 0, false, false, true));
             textures.Add("tileset:indoors:sewer", new CTextureAtlas("tileset:indoors:sewer", 16, 16, 0, "0:0", "18:22", 0, false, false, true));
             textures.Add("tileset:indoors:castleTown", new CTextureAtlas("tileset:indoors:castleTown", 16, 16, 0, "0:0", "49:44", 0, false, false, true));
             textures.Add("tileset:indoors:rumpBattle", new CTextureAtlas("tileset:indoors:rumpBattle", 16, 16, 0, "0:0", "11:6", 0, false, false, true));
@@ -486,6 +487,7 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("tileset:outdoors:hyruleCastleTown", _content.Load<Texture2D>(@"tilesets/outdoors/hyruleCastleTown"));
             rawTextures.Add("tileset:outdoors:demoTiles", _content.Load<Texture2D>(@"tilesets/outdoors/demoTiles"));
             rawTextures.Add("tileset:outdoors:castleTown", _content.Load<Texture2D>(@"tilesets/outdoors/castleTown"));
+            rawTextures.Add("tileset:outdoors:kokiriForest", _content.Load<Texture2D>(@"tilesets/outdoors/kokiriForest"));
             rawTextures.Add("tileset:indoors:sewer", _content.Load<Texture2D>(@"tilesets/indoors/sewer"));
             rawTextures.Add("tileset:indoors:castleTown", _content.Load<Texture2D>(@"tilesets/indoors/castleTownIndoors"));
             rawTextures.Add("tileset:indoors:rumpBattle", _content.Load <Texture2D>(@"tilesets/indoors/rumpFightRoom"));

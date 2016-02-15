@@ -170,9 +170,6 @@
     <Compile Include="Actors\Projectiles\CFireBall.cs" />
     <Compile Include="Actors\Projectiles\CIceBall.cs" />
     <Compile Include="Actors\Projectiles\CProjectile.cs" />
-    <Compile Include="Actors\World\Water\CBaseWater.cs" />
-    <Compile Include="Actors\World\Water\CDeepWater.cs" />
-    <Compile Include="Actors\World\Water\CShallowWater.cs" />
     <Compile Include="CMasterControl.cs" />
     <Compile Include="CTimer.cs" />
     <Compile Include="Data Struct\Graph\NodeGraph.cs" />
@@ -516,6 +513,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Actors\Items\Drops\playerStats\" />
+    <Folder Include="Actors\World\Water\" />
     <Folder Include="Content\bin\WindowsGL\" />
     <Folder Include="Content\obj\WindowsGL\" />
   </ItemGroup>
@@ -717,6 +715,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\sprites\other\splash.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\tilesets\outdoors\kokiriForest.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

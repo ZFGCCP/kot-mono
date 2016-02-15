@@ -162,9 +162,16 @@ namespace King_of_Thieves.Forms.Map_Edit
 
             foreach (System.Type type in actorList)
             {
-                string shortName = type.ToString().Substring(type.ToString().LastIndexOf('.') + 1);
-                cmbActorList.Items.Add(shortName);
-                _actorFullyQualifiedNames.Add(shortName, type.ToString());
+                try
+                {
+                    string shortName = type.ToString().Substring(type.ToString().LastIndexOf('.') + 1);
+                    cmbActorList.Items.Add(shortName);
+                    _actorFullyQualifiedNames.Add(shortName, type.ToString());
+                }
+                catch(Exception ex)
+                {
+                    int x = 0;
+                }
             }
 
             cmbActorList.Sorted = true;
