@@ -1593,6 +1593,10 @@ namespace King_of_Thieves.Actors.Player
 
             switch (option)
             {
+                case HUD.buttons.HUDOPTIONS.NONE:
+                    _usingItem = false;
+                    break;
+
                 case HUD.buttons.HUDOPTIONS.ARROWS:
                     _beginArrowCharge(Projectiles.ARROW_TYPES.STANDARD);
                     break;

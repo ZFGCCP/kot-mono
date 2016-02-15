@@ -68,7 +68,10 @@ namespace King_of_Thieves.Actors.NPC.Other
         public override void roomStart(object sender)
         {
             if (_state == ACTOR_STATES.IDLE_STARE)
+            {
                 startTimer0(360);
+                _hearingRadius = 60;
+            }
         }
 
         public override void timer0(object sender)

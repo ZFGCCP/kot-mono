@@ -9,7 +9,8 @@ namespace King_of_Thieves.Actors.HUD.buttons
 {
     public enum HUDOPTIONS
     {
-        ARROWS = 1,
+        NONE = 0,
+        ARROWS,
         BLUE_POTION,
         BOOMERANG,
         BOMB_CANNON,
@@ -42,7 +43,7 @@ namespace King_of_Thieves.Actors.HUD.buttons
         
 
         private readonly HUD_BUTTON_TYPE _BUTTON_TYPE = 0;
-        public HUDOPTIONS hudItem = HUDOPTIONS.ARROWS;
+        public HUDOPTIONS hudItem = HUDOPTIONS.NONE;
         public HUD_ACTION_OPTIONS actionOption = HUD_ACTION_OPTIONS.NONE;
 
         private const string _BUTTON_LEFT = "buttonLeft";

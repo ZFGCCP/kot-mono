@@ -3468,6 +3468,13 @@
             <actor name="vaultToSlums" type="King_of_Thieves.Actors.Collision.CVaulter" coordinates="801:1013" params="125,2,80,0,1,2" />
           </actors>
         </component>
+        <component address="34">
+          <actors>
+            <actor name="hitboxLdRlVODrcbHXWP14" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="801:974" params="13,47" />
+            <actor name="hitboxknL2dEMSa2Yo 9cC" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="919:970" params="8,51" />
+            <actor name="hitboxSummSmWOtgQqTQ3Y" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="801:956" params="125,23" />
+          </actors>
+        </component>
       </components>
     </layer>
     <layer width="0" height="0" name="average">
@@ -8525,6 +8532,7 @@
         <tile coordinates="86:5" tileSet="tileset:outdoors:castleTown" selection="12:43" speed="0" />
         <tile coordinates="86:6" tileSet="tileset:outdoors:castleTown" selection="12:44" speed="0" />
         <tile coordinates="86:7" tileSet="tileset:outdoors:castleTown" selection="12:45" speed="0" />
+        <tile coordinates="67:11" tileSet="tileset:outdoors:castleTown" selection="33:1" speed="0" />
       </tiles>
       <components>
         <component address="6">
@@ -8858,7 +8866,6 @@
         <tile coordinates="57:11" tileSet="tileset:outdoors:castleTown" selection="49:1" speed="0" />
         <tile coordinates="65:11" tileSet="tileset:outdoors:castleTown" selection="49:1" speed="0" />
         <tile coordinates="64:11" tileSet="tileset:outdoors:castleTown" selection="48:1" speed="0" />
-        <tile coordinates="67:11" tileSet="tileset:outdoors:castleTown" selection="33:1" speed="0" />
         <tile coordinates="73:11" tileSet="tileset:outdoors:castleTown" selection="49:1" speed="0" />
         <tile coordinates="72:11" tileSet="tileset:outdoors:castleTown" selection="48:1" speed="0" />
         <tile coordinates="65:4" tileSet="tileset:outdoors:castleTown" selection="10:42" speed="0" />
