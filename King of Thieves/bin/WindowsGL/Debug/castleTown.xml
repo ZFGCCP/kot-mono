@@ -1642,7 +1642,6 @@
         <tile coordinates="88:42" tileSet="tileset:outdoors:castleTown" selection="1:11" speed="0" />
         <tile coordinates="88:43" tileSet="tileset:outdoors:castleTown" selection="1:11" speed="0" />
         <tile coordinates="88:44" tileSet="tileset:outdoors:castleTown" selection="1:11" speed="0" />
-        <tile coordinates="85:45" tileSet="tileset:outdoors:castleTown" selection="10:10" speed="0" />
         <tile coordinates="86:49" tileSet="tileset:outdoors:castleTown" selection="11:3" speed="0" />
         <tile coordinates="86:49" tileSet="tileset:outdoors:castleTown" selection="11:14" speed="0" />
         <tile coordinates="81:49" tileSet="tileset:outdoors:castleTown" selection="9:14" speed="0" />
@@ -3461,6 +3460,7 @@
         <tile coordinates="84:65" tileSet="tileset:outdoors:castleTown" selection="22:19" speed="0" />
         <tile coordinates="83:65" tileSet="tileset:outdoors:castleTown" selection="21:19" speed="0" />
         <tile coordinates="82:65" tileSet="tileset:outdoors:castleTown" selection="20:19" speed="0" />
+        <tile coordinates="85:45" tileSet="tileset:outdoors:castleTown" selection="10:10" speed="0" />
       </tiles>
       <components>
         <component address="33">
@@ -5939,6 +5939,14 @@
             <actor name="hitboxrusj7LuHlv2bEgCd" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="528:702" params="26,53" />
             <actor name="hitboxdQInz9PwyoAe318X" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="400:819" params="15,13" />
             <actor name="hitboxy2qo1U7ygsepjuf2" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="512:819" params="14,13" />
+            <actor name="hitbox2syghFe8oEBsEpm2" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="832:611" params="31,60" />
+            <actor name="hitbox2xLWIUdtE3HhUghO" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="896:603" params="33,68" />
+            <actor name="hitbox4VzBteedozfWzU g" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="659:591" params="27,61" />
+            <actor name="hitboxba8ADZdmfvyNn rY" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="645:607" params="55,31" />
+            <actor name="hitboxXtcruMLWVZ1ANep9" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="685:601" params="4,5" />
+            <actor name="hitboxfzEVM9CONzouKPzF" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="654:602" params="4,6" />
+            <actor name="hitboxHujHSYdNXuMGdhs5" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="653:638" params="6,5" />
+            <actor name="hitboxPXPMuRQed2zGad71" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="685:638" params="5,5" />
           </actors>
         </component>
         <component address="15">
