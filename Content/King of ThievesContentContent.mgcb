@@ -1105,3 +1105,9 @@
 /processorParam:TextureFormat=Color
 /build:tilesets/outdoors/kokiriForest.png
 
+#begin sounds/environment/waterWade.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/environment/waterWade.wav
+

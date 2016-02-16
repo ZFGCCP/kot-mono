@@ -168,6 +168,7 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_PULL_UP_LEFT = PLAYER + "pullUpLeft";
         public const string PLAYER_PULL_UP_RIGHT = PLAYER + "pullUpRight";
         public const string PLAYER_PULL_DOWN_HOLD = PLAYER + "pullDownHold";
+        public const string PLAYER_PUDDLE = PLAYER + "puddle";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -344,6 +345,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_PULL_UP_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "16:28", "17:28", 10));
             textures.Add(PLAYER_PULL_UP_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "13:28", "14:28", 10));
             textures.Add(PLAYER_PULL_DOWN_HOLD, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:28", "11:28", 10));
+            textures.Add(PLAYER_PUDDLE, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "45:26", "46:26", 2));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));

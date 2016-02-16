@@ -2567,6 +2567,11 @@
             <actor name="clark" type="King_of_Thieves.Actors.NPC.Other.TownsFolk.CClark" coordinates="380:1167" />
           </actors>
         </component>
+        <component address="35">
+          <actors>
+            <actor name="shallowWater01" type="King_of_Thieves.Actors.Collision.Water.CShallowWater" coordinates="930:1007" params="48,128" />
+          </actors>
+        </component>
       </components>
     </layer>
     <layer width="0" height="0" name="slumsOverlays">

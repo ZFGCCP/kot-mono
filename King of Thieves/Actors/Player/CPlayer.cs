@@ -77,6 +77,12 @@ namespace King_of_Thieves.Actors.Player
             sword.init("sword", Vector2.Zero, "", this.componentAddress);
             sword.layer = this.layer;
             Map.CMapManager.addActorToComponent(sword, this.componentAddress); ;
+
+            //add puddle
+            CWaterPuddle puddle = new CWaterPuddle();
+            puddle.init(_name + "Puddle", new Vector2(_position.X, _position.Y + 5), "", this.componentAddress);
+            puddle.layer = this.layer;
+            Map.CMapManager.addActorToComponent(puddle, this.componentAddress);
         }
 
         protected override void _initializeResources()

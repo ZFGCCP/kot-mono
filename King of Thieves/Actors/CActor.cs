@@ -164,6 +164,7 @@ namespace King_of_Thieves.Actors
         protected Queue<Vector2> _path0 = new Queue<Vector2>();
         protected CCommNetRef _componentAddressLkup = null; //for use with the commnet.  Store an address of sender here if you need to pass a message back to it at some point
         private bool _collideFlag = false;
+        private bool _previousCollideFlag = false;
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -199,7 +200,7 @@ namespace King_of_Thieves.Actors
         public event actorEventHandler onClick;
         public event actorEventHandler onTap;
         public event actorEventHandler onRoomStart;
-        public event actorEventHandler onCollideExit;
+        public event collideHandler onCollideExit;
 
         public virtual void create(object sender) { }
         public virtual void keyDown(object sender) { }
@@ -219,7 +220,7 @@ namespace King_of_Thieves.Actors
         public virtual void click(object sender) { }
         public virtual void tap(object sender) { }
         public virtual void roomStart(object sender) { }
-        public virtual void collideExit(object sender) { }
+        public virtual void collideExit(object sender, CActor collider) { }
 
         protected virtual void cleanUp() 
         {
@@ -283,7 +284,7 @@ namespace King_of_Thieves.Actors
             onTimer5 += new actorEventHandler(timer5);
             onTimer6 += new actorEventHandler(timer6);
             onRoomStart += new actorEventHandler(roomStart);
-            onCollideExit += new actorEventHandler(collideExit);
+            onCollideExit += new collideHandler(collideExit);
 
             _name = name;
             _collidables = new List<Type>();
@@ -749,6 +750,14 @@ namespace King_of_Thieves.Actors
                             _collideFlag = true;
                             onCollide(this, x);
                         }
+                        else
+                            _collideFlag = false;
+
+                        if (_previousCollideFlag && !_collideFlag)
+                            onCollideExit(this, x);
+
+
+                        _previousCollideFlag = _collideFlag;
                     }
                 }
             }
@@ -1235,7 +1244,7 @@ namespace King_of_Thieves.Actors
             onTimer4 -= new actorEventHandler(timer4);
             onTimer5 -= new actorEventHandler(timer5);
             onTimer6 -= new actorEventHandler(timer6);
-            onCollideExit -= new actorEventHandler(collideExit);
+            onCollideExit -= new collideHandler(collideExit);
 
             _userEvents.Clear();
             _userEventsToFire.Clear();
