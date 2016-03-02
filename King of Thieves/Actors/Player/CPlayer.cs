@@ -234,6 +234,11 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_UP_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_UP_LEFT));
             _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_UP_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_UP_LEFT,true));
 
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DROWN_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_DROWN_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DROWN_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_DROWN_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DROWN_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_DROWN_LEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DROWN_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_DROWN_UP));
+
             _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD));
         }
 
@@ -552,6 +557,13 @@ namespace King_of_Thieves.Actors.Player
                     swapImage(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD);
                     state = ACTOR_STATES.USER_STATE0;
                     startTimer6(120);
+                    break;
+
+                case ACTOR_STATES.DROWN_IDLE:
+                    _state = ACTOR_STATES.IDLE;
+                    jumpToPoint(_lastKnownGoodPosition.X, _lastKnownGoodPosition.Y);
+                    noCollide = false;
+                    CMasterControl.camera.unlockCamera();
                     break;
             }
 
@@ -958,7 +970,75 @@ namespace King_of_Thieves.Actors.Player
                 Master.Push(new usr.local.GameMenu.CPauseMenu(CMasterControl.itemPauseMenu(), CMasterControl.questPauseMenu()));*/
         }
 
+        private void _checkDead()
+        {
+            if (CMasterControl.healthController.isDead)
+            {
+                if (_state != ACTOR_STATES.DIE_FALL && _state != ACTOR_STATES.DEAD && _state != ACTOR_STATES.DIEING)
+                {
+                    //yep, we're dead.
+                    _state = ACTOR_STATES.DIEING;
+                    CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:dying"]);
+                    CMasterControl.audioPlayer.stopAllMusic();
+                    swapImage(Graphics.CTextures.PLAYER_DIE_SPIN);
+                }
+            }
+        }
 
+        private void _directionSwapForSword(ref Vector2 swordPos)
+        {
+            switch (_direction)
+            {
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.PLAYER_SWINGUP);
+                    swordPos.X = _position.X - 13;
+                    swordPos.Y = _position.Y - 13;
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.PLAYER_SWINGLEFT);
+                    swordPos.X = _position.X - 18;
+                    swordPos.Y = _position.Y - 10;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.PLAYER_SWINGRIGHT);
+                    swordPos.X = _position.X - 12;
+                    swordPos.Y = _position.Y - 10;
+                    break;
+
+                case DIRECTION.DOWN:
+                    swapImage(Graphics.CTextures.PLAYER_SWINGDOWN);
+                    swordPos.X = _position.X - 17;
+                    swordPos.Y = _position.Y - 13;
+                    break;
+            }
+        }
+
+        private void _swordSwing()
+        {
+            if (!_swordReleased)
+            {
+                _swordReleased = true;
+                Vector2 swordPos = Vector2.Zero;
+                Random random = new Random();
+                int attackSound = random.Next(0, 3);
+
+                Sound.CSound[] temp = new Sound.CSound[4];
+
+                temp[0] = CMasterControl.audioPlayer.soundBank["Player:Attack1"];
+                temp[1] = CMasterControl.audioPlayer.soundBank["Player:Attack2"];
+                temp[2] = CMasterControl.audioPlayer.soundBank["Player:Attack3"];
+                temp[3] = CMasterControl.audioPlayer.soundBank["Player:Attack4"];
+
+                CMasterControl.audioPlayer.addSfx(temp[attackSound]);
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:SwordSlash"]);
+
+                _directionSwapForSword(ref swordPos);
+
+                ((Items.Swords.CSword)component.actors["sword"]).swingSword(_direction, swordPos);
+            }
+        }
 
         public override void update(GameTime gameTime)
         {
@@ -970,17 +1050,7 @@ namespace King_of_Thieves.Actors.Player
             _velocity.Y = 0;
 
             //are we dead?
-            if (CMasterControl.healthController.isDead)
-            {
-                if (_state != ACTOR_STATES.DIE_FALL && _state != ACTOR_STATES.DEAD && _state != ACTOR_STATES.DIEING)
-                {
-                    //yep, we're dead.
-                    _state = ACTOR_STATES.DIEING;
-                     CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:dying"]);
-                    CMasterControl.audioPlayer.stopAllMusic();
-                    swapImage(Graphics.CTextures.PLAYER_DIE_SPIN);
-                }
-            }
+            _checkDead();
 
             switch (_state)
             {
@@ -1089,54 +1159,9 @@ namespace King_of_Thieves.Actors.Player
                     break;
 
                 case ACTOR_STATES.SWINGING:
-                    if (!_swordReleased)
-                    {
-                        _swordReleased = true;
-                        Vector2 swordPos = Vector2.Zero;
-                        Random random = new Random();
-                        int attackSound = random.Next(0, 3);
-
-                        Sound.CSound[] temp = new Sound.CSound[4];
-
-                        temp[0] = CMasterControl.audioPlayer.soundBank["Player:Attack1"];
-                        temp[1] = CMasterControl.audioPlayer.soundBank["Player:Attack2"];
-                        temp[2] = CMasterControl.audioPlayer.soundBank["Player:Attack3"];
-                        temp[3] = CMasterControl.audioPlayer.soundBank["Player:Attack4"];
-
-                        CMasterControl.audioPlayer.addSfx(temp[attackSound]);
-                        CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:SwordSlash"]);
-
-                        switch (_direction)
-                        {
-                            case DIRECTION.UP:
-                                swapImage(Graphics.CTextures.PLAYER_SWINGUP);
-                                swordPos.X = _position.X - 13;
-                                swordPos.Y = _position.Y - 13;
-                                break;
-
-                            case DIRECTION.LEFT:
-                                swapImage(Graphics.CTextures.PLAYER_SWINGLEFT);
-                                swordPos.X = _position.X - 18;
-                                swordPos.Y = _position.Y - 10;
-                                break;
-
-                            case DIRECTION.RIGHT:
-                                swapImage(Graphics.CTextures.PLAYER_SWINGRIGHT);
-                                swordPos.X = _position.X - 12;
-                                swordPos.Y = _position.Y - 10;
-                                break;
-
-                            case DIRECTION.DOWN:
-                                swapImage(Graphics.CTextures.PLAYER_SWINGDOWN);
-                                swordPos.X = _position.X - 17;
-                                swordPos.Y = _position.Y - 13;
-                                break;
-                        }
-                        ((Items.Swords.CSword)component.actors["sword"]).swingSword(_direction, swordPos);
-                        //_triggerUserEvent(0, "sword", _direction, swordPos.X, swordPos.Y);
-                    }
-
+                    _swordSwing();
                     break;
+
                 case ACTOR_STATES.IDLE:
                     if (_climbing)
                         swapImage(Graphics.CTextures.PLAYER_CLIMB_IDLE);
@@ -1187,6 +1212,10 @@ namespace King_of_Thieves.Actors.Player
 
                 case ACTOR_STATES.VAULT_IDLE:
                     _position += _vaultSpeed;
+                    break;
+
+                case ACTOR_STATES.DROWN:
+                    _drown();
                     break;
             }
 
@@ -1744,9 +1773,43 @@ namespace King_of_Thieves.Actors.Player
             
         }
 
+        private void _drown()
+        {
+            _state = ACTOR_STATES.DROWN_IDLE;
+            _lastKnownGoodPosition = _position;
+            CMasterControl.camera.lockCamera();
+            switch(_hitBox.collideDirection)
+            {
+                case DIRECTION.DOWN:
+                    swapImage(Graphics.CTextures.PLAYER_DROWN_DOWN);
+                    _position.Y += 16;
+                    _lastKnownGoodPosition.Y -= 5;
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.PLAYER_DROWN_LEFT);
+                    _position.X -= 16;
+                    _lastKnownGoodPosition.X += 5;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.PLAYER_DROWN_RIGHT);
+                    _position.X += 16;
+                    _lastKnownGoodPosition.X -= 5;
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.PLAYER_DROWN_UP);
+                    _position.Y -= 16;
+                    _lastKnownGoodPosition.Y += 5;
+                    break;
+            }
+        }
+
 
         //===========================================================================
         //=========================cutscene related things===========================
+        //=========================this is hideous, come up with something better====
         //===========================================================================
         private void _rumpShoveToCenter(object sender)
         {

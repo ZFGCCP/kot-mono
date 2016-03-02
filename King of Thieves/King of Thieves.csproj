@@ -69,6 +69,7 @@
     <Compile Include="Actors\Collision\CLayerChanger.cs" />
     <Compile Include="Actors\Collision\CVaulter.cs" />
     <Compile Include="Actors\Collision\GameChangers\CPawnShopAlerter.cs" />
+    <Compile Include="Actors\Collision\Water\CDeepWater.cs" />
     <Compile Include="Actors\Collision\Water\CShallowWater.cs" />
     <Compile Include="Actors\HUD\counters\CArrowCounter.cs" />
     <Compile Include="Actors\HUD\CScreenFader.cs" />

@@ -17,6 +17,7 @@ namespace King_of_Thieves.Graphics
         private Actors.CActor _actorToFollow = null;
         private Actors.HUD.CCameraBoundary _boundary = null;
         private Actors.Collision.CCameraLimit _limit = null;
+        private bool _locked = false;
 
         public CCamera()
         {
@@ -31,8 +32,18 @@ namespace King_of_Thieves.Graphics
             _normalizedPosition.X = 0 - position.X;
             _normalizedPosition.Y = 0 - position.Y;
 
-            if (_actorToFollow != null)
+            if (_actorToFollow != null && !_locked)
                 _followObject();
+        }
+
+        public void lockCamera()
+        {
+            _locked = true;
+        }
+
+        public void unlockCamera()
+        {
+            _locked = false;
         }
 
         public void reset()
@@ -130,6 +141,14 @@ namespace King_of_Thieves.Graphics
             get
             {
                 return _normalizedPosition;
+            }
+        }
+
+        public bool locked
+        {
+            get
+            {
+                return _locked;
             }
         }
     }

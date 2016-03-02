@@ -28,10 +28,5 @@ namespace King_of_Thieves.Actors.Collision.Water
         {
             collider.state = ACTOR_STATES.INVISIBLE;
         }
-
-        public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
-        {
-            base.init(name, position, dataType, compAddress, additional);
-        }
     }
 }

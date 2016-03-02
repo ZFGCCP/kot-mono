@@ -53,6 +53,8 @@ namespace King_of_Thieves.Actors
         DIEING,
         DROP,
         DROP_ITEM,
+        DROWN,
+        DROWN_IDLE,
         DUSK,
         EXPLODE,
         FLYING,
@@ -165,6 +167,8 @@ namespace King_of_Thieves.Actors
         protected CCommNetRef _componentAddressLkup = null; //for use with the commnet.  Store an address of sender here if you need to pass a message back to it at some point
         private bool _collideFlag = false;
         private bool _previousCollideFlag = false;
+        protected Vector2 _lastKnownGoodPosition = Vector2.Zero;
+        public DIRECTION otherColliderDirection = DIRECTION.DOWN;
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -748,6 +752,7 @@ namespace King_of_Thieves.Actors
                         {
                             //trigger collision event
                             _collideFlag = true;
+                            _hitBox.getCollisionDirection(x);
                             onCollide(this, x);
                         }
                         else
@@ -993,7 +998,7 @@ namespace King_of_Thieves.Actors
         {
             get
             {
-                return _hitBox == null;
+                return _hitBox == null || noCollide;
             }
         }
 
@@ -1219,6 +1224,14 @@ namespace King_of_Thieves.Actors
         public CActor popActorForRegistration()
         {
             return _actorsToBeRegistered.Dequeue();
+        }
+
+        public Vector2 lastKnownGoodPosition
+        {
+            get
+            {
+                return _lastKnownGoodPosition;
+            }
         }
 
         public virtual void Dispose()

@@ -21,6 +21,7 @@ namespace King_of_Thieves
         public static ContentManager glblContent;
         public static Input.CInput glblInput;
         public static Graphics.CCamera camera = new Graphics.CCamera();
+        public static bool hasFlippers = false;
 
         //menu creation functions
         public static Menu itemPauseMenu()

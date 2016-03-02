@@ -2572,6 +2572,11 @@
             <actor name="shallowWater01" type="King_of_Thieves.Actors.Collision.Water.CShallowWater" coordinates="930:1007" params="48,128" />
           </actors>
         </component>
+		<component address="36">
+          <actors>
+            <actor name="deepWaterTest" type="King_of_Thieves.Actors.Collision.Water.CDeepWater" coordinates="930:1152" params="42,178" />
+          </actors>
+        </component>
       </components>
     </layer>
     <layer width="0" height="0" name="slumsOverlays">
