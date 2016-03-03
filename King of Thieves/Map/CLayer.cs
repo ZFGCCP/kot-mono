@@ -36,6 +36,16 @@ namespace King_of_Thieves.Map
         {
         }
 
+        public void tileCoordConverter()
+        {
+            for(int i = 0; i < _tiles.Count; i++)
+            {
+                CTile tile = _tiles[i];
+                tile.tileCoords.X *= 16;
+                tile.tileCoords.Y *= 16;
+            }
+        }
+
         public void swapDrawDepth(int newDepth, Actors.CActor sprite)
         {
             _drawlist.changeSpriteDepth(sprite, sprite.drawDepth, newDepth);
@@ -223,12 +233,10 @@ namespace King_of_Thieves.Map
                     else
                         dimensions = new Vector2(Graphics.CTextures.textures[tile.tileSet].FrameWidth, Graphics.CTextures.textures[tile.tileSet].FrameHeight);
 
-                    if (spriteBatch != null)
-                        dimensions = tile._mapDrawScale;
 
                 if (spriteBatch != null || CMasterControl.buttonController.checkCullBoundary(tile.tileCoords, dimensions))
                 {
-                    otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y, true, spriteBatch);
+                    otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), 1, 1, true, spriteBatch);
                 }
                 tile.update();
             }

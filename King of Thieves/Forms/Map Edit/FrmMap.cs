@@ -489,6 +489,11 @@ namespace King_of_Thieves.Forms.Map_Edit
         {
             mpvMapView.mouseSnapY = Convert.ToDouble(txtYSnap.Text);
         }
+
+        private void convertCoordinatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Map.CMap.tileCoordinateConverter(_loadedMap);
+        }
 #endif
     }
 }

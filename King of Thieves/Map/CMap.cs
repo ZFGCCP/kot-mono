@@ -524,6 +524,15 @@ namespace King_of_Thieves.Map
             }
         }
 
+        public static void tileCoordinateConverter(CMap map)
+        {
+            for (int i = 0; i < map._layers.Count; i++)
+            {
+                CLayer layer = map._layers[i];
+                layer.tileCoordConverter();
+            }
+        }
+
         public void removeActorFromComponent(CActor actor, int componentId)
         {
             removeFromActorRegistry(actor);

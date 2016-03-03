@@ -192,8 +192,8 @@ namespace WinFormsGraphicsDevice
 
                 if (_selectedTile != null)
                 {
-                    int snapX = (int)System.Math.Floor((mousePos.X) / mouseSnapX);
-                    int snapY = (int)System.Math.Floor((mousePos.Y) / mouseSnapY);
+                    int snapX = (int)(System.Math.Floor((mousePos.X) / mouseSnapX) * mouseSnapX);
+                    int snapY = (int)(System.Math.Floor((mousePos.Y) / mouseSnapY) * mouseSnapY);
 
                     _selectedTile.tileCoords = _getMouseSnap(-_HScrollVal, -_VScrollVal);
                 }
@@ -209,8 +209,8 @@ namespace WinFormsGraphicsDevice
         {
             System.Drawing.Point mousePos = PointToClient(MousePosition);
 
-            int snapX = (int)System.Math.Floor((mousePos.X + offSetX) / mouseSnapX);
-            int snapY = (int)System.Math.Floor((mousePos.Y + offSetY) / mouseSnapY);
+            int snapX = (int)(System.Math.Floor((mousePos.X + offSetX) / mouseSnapX) * mouseSnapX);
+            int snapY = (int)(System.Math.Floor((mousePos.Y + offSetY) / mouseSnapY) * mouseSnapY);
 
             return new Vector2(snapX, snapY);
         }
