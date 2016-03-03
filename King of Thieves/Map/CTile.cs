@@ -22,7 +22,7 @@ namespace King_of_Thieves.Map
             this._tileBounds = copy._tileBounds;
 
             if (_boundary == null)
-                _boundary = new Actors.Collision.CHitBox(null, tileCoords.X * Graphics.CTextures.textures[tileSet].FrameWidth, tileCoords.Y * Graphics.CTextures.textures[tileSet].FrameHeight, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+                _boundary = new Actors.Collision.CHitBox(null, tileCoords.X, tileCoords.Y, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
         }
 
         public CTile(Vector2 atlasCoords, Vector2 mapCoords, string tileSet)
