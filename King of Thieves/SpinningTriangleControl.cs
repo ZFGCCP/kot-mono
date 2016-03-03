@@ -36,6 +36,8 @@ namespace WinFormsGraphicsDevice
         private CSprite _selectedSprite;
         private CMap _currentMap = null;
         private King_of_Thieves.Graphics.CCamera _camera = new King_of_Thieves.Graphics.CCamera();
+        public double mouseSnapX = 16;
+        public double mouseSnapY = 16;
 
         private int _HScrollVal = 0;
         private int _VScrollVal = 0;
@@ -165,7 +167,7 @@ namespace WinFormsGraphicsDevice
             if (_selectedTile != null && _selectedSprite != null)
             {
                 _selectedTile.update();
-                _selectedTile.draw(_selectedSprite, spriteBatch);
+                _selectedTile.draw(_selectedSprite, spriteBatch,mouseSnapX,mouseSnapY);
             }
             spriteBatch.End();
 
@@ -190,8 +192,8 @@ namespace WinFormsGraphicsDevice
 
                 if (_selectedTile != null)
                 {
-                    int snapX = (int)System.Math.Floor((mousePos.X) / 16.0);
-                    int snapY = (int)System.Math.Floor((mousePos.Y) / 16.0);
+                    int snapX = (int)System.Math.Floor((mousePos.X) / mouseSnapX);
+                    int snapY = (int)System.Math.Floor((mousePos.Y) / mouseSnapY);
 
                     _selectedTile.tileCoords = _getMouseSnap(-_HScrollVal, -_VScrollVal);
                 }
@@ -207,8 +209,8 @@ namespace WinFormsGraphicsDevice
         {
             System.Drawing.Point mousePos = PointToClient(MousePosition);
 
-            int snapX = (int)System.Math.Floor((mousePos.X + offSetX) / 16.0);
-            int snapY = (int)System.Math.Floor((mousePos.Y + offSetY) / 16.0);
+            int snapX = (int)System.Math.Floor((mousePos.X + offSetX) / mouseSnapX);
+            int snapY = (int)System.Math.Floor((mousePos.Y + offSetY) / mouseSnapY);
 
             return new Vector2(snapX, snapY);
         }

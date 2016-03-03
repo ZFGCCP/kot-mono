@@ -479,6 +479,16 @@ namespace King_of_Thieves.Forms.Map_Edit
             label7.Text = coordLabel;
 
         }
+
+        private void txtXSnap_TextChanged(object sender, EventArgs e)
+        {
+            mpvMapView.mouseSnapX = Convert.ToDouble(txtXSnap.Text);
+        }
+
+        private void txtYSnap_TextChanged(object sender, EventArgs e)
+        {
+            mpvMapView.mouseSnapY = Convert.ToDouble(txtYSnap.Text);
+        }
 #endif
     }
 }
