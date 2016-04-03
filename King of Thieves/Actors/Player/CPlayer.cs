@@ -1776,32 +1776,32 @@ namespace King_of_Thieves.Actors.Player
         private void _drown()
         {
             _state = ACTOR_STATES.DROWN_IDLE;
-            _lastKnownGoodPosition = _position;
+            _lastKnownGoodPosition = _oldPosition;
             CMasterControl.camera.lockCamera();
-            switch(_hitBox.collideDirection)
+            switch(otherColliderDirection)
             {
-                case DIRECTION.DOWN:
+                case DIRECTION.UP:
                     swapImage(Graphics.CTextures.PLAYER_DROWN_DOWN);
+                    _lastKnownGoodPosition.Y -= 3;
                     _position.Y += 16;
-                    _lastKnownGoodPosition.Y -= 5;
-                    break;
-
-                case DIRECTION.LEFT:
-                    swapImage(Graphics.CTextures.PLAYER_DROWN_LEFT);
-                    _position.X -= 16;
-                    _lastKnownGoodPosition.X += 5;
                     break;
 
                 case DIRECTION.RIGHT:
-                    swapImage(Graphics.CTextures.PLAYER_DROWN_RIGHT);
-                    _position.X += 16;
-                    _lastKnownGoodPosition.X -= 5;
+                    swapImage(Graphics.CTextures.PLAYER_DROWN_LEFT);
+                    _lastKnownGoodPosition.X += 3;
+                    _position.X -= 16;
                     break;
 
-                case DIRECTION.UP:
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.PLAYER_DROWN_RIGHT);
+                    _lastKnownGoodPosition.X -= 3;
+                    _position.X += 16;
+                    break;
+
+                case DIRECTION.DOWN:
                     swapImage(Graphics.CTextures.PLAYER_DROWN_UP);
+                    _lastKnownGoodPosition.Y += 3;
                     _position.Y -= 16;
-                    _lastKnownGoodPosition.Y += 5;
                     break;
             }
         }

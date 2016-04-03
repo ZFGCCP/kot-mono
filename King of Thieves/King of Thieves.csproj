@@ -254,6 +254,7 @@
     <Compile Include="Map\CTile.cs" />
     <Compile Include="Map\CTileGenerator.cs" />
     <Compile Include="Map\EActorProperties.cs" />
+    <Compile Include="MathExt\CTriangle.cs" />
     <Compile Include="MathExt\MathExt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

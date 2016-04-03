@@ -38,7 +38,17 @@ namespace King_of_Thieves.Actors.Collision.Water
         {
             player.noCollide = true;
             player.state = ACTOR_STATES.DROWN;
-            player.otherColliderDirection = _hitBox.collideDirection;
+            //determine collide direction
+            if (checkPointInBottomQuadrant(player.position + player.hitBox.topLeft) || checkPointInBottomQuadrant(player.position + player.hitBox.topRight))
+                player.otherColliderDirection = DIRECTION.DOWN;
+            else if (checkPointInLeftQuadrant(player.position + player.hitBox.topRight) || checkPointInLeftQuadrant(player.position + player.hitBox.bottomRight))
+                player.otherColliderDirection = DIRECTION.LEFT;
+            else if (checkPointInTopQuadrant(player.position + player.hitBox.bottomLeft) || checkPointInTopQuadrant(player.position + player.hitBox.bottomRight))
+                player.otherColliderDirection = DIRECTION.UP;
+            else if (checkPointInRightQuadrant(player.position + player.hitBox.topLeft) || checkPointInTopQuadrant(player.position + player.hitBox.bottomLeft))
+                player.otherColliderDirection = DIRECTION.RIGHT;
+
+            
         }
     }
 }

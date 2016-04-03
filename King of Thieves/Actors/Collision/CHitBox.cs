@@ -22,6 +22,11 @@ namespace King_of_Thieves.Actors.Collision
         private double _bottomLeftAngle = 0;
         private double _bottomRightAngle = 0;
 
+        private Vector2 _topLeft;
+        private Vector2 _topRight;
+        private Vector2 _bottomLeft;
+        private Vector2 _bottomRight;
+
         //Texture for drawing hitbox
         Texture2D texture;
 
@@ -35,6 +40,11 @@ namespace King_of_Thieves.Actors.Collision
             _topRightAngle = MathExt.MathExt.angle(_center, new Vector2(offset.X + halfWidth * 2, offset.Y));
             _bottomLeftAngle = _topRightAngle + 180;
             _bottomRightAngle = _topLeftAngle + 180;
+
+            _topLeft = new Vector2(_center.X - _halfSize.X, _center.Y - _halfSize.Y);
+            _topRight = new Vector2(_center.X + _halfSize.X, _center.Y - _halfSize.Y);
+            _bottomLeft = new Vector2(_center.X - _halfSize.X, _center.Y + _halfSize.Y);
+            _bottomRight = new Vector2(_center.X + _halfSize.X, _center.Y + _halfSize.Y);
 
             //Prepare texture for rendering hitbox when needed(Only done for the first hitbox, as they share the texture)
             if (texture == null)
@@ -123,6 +133,38 @@ namespace King_of_Thieves.Actors.Collision
         public void destroy()
         {
             actor = null;
+        }
+
+        public Vector2 topLeft
+        {
+            get
+            {
+                return _topLeft;
+            }
+        }
+
+        public Vector2 topRight
+        {
+            get
+            {
+                return _topRight;
+            }
+        }
+
+        public Vector2 bottomLeft
+        {
+            get
+            {
+                return _bottomLeft;
+            }
+        }
+
+        public Vector2 bottomRight
+        {
+            get
+            {
+                return _bottomRight;
+            }
         }
 
         public float halfWidth

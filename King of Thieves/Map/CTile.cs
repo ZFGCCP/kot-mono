@@ -33,7 +33,7 @@ namespace King_of_Thieves.Map
 
             //if tileSet is null, we're probably in game
             if (tileSet != null)
-                _boundary = new Actors.Collision.CHitBox(null, mapCoords.X * Graphics.CTextures.textures[tileSet].FrameWidth, mapCoords.Y * Graphics.CTextures.textures[tileSet].FrameHeight, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+                _boundary = new Actors.Collision.CHitBox(null, mapCoords.X, mapCoords.Y, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
         }
 
         public Vector2 atlasCoords

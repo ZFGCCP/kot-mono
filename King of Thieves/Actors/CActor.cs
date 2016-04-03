@@ -1060,33 +1060,17 @@ namespace King_of_Thieves.Actors
         protected bool _checkIfPointInView(Vector2 point)
         {
             //build triangle points first
-            Vector2 A = _position;
-            Vector2 B = Vector2.Zero;
-            Vector2 C = Vector2.Zero;
+            MathExt.CTriangle triangle = MathExt.MathExt.buildTriangle(_angle, _visionRange, _lineOfSight, _position);
 
-            B.X = (float)(Math.Cos((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
-            B.Y = (float)((Math.Sin((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
-
-            C.X = (float)(Math.Cos((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
-            C.Y = (float)((Math.Sin((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
-
-            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
+            return MathExt.MathExt.checkPointInTriangle(point, triangle.A, triangle.B, triangle.C);
         }
 
         protected bool _checkIfPointInView(Vector2 point, Vector2 origin)
         {
             //build triangle points first
-            Vector2 A = origin;
-            Vector2 B = Vector2.Zero;
-            Vector2 C = Vector2.Zero;
+            MathExt.CTriangle triangle = MathExt.MathExt.buildTriangle(_angle, _visionRange, _lineOfSight, origin);
 
-            B.X = (float)(Math.Cos((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
-            B.Y = (float)((Math.Sin((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
-
-            C.X = (float)(Math.Cos((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
-            C.Y = (float)((Math.Sin((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
-
-            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
+            return MathExt.MathExt.checkPointInTriangle(point, triangle.A, triangle.B, triangle.C);
         }
 
         protected void solidCollide(CActor collider, bool knockBack = false)
