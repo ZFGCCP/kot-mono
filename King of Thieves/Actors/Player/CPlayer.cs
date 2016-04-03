@@ -564,6 +564,7 @@ namespace King_of_Thieves.Actors.Player
                     jumpToPoint(_lastKnownGoodPosition.X, _lastKnownGoodPosition.Y);
                     noCollide = false;
                     CMasterControl.camera.unlockCamera();
+                    dealDamange(2, this);
                     break;
             }
 

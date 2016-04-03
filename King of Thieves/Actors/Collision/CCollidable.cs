@@ -55,7 +55,7 @@ namespace King_of_Thieves.Actors.Collision
 
             //calculate triangles
             _leftTri = MathExt.MathExt.buildTriangle(180.0, _angleBottomLeft - _angleTopLeft, (double)center.X - _width / 2.0, center);
-            _rightTri = MathExt.MathExt.buildTriangle(0, _angleBottomRight - _angleTopRight, (double)center.X + _width / 2.0, center);
+            _rightTri = MathExt.MathExt.buildTriangle(0, (_angleTopRight + 360) - _angleBottomRight, (double)center.X + _width / 2.0, center);
             _topTri = MathExt.MathExt.buildTriangle(90.0, _angleTopLeft - _angleTopRight, (double)center.X - _height / 2.0, center);
             _bottomTri = MathExt.MathExt.buildTriangle(270.0, _angleBottomLeft - _angleBottomRight, (double)center.X + _height / 2.0, center);
         }
