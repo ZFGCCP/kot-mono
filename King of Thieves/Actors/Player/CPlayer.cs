@@ -746,13 +746,13 @@ namespace King_of_Thieves.Actors.Player
                 else if (_state == ACTOR_STATES.CHARGING_SWORD)
                 {
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_LEFT)))
-                        _velocity.X = -1f;
+                        _velocity.X = -.5f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_RIGHT)))
-                        _velocity.X = 1f;
+                        _velocity.X = .5f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_DOWN)))
-                        _velocity.Y = 1f;
+                        _velocity.Y = .5f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_UP)))
-                        _velocity.Y = -1f;
+                        _velocity.Y = -.5f;
 
                     if (_velocity.X == 0 && _velocity.Y == 0)
                         swapImage(_currentSwordChargeIdleSprite);

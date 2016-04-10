@@ -305,6 +305,8 @@ namespace King_of_Thieves.Actors
             _registerUserEvents();
             _registerSystemEvents();
             _initializeResources();
+
+            _motionCounter = Vector2.Zero;
         }
 
         ~CActor()
@@ -545,45 +547,28 @@ namespace King_of_Thieves.Actors
 
         public void moveInDirection(Vector2 velocity)
         {
-            double ppfX = 0;
-            double ppfY = 0;
+            _motionCounter.X += (float)Math.Abs(velocity.X);
+            _motionCounter.Y += (float)Math.Abs(velocity.Y);
 
-            if (Math.Abs(velocity.X) > 1.0f)
+            if (_motionCounter.X >= 1)
             {
-                ppfX = Math.Round(velocity.X);
+                 if (Math.Abs(velocity.X) >= 1)
+                    _position.X += (float)Math.Floor(velocity.X);
+                else
+                    _position.X += 1 * Math.Sign(velocity.X);
 
-                _position.X += (float)ppfX;
-            }
-            else
-            {
-                ppfX = Math.Pow((double)velocity.X, -1);
-
-                if (_motionCounter.X >= Math.Abs(ppfX))
-                {
-                    _position.X += (1.0f * Math.Sign(velocity.X));
-                    _motionCounter.X = 0;
-                }
+                _motionCounter.X = 0;
             }
 
-            if (Math.Abs(velocity.Y) > 1.0f)
+            if (_motionCounter.Y >= 1)
             {
-                ppfY = Math.Round(velocity.Y);
+                if (Math.Abs(velocity.Y) >= 1)
+                    _position.Y += (float)Math.Floor(velocity.Y);
+                else
+                    _position.Y += 1 * Math.Sign(velocity.Y);
 
-                _position.Y += (float)ppfY;
+                _motionCounter.Y = 0;
             }
-            else
-            {
-                ppfY = Math.Pow((double)velocity.Y, -1);
-
-                if (_motionCounter.Y >= Math.Abs(ppfY))
-                {
-                    _position.Y += (1.0f * Math.Sign(velocity.Y));
-                    _motionCounter.Y = 0;
-                }
-            }
-
-            _motionCounter.X += 1;
-            _motionCounter.Y += 1;
         }
 
         public DIRECTION moveToPoint2(float x, float y, float speed, bool calcAngle = true)

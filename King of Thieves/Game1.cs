@@ -82,6 +82,7 @@ namespace King_of_Thieves
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Graphics.CGraphics.acquireGraphics(ref graphics);
+            graphics.SynchronizeWithVerticalRetrace = true;
             CGraphics.fullScreenRenderTarget = new RenderTarget2D(CGraphics.GPU, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, true, SurfaceFormat.Color, DepthFormat.Depth24);
 
             _fpsTimer.Elapsed += new ElapsedEventHandler(_fpsHandler);
