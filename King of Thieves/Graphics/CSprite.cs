@@ -82,6 +82,38 @@ namespace King_of_Thieves.Graphics
             _paused = !_paused;
         }
 
+        private void _animate()
+        {
+            if (_imageAtlas.FrameRate != 0 && !_paused && _timeForCurrentFrame >= _frameRateLookup[_imageAtlas.FrameRate])
+            {
+                _timeForCurrentFrame = 0;
+
+                if (frameX >= _imageAtlas.tileXCount - 1 && frameY >= _imageAtlas.tileYCount - 1)
+                    _inLastFrame = true;
+
+                frameX++;
+                _framesPassed = 0;
+
+                if (frameX == _imageAtlas.tileXCount)
+                {
+                    frameX = 0;
+                    frameY++;
+
+                    if (frameY == _imageAtlas.tileYCount)
+                    {
+                        frameY = 0;
+                        _inLastFrame = false;
+                        _animEnd = true;
+                    }
+                }
+            }
+        }
+
+        public void update()
+        {
+            _animate();
+        }
+
         public override bool draw(int x, int y, bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             if (spriteBatch == null)
@@ -104,20 +136,14 @@ namespace King_of_Thieves.Graphics
 
             Color overlay = useOverlay ? Actors.Controllers.GameControllers.CDayClock.overlay : Color.White;
 
-            try
-            {
-                if (!(_flipV || _flipH))
-                    spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
-                else if (_flipV)
-                    spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
-                else if (_flipH)
-                    spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
-                base.draw(x, y);
-            }
-            catch (Exception ex)
-            {
-                int q = 0;
-            }
+            if (!(_flipV || _flipH))
+                spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            else if (_flipV)
+                spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
+            else if (_flipH)
+                spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
+            base.draw(x, y);
+
 
             if (_imageAtlas.FrameRate != 0 && !_paused && _timeForCurrentFrame >= _frameRateLookup[_imageAtlas.FrameRate])
             {

@@ -10,11 +10,11 @@ namespace King_of_Thieves.Actors
         KILL = 1000
     }
 
-    class CActorPacket
+    struct CActorPacket
     {
         private int _userEventID;
         private string _actorName;
-        private List<object> _parameters = new List<object>();
+        private List<object> _parameters;
         private CActor _sender;
 
         public CActorPacket(int userEvent, string actor, CActor sender, params object[] param)
@@ -22,7 +22,7 @@ namespace King_of_Thieves.Actors
             _userEventID = userEvent;
             _actorName = actor;
             _sender = sender;
-
+            _parameters = new List<object>();
             if (param.Count() > 0)
                 _parameters.AddRange(param);
         }

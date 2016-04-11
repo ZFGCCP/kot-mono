@@ -217,7 +217,8 @@ namespace King_of_Thieves.Map
         {
             //components
             _components.Update(gameTime);
-            
+
+            //_drawlist.updateAll(_layerIndex);
         }
 
         public void drawLayer(SpriteBatch spriteBatch = null)

@@ -902,6 +902,12 @@ namespace King_of_Thieves.Actors
 
         }
 
+        public virtual void updateSprite()
+        {
+            if (image != null)
+                image.update();
+        }
+
         public virtual void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
         {
             onDraw(this);
