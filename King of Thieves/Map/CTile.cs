@@ -14,6 +14,7 @@ namespace King_of_Thieves.Map
         public string tileSet;
         private Actors.Collision.CHitBox _boundary = null;
         public Vector2 _mapDrawScale = Vector2.Zero;
+        public bool shouldDraw = true;
 
         public CTile(CTile copy)
         {
