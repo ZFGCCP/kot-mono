@@ -84,34 +84,20 @@ namespace King_of_Thieves.Graphics
 
         private void _animate()
         {
-            if (_imageAtlas.FrameRate != 0 && !_paused && _timeForCurrentFrame >= _frameRateLookup[_imageAtlas.FrameRate])
-            {
-                _timeForCurrentFrame = 0;
+            int lastFrameTime = CMasterControl.gameTime.ElapsedGameTime.Milliseconds;
+            _timeForCurrentFrame += lastFrameTime;
+            double endFrameTime = _frameRateLookup[_imageAtlas.FrameRate] - lastFrameTime / 2.0;
 
-                if (frameX >= _imageAtlas.tileXCount - 1 && frameY >= _imageAtlas.tileYCount - 1)
-                    _inLastFrame = true;
+            int relativeFrameCount = _timeForCurrentFrame / lastFrameTime;
+            int maxFrameCount = (int)(_frameRateLookup[_imageAtlas.FrameRate] / (double)lastFrameTime);
+            _framesPassed++;
 
-                frameX++;
-                _framesPassed = 0;
-
-                if (frameX == _imageAtlas.tileXCount)
-                {
-                    frameX = 0;
-                    frameY++;
-
-                    if (frameY == _imageAtlas.tileYCount)
-                    {
-                        frameY = 0;
-                        _inLastFrame = false;
-                        _animEnd = true;
-                    }
-                }
-            }
+            _size = _imageAtlas.getTile(frameX, frameY);
         }
 
         public void update()
         {
-            _animate();
+           // _animate();
         }
 
         public override bool draw(int x, int y, bool useOverlay = false, SpriteBatch spriteBatch = null)

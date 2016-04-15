@@ -15,6 +15,7 @@ namespace King_of_Thieves.Map
         private Actors.Collision.CHitBox _boundary = null;
         public Vector2 _mapDrawScale = Vector2.Zero;
         public bool shouldDraw = true;
+        private Vector2 _dimensions = Vector2.Zero;
 
         public CTile(CTile copy)
         {
@@ -24,6 +25,8 @@ namespace King_of_Thieves.Map
 
             if (_boundary == null)
                 _boundary = new Actors.Collision.CHitBox(null, tileCoords.X, tileCoords.Y, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+            else
+                _dimensions = new Vector2(Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
         }
 
         public CTile(Vector2 atlasCoords, Vector2 mapCoords, string tileSet)
@@ -34,7 +37,18 @@ namespace King_of_Thieves.Map
 
             //if tileSet is null, we're probably in game
             if (tileSet != null)
+            { 
                 _boundary = new Actors.Collision.CHitBox(null, mapCoords.X, mapCoords.Y, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+                _dimensions = new Vector2(Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+            }
+        }
+
+        public Vector2 dimensions
+        {
+            get
+            {
+                return _dimensions;
+            }
         }
 
         public Vector2 atlasCoords

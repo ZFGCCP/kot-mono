@@ -18,13 +18,17 @@ namespace King_of_Thieves.Map
         private Graphics.CDrawList _drawlist = new Graphics.CDrawList();
         private int _layerIndex;
         private int _hitboxAddress = Actors.CReservedAddresses.HITBOX_NOT_PRESENT;
-        private CTile[] _tilesOnScreen = new CTile[204];
+        private List<CTile> _tilesOnScreen = new List<CTile>(204);
+        private Vector2 _imageVector = Vector2.Zero;
 
         private List<CTile> _tiles = new List<CTile>(); //raw tile data
 
         public CLayer(ref Graphics.CSprite image)
         {
             _image = image;
+
+            if (_image != null)
+                _imageVector = new Vector2(Graphics.CTextures.textures[_image.atlasName].FrameWidth, Graphics.CTextures.textures[_image.atlasName].FrameHeight);
         }
 
         public CLayer(Dictionary<string, Graphics.CSprite> atlasCache)
@@ -48,6 +52,9 @@ namespace King_of_Thieves.Map
             _mapVersion = version;
             _layerIndex = index;
             _hitboxAddress = hitBoxAddress;
+
+            if(_image != null)
+                _imageVector = new Vector2(Graphics.CTextures.textures[_image.atlasName].FrameWidth, Graphics.CTextures.textures[_image.atlasName].FrameHeight);
         }
 
         ~CLayer()
@@ -219,9 +226,6 @@ namespace King_of_Thieves.Map
         {
             //components
             _components.Update(gameTime);
-
-            //_drawlist.updateAll(_layerIndex);
-            int tileCounter = 0;
             //update tiles
             for (int i = 0; i < _tiles.Count; i++)
             {
@@ -230,12 +234,14 @@ namespace King_of_Thieves.Map
 
                 //get tileset info
                 if (string.IsNullOrEmpty(tile.tileSet))
-                    dimensions = new Vector2(Graphics.CTextures.textures[_image.atlasName].FrameWidth, Graphics.CTextures.textures[_image.atlasName].FrameHeight);
+                    dimensions = _imageVector;
                 else
-                    dimensions = new Vector2(Graphics.CTextures.textures[tile.tileSet].FrameWidth, Graphics.CTextures.textures[tile.tileSet].FrameHeight);
+                    dimensions = tile.dimensions;
 
                 tile.shouldDraw = CMasterControl.buttonController.checkCullBoundary(tile.tileCoords, dimensions);
-                tile.update();
+
+                if (tile.shouldDraw)
+                    tile.update();
             }
         }
 
@@ -244,13 +250,16 @@ namespace King_of_Thieves.Map
             for (int i = 0; i < _tiles.Count; i++)
             {
                 CTile tile = _tiles[i];
+                if (spriteBatch == null && !tile.shouldDraw)
+                    continue;
 
-                if (spriteBatch != null || tile.shouldDraw)
-                    otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), 1, 1, true, spriteBatch);
+                otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), 1, 1, true, spriteBatch);
             }
 
             if (_components != null)
                 _drawlist.drawAll(_layerIndex,spriteBatch);
+
+            _tilesOnScreen.Clear();
         }
 
         public int width

@@ -491,25 +491,18 @@
         <tile coordinates="176:224" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="160:176" tileSet="tileset:outdoors:kokiriForest" selection="13:12" speed="0" />
         <tile coordinates="160:192" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
-        <tile coordinates="160:208" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
-        <tile coordinates="176:224" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
         <tile coordinates="192:224" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
         <tile coordinates="208:224" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
-        <tile coordinates="224:240" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="240:256" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
-        <tile coordinates="256:256" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
         <tile coordinates="288:256" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
         <tile coordinates="88:224" tileSet="tileset:outdoors:kokiriForest" selection="13:12" speed="0" />
         <tile coordinates="88:240" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="88:256" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="88:272" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="88:288" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
-        <tile coordinates="88:304" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="184:320" tileSet="tileset:outdoors:kokiriForest" selection="16:14" speed="0" />
         <tile coordinates="168:320" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
-        <tile coordinates="120:320" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
         <tile coordinates="104:320" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
-        <tile coordinates="152:336" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="152:352" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="152:368" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="224:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
@@ -599,7 +592,6 @@
         <tile coordinates="336:256" tileSet="tileset:outdoors:kokiriForest" selection="16:14" speed="0" />
         <tile coordinates="320:256" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
         <tile coordinates="304:256" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
-        <tile coordinates="272:272" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="272:288" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="32:368" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="32:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
@@ -1992,11 +1984,7 @@
         <tile coordinates="240:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="240:272" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="256:272" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
-        <tile coordinates="240:432" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="240:416" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
-        <tile coordinates="240:400" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
-        <tile coordinates="240:384" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
-        <tile coordinates="224:368" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
         <tile coordinates="208:368" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
         <tile coordinates="192:368" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
         <tile coordinates="176:368" tileSet="tileset:outdoors:kokiriForest" selection="15:14" speed="0" />
@@ -2004,9 +1992,6 @@
         <tile coordinates="288:368" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="288:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="272:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
-        <tile coordinates="272:352" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
-        <tile coordinates="272:336" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
-        <tile coordinates="272:320" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="272:304" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
         <tile coordinates="400:272" tileSet="tileset:outdoors:kokiriForest" selection="0:11" speed="0" />
         <tile coordinates="400:256" tileSet="tileset:outdoors:kokiriForest" selection="0:10" speed="0" />
@@ -2023,12 +2008,10 @@
         <tile coordinates="496:256" tileSet="tileset:outdoors:kokiriForest" selection="3:9" speed="0" />
         <tile coordinates="464:256" tileSet="tileset:outdoors:kokiriForest" selection="3:9" speed="0" />
         <tile coordinates="432:256" tileSet="tileset:outdoors:kokiriForest" selection="3:9" speed="0" />
-        <tile coordinates="400:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="432:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="448:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="480:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="496:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
-        <tile coordinates="376:288" tileSet="tileset:outdoors:kokiriForest" selection="13:12" speed="0" />
         <tile coordinates="400:224" tileSet="tileset:outdoors:kokiriForest" selection="0:8" speed="0" />
         <tile coordinates="400:208" tileSet="tileset:outdoors:kokiriForest" selection="0:7" speed="0" />
         <tile coordinates="400:192" tileSet="tileset:outdoors:kokiriForest" selection="0:6" speed="0" />
@@ -2650,7 +2633,6 @@
         <tile coordinates="896:288" tileSet="tileset:outdoors:kokiriForest" selection="12:0" speed="0" />
         <tile coordinates="416:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="432:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
-        <tile coordinates="416:336" tileSet="tileset:outdoors:kokiriForest" selection="8:3" speed="0" />
         <tile coordinates="448:336" tileSet="tileset:outdoors:kokiriForest" selection="10:3" speed="0" />
         <tile coordinates="464:336" tileSet="tileset:outdoors:kokiriForest" selection="12:3" speed="0" />
         <tile coordinates="480:336" tileSet="tileset:outdoors:kokiriForest" selection="9:3" speed="0" />
@@ -3627,10 +3609,6 @@
         <tile coordinates="848:480" tileSet="tileset:outdoors:kokiriForest" selection="8:3" speed="0" />
         <tile coordinates="848:432" tileSet="tileset:outdoors:kokiriForest" selection="8:3" speed="0" />
         <tile coordinates="848:416" tileSet="tileset:outdoors:kokiriForest" selection="8:2" speed="0" />
-        <tile coordinates="848:560" tileSet="tileset:outdoors:kokiriForest" selection="8:2" speed="0" />
-        <tile coordinates="848:608" tileSet="tileset:outdoors:kokiriForest" selection="8:2" speed="0" />
-        <tile coordinates="848:576" tileSet="tileset:outdoors:kokiriForest" selection="8:3" speed="0" />
-        <tile coordinates="848:624" tileSet="tileset:outdoors:kokiriForest" selection="8:3" speed="0" />
         <tile coordinates="864:624" tileSet="tileset:outdoors:kokiriForest" selection="9:3" speed="0" />
         <tile coordinates="864:576" tileSet="tileset:outdoors:kokiriForest" selection="9:3" speed="0" />
         <tile coordinates="864:528" tileSet="tileset:outdoors:kokiriForest" selection="9:3" speed="0" />
@@ -3886,7 +3864,6 @@
         <tile coordinates="592:608" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="608:608" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="624:640" tileSet="tileset:outdoors:kokiriForest" selection="2:7" speed="0" />
-        <tile coordinates="688:592" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="688:608" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="656:608" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
         <tile coordinates="672:608" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
@@ -4254,7 +4231,6 @@
         <tile coordinates="800:1248" tileSet="tileset:outdoors:kokiriForest" selection="16:15" speed="0" />
         <tile coordinates="880:1248" tileSet="tileset:outdoors:kokiriForest" selection="21:13" selectionEnd="24:14" speed="1" />
         <tile coordinates="752:672" tileSet="tileset:outdoors:kokiriForest" selection="17:17" selectionEnd="18:20" speed="1" />
-        <tile coordinates="768:672" tileSet="tileset:outdoors:kokiriForest" selection="17:17" selectionEnd="18:20" speed="1" />
         <tile coordinates="784:672" tileSet="tileset:outdoors:kokiriForest" selection="17:17" selectionEnd="18:20" speed="1" />
         <tile coordinates="736:656" tileSet="tileset:outdoors:kokiriForest" selection="21:15" selectionEnd="24:16" speed="1" />
         <tile coordinates="720:640" tileSet="tileset:outdoors:kokiriForest" selection="21:15" selectionEnd="24:16" speed="1" />
@@ -4290,12 +4266,235 @@
         <tile coordinates="800:624" tileSet="tileset:outdoors:kokiriForest" selection="21:10" selectionEnd="24:11" speed="1" />
         <tile coordinates="784:624" tileSet="tileset:outdoors:kokiriForest" selection="17:21" selectionEnd="20:21" speed="1" />
         <tile coordinates="784:608" tileSet="tileset:outdoors:kokiriForest" selection="21:13" selectionEnd="24:14" speed="1" />
-        <tile coordinates="784:592" tileSet="tileset:outdoors:kokiriForest" selection="21:13" selectionEnd="24:14" speed="1" />
+        <tile coordinates="152:336" tileSet="tileset:outdoors:kokiriForest" selection="13:12" speed="0" />
+        <tile coordinates="88:304" tileSet="tileset:outdoors:kokiriForest" selection="13:14" speed="0" />
+        <tile coordinates="120:320" tileSet="tileset:outdoors:kokiriForest" selection="16:14" speed="0" />
+        <tile coordinates="224:368" tileSet="tileset:outdoors:kokiriForest" selection="16:14" speed="0" />
+        <tile coordinates="272:368" tileSet="tileset:outdoors:kokiriForest" selection="16:14" speed="0" />
+        <tile coordinates="272:320" tileSet="tileset:outdoors:kokiriForest" selection="13:14" speed="0" />
+        <tile coordinates="160:208" tileSet="tileset:outdoors:kokiriForest" selection="13:14" speed="0" />
+        <tile coordinates="256:256" tileSet="tileset:outdoors:kokiriForest" selection="16:14" speed="0" />
+        <tile coordinates="272:272" tileSet="tileset:outdoors:kokiriForest" selection="13:12" speed="0" />
+        <tile coordinates="240:400" tileSet="tileset:outdoors:kokiriForest" selection="13:12" speed="0" />
+        <tile coordinates="240:432" tileSet="tileset:outdoors:kokiriForest" selection="13:14" speed="0" />
+        <tile coordinates="416:304" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="448:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="392:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="416:336" tileSet="tileset:outdoors:kokiriForest" selection="8:3" speed="0" />
+        <tile coordinates="288:272" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="304:272" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="288:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="288:304" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="288:320" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="288:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="272:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="272:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="288:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="304:416" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="320:416" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="320:400" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="304:400" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="304:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="320:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="336:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="352:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="368:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="384:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="400:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="416:384" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="416:368" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="416:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="400:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="400:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="400:320" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="400:304" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="400:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="352:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="336:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="320:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="320:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="304:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="304:304" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="320:304" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="336:304" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="352:304" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="352:320" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="352:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="352:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="368:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="384:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="384:368" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="400:368" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="368:368" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="352:368" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="336:368" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="320:368" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="304:368" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="304:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="320:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="336:352" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="320:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="304:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="304:320" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="320:320" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="336:320" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="384:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="368:288" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="368:304" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="384:304" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="384:320" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="368:320" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="368:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="384:336" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="376:288" tileSet="tileset:outdoors:kokiriForest" selection="13:12" speed="0" />
+        <tile coordinates="376:304" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
+        <tile coordinates="376:320" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
+        <tile coordinates="376:336" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
+        <tile coordinates="376:352" tileSet="tileset:outdoors:kokiriForest" selection="13:13" speed="0" />
+        <tile coordinates="376:368" tileSet="tileset:outdoors:kokiriForest" selection="13:14" speed="0" />
+        <tile coordinates="352:368" tileSet="tileset:outdoors:kokiriForest" selection="16:7" speed="0" />
+        <tile coordinates="336:368" tileSet="tileset:outdoors:kokiriForest" selection="15:7" speed="0" />
+        <tile coordinates="320:368" tileSet="tileset:outdoors:kokiriForest" selection="14:7" speed="0" />
+        <tile coordinates="432:368" tileSet="tileset:outdoors:kokiriForest" selection="13:7" speed="0" />
+        <tile coordinates="416:368" tileSet="tileset:outdoors:kokiriForest" selection="12:7" speed="0" />
+        <tile coordinates="720:608" tileSet="tileset:outdoors:kokiriForest" selection="16:15" speed="0" />
+        <tile coordinates="752:656" tileSet="tileset:outdoors:kokiriForest" selection="16:15" speed="0" />
+        <tile coordinates="752:640" tileSet="tileset:outdoors:kokiriForest" selection="16:15" speed="0" />
+        <tile coordinates="736:640" tileSet="tileset:outdoors:kokiriForest" selection="16:15" speed="0" />
+        <tile coordinates="736:624" tileSet="tileset:outdoors:kokiriForest" selection="16:15" speed="0" />
+        <tile coordinates="752:624" tileSet="tileset:outdoors:kokiriForest" selection="16:15" speed="0" />
+        <tile coordinates="752:608" tileSet="tileset:outdoors:kokiriForest" selection="16:15" speed="0" />
+        <tile coordinates="736:608" tileSet="tileset:outdoors:kokiriForest" selection="16:15" speed="0" />
+        <tile coordinates="736:592" tileSet="tileset:outdoors:kokiriForest" selection="21:10" selectionEnd="24:11" speed="1" />
+        <tile coordinates="752:592" tileSet="tileset:outdoors:kokiriForest" selection="21:10" selectionEnd="24:11" speed="1" />
+        <tile coordinates="784:592" tileSet="tileset:outdoors:kokiriForest" selection="17:11" selectionEnd="20:11" speed="1" />
+        <tile coordinates="704:608" tileSet="tileset:outdoors:kokiriForest" selection="16:15" speed="0" />
+        <tile coordinates="720:592" tileSet="tileset:outdoors:kokiriForest" selection="21:10" selectionEnd="24:10" speed="1" />
+        <tile coordinates="704:592" tileSet="tileset:outdoors:kokiriForest" selection="21:10" selectionEnd="24:10" speed="1" />
+        <tile coordinates="688:592" tileSet="tileset:outdoors:kokiriForest" selection="21:11" speed="0" />
+        <tile coordinates="832:608" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="816:608" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="800:608" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="800:592" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="832:592" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="848:608" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="848:624" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="848:560" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="848:576" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="832:592" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="816:592" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="816:576" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="832:576" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="832:560" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="848:592" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="816:560" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="800:560" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="800:576" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="784:576" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="768:576" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="752:576" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="736:576" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="720:576" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="704:576" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="704:560" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="720:560" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="736:560" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="752:560" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="768:560" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="784:560" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="800:544" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="800:528" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="784:528" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="784:544" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="768:544" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="768:528" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="752:528" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="752:544" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="736:544" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="736:528" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
+        <tile coordinates="848:560" tileSet="tileset:outdoors:kokiriForest" selection="8:2" speed="0" />
+        <tile coordinates="848:608" tileSet="tileset:outdoors:kokiriForest" selection="8:2" speed="0" />
+        <tile coordinates="848:624" tileSet="tileset:outdoors:kokiriForest" selection="8:3" speed="0" />
+        <tile coordinates="848:576" tileSet="tileset:outdoors:kokiriForest" selection="8:3" speed="0" />
       </tiles>
       <components>
         <component address="1">
           <actors>
             <actor name="player" type="King_of_Thieves.Actors.Player.CPlayer" coordinates="194:391" />
+          </actors>
+        </component>
+        <component address="2">
+          <actors>
+            <actor name="hitboxYLsKcgMhsT6bg1Vk" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="1:1" params="127,175" />
+            <actor name="hitbox6Cf6goVQwLdLfSe6" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="0:160" params="47,1103" />
+            <actor name="hitboxl5mEkeMI3BLdFjr5" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="0:1264" params="94,7" />
+            <actor name="hitboxkIhoxPixxj fgUXO" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="178:1263" params="108,8" />
+            <actor name="hitboxKPpuQrEDfzLptyGv" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="272:1251" params="207,11" />
+            <actor name="hitboxO38SvL9O4ahifeJo" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="476:1263" params="194,5" />
+            <actor name="hitboxeVZ5L7KtiLdrhaK6" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="720:1250" params="48,13" />
+            <actor name="hitboxriX9IUwaD6PQGryz" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="896:1264" params="23,12" />
+            <actor name="hitboxib4SIrSHLiG6UvWn" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="911:1119" params="21,112" />
+            <actor name="hitbox2JemUOxspDEfJYVe" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="881:1121" params="31,110" />
+            <actor name="hitboxLsaTl2qVxFIjln8l" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="834:1120" params="57,33" />
+            <actor name="hitboxfiRhSnTJl1lHhndF" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="757:1119" params="57,33" />
+            <actor name="hitboxEV2ZWwLL5BafcQXF" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="811:1120" params="29,12" />
+            <actor name="hitboxLwZscRyf 1fXDIjJ" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="757:1152" params="13,80" />
+            <actor name="hitboxpJczlUHI6DgP9PCR" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="816:896" params="96,225" />
+            <actor name="hitboxSMXOv3elYIMCbosT" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="792:897" params="42,32" />
+            <actor name="hitboxQR2qMkTVld tnDgW" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="624:896" params="137,30" />
+            <actor name="hitboxlvAip842j2ghwAUi" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="624:863" params="17,37" />
+            <actor name="hitboxu5FJinsi3CWziqQA" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="831:780" params="80,116" />
+            <actor name="hitboxfap4J4o3ez9Mt3MU" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="771:785" params="68,46" />
+            <actor name="hitboxvPogyz3SoYHIPcQF" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="624:785" params="126,44" />
+            <actor name="hitboxfhQW3itl1iEU5fo1" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="744:785" params="36,12" />
+            <actor name="hitboxadF oxf5W vQehyD" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="623:638" params="15,149" />
+            <actor name="hitboxBBSgz3F8ekeAVAVq" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="801:687" params="58,98" />
+            <actor name="hitboxSmEwuPyOPzwjgKYb" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="850:390" params="69,415" />
+            <actor name="hitboxVvehqGDVTsSADbaQ" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="882:0" params="52,396" />
+            <actor name="hitbox OapctfiAaybBlrQ" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="417:307" params="519,92" />
+            <actor name="hitboxyMecfrCsXFkPZDuu" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="321:404" params="399,41" />
+            <actor name="hitboximQo4mRwPwI4n3 Z" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="780:442" params="46,21" />
+            <actor name="hitboxZaWpmAQ2ypeoORv6" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="610:477" params="108,48" />
+            <actor name="hitboxzJifpvvAu vnQWmO" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="578:508" params="29,16" />
+            <actor name="hitbox96dtehuYH3K7jOg7" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="337:493" params="154,32" />
+            <actor name="hitboxkjc1k6DyGfZDdtWI" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="336:442" params="159,13" />
+            <actor name="hitboxxkFBnX3 6ZzYbuAf" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="610:445" params="107,9" />
+            <actor name="hitboxKKSuhUzIkKAyOPII" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="610:473" params="109,8" />
+            <actor name="hitbox4hZW2juAjrCfChXi" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="338:473" params="157,7" />
+            <actor name="hitboxyV9CKEwzFO1fXl4g" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="543:513" params="7,140" />
+            <actor name="hitboxH41qpeUca3Ldeyv " type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="569:513" params="6,141" />
+            <actor name="hitboxHNR4vTPZpipJZ4Up" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="575:643" params="16,13" />
+            <actor name="hitboxgEKtW5jHwcHTbM2O" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="575:549" params="127,42" />
+            <actor name="hitboxXcK3hau4Qpyl9ZJe" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="576:592" params="109,44" />
+            <actor name="hitboxI3QKOcJKvyj4HS2m" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="190:727" params="39,22" />
+            <actor name="hitboxEnoLc7wi3eiloHrf" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="315:729" params="41,21" />
+            <actor name="hitbox4NOklEYE aXZ7Flu" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="54:745" params="34,18" />
+            <actor name="hitboxgELC6PNa4gjsHidS" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="128:0" params="22,47" />
+            <actor name="hitboxgHGesvdEUYnX2442" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="182:17" params="39,31" />
+            <actor name="hitboxhuyrDevyW4fU3 9c" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="191:66" params="17,9" />
+            <actor name="hitboxjq Fyhyfwy47LhCa" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="208:45" params="208,132" />
+            <actor name="hitboxtCdsbPqgqWWiz6Ve" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="400:92" params="145,195" />
+            <actor name="hitboxjX2qORlibCn362TZ" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="531:0" params="301,143" />
+            <actor name="hitboxSaj9SRR1ZDM wt9v" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="47:236" params="31,17" />
+            <actor name="hitboxbBA8KqFi8V IbNVi" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="112:237" params="32,16" />
+            <actor name="hitboxrhWTSi8RNHBNQGz1" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="128:200" params="15,38" />
+            <actor name="hitboxqFjF CIB2x8bIOr " type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="208:176" params="65,30" />
+            <actor name="hitbox8kDDQWsefRgAWk4l" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="240:206" params="14,45" />
+            <actor name="hitboxiRRtR4jMd2al75yi" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="254:237" params="48,16" />
+            <actor name="hitboxshGn4ooJM8Kdcojo" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="223:281" params="16,52" />
+            <actor name="hitbox7AiGCfOwAAgbZtEb" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="128:445" params="78,15" />
+            <actor name="hitbox1ypcrF8oCMc3XSxk" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="80:412" params="64,34" />
+            <actor name="hitbox8gz2OxhKdTWI5Dsq" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="328:362" params="36,19" />
+            <actor name="hitboxo6NncXhkfZY9p2pn" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="274:429" params="26,14" />
+            <actor name="hitboxpCb58imbhDi4d4OM" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="81:349" params="27,16" />
+            <actor name="hitboxgfEXDzez3fZdFLLm" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="65:171" params="23,50" />
+            <actor name="hitboxsQ p2bpi J519J6X" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="82:161" params="44,46" />
+            <actor name="hitboxuAQPiDI7cEnJ67zp" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="104:206" params="22,15" />
+            <actor name="hitboxDfESVgUnioN5D33t" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="128:84" params="32,75" />
+            <actor name="hitbox71RKA2YLqKn2VpSA" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="176:83" params="32,77" />
+            <actor name="hitboxYt9LGtKqalPXvtMT" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="33:480" params="207,43" />
+            <actor name="hitboxcZDyZo jAaCvZa1o" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="82:675" params="28,11" />
+            <actor name="hitboxz2R2BcLtikaIgqMJ" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="145:676" params="29,10" />
           </actors>
         </component>
       </components>
@@ -6155,8 +6354,6 @@
         <tile coordinates="672:624" tileSet="tileset:outdoors:kokiriForest" selection="9:1" speed="0" />
         <tile coordinates="688:624" tileSet="tileset:outdoors:kokiriForest" selection="10:1" speed="0" />
         <tile coordinates="704:624" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
-        <tile coordinates="704:608" tileSet="tileset:outdoors:kokiriForest" selection="4:0" speed="0" />
-        <tile coordinates="704:608" tileSet="tileset:outdoors:kokiriForest" selection="11:0" speed="0" />
         <tile coordinates="704:624" tileSet="tileset:outdoors:kokiriForest" selection="11:1" speed="0" />
         <tile coordinates="688:608" tileSet="tileset:outdoors:kokiriForest" selection="10:0" speed="0" />
         <tile coordinates="544:624" tileSet="tileset:outdoors:kokiriForest" selection="0:3" speed="0" />
@@ -6323,6 +6520,30 @@
         <tile coordinates="816:736" tileSet="tileset:outdoors:kokiriForest" selection="9:1" speed="0" />
         <tile coordinates="832:736" tileSet="tileset:outdoors:kokiriForest" selection="10:1" speed="0" />
         <tile coordinates="800:736" tileSet="tileset:outdoors:kokiriForest" selection="8:1" speed="0" />
+        <tile coordinates="320:352" tileSet="tileset:outdoors:kokiriForest" selection="14:6" speed="0" />
+        <tile coordinates="336:352" tileSet="tileset:outdoors:kokiriForest" selection="15:6" speed="0" />
+        <tile coordinates="352:352" tileSet="tileset:outdoors:kokiriForest" selection="16:6" speed="0" />
+        <tile coordinates="352:336" tileSet="tileset:outdoors:kokiriForest" selection="16:5" speed="0" />
+        <tile coordinates="352:320" tileSet="tileset:outdoors:kokiriForest" selection="16:4" speed="0" />
+        <tile coordinates="336:320" tileSet="tileset:outdoors:kokiriForest" selection="15:4" speed="0" />
+        <tile coordinates="320:320" tileSet="tileset:outdoors:kokiriForest" selection="14:4" speed="0" />
+        <tile coordinates="320:336" tileSet="tileset:outdoors:kokiriForest" selection="14:5" speed="0" />
+        <tile coordinates="336:336" tileSet="tileset:outdoors:kokiriForest" selection="15:5" speed="0" />
+        <tile coordinates="416:352" tileSet="tileset:outdoors:kokiriForest" selection="12:6" speed="0" />
+        <tile coordinates="432:352" tileSet="tileset:outdoors:kokiriForest" selection="13:6" speed="0" />
+        <tile coordinates="432:336" tileSet="tileset:outdoors:kokiriForest" selection="13:5" speed="0" />
+        <tile coordinates="416:336" tileSet="tileset:outdoors:kokiriForest" selection="12:5" speed="0" />
+        <tile coordinates="400:352" tileSet="tileset:outdoors:kokiriForest" selection="3:1" speed="0" />
+        <tile coordinates="400:368" tileSet="tileset:outdoors:kokiriForest" selection="3:2" speed="0" />
+        <tile coordinates="704:608" tileSet="tileset:outdoors:kokiriForest" selection="11:0" speed="0" />
+        <tile coordinates="768:688" tileSet="tileset:outdoors:kokiriForest" selection="7:11" speed="0" />
+        <tile coordinates="768:672" tileSet="tileset:outdoors:kokiriForest" selection="7:10" speed="0" />
+        <tile coordinates="768:656" tileSet="tileset:outdoors:kokiriForest" selection="7:10" speed="0" />
+        <tile coordinates="768:640" tileSet="tileset:outdoors:kokiriForest" selection="7:10" speed="0" />
+        <tile coordinates="768:624" tileSet="tileset:outdoors:kokiriForest" selection="7:10" speed="0" />
+        <tile coordinates="768:608" tileSet="tileset:outdoors:kokiriForest" selection="7:10" speed="0" />
+        <tile coordinates="768:592" tileSet="tileset:outdoors:kokiriForest" selection="7:10" speed="0" />
+        <tile coordinates="768:576" tileSet="tileset:outdoors:kokiriForest" selection="7:9" speed="0" />
       </tiles>
       <components />
     </layer>

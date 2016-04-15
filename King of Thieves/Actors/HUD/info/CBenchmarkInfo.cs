@@ -65,10 +65,10 @@ namespace King_of_Thieves.Actors.HUD.info
            
 			//TODO draw measurements
             _drawTimer.Stop();
-            
 
-			double updateTime = System.Math.Ceiling((double)_updateTimer.Elapsed.Milliseconds);
-            double drawTime = System.Math.Ceiling((double)_drawTimer.Elapsed.Milliseconds);
+
+            double updateTime = (double)_updateTimer.Elapsed.Milliseconds;
+            double drawTime = (double)_drawTimer.Elapsed.Milliseconds;
             _drawTimer.Reset();
             _drawTimer.Start();
 			this.setInfo("UpdateTime: " + updateTime + " ms Update FPS: " + _updateFPS + "\n" +
