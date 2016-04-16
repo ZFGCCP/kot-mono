@@ -169,7 +169,6 @@ namespace King_of_Thieves.Actors
         private bool _previousCollideFlag = false;
         protected Vector2 _lastKnownGoodPosition = Vector2.Zero;
         public DIRECTION otherColliderDirection = DIRECTION.DOWN;
-        protected CActor[] _cachedColliders = null;
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -548,28 +547,25 @@ namespace King_of_Thieves.Actors
 
         public void moveInDirection(Vector2 velocity)
         {
-            float absX = Math.Abs(velocity.X);
-            float absY = Math.Abs(velocity.Y);
-            _motionCounter.X += absX;
-            _motionCounter.Y += absY;
+            _motionCounter.X += (float)Math.Abs(velocity.X);
+            _motionCounter.Y += (float)Math.Abs(velocity.Y);
 
             if (_motionCounter.X >= 1)
             {
-                
-                if (absX >= 1)
+                 if (Math.Abs(velocity.X) >= 1)
                     _position.X += (float)Math.Floor(velocity.X);
                 else
-                    _position.X += Math.Sign(velocity.X);
+                    _position.X += 1 * Math.Sign(velocity.X);
 
                 _motionCounter.X = 0;
             }
 
             if (_motionCounter.Y >= 1)
             {
-                if (absY >= 1)
+                if (Math.Abs(velocity.Y) >= 1)
                     _position.Y += (float)Math.Floor(velocity.Y);
                 else
-                    _position.Y += Math.Sign(velocity.Y);
+                    _position.Y += 1 * Math.Sign(velocity.Y);
 
                 _motionCounter.Y = 0;
             }
@@ -731,26 +727,25 @@ namespace King_of_Thieves.Actors
                 {
 
                     //fetch all actors of this type and check them for collisions
-                    _cachedColliders = Map.CMapManager.queryActorRegistry(actor, layer);
-                    if (_cachedColliders == null)
+                    CActor[] collideCheck = Map.CMapManager.queryActorRegistry(actor, layer);
+                    if (collideCheck == null)
                         continue;
 
-                    CActor x = null;
-                    for (int i = 0; i < _cachedColliders.Length; i++)
+                    foreach (CActor x in collideCheck)
                     {
-                        x = _cachedColliders[i];
-                        bool collisionOccured = _hitBox.checkCollision(x);
-                        _collideFlag = false;
-                        if (_hitBox != null && x._hitBox != null && x != this && !x._noCollide && collisionOccured)
+                        if (_hitBox != null && x._hitBox != null && x != this && !x._noCollide && _hitBox.checkCollision(x))
                         {
                             //trigger collision event
                             _collideFlag = true;
                             _hitBox.getCollisionDirection(x);
                             onCollide(this, x);
                         }
+                        else
+                            _collideFlag = false;
 
                         if (_previousCollideFlag && !_collideFlag)
                             onCollideExit(this, x);
+
 
                         _previousCollideFlag = _collideFlag;
                     }
