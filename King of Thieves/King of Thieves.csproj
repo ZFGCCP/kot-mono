@@ -19,11 +19,12 @@
     <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\WindowsGL\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -71,6 +72,7 @@
     <Compile Include="Actors\Collision\GameChangers\CPawnShopAlerter.cs" />
     <Compile Include="Actors\Collision\Water\CDeepWater.cs" />
     <Compile Include="Actors\Collision\Water\CShallowWater.cs" />
+    <Compile Include="MathExt\CPath.cs" />
     <Compile Include="Actors\HUD\counters\CArrowCounter.cs" />
     <Compile Include="Actors\HUD\CScreenFader.cs" />
     <Compile Include="Actors\HUD\other\CCullBoundary.cs" />
@@ -254,6 +256,7 @@
     <Compile Include="Map\CTile.cs" />
     <Compile Include="Map\CTileGenerator.cs" />
     <Compile Include="Map\EActorProperties.cs" />
+    <Compile Include="MathExt\CPathNode.cs" />
     <Compile Include="MathExt\CTriangle.cs" />
     <Compile Include="MathExt\MathExt.cs" />
     <Compile Include="Program.cs" />

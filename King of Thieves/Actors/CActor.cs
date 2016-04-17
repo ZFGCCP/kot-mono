@@ -163,7 +163,7 @@ namespace King_of_Thieves.Actors
         private bool _flagForResourceCleanup = false;
         public bool hidden = false;
         private Queue<CActor> _actorsToBeRegistered = new Queue<CActor>();
-        protected Queue<Vector2> _path0 = new Queue<Vector2>();
+        protected MathExt.CPath _path;
         protected CCommNetRef _componentAddressLkup = null; //for use with the commnet.  Store an address of sender here if you need to pass a message back to it at some point
         private bool _collideFlag = false;
         private bool _previousCollideFlag = false;
@@ -330,10 +330,22 @@ namespace King_of_Thieves.Actors
             return angle;
         }
 
-        protected void _followPath(params Vector2[] path)
+        protected void _followPath(MathExt.CPathNode[] nodes)
         {
-            foreach (Vector2 vec in path)
-                _path0.Enqueue(vec);
+            _path = new MathExt.CPath(nodes);
+            _path.nextNode();
+        }
+
+        private void _moveToNextPathNode()
+        {
+            MathExt.CPathNode currentNode = _path.currentNode;
+
+            moveToPoint(currentNode.position, currentNode.speed);
+
+            if (_position.X == currentNode.position.X && _position.Y == currentNode.position.Y)
+                _path.nextNode();
+
+
         }
 
         private void _registerSystemEvents()
@@ -571,6 +583,43 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        public DIRECTION moveToPoint(Vector2 point, double speed, bool calcAngle = true)
+        {
+            double angleBetween = MathExt.MathExt.angle(_position, point);
+
+            Vector2 velocity = Vector2.Zero;
+            velocity.X = (float)(speed * Math.Cos(MathExt.MathExt.degreesToRadians(angleBetween)));
+            velocity.Y = -(float)(speed * Math.Sin(MathExt.MathExt.degreesToRadians(angleBetween)));
+
+            _motionCounter.X += (float)Math.Abs(velocity.X);
+            _motionCounter.Y += (float)Math.Abs(velocity.Y);
+
+            if (_motionCounter.X >= 1)
+            {
+                if (Math.Abs(velocity.X) >= 1)
+                    _position.X += (float)Math.Floor(velocity.X);
+                else
+                    _position.X += 1 * Math.Sign(velocity.X);
+
+                _motionCounter.X = 0;
+            }
+
+            if (_motionCounter.Y >= 1)
+            {
+                if (Math.Abs(velocity.Y) >= 1)
+                    _position.Y += (float)Math.Floor(velocity.Y);
+                else
+                    _position.Y += 1 * Math.Sign(velocity.Y);
+
+                _motionCounter.Y = 0;
+            }
+
+            if (calcAngle)
+                _angle = angleBetween;
+
+            return DIRECTION.DOWN;
+        }
+
         public DIRECTION moveToPoint2(float x, float y, float speed, bool calcAngle = true)
         {
             float distX = 0, distY = 0;
@@ -780,13 +829,6 @@ namespace King_of_Thieves.Actors
                     image.Y = (int)_position.Y;
                 }
 
-                //follow paths if there are any
-                while(_path0.Count > 0)
-                {
-                    Vector2 pathVec = _path0.Dequeue();
-                    _position += pathVec;
-                }
-
                 if ((Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysPressed)
                     onKeyDown(Master.GetInputManager().GetCurrentInputHandler());
 
@@ -888,6 +930,8 @@ namespace King_of_Thieves.Actors
                     }
                 }
 
+                if (_path.currentNodeReady)
+                    _moveToNextPathNode();
 
                 foreach (KeyValuePair<uint, CActor> ID in _userEventsToFire)
                 {

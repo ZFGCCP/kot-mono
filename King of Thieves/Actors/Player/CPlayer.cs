@@ -1568,7 +1568,7 @@ namespace King_of_Thieves.Actors.Player
 
             Vector2 bombVelo = Vector2.Zero;
             Vector2 bombPos = _position;
-            double veloScale = Math.Floor((double)(_bombVelo / 10.0));
+            double veloScale = Math.Floor((double)(_bombVelo / 2.5));
             switch (_direction)
             {
                 case DIRECTION.DOWN:

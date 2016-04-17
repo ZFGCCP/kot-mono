@@ -29,6 +29,15 @@ namespace King_of_Thieves.Actors.Projectiles
             swapImage(_TICK);
             shoot();
             startTimer0(120);
+
+            MathExt.CPathNode[] _pathPositions = new MathExt.CPathNode[5];
+            _pathPositions[0] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y + velocity.Y), 1);
+            _pathPositions[1] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y + velocity.Y - 2), 1);
+            _pathPositions[2] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y + 3 + velocity.Y), .5);
+            _pathPositions[3] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y + 2 + velocity.Y), 1);
+            _pathPositions[4] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y + 5 + velocity.Y), .5);
+
+            _followPath(_pathPositions);
         }
 
         public override void timer0(object sender)
@@ -51,6 +60,7 @@ namespace King_of_Thieves.Actors.Projectiles
 
         public override void update(GameTime gameTime)
         {
+            _velocity = Vector2.Zero;
             base.update(gameTime);
         }
 
