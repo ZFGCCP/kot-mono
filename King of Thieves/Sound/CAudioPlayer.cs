@@ -58,6 +58,7 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Items:explosionSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/bomb_explode")));
             soundBank.Add("Items:boomerang", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/boomerang")));
             soundBank.Add("Items:arrowShoot", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/arrow_shoot")));
+            soundBank.Add("Items:bombBounce", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/bomb_bounce")));
             
             //text
             soundBank.Add("Text:textBoxContinue", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/text/TextBoxContinue")));

@@ -158,8 +158,14 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_ARROW_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT, true));
 
             _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_CANNON_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_CANNON_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_RIGHT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_CANNON_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_RIGHT, true));
 
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_CANNON_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_CANNON_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_RIGHT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_CANNON_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_RIGHT,true));
 
             _imageIndex.Add(_THROW_BOOMERANG_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_DOWN));
             _imageIndex.Add(_THROW_BOOMERANG_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT));
@@ -1558,6 +1564,18 @@ namespace King_of_Thieves.Actors.Player
                 case DIRECTION.DOWN:
                     swapImage(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN);
                     break;
+
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_CANNON_UP);
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_CANNON_LEFT);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_CANNON_RIGHT);
+                    break;
             }
         }
 
@@ -1576,6 +1594,27 @@ namespace King_of_Thieves.Actors.Player
                     bombVelo.Y = (float)veloScale;
                     bombPos.Y += 30;
                     bombPos.X -= 3;
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_CANNON_LEFT);
+                    bombVelo.X = (float)veloScale;
+                    bombPos.X -= 10;
+                    bombPos.Y += 15;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_CANNON_RIGHT);
+                    bombVelo.X = (float)veloScale;
+                    bombPos.X += 25;
+                    bombPos.Y += 15;
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_CANNON_UP);
+                    bombVelo.Y = (float)veloScale;
+                    bombPos.X -= 3;
+                    bombPos.Y -= 5;
                     break;
             }
 

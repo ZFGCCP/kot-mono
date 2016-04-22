@@ -1111,3 +1111,15 @@
 /processorParam:Quality=Best
 /build:sounds/environment/waterWade.wav
 
+#begin sounds/items/bomb_bounce.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/items/bomb_bounce.wav
+
+#begin sounds/items/bomb_cannon_shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/items/bomb_cannon_shoot.wav
+

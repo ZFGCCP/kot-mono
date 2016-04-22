@@ -18,10 +18,13 @@ namespace King_of_Thieves.MathExt
             _currentNode = _nullNode;
 
             for (int i = 0; i < path.Count(); i++)
+            {
+                path[i].index = i;
                 _path.Enqueue(path[i]);
+            }
         }
 
-        public unsafe void nextNode()
+        public void nextNode()
         {
             if (_path.Count == 0)
                 _currentNode = _nullNode;
@@ -29,6 +32,12 @@ namespace King_of_Thieves.MathExt
             {
                 _currentNode = _path.Dequeue();
             }
+        }
+
+        public void cancelPath()
+        {
+            _path.Clear();
+            _currentNode = _nullNode;
         }
 
         public CPathNode checkNextNode

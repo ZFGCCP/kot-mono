@@ -33,7 +33,8 @@ namespace King_of_Thieves
         Actors.HUD.Text.CTextBox textTest = null;
         Matrix scaleMatrix = new Matrix();
 
-		Stopwatch _updateTimer = new Stopwatch();
+        Stopwatch _updateTimer = new Stopwatch();
+
 		Stopwatch _drawTimer = new Stopwatch();
 
         System.Timers.Timer _fpsTimer = new System.Timers.Timer(1000);
@@ -214,8 +215,8 @@ namespace King_of_Thieves
 
             _drawTimer.Stop();
 
-            double updateTime = System.Math.Ceiling((double)_updateTimer.Elapsed.Milliseconds);
-            double drawTime = System.Math.Ceiling((double)_drawTimer.Elapsed.Milliseconds);
+            double updateTime = (double)_updateTimer.Elapsed.Milliseconds;
+            double drawTime = (double)_drawTimer.Elapsed.Milliseconds;
 
             if (CActor.showHitBox)
             {

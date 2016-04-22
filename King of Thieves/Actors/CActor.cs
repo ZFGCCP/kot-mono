@@ -205,6 +205,9 @@ namespace King_of_Thieves.Actors
         public event actorEventHandler onTap;
         public event actorEventHandler onRoomStart;
         public event collideHandler onCollideExit;
+        public event actorEventHandler onPathNextNode;
+        public event actorEventHandler onPathEnd;
+        public event actorEventHandler onPathBegin;
 
         public virtual void create(object sender) { }
         public virtual void keyDown(object sender) { }
@@ -225,6 +228,9 @@ namespace King_of_Thieves.Actors
         public virtual void tap(object sender) { }
         public virtual void roomStart(object sender) { }
         public virtual void collideExit(object sender, CActor collider) { }
+        public virtual void pathNextNode(object sender) { }
+        public virtual void pathEnd(object sender) { }
+        public virtual void pathBegin(object sender) { }
 
         protected virtual void cleanUp() 
         {
@@ -289,6 +295,9 @@ namespace King_of_Thieves.Actors
             onTimer6 += new actorEventHandler(timer6);
             onRoomStart += new actorEventHandler(roomStart);
             onCollideExit += new collideHandler(collideExit);
+            onPathBegin += new actorEventHandler(pathBegin);
+            onPathEnd += new actorEventHandler(pathEnd);
+            onPathNextNode += new actorEventHandler(pathNextNode);
 
             _name = name;
             _collidables = new List<Type>();
@@ -330,10 +339,16 @@ namespace King_of_Thieves.Actors
             return angle;
         }
 
+        protected void _cancelPath()
+        {
+            _path.cancelPath();
+        }
+
         protected void _followPath(MathExt.CPathNode[] nodes)
         {
             _path = new MathExt.CPath(nodes);
             _path.nextNode();
+            onPathBegin(_path.currentNode);
         }
 
         private void _moveToNextPathNode()
@@ -343,9 +358,10 @@ namespace King_of_Thieves.Actors
             moveToPoint(currentNode.position, currentNode.speed);
 
             if (_position.X == currentNode.position.X && _position.Y == currentNode.position.Y)
+            {
                 _path.nextNode();
-
-
+                onPathNextNode(_path.currentNode);
+            }
         }
 
         private void _registerSystemEvents()
@@ -1277,6 +1293,9 @@ namespace King_of_Thieves.Actors
             onTimer5 -= new actorEventHandler(timer5);
             onTimer6 -= new actorEventHandler(timer6);
             onCollideExit -= new collideHandler(collideExit);
+            onPathBegin -= new actorEventHandler(pathBegin);
+            onPathEnd -= new actorEventHandler(pathEnd);
+            onPathNextNode -= new actorEventHandler(pathNextNode);
 
             _userEvents.Clear();
             _userEventsToFire.Clear();

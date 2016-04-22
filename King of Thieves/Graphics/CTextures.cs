@@ -83,6 +83,12 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_SHOOT_ARROW_DOWN = PLAYER + "shootArrowDown";
         public const string PLAYER_HOLD_CANNON_DOWN = PLAYER + "holdCannonDown";
         public const string PLAYER_SHOOT_CANNON_DOWN = PLAYER + "shootCannonDown";
+        public const string PLAYER_HOLD_CANNON_UP = PLAYER + "holdCannonUp";
+        public const string PLAYER_SHOOT_CANNON_UP = PLAYER + "shootCannonUp";
+        public const string PLAYER_HOLD_CANNON_LEFT = PLAYER + "holdCannonLeft";
+        public const string PLAYER_SHOOT_CANNON_LEFT = PLAYER + "shootCannonLeft";
+        public const string PLAYER_HOLD_CANNON_RIGHT = PLAYER + "holdCannonRight";
+        public const string PLAYER_SHOOT_CANNON_RIGHT = PLAYER + "shootCannonRight";
         public const string PLAYER_THROW_BOOMERANG_UP = PLAYER + "throwBoomerangUp";
         public const string PLAYER_THROW_BOOMERANG_DOWN = PLAYER + "throwBoomerangDown";
         public const string PLAYER_THROW_BOOMERANG_LEFT = PLAYER + "throwBoomerangLeft";
@@ -312,6 +318,10 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_SHOOT_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:8", "28:8", 50));
             textures.Add(PLAYER_HOLD_CANNON_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "14:42", "20:42", 25));
             textures.Add(PLAYER_SHOOT_CANNON_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:42", "13:42", 25));
+            textures.Add(PLAYER_HOLD_CANNON_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:43", "15:43", 25));
+            textures.Add(PLAYER_SHOOT_CANNON_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:43", "15:43", 25));
+            textures.Add(PLAYER_HOLD_CANNON_RIGHT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:44", "12:44", 25));
+            textures.Add(PLAYER_SHOOT_CANNON_RIGHT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:44", "12:44", 25));
             textures.Add(PLAYER_THROW_BOOMERANG_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:21", "22:21", 15));
             textures.Add(PLAYER_THROW_BOOMERANG_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:23", "22:23", 15));
             textures.Add(PLAYER_THROW_BOOMERANG_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:22", "22:22", 15));
