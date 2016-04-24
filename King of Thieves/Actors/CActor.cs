@@ -53,6 +53,8 @@ namespace King_of_Thieves.Actors
         DIEING,
         DROP,
         DROP_ITEM,
+        DROWN,
+        DROWN_IDLE,
         DUSK,
         EXPLODE,
         FLYING,
@@ -161,9 +163,12 @@ namespace King_of_Thieves.Actors
         private bool _flagForResourceCleanup = false;
         public bool hidden = false;
         private Queue<CActor> _actorsToBeRegistered = new Queue<CActor>();
-        protected Queue<Vector2> _path0 = new Queue<Vector2>();
+        protected MathExt.CPath _path;
         protected CCommNetRef _componentAddressLkup = null; //for use with the commnet.  Store an address of sender here if you need to pass a message back to it at some point
         private bool _collideFlag = false;
+        private bool _previousCollideFlag = false;
+        protected Vector2 _lastKnownGoodPosition = Vector2.Zero;
+        public DIRECTION otherColliderDirection = DIRECTION.DOWN;
 
         protected int _lineOfSight;
         protected int _fovMagnitude;
@@ -199,7 +204,10 @@ namespace King_of_Thieves.Actors
         public event actorEventHandler onClick;
         public event actorEventHandler onTap;
         public event actorEventHandler onRoomStart;
-        public event actorEventHandler onCollideExit;
+        public event collideHandler onCollideExit;
+        public event actorEventHandler onPathNextNode;
+        public event actorEventHandler onPathEnd;
+        public event actorEventHandler onPathBegin;
 
         public virtual void create(object sender) { }
         public virtual void keyDown(object sender) { }
@@ -219,7 +227,10 @@ namespace King_of_Thieves.Actors
         public virtual void click(object sender) { }
         public virtual void tap(object sender) { }
         public virtual void roomStart(object sender) { }
-        public virtual void collideExit(object sender) { }
+        public virtual void collideExit(object sender, CActor collider) { }
+        public virtual void pathNextNode(object sender) { }
+        public virtual void pathEnd(object sender) { }
+        public virtual void pathBegin(object sender) { }
 
         protected virtual void cleanUp() 
         {
@@ -283,7 +294,10 @@ namespace King_of_Thieves.Actors
             onTimer5 += new actorEventHandler(timer5);
             onTimer6 += new actorEventHandler(timer6);
             onRoomStart += new actorEventHandler(roomStart);
-            onCollideExit += new actorEventHandler(collideExit);
+            onCollideExit += new collideHandler(collideExit);
+            onPathBegin += new actorEventHandler(pathBegin);
+            onPathEnd += new actorEventHandler(pathEnd);
+            onPathNextNode += new actorEventHandler(pathNextNode);
 
             _name = name;
             _collidables = new List<Type>();
@@ -300,6 +314,8 @@ namespace King_of_Thieves.Actors
             _registerUserEvents();
             _registerSystemEvents();
             _initializeResources();
+
+            _motionCounter = Vector2.Zero;
         }
 
         ~CActor()
@@ -323,10 +339,29 @@ namespace King_of_Thieves.Actors
             return angle;
         }
 
-        protected void _followPath(params Vector2[] path)
+        protected void _cancelPath()
         {
-            foreach (Vector2 vec in path)
-                _path0.Enqueue(vec);
+            _path.cancelPath();
+        }
+
+        protected void _followPath(MathExt.CPathNode[] nodes)
+        {
+            _path = new MathExt.CPath(nodes);
+            _path.nextNode();
+            onPathBegin(_path.currentNode);
+        }
+
+        private void _moveToNextPathNode()
+        {
+            MathExt.CPathNode currentNode = _path.currentNode;
+
+            moveToPoint(currentNode.position, currentNode.speed);
+
+            if (_position.X == currentNode.position.X && _position.Y == currentNode.position.Y)
+            {
+                _path.nextNode();
+                onPathNextNode(_path.currentNode);
+            }
         }
 
         private void _registerSystemEvents()
@@ -540,45 +575,65 @@ namespace King_of_Thieves.Actors
 
         public void moveInDirection(Vector2 velocity)
         {
-            double ppfX = 0;
-            double ppfY = 0;
+            _motionCounter.X += (float)Math.Abs(velocity.X);
+            _motionCounter.Y += (float)Math.Abs(velocity.Y);
 
-            if (Math.Abs(velocity.X) > 1.0f)
+            if (_motionCounter.X >= 1)
             {
-                ppfX = Math.Round(velocity.X);
+                 if (Math.Abs(velocity.X) >= 1)
+                    _position.X += (float)Math.Floor(velocity.X);
+                else
+                    _position.X += 1 * Math.Sign(velocity.X);
 
-                _position.X += (float)ppfX;
-            }
-            else
-            {
-                ppfX = Math.Pow((double)velocity.X, -1);
-
-                if (_motionCounter.X >= Math.Abs(ppfX))
-                {
-                    _position.X += (1.0f * Math.Sign(velocity.X));
-                    _motionCounter.X = 0;
-                }
+                _motionCounter.X = 0;
             }
 
-            if (Math.Abs(velocity.Y) > 1.0f)
+            if (_motionCounter.Y >= 1)
             {
-                ppfY = Math.Round(velocity.Y);
+                if (Math.Abs(velocity.Y) >= 1)
+                    _position.Y += (float)Math.Floor(velocity.Y);
+                else
+                    _position.Y += 1 * Math.Sign(velocity.Y);
 
-                _position.Y += (float)ppfY;
+                _motionCounter.Y = 0;
             }
-            else
+        }
+
+        public DIRECTION moveToPoint(Vector2 point, double speed, bool calcAngle = true)
+        {
+            double angleBetween = MathExt.MathExt.angle(_position, point);
+
+            Vector2 velocity = Vector2.Zero;
+            velocity.X = (float)(speed * Math.Cos(MathExt.MathExt.degreesToRadians(angleBetween)));
+            velocity.Y = -(float)(speed * Math.Sin(MathExt.MathExt.degreesToRadians(angleBetween)));
+
+            _motionCounter.X += (float)Math.Abs(velocity.X);
+            _motionCounter.Y += (float)Math.Abs(velocity.Y);
+
+            if (_motionCounter.X >= 1)
             {
-                ppfY = Math.Pow((double)velocity.Y, -1);
+                if (Math.Abs(velocity.X) >= 1)
+                    _position.X += (float)Math.Floor(velocity.X);
+                else
+                    _position.X += 1 * Math.Sign(velocity.X);
 
-                if (_motionCounter.Y >= Math.Abs(ppfY))
-                {
-                    _position.Y += (1.0f * Math.Sign(velocity.Y));
-                    _motionCounter.Y = 0;
-                }
+                _motionCounter.X = 0;
             }
 
-            _motionCounter.X += 1;
-            _motionCounter.Y += 1;
+            if (_motionCounter.Y >= 1)
+            {
+                if (Math.Abs(velocity.Y) >= 1)
+                    _position.Y += (float)Math.Floor(velocity.Y);
+                else
+                    _position.Y += 1 * Math.Sign(velocity.Y);
+
+                _motionCounter.Y = 0;
+            }
+
+            if (calcAngle)
+                _angle = angleBetween;
+
+            return DIRECTION.DOWN;
         }
 
         public DIRECTION moveToPoint2(float x, float y, float speed, bool calcAngle = true)
@@ -747,8 +802,17 @@ namespace King_of_Thieves.Actors
                         {
                             //trigger collision event
                             _collideFlag = true;
+                            _hitBox.getCollisionDirection(x);
                             onCollide(this, x);
                         }
+                        else
+                            _collideFlag = false;
+
+                        if (_previousCollideFlag && !_collideFlag)
+                            onCollideExit(this, x);
+
+
+                        _previousCollideFlag = _collideFlag;
                     }
                 }
             }
@@ -779,13 +843,6 @@ namespace King_of_Thieves.Actors
                 {
                     image.X = (int)_position.X;
                     image.Y = (int)_position.Y;
-                }
-
-                //follow paths if there are any
-                while(_path0.Count > 0)
-                {
-                    Vector2 pathVec = _path0.Dequeue();
-                    _position += pathVec;
                 }
 
                 if ((Master.GetInputManager().GetCurrentInputHandler() as CInput).areKeysPressed)
@@ -889,6 +946,8 @@ namespace King_of_Thieves.Actors
                     }
                 }
 
+                if (_path.currentNodeReady)
+                    _moveToNextPathNode();
 
                 foreach (KeyValuePair<uint, CActor> ID in _userEventsToFire)
                 {
@@ -901,6 +960,12 @@ namespace King_of_Thieves.Actors
             _animationHasEnded = false;
             userParams.Clear();
 
+        }
+
+        public virtual void updateSprite()
+        {
+            if (image != null)
+                image.update();
         }
 
         public virtual void drawMe(bool useOverlay = false, SpriteBatch spriteBatch = null)
@@ -984,7 +1049,7 @@ namespace King_of_Thieves.Actors
         {
             get
             {
-                return _hitBox == null;
+                return _hitBox == null || noCollide;
             }
         }
 
@@ -1046,33 +1111,17 @@ namespace King_of_Thieves.Actors
         protected bool _checkIfPointInView(Vector2 point)
         {
             //build triangle points first
-            Vector2 A = _position;
-            Vector2 B = Vector2.Zero;
-            Vector2 C = Vector2.Zero;
+            MathExt.CTriangle triangle = MathExt.MathExt.buildTriangle(_angle, _visionRange, _lineOfSight, _position);
 
-            B.X = (float)(Math.Cos((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
-            B.Y = (float)((Math.Sin((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
-
-            C.X = (float)(Math.Cos((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
-            C.Y = (float)((Math.Sin((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
-
-            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
+            return MathExt.MathExt.checkPointInTriangle(point, triangle.A, triangle.B, triangle.C);
         }
 
         protected bool _checkIfPointInView(Vector2 point, Vector2 origin)
         {
             //build triangle points first
-            Vector2 A = origin;
-            Vector2 B = Vector2.Zero;
-            Vector2 C = Vector2.Zero;
+            MathExt.CTriangle triangle = MathExt.MathExt.buildTriangle(_angle, _visionRange, _lineOfSight, origin);
 
-            B.X = (float)(Math.Cos((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
-            B.Y = (float)((Math.Sin((_angle - _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
-
-            C.X = (float)(Math.Cos((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) + _position.X;
-            C.Y = (float)((Math.Sin((_angle + _visionRange / 2.0f) * (Math.PI / 180)) * _lineOfSight) * -1.0) + _position.Y;
-
-            return MathExt.MathExt.checkPointInTriangle(point, A, B, C);
+            return MathExt.MathExt.checkPointInTriangle(point, triangle.A, triangle.B, triangle.C);
         }
 
         protected void solidCollide(CActor collider, bool knockBack = false)
@@ -1212,6 +1261,14 @@ namespace King_of_Thieves.Actors
             return _actorsToBeRegistered.Dequeue();
         }
 
+        public Vector2 lastKnownGoodPosition
+        {
+            get
+            {
+                return _lastKnownGoodPosition;
+            }
+        }
+
         public virtual void Dispose()
         {
             _imageIndex.Clear();
@@ -1235,7 +1292,10 @@ namespace King_of_Thieves.Actors
             onTimer4 -= new actorEventHandler(timer4);
             onTimer5 -= new actorEventHandler(timer5);
             onTimer6 -= new actorEventHandler(timer6);
-            onCollideExit -= new actorEventHandler(collideExit);
+            onCollideExit -= new collideHandler(collideExit);
+            onPathBegin -= new actorEventHandler(pathBegin);
+            onPathEnd -= new actorEventHandler(pathEnd);
+            onPathNextNode -= new actorEventHandler(pathNextNode);
 
             _userEvents.Clear();
             _userEventsToFire.Clear();

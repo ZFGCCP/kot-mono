@@ -43,6 +43,21 @@ namespace King_of_Thieves.MathExt
             return result;
         }
 
+        public static CTriangle buildTriangle(double angle, double range, double lineOfSight, Vector2 position)
+        {
+            Vector2 A = position;
+            Vector2 B = Vector2.Zero;
+            Vector2 C = Vector2.Zero;
+
+            B.X = (float)(Math.Cos((angle - range / 2.0f) * (Math.PI / 180)) * lineOfSight) + position.X;
+            B.Y = (float)((Math.Sin((angle - range / 2.0f) * (Math.PI / 180)) * lineOfSight) * -1.0) + position.Y;
+
+            C.X = (float)(Math.Cos((angle + range / 2.0f) * (Math.PI / 180)) * lineOfSight) + position.X;
+            C.Y = (float)((Math.Sin((angle + range / 2.0f) * (Math.PI / 180)) * lineOfSight) * -1.0) + position.Y;
+
+            return new CTriangle(A,B,C);
+        }
+
         public static bool checkPointInTriangle(Vector2 P, Vector2 A, Vector2 B, Vector2 C)
         {
             Vector2 v0 = C - A;

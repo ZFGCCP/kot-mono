@@ -18,12 +18,17 @@ namespace King_of_Thieves.Map
         private Graphics.CDrawList _drawlist = new Graphics.CDrawList();
         private int _layerIndex;
         private int _hitboxAddress = Actors.CReservedAddresses.HITBOX_NOT_PRESENT;
+        private List<CTile> _tilesOnScreen = new List<CTile>(204);
+        private Vector2 _imageVector = Vector2.Zero;
 
         private List<CTile> _tiles = new List<CTile>(); //raw tile data
 
         public CLayer(ref Graphics.CSprite image)
         {
             _image = image;
+
+            if (_image != null)
+                _imageVector = new Vector2(Graphics.CTextures.textures[_image.atlasName].FrameWidth, Graphics.CTextures.textures[_image.atlasName].FrameHeight);
         }
 
         public CLayer(Dictionary<string, Graphics.CSprite> atlasCache)
@@ -34,6 +39,37 @@ namespace King_of_Thieves.Map
 
         public CLayer()
         {
+        }
+
+        
+        public CLayer(string name, Actors.CComponent[] components, CTile[] tiles, ref Graphics.CSprite image, int index, double version = 1, int hitBoxAddress = Actors.CReservedAddresses.HITBOX_NOT_PRESENT)
+        {
+            _width = 0; _height = 0;
+            NAME = name;
+            _tiles.AddRange(tiles);
+            _image = image;
+            _components = new ComponentManager(new ComponentFactory[]{ new ComponentFactory(components) } );
+            _mapVersion = version;
+            _layerIndex = index;
+            _hitboxAddress = hitBoxAddress;
+
+            if(_image != null)
+                _imageVector = new Vector2(Graphics.CTextures.textures[_image.atlasName].FrameWidth, Graphics.CTextures.textures[_image.atlasName].FrameHeight);
+        }
+
+        ~CLayer()
+        {
+             _image = null;
+        }
+
+        public void tileCoordConverter()
+        {
+            for(int i = 0; i < _tiles.Count; i++)
+            {
+                CTile tile = _tiles[i];
+                tile.tileCoords.X *= 16;
+                tile.tileCoords.Y *= 16;
+            }
         }
 
         public void swapDrawDepth(int newDepth, Actors.CActor sprite)
@@ -74,23 +110,6 @@ namespace King_of_Thieves.Map
                 return null;
 
             return _components.actorHeaderMap();
-        }
-
-        public CLayer(string name, Actors.CComponent[] components, CTile[] tiles, ref Graphics.CSprite image, int index, double version = 1, int hitBoxAddress = Actors.CReservedAddresses.HITBOX_NOT_PRESENT)
-        {
-            _width = 0; _height = 0;
-            NAME = name;
-            _tiles.AddRange(tiles);
-            _image = image;
-            _components = new ComponentManager(new ComponentFactory[]{ new ComponentFactory(components) } );
-            _mapVersion = version;
-            _layerIndex = index;
-            _hitboxAddress = hitBoxAddress;
-        }
-
-        ~CLayer()
-        {
-             _image = null;
         }
 
         public CTile getTileInfo(int index)
@@ -207,31 +226,40 @@ namespace King_of_Thieves.Map
         {
             //components
             _components.Update(gameTime);
-            
+            //update tiles
+            for (int i = 0; i < _tiles.Count; i++)
+            {
+                CTile tile = _tiles[i];
+                Vector2 dimensions = Vector2.Zero;
+
+                //get tileset info
+                if (string.IsNullOrEmpty(tile.tileSet))
+                    dimensions = _imageVector;
+                else
+                    dimensions = tile.dimensions;
+
+                tile.shouldDraw = CMasterControl.buttonController.checkCullBoundary(tile.tileCoords, dimensions);
+
+                if (tile.shouldDraw)
+                    tile.update();
+            }
         }
 
         public void drawLayer(SpriteBatch spriteBatch = null)
         {
-            foreach (CTile tile in _tiles)
+            for (int i = 0; i < _tiles.Count; i++)
             {
-                
-                    Vector2 dimensions = Vector2.Zero;
+                CTile tile = _tiles[i];
+                if (spriteBatch == null && !tile.shouldDraw)
+                    continue;
 
-                    //get tileset info
-                    if (string.IsNullOrEmpty(tile.tileSet))
-                        dimensions = new Vector2(Graphics.CTextures.textures[_image.atlasName].FrameWidth, Graphics.CTextures.textures[_image.atlasName].FrameHeight);
-                    else
-                        dimensions = new Vector2(Graphics.CTextures.textures[tile.tileSet].FrameWidth, Graphics.CTextures.textures[tile.tileSet].FrameHeight);
-
-                if (spriteBatch != null || CMasterControl.buttonController.checkCullBoundary(tile.tileCoords, dimensions))
-                {
-                    otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y, true, spriteBatch);
-                }
-                tile.update();
+                otherImages[tile.tileSet].draw((int)(tile.tileCoords.X), (int)(tile.tileCoords.Y), (int)(tile.atlasCoords.X), (int)(tile.atlasCoords.Y), 1, 1, true, spriteBatch);
             }
 
             if (_components != null)
                 _drawlist.drawAll(_layerIndex,spriteBatch);
+
+            _tilesOnScreen.Clear();
         }
 
         public int width

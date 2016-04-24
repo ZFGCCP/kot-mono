@@ -77,6 +77,12 @@ namespace King_of_Thieves.Actors.Player
             sword.init("sword", Vector2.Zero, "", this.componentAddress);
             sword.layer = this.layer;
             Map.CMapManager.addActorToComponent(sword, this.componentAddress); ;
+
+            //add puddle
+            CWaterPuddle puddle = new CWaterPuddle();
+            puddle.init(_name + "Puddle", new Vector2(_position.X, _position.Y + 5), "", this.componentAddress);
+            puddle.layer = this.layer;
+            Map.CMapManager.addActorToComponent(puddle, this.componentAddress);
         }
 
         protected override void _initializeResources()
@@ -152,8 +158,14 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_ARROW_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_ARROW_LEFT, true));
 
             _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_CANNON_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_CANNON_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_RIGHT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOLD_CANNON_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOLD_CANNON_RIGHT, true));
 
             _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_CANNON_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_CANNON_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_RIGHT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_SHOOT_CANNON_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_SHOOT_CANNON_RIGHT,true));
 
             _imageIndex.Add(_THROW_BOOMERANG_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_DOWN));
             _imageIndex.Add(_THROW_BOOMERANG_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_THROW_BOOMERANG_LEFT));
@@ -227,6 +239,11 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_UP_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_UP_UP));
             _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_UP_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_UP_LEFT));
             _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_UP_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_UP_LEFT,true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DROWN_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_DROWN_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DROWN_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_DROWN_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DROWN_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_DROWN_LEFT, true));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_DROWN_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_DROWN_UP));
 
             _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD));
         }
@@ -547,6 +564,14 @@ namespace King_of_Thieves.Actors.Player
                     state = ACTOR_STATES.USER_STATE0;
                     startTimer6(120);
                     break;
+
+                case ACTOR_STATES.DROWN_IDLE:
+                    _state = ACTOR_STATES.IDLE;
+                    jumpToPoint(_lastKnownGoodPosition.X, _lastKnownGoodPosition.Y);
+                    noCollide = false;
+                    CMasterControl.camera.unlockCamera();
+                    dealDamange(2, this);
+                    break;
             }
 
             
@@ -727,13 +752,13 @@ namespace King_of_Thieves.Actors.Player
                 else if (_state == ACTOR_STATES.CHARGING_SWORD)
                 {
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_LEFT)))
-                        _velocity.X = -1f;
+                        _velocity.X = -.5f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_RIGHT)))
-                        _velocity.X = 1f;
+                        _velocity.X = .5f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_DOWN)))
-                        _velocity.Y = 1f;
+                        _velocity.Y = .5f;
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_UP)))
-                        _velocity.Y = -1f;
+                        _velocity.Y = -.5f;
 
                     if (_velocity.X == 0 && _velocity.Y == 0)
                         swapImage(_currentSwordChargeIdleSprite);
@@ -952,7 +977,75 @@ namespace King_of_Thieves.Actors.Player
                 Master.Push(new usr.local.GameMenu.CPauseMenu(CMasterControl.itemPauseMenu(), CMasterControl.questPauseMenu()));*/
         }
 
+        private void _checkDead()
+        {
+            if (CMasterControl.healthController.isDead)
+            {
+                if (_state != ACTOR_STATES.DIE_FALL && _state != ACTOR_STATES.DEAD && _state != ACTOR_STATES.DIEING)
+                {
+                    //yep, we're dead.
+                    _state = ACTOR_STATES.DIEING;
+                    CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:dying"]);
+                    CMasterControl.audioPlayer.stopAllMusic();
+                    swapImage(Graphics.CTextures.PLAYER_DIE_SPIN);
+                }
+            }
+        }
 
+        private void _directionSwapForSword(ref Vector2 swordPos)
+        {
+            switch (_direction)
+            {
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.PLAYER_SWINGUP);
+                    swordPos.X = _position.X - 13;
+                    swordPos.Y = _position.Y - 13;
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.PLAYER_SWINGLEFT);
+                    swordPos.X = _position.X - 18;
+                    swordPos.Y = _position.Y - 10;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.PLAYER_SWINGRIGHT);
+                    swordPos.X = _position.X - 12;
+                    swordPos.Y = _position.Y - 10;
+                    break;
+
+                case DIRECTION.DOWN:
+                    swapImage(Graphics.CTextures.PLAYER_SWINGDOWN);
+                    swordPos.X = _position.X - 17;
+                    swordPos.Y = _position.Y - 13;
+                    break;
+            }
+        }
+
+        private void _swordSwing()
+        {
+            if (!_swordReleased)
+            {
+                _swordReleased = true;
+                Vector2 swordPos = Vector2.Zero;
+                Random random = new Random();
+                int attackSound = random.Next(0, 3);
+
+                Sound.CSound[] temp = new Sound.CSound[4];
+
+                temp[0] = CMasterControl.audioPlayer.soundBank["Player:Attack1"];
+                temp[1] = CMasterControl.audioPlayer.soundBank["Player:Attack2"];
+                temp[2] = CMasterControl.audioPlayer.soundBank["Player:Attack3"];
+                temp[3] = CMasterControl.audioPlayer.soundBank["Player:Attack4"];
+
+                CMasterControl.audioPlayer.addSfx(temp[attackSound]);
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:SwordSlash"]);
+
+                _directionSwapForSword(ref swordPos);
+
+                ((Items.Swords.CSword)component.actors["sword"]).swingSword(_direction, swordPos);
+            }
+        }
 
         public override void update(GameTime gameTime)
         {
@@ -964,17 +1057,7 @@ namespace King_of_Thieves.Actors.Player
             _velocity.Y = 0;
 
             //are we dead?
-            if (CMasterControl.healthController.isDead)
-            {
-                if (_state != ACTOR_STATES.DIE_FALL && _state != ACTOR_STATES.DEAD && _state != ACTOR_STATES.DIEING)
-                {
-                    //yep, we're dead.
-                    _state = ACTOR_STATES.DIEING;
-                     CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:dying"]);
-                    CMasterControl.audioPlayer.stopAllMusic();
-                    swapImage(Graphics.CTextures.PLAYER_DIE_SPIN);
-                }
-            }
+            _checkDead();
 
             switch (_state)
             {
@@ -1083,54 +1166,9 @@ namespace King_of_Thieves.Actors.Player
                     break;
 
                 case ACTOR_STATES.SWINGING:
-                    if (!_swordReleased)
-                    {
-                        _swordReleased = true;
-                        Vector2 swordPos = Vector2.Zero;
-                        Random random = new Random();
-                        int attackSound = random.Next(0, 3);
-
-                        Sound.CSound[] temp = new Sound.CSound[4];
-
-                        temp[0] = CMasterControl.audioPlayer.soundBank["Player:Attack1"];
-                        temp[1] = CMasterControl.audioPlayer.soundBank["Player:Attack2"];
-                        temp[2] = CMasterControl.audioPlayer.soundBank["Player:Attack3"];
-                        temp[3] = CMasterControl.audioPlayer.soundBank["Player:Attack4"];
-
-                        CMasterControl.audioPlayer.addSfx(temp[attackSound]);
-                        CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:SwordSlash"]);
-
-                        switch (_direction)
-                        {
-                            case DIRECTION.UP:
-                                swapImage(Graphics.CTextures.PLAYER_SWINGUP);
-                                swordPos.X = _position.X - 13;
-                                swordPos.Y = _position.Y - 13;
-                                break;
-
-                            case DIRECTION.LEFT:
-                                swapImage(Graphics.CTextures.PLAYER_SWINGLEFT);
-                                swordPos.X = _position.X - 18;
-                                swordPos.Y = _position.Y - 10;
-                                break;
-
-                            case DIRECTION.RIGHT:
-                                swapImage(Graphics.CTextures.PLAYER_SWINGRIGHT);
-                                swordPos.X = _position.X - 12;
-                                swordPos.Y = _position.Y - 10;
-                                break;
-
-                            case DIRECTION.DOWN:
-                                swapImage(Graphics.CTextures.PLAYER_SWINGDOWN);
-                                swordPos.X = _position.X - 17;
-                                swordPos.Y = _position.Y - 13;
-                                break;
-                        }
-                        ((Items.Swords.CSword)component.actors["sword"]).swingSword(_direction, swordPos);
-                        //_triggerUserEvent(0, "sword", _direction, swordPos.X, swordPos.Y);
-                    }
-
+                    _swordSwing();
                     break;
+
                 case ACTOR_STATES.IDLE:
                     if (_climbing)
                         swapImage(Graphics.CTextures.PLAYER_CLIMB_IDLE);
@@ -1181,6 +1219,10 @@ namespace King_of_Thieves.Actors.Player
 
                 case ACTOR_STATES.VAULT_IDLE:
                     _position += _vaultSpeed;
+                    break;
+
+                case ACTOR_STATES.DROWN:
+                    _drown();
                     break;
             }
 
@@ -1522,6 +1564,18 @@ namespace King_of_Thieves.Actors.Player
                 case DIRECTION.DOWN:
                     swapImage(Graphics.CTextures.PLAYER_HOLD_CANNON_DOWN);
                     break;
+
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_CANNON_UP);
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_CANNON_LEFT);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.PLAYER_HOLD_CANNON_RIGHT);
+                    break;
             }
         }
 
@@ -1532,7 +1586,7 @@ namespace King_of_Thieves.Actors.Player
 
             Vector2 bombVelo = Vector2.Zero;
             Vector2 bombPos = _position;
-            double veloScale = Math.Floor((double)(_bombVelo / 10.0));
+            double veloScale = Math.Floor((double)(_bombVelo / 2.5));
             switch (_direction)
             {
                 case DIRECTION.DOWN:
@@ -1541,9 +1595,31 @@ namespace King_of_Thieves.Actors.Player
                     bombPos.Y += 30;
                     bombPos.X -= 3;
                     break;
+
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_CANNON_LEFT);
+                    bombVelo.X = (float)veloScale;
+                    bombPos.X -= 10;
+                    bombPos.Y += 15;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_CANNON_RIGHT);
+                    bombVelo.X = (float)veloScale;
+                    bombPos.X += 25;
+                    bombPos.Y += 15;
+                    break;
+
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.PLAYER_SHOOT_CANNON_UP);
+                    bombVelo.Y = (float)veloScale;
+                    bombPos.X -= 3;
+                    bombPos.Y -= 5;
+                    break;
             }
 
             Projectiles.CBomb bomb = new Projectiles.CBomb(direction, bombVelo, bombPos, 4);
+            bomb.layer = this.layer;
             Map.CMapManager.addActorToComponent(bomb, this.componentAddress);
             _bombVelo = 0;
             _usingItem = false;
@@ -1738,9 +1814,43 @@ namespace King_of_Thieves.Actors.Player
             
         }
 
+        private void _drown()
+        {
+            _state = ACTOR_STATES.DROWN_IDLE;
+            _lastKnownGoodPosition = _oldPosition;
+            CMasterControl.camera.lockCamera();
+            switch(otherColliderDirection)
+            {
+                case DIRECTION.UP:
+                    swapImage(Graphics.CTextures.PLAYER_DROWN_DOWN);
+                    _lastKnownGoodPosition.Y -= 3;
+                    _position.Y += 16;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(Graphics.CTextures.PLAYER_DROWN_LEFT);
+                    _lastKnownGoodPosition.X += 3;
+                    _position.X -= 16;
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(Graphics.CTextures.PLAYER_DROWN_RIGHT);
+                    _lastKnownGoodPosition.X -= 3;
+                    _position.X += 16;
+                    break;
+
+                case DIRECTION.DOWN:
+                    swapImage(Graphics.CTextures.PLAYER_DROWN_UP);
+                    _lastKnownGoodPosition.Y += 3;
+                    _position.Y -= 16;
+                    break;
+            }
+        }
+
 
         //===========================================================================
         //=========================cutscene related things===========================
+        //=========================this is hideous, come up with something better====
         //===========================================================================
         private void _rumpShoveToCenter(object sender)
         {

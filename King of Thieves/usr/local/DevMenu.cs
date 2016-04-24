@@ -26,7 +26,7 @@ namespace King_of_Thieves.usr.local
 			_menu.AddMenuElement(titleMenuElement);
 
             MenuElement playTestElement = new MenuElement();
-            playTestElement.MenuText = "Play Test";
+            playTestElement.MenuText = "Kokiri Forest (With title)";
             playTestElement.Selectable = true;
             playTestElement.Hidden = false;
 			playTestElement.ActiveArea = new Rectangle(10, 50, 600, 100);
@@ -40,12 +40,27 @@ namespace King_of_Thieves.usr.local
             }));
 			_menu.AddMenuElement(playTestElement);
 
+            MenuElement hyruleCastleTownElement = new MenuElement();
+            hyruleCastleTownElement.MenuText = "Hyrule Castle Town";
+            hyruleCastleTownElement.Selectable = true;
+            hyruleCastleTownElement.Hidden = false;
+            hyruleCastleTownElement.ActiveArea = new Rectangle(10, 70, 600, 100);
+            hyruleCastleTownElement.ForegroundColor = new Color(225, 225, 225);
+            hyruleCastleTownElement.ActiveForegroundColor = new Color(255, 200, 200);
+            hyruleCastleTownElement.SpriteFont = @"Fonts\MenuFont";
+            hyruleCastleTownElement.SetThrowPushEvent(new System.Action(() =>
+            {
+                //Master.Push(new PlayableState());
+                Master.Push(new MapTests.HryuleCastleTownTest());
+            }));
+            _menu.AddMenuElement(hyruleCastleTownElement);
+
 			if (System.Environment.OSVersion.Platform != System.PlatformID.Unix) {
 				MenuElement mapToolElement = new MenuElement ();
 				mapToolElement.MenuText = "Map Editor";
 				mapToolElement.Selectable = true;
 				mapToolElement.Hidden = false;
-				mapToolElement.ActiveArea = new Rectangle (10, 70, 600, 100);
+				mapToolElement.ActiveArea = new Rectangle (10, 90, 600, 100);
 				mapToolElement.ForegroundColor = new Color (225, 225, 225);
 				mapToolElement.ActiveForegroundColor = new Color (255, 200, 200);
 				mapToolElement.SpriteFont = @"Fonts\MenuFont";

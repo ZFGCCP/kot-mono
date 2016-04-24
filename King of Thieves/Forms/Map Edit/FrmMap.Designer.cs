@@ -43,7 +43,6 @@
             this.btnNewAnimated = new System.Windows.Forms.Button();
             this.hsbTexture = new System.Windows.Forms.HScrollBar();
             this.vsbTexture = new System.Windows.Forms.VScrollBar();
-            this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
             this.cmbTilesets = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnNewComponent = new System.Windows.Forms.Button();
@@ -65,8 +64,15 @@
             this.btnAddLayer = new System.Windows.Forms.Button();
             this.btnDeleteLayer = new System.Windows.Forms.Button();
             this.btnInsertAfter = new System.Windows.Forms.Button();
-            this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtXSnap = new System.Windows.Forms.TextBox();
+            this.txtYSnap = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txvTextures = new WinFormsGraphicsDevice.TextureViewer();
+            this.mpvMapView = new WinFormsGraphicsDevice.SpinningTriangleControl();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.convertCoordinatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -78,7 +84,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(812, 24);
@@ -100,34 +107,34 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -167,6 +174,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.txtYSnap);
+            this.tabPage1.Controls.Add(this.txtXSnap);
             this.tabPage1.Controls.Add(this.btnNewAnimated);
             this.tabPage1.Controls.Add(this.hsbTexture);
             this.tabPage1.Controls.Add(this.vsbTexture);
@@ -206,17 +217,6 @@
             this.vsbTexture.Size = new System.Drawing.Size(17, 256);
             this.vsbTexture.TabIndex = 5;
             this.vsbTexture.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vsbTexture_Scroll);
-            // 
-            // txvTextures
-            // 
-            this.txvTextures.BackColor = System.Drawing.Color.Black;
-            this.txvTextures.Location = new System.Drawing.Point(3, 3);
-            this.txvTextures.Name = "txvTextures";
-            this.txvTextures.Size = new System.Drawing.Size(240, 256);
-            this.txvTextures.TabIndex = 2;
-            this.txvTextures.VSync = false;
-            this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
-            this.txvTextures.Click += new System.EventHandler(this.txvTextures_Click);
             // 
             // cmbTilesets
             // 
@@ -400,6 +400,60 @@
             this.btnInsertAfter.UseVisualStyleBackColor = true;
             this.btnInsertAfter.Click += new System.EventHandler(this.btnInsertAfter_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(280, 43);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Mouse Coordinates";
+            // 
+            // txtXSnap
+            // 
+            this.txtXSnap.Location = new System.Drawing.Point(26, 366);
+            this.txtXSnap.Name = "txtXSnap";
+            this.txtXSnap.Size = new System.Drawing.Size(54, 20);
+            this.txtXSnap.TabIndex = 7;
+            this.txtXSnap.TextChanged += new System.EventHandler(this.txtXSnap_TextChanged);
+            // 
+            // txtYSnap
+            // 
+            this.txtYSnap.Location = new System.Drawing.Point(111, 366);
+            this.txtYSnap.Name = "txtYSnap";
+            this.txtYSnap.Size = new System.Drawing.Size(54, 20);
+            this.txtYSnap.TabIndex = 8;
+            this.txtYSnap.TextChanged += new System.EventHandler(this.txtYSnap_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 369);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(17, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "X:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(88, 369);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(17, 13);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Y:";
+            // 
+            // txvTextures
+            // 
+            this.txvTextures.BackColor = System.Drawing.Color.Black;
+            this.txvTextures.Location = new System.Drawing.Point(3, 3);
+            this.txvTextures.Name = "txvTextures";
+            this.txvTextures.Size = new System.Drawing.Size(240, 256);
+            this.txvTextures.TabIndex = 2;
+            this.txvTextures.VSync = false;
+            this.txvTextures.Load += new System.EventHandler(this.txvTextures_Load);
+            this.txvTextures.Click += new System.EventHandler(this.txvTextures_Click);
+            // 
             // mpvMapView
             // 
             this.mpvMapView.BackColor = System.Drawing.Color.Black;
@@ -412,14 +466,20 @@
             this.mpvMapView.Click += new System.EventHandler(this.mpvMapView_Click);
             this.mpvMapView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mpvMapView_MouseMove);
             // 
-            // label7
+            // editToolStripMenuItem
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(280, 43);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Mouse Coordinates";
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.convertCoordinatesToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // convertCoordinatesToolStripMenuItem
+            // 
+            this.convertCoordinatesToolStripMenuItem.Name = "convertCoordinatesToolStripMenuItem";
+            this.convertCoordinatesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.convertCoordinatesToolStripMenuItem.Text = "Convert Coordinates";
+            this.convertCoordinatesToolStripMenuItem.Click += new System.EventHandler(this.convertCoordinatesToolStripMenuItem_Click);
             // 
             // FrmMap
             // 
@@ -445,6 +505,7 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -495,5 +556,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnNewAnimated;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtYSnap;
+        private System.Windows.Forms.TextBox txtXSnap;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem convertCoordinatesToolStripMenuItem;
     }
 }

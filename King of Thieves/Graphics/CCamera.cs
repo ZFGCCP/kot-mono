@@ -17,6 +17,7 @@ namespace King_of_Thieves.Graphics
         private Actors.CActor _actorToFollow = null;
         private Actors.HUD.CCameraBoundary _boundary = null;
         private Actors.Collision.CCameraLimit _limit = null;
+        private bool _locked = false;
 
         public CCamera()
         {
@@ -31,8 +32,18 @@ namespace King_of_Thieves.Graphics
             _normalizedPosition.X = 0 - position.X;
             _normalizedPosition.Y = 0 - position.Y;
 
-            if (_actorToFollow != null)
+            if (_actorToFollow != null && !_locked)
                 _followObject();
+        }
+
+        public void lockCamera()
+        {
+            _locked = true;
+        }
+
+        public void unlockCamera()
+        {
+            _locked = false;
         }
 
         public void reset()
@@ -67,7 +78,8 @@ namespace King_of_Thieves.Graphics
                 if (_limit == null || _normalizedPosition.X + 240 < _limit.position.X + _limit.width)
                 { 
                     position.X -= (_actorToFollow.position.X - _actorToFollow.oldPosition.X);
-                    _boundary.move((int)(_actorToFollow.position.X - _actorToFollow.oldPosition.X), 0);
+                    double bleh = Math.Round(_actorToFollow.position.X - _actorToFollow.oldPosition.X);
+                    _boundary.move((int)Math.Round(_actorToFollow.position.X - _actorToFollow.oldPosition.X), 0);
                 }
             }
             else if (_actorToFollow.position.X <= _boundary.left && _actorToFollow.position.X < _actorToFollow.oldPosition.X)
@@ -75,7 +87,7 @@ namespace King_of_Thieves.Graphics
                 if (_limit == null || _normalizedPosition.X > _limit.position.X)
                 {
                     position.X -= (_actorToFollow.position.X - _actorToFollow.oldPosition.X);
-                    _boundary.move((int)(_actorToFollow.position.X - _actorToFollow.oldPosition.X), 0);
+                    _boundary.move((int)Math.Round(_actorToFollow.position.X - _actorToFollow.oldPosition.X), 0);
                 }
             }
 
@@ -84,7 +96,7 @@ namespace King_of_Thieves.Graphics
                 if (_limit == null || _normalizedPosition.Y + 160 < _limit.position.Y + _limit.height)
                 {
                     position.Y -= (_actorToFollow.position.Y - _actorToFollow.oldPosition.Y);
-                    _boundary.move(0, (int)(_actorToFollow.position.Y - _actorToFollow.oldPosition.Y));
+                    _boundary.move(0, (int)Math.Round(_actorToFollow.position.Y - _actorToFollow.oldPosition.Y));
                 }
             }
             else if (_actorToFollow.position.Y <= _boundary.top && _actorToFollow.position.Y < _actorToFollow.oldPosition.Y)
@@ -92,9 +104,11 @@ namespace King_of_Thieves.Graphics
                 if (_limit == null || _normalizedPosition.Y  > _limit.position.Y)
                 {
                     position.Y -= (_actorToFollow.position.Y - _actorToFollow.oldPosition.Y);
-                    _boundary.move(0, (int)(_actorToFollow.position.Y - _actorToFollow.oldPosition.Y));
+                    _boundary.move(0, (int)Math.Round(_actorToFollow.position.Y - _actorToFollow.oldPosition.Y));
                 }
             }
+            position.X = (float)Math.Round(position.X);
+            position.Y = (float)Math.Round(position.Y);
         }
 
         public Matrix transformation
@@ -130,6 +144,14 @@ namespace King_of_Thieves.Graphics
             get
             {
                 return _normalizedPosition;
+            }
+        }
+
+        public bool locked
+        {
+            get
+            {
+                return _locked;
             }
         }
     }

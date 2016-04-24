@@ -33,7 +33,8 @@ namespace King_of_Thieves
         Actors.HUD.Text.CTextBox textTest = null;
         Matrix scaleMatrix = new Matrix();
 
-		Stopwatch _updateTimer = new Stopwatch();
+        Stopwatch _updateTimer = new Stopwatch();
+
 		Stopwatch _drawTimer = new Stopwatch();
 
         System.Timers.Timer _fpsTimer = new System.Timers.Timer(1000);
@@ -82,6 +83,7 @@ namespace King_of_Thieves
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Graphics.CGraphics.acquireGraphics(ref graphics);
+            graphics.SynchronizeWithVerticalRetrace = true;
             CGraphics.fullScreenRenderTarget = new RenderTarget2D(CGraphics.GPU, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, true, SurfaceFormat.Color, DepthFormat.Depth24);
 
             _fpsTimer.Elapsed += new ElapsedEventHandler(_fpsHandler);
@@ -131,6 +133,7 @@ namespace King_of_Thieves
             CMasterControl.mapManager.cacheMaps(false, "sewers.xml");
             CMasterControl.mapManager.cacheMaps(false, "castleTown.xml");
             CMasterControl.mapManager.cacheMaps(false, "castleTownInteriors.xml");
+            CMasterControl.mapManager.cacheMaps(false, "kokiriForest.xml");
 
             //textTest = new Actors.HUD.Text.CTextBox();
             CMasterControl.buttonController = new Actors.HUD.buttons.CButtonController();
@@ -212,8 +215,8 @@ namespace King_of_Thieves
 
             _drawTimer.Stop();
 
-            double updateTime = System.Math.Ceiling((double)_updateTimer.Elapsed.Milliseconds);
-            double drawTime = System.Math.Ceiling((double)_drawTimer.Elapsed.Milliseconds);
+            double updateTime = (double)_updateTimer.Elapsed.Milliseconds;
+            double drawTime = (double)_drawTimer.Elapsed.Milliseconds;
 
             if (CActor.showHitBox)
             {

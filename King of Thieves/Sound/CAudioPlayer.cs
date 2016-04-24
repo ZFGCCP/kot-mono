@@ -58,6 +58,7 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Items:explosionSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/bomb_explode")));
             soundBank.Add("Items:boomerang", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/boomerang")));
             soundBank.Add("Items:arrowShoot", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/arrow_shoot")));
+            soundBank.Add("Items:bombBounce", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/items/bomb_bounce")));
             
             //text
             soundBank.Add("Text:textBoxContinue", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/text/TextBoxContinue")));
@@ -88,6 +89,7 @@ namespace King_of_Thieves.Sound
             soundBank.Add("Background:itemFanfareSmall", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/itemFanfareSmall")));
             soundBank.Add("Background:teleportWoosh", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/teleportWoosh")));
             soundBank.Add("Background:sparkle1", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/sparkle1")));
+            soundBank.Add("Background:waterWade", new CSound(CMasterControl.glblContent.Load<SoundEffect>("sounds/environment/waterWade")));
             soundBank.Add("bgm:title", new CSound(CMasterControl.glblContent.Load<Song>("music/title"),false,0));
             soundBank.Add("bgm:gameOver", new CSound(CMasterControl.glblContent.Load<Song>("music/gameOver"), true, -1));
             

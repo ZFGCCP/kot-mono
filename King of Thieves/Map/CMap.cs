@@ -28,6 +28,7 @@ namespace King_of_Thieves.Map
         private string _bgmRef = null;
         private string _bgmLoc = null;
         public bool[] flags = new bool[10];
+        private bool _hasMapStateChanged = false;
 
         public CMap(Dictionary<string, Graphics.CSprite> atlasCache = null)
         {
@@ -76,10 +77,13 @@ namespace King_of_Thieves.Map
             _layers[fromLayer].removeComponent(component);
             component.layer = toLayer;
             _layers[toLayer].addComponent(component);
+
+            _hasMapStateChanged = true;
         }
 
         public CMap(string fileName, Dictionary<string, Graphics.CSprite> atlasCache = null)
         {
+            _hasMapStateChanged = true;
             _internalMap = Gears.Cartography.Map.deserialize(fileName);
             _layers = new List<CLayer>(_internalMap.NUM_LAYERS);
             int layerCount = 0;
@@ -371,6 +375,7 @@ namespace King_of_Thieves.Map
             //index 1 will always be guaranteed to be the droppable component
             _componentRegistry[1].actors.Add("drop" + _componentRegistry[1].actors.Count, drop);
             _actorRegistry.Add(drop);
+            _hasMapStateChanged = true;
         }
 
         public void addComponent(CComponent component, int layer)
@@ -388,6 +393,8 @@ namespace King_of_Thieves.Map
 
             if (component.address > _largestAddress)
                 _largestAddress = component.address;
+
+            _hasMapStateChanged = true;
         }
 
         public void removeComponent(CComponent component, int layer)
@@ -395,6 +402,7 @@ namespace King_of_Thieves.Map
             _layers[layer].removeComponent(component);
             _componentRegistry.Remove(component);
             CMasterControl.commNet.Remove(component.address);
+            _hasMapStateChanged = true;
         }
 
         public void draw(SpriteBatch spriteBatch = null)
@@ -411,8 +419,11 @@ namespace King_of_Thieves.Map
                 if (_componentRegistry[i].killMe)
                     removeComponent(_componentRegistry[i], _componentRegistry[i].layer);
 
-            foreach (CLayer layer in _layers)
+            for (int i = 0; i < _layers.Count; i++)
+            {
+                CLayer layer = _layers[i];
                 layer.updateLayer(gameTime);
+            }
 
             //handle collisions
             for (int i = 0; i < _componentRegistry.Count(); i++)
@@ -499,6 +510,7 @@ namespace King_of_Thieves.Map
         {
             _actorRegistry.Remove(actor);
             _layers[actor.layer].removeFromDrawList(actor);
+            _hasMapStateChanged = true;
         }
 
         public void registerWithCommNet()
@@ -510,6 +522,7 @@ namespace King_of_Thieves.Map
         public void addToActorRegistry(CActor actor)
         {
             _actorRegistry.Add(actor);
+            _hasMapStateChanged = true;
         }
 
         public void addActorToComponent(CActor actor, int componentId)
@@ -521,6 +534,15 @@ namespace King_of_Thieves.Map
                 addToActorRegistry(actor);
 
                 _layers[actor.layer].addToDrawList(actor);
+            }
+        }
+
+        public static void tileCoordinateConverter(CMap map)
+        {
+            for (int i = 0; i < map._layers.Count; i++)
+            {
+                CLayer layer = map._layers[i];
+                layer.tileCoordConverter();
             }
         }
 

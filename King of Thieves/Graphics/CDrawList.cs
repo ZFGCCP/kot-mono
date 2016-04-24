@@ -52,6 +52,23 @@ namespace King_of_Thieves.Graphics
             sprite.drawDepth = newDepth;
         }
 
+        public void updateAll()
+        {
+            foreach (KeyValuePair<int, List<CActor>> kvp in _drawList)
+            {
+                for (int i = 0; i < kvp.Value.Count; i++)
+                {
+                    CActor sprite = kvp.Value[i];
+                    if (sprite.killMe)
+                    {
+                        kvp.Value.Remove(sprite);
+                        continue;
+                    }
+                    sprite.updateSprite();
+                }
+            }
+        }
+
         public void drawAll(int layer, SpriteBatch spriteBatch = null)
         {
             foreach (KeyValuePair<int, List<CActor>> kvp in _drawList)

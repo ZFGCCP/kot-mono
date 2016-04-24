@@ -29,6 +29,84 @@ namespace King_of_Thieves.Actors.Projectiles
             swapImage(_TICK);
             shoot();
             startTimer0(120);
+
+            MathExt.CPathNode[] _pathPositions = null;
+            switch(direction)
+            {
+                case DIRECTION.DOWN:
+                    _pathPositions = _createDownPath();
+                    break;
+
+                case DIRECTION.LEFT:
+                    _pathPositions = _createLeftPath();
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _pathPositions = _createRightPath();
+                    break;
+
+                case DIRECTION.UP:
+                    _pathPositions = _createUpPath();
+                    break;
+            }
+
+            _followPath(_pathPositions);
+        }
+
+        private MathExt.CPathNode[] _createDownPath()
+        {
+            MathExt.CPathNode[] _pathPositions = new MathExt.CPathNode[5];
+            _pathPositions[0] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y + velocity.Y), 1);
+            _pathPositions[1] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y + velocity.Y - 2), 1);
+            _pathPositions[2] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y + 3 + velocity.Y), .5);
+            _pathPositions[3] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y + 2 + velocity.Y), 1);
+            _pathPositions[4] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y + 5 + velocity.Y), .5);
+
+            return _pathPositions;
+        }
+
+        private MathExt.CPathNode[] _createUpPath()
+        {
+            MathExt.CPathNode[] _pathPositions = new MathExt.CPathNode[5];
+            _pathPositions[0] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y - velocity.Y), 1);
+            _pathPositions[1] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y - velocity.Y - 2), 1);
+            _pathPositions[2] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y - 3 - velocity.Y), .5);
+            _pathPositions[3] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y - 2 - velocity.Y), 1);
+            _pathPositions[4] = new MathExt.CPathNode(new Vector2(_position.X, _position.Y - 5 - velocity.Y), .5);
+
+            return _pathPositions;
+        }
+
+        private MathExt.CPathNode[] _createLeftPath()
+        {
+            MathExt.CPathNode[] _pathPositions = new MathExt.CPathNode[5];
+            _pathPositions[0] = new MathExt.CPathNode(new Vector2(_position.X - _velocity.X, _position.Y), 1);
+            _pathPositions[1] = new MathExt.CPathNode(new Vector2(_position.X - _velocity.X - 2, _position.Y - 2), 1);
+            _pathPositions[2] = new MathExt.CPathNode(new Vector2(_position.X - _velocity.X - 4, _position.Y), .5);
+            _pathPositions[3] = new MathExt.CPathNode(new Vector2(_position.X - _velocity.X - 6, _position.Y - 2), 1);
+            _pathPositions[4] = new MathExt.CPathNode(new Vector2(_position.X - _velocity.X - 7, _position.Y - 2), .5);
+
+            return _pathPositions;
+        }
+
+        private MathExt.CPathNode[] _createRightPath()
+        {
+            MathExt.CPathNode[] _pathPositions = new MathExt.CPathNode[5];
+            _pathPositions[0] = new MathExt.CPathNode(new Vector2(_position.X + _velocity.X, _position.Y), 1);
+            _pathPositions[1] = new MathExt.CPathNode(new Vector2(_position.X + _velocity.X + 2, _position.Y - 2), 1);
+            _pathPositions[2] = new MathExt.CPathNode(new Vector2(_position.X + _velocity.X + 4, _position.Y), .5);
+            _pathPositions[3] = new MathExt.CPathNode(new Vector2(_position.X + _velocity.X + 6, _position.Y - 2), 1);
+            _pathPositions[4] = new MathExt.CPathNode(new Vector2(_position.X + _velocity.X + 7, _position.Y - 2), .5);
+
+            return _pathPositions;
+        }
+
+        public override void pathNextNode(object sender)
+        {
+            MathExt.CPathNode node = (MathExt.CPathNode)sender;
+
+            if (node.index == 1 || node.index == 4)
+                CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Items:bombBounce"]);
         }
 
         public override void timer0(object sender)
@@ -51,11 +129,13 @@ namespace King_of_Thieves.Actors.Projectiles
 
         public override void update(GameTime gameTime)
         {
+            _velocity = Vector2.Zero;
             base.update(gameTime);
         }
 
         public override void collide(object sender, CActor collider)
         {
+            _cancelPath();
             if (_state == ACTOR_STATES.EXPLODE)
             {
 

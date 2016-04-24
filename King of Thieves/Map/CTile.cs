@@ -13,6 +13,9 @@ namespace King_of_Thieves.Map
         public Vector2 tileCoords;
         public string tileSet;
         private Actors.Collision.CHitBox _boundary = null;
+        public Vector2 _mapDrawScale = Vector2.Zero;
+        public bool shouldDraw = true;
+        private Vector2 _dimensions = Vector2.Zero;
 
         public CTile(CTile copy)
         {
@@ -21,7 +24,9 @@ namespace King_of_Thieves.Map
             this._tileBounds = copy._tileBounds;
 
             if (_boundary == null)
-                _boundary = new Actors.Collision.CHitBox(null, tileCoords.X * Graphics.CTextures.textures[tileSet].FrameWidth, tileCoords.Y * Graphics.CTextures.textures[tileSet].FrameHeight, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+                _boundary = new Actors.Collision.CHitBox(null, tileCoords.X, tileCoords.Y, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+            else
+                _dimensions = new Vector2(Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
         }
 
         public CTile(Vector2 atlasCoords, Vector2 mapCoords, string tileSet)
@@ -32,7 +37,18 @@ namespace King_of_Thieves.Map
 
             //if tileSet is null, we're probably in game
             if (tileSet != null)
-                _boundary = new Actors.Collision.CHitBox(null, mapCoords.X * Graphics.CTextures.textures[tileSet].FrameWidth, mapCoords.Y * Graphics.CTextures.textures[tileSet].FrameHeight, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+            { 
+                _boundary = new Actors.Collision.CHitBox(null, mapCoords.X, mapCoords.Y, Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+                _dimensions = new Vector2(Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
+            }
+        }
+
+        public Vector2 dimensions
+        {
+            get
+            {
+                return _dimensions;
+            }
         }
 
         public Vector2 atlasCoords
@@ -62,7 +78,15 @@ namespace King_of_Thieves.Map
             Vector2 dimensions = Vector2.Zero;
             dimensions = new Vector2(Graphics.CTextures.textures[tileSet].FrameWidth, Graphics.CTextures.textures[tileSet].FrameHeight);
 
-            image.draw((int)(tileCoords.X + offSetX), (int)(tileCoords.Y + offsetY), (int)(atlasCoords.X), (int)(atlasCoords.Y), (int)dimensions.X, (int)dimensions.Y, true, spriteBatch);
+            image.draw((int)(tileCoords.X + offSetX), (int)(tileCoords.Y + offsetY), (int)(atlasCoords.X), (int)(atlasCoords.Y), 1, 1, true, spriteBatch);
+        }
+
+        public void draw(King_of_Thieves.Graphics.CSprite image, SpriteBatch spriteBatch, double width, double height)
+        {
+            Vector2 dimensions = Vector2.Zero;
+            dimensions = new Vector2((float)width, (float)height);
+
+            image.draw((int)tileCoords.X, (int)tileCoords.Y, (int)(atlasCoords.X), (int)(atlasCoords.Y), 1,1, true, spriteBatch);
         }
 
         //used in inherited classes only

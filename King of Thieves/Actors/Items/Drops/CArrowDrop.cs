@@ -20,24 +20,7 @@ namespace King_of_Thieves.Actors.Items.Drops
 
         public override void create(object sender)
         {
-            _followPath(new Vector2(0, -1),
-                        new Vector2(0, -1),
-                        new Vector2(0, -1),
-                        new Vector2(0, -1),
-                        new Vector2(0, -1),
-                        new Vector2(0, 1),
-                        new Vector2(0, 1),
-                        new Vector2(0, 1),
-                        new Vector2(0, 1),
-                        new Vector2(0, -1),
-                        new Vector2(0, -1),
-                        new Vector2(0, -1),
-                        new Vector2(0, -1),
-                        new Vector2(0, -1),
-                        new Vector2(0, 1),
-                        new Vector2(0, 1),
-                        new Vector2(0, 1),
-                        new Vector2(0, 1));
+
         }
 
         protected override void _addCollidables()

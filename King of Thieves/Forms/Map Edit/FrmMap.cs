@@ -162,9 +162,16 @@ namespace King_of_Thieves.Forms.Map_Edit
 
             foreach (System.Type type in actorList)
             {
-                string shortName = type.ToString().Substring(type.ToString().LastIndexOf('.') + 1);
-                cmbActorList.Items.Add(shortName);
-                _actorFullyQualifiedNames.Add(shortName, type.ToString());
+                try
+                {
+                    string shortName = type.ToString().Substring(type.ToString().LastIndexOf('.') + 1);
+                    cmbActorList.Items.Add(shortName);
+                    _actorFullyQualifiedNames.Add(shortName, type.ToString());
+                }
+                catch(Exception ex)
+                {
+                    int x = 0;
+                }
             }
 
             cmbActorList.Sorted = true;
@@ -471,6 +478,21 @@ namespace King_of_Thieves.Forms.Map_Edit
             string coordLabel = string.Format("{0,-8}{1,-5}{2,-8}{3,-5}", "Mouse X:", ((int)mouseCoords.X).ToString(), "Mouse Y:", ((int)mouseCoords.Y).ToString());
             label7.Text = coordLabel;
 
+        }
+
+        private void txtXSnap_TextChanged(object sender, EventArgs e)
+        {
+            mpvMapView.mouseSnapX = Convert.ToDouble(txtXSnap.Text);
+        }
+
+        private void txtYSnap_TextChanged(object sender, EventArgs e)
+        {
+            mpvMapView.mouseSnapY = Convert.ToDouble(txtYSnap.Text);
+        }
+
+        private void convertCoordinatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Map.CMap.tileCoordinateConverter(_loadedMap);
         }
 #endif
     }

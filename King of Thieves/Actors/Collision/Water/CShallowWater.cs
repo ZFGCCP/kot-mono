@@ -14,9 +14,19 @@ namespace King_of_Thieves.Actors.Collision.Water
 
         }
 
-        public override void init(string name, Vector2 position, string dataType, int compAddress, params string[] additional)
+        protected override void _addCollidables()
         {
-            base.init(name, position, dataType, compAddress, additional);
+            _collidables.Add(typeof(Player.CWaterPuddle));
+        }
+
+        public override void collide(object sender, CActor collider)
+        {
+            collider.state = ACTOR_STATES.IDLE;
+        }
+
+        public override void collideExit(object sender, CActor collider)
+        {
+            collider.state = ACTOR_STATES.INVISIBLE;
         }
     }
 }

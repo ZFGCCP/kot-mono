@@ -20,7 +20,6 @@ namespace King_of_Thieves.Actors.HUD.other
 
         public bool checkPointWithinBoundary(Vector2 point, Vector2 dimensions)
         {
-            point *= dimensions;
             return !(point.X < position.X ||
                    point.Y < position.Y ||
                    point.X > position.X + _width ||

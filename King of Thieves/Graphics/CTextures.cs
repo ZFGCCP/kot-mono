@@ -83,6 +83,12 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_SHOOT_ARROW_DOWN = PLAYER + "shootArrowDown";
         public const string PLAYER_HOLD_CANNON_DOWN = PLAYER + "holdCannonDown";
         public const string PLAYER_SHOOT_CANNON_DOWN = PLAYER + "shootCannonDown";
+        public const string PLAYER_HOLD_CANNON_UP = PLAYER + "holdCannonUp";
+        public const string PLAYER_SHOOT_CANNON_UP = PLAYER + "shootCannonUp";
+        public const string PLAYER_HOLD_CANNON_LEFT = PLAYER + "holdCannonLeft";
+        public const string PLAYER_SHOOT_CANNON_LEFT = PLAYER + "shootCannonLeft";
+        public const string PLAYER_HOLD_CANNON_RIGHT = PLAYER + "holdCannonRight";
+        public const string PLAYER_SHOOT_CANNON_RIGHT = PLAYER + "shootCannonRight";
         public const string PLAYER_THROW_BOOMERANG_UP = PLAYER + "throwBoomerangUp";
         public const string PLAYER_THROW_BOOMERANG_DOWN = PLAYER + "throwBoomerangDown";
         public const string PLAYER_THROW_BOOMERANG_LEFT = PLAYER + "throwBoomerangLeft";
@@ -168,6 +174,11 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_PULL_UP_LEFT = PLAYER + "pullUpLeft";
         public const string PLAYER_PULL_UP_RIGHT = PLAYER + "pullUpRight";
         public const string PLAYER_PULL_DOWN_HOLD = PLAYER + "pullDownHold";
+        public const string PLAYER_PUDDLE = PLAYER + "puddle";
+        public const string PLAYER_DROWN_DOWN = PLAYER + "drownDown";
+        public const string PLAYER_DROWN_LEFT = PLAYER + "drownLeft";
+        public const string PLAYER_DROWN_RIGHT = PLAYER + "drownRight";
+        public const string PLAYER_DROWN_UP = PLAYER + "drownUp";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -307,6 +318,10 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_SHOOT_ARROW_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "26:8", "28:8", 50));
             textures.Add(PLAYER_HOLD_CANNON_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "14:42", "20:42", 25));
             textures.Add(PLAYER_SHOOT_CANNON_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:42", "13:42", 25));
+            textures.Add(PLAYER_HOLD_CANNON_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:43", "15:43", 25));
+            textures.Add(PLAYER_SHOOT_CANNON_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:43", "15:43", 25));
+            textures.Add(PLAYER_HOLD_CANNON_RIGHT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:44", "12:44", 25));
+            textures.Add(PLAYER_SHOOT_CANNON_RIGHT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:44", "12:44", 25));
             textures.Add(PLAYER_THROW_BOOMERANG_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:21", "22:21", 15));
             textures.Add(PLAYER_THROW_BOOMERANG_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:23", "22:23", 15));
             textures.Add(PLAYER_THROW_BOOMERANG_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:22", "22:22", 15));
@@ -344,6 +359,10 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_PULL_UP_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "16:28", "17:28", 10));
             textures.Add(PLAYER_PULL_UP_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "13:28", "14:28", 10));
             textures.Add(PLAYER_PULL_DOWN_HOLD, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "11:28", "11:28", 10));
+            textures.Add(PLAYER_PUDDLE, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "45:26", "46:26", 2));
+            textures.Add(PLAYER_DROWN_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:42", "7:42", 10));
+            textures.Add(PLAYER_DROWN_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:43", "7:43", 10));
+            textures.Add(PLAYER_DROWN_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:44", "7:44", 10));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));
@@ -369,6 +388,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:items:chests-small", new CTextureAtlas("tileset:items:chests-small", 16, 16, 1, "0:0", "1:2", 0, false, false, false));
             textures.Add("tileset:outdoors:demoTiles", new CTextureAtlas("tileset:outdoors:demoTiles", 16, 16, 0, "0:0", "49:41", 0, false, false, true));
             textures.Add("tileset:outdoors:castleTown", new CTextureAtlas("tileset:outdoors:castleTown", 16, 16, 0, "0:0", "54:46", 0, false, false, true));
+            textures.Add("tileset:outdoors:kokiriForest", new CTextureAtlas("tileset:outdoors:kokiriForest", 16, 16, 0, "0:0", "24:22", 0, false, false, true));
             textures.Add("tileset:indoors:sewer", new CTextureAtlas("tileset:indoors:sewer", 16, 16, 0, "0:0", "18:22", 0, false, false, true));
             textures.Add("tileset:indoors:castleTown", new CTextureAtlas("tileset:indoors:castleTown", 16, 16, 0, "0:0", "49:44", 0, false, false, true));
             textures.Add("tileset:indoors:rumpBattle", new CTextureAtlas("tileset:indoors:rumpBattle", 16, 16, 0, "0:0", "11:6", 0, false, false, true));
@@ -486,6 +506,7 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("tileset:outdoors:hyruleCastleTown", _content.Load<Texture2D>(@"tilesets/outdoors/hyruleCastleTown"));
             rawTextures.Add("tileset:outdoors:demoTiles", _content.Load<Texture2D>(@"tilesets/outdoors/demoTiles"));
             rawTextures.Add("tileset:outdoors:castleTown", _content.Load<Texture2D>(@"tilesets/outdoors/castleTown"));
+            rawTextures.Add("tileset:outdoors:kokiriForest", _content.Load<Texture2D>(@"tilesets/outdoors/kokiriForest"));
             rawTextures.Add("tileset:indoors:sewer", _content.Load<Texture2D>(@"tilesets/indoors/sewer"));
             rawTextures.Add("tileset:indoors:castleTown", _content.Load<Texture2D>(@"tilesets/indoors/castleTownIndoors"));
             rawTextures.Add("tileset:indoors:rumpBattle", _content.Load <Texture2D>(@"tilesets/indoors/rumpFightRoom"));
