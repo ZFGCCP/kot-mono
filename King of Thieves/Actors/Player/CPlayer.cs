@@ -973,8 +973,8 @@ namespace King_of_Thieves.Actors.Player
             }
 
             //disabled for demo
-            /*if (_canOpenManu && input.keysReleased.Contains(Keys.Enter))
-                Master.Push(new usr.local.GameMenu.CPauseMenu(CMasterControl.itemPauseMenu(), CMasterControl.questPauseMenu()));*/
+            if (_canOpenManu && input.keysReleased.Contains(Keys.Enter))
+                Master.Push(new usr.local.GameMenu.CPauseMenu(CMasterControl.itemPauseMenu(), CMasterControl.questPauseMenu()));
         }
 
         private void _checkDead()

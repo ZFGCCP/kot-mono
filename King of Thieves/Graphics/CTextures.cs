@@ -436,8 +436,8 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_RUPEES, new CTextureAtlas("health", 16, 16, 1, "0:1", "0:1", 0));
             textures.Add(HUD_ARROW_COUNTER, new CTextureAtlas("health", 16, 16, 1, "2:1", "2:1"));
             textures.Add(HUD_BOMB_COUNTER, new CTextureAtlas("health", 16, 16, 1, "1:1", "1:1", 0));
-            textures.Add(HUD_ITEM_SCREEN, new CTextureAtlas(SOURCE_MENU, 320, 240, 0, "0:0", "0:0", 0));
-            textures.Add(HUD_QUEST_SCREEN, new CTextureAtlas(SOURCE_MENU, 320, 240, 0, "1:0", "1:0", 0));
+            textures.Add(HUD_ITEM_SCREEN, new CTextureAtlas(SOURCE_MENU, 240, 160, 0, "0:0", "0:0", 0));
+            textures.Add(HUD_QUEST_SCREEN, new CTextureAtlas(SOURCE_MENU, 240, 160, 0, "0:0", "0:0", 0));
             textures.Add(HUD_PAUSE_CURSOR, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:1", "3:1", 0));
             textures.Add(HUD_MAGIC_METER, new CTextureAtlas(SOURCE_MAGIC_METER, 80, 6, 0, "0:0", "0:0", 0));
             textures.Add(HUD_NOTORIETY_MEDIUM, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "2:1", "2:1", 0)); 
