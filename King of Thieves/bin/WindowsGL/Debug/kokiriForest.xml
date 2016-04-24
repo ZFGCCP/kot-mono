@@ -3,7 +3,7 @@
   <version>1</version>
   <width>0</width>
   <height>0</height>
-  <layerCount>2</layerCount>
+  <layerCount>3</layerCount>
   <layers>
     <layer width="0" height="0" name="root">
       <tiles>
@@ -4418,7 +4418,7 @@
         <tile coordinates="400:368" tileSet="tileset:outdoors:kokiriForest" selection="3:1" speed="0" />
       </tiles>
       <components>
-        <component address="1">
+        <component address="-2">
           <actors>
             <actor name="player" type="King_of_Thieves.Actors.Player.CPlayer" coordinates="194:391" />
           </actors>
@@ -4570,6 +4570,9 @@
             <actor name="hitboxjkJRbA7s9sWsgAPZ" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="685:826" params="39,71" />
             <actor name="hitbox2lQqnbkltLANgj6L" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="660:830" params="7,15" />
             <actor name="hitboxdCP9HiY8nZ8R64De" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="739:880" params="10,13" />
+            <actor name="hitboxxvzYLZvMlo1J2X e" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="114:265" params="110,40" />
+            <actor name="hitboxsV9ZwvH2TTNGsbHJ" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="113:303" params="70,15" />
+            <actor name="hitboxDetKTJQXCGQlHy4y" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="200:303" params="27,13" />
           </actors>
         </component>
       </components>
@@ -6618,6 +6621,16 @@
         <tile coordinates="768:592" tileSet="tileset:outdoors:kokiriForest" selection="7:10" speed="0" />
         <tile coordinates="768:576" tileSet="tileset:outdoors:kokiriForest" selection="7:9" speed="0" />
       </tiles>
+      <components>
+        <component address="3">
+          <actors>
+            <actor name="cameraLimit" type="King_of_Thieves.Actors.Collision.CCameraLimit" coordinates="0:0" params="912,1264" />
+          </actors>
+        </component>
+      </components>
+    </layer>
+    <layer width="0" height="0" name="cameraLimit">
+      <tiles />
       <components />
     </layer>
   </layers>
