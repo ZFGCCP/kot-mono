@@ -15,6 +15,12 @@ namespace King_of_Thieves.usr.local
             : base()
         {
             //CMasterControl.mapManager.swapMap("castleTown.xml", "player",new Vector2(400,1000));
+            _initMap();
+            Graphics.CSprite.initFrameRateMapping();
+        }
+
+        protected virtual void _initMap()
+        {
             CMasterControl.mapManager.swapMap("kokiriForest.xml", "player", new Vector2(100, 100));
         }
 

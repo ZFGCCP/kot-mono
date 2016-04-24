@@ -1619,6 +1619,7 @@ namespace King_of_Thieves.Actors.Player
             }
 
             Projectiles.CBomb bomb = new Projectiles.CBomb(direction, bombVelo, bombPos, 4);
+            bomb.layer = this.layer;
             Map.CMapManager.addActorToComponent(bomb, this.componentAddress);
             _bombVelo = 0;
             _usingItem = false;

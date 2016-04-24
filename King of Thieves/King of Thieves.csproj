@@ -280,6 +280,7 @@
     <Compile Include="usr\local\GameMenu\GameOverState.cs" />
     <Compile Include="usr\local\GameOver.cs" />
     <Compile Include="usr\local\MapEditor.cs" />
+    <Compile Include="usr\local\MapTests\HryuleCastleTownTest.cs" />
     <Compile Include="usr\local\PlayableState.cs" />
     <Compile Include="usr\local\splash\CDedicationPage.cs" />
     <Compile Include="usr\local\splash\CTitleState.cs" />
