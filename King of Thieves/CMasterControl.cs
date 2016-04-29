@@ -28,14 +28,14 @@ namespace King_of_Thieves
         {
             Menu menu = new Menu();
 
-            CPauseMenuElement bow = new CPauseMenuElement(new Vector2(35, 35), 1, 3, 8, 4);
+            CPauseMenuElement bow = new CPauseMenuElement(new Vector2(17, 30), 1, 3, 8, 4);
             bow.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_ARROWS);
             bow.MenuText = "Hero's Bow";
             bow.Selectable = true;
             bow.hudOptions = Actors.HUD.buttons.HUDOPTIONS.ARROWS;
             menu.AddMenuElement(bow);
 
-            CPauseMenuElement bomb = new CPauseMenuElement(new Vector2(84, 35), 2, 0, 9, 5);
+            CPauseMenuElement bomb = new CPauseMenuElement(new Vector2(47, 30), 2, 0, 9, 5);
             bomb.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_BOMB_CANNON);
             bomb.MenuText = "Bomb Cannon";
             bomb.Selectable = true;
@@ -63,7 +63,7 @@ namespace King_of_Thieves
             rocsCape.MenuText = "Roc's Cape";
             menu.AddMenuElement(rocsCape);
 
-            CPauseMenuElement shadowMedallion = new CPauseMenuElement(new Vector2(137, 77), 7, 5, 2, 10);
+            CPauseMenuElement shadowMedallion = new CPauseMenuElement(new Vector2(75, 30), 7, 5, 2, 10);
             shadowMedallion.Selectable = true;
             shadowMedallion.MenuText = "Shadow Medallion";
             shadowMedallion.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_SHADOW_MEDALLION);
