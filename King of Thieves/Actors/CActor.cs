@@ -72,6 +72,7 @@ namespace King_of_Thieves.Actors
         IDLE_STARE,
         INCREMENT,
         INVISIBLE,
+        JUMP,
         KNOCKBACK,
         LIFT,
         LOCKED,
@@ -361,6 +362,9 @@ namespace King_of_Thieves.Actors
             {
                 _path.nextNode();
                 onPathNextNode(_path.currentNode);
+
+                if (_path.endOfPath)
+                    pathEnd(null);
             }
         }
 
@@ -1266,6 +1270,28 @@ namespace King_of_Thieves.Actors
             get
             {
                 return _lastKnownGoodPosition;
+            }
+        }
+
+        protected void _imageSwapBasedOnDirection(DIRECTION direction, string up, string down, string left, string right)
+        {
+            switch(direction)
+            {
+                case DIRECTION.UP:
+                    swapImage(up);
+                    break;
+
+                case DIRECTION.DOWN:
+                    swapImage(down);
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(left);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(right);
+                    break;
             }
         }
 

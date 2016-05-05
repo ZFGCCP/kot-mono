@@ -27,6 +27,7 @@ namespace King_of_Thieves.Graphics
         private int _timeForCurrentFrame = 0;
         private bool _animEnd = false;
         private bool _inLastFrame = false;
+        private Vector2 _translation = Vector2.Zero;
 
         public static Dictionary<int, double> _frameRateLookup = new Dictionary<int, double>();
 
@@ -123,11 +124,11 @@ namespace King_of_Thieves.Graphics
             Color overlay = useOverlay ? Actors.Controllers.GameControllers.CDayClock.overlay : Color.White;
 
             if (!(_flipV || _flipH))
-                spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+                spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position + _translation, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
             else if (_flipV)
-                spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
+                spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position + _translation, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
             else if (_flipH)
-                spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
+                spriteBatch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position + _translation, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
             base.draw(x, y);
 
 
@@ -177,11 +178,11 @@ namespace King_of_Thieves.Graphics
             Color overlay = useOverlay ? Actors.Controllers.GameControllers.CDayClock.overlay : Color.White; 
 
             if (!(_flipV || _flipH))
-                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position + _translation, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
             else if (_flipV)
-                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
+                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position + _translation, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipVertically, 0);
             else if (_flipH)
-                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
+                batch.Draw(CTextures.rawTextures[CTextures.textures[_atlasName].source], _position + _translation, _size, overlay, _rotation, Vector2.Zero, 1.0f, SpriteEffects.FlipHorizontally, 0);
             base.draw(x, y);
 
             return false;
@@ -221,6 +222,24 @@ namespace King_of_Thieves.Graphics
         public void Dispose()
         {
             
+        }
+
+        public void translate(Vector2 translation)
+        {
+            _translation += translation;
+        }
+
+        public void translateToOrigin()
+        {
+            _translation = Vector2.Zero;
+        }
+
+        public Vector2 translation
+        {
+            get
+            {
+                return _translation;
+            }
         }
     }
 }
