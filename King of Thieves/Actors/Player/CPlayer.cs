@@ -19,6 +19,8 @@ namespace King_of_Thieves.Actors.Player
         public static readonly Vector2 carrySpot = new Vector2(-6, -10); //will need to be played with
         private bool _carrying = false;
         private bool _jumping = false;
+        private bool _shielding = false;
+        private bool _charging = false;
         private double _carryWeight = 0;
         private bool _acceptInput = true;
         private bool _usingItem = false;
@@ -419,6 +421,7 @@ namespace King_of_Thieves.Actors.Player
 
                 case ACTOR_STATES.SPIN_ATTACK:
                     _state = ACTOR_STATES.IDLE;
+                    _charging = false;
                     _acceptInput = true;
                     break;
 
@@ -452,8 +455,9 @@ namespace King_of_Thieves.Actors.Player
                     break;
 
                 case ACTOR_STATES.PULLSWORD:
-                    _state = ACTOR_STATES.CHARGING_SWORD;
+                    _state = ACTOR_STATES.IDLE;
                     _acceptInput = true;
+                    _charging = true;
 
                     switch (_direction)
                     {
@@ -483,7 +487,7 @@ namespace King_of_Thieves.Actors.Player
                     break;
 
                 case ACTOR_STATES.SHIELD_ENGAGE:
-                    _state = ACTOR_STATES.SHIELDING;
+                    _state = ACTOR_STATES.IDLE;
                     _acceptInput = true;
 
                     switch (_direction)
@@ -515,6 +519,7 @@ namespace King_of_Thieves.Actors.Player
 
                 case ACTOR_STATES.SHIELD_DISENGAGE:
                     _state = ACTOR_STATES.IDLE;
+                    _shielding = false;
                     break;
 
                 case ACTOR_STATES.VAULT:
@@ -573,7 +578,7 @@ namespace King_of_Thieves.Actors.Player
 
         private void _setUpMovement(float velocity, DIRECTION direction, string carrySprite, string climbSprite, string walkSprite)
         {
-            _direction =direction;
+            
             _state = ACTOR_STATES.MOVING;
 
             if (direction == DIRECTION.DOWN || direction == DIRECTION.UP)
@@ -587,15 +592,20 @@ namespace King_of_Thieves.Actors.Player
                 swapImage(climbSprite);
             else if (_jumping)
                 return;
-            else if (_state == ACTOR_STATES.SHIELDING)
+            else if (_shielding)
             {
-                if (_velocity.X == 0 && _velocity.Y == 0)
-                    swapImage(_currentShieldIdleSprite);
-                else
-                    swapImage(_currentShieldSprite);
+                swapImage(_currentShieldSprite);
+                direction = _direction;
+            }
+            else if(_charging)
+            {
+                swapImage(_currentSwordChargeSprite);
+                direction = _direction;
             }
             else
                 swapImage(walkSprite);
+
+            _direction = direction;
         }
 
         public override void keyDown(object sender)
@@ -606,19 +616,13 @@ namespace King_of_Thieves.Actors.Player
                 CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
                 if (_state == ACTOR_STATES.IDLE || _state == ACTOR_STATES.MOVING)
                 {
-                    if (input.keysPressed.Contains(Keys.End))
-                    {
-                        Graphics.CGraphics.changeResolution(320, 240);
-                        Master.Pop();
-                    }
-
                     if (input.keysPressed.Contains(input.getKey(CInput.KEY_LEFT_ITEM)) && _lastHudKeyPressed != input.getKey(CInput.KEY_LEFT_ITEM))
                         _useItem(0);
                     else if (input.keysPressed.Contains(input.getKey(CInput.KEY_RIGHT_ITEM)) && _lastHudKeyPressed != input.getKey(CInput.KEY_RIGHT_ITEM))
                         _useItem(-1);
                     else if (input.keysPressed.Contains(input.getKey(CInput.KEY_SHIELD)))
                     {
-                        if (_state != ACTOR_STATES.SHIELDING && _state != ACTOR_STATES.SHIELD_ENGAGE)
+                        if (!_shielding)
                         {
                             _triggerUserEvent(0, "shield", _direction, _position.X, _position.Y);
                             _state = ACTOR_STATES.SHIELD_ENGAGE;
@@ -628,9 +632,25 @@ namespace King_of_Thieves.Actors.Player
                                                        Graphics.CTextures.PLAYER_SHIELD_ENGAGE_DOWN,
                                                        Graphics.CTextures.PLAYER_SHIELD_ENGAGE_LEFT,
                                                        Graphics.CTextures.PLAYER_SHIELD_ENGAGE_RIGHT);
-                            
+
                             _acceptInput = false;
+                            _shielding = true;
                             return;
+                        }
+                        else if (input.keysPressed.Count() == 1)
+                            _state = ACTOR_STATES.IDLE;
+                    }
+                    else if (input.keysPressed.Contains(input.getKey(CInput.KEY_SWORD)))
+                    {
+                        if (_wearingShadowCloak)
+                            _createShadowClone();
+                        else if(_charging && input.keysPressed.Count() == 1)
+                            _state = ACTOR_STATES.IDLE;
+                        else if (!_charging)
+                        {
+                            _state = ACTOR_STATES.SWINGING;
+                            _canChargeSword = true;
+                            _swordReleased = false;
                         }
                     }
 
@@ -651,55 +671,7 @@ namespace King_of_Thieves.Actors.Player
                         moveInDirection(_velocity);
                         _oldVelocity = _velocity;
                     }
-                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_SWORD)))
-                    {
-                        if (_wearingShadowCloak)
-                            _createShadowClone();
-                        else
-                        {
-                            _state = ACTOR_STATES.SWINGING;
-                            _canChargeSword = true;
-                            _swordReleased = false;
-                        }
-                    }
-                }
-                else if (_state == ACTOR_STATES.SHIELDING)
-                {
-                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_LEFT)))
-                        _velocity.X = -1;
-                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_RIGHT)))
-                        _velocity.X = 1;
-                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_DOWN)))
-                        _velocity.Y = 1;
-                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_UP)))
-                        _velocity.Y = -1;
-
-                    if (_velocity.X == 0 && _velocity.Y == 0)
-                        swapImage(_currentShieldIdleSprite);
-                    else
-                        swapImage(_currentShieldSprite);
-
-                    moveInDirection(_velocity);
-                    _oldVelocity = _velocity;
-                }
-                else if (_state == ACTOR_STATES.CHARGING_SWORD)
-                {
-                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_LEFT)))
-                        _velocity.X = -.5f;
-                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_RIGHT)))
-                        _velocity.X = .5f;
-                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_DOWN)))
-                        _velocity.Y = .5f;
-                    if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_UP)))
-                        _velocity.Y = -.5f;
-
-                    if (_velocity.X == 0 && _velocity.Y == 0)
-                        swapImage(_currentSwordChargeIdleSprite);
-                    else
-                        swapImage(_currentSwordChargeSprite);
-
-                    moveInDirection(_velocity);
-                    _oldVelocity = _velocity;
+                    
                 }
             }
             _velocity.X = 0;
@@ -748,7 +720,7 @@ namespace King_of_Thieves.Actors.Player
 
                 if (input.keysReleased.Contains(input.getKey(CInput.KEY_SWORD)))
                 {
-                    if (_state == ACTOR_STATES.CHARGING_SWORD)
+                    if (_charging)
                     {
                         _state = ACTOR_STATES.SPIN_ATTACK;
                         _acceptInput = false;
@@ -766,7 +738,7 @@ namespace King_of_Thieves.Actors.Player
 
                 if (input.keysReleased.Contains(input.getKey(CInput.KEY_SHIELD)))
                 {
-                    if (_state == ACTOR_STATES.SHIELDING || _state == ACTOR_STATES.SHIELD_ENGAGE)
+                    if (_shielding)
                     {
                         _triggerUserEvent(1, "shield", _direction, _position.X, _position.Y);
                         _imageSwapBasedOnDirection(_direction, 
@@ -1041,6 +1013,10 @@ namespace King_of_Thieves.Actors.Player
                 case ACTOR_STATES.IDLE:
                     if (_climbing)
                         swapImage(Graphics.CTextures.PLAYER_CLIMB_IDLE);
+                    else if (_shielding)
+                        swapImage(_currentShieldIdleSprite);
+                    else if (_charging)
+                        swapImage(_currentSwordChargeIdleSprite);
                     else
                     {
                         switch (_direction)
