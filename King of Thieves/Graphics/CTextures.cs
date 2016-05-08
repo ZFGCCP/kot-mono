@@ -368,9 +368,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_DROWN_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:42", "7:42", 10));
             textures.Add(PLAYER_DROWN_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:43", "7:43", 10));
             textures.Add(PLAYER_DROWN_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:44", "7:44", 10));
-            textures.Add(PLAYER_JUMP_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:17", "43:17", 17));
-            textures.Add(PLAYER_JUMP_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:18", "43:18", 17));
-            textures.Add(PLAYER_JUMP_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:19", "43:19", 17));
+            textures.Add(PLAYER_JUMP_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:17", "43:17", 14));
+            textures.Add(PLAYER_JUMP_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:18", "43:18", 14));
+            textures.Add(PLAYER_JUMP_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:19", "43:19", 14));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));

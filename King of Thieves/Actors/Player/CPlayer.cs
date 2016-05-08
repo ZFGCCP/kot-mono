@@ -53,10 +53,11 @@ namespace King_of_Thieves.Actors.Player
         private bool _canOpenManu = false;
         private bool _gameEnd = false; //ew
 
+        private ACTOR_STATES[] _returnToIdleStates = {ACTOR_STATES.ROLLING};
+
         public CPlayer() :
             base()
         {
-
             _name = "Player";
             _position = Vector2.Zero;
             //resource init
@@ -654,7 +655,7 @@ namespace King_of_Thieves.Actors.Player
                         }
                     }
 
-                    if (!_usingItem)
+                    if (!_usingItem || _jumping)
                     {
                         if (input.keysPressed.Contains(input.getKey(CInput.KEY_WALK_LEFT)))
                             _setUpMovement(-1, DIRECTION.LEFT, Graphics.CTextures.PLAYER_CARRYLEFT, Graphics.CTextures.PLAYER_CARRYLEFT, Graphics.CTextures.PLAYER_WALKLEFT);
@@ -1010,6 +1011,11 @@ namespace King_of_Thieves.Actors.Player
                     _swordSwing();
                     break;
 
+                case ACTOR_STATES.MOVING:
+                    if (_jumping)
+                        _jumpRiseFall();
+                    break;
+
                 case ACTOR_STATES.IDLE:
                     if (_climbing)
                         swapImage(Graphics.CTextures.PLAYER_CLIMB_IDLE);
@@ -1017,6 +1023,8 @@ namespace King_of_Thieves.Actors.Player
                         swapImage(_currentShieldIdleSprite);
                     else if (_charging)
                         swapImage(_currentSwordChargeIdleSprite);
+                    else if(_jumping)
+                        _jumpRiseFall();
                     else
                     {
                         switch (_direction)
@@ -1068,10 +1076,6 @@ namespace King_of_Thieves.Actors.Player
 
                 case ACTOR_STATES.DROWN:
                     _drown();
-                    break;
-
-                case ACTOR_STATES.JUMP:
-                    _jumpRiseFall();
                     break;
             }
 
@@ -1690,8 +1694,8 @@ namespace King_of_Thieves.Actors.Player
 
         private void _jump()
         {
-            _state = ACTOR_STATES.JUMP;
-
+            _state = ACTOR_STATES.IDLE;
+            _jumping = true;
 
             CMasterControl.audioPlayer.addSfx(CMasterControl.audioPlayer.soundBank["Player:hop"]);
 
@@ -1706,15 +1710,27 @@ namespace King_of_Thieves.Actors.Player
         {
             image.translate(new Vector2(0, _JumpAmount * 2));
 
-            if (image.translation.Y == -16)
-                _JumpAmount = 1;
-            else if(image.translation.Y >= 0)
+            if (_JumpAmount == 1 && image.translation.Y == 0)
             {
-                _JumpAmount = -1;
                 image.translateToOrigin();
                 _state = ACTOR_STATES.IDLE;
+                _jumping = false;
                 _usingItem = false;
             }
+
+            if (image.translation.Y == -32)
+            {
+                _JumpAmount = 1;
+
+                CInput input = Master.GetInputManager().GetCurrentInputHandler() as CInput;
+                if(input.keysPressed.Contains(_lastHudKeyPressed))
+                {
+                    //fly!!
+                    _state = ACTOR_STATES.FLYING_START;
+                }
+            }
+            else if (image.translation.Y >= 0)
+                _JumpAmount = -1;
         }
         //===========================================================================
         //=========================cutscene related things===========================

@@ -58,6 +58,7 @@ namespace King_of_Thieves.Actors
         DUSK,
         EXPLODE,
         FLYING,
+        FLYING_START,
         FOLLOW_PLAYER,
         FROZEN,
         FURIOUS,
