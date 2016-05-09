@@ -255,6 +255,21 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_JUMP_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_JUMP_LEFT));
             _imageIndex.Add(Graphics.CTextures.PLAYER_JUMP_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_JUMP_LEFT, true));
 
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_START_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_START_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_START_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_START_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_START_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_START_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_START_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_START_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_LAND_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_LAND_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_LAND_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_LAND_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_LAND_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_LAND_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_LAND_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_LAND_LEFT, true));
+
             _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD));
         }
 
@@ -572,6 +587,26 @@ namespace King_of_Thieves.Actors.Player
                     CMasterControl.camera.unlockCamera();
                     dealDamange(2, this);
                     break;
+
+                case ACTOR_STATES.FLYING_START:
+                    _state = ACTOR_STATES.FLYING;
+                    Vector2 translation = image.translation;
+                    image.translateToOrigin();
+                    _imageSwapBasedOnDirection(_direction,
+                                               Graphics.CTextures.PLAYER_FLY_UP,
+                                               Graphics.CTextures.PLAYER_FLY_DOWN,
+                                               Graphics.CTextures.PLAYER_FLY_LEFT,
+                                               Graphics.CTextures.PLAYER_FLY_RIGHT);
+                    _applyVelocityBasedOnDirection(_direction, 1);
+                    image.translate(translation);
+                    startTimer6(48);
+                    break;
+
+                case ACTOR_STATES.FLY_LAND:
+                    _state = ACTOR_STATES.IDLE;
+                    _usingItem = false;
+                    _jumping = false;
+                    break;
             }
 
             
@@ -675,8 +710,12 @@ namespace King_of_Thieves.Actors.Player
                     
                 }
             }
-            _velocity.X = 0;
-            _velocity.Y = 0;
+
+            if (_state != ACTOR_STATES.FLYING && _state != ACTOR_STATES.DESCEND)
+            {
+                _velocity.X = 0;
+                _velocity.Y = 0;
+            }
         }
 
         public override void keyRelease(object sender)
@@ -909,8 +948,12 @@ namespace King_of_Thieves.Actors.Player
                 return;
 
             base.update(gameTime);
-            _velocity.X = 0;
-            _velocity.Y = 0;
+
+            if (_state != ACTOR_STATES.FLYING && _state != ACTOR_STATES.DESCEND)
+            {
+                _velocity.X = 0;
+                _velocity.Y = 0;
+            }
 
             //are we dead?
             _checkDead();
@@ -1077,6 +1120,15 @@ namespace King_of_Thieves.Actors.Player
                 case ACTOR_STATES.DROWN:
                     _drown();
                     break;
+
+                case ACTOR_STATES.FLYING:
+                    moveInDirection(_velocity);
+                    break;
+
+                case ACTOR_STATES.DESCEND:
+                    image.translate(new Vector2(0, 1));
+                    moveInDirection(_velocity);
+                    break;
             }
 
             switch (_direction)
@@ -1217,6 +1269,21 @@ namespace King_of_Thieves.Actors.Player
                 _state = ACTOR_STATES.INVISIBLE;
                 _gameEnd = true;
                 startTimer6(60);
+            }
+            else if(_state == ACTOR_STATES.FLYING)
+            {
+                _state = ACTOR_STATES.DESCEND;
+                startTimer6(32);
+            }
+            else if(_state == ACTOR_STATES.DESCEND)
+            {
+                _state = ACTOR_STATES.FLY_LAND;
+                image.translateToOrigin();
+                _imageSwapBasedOnDirection(_direction,
+                                           Graphics.CTextures.PLAYER_FLY_LAND_UP,
+                                           Graphics.CTextures.PLAYER_FLY_LAND_DOWN,
+                                           Graphics.CTextures.PLAYER_FLY_LAND_LEFT,
+                                           Graphics.CTextures.PLAYER_FLY_LAND_RIGHT);
             }
             else
             {
@@ -1727,6 +1794,15 @@ namespace King_of_Thieves.Actors.Player
                 {
                     //fly!!
                     _state = ACTOR_STATES.FLYING_START;
+                    Vector2 translation = image.translation;
+                    image.translateToOrigin();
+                    _imageSwapBasedOnDirection(_direction,
+                                               Graphics.CTextures.PLAYER_FLY_START_UP,
+                                               Graphics.CTextures.PLAYER_FLY_START_DOWN,
+                                               Graphics.CTextures.PLAYER_FLY_START_LEFT,
+                                               Graphics.CTextures.PLAYER_FLY_START_RIGHT);
+
+                    image.translate(translation);
                 }
             }
             else if (image.translation.Y >= 0)

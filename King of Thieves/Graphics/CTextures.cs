@@ -183,6 +183,18 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_JUMP_LEFT = PLAYER + "jumpLeft";
         public const string PLAYER_JUMP_RIGHT = PLAYER + "jumpRight";
         public const string PLAYER_JUMP_DOWN = PLAYER + "jumpDown";
+        public const string PLAYER_FLY_START_DOWN = PLAYER + "flyStartDown";
+        public const string PLAYER_FLY_START_LEFT = PLAYER + "flyStartLeft";
+        public const string PLAYER_FLY_START_RIGHT = PLAYER + "flyStartRight";
+        public const string PLAYER_FLY_START_UP = PLAYER + "flyStartUp";
+        public const string PLAYER_FLY_DOWN = PLAYER + "flyDown";
+        public const string PLAYER_FLY_RIGHT = PLAYER + "flyRight";
+        public const string PLAYER_FLY_LEFT = PLAYER + "flyLeft";
+        public const string PLAYER_FLY_UP = PLAYER + "flyUp";
+        public const string PLAYER_FLY_LAND_LEFT = PLAYER + "flyLandLeft";
+        public const string PLAYER_FLY_LAND_RIGHT = PLAYER + "flyLandRight";
+        public const string PLAYER_FLY_LAND_UP = PLAYER + "flyLandUp";
+        public const string PLAYER_FLY_LAND_DOWN = PLAYER + "flyLandDown";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -371,6 +383,15 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_JUMP_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:17", "43:17", 14));
             textures.Add(PLAYER_JUMP_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:18", "43:18", 14));
             textures.Add(PLAYER_JUMP_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:19", "43:19", 14));
+            textures.Add(PLAYER_FLY_START_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:21", "31:21", 14));
+            textures.Add(PLAYER_FLY_START_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:22", "31:22", 14));
+            textures.Add(PLAYER_FLY_START_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:23", "31:23", 14));
+            textures.Add(PLAYER_FLY_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "31:21", "34:21", 14));
+            textures.Add(PLAYER_FLY_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "31:22", "34:22", 14));
+            textures.Add(PLAYER_FLY_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "31:23", "34:23", 14));
+            textures.Add(PLAYER_FLY_LAND_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:21", "35:21", 3));
+            textures.Add(PLAYER_FLY_LAND_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:22", "35:22", 3));
+            textures.Add(PLAYER_FLY_LAND_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:23", "35:23", 3));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));
