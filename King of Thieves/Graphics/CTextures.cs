@@ -179,6 +179,22 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_DROWN_LEFT = PLAYER + "drownLeft";
         public const string PLAYER_DROWN_RIGHT = PLAYER + "drownRight";
         public const string PLAYER_DROWN_UP = PLAYER + "drownUp";
+        public const string PLAYER_JUMP_UP = PLAYER + "jumpUp";
+        public const string PLAYER_JUMP_LEFT = PLAYER + "jumpLeft";
+        public const string PLAYER_JUMP_RIGHT = PLAYER + "jumpRight";
+        public const string PLAYER_JUMP_DOWN = PLAYER + "jumpDown";
+        public const string PLAYER_FLY_START_DOWN = PLAYER + "flyStartDown";
+        public const string PLAYER_FLY_START_LEFT = PLAYER + "flyStartLeft";
+        public const string PLAYER_FLY_START_RIGHT = PLAYER + "flyStartRight";
+        public const string PLAYER_FLY_START_UP = PLAYER + "flyStartUp";
+        public const string PLAYER_FLY_DOWN = PLAYER + "flyDown";
+        public const string PLAYER_FLY_RIGHT = PLAYER + "flyRight";
+        public const string PLAYER_FLY_LEFT = PLAYER + "flyLeft";
+        public const string PLAYER_FLY_UP = PLAYER + "flyUp";
+        public const string PLAYER_FLY_LAND_LEFT = PLAYER + "flyLandLeft";
+        public const string PLAYER_FLY_LAND_RIGHT = PLAYER + "flyLandRight";
+        public const string PLAYER_FLY_LAND_UP = PLAYER + "flyLandUp";
+        public const string PLAYER_FLY_LAND_DOWN = PLAYER + "flyLandDown";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -197,6 +213,7 @@ namespace King_of_Thieves.Graphics
         public const string HUD_GREEN_POTION = HUD + "greenPotion";
         public const string HUD_BLUE_POTION = HUD + "bluePotion";
         public const string HUD_SHADOW_MEDALLION = HUD + "shadowMedallion";
+        public const string HUD_ROCS_CAPE = HUD + "rocsCape";
 
         public const string HUD_TEXTBOX = HUD + "text:textBox";
         public const string HUD_HEALTH0 = HUD + "health0";
@@ -363,6 +380,18 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_DROWN_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:42", "7:42", 10));
             textures.Add(PLAYER_DROWN_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:43", "7:43", 10));
             textures.Add(PLAYER_DROWN_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "4:44", "7:44", 10));
+            textures.Add(PLAYER_JUMP_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:17", "43:17", 14));
+            textures.Add(PLAYER_JUMP_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:18", "43:18", 14));
+            textures.Add(PLAYER_JUMP_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "39:19", "43:19", 14));
+            textures.Add(PLAYER_FLY_START_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:21", "31:21", 14));
+            textures.Add(PLAYER_FLY_START_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:22", "31:22", 14));
+            textures.Add(PLAYER_FLY_START_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "29:23", "31:23", 14));
+            textures.Add(PLAYER_FLY_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "31:21", "34:21", 14));
+            textures.Add(PLAYER_FLY_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "31:22", "34:22", 14));
+            textures.Add(PLAYER_FLY_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "31:23", "34:23", 14));
+            textures.Add(PLAYER_FLY_LAND_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:21", "35:21", 3));
+            textures.Add(PLAYER_FLY_LAND_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:22", "35:22", 3));
+            textures.Add(PLAYER_FLY_LAND_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:23", "35:23", 3));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));
@@ -425,28 +454,29 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_HEALTH3, new CTextureAtlas("health", 16, 16, 1, "3:0", "3:0", 0));
             textures.Add(HUD_HEALTH4, new CTextureAtlas("health", 16, 16, 1, "4:0", "4:0", 0));
             textures.Add(HUD_HEALTH5, new CTextureAtlas("health", 16, 16, 1, "5:0", "5:0", 0));
-            textures.Add(HUD_BUTTON_LEFT, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "0:0", "0:0", 0));
-            textures.Add(HUD_BUTTON_RIGHT, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "1:0", "1:0", 0));
-            textures.Add(HUD_BUTTON_UP, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "2:0", "2:0", 0));
-            textures.Add(HUD_ARROWS, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "0:1", "0:1", 0));
-            textures.Add(HUD_ARROWS_FIRE, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "0:2", "0:2", 0));
-            textures.Add(HUD_ARROWS_ICE, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "1:2", "1:2", 0));
-            textures.Add(HUD_ACTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:0", "3:0", 0));
-            textures.Add(HUD_BOMB_CANNON, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "1:1", "1:1", 0));
+            textures.Add(HUD_BUTTON_LEFT, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "4:1", "4:1", 0));
+            textures.Add(HUD_BUTTON_RIGHT, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "5:1", "5:1", 0));
+            textures.Add(HUD_BUTTON_UP, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 1, "2:0", "2:0", 0));
+            textures.Add(HUD_ARROWS, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "0:0", "0:0", 0));
+            textures.Add(HUD_ARROWS_FIRE, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "0:0", "0:0", 0));
+            textures.Add(HUD_ARROWS_ICE, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "0:0", "0:0", 0));
+            textures.Add(HUD_ACTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 1, "3:0", "3:0", 0));
+            textures.Add(HUD_BOMB_CANNON, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "1:1", "1:1", 0));
             textures.Add(HUD_RUPEES, new CTextureAtlas("health", 16, 16, 1, "0:1", "0:1", 0));
             textures.Add(HUD_ARROW_COUNTER, new CTextureAtlas("health", 16, 16, 1, "2:1", "2:1"));
             textures.Add(HUD_BOMB_COUNTER, new CTextureAtlas("health", 16, 16, 1, "1:1", "1:1", 0));
             textures.Add(HUD_ITEM_SCREEN, new CTextureAtlas(SOURCE_MENU, 240, 160, 0, "0:0", "0:0", 0));
             textures.Add(HUD_QUEST_SCREEN, new CTextureAtlas(SOURCE_MENU, 240, 160, 0, "0:0", "0:0", 0));
-            textures.Add(HUD_PAUSE_CURSOR, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:1", "3:1", 0));
+            textures.Add(HUD_PAUSE_CURSOR, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "3:2", "3:2", 0));
             textures.Add(HUD_MAGIC_METER, new CTextureAtlas(SOURCE_MAGIC_METER, 80, 6, 0, "0:0", "0:0", 0));
-            textures.Add(HUD_NOTORIETY_MEDIUM, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "2:1", "2:1", 0)); 
-            textures.Add(HUD_PICKPOCKET_ICON_PETTY, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:2", "3:2", 0));
-            textures.Add(HUD_EMPTY_BOTTLE, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "0:3", "0:3", 0));
-            textures.Add(HUD_RED_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "1:3", "1:3", 0));
-            textures.Add(HUD_GREEN_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "2:3", "2:3", 0));
-            textures.Add(HUD_BLUE_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "3:3", "3:3", 0));
-            textures.Add(HUD_SHADOW_MEDALLION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 0, "4:0", "4:0", 0));
+            textures.Add(HUD_NOTORIETY_MEDIUM, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 1, "2:1", "2:1", 0)); 
+            textures.Add(HUD_PICKPOCKET_ICON_PETTY, new CTextureAtlas(SOURCE_HUD_BUTTONS, 32, 32, 1, "3:2", "3:2", 0));
+            textures.Add(HUD_EMPTY_BOTTLE, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "0:2", "0:2", 0));
+            textures.Add(HUD_RED_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "1:2", "1:2", 0));
+            textures.Add(HUD_GREEN_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "1:2", "1:2", 0));
+            textures.Add(HUD_BLUE_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "1:2", "1:2", 0));
+            textures.Add(HUD_SHADOW_MEDALLION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "1:0", "1:0", 0));
+            textures.Add(HUD_ROCS_CAPE, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "2:0", "2:0", 0));
 
             //transitions
             textures.Add(TRANSITION_RUMPLE, new CTextureAtlas(TRANSITION_RUMPLE, 240, 160, 0, "0:0", "3:2", 15));
@@ -522,7 +552,7 @@ namespace King_of_Thieves.Graphics
             //hud
             rawTextures.Add("hud", _content.Load<Texture2D>("hud/textbox2"));
             rawTextures.Add("health", _content.Load<Texture2D>("hud/hearts"));
-            rawTextures.Add(SOURCE_HUD_BUTTONS, _content.Load<Texture2D>("hud/buttons"));
+            rawTextures.Add(SOURCE_HUD_BUTTONS, _content.Load<Texture2D>("hud/hud"));
             rawTextures.Add(SOURCE_MENU, _content.Load<Texture2D>("hud/menu"));
             rawTextures.Add(SOURCE_MAGIC_METER, _content.Load<Texture2D>("hud/magicMeter"));
 

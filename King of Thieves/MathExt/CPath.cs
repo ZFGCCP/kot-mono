@@ -12,7 +12,7 @@ namespace King_of_Thieves.MathExt
         private CPathNode _currentNode;
         private static readonly CPathNode _nullNode = new CPathNode();
 
-        unsafe public CPath(CPathNode[] path)
+        public CPath(CPathNode[] path)
         {
             _path = new Queue<CPathNode>();
             _currentNode = _nullNode;
@@ -52,11 +52,11 @@ namespace King_of_Thieves.MathExt
         {
             get
             {
-                return _path.Count > 0;
+                return _path.Count == 0 && !currentNodeReady;
             }
         }
 
-        public unsafe bool currentNodeReady
+        public bool currentNodeReady
         {
             get
             {
@@ -64,7 +64,7 @@ namespace King_of_Thieves.MathExt
             }
         }
 
-        public unsafe CPathNode currentNode
+        public CPathNode currentNode
         {
             get
             {

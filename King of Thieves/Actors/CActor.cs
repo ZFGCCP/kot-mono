@@ -49,6 +49,7 @@ namespace King_of_Thieves.Actors
         DAY,
         DEAD,
         DECREMENT,
+        DESCEND,
         DIE_FALL,
         DIEING,
         DROP,
@@ -58,6 +59,8 @@ namespace King_of_Thieves.Actors
         DUSK,
         EXPLODE,
         FLYING,
+        FLY_LAND,
+        FLYING_START,
         FOLLOW_PLAYER,
         FROZEN,
         FURIOUS,
@@ -72,6 +75,7 @@ namespace King_of_Thieves.Actors
         IDLE_STARE,
         INCREMENT,
         INVISIBLE,
+        JUMP,
         KNOCKBACK,
         LIFT,
         LOCKED,
@@ -361,6 +365,9 @@ namespace King_of_Thieves.Actors
             {
                 _path.nextNode();
                 onPathNextNode(_path.currentNode);
+
+                if (_path.endOfPath)
+                    pathEnd(null);
             }
         }
 
@@ -1266,6 +1273,50 @@ namespace King_of_Thieves.Actors
             get
             {
                 return _lastKnownGoodPosition;
+            }
+        }
+
+        protected void _applyVelocityBasedOnDirection(DIRECTION direction, float velocity)
+        {
+            switch (direction)
+            {
+                case DIRECTION.UP:
+                    _velocity = new Vector2(0, -velocity);
+                    break;
+
+                case DIRECTION.DOWN:
+                    _velocity = new Vector2(0, velocity);
+                    break;
+
+                case DIRECTION.LEFT:
+                    _velocity = new Vector2(-velocity, 0);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _velocity = new Vector2(velocity, 0);
+                    break;
+            }
+        }
+
+        protected void _imageSwapBasedOnDirection(DIRECTION direction, string up, string down, string left, string right)
+        {
+            switch(direction)
+            {
+                case DIRECTION.UP:
+                    swapImage(up);
+                    break;
+
+                case DIRECTION.DOWN:
+                    swapImage(down);
+                    break;
+
+                case DIRECTION.LEFT:
+                    swapImage(left);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    swapImage(right);
+                    break;
             }
         }
 

@@ -52,10 +52,8 @@ namespace King_of_Thieves.Actors.HUD.info
 		public override void update(Microsoft.Xna.Framework.GameTime gameTime)
 		{
             _updateFrames++;
+            _updateTimer.Restart();
             base.update(gameTime);
-			_updateTimer.Stop();
-            _updateTimer.Reset();
-			_updateTimer.Start();
 		}
 
 		public override void draw (object sender)

@@ -18,8 +18,8 @@ namespace King_of_Thieves.Actors.Menu
         private const float _SHIFT_VELOCITY = 11.05f;
         private Gears.Navigation.Menu _menu;
         private Menu.CMenuCursor _cursor = null;
-        private static SpriteFont _sherwood = CMasterControl.glblContent.Load<SpriteFont>(@"Fonts/pauseMenuHeadings");
-        private static Vector2 _menuDrawText = new Vector2(40, 10);
+        private static SpriteFont _sherwood = CMasterControl.glblContent.Load<SpriteFont>(@"Fonts/sherwood");
+        private static Vector2 _menuDrawText = new Vector2(60, 5);
         private bool _focused = false;
         private bool _drawHud = false;
 
