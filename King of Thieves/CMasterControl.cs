@@ -54,7 +54,9 @@ namespace King_of_Thieves
             menu.AddMenuElement(dekuNut);
 
             CPauseMenuElement hookshot = new CPauseMenuElement(new Vector2(21, 64), 5, 7, 0, 8);
+            hookshot.sprite = new Graphics.CSprite(Graphics.CTextures.HUD_HOOKSHIT);
             hookshot.Selectable = true;
+            hookshot.hudOptions = Actors.HUD.buttons.HUDOPTIONS.HOOKSHOT;
             hookshot.MenuText = "Hookshot";
             menu.AddMenuElement(hookshot);
 

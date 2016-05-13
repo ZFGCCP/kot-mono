@@ -214,6 +214,7 @@ namespace King_of_Thieves.Graphics
         public const string HUD_BLUE_POTION = HUD + "bluePotion";
         public const string HUD_SHADOW_MEDALLION = HUD + "shadowMedallion";
         public const string HUD_ROCS_CAPE = HUD + "rocsCape";
+        public const string HUD_HOOKSHIT = HUD + "hookshot";
 
         public const string HUD_TEXTBOX = HUD + "text:textBox";
         public const string HUD_HEALTH0 = HUD + "health0";
@@ -477,6 +478,7 @@ namespace King_of_Thieves.Graphics
             textures.Add(HUD_BLUE_POTION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "1:2", "1:2", 0));
             textures.Add(HUD_SHADOW_MEDALLION, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "1:0", "1:0", 0));
             textures.Add(HUD_ROCS_CAPE, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "2:0", "2:0", 0));
+            textures.Add(HUD_HOOKSHIT, new CTextureAtlas(SOURCE_HUD_BUTTONS, 24, 24, 1, "2:1", "2:1", 0));
 
             //transitions
             textures.Add(TRANSITION_RUMPLE, new CTextureAtlas(TRANSITION_RUMPLE, 240, 160, 0, "0:0", "3:2", 15));

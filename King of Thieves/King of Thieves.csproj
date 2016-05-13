@@ -72,6 +72,8 @@
     <Compile Include="Actors\Collision\GameChangers\CPawnShopAlerter.cs" />
     <Compile Include="Actors\Collision\Water\CDeepWater.cs" />
     <Compile Include="Actors\Collision\Water\CShallowWater.cs" />
+    <Compile Include="Actors\Items\weapons\Hookshot\CHookShotPiece.cs" />
+    <Compile Include="Actors\Items\weapons\Hookshot\CHookShotTip.cs" />
     <Compile Include="MathExt\CPath.cs" />
     <Compile Include="Actors\HUD\counters\CArrowCounter.cs" />
     <Compile Include="Actors\HUD\CScreenFader.cs" />

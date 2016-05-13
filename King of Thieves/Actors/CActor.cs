@@ -58,6 +58,7 @@ namespace King_of_Thieves.Actors
         DROWN_IDLE,
         DUSK,
         EXPLODE,
+        EXTEND,
         FLYING,
         FLY_LAND,
         FLYING_START,
@@ -106,6 +107,7 @@ namespace King_of_Thieves.Actors
         SWING_BOTTLE,
         SHOCKED,
         STUNNED,
+        RETRACT,
         TALK_READY,
         THROW_BOOMERANG,
         THROWING,
@@ -492,39 +494,53 @@ namespace King_of_Thieves.Actors
             _timer6 = ticks;
         }
 
-        public void stopTimer0()
+        public int stopTimer0()
         {
+            int timeLeft = _timer0;
             _timer0 = -1;
+            return timeLeft;
         }
 
-        public void stopTimer1()
+        public int stopTimer1()
         {
+            int timeLeft = _timer1;
             _timer1 = -1;
+            return timeLeft;
         }
 
-        public void stopTimer2()
+        public int stopTimer2()
         {
+            int timeLeft = _timer2;
             _timer2 = -1;
+            return timeLeft;
         }
 
-        public void stopTimer3()
+        public int stopTimer3()
         {
+            int timeLeft = _timer3;
             _timer3 = -1;
+            return timeLeft;
         }
 
-        public void stopTimer4()
+        public int stopTimer4()
         {
+            int timeLeft = _timer4;
             _timer4 = -1;
+            return timeLeft;
         }
 
-        public void stopTimer5()
+        public int stopTimer5()
         {
+            int timeLeft = _timer5;
             _timer5 = -1;
+            return timeLeft;
         }
 
-        public void stopTimer6()
+        public int stopTimer6()
         {
+            int timeLeft = _timer6;
             _timer6 = -1;
+            return timeLeft;
         }
 
         //overload this and call the base to process your own parameters

@@ -20,7 +20,8 @@ namespace King_of_Thieves.Actors.HUD.buttons
         ICE_ARROWS,
         RED_POTION,
         SHADOW_MEDALLION,
-        ROCS_CAPE
+        ROCS_CAPE,
+        HOOKSHOT
 
     }
 
@@ -135,6 +136,10 @@ namespace King_of_Thieves.Actors.HUD.buttons
 
                 case HUDOPTIONS.ROCS_CAPE:
                     _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_ROCS_CAPE);
+                    break;
+
+                case HUDOPTIONS.HOOKSHOT:
+                    _itemOverlay = new Graphics.CSprite(Graphics.CTextures.HUD_HOOKSHIT);
                     break;
             }
         }

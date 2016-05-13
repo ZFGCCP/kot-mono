@@ -687,6 +687,7 @@ namespace King_of_Thieves.Actors.Player
                             _state = ACTOR_STATES.SWINGING;
                             _canChargeSword = true;
                             _swordReleased = false;
+                            return;
                         }
                     }
 
@@ -1807,6 +1808,11 @@ namespace King_of_Thieves.Actors.Player
             }
             else if (image.translation.Y >= 0)
                 _JumpAmount = -1;
+        }
+
+        public void startHookshotMove()
+        {
+            _state = ACTOR_STATES.RETRACT;
         }
         //===========================================================================
         //=========================cutscene related things===========================
