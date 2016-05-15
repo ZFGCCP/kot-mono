@@ -11,7 +11,7 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
         public CHookShotTip(Vector2 velocity, DIRECTION direction, Vector2 position) :
             base(velocity,direction)
         {
-            
+            _hitBox = new Collision.CHitBox(this, 0, 0, 16, 16);
         }
 
         protected override void _addCollidables()
@@ -22,11 +22,11 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
 
         public override void collide(object sender, CActor collider)
         {
-            int timeLeft = stopTimer0();
+            int timeLeft = 60 - stopTimer0();
             _state = ACTOR_STATES.RETRACT;
             _retract(timeLeft);
-            CMasterControl.commNet[componentAddress].Add(new CActorPacket(0, "hookshotChain0", this));
-            CMasterControl.commNet[componentAddress].Add(new CActorPacket(0, "hookshotChain1", this));
+            CMasterControl.commNet[componentAddress].Add(new CActorPacket(0, "hookshotChain0", this, timeLeft));
+            CMasterControl.commNet[componentAddress].Add(new CActorPacket(0, "hookshotChain1", this, timeLeft));
         }
 
         public override void initChildren()
