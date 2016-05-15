@@ -270,6 +270,16 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_LAND_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_LAND_LEFT));
             _imageIndex.Add(Graphics.CTextures.PLAYER_FLY_LAND_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_FLY_LAND_LEFT, true));
 
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_LEFT, true));
+
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_LEFT, true));
+
             _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD));
         }
 
@@ -606,6 +616,10 @@ namespace King_of_Thieves.Actors.Player
                     _state = ACTOR_STATES.IDLE;
                     _usingItem = false;
                     _jumping = false;
+                    break;
+
+                case ACTOR_STATES.HOOKSHOT:
+                    _launchHook();
                     break;
             }
 
@@ -1625,6 +1639,10 @@ namespace King_of_Thieves.Actors.Player
                 case HUD.buttons.HUDOPTIONS.ROCS_CAPE:
                     _jump();
                     break;
+
+                case HUD.buttons.HUDOPTIONS.HOOKSHOT:
+                    _beginHookShotShoot();
+                    break;
             }
         }
 
@@ -1810,9 +1828,59 @@ namespace King_of_Thieves.Actors.Player
                 _JumpAmount = -1;
         }
 
+        private void _beginHookShotShoot()
+        {
+            _state = ACTOR_STATES.HOOKSHOT;
+            _imageSwapBasedOnDirection(_direction,
+                                       Graphics.CTextures.PLAYER_HOOKSHOT_UP,
+                                       Graphics.CTextures.PLAYER_HOOKSHOT_DOWN,
+                                       Graphics.CTextures.PLAYER_HOOKSHOT_LEFT,
+                                       Graphics.CTextures.PLAYER_HOOKSHOT_RIGHT);
+        }
+
+        private void _launchHook()
+        {
+            _state = ACTOR_STATES.HOOKSHOT_RELEASED;
+            _imageSwapBasedOnDirection(_direction,
+                                       Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_UP,
+                                       Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_DOWN,
+                                       Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_LEFT,
+                                       Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_RIGHT);
+
+            Vector2 _hookVelo = new Vector2();
+            switch (_direction)
+            {
+                case DIRECTION.UP:
+                    _hookVelo.Y = -2;
+                    break;
+
+                case DIRECTION.DOWN:
+                    _hookVelo.Y = 2;
+                    break;
+
+                case DIRECTION.LEFT:
+                    _hookVelo.X = -2;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _hookVelo.X = 2;
+                    break;
+            }
+            Items.weapons.Hookshot.CHookShotTip hookShot = new Items.weapons.Hookshot.CHookShotTip(_hookVelo, _direction, _position);
+            hookShot.init("hookshotTip",_position,"",CReservedAddresses.NON_ASSIGNED);
+            hookShot.layer = layer;
+            Map.CMapManager.addComponent(hookShot);
+        }
+
         public void startHookshotMove()
         {
             _state = ACTOR_STATES.RETRACT;
+        }
+
+        protected override void _resetState(object sender)
+        {
+            base._resetState(sender);
+            _usingItem = false;
         }
         //===========================================================================
         //=========================cutscene related things===========================

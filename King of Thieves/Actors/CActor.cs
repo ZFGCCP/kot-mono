@@ -72,6 +72,8 @@ namespace King_of_Thieves.Actors
         HOLD,
         HOLD_ARROW,
         HOLD_CANNON,
+        HOOKSHOT,
+        HOOKSHOT_RELEASED,
         IDLE,
         IDLE_STARE,
         INCREMENT,
@@ -785,6 +787,7 @@ namespace King_of_Thieves.Actors
         {
             _userEvents = new Dictionary<uint, actorEventHandler>();
             _userEventsToFire = new Dictionary<uint, CActor>();
+            _userEvents.Add(99, _resetState);
         }
 
         public DIRECTION direction
@@ -1367,6 +1370,12 @@ namespace King_of_Thieves.Actors
             _userEvents.Clear();
             _userEventsToFire.Clear();
             _collidables.Clear();
+        }
+
+        public virtual void initChildren() { }
+        protected virtual void _resetState(object sender)
+        {
+            _state = ACTOR_STATES.IDLE;
         }
     }
 }

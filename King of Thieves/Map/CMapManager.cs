@@ -272,7 +272,18 @@ namespace King_of_Thieves.Map
         }
 
         //builds a new component from the given actors
-        public static void addComponent(Actors.CActor root, Dictionary<string, Actors.CActor> actors)
+        public static int addComponent(Actors.CActor root, Dictionary<string, Actors.CActor> actors)
+        {
+            int address = addComponent(root);
+
+            if (actors != null)
+                foreach (Actors.CActor actor in actors.Values)
+                    addActorToComponent(actor, address);
+
+            return address;
+        }
+
+        public static int addComponent(Actors.CActor root)
         {
             if (root == null)
                 throw new KotException.KotInvalidActorException("Root actor cannot be null when calling addComponent");
@@ -283,14 +294,13 @@ namespace King_of_Thieves.Map
             addComponent(component);
             addActorToComponent(root, component.address);
 
-            if (actors != null)
-                foreach (Actors.CActor actor in actors.Values)
-                    addActorToComponent(actor, component.address);
+            return component.address;
         }
 
-        public static void addComponent(Actors.CComponent component)
+        public static int addComponent(Actors.CComponent component)
         {
             _currentMap.addComponent(component, component.layer);
+            return component.address;
         }
 
         public static void addActorToComponent(Actors.CActor actor, int componentAddress)

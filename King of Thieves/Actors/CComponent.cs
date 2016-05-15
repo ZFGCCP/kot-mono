@@ -244,6 +244,9 @@ namespace King_of_Thieves.Actors
 
         public void addActor(CActor actor, String name)
         {
+            //Allow actor to access it's component
+            actor.component = this;
+
             //Add as root if no root is set
             if (root != null)
                 actors.Add(name, actor);
@@ -251,9 +254,9 @@ namespace King_of_Thieves.Actors
             {
                 layer = actor.layer;
                 root = actor;
+                root.initChildren();
             }
-            //Allow actor to access it's component
-            actor.component = this;
+            
         }
 
         public void removeActor(CActor actor, bool nextCycle = false)

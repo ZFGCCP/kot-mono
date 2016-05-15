@@ -195,6 +195,14 @@ namespace King_of_Thieves.Graphics
         public const string PLAYER_FLY_LAND_RIGHT = PLAYER + "flyLandRight";
         public const string PLAYER_FLY_LAND_UP = PLAYER + "flyLandUp";
         public const string PLAYER_FLY_LAND_DOWN = PLAYER + "flyLandDown";
+        public const string PLAYER_HOOKSHOT_DOWN = PLAYER + "hookShotDown";
+        public const string PLAYER_HOOKSHOT_UP = PLAYER + "hookShotUp";
+        public const string PLAYER_HOOKSHOT_LEFT = PLAYER + "hookShotLeft";
+        public const string PLAYER_HOOKSHOT_RIGHT = PLAYER + "hookShotRight";
+        public const string PLAYER_HOOKSHOT_IDLE_DOWN = PLAYER + "hookShotIdleDown";
+        public const string PLAYER_HOOKSHOT_IDLE_UP = PLAYER + "hookShotIdleUp";
+        public const string PLAYER_HOOKSHOT_IDLE_LEFT = PLAYER + "hookShotIdleLeft";
+        public const string PLAYER_HOOKSHOT_IDLE_RIGHT = PLAYER + "hookShotIdleRight";
 
         public const string HUD_ARROWS = HUD + "arrows";
         public const string HUD_ARROWS_FIRE = HUD + "arrowsFire";
@@ -393,6 +401,12 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_FLY_LAND_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:21", "35:21", 3));
             textures.Add(PLAYER_FLY_LAND_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:22", "35:22", 3));
             textures.Add(PLAYER_FLY_LAND_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "35:23", "35:23", 3));
+            textures.Add(PLAYER_HOOKSHOT_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:24", "19:24", 8));
+            textures.Add(PLAYER_HOOKSHOT_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:26", "19:26", 8));
+            textures.Add(PLAYER_HOOKSHOT_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "17:25", "19:25", 8));
+            textures.Add(PLAYER_HOOKSHOT_IDLE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "19:24", "19:24", 0));
+            textures.Add(PLAYER_HOOKSHOT_IDLE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "19:26", "19:26", 0));
+            textures.Add(PLAYER_HOOKSHOT_IDLE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "19:25", "19:25", 0));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));
