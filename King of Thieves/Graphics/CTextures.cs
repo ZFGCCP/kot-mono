@@ -30,6 +30,8 @@ namespace King_of_Thieves.Graphics
         public const string SWORDS = ITEMS + "swords:";
         public const string TRANSITIONS = "transition:";
 
+        public const string EFFECT_HOOKSHOT = EFFECTS + "hookshot:";
+
         //actual constants
         public const string EFFECT_ENERGY_BALL_SMALL = EFFECTS + "energyBallSmall";
         public const string EFFECT_ENERGY_WAVE_SMALL = EFFECTS + "energyWaveSmall";
@@ -45,6 +47,12 @@ namespace King_of_Thieves.Graphics
         public const string EFFECT_BOOMERANG = EFFECTS + "boomerang";
         public const string EFFECT_FIRE_SMALL = EFFECTS + "fireSmall";
         public const string EFFECT_SPARKLE = EFFECTS + "sparkle";
+        public const string EFFECT_HOOKSHOT_TIP = EFFECT_HOOKSHOT + "tip";
+        public const string EFFECT_HOOKSHOT_TIP_UP = EFFECT_HOOKSHOT + "tipUp";
+        public const string EFFECT_HOOKSHOT_TIP_DOWN = EFFECT_HOOKSHOT + "tipDown";
+        public const string EFFECT_HOOKSHOT_TIP_LEFT = EFFECT_HOOKSHOT + "tipLeft";
+        public const string EFFECT_HOOKSHOT_TIP_RIGHT = EFFECT_HOOKSHOT + "tipRight";
+        public const string EFFECT_HOOKSHOT_CHAIN = EFFECT_HOOKSHOT + "chain";
 
         public const string DROPS_HEART = DROPS + "heart";
         public const string DROPS_RUPEE_GREEN = DROPS + "rupeeGreen";
@@ -460,6 +468,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(EFFECT_BOMB_FAST_TICK, new CTextureAtlas("effects:various", 32, 32, 0, "0:3", "1:3", 10));
             textures.Add(EFFECT_BOOMERANG, new CTextureAtlas("effects:various", 32, 32, 0, "2:2", "5:3", 15));
             textures.Add(EFFECT_SPARKLE, new CTextureAtlas("effects:various", 32, 32, 0, "4:4", "5:5", 4));
+            textures.Add(EFFECT_HOOKSHOT_TIP_UP, new CTextureAtlas("effects:various", 32, 32, 0, "0:5", "0:5", 0));
+            textures.Add(EFFECT_HOOKSHOT_TIP_RIGHT, new CTextureAtlas("effects:various", 32, 32, 0, "1:5", "1:5", 0));
+            textures.Add(EFFECT_HOOKSHOT_CHAIN, new CTextureAtlas("effects:various", 32, 32, 0, "2:5", "2:5", 0));
 
             //HUD
             textures.Add(HUD_TEXTBOX, new CTextureAtlas("hud", 303, 74, 0, "0:0", "0:0", 0));

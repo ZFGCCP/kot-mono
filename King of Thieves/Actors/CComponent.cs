@@ -155,7 +155,7 @@ namespace King_of_Thieves.Actors
 
             if (root.killMe)
             {
-                _destroyActors(_softDelete);
+                _destroyActors();
                 enabled = false;
             }
 

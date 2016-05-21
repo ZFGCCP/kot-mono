@@ -291,8 +291,8 @@ namespace King_of_Thieves.Map
             Actors.CComponent component = new Actors.CComponent(_currentMap.largestAddress + 1);
             component.layer = root.layer;
 
+            addActorToComponent(root, component);
             addComponent(component);
-            addActorToComponent(root, component.address);
 
             return component.address;
         }
@@ -301,6 +301,11 @@ namespace King_of_Thieves.Map
         {
             _currentMap.addComponent(component, component.layer);
             return component.address;
+        }
+
+        public static void addActorToComponent(Actors.CActor actor, Actors.CComponent component)
+        {
+            _currentMap.addActorToComponent(actor, component);
         }
 
         public static void addActorToComponent(Actors.CActor actor, int componentAddress)

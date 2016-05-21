@@ -12,6 +12,16 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
             base(velocity,direction)
         {
             _hitBox = new Collision.CHitBox(this, 0, 0, 16, 16);
+
+            _imageIndex.Add(Graphics.CTextures.EFFECT_HOOKSHOT_TIP_UP, new Graphics.CSprite(Graphics.CTextures.EFFECT_HOOKSHOT_TIP_UP));
+            _imageIndex.Add(Graphics.CTextures.EFFECT_HOOKSHOT_TIP_DOWN, new Graphics.CSprite(Graphics.CTextures.EFFECT_HOOKSHOT_TIP_UP, false, true));
+            _imageIndex.Add(Graphics.CTextures.EFFECT_HOOKSHOT_TIP_RIGHT, new Graphics.CSprite(Graphics.CTextures.EFFECT_HOOKSHOT_TIP_RIGHT));
+            _imageIndex.Add(Graphics.CTextures.EFFECT_HOOKSHOT_TIP_LEFT, new Graphics.CSprite(Graphics.CTextures.EFFECT_HOOKSHOT_TIP_RIGHT, true));
+
+            _imageSwapBasedOnDirection(_direction, Graphics.CTextures.EFFECT_HOOKSHOT_TIP_UP,
+                                                   Graphics.CTextures.EFFECT_HOOKSHOT_TIP_DOWN,
+                                                   Graphics.CTextures.EFFECT_HOOKSHOT_TIP_LEFT,
+                                                   Graphics.CTextures.EFFECT_HOOKSHOT_TIP_RIGHT);
         }
 
         protected override void _addCollidables()
@@ -35,9 +45,10 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
             CHookShotPiece[] _chain = new CHookShotPiece[2];
             for (int i = 0; i < 2; i++)
             {
-                _chain[i] = new CHookShotPiece(velocity / (2 + i*2), direction);
+                
+                _chain[i] = new CHookShotPiece(_velocity / (2 + i * 2) , direction);
                 _chain[i].init("hookshotChain" + i, position, "", CReservedAddresses.NON_ASSIGNED);
-                this.component.addActor(_chain[i], "hookshotChain" + i);
+                component.actors.Add("hookshotChain" + i,_chain[i]);
             }
         }
 

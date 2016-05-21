@@ -1377,5 +1377,49 @@ namespace King_of_Thieves.Actors
         {
             _state = ACTOR_STATES.IDLE;
         }
+
+        protected void _setVelocityBasedOnDirection(DIRECTION direction, float magnitude)
+        {
+            switch (direction)
+            {
+                case DIRECTION.UP:
+                    _velocity = new Vector2(0, -magnitude);
+                    break;
+
+                case DIRECTION.DOWN:
+                    _velocity = new Vector2(0, magnitude);
+                    break;
+
+                case DIRECTION.LEFT:
+                    _velocity = new Vector2(-magnitude,0);
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _velocity = new Vector2(magnitude, 0);
+                    break;
+            }
+        }
+
+        protected void _offsetPositionBasedOnDirection(DIRECTION direction, Vector2 up, Vector2 down, Vector2 left, Vector2 right)
+        {
+            switch (direction)
+            {
+                case DIRECTION.UP:
+                    _position += up;
+                    break;
+
+                case DIRECTION.DOWN:
+                    _position += down;
+                    break;
+
+                case DIRECTION.LEFT:
+                    _position += left;
+                    break;
+
+                case DIRECTION.RIGHT:
+                    _position += right;
+                    break;
+            }
+        }
     }
 }

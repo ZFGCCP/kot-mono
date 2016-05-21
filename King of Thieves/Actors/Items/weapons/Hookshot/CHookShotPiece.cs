@@ -8,14 +8,19 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
 {
     class CHookShotPiece : CActor
     {
-        public CHookShotPiece(Vector2 speed, DIRECTION direction)
+        public CHookShotPiece(Vector2 speed, DIRECTION direction) : base()
         {
             _direction = direction;
             _velocity = speed;
+
+            _imageIndex.Add(Graphics.CTextures.EFFECT_HOOKSHOT_CHAIN, new Graphics.CSprite(Graphics.CTextures.EFFECT_HOOKSHOT_CHAIN));
+            swapImage(Graphics.CTextures.EFFECT_HOOKSHOT_CHAIN);
+            _followRoot = false;
         }
 
         public override void create(object sender)
         {
+            _offsetPositionBasedOnDirection(_direction, Vector2.Zero, new Vector2(0,20), new Vector2(0,0), new Vector2(0,0));
             _state = ACTOR_STATES.EXTEND;
             startTimer0(60);
         }
