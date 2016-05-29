@@ -280,6 +280,11 @@ namespace King_of_Thieves.Actors.Player
             _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_LEFT));
             _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_IDLE_LEFT, true));
 
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_UP, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_UP));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_DOWN, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_DOWN));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_LEFT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_LEFT));
+            _imageIndex.Add(Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_RIGHT, new Graphics.CSprite(Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_LEFT, true));
+
             _imageIndex.Add(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD, new Graphics.CSprite(Graphics.CTextures.PLAYER_PULL_DOWN_HOLD));
         }
 
@@ -1875,6 +1880,13 @@ namespace King_of_Thieves.Actors.Player
         public void startHookshotMove()
         {
             _state = ACTOR_STATES.RETRACT;
+        }
+
+        private void _moveWithHookShot(object sender)
+        {
+            _setVelocityBasedOnDirection(_direction, 2.0f);
+            _imageSwapBasedOnDirection(_direction,)
+            _state = ACTOR_STATES.HOOKSHOT_PULL;
         }
 
         protected override void _resetState(object sender)

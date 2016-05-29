@@ -20,7 +20,7 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
 
         public override void create(object sender)
         {
-            _offsetPositionBasedOnDirection(_direction, Vector2.Zero, new Vector2(0,20), new Vector2(0,0), new Vector2(0,0));
+            _offsetPositionBasedOnDirection(_direction, new Vector2(0,-1), new Vector2(0,20), new Vector2(0,0), new Vector2(10,10));
             _state = ACTOR_STATES.EXTEND;
             startTimer0(60);
         }
@@ -46,6 +46,18 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
             _velocity *= -1;
         }
 
+        protected void _pullPlayer(int retractTime, float velocityFactor)
+        {
+            _state = ACTOR_STATES.PULLING;
+            _velocity *= velocityFactor;
+            startTimer0(retractTime);
+        }
+
+        private void _pullPlayerEvent(object sender)
+        {
+            _pullPlayer((int)userParams[0], (float)userParams[1]);
+        }
+
         private void _retractEvent(object sender)
         {
             _retract((int)userParams[0]);
@@ -55,6 +67,7 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
         {
             base._registerUserEvents();
             _userEvents.Add(0, _retractEvent);
+            _userEvents.Add(1, _pullPlayerEvent);
         }
     }
 }

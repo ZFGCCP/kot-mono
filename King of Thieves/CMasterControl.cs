@@ -227,5 +227,24 @@ namespace King_of_Thieves
             menu.Recache();
             return menu;
         }
+
+        public void addCommNetMessage(int componentAddress, Actors.CActorPacket actorPacket)
+        {
+            if (!commNet.ContainsKey(componentAddress))
+                throw new KotException.KotInvalidComponentException(componentAddress);
+
+            commNet[componentAddress].Add(actorPacket);
+        }
+
+        public void addCommNetMessage(int componentAddress, int userEventId, string actorName, Actors.CActor sender, params object [] parameters)
+        {
+            if (string.IsNullOrEmpty(actorName.Trim()))
+                throw new KotException.KotInvalidActorException("Actor name cannot be empty.");
+
+            if (sender == null)
+                throw new KotException.KotInvalidActorException("Invalid actor specified for commNet.  Actor cannot be null.");
+
+            addCommNetMessage(componentAddress, new Actors.CActorPacket(userEventId, actorName, sender, parameters));
+        }
     }
 }

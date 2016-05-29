@@ -28,15 +28,34 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
         {
             base._addCollidables();
             _collidables.Add(typeof(Actors.Collision.CSolidTile));
+            _collidables.Add(typeof(Actors.Collision.CHookShotTarget));
+        }
+
+        public override void create(object sender)
+        {
+            base.create(sender);
         }
 
         public override void collide(object sender, CActor collider)
         {
             int timeLeft = 60 - stopTimer0();
-            _state = ACTOR_STATES.RETRACT;
-            _retract(timeLeft);
-            CMasterControl.commNet[componentAddress].Add(new CActorPacket(0, "hookshotChain0", this, timeLeft));
-            CMasterControl.commNet[componentAddress].Add(new CActorPacket(0, "hookshotChain1", this, timeLeft));
+            if (collider is Actors.Collision.CSolidTile)
+            {
+                _state = ACTOR_STATES.RETRACT;
+                _retract(timeLeft);
+                CMasterControl.commNet[componentAddress].Add(new CActorPacket(0, "hookshotChain0", this, timeLeft));
+                CMasterControl.commNet[componentAddress].Add(new CActorPacket(0, "hookshotChain1", this, timeLeft));
+            }
+            else if(collider is Actors.Collision.CHookShotTarget)
+            {
+                _state = ACTOR_STATES.PULLING;
+                _retract(timeLeft);
+                _velocity = Vector2.Zero;
+                float velocityFactorOne = .25f;
+                float velocityFactorTwo = .5f;
+                CMasterControl.commNet[componentAddress].Add(new CActorPacket(1, "hookshotChain0", this, timeLeft, velocityFactorOne));
+                CMasterControl.commNet[componentAddress].Add(new CActorPacket(1, "hookshotChain1", this, timeLeft, velocityFactorTwo));
+            }
         }
 
         public override void initChildren()
@@ -50,6 +69,8 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
                 _chain[i].init("hookshotChain" + i, position, "", CReservedAddresses.NON_ASSIGNED);
                 component.actors.Add("hookshotChain" + i,_chain[i]);
             }
+
+            _position.Y += 10;
         }
 
         public override void timer0(object sender)

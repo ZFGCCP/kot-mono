@@ -67,6 +67,7 @@
     <Compile Include="Actors\Collision\CClimberFloor.cs" />
     <Compile Include="Actors\Collision\CClimberLanding.cs" />
     <Compile Include="Actors\Collision\CCollidable.cs" />
+    <Compile Include="Actors\Collision\CHookShotTarget.cs" />
     <Compile Include="Actors\Collision\CLayerChanger.cs" />
     <Compile Include="Actors\Collision\CVaulter.cs" />
     <Compile Include="Actors\Collision\GameChangers\CPawnShopAlerter.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Actors\Collision\Water\CShallowWater.cs" />
     <Compile Include="Actors\Items\weapons\Hookshot\CHookShotPiece.cs" />
     <Compile Include="Actors\Items\weapons\Hookshot\CHookShotTip.cs" />
+    <Compile Include="KotException\KotInvalidComponentException.cs" />
     <Compile Include="MathExt\CPath.cs" />
     <Compile Include="Actors\HUD\counters\CArrowCounter.cs" />
     <Compile Include="Actors\HUD\CScreenFader.cs" />
