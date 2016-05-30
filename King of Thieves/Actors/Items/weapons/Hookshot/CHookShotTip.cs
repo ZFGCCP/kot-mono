@@ -55,6 +55,7 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
                 float velocityFactorTwo = .5f;
                 CMasterControl.commNet[componentAddress].Add(new CActorPacket(1, "hookshotChain0", this, timeLeft, velocityFactorOne));
                 CMasterControl.commNet[componentAddress].Add(new CActorPacket(1, "hookshotChain1", this, timeLeft, velocityFactorTwo));
+                CMasterControl.addCommNetMessage(CReservedAddresses.PLAYER, 2, "player", this);
             }
         }
 

@@ -228,7 +228,7 @@ namespace King_of_Thieves
             return menu;
         }
 
-        public void addCommNetMessage(int componentAddress, Actors.CActorPacket actorPacket)
+        public static void addCommNetMessage(int componentAddress, Actors.CActorPacket actorPacket)
         {
             if (!commNet.ContainsKey(componentAddress))
                 throw new KotException.KotInvalidComponentException(componentAddress);
@@ -236,7 +236,7 @@ namespace King_of_Thieves
             commNet[componentAddress].Add(actorPacket);
         }
 
-        public void addCommNetMessage(int componentAddress, int userEventId, string actorName, Actors.CActor sender, params object [] parameters)
+        public static void addCommNetMessage(int componentAddress, int userEventId, string actorName, Actors.CActor sender, params object [] parameters)
         {
             if (string.IsNullOrEmpty(actorName.Trim()))
                 throw new KotException.KotInvalidActorException("Actor name cannot be empty.");

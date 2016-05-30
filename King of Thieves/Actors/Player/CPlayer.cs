@@ -420,6 +420,7 @@ namespace King_of_Thieves.Actors.Player
             base._registerUserEvents();
             _userEvents.Add(0, _rumpShoveToCenter);
             _userEvents.Add(1, _rumpDropFairyDust);
+            _userEvents.Add(2, _moveWithHookShot);
         }
 
         
@@ -1147,6 +1148,10 @@ namespace King_of_Thieves.Actors.Player
 
                 case ACTOR_STATES.DESCEND:
                     image.translate(new Vector2(0, 1));
+                    moveInDirection(_velocity);
+                    break;
+
+                case ACTOR_STATES.HOOKSHOT_PULL:
                     moveInDirection(_velocity);
                     break;
             }
@@ -1885,7 +1890,10 @@ namespace King_of_Thieves.Actors.Player
         private void _moveWithHookShot(object sender)
         {
             _setVelocityBasedOnDirection(_direction, 2.0f);
-            _imageSwapBasedOnDirection(_direction,)
+            _imageSwapBasedOnDirection(_direction,Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_UP,
+                                                  Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_DOWN,
+                                                  Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_LEFT,
+                                                  Graphics.CTextures.PLAYER_HOOKSHOT_WOOSH_RIGHT);
             _state = ACTOR_STATES.HOOKSHOT_PULL;
         }
 
