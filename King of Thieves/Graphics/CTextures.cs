@@ -419,9 +419,9 @@ namespace King_of_Thieves.Graphics
             textures.Add(PLAYER_HOOKSHOT_IDLE_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "19:24", "19:24", 0));
             textures.Add(PLAYER_HOOKSHOT_IDLE_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "19:26", "19:26", 0));
             textures.Add(PLAYER_HOOKSHOT_IDLE_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "19:25", "19:25", 0));
-            textures.Add(PLAYER_HOOKSHOT_WOOSH_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:17", "40:17", 0));
-            textures.Add(PLAYER_HOOKSHOT_WOOSH_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:18", "40:18", 0));
-            textures.Add(PLAYER_HOOKSHOT_WOOSH_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:19", "40:19", 0));
+            textures.Add(PLAYER_HOOKSHOT_WOOSH_LEFT, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:17", "40:17", 0));
+            textures.Add(PLAYER_HOOKSHOT_WOOSH_UP, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:18", "40:18", 0));
+            textures.Add(PLAYER_HOOKSHOT_WOOSH_DOWN, new CTextureAtlas(SOURCE_PLAYER, 32, 32, 1, "40:19", "40:19", 0));
 
             textures.Add(GERUDO_SWORD_DOWN, new CTextureAtlas("Swords", 64, 64, 1, "0:0", "7:0", 45));
             textures.Add(GERUDO_SWORD_UP, new CTextureAtlas("Swords", 64, 64, 1, "0:1", "7:1", 45));

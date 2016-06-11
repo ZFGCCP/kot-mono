@@ -970,7 +970,7 @@ namespace King_of_Thieves.Actors.Player
 
             base.update(gameTime);
 
-            if (_state != ACTOR_STATES.FLYING && _state != ACTOR_STATES.DESCEND)
+            if (_state != ACTOR_STATES.FLYING && _state != ACTOR_STATES.DESCEND && _state != ACTOR_STATES.HOOKSHOT_PULL)
             {
                 _velocity.X = 0;
                 _velocity.Y = 0;

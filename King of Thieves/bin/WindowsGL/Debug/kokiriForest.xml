@@ -4575,6 +4575,11 @@
             <actor name="hitboxDetKTJQXCGQlHy4y" type="King_of_Thieves.Actors.Collision.CSolidTile" coordinates="200:303" params="27,13" />
           </actors>
         </component>
+        <component address="4">
+          <actors>
+            <actor name="hookshotTest" type="King_of_Thieves.Actors.Collision.CHookShotTarget" coordinates="275:386" params="16,16" />
+          </actors>
+        </component>
       </components>
     </layer>
     <layer width="0" height="0" name="rootOverlays">
