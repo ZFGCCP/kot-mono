@@ -38,18 +38,20 @@ namespace King_of_Thieves.Actors.Items.weapons.Hookshot
 
         public override void collide(object sender, CActor collider)
         {
-            int timeLeft = 60 - stopTimer0();
+            
             if (collider is Actors.Collision.CSolidTile)
             {
+                int timeLeft = 60 - stopTimer0();
                 _state = ACTOR_STATES.RETRACT;
                 _retract(timeLeft);
                 CMasterControl.commNet[componentAddress].Add(new CActorPacket(0, "hookshotChain0", this, timeLeft));
                 CMasterControl.commNet[componentAddress].Add(new CActorPacket(0, "hookshotChain1", this, timeLeft));
             }
-            else if(collider is Actors.Collision.CHookShotTarget)
+            else if(collider is Actors.Collision.CHookShotTarget && _state != ACTOR_STATES.PULLING)
             {
-                _state = ACTOR_STATES.PULLING;
+                int timeLeft = 60 - stopTimer0();
                 _retract(timeLeft);
+                _state = ACTOR_STATES.PULLING;
                 _velocity = Vector2.Zero;
                 float velocityFactorOne = .25f;
                 float velocityFactorTwo = .5f;

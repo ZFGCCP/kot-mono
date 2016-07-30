@@ -32,6 +32,10 @@ namespace King_of_Thieves.Graphics
 
         public const string EFFECT_HOOKSHOT = EFFECTS + "hookshot:";
 
+        public const string TILESET = "tileset:";
+        public const string TILESET_OUTDOORS = TILESET + "outdoors:";
+        public const string TILESET_INDOORS = TILESET + "indoors:";
+
         //actual constants
         public const string EFFECT_ENERGY_BALL_SMALL = EFFECTS + "energyBallSmall";
         public const string EFFECT_ENERGY_WAVE_SMALL = EFFECTS + "energyWaveSmall";
@@ -451,6 +455,7 @@ namespace King_of_Thieves.Graphics
             textures.Add("tileset:indoors:sewer", new CTextureAtlas("tileset:indoors:sewer", 16, 16, 0, "0:0", "18:22", 0, false, false, true));
             textures.Add("tileset:indoors:castleTown", new CTextureAtlas("tileset:indoors:castleTown", 16, 16, 0, "0:0", "49:44", 0, false, false, true));
             textures.Add("tileset:indoors:rumpBattle", new CTextureAtlas("tileset:indoors:rumpBattle", 16, 16, 0, "0:0", "11:6", 0, false, false, true));
+            textures.Add(TILESET_OUTDOORS + "dekuSwamp", new CTextureAtlas(TILESET_OUTDOORS + "dekuSwamp", 16, 16, 0, "0:0", "15:27", 0, false, false, true));
 
             //items and shit
             textures.Add("items:decor:potSmall", new CTextureAtlas("potSmall", 48, 48, 1, "0:0", "0:0"));
@@ -564,16 +569,17 @@ namespace King_of_Thieves.Graphics
             rawTextures.Add("drops:drops01", _content.Load<Texture2D>("sprites/drops/drops01"));
             
             //tilesets
-            rawTextures.Add("tileset:indoors:house",_content.Load<Texture2D>(@"tilesets/indoors/house"));
+            rawTextures.Add(TILESET_INDOORS + "house", _content.Load<Texture2D>(@"tilesets/indoors/house"));
             rawTextures.Add("tileset:items:chests-small", _content.Load<Texture2D>(@"tilesets/items/chests-small"));
             rawTextures.Add("tileset:items:smallItems", _content.Load<Texture2D>(@"tilesets/items/smallItems"));
-            rawTextures.Add("tileset:outdoors:hyruleCastleTown", _content.Load<Texture2D>(@"tilesets/outdoors/hyruleCastleTown"));
-            rawTextures.Add("tileset:outdoors:demoTiles", _content.Load<Texture2D>(@"tilesets/outdoors/demoTiles"));
-            rawTextures.Add("tileset:outdoors:castleTown", _content.Load<Texture2D>(@"tilesets/outdoors/castleTown"));
-            rawTextures.Add("tileset:outdoors:kokiriForest", _content.Load<Texture2D>(@"tilesets/outdoors/kokiriForest"));
-            rawTextures.Add("tileset:indoors:sewer", _content.Load<Texture2D>(@"tilesets/indoors/sewer"));
-            rawTextures.Add("tileset:indoors:castleTown", _content.Load<Texture2D>(@"tilesets/indoors/castleTownIndoors"));
-            rawTextures.Add("tileset:indoors:rumpBattle", _content.Load <Texture2D>(@"tilesets/indoors/rumpFightRoom"));
+            rawTextures.Add(TILESET_OUTDOORS + "hyruleCastleTown", _content.Load<Texture2D>(@"tilesets/outdoors/hyruleCastleTown"));
+            rawTextures.Add(TILESET_OUTDOORS + "demoTiles", _content.Load<Texture2D>(@"tilesets/outdoors/demoTiles"));
+            rawTextures.Add(TILESET_OUTDOORS + "castleTown", _content.Load<Texture2D>(@"tilesets/outdoors/castleTown"));
+            rawTextures.Add(TILESET_OUTDOORS + "kokiriForest", _content.Load<Texture2D>(@"tilesets/outdoors/kokiriForest"));
+            rawTextures.Add(TILESET_OUTDOORS + "dekuSwamp", _content.Load<Texture2D>(@"tilesets/outdoors/dekuSwamp"));
+            rawTextures.Add(TILESET_INDOORS + "sewer", _content.Load<Texture2D>(@"tilesets/indoors/sewer"));
+            rawTextures.Add(TILESET_INDOORS + "castleTown", _content.Load<Texture2D>(@"tilesets/indoors/castleTownIndoors"));
+            rawTextures.Add(TILESET_INDOORS + "rumpBattle", _content.Load<Texture2D>(@"tilesets/indoors/rumpFightRoom"));
 
             //effects
             rawTextures.Add("effects:explosion", _content.Load<Texture2D>(@"effects/bomb-explosion"));

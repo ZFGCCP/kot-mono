@@ -70,5 +70,14 @@ namespace King_of_Thieves.Actors.NPC.Other
         {
             _textRequest = true;
         }
+
+        protected float _searchForWalls(int distance, int width)
+        {
+            float angle = 999;
+            //Collision.CHitBox hitbox = new Collision.CHitBox(null,)
+
+
+            return angle;
+        }
     }
 }

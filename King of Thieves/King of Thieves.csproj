@@ -75,6 +75,7 @@
     <Compile Include="Actors\Collision\Water\CShallowWater.cs" />
     <Compile Include="Actors\Items\weapons\Hookshot\CHookShotPiece.cs" />
     <Compile Include="Actors\Items\weapons\Hookshot\CHookShotTip.cs" />
+    <Compile Include="Actors\NPC\Enemies\CCarbonite.cs" />
     <Compile Include="KotException\KotInvalidComponentException.cs" />
     <Compile Include="MathExt\CPath.cs" />
     <Compile Include="Actors\HUD\counters\CArrowCounter.cs" />
@@ -741,6 +742,9 @@
     </Content>
     <Content Include="Content\hud\hud.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\tilesets\outdoors\dekuSwamp.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <!-- Specify the search path explicitly so the ResolveAssemblyReferences task picks the right ones -->

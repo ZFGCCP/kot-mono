@@ -626,6 +626,14 @@ namespace King_of_Thieves.Actors
             }
         }
 
+        public void moveInDirection(Vector2 point, double speed)
+        {
+            double angle = MathExt.MathExt.angle(_position, point);
+            Vector2 velocity = new Vector2((float)(speed * Math.Cos(angle)), (float)(speed * Math.Sin(angle)));
+
+            moveInDirection(velocity);
+        }
+
         public DIRECTION moveToPoint(Vector2 point, double speed, bool calcAngle = true)
         {
             double angleBetween = MathExt.MathExt.angle(_position, point);
